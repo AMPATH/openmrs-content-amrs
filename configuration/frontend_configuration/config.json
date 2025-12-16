@@ -36,5 +36,20 @@
   },
   "@openmrs/esm-styleguide": {
     "Brand color #1": "#005d5d"
+  },
+  "@openmrs/esm-patient-medications-app": {
+    "drugOrderTypeUUID": "53eb466e-1359-11df-a1f1-0026b9348838"
+  },
+  "@openmrs/esm-patient-tests-app": {
+    "resultsViewerConcepts": [
+      {
+        "conceptUuid": "a89c694e-1350-11df-a1f1-0026b9348838",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "a8982474-1350-11df-a1f1-0026b9348838",
+        "defaultOpen": false
+      }
+    ]
   }
 }
