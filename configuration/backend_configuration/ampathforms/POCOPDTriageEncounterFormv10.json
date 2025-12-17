@@ -62,7 +62,7 @@
           "questions": [
             {
               "type": "obsGroup",
-              "label": "test group",
+              "label": "Vitals",
               "questionOptions": {
                 "rendering": "group",
                 "concept": "a899e6d8-1350-11df-a1f1-0026b9348838"
@@ -71,16 +71,11 @@
                 {
                   "label": "Temperature(C):",
                   "questionOptions": {
-                    "rendering": "decimal",
+                    "rendering": "number",
                     "concept": "a8a65fee-1350-11df-a1f1-0026b9348838"
                   },
                   "type": "obs",
-                  "validators": [
-                    {
-                      "type": "decimal",
-                      "decimalPlace": 1
-                    }
-                  ],
+                  "validators": [],
                   "id": "temp",
                   "alerts": [
                     {
@@ -173,36 +168,26 @@
                   "label": "Weight(Kg):",
                   "id": "weight",
                   "questionOptions": {
-                    "rendering": "decimal",
+                    "rendering": "number",
                     "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
                     "max": "250",
                     "min": "0"
                   },
                   "type": "obs",
-                  "validators": [
-                    {
-                      "type": "decimal",
-                      "decimalPlace": 1
-                    }
-                  ]
+                  "validators": []
                 },
                 {
                   "label": "Height(CM):",
                   "id": "height",
                   "historicalExpression": "(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838'))",
                   "questionOptions": {
-                    "rendering": "decimal",
+                    "rendering": "number",
                     "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
                     "max": "228.00",
                     "min": "10.00"
                   },
                   "type": "obs",
-                  "validators": [
-                    {
-                      "type": "decimal",
-                      "decimalPlace": 1
-                    }
-                  ]
+                  "validators": []
                 },
                 {
                   "label": "BMI:Kg/M2",
