@@ -1,116 +1,119 @@
 {
-    "name": "AMPATH POC TB Screening Form v1.0",
-    "uuid": "xxxx",
-    "version": "1.0",
-    "description": "TB Screening information",
-    "published": true,
-    "retired": false,
-    "processor": "EncounterFormProcessor",
-    "encounterType": "e47b6229-cfb8-446f-a51c-194a28e465d5",
-    "encounter": "TBSCREENING",
-    "pages": [
-      {
-        "label": "Encounter Details",
-        "sections": [
-          {
-            "label": "Encounter Details",
-            "isExpanded": "true",
-            "questions": [
-              {
-                "label": "Visit date",
-                "type": "encounterDatetime",
-                "required": "true",
-                "default": "",
-                "id": "encDate",
-                "questionOptions": {
-                  "rendering": "date"
-                },
-                "validators": [
+  "name": "AMPATH POC TB Screening Form v1.0",
+  "uuid": "ab2bcde5-24a3-3c61-a47d-cc1a89517d4c",
+  "version": "1.0",
+  "description": "TB Screening information",
+  "published": true,
+  "retired": false,
+  "processor": "EncounterFormProcessor",
+  "encounterType": "e47b6229-cfb8-446f-a51c-194a28e465d5",
+  "encounter": "TBSCREENING",
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "label": "TB Screening",
+      "sections": [
+        {
+          "label": "TB Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Assessment:",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
+                "answers": [
                   {
-                    "type": "date"
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+                    "label": "Fever"
+                  },
+                  {
+                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough"
+                  },
+                  {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unintended weight loss"
+                  },
+                  {
+                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
+                    "label": "Drenching night sweats"
+                  },
+                  {
+                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Chest pain"
+                  },
+                  {
+                    "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
+                    "label": "Breathlessness"
+                  },
+                  {
+                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
+                    "label": "New exposure to household contact with TB"
+                  },
+                  {
+                    "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
+                    "label": "BMI < 18.5"
                   }
-                ]
+                ],
+                "rendering": "multiCheckbox"
               },
-              {
-                "type": "encounterProvider",
-                "label": "Provider",
-                "id": "provider",
-                "required": "true",
-                "default": "",
-                "questionOptions": {
-                  "rendering": "ui-select-extended"
-                }
-              },
-              {
-                "type": "encounterLocation",
-                "label": "Facility name (site/satellite clinic required):",
-                "id": "location",
-                "required": "true",
-                "questionOptions": {
-                  "rendering": "ui-select-extended"
-                }
-              }
-            ]
-          }
-        ]
-      },
-     
-      {
-        "label": "TB Screening",
-        "sections": [
-          {
-            "label": "TB Assessment",
-            "isExpanded": "true",
-            "questions": [
-              {
-                "label": "Assessment:",
-                "required": "true",
-                "questionOptions": {
-                  "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
-                  "answers": [
-                    {
-                      "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
-                      "label": "Fever"
-                    },
-                    {
-                      "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
-                      "label": "Cough"
-                    },
-                    {
-                      "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
-                      "label": "Unintended weight loss"
-                    },
-                    {
-                      "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
-                      "label": "Drenching night sweats"
-                    },
-                    {
-                      "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
-                      "label": "Chest pain"
-                    },
-                    {
-                      "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
-                      "label": "Breathlessness"
-                    },
-                    {
-                      "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
-                      "label": "New exposure to household contact with TB"
-                    },
-                    {
-                      "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
-                      "label": "BMI < 18.5"
-                    }
-                  ],
-                  "rendering": "multiCheckbox"
-                },
-                "type": "obs",
-                "validators": [],
-                "id": "tbSymptoms"
-              }
-            ]
-          }
-        ]
-      }
-      
-    ]
-  }
+              "type": "obs",
+              "validators": [],
+              "id": "tbSymptoms"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
