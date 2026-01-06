@@ -50,8 +50,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "5eca73ec-0cae-4e56-8032-a377ea2d483a",
-                "max": "",
-                "min": "",
+                
+                "min": "0",
                 "showDate": ""
               },
               "id": "pncNumber",
