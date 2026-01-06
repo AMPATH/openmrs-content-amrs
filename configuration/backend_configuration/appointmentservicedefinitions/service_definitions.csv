@@ -1,0 +1,74 @@
+Uuid,Void/Retire,Name,Description,Duration,Start Time,End Time,Max Load,Speciality,Location,Label Colour
+0df25816-1118-44ab-b61e-120029401b33,,HIV Consultation,,,,,,,,#a8d5e2
+0f3c2935-2b8a-4b9c-ac82-3269bc9dbd68,,Drug Refill,,,,,,,,#e2a8d4
+556f9ae7-83a1-4c1e-b4c6-9489dae6abd4,,KP Clinical Visit,,,,,,,,#d4e2a8
+38ab8a4c-d624-4a6d-be39-082cdb2c9c57,,MCH Antenatal,,,,,,,,#a8e2d4
+d2d71744-3209-4bd7-b398-4a4f7127f8f3,,MCH Postnatal,,,,,,,,#d4a8e2
+a033743f-ce0f-4c42-8248-e6358e797e53,,Tb Followup,,,,,,,,#e2d4a8
+9c8d6cbd-e622-4db1-aa21-db5f48b702f9,,Prep Initial,,,,,,,,#a8d4e2
+0f04aeae-4995-4f07-a587-f0d5d3eb98df,,Prep Followup,,,,,,,,#e2a8a8
+84da165b-e215-464f-aa75-ea666e1dfb49,,Prep Monthly Refill,,,,,,,,#d4a8a8
+4182c36d-5b3a-414c-b67c-6926541a638f,,Family Planning,,,,,,,,#a8a8d4
+826f5b77-6991-4116-a666-74927a947d3b,,Counselling,,,,,,,,#d4d4a8
+1e740a76-8ba5-49bd-90c0-42ea3f992bec,,Lab tests,,,,,,,,#a8e2e2
+ba0e4264-abbf-44b4-8a34-5838de4d3444,,CWC Followup,,,,,,,,#e2a8a8
+22bb0e97-da41-4d81-9a64-370050ef882f,,Radiology and Imaging,,,,,,,,#d4a8e2
+3eb8b1d6-36c2-4600-addb-598731bb408e,,Nutritional and Dietary appointment,,,,,,,,#a8e2a8
+8652c212-1176-48c5-8d77-9ff8ca70bd17,,Cervical cancer Screening,,,,,,,,#e2d4d4
+0babafc5-abd1-4310-8351-ee0c90a730d4,,Harm/Risk Reduction,,,,,,,,#d4e2e2
+87c4a222-34a1-4103-80fb-8c262a259684,,Psychosocial support appointment,,,,,,,,#e2a8e2
+1d6da916-fae1-4633-a0ea-313bfe074ee0,,Vaccination appointments,,,,,,,,#a8d4a8
+dd9a629c-d2b8-4ed0-a931-26c9efca7fc8,,Physiotherapy and Rehabilitation appointment,,,,,,,,#d4d4d4
+25c48105-17b9-4ed2-b3e8-4458ba4f5260,,Post-operative follow-up,,,,,,,,#e2e2a8
+9b954000-1a8c-4f23-a90a-8ea986de6f5e,,Chemotherapy/ Radiation Therapy appointment,,,,,,,,#a8a8e2
+d40b5e4f-7925-4884-9d78-b238618ce4b4,,Cancer screening appointment,,,,,,,,#d4d4a8
+ec7d2145-f80a-4350-914a-69e13775a5f6,,Renal Dialysis appointment,,,,,,,,#e2a8a8
+67a73284-3fde-45fa-a8a8-4dff87571766,,Surgery scheduling,,,,,,,,#a8d4e2
+6a24e61f-aa69-41f6-9088-62497c523f65,,Oncology (Cancer) consultation,,,,,,,,#e2e2e2
+956b4663-ba66-41d0-ade2-25b57419f672,,Oncology follow-up,,,,,,,,#e2e2e2
+2ec6fe12-c4b9-46eb-84c2-31f34a067dc6,,Chemotherapy sessions,,,,,,,,#e2e2e2
+a40c1f15-4d96-42da-be0f-b3161f66746c,,Respiratory / pulmonary consultation,,,,,,,,#e2e2e2
+120409ee-c711-42ba-b6fd-003b3188a034,,Pulmonary rehabilitation,,,,,,,,#e2e2e2
+d551ebe6-c5ef-4c34-85f8-57b69a4ed692,,Diabetic initial consultation,,,,,,,,#e2e2e2
+5021c801-d8dd-4398-8d77-6a70ea675730,,Diabetic follow-up,,,,,,,,#e2e2e2
+45c0efde-1c8c-409d-821c-5909bd052381,,Diabetic foot care,,,,,,,,#e2e2e2
+972cfa38-1ee3-46bf-b569-fc9e353446ff,,Cardiology consultation,,,,,,,,#e2e2e2
+7fb363cf-2b60-4f30-a247-a5552f7c9dbb,,Cardiology follow up,,,,,,,,#e2e2e2
+4c835b41-a93a-4167-8feb-647a79af0ec7,,Hypertension initial consultation,,,,,,,,#e2e2e2
+62652266-786c-40b5-a327-154ec150a9e8,,Hypertension follow up,,,,,,,,#e2e2e2
+c0d56136-f524-4cdd-b389-a385635f947f,,Radiotherapy sessions,,,,,,,,#e2e2e2
+7b0ade43-0c6e-4ce5-80a3-cdb9d851b1a9,,Neurological Appointment,,,,,,,,#e2e2e2
+92fb1691-f9c2-4935-95d8-39e251d8c6d3,,Mental health (Psychiatry) consultation,,,,,,,,#e2e2e2
+f28d2751-a94f-4ea8-a0b9-fe926e920684,,Endoscopy/colonoscopy services,,,,,,,,#e2e2e2
+c6fc2bc8-a1f4-49f4-b2d2-8aa03d5d8b46,,Renal consultation,,,,,,,,#e2e2e2
+cabcdbc0-afda-4d3d-a602-58f73e45d2f6,,Orthopaedic consultation,,,,,,,,#e2e2e2
+7244d41c-4e87-4e96-ab0f-2b155a521788,,Palliative care services,,,,,,,,#e2e2e2
+84343120-779d-4d29-9eaf-0c1b025c5575,,GOPC,,,,,,,,#e2e2e2
+2b0aa921-7ded-4ea4-a0f2-cdcfaf3edb20,,Occupational therapy services,,,,,,,,#e2e2e2
+064e107b-d71c-4b44-88fd-548ed83afafe,,Ophthalmologic services,,,,,,,,#e2e2e2
+4ee506b6-baf6-41d0-abea-2a1da7cc0af0,,ENT (Ear Nose and Throat) services,,,,,,,,#e2e2e2
+9e8d75af-fc03-4853-82b6-3deafcde6dbb,,Fertility follow up,,,,,,,,#e2e2e2
+3de12acc-f051-4031-b375-71655d600de1,,Pediatrics appointment,,,,,,,,#e2e2e2
+91f6679b-6820-40ae-bec2-05da854429e4,,Rheumatological consultation,,,,,,,,#e2e2e2
+36c61938-8700-4f4c-863f-b1bc3a1f5e8a,,Dental appointment,,,,,,,,#e2e2e2
+667adf7d-3243-4d52-bdc3-656ee196b960,,Dermatological appointment,,,,,,,,#e2e2e2
+06a64cef-fb81-4791-a109-01f78da0b016,,Endocrinology appointment,,,,,,,,#e2e2e2
+3ffe523e-befa-41a4-acb9-aa4b18e25d5f,,Pre-travel consultation,,,,,,,,#e2e2e2
+c6394980-a973-4389-8c61-2e6795239d6e,,Post-travel consultation,,,,,,,,#e2e2e2
+5efe33fa-2a77-4da1-b13e-f1d242ff394f,,Infectious disease consultation,,,,,,,,#e2e2e2
+362ca95d-c4cc-43db-805d-990f56143f73,,Gastroenterology consultation,,,,,,,,#e2e2e2
+60064376-3b8e-4682-b957-3219343ff754,,Audiology consultation,,,,,,,,#e2e2e2
+668ef08f-008c-4951-a1d7-c1a39a536ceb,,Urology consultation,,,,,,,,#e2e2e2
+1883dddc-a2c1-450b-a947-c95c94b33b5b,,Medical consultation,,,,,,,,#e2e2e2
+e00305c6-ce09-43d1-bf71-38fa0fed466a,,Paediatric consultation,,,,,,,,#e2e2e2
+ab56ab67-9e3b-4ab5-9542-1e8b46d19424,,Maxillofacial consultation,,,,,,,,#e2e2e2
+77b1c328-72b3-4387-8a19-f099e50d5b9e,,Speech and Language therapy,,,,,,,,#e2e2e2
+ad3e2144-f916-4918-9e64-afe234cf3ab0,,Opthamology consultation,,,,,,,,#e2e2e2
+ff047d41-9fe4-4d17-95db-c92d9f111e59,,Plastic surgery consultation,,,,,,,,#e2e2e2
+765e6304-f478-456f-8ec5-6bfd2aff95d9,,MAT service consultation,,,,,,,,#e2e2e2
+22cab83c-7891-4615-9ae5-3032f2a4b0da,,MOPC (Medical Outpatient Care Clinic),,,,,,,,#e2e2e2
+ba353138-fa8e-40d5-ba51-969ada4db35a,,SOPC,,,,,,,,#e2e2e2
+b7a12109-a6cc-4d36-be99-4fcb1ebd3779,,DOPC,,,,,,,,#e2e2e2
+9634f8e4-331b-46a9-9b8e-1ec97b5f0283,,POPC,,,,,,,,#e2e2e2
+cc395a5a-1ee7-4ea9-b4bd-f03822b8ebb1,,Orthopaedic Followup,,,,,,,,#e2e2e2
+10dc21df-eefa-4025-aa5d-7fbc7f4b44da,,Diabetes/Hypertension Clinic,,,,,,,,#e2e2e2
