@@ -1530,19 +1530,19 @@
               "type": "obs",
               "id": "lifeAdvice",
               "questionOptions": {
-                "concept": "bfe0cbb2-eea0-4431-a5c5-d0f49a4ed21b",
-                "rendering": "checkbox",
+                "concept": "a8b0ec2a-1350-11df-a1f1-0026b9348838",
+                "rendering": "multiCheckbox",
                 "answers": [
                   {
-                    "concept": "2a030791-14b4-4996-95ad-39c54b25f2b6",
+                    "concept": "d7f24e71-36ce-4766-9348-239a7838ed52",
                     "label": "Physical Activities"
                   },
                   {
-                    "concept": "0fbdc651-f5a2-49cc-b21f-29c827c3cd01",
+                    "concept": "a89e2df6-1350-11df-a1f1-0026b9348838",
                     "label": "Support Group"
                   },
                   {
-                    "concept": "c23d3224-2218-4007-8f22-e1f3d5a8e58a",
+                    "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
                     "label": "Nutrition"
                   },
                   {
