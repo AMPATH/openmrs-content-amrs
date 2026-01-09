@@ -1,0 +1,67 @@
+{
+  "name": "Ward Admission v1.0",
+  "pages": [
+    {
+      "label": "Ward Request",
+      "sections": [
+        {
+          "label": "Ward Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "id": "inpatientDispositionConstruct",
+              "questionOptions": {
+                "concept": "9ceedfb7-60e4-42ce-a11e-f2dbabc82112",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "id": "disposition",
+                  "type": "obs",
+                  "required": true,
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "required": true,
+                    "concept": "ce085d74-323c-4c9a-9fdf-051de81dd020",
+                    "answers": [
+                      {
+                        "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5"
+                      }
+                    ]
+                  },
+                  "validators": []
+                },
+                {
+                  "id": "admitToLocation",
+                  "type": "encounterLocation",
+                  "required": true,
+                  "questionOptions": {
+                    "rendering": "ui-select-extended",
+                    "required": true,
+                    
+                    "datasource": {
+                      "name": "location_datasource",
+                      "config": {
+                        "tag": "Admission Location"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "processor": "EncounterFormProcessor",
+  "encounter": "ADMISSION",
+  "encounterType": "e22e39fd-7db2-45e7-80f1-60fa0d5a4378",
+  "referencedForms": [],
+  "uuid": "xxxx",
+  "description": "Create an admission request to an inpatient ward",
+  "version": "1.0",
+  "published": true,
+  "retired": false
+}
