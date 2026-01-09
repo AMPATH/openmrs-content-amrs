@@ -1,5 +1,5 @@
 {
-  "name": "Ward Admission",
+  "name": "Ward Admission v1.0",
   "pages": [
     {
       "label": "Ward Request",
@@ -34,12 +34,12 @@
                 },
                 {
                   "id": "admitToLocation",
-                  "type": "obs",
+                  "type": "encounterLocation",
                   "required": true,
                   "questionOptions": {
                     "rendering": "ui-select-extended",
                     "required": true,
-                    "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
+                    
                     "datasource": {
                       "name": "location_datasource",
                       "config": {
