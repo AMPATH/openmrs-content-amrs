@@ -5,7 +5,8 @@
   "published": true,
   "uuid": "",
   "retired": false,
-  "encounter": "",
+  "encounter": "NCDINITIAL",
+
   "meta": {
     "programs": {
       "uuid": "",
@@ -612,22 +613,22 @@
               "questionOptions": {
                 "concept": "3604da2d-9e2f-4644-9af1-7d7936e26374",
                 "rendering": "select",
-                "answers":[
+                "answers": [
                   {
-                    "concept":"07872e34-30f6-4a12-b2e4-b86e4e8246bd",
-                    "label":"Stage 1"
+                    "concept": "07872e34-30f6-4a12-b2e4-b86e4e8246bd",
+                    "label": "Stage 1"
                   },
                   {
-                    "concept":"0c1aec06-6259-48c9-ba84-a227ca1900d8",
-                    "label":"Stage 2"
+                    "concept": "0c1aec06-6259-48c9-ba84-a227ca1900d8",
+                    "label": "Stage 2"
                   },
                   {
-                    "concept":"c59f2776-0244-4df0-982e-6f6e94362582",
-                    "label":"Stage 3"
+                    "concept": "c59f2776-0244-4df0-982e-6f6e94362582",
+                    "label": "Stage 3"
                   },
                   {
-                    "concept":"6dcbadea-ef99-4712-af1f-ceb7982e24da",
-                    "label":"Stage 4"
+                    "concept": "6dcbadea-ef99-4712-af1f-ceb7982e24da",
+                    "label": "Stage 4"
                   }
                 ]
               },
@@ -820,7 +821,7 @@
               },
               "id": "tbSymptoms"
             },
-           
+
             {
               "label": "Status after screening:",
               "id": "tbstatus",
@@ -1421,7 +1422,6 @@
             }
           ]
         }
-       
       ]
     },
     {
@@ -1446,7 +1446,7 @@
                 }
               }
             },
-           
+
             {
               "label": "Lifestyle advice:",
               "required": "true",
@@ -1514,7 +1514,7 @@
                 "workspaceName": "add-drug-order"
               }
             },
-           
+
             {
               "label": "Next review date:",
               "required": false,
@@ -1531,6 +1531,6 @@
     }
   ],
   "processor": "EncounterFormProcessor",
-  "encounterType": "dfcbe5d0-1afb-48a0-8f1e-5e5988b11f15",
+  "encounterType": "5444d069-1317-4838-addf-f2bca42a48a2",
   "referencedForms": []
 }
