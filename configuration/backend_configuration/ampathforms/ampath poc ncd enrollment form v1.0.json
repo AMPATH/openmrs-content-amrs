@@ -531,7 +531,7 @@
                     "label": "Gestational Diabetes Mellitus"
                   },
                   {
-                    "concept": "",
+                    "concept": "5553504c-f9d7-4b9e-85b6-ff3ffb7fd8f6",
                     "label": "Diabetes secondary to other causes"
                   }
                 ]
@@ -557,7 +557,7 @@
                     "label": "Type 2 Diabetes Mellitus"
                   },
                   {
-                    "concept": "",
+                    "concept": "5553504c-f9d7-4b9e-85b6-ff3ffb7fd8f6",
                     "label": "Diabetes secondary to other causes"
                   }
                 ]
@@ -606,19 +606,37 @@
               }
             },
             {
-              "label": "Hypertension Stage",
+              "label": "Hypertension stage:",
               "type": "obs",
               "id": "htnStage",
               "questionOptions": {
-                "concept": "",
-                "rendering": "text"
+                "concept": "3604da2d-9e2f-4644-9af1-7d7936e26374",
+                "rendering": "select",
+                "answers":[
+                  {
+                    "concept":"07872e34-30f6-4a12-b2e4-b86e4e8246bd",
+                    "label":"Stage 1"
+                  },
+                  {
+                    "concept":"0c1aec06-6259-48c9-ba84-a227ca1900d8",
+                    "label":"Stage 2"
+                  },
+                  {
+                    "concept":"c59f2776-0244-4df0-982e-6f6e94362582",
+                    "label":"Stage 3"
+                  },
+                  {
+                    "concept":"6dcbadea-ef99-4712-af1f-ceb7982e24da",
+                    "label":"Stage 4"
+                  }
+                ]
               },
               "hide": {
                 "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != 'a8986880-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
-              "label": "Date of Diagnosis",
+              "label": "Date of diagnosis:",
               "type": "obs",
               "id": "dxYearhtn",
               "questionOptions": {
@@ -642,7 +660,7 @@
                     "label": "New co-morbid patient"
                   },
                   {
-                    "concept": "",
+                    "concept": "3dd7033a-2141-4b7d-bca3-e079ae772f24",
                     "label": "Known Co-morbid patient"
                   }
                 ]
@@ -668,7 +686,7 @@
               "type": "obs",
               "id": "typeHypco",
               "questionOptions": {
-                "concept": "",
+                "concept": "9deaa3dd-1381-4b2d-b16e-1b7097530d28",
                 "rendering": "text"
               },
               "hide": {
@@ -680,7 +698,7 @@
               "type": "obs",
               "id": "typeDiabtsco",
               "questionOptions": {
-                "concept": "",
+                "concept": "6f8ef247-a73f-421c-9fcb-ed5c3260b8aa",
                 "rendering": "text"
               },
               "hide": {
@@ -802,102 +820,7 @@
               },
               "id": "tbSymptoms"
             },
-            {
-              "label": "TB investigations:",
-              "type": "obs",
-              "required": true,
-              "id": "tbInvestigation",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a89c2268-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a8945d4e-1350-11df-a1f1-0026b9348838",
-                    "label": "Sputum"
-                  },
-                  {
-                    "concept": "a8908192-1350-11df-a1f1-0026b9348838",
-                    "label": "X-ray"
-                  },
-                  {
-                    "concept": "9364c765-eeec-4b03-b938-ea7874560d88",
-                    "label": "Genexpert"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(tbScreening) || tbScreening != 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Sputum:",
-              "type": "obs",
-              "required": true,
-              "id": "sputumR",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a8945d4e-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Negative"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(tbInvestigation) || tbInvestigation != 'a8945d4e-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Chest Xray:",
-              "type": "obs",
-              "required": true,
-              "id": "xray",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a8908192-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Normal"
-                  },
-                  {
-                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
-                    "label": "Abormal"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(tbInvestigation) || tbInvestigation != 'a8908192-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "GeneXpert:",
-              "type": "obs",
-              "required": true,
-              "id": "gene",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "741517cf-8bac-4755-b289-8dd2a2df7962",
-                "answers": [
-                  {
-                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Negative"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(tbInvestigation) || tbInvestigation != '9364c765-eeec-4b03-b938-ea7874560d88'"
-              }
-            },
+           
             {
               "label": "Status after screening:",
               "id": "tbstatus",
@@ -1043,7 +966,7 @@
           ]
         },
         {
-          "label": "Pregnancy Status",
+          "label": "Pregnancy status:",
           "isExpanded": "true",
           "questions": [
             {
@@ -1390,14 +1313,14 @@
               "id": "footDiabeticRisk",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "",
+                "concept": "95eac840-0e18-45f3-8650-08a8356bb45a",
                 "answers": [
                   {
                     "concept": "4fae298d-c3c2-4483-ad31-bea9b637ae2b",
                     "label": "High Risk"
                   },
                   {
-                    "concept": "06eb5a64-5b0d-47f9-929f-30e6c51f365e",
+                    "concept": "d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb",
                     "label": "Low Risk"
                   }
                 ]
@@ -1417,7 +1340,7 @@
                     "label": "Loss of protective sensation"
                   },
                   {
-                    "concept": "",
+                    "concept": "372ea42b-f29d-42a9-9e72-149c67a37611",
                     "label": "Absent pedal pulses"
                   },
                   {
@@ -1436,7 +1359,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(footDiabeticRisk) || footDiabeticRisk != '166674AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(footDiabeticRisk) || footDiabeticRisk != '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
               }
             },
             {
@@ -1446,14 +1369,14 @@
               "id": "lowfootRiskAccess",
               "questionOptions": {
                 "rendering": "multiCheckbox",
-                "concept": "",
+                "concept": "b0a2bbb8-44e0-4a7e-9a6e-307b3d1cc01f",
                 "answers": [
                   {
-                    "concept": "",
+                    "concept": "0bd7968a-7ca3-4ce5-843f-df850c9d763d",
                     "label": "Intact protective sensation"
                   },
                   {
-                    "concept": "",
+                    "concept": "9c3bce3b-8d81-4c73-abd0-0aba53086570",
                     "label": "Pedal Pulses Present"
                   },
                   {
@@ -1465,14 +1388,14 @@
                     "label": "No prior foot ulcer"
                   },
                   {
-                    "concept": "",
+                    "concept": "06856aae-2008-49c5-ba89-2cd89e4c5716",
                     "label": "No amputation"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(footDiabeticRisk) || footDiabeticRisk != '166675AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(footDiabeticRisk) || footDiabeticRisk != 'd9a3eac7-7f3f-4a00-b7ed-76400bae1cdb'"
               }
             },
             {
@@ -1482,7 +1405,7 @@
               "id": "footDiabeticExisting",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "",
+                "concept": "a2b6018d-c8a1-4d1d-ada2-80c1466dc2f5",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
