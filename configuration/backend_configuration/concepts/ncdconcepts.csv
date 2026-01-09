@@ -12,7 +12,7 @@ Hypertension diagnosis with blood pressure >=160/100 and < 180/110",,,Diagnosis 
 6f8ef247-a73f-421c-9fcb-ed5c3260b8aa,,,TYPE OF DIABETES TEXT,,,,,,Type of diabetes in freetext,,,Question ,Text,,,
 95eac840-0e18-45f3-8650-08a8356bb45a,,"MCL/CIEL:168057
 ",DIABETIC FOOT ULCER RISK LEVEL,,,,,,Diabetic foot ulcer risk level,,,Question,Coded,d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb;4fae298d-c3c2-4483-ad31-bea9b637ae2b;a899b50a-1350-11df-a1f1-0026b9348838,,
-9f4cdde7-914f-48aa-ab5b-1fd3e3c5fd57,,MCL/CIEL:168056,DIABETIC FOOT RISK FACTOR,,,,,,Diabetic foot risk factor,,,Question,Coded,372ea42b-f29d-42a9-9e72-149c67a37611;a89565ea-1350-11df-a1f1-0026b9348838;9ec04648-0890-4d3c-a6a0-c73bb43c108f;98ebabfb-94fb-499c-b1ed-56420715eb53;cb5ac42a-e97a-4590-a6b8-21ec33559b62;9f4cdde7-914f-48aa-ab5b-1fd3e3c5fd57,,
+9f4cdde7-914f-48aa-ab5b-1fd3e3c5fd57,,MCL/CIEL:168056,DIABETIC FOOT RISK FACTOR,,,,,,Diabetic foot risk factor,,,Question,Coded,372ea42b-f29d-42a9-9e72-149c67a37611;a89565ea-1350-11df-a1f1-0026b9348838;9ec04648-0890-4d3c-a6a0-c73bb43c108f;98ebabfb-94fb-499c-b1ed-56420715eb53;cb5ac42a-e97a-4590-a6b8-21ec33559b62,,
 372ea42b-f29d-42a9-9e72-149c67a37611,,MCL/CIEL:168053,FOOT PULSE ABSENT,,,,,,,,,Diagnosis,N/A,,,
 b0a2bbb8-44e0-4a7e-9a6e-307b3d1cc01f,,,ABSENCE OF RISK OF DIABETIC FOOT,,,,,,,,,Question ,Coded,06856aae-2008-49c5-ba89-2cd89e4c5716;9c3bce3b-8d81-4c73-abd0-0aba53086570;0bd7968a-7ca3-4ce5-843f-df850c9d763d;b34b3d76-cb9b-4057-9cf7-ec055997ec14;be87ae99-9e94-4946-bee3-390a40bd8b23,,
 0bd7968a-7ca3-4ce5-843f-df850c9d763d,,,INTACT SENSATION,,,,,,Intact sensation,,,Misc,N/A,,,
@@ -39,4 +39,4 @@ e0636302-39ad-449b-8c19-2551447d641d,,MCL/CIEL:160218,PROBABLE CAUSE OF DEATH TE
 248392d8-f786-44f2-b490-2d8829c0659c,,,ARTERIAL EMBALMING,,,,,,Embalming fluid is injected into the arteries and blood is drained through veins.,,,Misc,N/A,,,
 5afc3f60-c48e-4522-a959-20d2892ca288,,,CAVITY EMBALMING,,,,,,Internal organs (chest and abdomen) are treated by removing gases and fluids,,,Misc,N/A,,,
 3eeac352-2f83-4419-87de-73aea7532b9e,,,TOPICAL EMBALMING,,,,,,"Used for damaged areas, wounds, burns, or unembalmed parts.",,,Misc,N/A,,,
-eef060d3-d503-4695-a9ba-47f5af44135b,,,"PROCEDURES ORDERED, SET",,,,,,A convenient set used to store precedures as set members. Used in 3x. ,,,Convset,N/A,,,
+eef060d3-d503-4695-a9ba-47f5af44135b,,,"PROCEDURES ORDERED, SET",,,,,,A convenient set used to store precedures as set members. Used in 3x. ,,,Convset,,,,
