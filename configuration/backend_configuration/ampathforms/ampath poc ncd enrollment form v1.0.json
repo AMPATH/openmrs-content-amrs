@@ -1404,7 +1404,7 @@
               }
             },
             {
-              "label": "High Risk assessment",
+              "label": "High Risk assessment:",
               "required": "true",
               "type": "obs",
               "id": "highfootRiskAccess",
@@ -1440,7 +1440,7 @@
               }
             },
             {
-              "label": "Low Risk assessment",
+              "label": "Low risk assessment:",
               "required": "true",
               "type": "obs",
               "id": "lowfootRiskAccess",
@@ -1525,7 +1525,7 @@
             },
            
             {
-              "label": "Lifestyle Advice",
+              "label": "Lifestyle advice:",
               "required": "true",
               "type": "obs",
               "id": "lifeAdvice",
@@ -1578,7 +1578,7 @@
               "id": "nutAssesment",
               "questionOptions": {
                 "rendering": "textarea",
-                "concept": "20395601-257c-490c-86c2-acffb627f91f"
+                "concept": "e194e1cc-3975-4bb2-85e1-c71597ebcd64"
               }
             },
             {
@@ -1591,93 +1591,7 @@
                 "workspaceName": "add-drug-order"
               }
             },
-            {
-              "label": "Footcare Outcome",
-              "required": "true",
-              "type": "obs",
-              "id": "footOutcome",
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "162737AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "answers": [
-                  {
-                    "concept": "162130AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Ulcer healed"
-                  },
-                  {
-                    "concept": "9751bd32-a30a-4bd6-a88b-bef637a811ed",
-                    "label": "Surgical debridement"
-                  },
-                  {
-                    "concept": "164009AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Amputation"
-                  },
-                  {
-                    "concept": "5240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Loss to follow up"
-                  },
-                  {
-                    "concept": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Admitted"
-                  },
-                  {
-                    "concept": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Referred"
-                  }
-                ]
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "isEmpty(footDiabetic) || footDiabetic != '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
-            },
-            {
-              "label": "Reason for referral",
-              "type": "obs",
-              "required": true,
-              "id": "",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "159623AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "answers": [
-                  {
-                    "concept": "138202AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Further management of HTN"
-                  },
-                  {
-                    "concept": "160552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Nutrition"
-                  },
-                  {
-                    "concept": "159364AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Physiotherapy"
-                  },
-                  {
-                    "concept": "161623AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Surgical review"
-                  },
-                  {
-                    "concept": "163046AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "CVD review"
-                  },
-                  {
-                    "concept": "6033AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Renal review"
-                  },
-                  {
-                    "concept": "850a960b-e8b5-4775-ba74-aaddb2abbf51",
-                    "label": "Eye review"
-                  },
-                  {
-                    "concept": "164103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Further management of DM"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(footOutcome) || footOutcome != '1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
-            },
+           
             {
               "label": "Next review date:",
               "required": false,
