@@ -1,0 +1,361 @@
+{
+  "name": "POC Mortality Admission Form v1.0",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "bd9f341f-6ba9-443a-8f6f-4288c0a82e19",
+  "referencedForms": [],
+  "uuid": "27450c9b-72f6-4896-a9d9-94e7ebb0d0e3",
+  "description": "A form to collect mortality records",
+  "version": "1.0",
+  "pages": [
+    {
+      "label": "Mortality Admission Form",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "id": "encDate"
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Mortality Admission",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Place of death:",
+              "type": "obs",
+              "required": "true",
+              "id": "placeOfDeath",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8afd100-1350-11df-a1f1-0026b9348838",
+               
+                "answers": [
+                  {
+                    "concept": "ff3243bf-05f6-426d-aa49-969034962e45",
+                    "label": "Inpatient"
+                  },
+                  {
+                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
+                    "label": "Outpatient"
+                  },
+                  {
+                    "concept": "3d6d1ee8-ea5a-4b36-9a24-b05122a0e0c6",
+                    "label": "Dead on arrival"
+                  },
+                  {
+                    "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+                    "label": "Home"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown (Police case)"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Date and time of death:",
+              "type": "obs",
+              "required": true,
+              "id": "dateAndTimeOfDeath",
+              "datePickerFormat": "both",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "52ff51ce-3a95-4e32-b389-966c2a6b2a77",
+                
+                "answers": []
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDate": "false"
+                }
+              ]
+            },
+            {
+              "label": "Arrival date and time:",
+              "type": "obs",
+              "required": true,
+              "id": "arrivalDateAndTime",
+              "datePickerFormat": "both",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "f3ca6995-450e-4c58-a8cd-5abd9f7215b6",
+               
+                "answers": []
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDate": "false"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(placeOfDeath, '3d6d1ee8-ea5a-4b36-9a24-b05122a0e0c6')"
+              }
+            },
+            {
+              "label": "Death confirmed:",
+              "type": "obs",
+              "required": true,
+              "id": "deathConfirmed",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3412be33-1352-4409-bd23-adca170802a3",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a8af9046-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "07e9e14e-a718-4a9e-9479-1de79e1f614a",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Death notification number:",
+              "type": "obs",
+              "required": true,
+              "id": "notificationNumber",
+              "questionOptions": {
+                "rendering": "text",
+                "min": "0",
+                
+                "concept": "2805fed8-5d7e-4fce-b146-c45bd36a664a",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Attending clinician/Doctor:",
+              "type": "obs",
+              "required": true,
+              "id": "attendingClinician",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "35b08970-c4a2-4e90-a806-1278955ffc9f",
+                
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(placeOfDeath) || placeOfDeath === ('a89df17e-1350-11df-a1f1-0026b9348838') || placeOfDeath === ('a899b50a-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Doctors remarks:",
+              "type": "obs",
+              "required": true,
+              "id": "doctorsRemarks",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(placeOfDeath) || placeOfDeath === ('a89df17e-1350-11df-a1f1-0026b9348838') || placeOfDeath === ('a899b50a-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Cause of Death (if known):",
+              "type": "obs",
+              "required": true,
+              "id": "causeOfDeath",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e0636302-39ad-449b-8c19-2551447d641d",
+               
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Mortuary transfer confirmed:",
+              "type": "obs",
+              "required": true,
+              "id": "mortuaryTransfer",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e609e8e7-12e0-45d0-a92b-ed044de21a3d",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Transfer to mortuary/Funeral home:",
+              "type": "obs",
+              "required": true,
+              "id": "transferToMortuary",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7fa691cb-f153-477a-92dc-707d768aa405",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "d28e360f-085d-48ae-aa28-aff612cbaa90",
+                    "label": "Released to another funeral home"
+                  },
+                  {
+                    "concept": "59312903-dde9-4f7a-b6cf-7b41863b7e81",
+                    "label": "Facility funeral home"
+                  },
+                  {
+                    "concept": "3d920c84-8cca-4d46-a6c5-b2af7737ce60",
+                    "label": "Body released to the family"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(mortuaryTransfer) || mortuaryTransfer !== ('a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Date and Time of transfer:",
+              "type": "obs",
+              "required": true,
+              "id": "dateAndTimeOfTrasnfer",
+              "datePickerFormat": "both",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a8a01710-1350-11df-a1f1-0026b9348838",
+                
+                "answers": []
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDate": "false"
+                }
+              ]
+            },
+            {
+              "label": "Autopsy Permission (if applicable):",
+              "type": "obs",
+              "required": true,
+              "id": "autopsyPermission",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9d1f69d7-e467-4d00-a98a-6771009dd244",
+                
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Dead body preservation:",
+              "type": "obs",
+              "required": true,
+              "id": "deadBodyPreservation",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "759e05ff-8bb0-4b32-81b7-f77176335fb4",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "67453ebc-4977-4328-be33-8a733f047b9b",
+                    "label": "Body embalment"
+                  },
+                  {
+                    "concept": "73b68cf4-6f80-41df-b6c6-16045a5ab371",
+                    "label": "Cold storage"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Body embalment types:",
+              "type": "obs",
+              "required": true,
+              "id": "bodyEmbalmentTypes",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "037edc0e-74bd-4f01-bb0b-6223b095d588",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "248392d8-f786-44f2-b490-2d8829c0659c",
+                    "label": "Arterial"
+                  },
+                  {
+                    "concept": "5afc3f60-c48e-4522-a959-20d2892ca288",
+                    "label": "Cavity"
+                  },
+                  {
+                    "concept": "3eeac352-2f83-4419-87de-73aea7532b9e",
+                    "label": "Hypodermic"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(deadBodyPreservation) || deadBodyPreservation !== ('67453ebc-4977-4328-be33-8a733f047b9b')"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
