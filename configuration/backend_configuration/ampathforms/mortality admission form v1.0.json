@@ -107,14 +107,14 @@
               ]
             },
             {
-              "label": "Arrival date and time",
+              "label": "Arrival date and time:",
               "type": "obs",
               "required": true,
               "id": "arrivalDateAndTime",
               "datePickerFormat": "both",
               "questionOptions": {
                 "rendering": "date",
-                "concept": "159622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "f3ca6995-450e-4c58-a8cd-5abd9f7215b6",
                
                 "answers": []
               },
@@ -129,7 +129,7 @@
               }
             },
             {
-              "label": "Death confirmed",
+              "label": "Death confirmed:",
               "type": "obs",
               "required": true,
               "id": "deathConfirmed",
@@ -182,7 +182,7 @@
               }
             },
             {
-              "label": "Doctors remarks",
+              "label": "Doctors remarks:",
               "type": "obs",
               "required": true,
               "id": "doctorsRemarks",
@@ -198,7 +198,7 @@
               }
             },
             {
-              "label": "Cause of Death (if known)",
+              "label": "Cause of Death (if known):",
               "type": "obs",
               "required": true,
               "id": "causeOfDeath",
@@ -211,7 +211,7 @@
               "validators": []
             },
             {
-              "label": "Mortuary Transfer confirmed",
+              "label": "Mortuary transfer confirmed:",
               "type": "obs",
               "required": true,
               "id": "mortuaryTransfer",
@@ -233,36 +233,36 @@
               "validators": []
             },
             {
-              "label": "Transfer to mortuary/Funeral home",
+              "label": "Transfer to mortuary/Funeral home:",
               "type": "obs",
               "required": true,
               "id": "transferToMortuary",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "1695AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "7fa691cb-f153-477a-92dc-707d768aa405",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "5b9e6cd1-f836-4144-91e4-401c58dd62af",
+                    "concept": "d28e360f-085d-48ae-aa28-aff612cbaa90",
                     "label": "Released to another funeral home"
                   },
                   {
-                    "concept": "163266AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "59312903-dde9-4f7a-b6cf-7b41863b7e81",
                     "label": "Facility funeral home"
                   },
                   {
-                    "concept": "159886AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "3d920c84-8cca-4d46-a6c5-b2af7737ce60",
                     "label": "Body released to the family"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(mortuaryTransfer) || mortuaryTransfer !== ('1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+                "hideWhenExpression": "isEmpty(mortuaryTransfer) || mortuaryTransfer !== ('a899b35c-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
-              "label": "Date and Time of Transfer",
+              "label": "Date and Time of transfer:",
               "type": "obs",
               "required": true,
               "id": "dateAndTimeOfTrasnfer",
@@ -281,27 +281,21 @@
               ]
             },
             {
-              "label": "Autopsy Permission (if applicable)",
+              "label": "Autopsy Permission (if applicable):",
               "type": "obs",
               "required": true,
               "id": "autopsyPermission",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "1707AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1707"
-                  }
-                ],
+                "concept": "9d1f69d7-e467-4d00-a98a-6771009dd244",
+                
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -309,7 +303,7 @@
               "validators": []
             },
             {
-              "label": "Dead Body preservation",
+              "label": "Dead body preservation:",
               "type": "obs",
               "required": true,
               "id": "deadBodyPreservation",
@@ -331,7 +325,7 @@
               "validators": []
             },
             {
-              "label": "Body embalment types",
+              "label": "Body embalment types:",
               "type": "obs",
               "required": true,
               "id": "bodyEmbalmentTypes",
