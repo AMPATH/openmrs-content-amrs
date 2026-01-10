@@ -1,0 +1,7 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units,
+f3ca6995-450e-4c58-a8cd-5abd9f7215b6,,MCL/CIEL:159622,ARRIVAL DATE AND TIME,,,,,,Generic  question to collect arrival date and time.,,,Question,Datetime,,,
+2805fed8-5d7e-4fce-b146-c45bd36a664a,,,DEATH NOTIFICATION NUMBER,,,,,,Question to collect death notification number,,,Question,Text,,,
+7fa691cb-f153-477a-92dc-707d768aa405,,,DEAD BODY TRANSFER STATUS,,,,,,Question to collect transfer status of the dead body,,,Question,Coded,d28e360f-085d-48ae-aa28-aff612cbaa90;3d920c84-8cca-4d46-a6c5-b2af7737ce60;59312903-dde9-4f7a-b6cf-7b41863b7e81,,
+d28e360f-085d-48ae-aa28-aff612cbaa90,,,RELEASE TO ANOTHER FUNERAL HOME,,,,,,Body released to another funeral home,,,Misc,N/A,,,
+3d920c84-8cca-4d46-a6c5-b2af7737ce60,,,BODY RELEASED TO THE FAMILY,,,,,,Body released to the family,,,Misc,N/A,,,
+9d1f69d7-e467-4d00-a98a-6771009dd244,,,AUTOPSY PERMISSION GIVEN ,,,,,,Question to ask whether persmission to perfom autopsy has been given.,,,Question ,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,,
