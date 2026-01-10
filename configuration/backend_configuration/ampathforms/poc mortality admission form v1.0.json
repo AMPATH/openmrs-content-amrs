@@ -1,5 +1,5 @@
 {
-  "name": "Mortality Admission Form v1.0",
+  "name": "POC Mortality Admission Form v1.0",
   "processor": "EncounterFormProcessor",
   "encounterType": "bd9f341f-6ba9-443a-8f6f-4288c0a82e19",
   "referencedForms": [],
