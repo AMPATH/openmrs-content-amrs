@@ -40,31 +40,31 @@
               "id": "encLocation"
             },
             {
-              "label": "Discharge type",
+              "label": "Discharge type:",
               "type": "obs",
               "required": "true",
               "id": "dischargeType",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "1768AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "678bff8f-694d-42cc-9f70-b10e15daca9f",
                 "answers": [
                   {
-                    "concept": "2537896a-7d27-4c71-8e93-4c265ffa5954",
+                    "concept": "48155468-0e21-401a-87f5-d037ae0e8db0",
                     "label": "Discharge"
                   },
                   {
-                    "concept": "159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "e609e8e7-12e0-45d0-a92b-ed044de21a3d",
                     "label": "Transfer"
                   },
                   {
-                    "concept": "37364e66-cefd-45b1-a999-f76aeb01da23",
+                    "concept": "03604b38-111b-4205-8025-c44380949b01",
                     "label": "Disposal"
                   }
                 ]
               }
             },
             {
-              "label": "Date and Time of transfer:",
+              "label": "Date and time of transfer:",
               "type": "obs",
               "required": "true",
               "id": "dateOfTransfer",
@@ -80,7 +80,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== 'e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
               }
             },
             {
@@ -100,7 +100,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '2537896a-7d27-4c71-8e93-4c265ffa5954'"
+                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '48155468-0e21-401a-87f5-d037ae0e8db0'"
               }
             },
             {
@@ -126,7 +126,7 @@
               "validators": []
             },
             {
-              "label": "Receiving mortuary",
+              "label": "Receiving mortuary:",
               "type": "obs",
               "required": "true",
               "id": "receivingMortuary",
@@ -136,7 +136,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== 'e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
               }
             },
             {
@@ -150,7 +150,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== 'e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
               }
             }
           ]
@@ -160,7 +160,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Date of Disposal",
+              "label": "Date of disposal:",
               "type": "obs",
               "id": "dateDisposal",
               "questionOptions": {
@@ -176,11 +176,11 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '37364e66-cefd-45b1-a999-f76aeb01da23'"
+                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '03604b38-111b-4205-8025-c44380949b01'"
               }
             },
             {
-              "label": "Court case number",
+              "label": "Court case number:",
               "type": "obs",
               "id": "coUrtCase",
               "questionOptions": {
@@ -189,7 +189,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '37364e66-cefd-45b1-a999-f76aeb01da23'"
+                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '03604b38-111b-4205-8025-c44380949b01'"
               }
             }
           ]
@@ -203,21 +203,21 @@
               "type": "obs",
               "id": "neOnateDeath",
               "questionOptions": {
-                "concept": "166990AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "99c95d41-bbb4-4255-ad78-6b5681e30687",
                 "rendering": "radio",
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '37364e66-cefd-45b1-a999-f76aeb01da23'"
+                "hideWhenExpression": "isEmpty(dischargeType) || dischargeType !== '03604b38-111b-4205-8025-c44380949b01'"
               }
             },
             {
@@ -230,7 +230,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(neOnateDeath) || neOnateDeath !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(neOnateDeath) || neOnateDeath !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -238,12 +238,12 @@
               "type": "obs",
               "id": "dObofNeonate",
               "questionOptions": {
-                "concept": "166575AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "4bbafe39-c284-415c-9689-6d36c4b95e4f",
                 "rendering": "date"
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(neOnateDeath) || neOnateDeath !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(neOnateDeath) || neOnateDeath !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -257,7 +257,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(neOnateDeath) || neOnateDeath !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(neOnateDeath) || neOnateDeath !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
