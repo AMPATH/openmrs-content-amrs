@@ -1,2 +1,6 @@
-Uuid,Void/Retire,Name,Description,Minoccurs,Maxoccurs,Datatypeclassname,Datatypeconfig,Preferredhandlerclassname,Handlerconfig
-bf4ef9a1-1203-462d-9be1-52243557dcb6,,Email,Email Attribute,1,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,
+Uuid,Void/Retire,Entity name,Name,Description,Min occurs,Max occurs,Datatype classname,Datatype config,Preferred handler classname,Handler config,_order:1000
+fbc0702d-b4c9-4968-be63-af8ad3ad6239,,Visit,Patient Type,,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
+8553afa0-bdb9-4d3c-8a98-05fa9350aa85,,Visit,Payment Method,,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
+919b51c9-8e2e-468f-8354-181bf3e55786,,Visit,Pending bill status,,0,1,org.openmrs.customdatatype.datatype.BooleanDatatype,,,,
+df0362f9-782e-4d92-8bb2-3112e9e9eb3c,,Visit,Is patient exempted,If a patient isn't paying for service,0,1,org.openmrs.customdatatype.datatype.BooleanDatatype,,,,
+67b94e8e-4d61-4810-b0f1-d86497f6e553,,Provider,HIE provider reference payload,Provider reference payload from HIE for claims processing,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,

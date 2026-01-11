@@ -1,19 +1,19 @@
 {
-  "name": "AMPATH POC NCD Enrollment Form v1.0",
+  "name": "AMPATH POC NCD Follow Up Form v1.0",
   "description": "A form to record NCD data",
   "version": "1.0",
   "published": true,
-  "uuid": "6607ac70-86b1-3b70-a42f-78f1114ceb17",
+  "uuid": "",
   "retired": false,
-  "encounter": "NCDINITIAL",
+  "encounter": "NCDFOLLOWUP",
+
   "meta": {
     "programs": {
       "uuid": "",
-      "isEnrollment": true,
+      
       "discontinuationDateQuestionId": ""
     }
   },
-
   "pages": [
     {
       "label": "Visit Details",
@@ -61,322 +61,37 @@
           "label": "Patient Details",
           "isExpanded": "true",
           "questions": [
+            
             {
-              "label": "Occupation:",
+              "label": "Type of visit:",
               "type": "obs",
-              "required": "true",
-              "id": "occupation",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a8a0a00e-1350-11df-a1f1-0026b9348838",
-
-                "answers": [
-                  {
-                    "concept": "a8a09d0c-1350-11df-a1f1-0026b9348838",
-                    "label": "Teacher"
-                  },
-                  {
-                    "concept": "a8a09e92-1350-11df-a1f1-0026b9348838",
-                    "label": "Police Officer"
-                  },
-                  {
-                    "concept": "a8a09dca-1350-11df-a1f1-0026b9348838",
-                    "label": "Housewife"
-                  },
-                  {
-                    "concept": "a8a09c4e-1350-11df-a1f1-0026b9348838",
-                    "label": "Farmer"
-                  },
-                  {
-                    "concept": "a8a09f50-1350-11df-a1f1-0026b9348838",
-                    "label": "Unemployed"
-                  },
-                  {
-                    "concept": "a89ff438-1350-11df-a1f1-0026b9348838",
-                    "label": "Sex worker"
-                  },
-                  {
-                    "concept": "a8a09b90-1350-11df-a1f1-0026b9348838",
-                    "label": "Casual worker"
-                  },
-                  {
-                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
-                    "label": "Healthcare provider"
-                  },
-
-                  {
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                    "label": "Other"
-                  }
-                ]
-              }
-            },
-            {
-              "label": "Education level:",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a89e48ae-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "label": "None",
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838"
-                  },
-                  {
-                    "label": "Pre primary",
-                    "concept": "a2caaf9c-2224-42a4-80b1-1482bc159680"
-                  },
-                  {
-                    "label": "Primary",
-                    "concept": "a8afe910-1350-11df-a1f1-0026b9348838"
-                  },
-                  {
-                    "label": "Secondary or post primary, vocational",
-                    "concept": "a8afe9d8-1350-11df-a1f1-0026b9348838"
-                  },
-                  {
-                    "label": "College level or higher",
-                    "concept": "a8afea96-1350-11df-a1f1-0026b9348838"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
-                  }
-                ]
-              },
-              "id": "educationHead"
-            },
-            {
-              "label": "Has special needs/disability?",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "522cca7a-235d-43d4-837e-8a118f2d9f88",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              },
-              "id": "clientDisability"
-            },
-            {
-              "label": "Please indicated the type of disability:",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "multiCheckbox",
-                "concept": "a89ffa64-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "ef7df6d2-e2da-478a-abbe-c6273f211702",
-                    "label": "Hearing impairment"
-                  },
-                  {
-                    "concept": "bad3e303-2b74-40ad-8f90-14ca804c4ad7",
-                    "label": "Visual impairment"
-                  },
-                  {
-                    "concept": "291e1dc4-203a-4a09-aa0c-2d0a1962a719",
-                    "label": "Mentally Challenged"
-                  },
-                  {
-                    "concept": "d2c75e8e-3c80-4851-8225-050adfa96226",
-                    "label": "Physically Challenged"
-                  },
-                  {
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                    "label": "Others"
-                  }
-                ]
-              },
-              "id": "disabilityTypes",
-              "hide": {
-                "hideWhenExpression": "isEmpty(clientDisability) || clientDisability !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Patient covered by SHIF/SHA:",
-              "required": "true",
-              "id": "nhif",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')) ? undefined : HD.getObject('prevEnc').getValue('0b49e3e6-55df-4096-93ca-59edadb74b3f')",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "1899d98e-46df-437f-bd86-472d37fa3278",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": []
-            },
-            {
-              "label": "What is the patient's SHIF/SHA status?",
-              "id": "nhifStatus",
-              "questionInfo": "Indicate if the patient has been remitting monthly contributions towards the SHIF/SHA medical cover.",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "ab0f59a7-963e-4a8b-860d-2ef6b15b8f97",
-                "answers": [
-                  {
-                    "concept": "b058a9ad-a0e4-4b37-9214-75b8aed1eaa4",
-                    "label": "Active"
-                  },
-                  {
-                    "concept": "dd373348-1a7f-4625-9e69-9904fa1cc9c7",
-                    "label": "Inactive"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(nhif) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], nhif) && isEmpty(myValue)",
-                  "message": "Please indicate SHA status."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "nhif !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Visit type:",
-              "type": "obs",
-              "required": "true",
+              "required": true,
               "id": "visitType",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "radio",
                 "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
-
                 "answers": [
                   {
-                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
-                    "label": "New patient"
+                    "concept": "a89b6440-1350-11df-a1f1-0026b9348838",
+                    "label": "Scheduled"
                   },
                   {
-                    "concept": "97772927-7aa2-4c30-be98-85183e4b0efe",
-                    "label": "Transfer in"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "obs",
-              "label": "If transfer in, specify facility transferred from:",
-              "id": "nonAmpathSpecify",
-              "questionOptions": {
-                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-                "rendering": "text"
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "visitType !== '97772927-7aa2-4c30-be98-85183e4b0efe'"
-              }
-            },
-            {
-              "label": "Is the patient a referral?",
-              "type": "obs",
-              "required": "true",
-              "id": "referral",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "5a96fc07-cf1b-4704-8174-23380b104b0e",
-
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                    "concept": "339f41d6-a277-4c2c-90a3-aba05f5cccdd",
+                    "label": "Unscheduled"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
-            {
-              "label": "Referral from:",
-              "type": "obs",
-              "required": "true",
-              "id": "referralSpecification",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "19ae2660-7b63-4b3f-99bc-9da80b00dd51",
-                "conceptMappings": [],
-                "answers": [
-                  {
-                    "concept": "748d3e8c-b641-4ba0-af22-732142a1be28",
-                    "label": "Public Facility "
+                    "concept": "a89de2d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Sick"
                   },
                   {
-                    "concept": "f1c78f63-9390-43ea-83ff-5bc81854e293",
-                    "label": "Private Facility"
-                  },
-                  {
-                    "concept": "47c5c8cb-e041-42e1-9a77-bea386b7e0d6",
-                    "label": "FBO"
-                  },
-                  {
-                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
-                    "label": "Community unit"
+                    "concept": "456d46bb-14cf-4e9b-97b1-a0e8f727f769",
+                    "label": "Referred"
                   }
                 ]
               },
-              "hide": {
-                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Specify referring facility/community unit:",
-              "type": "obs",
-              "required": "true",
-              "id": "referralFacility",
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "99f8ac81-cea1-43eb-88fb-29a9ea2d77cf"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Reason for referral:",
-              "type": "obs",
-              "required": "true",
-              "id": "referralReason",
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "2c8bb721-b642-428a-b956-7902242776ab"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Current treatment the patient is on:",
-              "type": "obs",
-              "required": "true",
-              "id": "currentTreatment",
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "45198f3c-36a1-4dfe-9977-46bf1f75a1ca"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              }
+              "validators": []
             }
+           
           ]
         }
       ]
@@ -731,7 +446,7 @@
               }
             },
             {
-              "label": "If HIV positive on HAART?",
+              "label": "If HIV Positive on HAART?",
               "type": "obs",
               "required": true,
               "id": "haartStats",
@@ -754,7 +469,7 @@
               }
             },
             {
-              "label": "TB screening:",
+              "label": "TB Screening:",
               "type": "obs",
               "required": true,
               "id": "tbScreening",
@@ -925,7 +640,7 @@
             },
 
             {
-              "label": "Physical activity (At least 30 minutes 5 days a week):",
+              "label": "Physical Activity (At least 30 minutes 5 days a week)",
               "type": "obs",
               "id": "physicalAct",
               "questionOptions": {
@@ -967,7 +682,7 @@
           ]
         },
         {
-          "label": "Pregnancy Status",
+          "label": "Pregnancy status:",
           "isExpanded": "true",
           "questions": [
             {
@@ -1531,6 +1246,6 @@
     }
   ],
   "processor": "EncounterFormProcessor",
-  "encounterType": "5444d069-1317-4838-addf-f2bca42a48a2",
+  "encounterType": "04f60e38-70cd-4b8d-aa7e-9c408b349271",
   "referencedForms": []
 }
