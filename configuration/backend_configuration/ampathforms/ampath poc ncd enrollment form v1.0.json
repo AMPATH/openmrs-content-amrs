@@ -3,17 +3,17 @@
   "description": "A form to record NCD data",
   "version": "1.0",
   "published": true,
-  "uuid": "",
+  "uuid": "6607ac70-86b1-3b70-a42f-78f1114ceb17",
   "retired": false,
   "encounter": "NCDINITIAL",
-
   "meta": {
     "programs": {
       "uuid": "",
-      
+      "isEnrollment": true,
       "discontinuationDateQuestionId": ""
     }
   },
+
   "pages": [
     {
       "label": "Visit Details",
@@ -62,7 +62,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Occupation",
+              "label": "Occupation:",
               "type": "obs",
               "required": "true",
               "id": "occupation",
@@ -166,7 +166,7 @@
               "id": "clientDisability"
             },
             {
-              "label": "Please indicated the type of disability :",
+              "label": "Please indicated the type of disability:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "multiCheckbox",
@@ -307,7 +307,7 @@
               }
             },
             {
-              "label": "Referral from",
+              "label": "Referral from:",
               "type": "obs",
               "required": "true",
               "id": "referralSpecification",
@@ -352,7 +352,7 @@
               }
             },
             {
-              "label": "Reason for Referral:",
+              "label": "Reason for referral:",
               "type": "obs",
               "required": "true",
               "id": "referralReason",
@@ -365,7 +365,7 @@
               }
             },
             {
-              "label": "Current Treatment the patient is on:",
+              "label": "Current treatment the patient is on:",
               "type": "obs",
               "required": "true",
               "id": "currentTreatment",
@@ -731,7 +731,7 @@
               }
             },
             {
-              "label": "If HIV Positive on HAART?",
+              "label": "If HIV positive on HAART?",
               "type": "obs",
               "required": true,
               "id": "haartStats",
@@ -754,7 +754,7 @@
               }
             },
             {
-              "label": "TB Screening:",
+              "label": "TB screening:",
               "type": "obs",
               "required": true,
               "id": "tbScreening",
@@ -925,7 +925,7 @@
             },
 
             {
-              "label": "Physical Activity (At least 30 minutes 5 days a week)",
+              "label": "Physical activity (At least 30 minutes 5 days a week):",
               "type": "obs",
               "id": "physicalAct",
               "questionOptions": {
@@ -967,7 +967,7 @@
           ]
         },
         {
-          "label": "Pregnancy status:",
+          "label": "Pregnancy Status",
           "isExpanded": "true",
           "questions": [
             {

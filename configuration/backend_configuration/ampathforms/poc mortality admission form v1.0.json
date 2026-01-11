@@ -262,7 +262,7 @@
               }
             },
             {
-              "label": "Date and Time of transfer:",
+              "label": "Date and time of transfer:",
               "type": "obs",
               "required": true,
               "id": "dateAndTimeOfTrasnfer",
@@ -281,7 +281,7 @@
               ]
             },
             {
-              "label": "Autopsy Permission (if applicable):",
+              "label": "Autopsy permission (if applicable):",
               "type": "obs",
               "required": true,
               "id": "autopsyPermission",

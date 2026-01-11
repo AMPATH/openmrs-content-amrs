@@ -199,7 +199,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Is deceased a neonatal death",
+              "label": "Is deceased a neonatal death:",
               "type": "obs",
               "id": "neOnateDeath",
               "questionOptions": {
