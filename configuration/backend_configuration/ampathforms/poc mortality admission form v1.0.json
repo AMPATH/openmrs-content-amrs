@@ -3,7 +3,7 @@
   "processor": "EncounterFormProcessor",
   "encounterType": "bd9f341f-6ba9-443a-8f6f-4288c0a82e19",
   "referencedForms": [],
-  "uuid": "27450c9b-72f6-4896-a9d9-94e7ebb0d0e3",
+  "uuid": "",
   "description": "A form to collect mortality records",
   "version": "1.0",
   "pages": [
@@ -262,7 +262,7 @@
               }
             },
             {
-              "label": "Date and Time of transfer:",
+              "label": "Date and time of transfer:",
               "type": "obs",
               "required": true,
               "id": "dateAndTimeOfTrasnfer",
@@ -281,7 +281,7 @@
               ]
             },
             {
-              "label": "Autopsy Permission (if applicable):",
+              "label": "Autopsy permission (if applicable):",
               "type": "obs",
               "required": true,
               "id": "autopsyPermission",

@@ -316,7 +316,7 @@
   "processor": "EncounterFormProcessor",
   "encounterType": "88d41c2a-6a96-4393-9fa4-e8910d6f3fa1",
   "referencedForms": [],
-  "uuid": "1294ce38-2ec3-42af-94f4-bcec9f18d4b8",
+  "uuid": "",
   "description": " A form for collecting mortuary transfer details.",
   "version": "1.0"
 }
