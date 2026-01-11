@@ -1,9 +1,10 @@
 {
   "name": "POC Mortality Admission Form v1.0",
   "processor": "EncounterFormProcessor",
+  "encounter": "MORTUARYADMISSION",
   "encounterType": "bd9f341f-6ba9-443a-8f6f-4288c0a82e19",
   "referencedForms": [],
-  "uuid": "",
+  "uuid": "9451ec2e-7096-4dac-b7e3-135c30a8b2f5",
   "description": "A form to collect mortality records",
   "version": "1.0",
   "pages": [
