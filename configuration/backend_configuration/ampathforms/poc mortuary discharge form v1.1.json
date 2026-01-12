@@ -318,5 +318,7 @@
   "referencedForms": [],
   "uuid": "",
   "description": " A form for collecting mortuary transfer details.",
-  "version": "1.1"
+  "version": "1.1",
+   "published": true,
+  "retired": false
 }

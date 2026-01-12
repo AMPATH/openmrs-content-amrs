@@ -7,6 +7,8 @@
   "uuid": "",
   "description": "A form to collect mortality records",
   "version": "1.1",
+  "published": true,
+  "retired": false,
   "pages": [
     {
       "label": "Mortality Admission Form",
