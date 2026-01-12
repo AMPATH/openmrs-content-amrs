@@ -135,7 +135,7 @@
               "validators": []
             },
             {
-              "label": "Receiving mortuary:",
+              "label": "Receiving Mortuary:",
               "type": "obs",
               "required": "true",
               "id": "receivingMortuary",
