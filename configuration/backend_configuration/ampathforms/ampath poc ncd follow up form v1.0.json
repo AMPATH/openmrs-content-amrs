@@ -164,7 +164,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(havingComplaints) || havingComplaints != 'a899b5e6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(complaintsToday) || complaintsToday != 'a899b5e6-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
