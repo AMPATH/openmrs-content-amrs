@@ -1,12 +1,12 @@
 {
-  "name": "POC Mortality Admission Form v1.0",
+  "name": "POC Mortality Admission Form v1.1",
   "processor": "EncounterFormProcessor",
   "encounter": "MORTUARYADMISSION",
   "encounterType": "bd9f341f-6ba9-443a-8f6f-4288c0a82e19",
   "referencedForms": [],
-  "uuid": "9451ec2e-7096-4dac-b7e3-135c30a8b2f5",
+  "uuid": "",
   "description": "A form to collect mortality records",
-  "version": "1.0",
+  "version": "1.1",
   "pages": [
     {
       "label": "Mortality Admission Form",
@@ -167,7 +167,7 @@
               "validators": []
             },
             {
-              "label": "Attending clinician/Doctor:",
+              "label": "Attending clinician/doctor:",
               "type": "obs",
               "required": true,
               "id": "attendingClinician",

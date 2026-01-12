@@ -1,5 +1,5 @@
 {
-  "name": "POC Mortuary Discharge Form v1.0",
+  "name": "POC Mortuary Discharge Form v1.1",
   "pages": [
     {
       "label": "Mortuary Discharge",
@@ -318,5 +318,5 @@
   "referencedForms": [],
   "uuid": "",
   "description": " A form for collecting mortuary transfer details.",
-  "version": "1.0"
+  "version": "1.1"
 }
