@@ -1,5 +1,14 @@
 {
   "name": "POC Mortuary Discharge Form v1.1",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "88d41c2a-6a96-4393-9fa4-e8910d6f3fa1",
+  "encounter": "MORTUARYDISCHARGE",
+  "referencedForms": [],
+  "uuid": "",
+  "description": " A form for collecting mortuary transfer details.",
+  "version": "1.1",
+  "published": true,
+  "retired": false,
   "pages": [
     {
       "label": "Mortuary Discharge",
@@ -312,13 +321,6 @@
         }
       ]
     }
-  ],
-  "processor": "EncounterFormProcessor",
-  "encounterType": "88d41c2a-6a96-4393-9fa4-e8910d6f3fa1",
-  "referencedForms": [],
-  "uuid": "",
-  "description": " A form for collecting mortuary transfer details.",
-  "version": "1.1",
-   "published": true,
-  "retired": false
+  ]
+  
 }
