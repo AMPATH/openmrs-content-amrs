@@ -68,7 +68,7 @@
               "required": true,
               "id": "visitType",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
@@ -919,7 +919,7 @@
               "type": "obs",
               "id": "cardioVascular",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "a899ef84-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {

@@ -9,7 +9,7 @@
   "meta": {
     "programs": {
       "uuid": "",
-      "isEnrollment": true,
+      
       "discontinuationDateQuestionId": ""
     }
   },
@@ -1204,7 +1204,7 @@
               "type": "obs",
               "id": "cardioVascular",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "a899ef84-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
