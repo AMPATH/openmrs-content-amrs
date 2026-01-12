@@ -6,14 +6,9 @@
   "uuid": "6607ac70-86b1-3b70-a42f-78f1114ceb17",
   "retired": false,
   "encounter": "NCDINITIAL",
-  "meta": {
-    "programs": {
-      "uuid": "",
-      
-      "discontinuationDateQuestionId": ""
-    }
-  },
-
+   "processor": "EncounterFormProcessor",
+  "encounterType": "5444d069-1317-4838-addf-f2bca42a48a2",
+  "referencedForms": [],
   "pages": [
     {
       "label": "Visit Details",
@@ -1529,8 +1524,6 @@
         }
       ]
     }
-  ],
-  "processor": "EncounterFormProcessor",
-  "encounterType": "5444d069-1317-4838-addf-f2bca42a48a2",
-  "referencedForms": []
+  ]
+ 
 }

@@ -6,14 +6,9 @@
   "uuid": "",
   "retired": false,
   "encounter": "NCDFOLLOWUP",
-
-  "meta": {
-    "programs": {
-      "uuid": "",
-      
-      "discontinuationDateQuestionId": ""
-    }
-  },
+  "processor": "EncounterFormProcessor",
+  "encounterType": "04f60e38-70cd-4b8d-aa7e-9c408b349271",
+  "referencedForms": [],
   "pages": [
     {
       "label": "Visit Details",
@@ -61,7 +56,6 @@
           "label": "Patient Details",
           "isExpanded": "true",
           "questions": [
-            
             {
               "label": "Type of visit:",
               "type": "obs",
@@ -91,7 +85,6 @@
               },
               "validators": []
             }
-           
           ]
         }
       ]
@@ -1244,8 +1237,5 @@
         }
       ]
     }
-  ],
-  "processor": "EncounterFormProcessor",
-  "encounterType": "04f60e38-70cd-4b8d-aa7e-9c408b349271",
-  "referencedForms": []
+  ]
 }
