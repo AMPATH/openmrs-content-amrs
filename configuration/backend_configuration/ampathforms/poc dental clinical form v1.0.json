@@ -5,9 +5,9 @@
   "published": true,
   "uuid": "",
   "retired": false,
-  "encounter": "",
+  "encounter": "DENTALCONSULTATION",
   "processor": "EncounterFormProcessor",
-  "encounterType": "",
+  "encounterType": "1c475619-98c2-482a-a6e9-e518923a7978",
   "referencedForms": [],
   "pages": [
     {
