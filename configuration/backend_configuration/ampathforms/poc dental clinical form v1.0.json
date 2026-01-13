@@ -1,0 +1,730 @@
+{
+  "name": "POC Dental Clinical Form v1.0",
+  "description": "A form used to capture dental clinical Cases",
+  "version": "1.0",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Visit Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Patient Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit Type?",
+              "type": "obs",
+              "required": "true",
+              "id": "visitType",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+
+                "answers": [
+                  {
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                    "label": "New visit"
+                  },
+                  {
+                    "concept": "244b67bf-da2d-4009-9bc9-91a52a92defe",
+                    "label": "Revisit"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Is this visit a referral?",
+              "type": "obs",
+              "id": "visitReferral",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "25e53bf6-c258-4bc2-ac18-d6528b40df37",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Referral from:",
+              "type": "obs",
+              "required": true,
+              "id": "referralSpecification",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "19ae2660-7b63-4b3f-99bc-9da80b00dd51",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
+                    "label": "From other facilities"
+                  },
+                  {
+                    "concept": "1d54b745-0afc-4568-a9ba-17ba3fc1dda0",
+                    "label": "Referred from CHU "
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(visitReferral) || visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Visit to:",
+              "type": "obs",
+              "id": "visitTo",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "aea44bfb-c8b1-4cce-b891-af74181d0f57",
+                "answers": [
+                  {
+                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
+                    "label": "Outpatient department(OPD)"
+                  },
+                  {
+                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                    "label": "Inpatient department(IPD)"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Patient History",
+      "sections": [
+        {
+          "label": "Complaints and History of complaints",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient having complaint(s) today?",
+              "type": "obs",
+              "id": "complaintsToday",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Presenting complaints",
+              "type": "obsGroup",
+              "id": "ComplaintLodgeByClient",
+              "questionOptions": {
+                "concept": "9014962e-3efe-46b0-a393-c8c8bddadaa7",
+                "rendering": "repeating"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "complaintsToday !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              },
+              "questions": [
+                {
+                  "label": "Complaint:",
+                  "type": "obs",
+                  "id": "cOmplaIntField",
+                  "questionOptions": {
+                    "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "2495f929-3eb2-4220-88d6-a70240c1116f",
+                        "label": "Bad breath (Halitosis)"
+                      },
+                      {
+                        "concept": "3b2b4106-9033-4b4f-98f7-a71d21519a56",
+                        "label": "Belching"
+                      },
+                      {
+                        "concept": "1dbb0b77-81e9-4c56-bdf5-c597222dac84",
+                        "label": "Bleeding gums"
+                      },
+                      {
+                        "concept": "6fcd9705-34a1-460a-82b9-865bda2eb334",
+                        "label": "Clicking or popping jaw"
+                      },
+                      {
+                        "concept": "a8ad0b1e-1350-11df-a1f1-0026b9348838",
+                        "label": "Difficulty in swallowing"
+                      },
+                      {
+                        "concept": "598019b9-8a8b-452e-a648-4646ecf64bff",
+                        "label": "Dry mouth"
+                      },
+                      {
+                        "concept": "a890e736-1350-11df-a1f1-0026b9348838",
+                        "label": "Gum swelling"
+                      },
+                      {
+                        "concept": "58d58a06-d171-4889-9b43-22c9be165b80",
+                        "label": "Jaw locking"
+                      },
+                      {
+                        "concept": "a8777be0-d2d5-44d8-8218-807226b87e80",
+                        "label": "Loose teeth"
+                      },
+                      {
+                        "concept": "6fac98a0-6d8a-4441-aeed-c447a3a12494",
+                        "label": "Mouth ulceration"
+                      },
+                      {
+                        "concept": "02dc5deb-44d1-43db-b65e-9eb0d6cedaaf",
+                        "label": "Mouth pain"
+                      },
+                      {
+                        "concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+                        "label": "Pain when swallowing"
+                      },
+                      {
+                        "concept": "9e644689-326c-4527-acfa-c852c1f42f86",
+                        "label": "Swollen jaw"
+                      },
+                      {
+                        "concept": "a89cff30-1350-11df-a1f1-0026b9348838",
+                        "label": "Toothache"
+                      },
+                      {
+                        "concept": "b91ded29-5664-4375-96d4-79a75b14dc64",
+                        "label": "Tooth discoloration"
+                      },
+                      {
+                        "concept": "45b669b2-7024-4500-bba8-7b16023f13d8",
+                        "label": "Tooth grinding (Bruxism)"
+                      },
+                      {
+                        "concept": "752d5ef3-df96-4b18-a5df-a578d46ae72d",
+                        "label": "Tooth sensitivity"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Specify other complaints:",
+                  "type": "obs",
+                  "id": "OtherSpecificComplaints",
+                  "questionOptions": {
+                    "concept": "e5dfbff0-fbb1-4744-bb57-e66134ebba75",
+                    "rendering": "textarea"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Patient had contact with TB infected person in the last 12 months?",
+                  "type": "obs",
+                  "id": "contactTB",
+                  "required": "true",
+                  "questionOptions": {
+                    "concept": "f66ad7cb-c9fa-42b2-8f7b-863eddb7eb98",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": ""
+                  }
+                },
+                {
+                  "label": "Duration (Days):",
+                  "type": "obs",
+                  "id": "complaint-duration",
+                  "questionOptions": {
+                    "concept": "a8a44876-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number",
+                    "min": "0"
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "Onset status:",
+                  "type": "obs",
+                  "id": "onsetStatus",
+                  "questionOptions": {
+                    "concept": "7d891556-2af6-4a79-bcc8-f653b74089ce",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "7d891556-2af6-4a79-bcc8-f653b74089ce",
+                        "label": "Gradual"
+                      },
+                      {
+                        "concept": "a8a4751c-1350-11df-a1f1-0026b9348838",
+                        "label": "Sudden"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Clinical notes:",
+              "type": "obs",
+              "id": "ClinICNotes",
+              "questionOptions": {
+                "concept": "9e903280-385f-473d-9dfb-01bdb6b661a5",
+                "rendering": "textarea"
+              },
+              "validators": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Patient Examination",
+      "sections": [
+        {
+          "label": "Patient Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "General examination:",
+              "type": "obs",
+              "id": "GeneralExam",
+              "questionOptions": {
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                "rendering": "textarea"
+              },
+              "validators": []
+            },
+            {
+              "label": "Examination findings:",
+              "type": "obs",
+              "id": "examFindings",
+              "questionOptions": {
+                "concept": "aaa9328f-a20d-4a72-9e52-fd7a42437e72",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a890eb28-1350-11df-a1f1-0026b9348838",
+                    "label": "Cavities (Dental caries)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "2ea4a0d5-11f3-4e5c-acdc-c43806c3d97f",
+                    "label": "Dental erosion",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "09db9316-56dc-4417-be62-fa8b7a8008ec",
+                    "label": "Impacted teeth",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "cb962b84-a6e8-42da-86f4-bb630853cabc",
+                    "label": "Malocclusion",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "ab11d0bc-0899-401f-94ef-f52a37b0a030",
+                    "label": "Missing teeth",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8a775a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Muscle tenderness",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "d6e18058-cf40-43d3-9880-cfe7effe0083",
+                    "label": "Plaque and tartar buildup",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "143a2c94-8dee-4a63-acca-4d0c9df134bf",
+                    "label": "Tooth abscess",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "75fb406e-2d5f-4b4c-b362-b41b6d7e4d46",
+                    "label": "Temporomandibular joint (TMJ) dysfunction",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "875c3957-c1f4-4538-937c-d4ef2b130af8A",
+                    "label": "Tooth decay",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "1dbb0b77-81e9-4c56-bdf5-c597222dac84",
+                    "label": "Receding gums",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Specify other complaints:",
+              "type": "obs",
+              "id": "OtherSpecificComplaints",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(examFindings) || !arrayContains(examFindings, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Clinical notes:",
+              "type": "obs",
+              "id": "clinicalNotes",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea"
+              },
+              "validators": []
+            },
+            {
+              "label": "Impression:",
+              "id": "clinicalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "dataSource": "diagnoses",
+                "rank": 1,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Lab order:",
+              "required": false,
+              "id": "labsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add lab order",
+                "workspaceName": "add-lab-order",
+                "additionalProps": {
+                  "orderTypeUuid": "53eb4768-1359-11df-a1f1-0026b9348838"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Patient Management",
+      "sections": [
+        {
+          "label": "Treatment/Management Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Final diagnosis:",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Diagnosis categorization:",
+              "type": "obs",
+              "id": "dxCategory",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "7d44ddef-9173-429b-ab1b-13cb675288c8",
+                "answers": [
+                  {
+                    "concept": "a8a48066-1350-11df-a1f1-0026b9348838",
+                    "label": "New diagnosis"
+                  },
+                  {
+                    "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
+                    "label": "Pre-existing diagnosis"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Prescribe drug:",
+              "required": false,
+              "id": "drugsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe Drug",
+                "workspaceName": "add-drug-order"
+              }
+            },
+            {
+              "label": "Order procedures:",
+              "required": false,
+              "id": "procWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add procedures",
+                "workspaceName": "add-procedures-order"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Other: (Specify)",
+              "type": "obs",
+              "id": "otherDevicesOrderd",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Patient outcome:",
+              "type": "obs",
+              "id": "outcomePatient",
+              "questionOptions": {
+                "concept": "7c579743-5ef7-4e2c-839f-5b95597cb01c",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
+                    "label": "Released Home"
+                  },
+                  {
+                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                    "label": "Admit"
+                  },
+                  {
+                    "concept": "0c5565c5-45cf-40ab-aa6d-5694aeabae18",
+                    "label": "Referral"
+                  },
+                  {
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Deceased"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Appointments:",
+              "required": false,
+              "id": "appointmentWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add appointments",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "outcomePatient !=='5d38b72e-eee9-43ef-8256-483f8c5df4a6'"
+              }
+            },
+            {
+              "label": "Reffered for?",
+              "type": "obs",
+              "id": "refferalsOrderd",
+              "questionOptions": {
+                "concept": "947f71b4-87fd-4b52-a585-e45196811020",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "outcomePatient !=='0c5565c5-45cf-40ab-aa6d-5694aeabae18'"
+              }
+            },
+            {
+              "label": "Referred to?",
+              "type": "obs",
+              "id": "referralTo",
+              "questionOptions": {
+                "concept": "6434322f-d050-4764-8c00-741e20c4c9e1",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
+                    "label": "Other health facility"
+                  },
+                  {
+                    "concept": "59312903-dde9-4f7a-b6cf-7b41863b7e81",
+                    "label": "This health facility"
+                  },
+                  {
+                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                    "label": "Community health unit"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "outcomePatient !=='0c5565c5-45cf-40ab-aa6d-5694aeabae18'"
+              }
+            },
+           
+            {
+              "label": "Facility referred to:",
+              "type": "obs",
+              "id": "thisfacility",
+              "questionOptions": {
+                "concept": "6574e401-3b04-498f-828b-9fd9aaebf12b",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "referralTo !=='ab396b67-273c-4c97-9f90-f858d79b13b1'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Ward Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "id": "inpatientDispositionConstruct",
+              "questionOptions": {
+                "concept": "9ceedfb7-60e4-42ce-a11e-f2dbabc82112",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "id": "disposition",
+                  "label": "Disposition",
+                  "type": "obs",
+                  "required": true,
+                  "questionOptions": {
+                    "rendering": "select",
+                    "required": true,
+                    "concept": "ce085d74-323c-4c9a-9fdf-051de81dd020",
+                    "answers": [
+                      {
+                        "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "outcomePatient !=='057dae68-3d6f-4d79-926c-ed75a0ce7fd5'"
+                  },
+                  "validators": []
+                },
+                {
+                  "id": "admitToLocation",
+                  "label": "Admit to location",
+                  "type": "obs",
+                  "required": true,
+                  "questionOptions": {
+                    "rendering": "remote-select",
+                    "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
+                    "datasource": {
+                      "name": "location",
+                      "config": {
+                        "tag": "Admission Location"
+                      }
+                    }
+                  },
+                  "hide": {
+                    "hideWhenExpression": "outcomePatient !=='057dae68-3d6f-4d79-926c-ed75a0ce7fd5'"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
