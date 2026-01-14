@@ -285,6 +285,7 @@
               },
               "validators": [
                 {
+                  "type": "date",
                   "allowFutureDates": "false"
                 }
               ],
@@ -352,6 +353,12 @@
                 "concept": "9ff2aae1-c03e-405e-bd11-39e06228a1a7",
                 "rendering": "date"
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "hide": {
                 "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != 'a8986880-1350-11df-a1f1-0026b9348838'"
               }
@@ -386,6 +393,12 @@
                 "concept": "bb85532e-8f7e-476f-81d7-5580e0385852",
                 "rendering": "date"
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "hide": {
                 "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != '0ac4af8a-1b8e-4404-b445-c0471d6f7576'"
               }
@@ -688,7 +701,8 @@
               "type": "obs",
               "validators": [
                 {
-                  "type": "date"
+                  "type": "date",
+                  "allowFutureDates": "false"
                 },
                 {
                   "type": "js_expression",
@@ -777,49 +791,52 @@
               "questionOptions": {
                 "rendering": "multiCheckbox",
                 "concept": "a8ae835e-1350-11df-a1f1-0026b9348838",
-                "answers": [
+                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
                   },
                   {
                     "concept": "acb3f446-541a-4d53-a1f6-dcafb2cc84b1",
-                    "label": "Visual impairment"
+                    "label": "Visual impairment",
+                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a89cf602-1350-11df-a1f1-0026b9348838",
-                    "label": "Heart failure"
+                    "label": "Heart failure",
+                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
-                    "label": "Kidney failure(CKD)"
+                    "label": "Kidney failure(CKD)",
+                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "fa077a35-635e-464e-9caf-9187911d1570",
-                    "label": "Diabetic foot ulcer"
+                    "label": "Diabetic foot ulcer",
+                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "48365a67-f0f9-4d31-9c6e-73d62c152776",
-                    "label": "Erectile dysfunction"
+                    "label": "Erectile dysfunction",
+                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
 
                   {
                     "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
-                    "label": "Stroke"
+                    "label": "Stroke",
+                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "e7516737-706a-4a32-8727-c5add875925f",
-                    "label": "Peripheral vascular disease"
-                  },
-
-                  {
-                    "concept": "fa077a35-635e-464e-9caf-9187911d1570",
-                    "label": "Diabetic foot"
+                    "label": "Peripheral vascular disease",
+                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
 
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                    "label": "Other"
+                    "label": "Other",
+                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
               }
@@ -897,11 +914,13 @@
 
                   {
                     "concept": "1dbb0b77-81e9-4c56-bdf5-c597222dac84",
-                    "label": "Gum disease"
+                    "label": "Gum disease",
+                     "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "8bcec322-7112-4f93-adc4-7b78c258dfa2",
-                    "label": "Oral lesions"
+                    "label": "Oral lesions",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
               },
@@ -914,26 +933,30 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a899ef84-1350-11df-a1f1-0026b9348838",
-                "answers": [
+               "answers": [
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
                     "label": "Normal"
                   },
                   {
                     "concept": "1c42bafb-82fd-4e44-b897-35632b21705f",
-                    "label": "Pulses"
+                    "label": "Pulses",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a7fbcd5d-4c07-4099-81aa-cb7b64282b49",
-                    "label": "JVP"
+                    "label": "JVP",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a8a6f9a4-1350-11df-a1f1-0026b9348838",
-                    "label": "Pallor"
+                    "label": "Pallor",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "aa98d011-fc89-4681-87ef-4f4fae415578",
-                    "label": "Heart sounds"
+                    "label": "Heart sounds",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
               },
@@ -954,15 +977,18 @@
                   },
                   {
                     "concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
-                    "label": "RR"
+                    "label": "RR",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a89c36a4-1350-11df-a1f1-0026b9348838",
-                    "label": "Air entry"
+                    "label": "Air entry",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a899e96c-1350-11df-a1f1-0026b9348838",
-                    "label": "Abnormal sounds"
+                    "label": "Abnormal sounds",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
               },
@@ -983,11 +1009,13 @@
                   },
                   {
                     "concept": "a8a66ca0-1350-11df-a1f1-0026b9348838",
-                    "label": "Organomegaly"
+                    "label": "Organomegaly",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a896464a-1350-11df-a1f1-0026b9348838",
-                    "label": "Ascites"
+                    "label": "Ascites",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
               },
@@ -1001,14 +1029,25 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a899f380-1350-11df-a1f1-0026b9348838",
-                "answers": [
+                 "answers": [
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
                     "label": "Normal"
                   },
                   {
-                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
-                    "label": "Abnormal"
+                    "concept": "a89b21a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Motor",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "b87a6d2b-b18a-4d92-b13b-5440ed588b48",
+                    "label": "Sensory",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "c865c7bb-f592-4421-8bc0-d232c2a9d08a",
+                    "label": "Autonomic",
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
               },
