@@ -8,211 +8,1154 @@
   "version": "1.0",
   "encounter": "OPDTRIAGE",
   "processor": "EncounterFormProcessor",
+
   "pages": [
     {
-      "label": "Encounter Details",
+      "label": "Triage",
       "sections": [
         {
-          "label": "Encounter Details",
+          "label": "Visit Details",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Visit date",
+              "label": "Date:",
               "type": "encounterDatetime",
               "required": "true",
-              "default": "",
-              "id": "encDate",
               "questionOptions": {
-                "rendering": "date"
+                "rendering": "ui-select-extended"
               },
+              "id": "encDate",
               "validators": [
                 {
-                  "type": "date"
+                  "type": "date",
+                  "allowFutureDates": "false"
                 }
               ]
             },
             {
+              "label": "Provider:",
               "type": "encounterProvider",
-              "label": "Provider",
-              "id": "provider",
               "required": "true",
-              "default": "",
               "questionOptions": {
                 "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Complaints and History of complaints",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient having complaint(s) today?",
+              "type": "obs",
+              "id": "complaintsToday",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
               }
             },
             {
-              "type": "encounterLocation",
-              "label": "Facility name (site/satellite clinic required):",
-              "id": "location",
-              "required": "true",
-              "questionOptions": {
-                "rendering": "ui-select-extended"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Vitals",
-      "sections": [
-        {
-          "label": "Vital Signs",
-          "questions": [
-            {
+              "label": "Presenting complaints",
               "type": "obsGroup",
-              "label": "Vitals",
+              "id": "ComplaintLodgeByClient",
               "questionOptions": {
-                "rendering": "group",
-                "concept": "a899e6d8-1350-11df-a1f1-0026b9348838"
+                "concept": "9014962e-3efe-46b0-a393-c8c8bddadaa7",
+                "rendering": "repeating"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "complaintsToday !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               },
               "questions": [
                 {
-                  "label": "Temperature(C):",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a8a65fee-1350-11df-a1f1-0026b9348838"
-                  },
+                  "label": "Complaint:",
                   "type": "obs",
-                  "validators": [],
-                  "id": "temp",
-                  "alerts": [
-                    {
-                      "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 0 && <= 36.4))",
-                      "message": "Low Temperature"
-                    },
-                    {
-                      "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 36.5 && <= 37.5))",
-                      "message": "Normal Temperature"
-                    },
-                    {
-                      "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 37.6))",
-                      "message": "High Temperature"
-                    }
-                  ]
+                  "id": "cOmplaIntField",
+                  "questionOptions": {
+                    "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a8932f00-1350-11df-a1f1-0026b9348838",
+                        "label": "Abdominal pain"
+                      },
+                      {
+                        "concept": "a0bda074-8e57-4ba7-ab9c-c008776f8d48",
+                        "label": "Abnormal Uterine Bleeding"
+                      },
+                      {
+                        "concept": "a8ad3a26-1350-11df-a1f1-0026b9348838",
+                        "label": "Acute focal neurology"
+                      },
+                      {
+                        "concept": "c89b50a6-f63f-4d42-8e9a-7231af702778",
+                        "label": "Aggression"
+                      },
+                      {
+                        "concept": "a5ff4096-7001-4f1d-8b80-e56f0b848527",
+                        "label": "Angioedema"
+                      },
+                      {
+                        "concept": "a89cec02-1350-11df-a1f1-0026b9348838",
+                        "label": "Anxiety"
+                      },
+                      {
+                        "concept": "5e3ca1ac-1019-46f7-a843-12725124ab34",
+                        "label": "Apnea"
+                      },
+                      {
+                        "concept": "a8953d90-1350-11df-a1f1-0026b9348838",
+                        "label": "Back pain"
+                      },
+                      {
+                        "concept": "a8981696-1350-11df-a1f1-0026b9348838",
+                        "label": "Bloody Urine"
+                      },
+                      {
+                        "concept": "bb1637fd-dd30-4938-a7a7-30dcef155f38",
+                        "label": "Blood in stool"
+                      },
+                      {
+                        "concept": "a892e3d8-1350-11df-a1f1-0026b9348838",
+                        "label": "Burn"
+                      },
+                      {
+                        "concept": "f092c609-b7bd-4d6c-a9b7-c6398eb690e3",
+                        "label": "Burn over 20%"
+                      },
+                      {
+                        "concept": "c7356bfe-e9a8-422b-9a6a-6e42490d308e",
+                        "label": "Breast Pain"
+                      },
+                      {
+                        "concept": "9d500d21-e54e-4277-8d87-72eb82281110",
+                        "label": "Cachexia"
+                      },
+                      {
+                        "concept": "8a1c2308-a275-441e-90e7-6f1b10c5e4fe",
+                        "label": "Cardiac Arrest"
+                      },
+                      {
+                        "concept": "a8965298-1350-11df-a1f1-0026b9348838",
+                        "label": "Central Cyanosis"
+                      },
+                      {
+                        "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                        "label": "Chest Pain"
+                      },
+                      {
+                        "concept": "98449c37-014f-4915-a373-f70133ec1f14",
+                        "label": "Chemical Burn"
+                      },
+                      
+                      {
+                        "concept": "a898314e-1350-11df-a1f1-0026b9348838",
+                        "label": "Cold and Chills"
+                      },
+                      {
+                        "concept": "a8ad3b02-1350-11df-a1f1-0026b9348838",
+                        "label": "Confusion"
+                      },
+                      {
+                        "concept": "a890d73c-1350-11df-a1f1-0026b9348838",
+                        "label": "Cough"
+                      },
+                      {
+                        "concept": "a898be8e-1350-11df-a1f1-0026b9348838",
+                        "label": "Coughing blood(Hemoptysis)"
+                      },
+                      {
+                        "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
+                        "label": "Convulsions"
+                      },
+                      {
+                        "concept": "894e909e-881c-4ac3-b669-4c77003831ad",
+                        "label": "Coma"
+                      },
+                      {
+                        "concept": "f558a123-c888-4e52-b40d-706916f456a9",
+                        "label": "Compound Fracture"
+                      },
+                      {
+                        "concept": "a5dc6336-b49f-4f56-9ccc-a7cda982faa7",
+                        "label": "Closed fracture"
+                      },
+                      
+                      {
+                        "concept": "057956d1-ded4-413d-8712-30c752c6d592",
+                        "label": "Colic"
+                      },
+                      {
+                        "concept": "a890d660-1350-11df-a1f1-0026b9348838",
+                        "label": "Coryza"
+                      },
+                      {
+                        "concept": "96dafdc7-720e-4eac-85d3-ae2a0f5c1d94",
+                        "label": "Crying Infant"
+                      },
+                      {
+                        "concept": "a58cfd5c-a237-46fd-b0fc-bb7f2192bb69",
+                        "label": "Delirium"
+                      },
+                      {
+                        "concept": "a8935fde-1350-11df-a1f1-0026b9348838",
+                        "label": "Depression"
+                      },
+                      {
+                        "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                        "label": "Diarrhoea"
+                      },
+                      {
+                        "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
+                        "label": "Difficult in breathing"
+                      },
+                      {
+                        "concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+                        "label": "Difficulty in swallowing"
+                      },
+                      {
+                        "concept": "abb19bab-e77d-47db-b9b6-18386868e1b3",
+                        "label": "Discharge from Penis"
+                      },
+                      {
+                        "concept": "e5c11905-baf7-4747-a01d-0525153e143a",
+                        "label": "Dizziness"
+                      },
+                      
+                      {
+                        "concept": "598019b9-8a8b-452e-a648-4646ecf64bff",
+                        "label": "Dry mouth"
+                      },
+                      {
+                        "concept": "eb12bfd6-dd52-4c41-a35e-a8048c975e7f",
+                        "label": "Ear Pain"
+                      },
+                      {
+                        "concept": "9a9cb2d4-696c-4f2b-9a7b-206333597e3c",
+                        "label": "Epigastric Pain"
+                      },
+                      {
+                        "concept": "e81d5026-1f40-4b20-978d-140c752e3fa9",
+                        "label": "Electrical Burn"
+                      },
+                      {
+                        "concept": "a8a06c06-1350-11df-a1f1-0026b9348838",
+                        "label": "Eye Injury"
+                      },
+                      {
+                        "concept": "05354fc6-fd53-4c40-9379-ba2b4457635e",
+                        "label": "Eye Pain"
+                      },
+                      {
+                        "concept": "d301ff85-d21c-4a61-a195-ce7948db423c",
+                        "label": "Excessive Sweating"
+                      },
+                      {
+                        "concept": "4a3fa87f-0f09-4b70-bfaf-ed9cba1f9aa7",
+                        "label": "Facial Pain"
+                      },
+                      {
+                        "concept": "4b92fa43-a876-4fee-886b-ce4fc2e18512",
+                        "label": "Fatigue/weakness"
+                      },
+                      {
+                        "concept": "cebb22fc-5ef8-409e-b606-51fdb7039593",
+                        "label": "Flank Pain"
+                      },
+                      {
+                        "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                        "label": "Fever"
+                      },
+                      {
+                        "concept": "8065a17b-fbe4-4558-9ddd-0af641866c21",
+                        "label": " General Body Malaise"
+                      },
+                      {
+                        "concept": "4eef684c-feff-48bb-9e8e-fe5742bee979",
+                        "label": "Genital Ulcer"
+                      },
+                      {
+                        "concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+                        "label": "Headache"
+                      },
+                      {
+                        "concept": "13a3c07c-e870-4cc9-b7d3-d2e5b5e60a3e",
+                        "label": "Hearing Loss"
+                      },
+                      
+                      {
+                        "concept": "a89d1222-1350-11df-a1f1-0026b9348838",
+                        "label": "Hypotension"
+                      },
+                      {
+                        "concept": "9613c9ba-e40c-45ea-abc4-dcc188ad5bdf",
+                        "label": "Hypoglycemia"
+                      },
+                      {
+                        "concept": "a94a5434-f8d3-4861-9cb8-bc7f30510115",
+                        "label": "Hyperglycaemia"
+                      },
+                      {
+                        "concept": "a2a29a4a-9833-4d39-9939-e98004b153ef",
+                        "label": "Hypersomnia"
+                      },
+                      {
+                        "concept": "a895600e-1350-11df-a1f1-0026b9348838",
+                        "label": "Hyperemesis"
+                      },
+                      {
+                        "concept": "a8983ae0-1350-11df-a1f1-0026b9348838",
+                        "label": "Itchiness/Pruritus"
+                      },
+                      {
+                        "concept": "a890ba5e-1350-11df-a1f1-0026b9348838",
+                        "label": "Joint Pain"
+                      },
+                      {
+                        "concept": "be9da369-ba93-4a0c-afdd-616ed4b434e8",
+                        "label": "Leg Pain"
+                      },
+                      {
+                        "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                        "label": "Lethargy"
+                      },
+                      {
+                        "concept": "a8982eba-1350-11df-a1f1-0026b9348838",
+                        "label": "Loss of Appetite"
+                      },
+                      {
+                        "concept": "9729e864-85e5-4544-96b7-4a460d67075f",
+                        "label": "Loss of skin turgor"
+                      },
+                      
+                      {
+                        "concept": "a893378e-1350-11df-a1f1-0026b9348838",
+                        "label": "Lymphadenopathy"
+                      },
+                      {
+                        "concept": "5d91ee3c-9ace-462f-97c1-bd0c8fcf8a5e",
+                        "label": "Memory Loss"
+                      },
+                      
+                      {
+                        "concept": "6fac98a0-6d8a-4441-aeed-c447a3a12494",
+                        "label": "Mouth Ulceration"
+                      },
+                      {
+                        "concept": "02dc5deb-44d1-43db-b65e-9eb0d6cedaaf",
+                        "label": "Mouth Pain"
+                      },
+                      {
+                        "concept": "1fbf7fd4-ea3e-4ab1-acd9-bf215651e066",
+                        "label": "Muscle cramps"
+                      },
+                      {
+                        "concept": "a8ad5330-1350-11df-a1f1-0026b9348838",
+                        "label": "Muscle Pain"
+                      },
+                      {
+                        "concept": "a890e2f4-1350-11df-a1f1-0026b9348838",
+                        "label": "Mylagia"
+                      },
+                      {
+                        "concept": "a8ad21e4-1350-11df-a1f1-0026b9348838",
+                        "label": "Nausea"
+                      },
+                      {
+                        "concept": "a8a6b476-1350-11df-a1f1-0026b9348838",
+                        "label": "Neck Stiffness"
+                      },
+                      {
+                        "concept": "bb7fc04f-13d8-4630-b9d8-e364b34b7f2f",
+                        "label": "Neck Pain"
+                      },
+                      {
+                        "concept": "a8ad4ed0-1350-11df-a1f1-0026b9348838",
+                        "label": "Night sweats"
+                      },
+                      {
+                        "concept": "4ef1a2d0-132d-4a02-b0e0-00890b916343",
+                        "label": "Numbness"
+                      },
+                      {
+                        "concept": "a89c36a4-1350-11df-a1f1-0026b9348838",
+                        "label": "Obstructed airway"
+                      },
+                      {
+                        "concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+                        "label": "Pain when Swallowing"
+                      },
+                      {
+                        "concept": "d4abb20f-fde4-453b-b7e8-ac35debe83c2",
+                        "label": "Pelvic Pain"
+                      },
+                      {
+                        "concept": "a89540f6-1350-11df-a1f1-0026b9348838",
+                        "label": "Pitting Edema"
+                      },
+                      {
+                        "concept": "a8ad09ca-1350-11df-a1f1-0026b9348838",
+                        "label": "Poor Vision"
+                      },
+                      {
+                        "concept": "447a2c47-0c46-44b3-9023-6d82be8830b3",
+                        "label": "Purpuric rash"
+                      },
+                      {
+                        "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                        "label": "Rash"
+                      },
+                      {
+                        "concept": "0df011cb-3ff1-465e-ae84-718da974aedd",
+                        "label": "Red Eye/ Conjuctivitis"
+                      },
+                      {
+                        "concept": "a8ad49a8-1350-11df-a1f1-0026b9348838",
+                        "label": "Refusal to feed"
+                      },
+                      {
+                        "concept": "a8ad49a8-1350-11df-a1f1-0026b9348838",
+                        "label": "Restless /Irritable"
+                      },
+                      {
+                        "concept": "a8983bda-1350-11df-a1f1-0026b9348838",
+                        "label": "Running/Blocked nose"
+                      },
+                      {
+                        "concept": "773bfb25-09c8-4920-89f5-5bdafe5b5b62",
+                        "label": "Scrotal Pain"
+                      },
+                      {
+                        "concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
+                        "label": "Seizure"
+                      },
+                      {
+                        "concept": "8917a921-3b41-41d5-9a64-08ebe470e6e5",
+                        "label": "Severe pain"
+                      },
+                      {
+                        "concept": "4fd5f4cf-67cd-444d-8f18-a01afb4d9af0",
+                        "label": "Shoulder Pain"
+                      },
+                      {
+                        "concept": "8ccbbecf-58cd-43c2-ae9a-a36a4e578b25",
+                        "label": "Shock"
+                      },
+                      {
+                        "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
+                        "label": "Shortness of breath"
+                      },
+                      {
+                        "concept": "a8932d66-1350-11df-a1f1-0026b9348838",
+                        "label": "Sore Throat"
+                      },
+                      {
+                        "concept": "34c96419-d4a9-4377-8c80-3a31d0f07d13",
+                        "label": "Sleep Disturbance"
+                      },
+                      {
+                        "concept": "dd9f4df0-ad91-4b56-9a7c-57d01d5fd175",
+                        "label": "Skin lesions"
+                      },
+                      
+                      {
+                        "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
+                        "label": "Stroke"
+                      },
+                      {
+                        "concept": "04e13d59-692b-48fc-b06b-81e5a4ff6327",
+                        "label": "Sunken eyes"
+                      },
+                      {
+                        "concept": "e01c7959-551c-4c40-bcbf-52ef3087cbff",
+                        "label": "Swollen Legs"
+                      },
+                      {
+                        "concept": "aa98d011-fc89-4681-87ef-4f4fae415578",
+                        "label": "Tachycardia"
+                      },
+                      
+                     
+                      {
+                        "concept": "ae5f2fc7-3f76-4fc3-96fa-72b354323821",
+                        "label": "Tremors"
+                      },
+                      {
+                        "concept": "a8a4528a-1350-11df-a1f1-0026b9348838",
+                        "label": "Unable to drink/feed"
+                      },
+                      {
+                        "concept": "110ff2b8-5b8f-4f86-9f84-0a2aa7cb5fa0",
+                        "label": "Unexplained acute rash"
+                      },
+                      {
+                        "concept": "a8a498ee-1350-11df-a1f1-0026b9348838",
+                        "label": "Unexplained bleeding"
+                      },
+                      {
+                        "concept": "0ca4d1dc-34df-4ec0-bf2f-0280005ce6c9",
+                        "label": "Urinary Symptoms"
+                      },
+                      {
+                        "concept": "9abe711c-5e02-4aca-8d70-8b2148a17256",
+                        "label": "Watery Diarrhoea"
+                      },
+                      {
+                        "concept": "c982b4fe-8403-4c67-9650-91da17aecf5e",
+                        "label": "Weakness of Limbs"
+                      },
+                      {
+                        "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                        "label": "Weight Loss"
+                      },
+                      {
+                        "concept": "a89d145c-1350-11df-a1f1-0026b9348838",
+                        "label": "Vaginal Bleeding"
+                      },
+                      {
+                        "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
+                        "label": "Vaginal Discharge"
+                      },
+                      {
+                        "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                        "label": "Vomiting"
+                      },
+                      {
+                        "concept": "51b966c9-8bc7-41c1-822c-bbeac0554e69",
+                        "label": "Vomiting Everything"
+                      },
+                      {
+                        "concept": "324beaf6-b4b7-4433-9e6b-0f94ec5076e0",
+                        "label": "Vomiting fresh blood(Haematemesis)"
+                      },
+                      {
+                        "concept": "6d140ca3-118d-48ca-9d91-7b5612987413",
+                        "label": "Vertigo"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  }
                 },
                 {
-                  "label": "Pulse(Rate/Min):",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
-                    "max": "230",
-                    "min": "0"
-                  },
+                  "label": "Specify other complaints:",
                   "type": "obs",
-                  "validators": [],
-                  "id": "pulse"
-                },
-                {
-                  "label": "Systolic blood pressure:",
+                  "id": "OtherSpecificComplaints",
                   "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
-                    "max": "250",
-                    "min": "0"
+                    "concept": "e5dfbff0-fbb1-4744-bb57-e66134ebba75",
+                    "rendering": "textarea"
                   },
-                  "type": "obs",
-                  "validators": [],
-                  "id": "syst"
-                },
-                {
-                  "label": "Diastolic blood pressure:",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
-                    "max": "200",
-                    "min": "0"
-                  },
-                  "type": "obs",
-                  "validators": [],
-                  "id": "diast"
-                },
-                {
-                  "label": "Oxygen saturation:",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
-                    "max": "100",
-                    "min": "0"
-                  },
-                  "type": "obs",
-                  "validators": [],
-                  "id": "saturation"
-                },
-                {
-                  "label": "Respiratory rate(Breath/Min):",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
-                    "max": "99",
-                    "min": "0"
-                  },
-                  "type": "obs",
-                  "validators": [],
-                  "id": "resp"
-                },
-                {
-                  "label": "MUAC:MM",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
-                    "max": "450",
-                    "min": "60"
-                  },
-                  "type": "obs",
-                  "validators": [],
-                  "id": "muac"
-                },
-                {
-                  "label": "Weight(Kg):",
-                  "id": "weight",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
-                    "max": "250",
-                    "min": "0"
-                  },
-                  "type": "obs",
-                  "validators": []
-                },
-                {
-                  "label": "Height(CM):",
-                  "id": "height",
-                  "historicalExpression": "(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838'))",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
-                    "max": "228.00",
-                    "min": "10.00"
-                  },
-                  "type": "obs",
-                  "validators": []
-                },
-                {
-                  "label": "BMI:Kg/M2",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
-                    "max": "100",
-                    "min": "0",
-                    "calculate": {
-                      "calculateExpression": "calcBMI(height,weight)"
-                    }
-                  },
-                  "type": "obs",
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "age<18"
+                    "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Patient had contact with TB Infected person in the last 12 months?",
+                  "type": "obs",
+                  "id": "contactTB",
+                  "required": "true",
+                  "questionOptions": {
+                    "concept": "f66ad7cb-c9fa-42b2-8f7b-863eddb7eb98",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
                   },
-                  "id": "bmi"
+                  "hide": {
+                    "hideWhenExpression": "cOmplaIntField !== 'a890d73c-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Number of motions per day:",
+                  "type": "obs",
+                  "id": "numberMotions",
+                  "questionOptions": {
+                    "concept": "f3515e5a-d4b2-4470-a4f5-f17fd2858d13",
+                    "rendering": "number",
+                    "min": "0"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "cOmplaIntField !== 'a890861a-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                
+               {
+                  "label": "Onset status:",
+                  "type": "obs",
+                  "id": "onsetStatus",
+                  "questionOptions": {
+                    "concept": "7d891556-2af6-4a79-bcc8-f653b74089ce",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "7d891556-2af6-4a79-bcc8-f653b74089ce",
+                        "label": "Gradual"
+                      },
+                      {
+                        "concept": "a8a4751c-1350-11df-a1f1-0026b9348838",
+                        "label": "Sudden"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Physical Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient mobility assessment?",
+              "type": "obs",
+              "id": "mobilityAdult",
+              "questionOptions": {
+                "concept": "e64230be-5bf1-4f1e-800d-d2a510e65530",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "47e7d083-eafd-4fb4-b8c6-7f91fbaa0d3f",
+                    "label": "Walking"
+                  },
+                  {
+                    "concept": "128c543a-717e-4697-a7d7-a1627586d4b3",
+                    "label": "With Help"
+                  },
+                  {
+                    "concept": "cc96cdb5-c62b-4d29-805d-3f48d5a285cb",
+                    "label": "Stretcher/Immobile"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 12"
+              }
+            },
+            {
+              "label": "Patient mobility assessment?",
+              "type": "obs",
+              "id": "mobilityChild",
+              "questionOptions": {
+                "concept": "e64230be-5bf1-4f1e-800d-d2a510e65530",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal for age"
+                  },
+                  {
+                    "concept": "128c543a-717e-4697-a7d7-a1627586d4b3",
+                    "label": "Unable to walk as normal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age > 12"
+              }
+            },
+            {
+              "label": "Any injury to the patient within the past 48 hours?",
+              "type": "obs",
+              "id": "traumaInjury",
+              "questionOptions": {
+                "concept": "ab427eb7-af74-44bc-b358-0fc783abc711",
+                "rendering": "select",
+                "answers": [
+                  {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                ]
+              }
+            },
+            {
+              "label": "Patient level of consciousness(AVPU):",
+              "type": "obs",
+              "id": "avpuLevel",
+              "questionOptions": {
+                "concept": "48921243-38b9-4569-b52b-321a26aac763",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "04f9358a-226d-4fe1-9cd7-d47eabab15db",
+                    "label": "Alert"
+                  },
+                  {
+                    "concept": "7ca3ba0c-7c11-418e-b7e0-4200c96107be",
+                    "label": "Reacts to Voice"
+                  },
+                  {
+                    "concept": "9c057035-7d44-4a40-9f47-ac3798a13a96",
+                    "label": "Reacts to Pain"
+                  },
+                  {
+                    "concept": "485a3b99-5cfa-43f6-9f3a-b1eb384385ee",
+                    "label": "Unresponsive"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Vital Signs",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Temperature (C):",
+              "type": "obs",
+              "id": "temperature",
+              "questionOptions": {
+                "concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "43",
+                "min": "25"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 37.5 || myValue < 35)",
+                "message": "Temperature is out of range (Normal range 35-37)"
+              }
+            },
+            {
+              "label": "Mode of collection?",
+              "type": "obs",
+              "id": "tempMode",
+              "questionOptions": {
+                "concept": "167231AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a67a60-1350-11df-a1f1-0026b9348838",
+                    "label": "Axiliary"
+                  },
+                  {
+                    "concept": "a16d5b0d-6ffd-43e5-b47e-019f244054d3",
+                    "label": "Forehead thermometer gun"
+                  },
+                  {
+                    "concept": "db0c5937-3874-4eae-9566-9a645ad7ac65",
+                    "label": "Oral"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(temperature)"
+              }
+            },
+            {
+              "label": "Pulse rate:",
+              "type": "obs",
+              "id": "pulseRate",
+              "questionOptions": {
+                "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                 "max": "230",
+                "min": "0"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 100.5 || myValue < 59.5)",
+                "message": "Pulse Rate is out of range (Normal range 60-100)"
+              }
+            },
+            {
+              "label": "Systolic B.P:",
+              "type": "obs",
+              "id": "sysBP",
+              "questionOptions": {
+                "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 130.5 || myValue < 119.5)",
+                "message": "Systolic is out of range (Normal range 120-130)"
+              }
+            },
+            {
+              "label": "Diastolic B.P:",
+              "type": "obs",
+              "id": "diasBP",
+              "questionOptions": {
+                "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 85.5 || myValue < 79.5)",
+                "message": "Diastolic is out of range (Normal range 80-85)"
+              }
+            },
+            {
+              "label": "Respiratory rate:",
+              "type": "obs",
+              "id": "respRate",
+              "questionOptions": {
+                "concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 16.5 || myValue < 11.5)",
+                "message": "Respiratory Rate is out of range (Normal range 12-16)"
+              }
+            },
+            {
+              "label": "Oxygen saturation:",
+              "type": "obs",
+              "id": "oxygenSat",
+              "questionOptions": {
+                "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 100.5 || myValue < 94.5)",
+                "message": "Oxygen Saturation is out of range (Normal range 95-100)"
+              }
+            },
+            {
+              "label": "Mode of collection?",
+              "type": "obs",
+              "id": "satMode",
+              "questionOptions": {
+                "concept": "cdfbd2c2-9034-4795-9968-a98fb9b0e86e",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "40f55914-ce71-40f4-b636-190efb9733b8",
+                    "label": "Room air"
+                  },
+                  {
+                    "concept": "5fd6a143-9a00-4200-a40c-eaafa4555cf3",
+                    "label": "On supplemental oxygen"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(oxygenSat)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Other Recordings",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Weight(kg):",
+              "type": "obs",
+              "id": "weight",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "250",
+                "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "!(age >= 0 && age <=5)"
+              }
+            },
+            {
+              "label": "Weight(kg):",
+              "type": "obs",
+              "id": "weightForBMI",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "250",
+                "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "age <= 5"
+              }
+            },
+            {
+              "label": "Height(cm):",
+              "type": "obs",
+              "required": "true",
+              "id": "height",
+              "questionOptions": {
+                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "272",
+                "min": "10"
+              },
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
+              "hide": {
+                "hideWhenExpression": "!(age >= 0 && age <=5)"
+              }
+            },
+            {
+              "label": "Height(cm):",
+              "type": "obs",
+              "required": "true",
+              "id": "heightForBMI",
+              "questionOptions": {
+                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "272",
+                "min": "10"
+              },
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
+              "hide": {
+                "hideWhenExpression": "age <= 5"
+              }
+            },
+            {
+              "label": "BMI: (Kg/m2)",
+              "type": "obs",
+              "id": "bmi",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
+                "max": "100",
+                "min": "0",
+                "calculate": {
+                  "calculateExpression": "calcBMI(heightForBMI,weightForBMI)"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "age <= 5"
+              }
+            },
+            	
+            {
+              "label": "MUAC:",
+              "type": "obs",
+              "id": "muac",
+              "questionOptions": {
+                "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "250",
+                "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "(age > 5 && sex !== 'F') || (sex === 'F' &&  age > 49)"
+              }
+            },
+           {
+							"label": " Weight for height Z-score:",
+							"id": "WeightheightScore",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c",
+								"max": "4",
+								"min": "-4",
+								"calculate": {
+									"calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
+								}
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "age>5"
+							}
+						},
+						{
+							"label": "Weight for height Z score diagnosis:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9cf8b8c5-a9fb-4662-9585-97dfbfd9d245",
+								"calculate": {
+									"calculateExpression": " weight && height && parseInt(WeightheightScore) >=0 && parseInt(WeightheightScore) <= 4? 'a899e7b4-1350-11df-a1f1-0026b9348838' :weight && height && parseInt(WeightheightScore) === -1 ? '492da2d3-5137-4261-ba07-f961e8c27efb' :weight && height && parseInt(WeightheightScore) === -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' :weight && height && parseInt(WeightheightScore) === -3 || parseInt(WeightheightScore) === -4 ? '0306539c-f24f-49f5-b059-b646adbec47c' :''"
+								},
+								"answers": [
+									{
+										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+										"label": "Normal"
+									},
+									{
+										"concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
+										"label": "Mild acute malnutrition"
+									},
+									{
+										"concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
+										"label": "Moderate acute malnutrition"
+									},
+									{
+										"concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+										"label": "Severe acute malnutrition"
+									}
+								]
+							},
+							"id": "weightHeightDiagnosis",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "age>5 || isEmpty(WeightheightScore)"
+							}
+						},
+           
+						{
+							"label": "BMI for age (+18) categorization:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
+								"answers": [
+									{
+										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+										"label": "Normal"
+									},
+									{
+										"concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
+										"label": "Mild acute malnutrition"
+									},
+									{
+										"concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
+										"label": "Moderate acute malnutrition"
+									},
+									{
+										"concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+										"label": "Severe acute malnutrition"
+									},
+									{
+										"concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+										"label": "Overweight"
+									},
+									{
+										"concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
+										"label": "Obesity"
+									}
+								]
+							},
+							"id": "bmiCategorization",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "age<18 || isEmpty(bmi)"
+							}
+						},
+            {
+              "label": "LMP:",
+              "type": "obs",
+              "id": "lmpDate",
+              "questionOptions": {
+                "concept": "a89ff758-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
                 }
               ],
-              "id": "vitals"
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'  ||  sex ==='F' && (age < 10 || age > 49)"
+              }
+            },
+            {
+              "label": "Client vaccinated against HPV?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9806572c-0225-4b17-b21b-a0f44f9d07f0",
+               
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                    
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                    
+                  }
+                ]
+              },
+              "id": "clientHpvVaccinated",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sex !== 'F' || sex === 'F' && (age < 10 || age > 15)"
+              }
+            },
+            {
+              "label": "Number of doses given:",
+              "type": "obs",
+              "id": "doseGivem",
+              "questionOptions": {
+                "concept": "a89ef54c-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "10",
+                "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "clientHpvVaccinated !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Date given:",
+              "type": "obs",
+              "id": "vaccineDate",
+              "questionOptions": {
+                "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "clientHpvVaccinated !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Triage Notes",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Triage notes:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rows": "5"
+              },
+              "id": "triageNotes"
             }
           ]
         }
       ]
     }
   ]
+ 
 }
