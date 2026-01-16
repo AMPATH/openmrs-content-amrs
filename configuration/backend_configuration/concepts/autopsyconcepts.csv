@@ -1,0 +1,4 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units,
+445e3555-f017-4784-8edf-0556258cc918,,MCL/CIEL:1709,VERBAL AUTOPSY REFERENCE NUMBER,,,VA REF NO,,,The internal reference number for verbal autopsy.,,,Question ,Text,,,
+1ca8cf4c-9740-458e-8f95-dc9fb1352094,,MCL/CIEL:162725,ADDRESS (TEXT),,,,,,Generic field to capture an address in text form.,,,Question,Text,,,
+d4a529fd-09cf-428f-90de-57f25b1fe58a,,,WITNESSED BY,,,,,,Witnessed by,,,Question,Text,,,
