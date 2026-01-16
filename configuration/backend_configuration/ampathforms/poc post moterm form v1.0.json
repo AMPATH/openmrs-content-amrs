@@ -61,18 +61,18 @@
               "type": "obs",
               "id": "deathLocation",
               "questionOptions": {
-                "concept": "166969AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "349aa0bf-9f63-4290-a06b-f1822b1e7448",
                 "rendering": "text"
               },
               "validators": []
             },
             {
-              "label": "Date & time of death",
+              "label": "Date & time of death:",
               "type": "obs",
               "id": "deathDateTime",
               "datePickerFormat": "both",
               "questionOptions": {
-                "concept": "9c4c7722-ba3e-4bdf-ab97-c04170100037",
+                "concept": "a89df3d6-1350-11df-a1f1-0026b9348838",
                 "rendering": "date"
               },
               "validators": []
@@ -122,17 +122,8 @@
                 "rendering": "text"
               },
               "validators": []
-            },
-            {
-              "label": "Reference body of:",
-              "type": "obs",
-              "id": "bodyOf",
-              "questionOptions": {
-                "concept": "166102AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "text"
-              },
-              "validators": []
             }
+            
           ]
         },
         {
@@ -140,54 +131,45 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Place of Post-Mortem",
+              "label": "Place of post-Mortem:",
               "type": "obs",
               "id": "placeOfPostmortem",
               "questionOptions": {
-                "concept": "161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "27c8495c-4bb3-4b85-9fdd-e87bcb1f45ba",
                 "rendering": "text"
               },
               "validators": []
             },
             {
-              "label": "Date and Time of Post-Mortem",
+              "label": "Date and time of post-Mortem:",
               "type": "obs",
               "id": "dateTimeOfPostmortem",
               "datePickerFormat": "both",
               "questionOptions": {
-                "concept": "162869AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "27c8495c-4bb3-4b85-9fdd-e87bcb1f45ba",
                 "rendering": "date"
               },
               "validators": []
             },
-            {
-              "label": "Clothing",
-              "type": "obs",
-              "id": "clothing",
-              "questionOptions": {
-                "concept": "163042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "text"
-              },
-              "validators": []
-            },
+            
             {
               "label": "Sex",
               "type": "obs",
               "id": "sex",
               "questionOptions": {
-                "concept": "1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
+                "concept": "a0d2e0f8-5109-497a-9313-fcc3576d1185",
+                "rendering": "select",
                 "answers": [
                   {
-                    "concept": "1534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
                     "label": "Male"
                   },
                   {
-                    "concept": "1535AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
                     "label": "Female"
                   },
                   {
-                    "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
                     "label": "Unknown"
                   }
                 ]
@@ -209,7 +191,7 @@
               "type": "obs",
               "id": "apparentAge",
               "questionOptions": {
-                "concept": "163527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "63d1539f-d190-4d37-9863-ed148f0e34c0",
                 "rendering": "number"
               },
               "validators": []
@@ -219,7 +201,7 @@
               "type": "obs",
               "id": "nutrition",
               "questionOptions": {
-                "concept": "163189AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8bbaafb-ce87-49bb-a7d5-64e0f5f5a59a",
                 "rendering": "text"
               },
               "validators": []
@@ -229,7 +211,7 @@
               "type": "obs",
               "id": "physique",
               "questionOptions": {
-                "concept": "1391AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
               },
               "validators": []
@@ -239,7 +221,7 @@
               "type": "obs",
               "id": "height",
               "questionOptions": {
-                "concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
               },
               "validators": []
@@ -251,11 +233,11 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Findings",
+              "label": "Findings:",
               "type": "obs",
               "id": "findings",
               "questionOptions": {
-                "concept": "05778e11-0220-44ba-b579-c34cb795ac37",
+                "concept": "ff10f84d-39ad-40ca-8819-e24a84c45488",
                 "rendering": "textarea",
                 "rows": "4"
               },
@@ -268,81 +250,81 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Respiratory System",
+              "label": "Respiratory system:",
               "type": "obs",
               "id": "respiratorySystem",
               "questionOptions": {
-                "concept": "0a4b1637-99db-4f66-9ec3-b74275b315c1",
+                "concept": "cf05a97a-858e-4a4e-8c4d-dd4b423d258c",
                 "rendering": "textarea"
               },
               "validators": []
             },
             {
-              "label": "Cardio-Vascular System",
+              "label": "Cardio-vascular system:",
               "type": "obs",
               "id": "cardioVascularSystem",
               "questionOptions": {
-                "concept": "086d1dcf-7d0d-4197-a917-de9819da8689",
+                "concept": "45be57cf-aa2f-4518-8ff8-20cdc6011256",
                 "rendering": "textarea"
               },
               "validators": []
             },
             {
-              "label": "Digestive System",
+              "label": "Digestive system:",
               "type": "obs",
               "id": "digestiveSystem",
               "questionOptions": {
-                "concept": "160947AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "d83019f8-af26-4c23-9b67-8d9e4af7d8c3",
                 "rendering": "textarea"
               },
               "validators": []
             },
             {
-              "label": "Genito-Urinary System",
+              "label": "Genito-urinary system:",
               "type": "obs",
               "id": "genitoUrinarySystem",
               "questionOptions": {
-                "concept": "166363AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "2ff39563-0428-4a3f-a5c6-8f6719781c7d",
                 "rendering": "textarea"
               },
               "validators": []
             },
             {
-              "label": "Head",
+              "label": "Head:",
               "type": "obs",
               "id": "head",
               "questionOptions": {
-                "concept": "162154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "083c0ac2-ca9c-4363-9f43-da457e1be519",
                 "rendering": "textarea"
               },
               "validators": []
             },
             {
-              "label": "Nervous System",
+              "label": "Nervous system:",
               "type": "obs",
               "id": "nervousSystem",
               "questionOptions": {
-                "concept": "163109AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "47340ecb-6ab1-4637-9b5f-f802de89c634",
                 "rendering": "textarea"
               },
               "validators": []
             },
             {
-              "label": "Spinal Column",
+              "label": "Spinal column:",
               "type": "obs",
               "id": "spinalColumn",
               "questionOptions": {
-                "concept": "160629AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "e5694295-26b0-4707-8427-6f2a11daa9d4",
                 "rendering": "textarea"
               },
               "validators": []
             },
             {
-              "label": "Spinal Cord",
+              "label": "Spinal cord:",
               "type": "obs",
               "id": "spinalCord",
               "questionOptions": {
-                "concept": "160992AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "7e530da1-61fe-4e6f-a2b3-33cb3c3e3f07",
                 "rendering": "textarea"
               },
               "validators": []
@@ -350,11 +332,11 @@
           ]
         },
         {
-          "label": "Cause of Death",
+          "label": "Cause of death:",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "As a result of my examination, I formed the opinion that the cause of death was",
+              "label": "As a result of my examination, I formed the opinion that the cause of death was:",
               "type": "diagnosis",
               "id": "causeOfDeath",
               "questionOptions": {
@@ -363,7 +345,7 @@
                 "datasource": {
                   "name": "diagnoses",
                   "config": {
-                    "conceptSourceUuid": "39ADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
                   }
                 }
               },
@@ -376,72 +358,72 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "The following specimens have been removed for further examination",
+              "label": "The following specimens have been removed for further examination:",
               "type": "obs",
               "id": "specimenRemoved",
               "questionOptions": {
-                "concept": "165399AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "fa4c4198-b3b2-41fc-b97f-924964c81d87",
                 "rendering": "textarea",
                 "rows": "4"
               },
               "validators": []
             },
             {
-              "label": "Complete Stomach and contents",
+              "label": "Complete stomach and contents:",
               "type": "obs",
               "id": "stomachContents",
               "questionOptions": {
-                "concept": "160951AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "90d4640d-5da3-4a5e-913f-8501467250ad",
                 "rendering": "text"
               },
               "validators": []
             },
             {
-              "label": "Upper portion of intestine and contents",
+              "label": "Upper portion of intestine and contents:",
               "type": "obs",
               "id": "intestineContents",
               "questionOptions": {
-                "concept": "160959AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "95a61efd-c803-4b05-bc0d-3dd3cbfdcc56",
                 "rendering": "text"
               },
               "validators": []
             },
             {
-              "label": "Liver",
+              "label": "Liver:",
               "type": "obs",
               "id": "liverAnalysis",
               "questionOptions": {
-                "concept": "160953AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "009787d1-b841-4352-b76b-6f52b6a552ed",
                 "rendering": "text"
               },
               "validators": []
             },
             {
-              "label": "Kidney",
+              "label": "Kidney:",
               "type": "obs",
               "id": "KidNeyAnalysis",
               "questionOptions": {
-                "concept": "160983AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "ce85c387-963e-481d-b265-43462dd2c624",
                 "rendering": "text"
               },
               "validators": []
             },
             {
-              "label": "Blood",
+              "label": "Blood:",
               "type": "obs",
               "id": "BlooDAnalysis",
               "questionOptions": {
-                "concept": "ddd7b13a-075b-44a6-9842-32df8cc3771f",
+                "concept": "01c75d60-e93b-44e8-93ea-18bcd9417214",
                 "rendering": "text"
               },
               "validators": []
             },
             {
-              "label": "Vomit",
+              "label": "Vomit:",
               "type": "obs",
               "id": "vOmitAnalysis",
               "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
               },
               "validators": []
@@ -466,7 +448,7 @@
               "type": "obs",
               "id": "deathCertificateNo",
               "questionOptions": {
-                "concept": "162566AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "4334ec8d-ab06-44d5-a311-5a215f3c5ab3",
                 "rendering": "text"
               },
               "validators": []
@@ -484,15 +466,15 @@
               "type": "obs",
               "id": "designation",
               "questionOptions": {
-                "concept": "166014AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
+                "concept": "5f4b48df-bacc-4c04-8988-10fa2a572d8e",
+                "rendering": "select",
                 "answers": [
                   {
-                    "concept": "160483AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
                     "label": "Pathologist"
                   },
                   {
-                    "concept": "162591AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "e5d0a5a5-392b-4522-a811-ffb6fa3aba54",
                     "label": "Medical Officer"
                   }
                 ]
