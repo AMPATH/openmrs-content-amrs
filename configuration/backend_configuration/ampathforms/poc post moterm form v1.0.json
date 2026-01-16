@@ -176,16 +176,7 @@
               },
               "validators": []
             },
-            {
-              "label": "Race",
-              "type": "obs",
-              "id": "race",
-              "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "text"
-              },
-              "validators": []
-            },
+            
             {
               "label": "Apparent Age",
               "type": "obs",

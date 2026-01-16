@@ -1,0 +1,697 @@
+{
+  "name": "POC Maternity Admission Form v1.0",
+  "processor": "EncounterFormProcessor",
+  "uuid": "xxxx",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Admission Form",
+      "sections": [
+        {
+          "label": "Admission Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Admission Date",
+              "type": "admissionDatetime",
+              "required": "true",
+              "id": "admDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider:",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "label": "Number of ANC visits:",
+              "id": "ancNumber",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "02faca9b-50be-4f5e-b363-171a2d561abb",
+                "max": "30",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Parity:",
+              "type": "obs",
+              "id": "par",
+              "questionOptions": {
+                "concept": "a899a920-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "validators": []
+            },
+            {
+              "label": "Gravidae:",
+              "type": "obs",
+              "id": "grav",
+              "questionOptions": {
+                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "50"
+              },
+              "validators": []
+            },
+            {
+              "label": "LMP:",
+              "id": "lmpDate1",
+              "questionOptions": {
+                "concept": "a89ff758-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "label": "EDD:",
+              "id": "delDate",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8aaddbc-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "calculate": {
+                  "calculateExpression": "moment(lmpDate1).isValid() ? moment(lmpDate1).add(280, 'days').toDate():''"
+                }
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Diagnosis",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "a89c2d8a-1350-11df-a1f1-0026b9348838",
+                "rendering": "repeating"
+              },
+              "label": "Diagnosis",
+              "questions": [
+                {
+                  "label": "Diagnosis",
+                  "id": "probAdded",
+                  "questionOptions": {
+                    "concept": "a8ae835e-1350-11df-a1f1-0026b9348838",
+                    "rendering": "problem"
+                  },
+                  "type": "obs",
+                  "validators": []
+                }
+              ],
+              "id": "diagnosis"
+            }
+          ]
+        },
+        {
+          "label": "Laboratory Test",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "VDRL/RPR results",
+              "id": "vdrl",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8945678-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "HIV status at ANC",
+              "id": "ancHiv",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "c6f26fda-432d-4ba1-8632-3e9c70f4f36c",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "fa5a4dd8-60cd-4085-80b6-4aea76809926",
+                    "label": "Known positive at 1st ANC visit"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "HIV Testing",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "HIV Test 1 Results:",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+              },
+              "questions": [
+                {
+                  "label": "HIV test 1 results:",
+                  "id": "test1",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Positive",
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "Negative",
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "Invalid",
+                        "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                        "conceptMappings": []
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                  }
+                },
+                {
+                  "label": "Kit name:",
+                  "id": "rapidTest",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Determine",
+                        "concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "First response",
+                        "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "Dual kit",
+                        "concept": "f652d638-caac-49ce-a0ed-11b2e136301a",
+                        "conceptMappings": []
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                  }
+                },
+                {
+                  "label": "Lot number:",
+                  "id": "lotNumber",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                  },
+                  "type": "obs"
+                },
+                {
+                  "label": "Expiry date:",
+                  "id": "expiryDate",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                  },
+                  "type": "obs"
+                }
+              ],
+              "id": "hivTest1Results"
+            },
+            {
+              "label": "HIV Test Results 2:",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+              },
+              "questions": [
+                {
+                  "label": "HIV test 2 results",
+                  "id": "test2",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a89c4f0e-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Positive",
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "Negative",
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "N/A",
+                        "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(test1) || test1 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Kit name:",
+                  "id": "rapidTest2",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Determine",
+                        "concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "First response",
+                        "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "Dual kit",
+                        "concept": "f652d638-caac-49ce-a0ed-11b2e136301a",
+                        "conceptMappings": []
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(test1) || test1 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Lot number:",
+                  "id": "lotNumber2",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(test1) || test1 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "type": "obs"
+                },
+                {
+                  "label": "Expiry date:",
+                  "id": "expiryDate2",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(test1) || test1 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "type": "obs"
+                }
+              ],
+              "id": "hivTest2Results"
+            },
+            {
+              "label": "HIV Test Results 3:",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+              },
+              "questions": [
+                {
+                  "label": "HIV test 3 results",
+                  "id": "test3",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "eae7ec5d-16f2-4764-bf42-c4924ebcaa24",
+                    "answers": [
+                      {
+                        "label": "Positive",
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "Negative",
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "N/A",
+                        "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Kit name:",
+                  "id": "rapidTest3",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Determine",
+                        "concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "First response",
+                        "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+                        "conceptMappings": []
+                      },
+                      {
+                        "label": "Dual kit",
+                        "concept": "f652d638-caac-49ce-a0ed-11b2e136301a",
+                        "conceptMappings": []
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Lot number:",
+                  "id": "lotNumber3",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "type": "obs"
+                },
+                {
+                  "label": "Expiry date:",
+                  "id": "expiryDate3",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(test2) || test2 === 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "type": "obs"
+                }
+              ],
+              "id": "test3Detailed"
+            },
+            {
+              "label": "Final results at maternity:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c6c64-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                    "label": "Inconclusive"
+                  }
+                ]
+              },
+              "id": "finalResults",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+              }
+            },
+            {
+              "label": "Results given to client:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a4a8b6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "resultGiven",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Patner Testing:",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Has the client's partner been tested for HIV?:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a4636a-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "patnerTested"
+            },
+            {
+              "label": "Partner HIV status:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a46428-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "patnerTested !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              },
+              "id": "patnerStatus"
+            }
+          ]
+        },
+        {
+          "label": "ARV Prophylaxis",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Mother issued ARVs during ANC?",
+              "id": "ancArv",
+              "questionOptions": {
+                "concept": "9068ffe7-feb2-4e17-8339-8573f01e8c93",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], ancHiv)"
+              }
+            },
+            {
+              "label": "Mother issued ARVs at maternity?",
+              "id": "matArv",
+              "questionOptions": {
+                "concept": "a471c0db-0ac4-4b36-b291-e009a943aaa0",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Baby received ARV prophylaxis at maternity?",
+              "id": "babyProphylaxis",
+              "questionOptions": {
+                "concept": "a8a49466-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Cotrimoxazole (CTX) to Mother in maternity?",
+              "id": "ctxMother",
+              "questionOptions": {
+                "concept": "a8a396f6-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
