@@ -828,7 +828,7 @@
               }
             },
             {
-              "label": "Any primary doctor?",
+              "label": "Any primary doctor:",
               "type": "obs",
               "id": "primaryDoctor",
               "questionOptions": {
