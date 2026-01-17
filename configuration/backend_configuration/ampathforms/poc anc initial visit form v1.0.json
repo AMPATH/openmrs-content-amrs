@@ -1,8 +1,14 @@
 {
-	"name": "POC ANC Initial Encounter Form v1.0",
-	"uuid": "xxxx",
-	"processor": "EncounterFormProcessor",
-	"referencedForms": [],
+   "name": "POC ANC Initial Encounter Form v1.0",
+   "description": "A form for Antenatal Initial clients.",
+  "version": "1.0",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "ANCADULTINITIAL",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "f5702679-6a16-43bd-8629-4b44c7a78ff1",
+  "referencedForms": [],
 	"pages": [
 		{
 			"label": "Encounter Details",
@@ -10257,8 +10263,6 @@
 				}
 			]
 		}
-	],
-	"version": "1.0",
-	"description": "ANC initial form ",
-	"encounterType": "df555950-1350-11df-a1f1-0026b9348838"
+	]
+	
 }

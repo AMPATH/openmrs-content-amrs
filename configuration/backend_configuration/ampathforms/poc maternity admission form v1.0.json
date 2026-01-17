@@ -1,7 +1,13 @@
 {
   "name": "POC Maternity Admission Form v1.0",
+   "description": "POC MOH 333 Maternity Register v1.0",
+  "version": "1.0",
+  "published": true,
+  "uuid": "edd28e4c-8031-4361-b47c-f758617eae75",
+  "retired": false,
+  "encounter": "MATERNITYADMISSION",
   "processor": "EncounterFormProcessor",
-  "uuid": "xxxx",
+  "encounterType": "1bf4f1f6-8965-4fb4-a7f0-29d31fefb1ac",
   "referencedForms": [],
   "pages": [
     {
@@ -12,7 +18,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Admission Date",
+              "label": "Admission date:",
               "type": "admissionDatetime",
               "required": "true",
               "id": "admDate",

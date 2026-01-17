@@ -1,8 +1,14 @@
 {
 	"name": "POC PNC Initial Visit Form v1.0",
-	"uuid": "xxxx",
-	"processor": "EncounterFormProcessor",
-	"referencedForms": [],
+	"description": "A form for the new postnatal clients in MNCH.",
+  "version": "1.0",
+  "published": true,
+  "uuid": "926c1795-231d-4d8a-81b6-5b4761ba57dd",
+  "retired": false,
+  "encounter": "PNCADULTINITIAL",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "ded4ecf7-8129-4a9e-8aa3-a21a7adb7759",
+  "referencedForms": [],
 	"pages": [
 		{
 			"label": "Encounter Details",

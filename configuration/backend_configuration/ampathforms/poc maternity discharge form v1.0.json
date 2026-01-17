@@ -1,0 +1,193 @@
+{
+  "name": "POC Maternity Discharge Form v1.0",
+   "description": "POC MOH 333 Maternity Register v1.0- Discharge form",
+  "version": "1.0",
+  "published": true,
+  "uuid": "67d04ed7-c448-4270-92a4-3c8a01af9196",
+  "retired": false,
+  "encounter": "MATERNITYDISCHARGE",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "e3c2a17f-4d58-4725-b702-a5d75a2231d0",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider:",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Discharge Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Counselled on infant feeding:",
+              "id": "infantFeeding",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a89c74f2-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Delivery conducted by:",
+              "id": "deliverConducted",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "26a8a4c9-b05c-4f1e-b622-ffb2d0d8afb1",
+                "rendering": "text"
+              },
+              "validators": []
+            },
+            {
+              "label": "Birth notification number:",
+              "id": "notificatioNumber",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "1269a817-9e76-463e-ab99-d69545b87bbb",
+                "rendering": "text"
+              },
+              "validators": []
+            },
+            {
+              "label": "Discharge date:",
+              "id": "dischargeDate",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a01710-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "validators": []
+            },
+            {
+              "label": "Status of baby:",
+              "id": "statusBaby",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "9c96d26c-d8ec-49f2-b1de-0571dd08080d",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Dead"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "Alive"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Referred from:",
+              "id": "rfBy",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "aad34924-d6e7-4138-a841-0fea9ee4b41f",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Health facility"
+                  },
+                  {
+                    "concept": "a8a00b4e-1350-11df-a1f1-0026b9348838",
+                    "label": "Community unit"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Referred to:",
+              "id": "referralsTo",
+              "questionOptions": {
+                "concept": "6434322f-d050-4764-8c00-741e20c4c9e1",
+                "answers": [
+                  {
+                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Health facility"
+                  },
+                  {
+                    "concept": "a8a00b4e-1350-11df-a1f1-0026b9348838",
+                    "label": "Community unit"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Reason for referral:",
+              "id": "reasonReferral",
+              "questionOptions": {
+                "concept": "2c8bb721-b642-428a-b956-7902242776ab",
+                "rendering": "text"
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

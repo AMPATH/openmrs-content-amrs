@@ -1,7 +1,14 @@
 {
 	"name": "POC ANC Return Visit Form v1.0",
-	"uuid": "xxxx",
-	"processor": "EncounterFormProcessor",
+	 "description": "A form for Antenatal return clients.",
+  "version": "1.0",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "ANCADULTRETURN",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "26bfc6b7-28d0-41ab-90c5-e101af46d06d",
+  "referencedForms": [],
 	"pages": [
 		{
 			"label": "Encounter Details",
@@ -9164,7 +9171,6 @@
 				}
 			]
 		}
-	],
-	"description": "ANC return form v1.0",
-	"encounterType": "26bfc6b7-28d0-41ab-90c5-e101af46d06d"
+	]
+	
 }

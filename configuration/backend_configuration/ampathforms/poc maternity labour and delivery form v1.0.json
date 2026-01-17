@@ -1,0 +1,615 @@
+{
+  "name": "POC Maternity Labour And Delivery Form v1.0",
+  "description": "POC MOH 333 Maternity Register v1.0- Labour and delivery.",
+  "version": "1.0",
+  "published": true,
+  "uuid": "854e9b76-72f8-4a92-b9f4-3bb63eaefc7e",
+  "retired": false,
+  "encounter": "LABORANDDELIVERY",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "2b928d9b-84ce-4777-9658-3fba6248b3bc",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Encounter Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider:",
+              "id": "provider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Delivery",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Duration of labour (Hours):",
+              "id": "durLabour",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a8aff9b4-1350-11df-a1f1-0026b9348838",
+                "max": "96",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Date of delivery:",
+              "id": "dateDelivery",
+              "questionOptions": {
+                "concept": "a8aae050-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "label": "Time of delivery:",
+              "id": "timeDelivery",
+              "questionOptions": {
+                "concept": "4bf0bdd2-4351-4f6f-bba2-581a087a955f",
+                "rendering": "time"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "time"
+                }
+              ]
+            },
+            {
+              "label": "Gestation at birth (Weeks):",
+              "id": "gestation",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa",
+                "max": "44",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Mode of delivery:",
+              "id": "modeDelivery",
+              "questionOptions": {
+                "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal delivery"
+                  },
+                  {
+                    "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
+                    "label": "CS"
+                  },
+                  {
+                    "concept": "a89ad11a-1350-11df-a1f1-0026b9348838",
+                    "label": "Breech"
+                  },
+                  {
+                    "concept": "a8a351aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Assisted vaginal delivery"
+                  },
+                  {
+                    "concept": "a8a350ec-1350-11df-a1f1-0026b9348838",
+                    "label": "Assisted vacuum/forceps delivery"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "No. of babies delivered:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "654c50da-d82a-4932-91a5-9b54e4bc7799",
+                "answers": [
+                  {
+                    "concept": "cb07a7b3-1808-4086-b7d7-d80734181c32",
+                    "label": "Single"
+                  },
+                  {
+                    "concept": "6de75823-d1c6-48a6-9b0b-f219692eeef6",
+                    "label": "Twins"
+                  },
+                  {
+                    "concept": "98cda56b-893c-4ed8-9cc2-8faa2d82902b",
+                    "label": "Triplets "
+                  }
+                ]
+              },
+              "id": "deliveryOutcome"
+            },
+            {
+              "type": "obsGroup",
+              "label": "Baby details",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "e2fed582-5107-4080-8488-b1618a7b26d7"
+              },
+              "questions": [
+                {
+                  "label": "Baby's name:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "Text",
+                    "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea",
+                    "max": "",
+                    "min": ""
+                  },
+                  "id": "babysName"
+                }
+              ],
+              "id": "babyDetails2"
+            },
+            {
+              "label": "Placenta complete?",
+              "id": "placeComplete",
+              "questionOptions": {
+                "concept": "0e617e22-1363-4b96-849d-03c21b594e3f",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Uterotonic given?",
+              "id": "uterotonicgiven",
+              "questionOptions": {
+                "concept": "407e3411-9670-4e43-89ed-27622fe4e9e3",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "86544975-997c-43ea-9a41-71f19701e292",
+                    "label": "Oxytocin"
+                  },
+                  {
+                    "concept": "8fc531ed-0526-413d-89e4-9d18906db6e3",
+                    "label": "Carbetocin"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Vaginal examination:",
+              "id": "viginaExam",
+              "questionOptions": {
+                "concept": "17572011-42ee-4a3d-a7bf-85faa52be41a",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a8aacd7c-1350-11df-a1f1-0026b9348838",
+                    "label": "Episiotomy"
+                  },
+                  {
+                    "concept": "52430e73-de00-4a67-b708-8f75004924bf",
+                    "label": "Vaginal tear"
+                  },
+                  {
+                    "concept": "a8b0f18e-1350-11df-a1f1-0026b9348838",
+                    "label": "FGM"
+                  },
+                  {
+                    "concept": "a89cef0e-1350-11df-a1f1-0026b9348838",
+                    "label": "Vaginal warts"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Blood loss(mls):",
+              "id": "bloodLoss",
+              "questionOptions": {
+                "concept": "0976ee49-400e-46bf-b032-335c7a8c0602",
+                "rendering": "number"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Mother's status after delivery:",
+              "id": "deliveryCondition",
+              "questionOptions": {
+                "concept": "47032e8f-6e2f-41d8-8afc-01cb87a9342a",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
+                    "label": "Alive"
+                  },
+                  {
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Dead"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Date Maternal death notified:",
+              "id": "maternalDeathDate",
+              "questionOptions": {
+                "concept": "a89df3d6-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "label": "Delivery complications:",
+              "id": "deliveryComplication",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "ef2d7b84-5c2a-4380-a2fd-cabac6cfb14d",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a8937762-1350-11df-a1f1-0026b9348838",
+                    "label": "A.P.H. (Ante Partum Haemorrhage)"
+                  },
+                  {
+                    "concept": "a890a276-1350-11df-a1f1-0026b9348838",
+                    "label": "P.P.H. (Post Partum Haemorrhage)"
+                  },
+                  {
+                    "concept": "cd26e944-7a35-457f-bfd2-e855d0ee406f",
+                    "label": "Eclampsia"
+                  },
+                  {
+                    "concept": "b99106f0-8680-40cc-8de6-994d36e63670",
+                    "label": "Ruptured Uterus"
+                  },
+                  {
+                    "concept": "62376546-e8aa-4a36-b67a-76f560c438b4",
+                    "label": "Obstructed labour"
+                  },
+                  {
+                    "concept": "a89d030e-1350-11df-a1f1-0026b9348838",
+                    "label": "Sepsis"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "HBV infected?",
+              "id": "hbv",
+              "questionOptions": {
+                "concept": "d606e28a-1d2b-472e-8009-be9020177d7b",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Baby Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "APGAR score at 1 min:",
+              "id": "apgarOne",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "4b98ce38-77d9-488b-8b59-251811e244a4",
+                "max": "10",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "APGAR score at 5 mins:",
+              "id": "apgarFive",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a752b53e-bb83-4c76-9237-d2d85919101c",
+                "max": "10",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "APGAR score at 10 mins:",
+              "id": "apgarTen",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "3349c58b-8938-4162-ae6c-e64b67f392c4",
+                "max": "10",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Birth outcome:",
+              "id": "birthState",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8aff7e8-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89ffcb2-1350-11df-a1f1-0026b9348838",
+                    "label": "Live birth"
+                  },
+                  {
+                    "concept": "dcfda2f8-d466-43d7-bcdf-a37f19ef6436",
+                    "label": "Fresh still birth"
+                  },
+                  {
+                    "concept": "1d5986e2-f858-4f0f-9887-2b19c5a76d32",
+                    "label": "Macerated Still Birth"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Birth weight:",
+              "id": "birthWeight",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
+                "max": "6000",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Sex",
+              "id": "gender",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
+                    "label": "Male"
+                  },
+                  {
+                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
+                    "label": "Female"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Initiated on B/F in < 1hr:",
+              "id": "breastFeeding",
+              "questionOptions": {
+                "concept": "4ef4150f-a8e3-4ec7-bafe-8e56af7f763e",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Kangaroo Mother Care:",
+              "id": "kangaroo",
+              "questionOptions": {
+                "concept": "8bb313e9-ff98-4126-93e3-dd741572c309",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Tetracycline given at birth:",
+              "id": "birthTeo",
+              "questionOptions": {
+                "concept": "c58a7f0b-1397-4533-abc1-d9a53de95805",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Chlorhexidine applied on cord stump:",
+              "id": "cordStump",
+              "questionOptions": {
+                "concept": "385f1782-6198-4592-9ad3-1bdf3d0e3134",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Birth with deformity",
+              "id": "birthDeformity",
+              "questionOptions": {
+                "concept": "8c2dd314-41fc-402f-a5db-a8d2c371342d",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Indicate type of deformity",
+              "id": "deformityType",
+              "questionOptions": {
+                "concept": "839a0824-647f-49d0-b137-c35dfe0720af",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "45dee9b9-e87a-4f2b-a96e-2e8eba39174c",
+                    "label": "Congenital syphillis"
+                  },
+                  {
+                    "concept": "9b9f7f28-cda7-4780-9c86-4e03d3d3f0d1",
+                    "label": "Spina bifida"
+                  },
+                  {
+                    "concept": "c3e72f0d-ab42-421b-82d8-0aa4adb4cedf",
+                    "label": "Hydrocephalus"
+                  },
+                  {
+                    "concept": "354011e7-0e7f-41cb-8e09-4c444c712351",
+                    "label": "Talipes"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "birthDeformity !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Vitamin K given:",
+              "id": "vitaminK",
+              "questionOptions": {
+                "concept": "8b66aefb-23c5-4c46-8ef0-65a59fc0217a",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
