@@ -1,0 +1,46 @@
+Uuid,Concept Numeric uuid,Absolute low,Critical low,Normal low	,Normal high,Critical high,Absolute high,Criteria
+aa7d9a5b-f45c-4b7a-b772-f3f23f0e824a,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,181.0,107.0,160.0,120.0,$patient.getAgeInMonths() < 3
+eb655f45-dc75-4526-ab5d-c9b5ba4b75ae,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,175.0,104.0,160.0,120.0,$patient.getAgeInMonths() >= 3 && $patient.getAgeInMonths() < 6
+dd5db6ef-cb95-4b5e-a30d-c49ec7ac4723,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,168.0,98.0,152.0,114.0,$patient.getAgeInMonths() >= 6 && $patient.getAgeInMonths() < 9
+9650a7cf-794e-4a5d-bd4f-67333efc4adf,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,161.0,93.0,145.0,109.0,$patient.getAgeInMonths() >= 9 && $patient.getAgeInMonths() < 12
+0399343c-8e12-4318-8797-e88fbc0383f0,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,156.0,88.0,140.0,103.0,$patient.getAgeInMonths() >= 12 && $patient.getAgeInMonths() < 18
+005ea669-c214-4033-8dcd-f8cc584c9f4b,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,149.0,82.0,135.0,98.0,$patient.getAgeInMonths() >= 18 && $patient.getAge() < 2
+02e0e1e2-bc4a-4454-b751-a730eb0a58ee,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,142.0,76.0,128.0,92.0,$patient.getAge() >= 2 && $patient.getAge() < 3
+16a4338b-38c5-4270-b7cc-67c45c5b6f8d,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,136.0,70.0,123.0,86.0,$patient.getAge() >= 3 && $patient.getAge() < 4
+c05c7d82-979b-474d-9861-ab883145c6c1,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,131.0,65.0,117.0,81.0,$patient.getAge() >= 4 && $patient.getAge() < 6
+728e58ee-7a44-45c8-90d2-084268f768b7,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,123.0,59.0,111.0,74.0,$patient.getAge() >= 6 && $patient.getAge() < 8
+3839e256-42f7-4199-9322-b28d611d58f0,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,115.0,52.0,103.0,67.0,$patient.getAge() >= 8 && $patient.getAge() < 12
+b75c002a-1a94-460c-889c-4741af13e045,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,108.0,47.0,96.0,62.0,$patient.getAge() >= 12 && $patient.getAge() < 18
+af422ec5-ba9a-4890-9f5d-2bd7a5d3c04c,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,110.0,45.0,100.0,60.0,$patient.getAge() >= 18
+7a77ae39-7637-4a20-9d0b-d0e20fc06546,a8a65fee-1350-11df-a1f1-0026b9348838,47.0,25.0,38.1,35.0,37.7,36.0,$patient.getAgeInMonths() < 3
+5ae4c507-6f16-4ad4-ad20-8e3b6bcd2a3f,a8a65fee-1350-11df-a1f1-0026b9348838,47.0,25.0,38.0,35.0,37.7,36.0,$patient.getAgeInMonths() >= 3
+1eb402a4-3f4b-4f8a-97f4-f38e059a49cc,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,66.0,25.0,57.0,30.0,$patient.getAgeInMonths() < 3
+dc965ca8-8409-44a2-8a9d-818a0cf5362d,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,66.0,25.0,57.0,30.0,$patient.getAgeInMonths() < 3
+78989ca1-20e8-49fd-90c8-f5fd958bf717,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,64.0,24.0,55.0,33.0,$patient.getAgeInMonths() >= 3 && $patient.getAgeInMonths() < 6
+8c35a2ab-984e-469b-8cce-0c2bd8d1a22a,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,61.0,23.0,52.0,31.0,$patient.getAgeInMonths() >= 6 && $patient.getAgeInMonths() < 9
+b3a55a69-a38f-4fbb-8c6b-44bf5dc0bd5c,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,58.0,22.0,50.0,30.0,$patient.getAgeInMonths() >= 9 && $patient.getAgeInMonths() < 12
+38e2b4c1-da11-481e-ba96-3b57db1d6e78,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,53.0,21.0,46.0,28.0,$patient.getAgeInMonths() >= 12 && $patient.getAgeInMonths() < 18
+6e5eb811-9195-4127-80b3-4275e882c07c,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,46.0,19.0,40.0,25.0,$patient.getAgeInMonths() >= 18 && $patient.getAge() < 2
+9a1492a0-5b5d-4174-a5d8-6fed47c5cbff,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,38.0,18.0,34.0,22.0,$patient.getAge() >= 2 && $patient.getAge() < 3
+b499735c-2831-466c-98c1-667acf414fc0,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,33.0,17.0,29.0,21.0,$patient.getAge() >= 3 && $patient.getAge() < 4
+bdc58395-8cf4-48d5-a170-74ed983a7fa1,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,29.0,17.0,27.0,20.0,$patient.getAge() >= 4 && $patient.getAge() < 6
+0403153b-5cd5-46d0-a206-3dc1fae4068a,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,27.0,16.0,24.0,18.0,$patient.getAge() >= 6 && $patient.getAge() < 8
+49e1c627-21e1-4ca4-94da-4113987bbffc,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,25.0,14.0,22.0,16.0,$patient.getAge() >= 8 && $patient.getAge() < 12
+e1069434-5e97-4c01-a413-335c67b1cfc3,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,23.0,12.0,21.0,15.0,$patient.getAge() >= 12 && $patient.getAge() < 15
+66abeaaa-c293-4b9b-91c9-aebce939e763,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,22.0,11.0,19.0,13.0,$patient.getAge() >= 15 && $patient.getAge() < 18
+656c7b7c-5506-4b31-a43b-fdab0d9f0657,a8a6f71a-1350-11df-a1f1-0026b9348838,99.0,0.0,24.0,10.0,18.0,12.0,$patient.getAge() >= 18
+699fc9b8-f01b-46c8-97f4-550cafd96819,a8a66354-1350-11df-a1f1-0026b9348838,100.0,0.0,,89.0,,92.0,$patient.getAge() >= 0
+f4b991a8-69be-4ff4-8931-8ad665152851,a8a65d5a-1350-11df-a1f1-0026b9348838,250.0,0.0,,35.0,90.0,60.0,$patient.getAgeInMonths() < 1
+3ed3f1ab-8618-4666-91d9-8bd96a58e725,a8a65d5a-1350-11df-a1f1-0026b9348838,250.0,0.0,,40.0,105.0,70.0,$patient.getAgeInMonths() >= 1 && $patient.getAgeInMonths() < 12
+61d4abc9-dccd-46ae-bdb4-333b4610721e,a8a65d5a-1350-11df-a1f1-0026b9348838,250.0,0.0,,50.0,107.0,86.0,$patient.getAge() >= 1 && $patient.getAge() < 3
+a8cf960c-4192-4c1f-9eb4-ee075b25d306,a8a65d5a-1350-11df-a1f1-0026b9348838,250.0,0.0,,50.0,110.0,90.0,$patient.getAge() >= 3 && $patient.getAge() < 6
+03a0dc63-86c2-4b83-a437-120d819f275b,a8a65d5a-1350-11df-a1f1-0026b9348838,250.0,0.0,,55.0,120.0,90.0,$patient.getAge() >= 6 && $patient.getAge() < 13
+20bf17bb-753e-433e-9943-6a53eb01ca9c,a8a65d5a-1350-11df-a1f1-0026b9348838,250.0,0.0,,60.0,120.0,102.0,$patient.getAge() >= 13 && $patient.getAge() < 19
+34378bb7-d738-448a-91a4-44a241452aef,a8a65d5a-1350-11df-a1f1-0026b9348838,250.0,0.0,180.0,90.0,120.0,100.0,$patient.getAge() >= 19
+d6b6f1b6-5226-4102-86c9-f4b97df2d955,a8a65e36-1350-11df-a1f1-0026b9348838,150.0,0.0,,15.0,60.0,20.0,$patient.getAgeInMonths() < 1
+dc7742a4-da0e-4c6b-a7e0-3348e53fa153,a8a65e36-1350-11df-a1f1-0026b9348838,150.0,0.0,,20.0,65.0,41.0,$patient.getAgeInMonths() >= 1 && $patient.getAgeInMonths() < 12
+1f2cd2c2-e0cf-4877-b252-b8bf2298def6,a8a65e36-1350-11df-a1f1-0026b9348838,150.0,0.0,,30.0,78.0,41.0,$patient.getAge() >= 1 && $patient.getAge() < 3
+2f2fe00e-2116-45f6-969a-088dab71ec5e,a8a65e36-1350-11df-a1f1-0026b9348838,150.0,0.0,,30.0,75.0,47.0,$patient.getAge() >= 3 && $patient.getAge() < 6
+2616848b-2790-4f49-8539-2ef035f7c106,a8a65e36-1350-11df-a1f1-0026b9348838,150.0,0.0,,35.0,80.0,59.0,$patient.getAge() >= 6 && $patient.getAge() < 13
+207aa95c-acdf-4aff-b7bc-21feecee0328,a8a65e36-1350-11df-a1f1-0026b9348838,150.0,0.0,,30.0,80.0,64.0,$patient.getAge() >= 13 && $patient.getAge() < 19
+ec64c5f4-c043-4be8-b380-7006e6d08a28,a8a65e36-1350-11df-a1f1-0026b9348838,150.0,0.0,110.0,50.0,80.0,60.0,$patient.getAge() >= 19
