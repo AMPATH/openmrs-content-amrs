@@ -1,4 +1,4 @@
-Uuid,Concept Numeric uuid,Absolute low,Critical low,Normal low	,Normal high,Critical high,Absolute high,Criteria
+Uuid,Concept Numeric uuid,Absolute high,Absolute low,Critical high	,Critical low,Normal high,Normal low,Criteria
 aa7d9a5b-f45c-4b7a-b772-f3f23f0e824a,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,181.0,107.0,160.0,120.0,$patient.getAgeInMonths() < 3
 eb655f45-dc75-4526-ab5d-c9b5ba4b75ae,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,175.0,104.0,160.0,120.0,$patient.getAgeInMonths() >= 3 && $patient.getAgeInMonths() < 6
 dd5db6ef-cb95-4b5e-a30d-c49ec7ac4723,a8a65f12-1350-11df-a1f1-0026b9348838,230.0,0.0,168.0,98.0,152.0,114.0,$patient.getAgeInMonths() >= 6 && $patient.getAgeInMonths() < 9
