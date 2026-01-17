@@ -138,49 +138,78 @@
                     "label": "Recovered"
                   },
                   {
-                    "concept": "160431AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "f3dd78da-98db-4346-8c25-e7051806a38f",
                     "label": "Absconded"
                   },
                   {
-                    "concept": "1694AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "d583db12-e5f3-49de-b7e6-7eda0d58b831",
                     "label": "Left against medical advice"
                   },
                   {
-                    "concept": "164165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "79928a07-ab17-45c2-93ba-f3c106b257b6",
                     "label": "Referred to higher level facility"
                   },
                   {
-                    "concept": "160483AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "9e5ddce7-ba78-47ef-a72f-007f5aa819b2",
                     "label": "Referred to a specialist"
                   },
                   {
-                    "concept": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
                     "label": "Deceased"
                   }
                 ]
               },
               "validators": []
             },
+           {
+              "label": "Transfer to mortuary/Funeral home:",
+              "type": "obs",
+              "required": true,
+              "id": "transferToMortuary",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "7fa691cb-f153-477a-92dc-707d768aa405",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "d28e360f-085d-48ae-aa28-aff612cbaa90",
+                    "label": "Released to another funeral home"
+                  },
+                  {
+                    "concept": "59312903-dde9-4f7a-b6cf-7b41863b7e81",
+                    "label": "Facility funeral home"
+                  },
+                  {
+                    "concept": "3d920c84-8cca-4d46-a6c5-b2af7737ce60",
+                    "label": "Body released to the family"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
             {
               "label": "Referred to?",
               "type": "obs",
               "id": "referredTo",
               "questionOptions": {
-                "concept": "163145AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "6434322f-d050-4764-8c00-741e20c4c9e1",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
                     "label": "Community Unit"
                   },
                   {
-                    "concept": "1537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
                     "label": "Another Health Facility"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !== '164165AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !== '79928a07-ab17-45c2-93ba-f3c106b257b6'"
               }
             },
             {
@@ -192,7 +221,7 @@
               },
               "id": "OtherFacility",
               "hide": {
-                "hideWhenExpression": "isEmpty(referredTo) || referredTo !== '1537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(referredTo) || referredTo !== 'ab396b67-273c-4c97-9f90-f858d79b13b1'"
               }
             },
             {
@@ -205,47 +234,47 @@
                 "workspaceName": "appointments-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !=='162677AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && dischargeStatus !=='160483AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !=='cc5128d7-826d-4489-86e3-a3a81b69ec36' && dischargeStatus !=='9e5ddce7-ba78-47ef-a72f-007f5aa819b2'"
               }
             },
             {
-              "label": "Follow up with (Doctor/Specialist)",
+              "label": "Follow up with (Doctor/Specialist):",
               "type": "obs",
               "required": false,
               "id": "followUpWith",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "167079AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a89d1ed4-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
-                    "concept": "160456AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "32619189-1bd9-45fc-ba1c-62ce53ebd367",
                     "label": "Gynaecologist/Obstetric"
                   },
                   {
-                    "concept": "160537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "ed614306-3a96-4924-be5e-3bd05002408e",
                     "label": "Pediatrician"
                   },
                   {
-                    "concept": "164221AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "33ad52f9-9088-47d1-9469-4762ace5b780",
                     "label": "Surgeon"
                   },
                   {
-                    "concept": "161624AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a06846-1350-11df-a1f1-0026b9348838",
                     "label": "Physiotherapist"
                   },
                   {
-                    "concept": "163058AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
                     "label": "Oncologist"
                   },
                   {
-                    "concept": "161650AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "385aa16d-3af8-4fc8-b490-f861bc1da684",
                     "label": "Nutritionist"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !== '160483AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !== '9e5ddce7-ba78-47ef-a72f-007f5aa819b2'"
               }
             },
             {
@@ -255,7 +284,7 @@
               "id": "dischargingDoctor",
               "questionOptions": {
                 "rendering": "ui-select-extended",
-                "concept": "1473AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
               },
               "validators": []
             }

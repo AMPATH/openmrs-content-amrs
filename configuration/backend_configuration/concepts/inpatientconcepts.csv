@@ -1,0 +1,5 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units,
+f3dd78da-98db-4346-8c25-e7051806a38f,,MCL/CIEL:160431,RAN AWAY,,,ABSCONDED,,,Generic answer to a question.,,,Misc,N/A,,,
+d583db12-e5f3-49de-b7e6-7eda0d58b831,,,LEFT AGAINST MEDICAL ADVICE,,,,,,Generic answer to a question.,,,Misc,N/A,,,
+ed614306-3a96-4924-be5e-3bd05002408e,,,PEDIATRICIAN,,,,,,"medical doctor who specialises in the care, diagnosis, and treatment of infants, children, and adolescents, typically from birth up to 18 years of age.",,,Misc,N/A,,,
+33ad52f9-9088-47d1-9469-4762ace5b780,,MCL/CIEL:164221,OPERATING SURGEON,,,,,,,,,Misc,N/A,,,

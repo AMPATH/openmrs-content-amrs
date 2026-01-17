@@ -241,7 +241,7 @@
               "required": true,
               "id": "transferToMortuary",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "7fa691cb-f153-477a-92dc-707d768aa405",
                 "conceptMappings": [],
                 "answers": [

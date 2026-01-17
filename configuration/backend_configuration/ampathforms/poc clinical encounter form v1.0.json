@@ -3296,6 +3296,36 @@
                 ]
               }
             },
+ {
+              "label": "Transfer to mortuary/Funeral home:",
+              "type": "obs",
+              "required": true,
+              "id": "transferToMortuary",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "7fa691cb-f153-477a-92dc-707d768aa405",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "d28e360f-085d-48ae-aa28-aff612cbaa90",
+                    "label": "Released to another funeral home"
+                  },
+                  {
+                    "concept": "59312903-dde9-4f7a-b6cf-7b41863b7e81",
+                    "label": "Facility funeral home"
+                  },
+                  {
+                    "concept": "3d920c84-8cca-4d46-a6c5-b2af7737ce60",
+                    "label": "Body released to the family"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+
             {
               "label": "Appointments",
               "id": "appointmentWorkspaceLauncher",
