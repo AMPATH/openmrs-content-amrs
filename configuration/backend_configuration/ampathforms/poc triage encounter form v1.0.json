@@ -169,7 +169,7 @@
                         "concept": "98449c37-014f-4915-a373-f70133ec1f14",
                         "label": "Chemical Burn"
                       },
-                      
+
                       {
                         "concept": "a898314e-1350-11df-a1f1-0026b9348838",
                         "label": "Cold and Chills"
@@ -202,7 +202,7 @@
                         "concept": "a5dc6336-b49f-4f56-9ccc-a7cda982faa7",
                         "label": "Closed fracture"
                       },
-                      
+
                       {
                         "concept": "057956d1-ded4-413d-8712-30c752c6d592",
                         "label": "Colic"
@@ -243,7 +243,7 @@
                         "concept": "e5c11905-baf7-4747-a01d-0525153e143a",
                         "label": "Dizziness"
                       },
-                      
+
                       {
                         "concept": "598019b9-8a8b-452e-a648-4646ecf64bff",
                         "label": "Dry mouth"
@@ -304,7 +304,7 @@
                         "concept": "13a3c07c-e870-4cc9-b7d3-d2e5b5e60a3e",
                         "label": "Hearing Loss"
                       },
-                      
+
                       {
                         "concept": "a89d1222-1350-11df-a1f1-0026b9348838",
                         "label": "Hypotension"
@@ -349,7 +349,7 @@
                         "concept": "9729e864-85e5-4544-96b7-4a460d67075f",
                         "label": "Loss of skin turgor"
                       },
-                      
+
                       {
                         "concept": "a893378e-1350-11df-a1f1-0026b9348838",
                         "label": "Lymphadenopathy"
@@ -358,7 +358,7 @@
                         "concept": "5d91ee3c-9ace-462f-97c1-bd0c8fcf8a5e",
                         "label": "Memory Loss"
                       },
-                      
+
                       {
                         "concept": "6fac98a0-6d8a-4441-aeed-c447a3a12494",
                         "label": "Mouth Ulceration"
@@ -479,7 +479,7 @@
                         "concept": "dd9f4df0-ad91-4b56-9a7c-57d01d5fd175",
                         "label": "Skin lesions"
                       },
-                      
+
                       {
                         "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
                         "label": "Stroke"
@@ -496,8 +496,7 @@
                         "concept": "aa98d011-fc89-4681-87ef-4f4fae415578",
                         "label": "Tachycardia"
                       },
-                      
-                     
+
                       {
                         "concept": "ae5f2fc7-3f76-4fc3-96fa-72b354323821",
                         "label": "Tremors"
@@ -610,8 +609,8 @@
                     "hideWhenExpression": "cOmplaIntField !== 'a890861a-1350-11df-a1f1-0026b9348838'"
                   }
                 },
-                
-               {
+
+                {
                   "label": "Onset status:",
                   "type": "obs",
                   "id": "onsetStatus",
@@ -695,13 +694,13 @@
                 "rendering": "select",
                 "answers": [
                   {
-                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                        "label": "Yes"
-                      },
-                      {
-                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                        "label": "No"
-                      }
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
                 ]
               }
             },
@@ -749,8 +748,7 @@
                 "min": "25"
               },
               "alert": {
-                "alertWhenExpression": "myValue && (myValue >= 37.5 || myValue < 35)",
-                "message": "Temperature is out of range (Normal range 35-37)"
+                "useConceptReferenceRange": true
               }
             },
             {
@@ -786,12 +784,11 @@
               "questionOptions": {
                 "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
-                 "max": "230",
+                "max": "230",
                 "min": "0"
               },
               "alert": {
-                "alertWhenExpression": "myValue && (myValue >= 100.5 || myValue < 59.5)",
-                "message": "Pulse Rate is out of range (Normal range 60-100)"
+                "useConceptReferenceRange": true
               }
             },
             {
@@ -803,8 +800,7 @@
                 "rendering": "number"
               },
               "alert": {
-                "alertWhenExpression": "myValue && (myValue >= 130.5 || myValue < 119.5)",
-                "message": "Systolic is out of range (Normal range 120-130)"
+                "useConceptReferenceRange": true
               }
             },
             {
@@ -816,8 +812,7 @@
                 "rendering": "number"
               },
               "alert": {
-                "alertWhenExpression": "myValue && (myValue >= 85.5 || myValue < 79.5)",
-                "message": "Diastolic is out of range (Normal range 80-85)"
+                "useConceptReferenceRange": true
               }
             },
             {
@@ -829,8 +824,7 @@
                 "rendering": "number"
               },
               "alert": {
-                "alertWhenExpression": "myValue && (myValue >= 16.5 || myValue < 11.5)",
-                "message": "Respiratory Rate is out of range (Normal range 12-16)"
+                "useConceptReferenceRange": true
               }
             },
             {
@@ -842,8 +836,7 @@
                 "rendering": "number"
               },
               "alert": {
-                "alertWhenExpression": "myValue && (myValue >= 100.5 || myValue < 94.5)",
-                "message": "Oxygen Saturation is out of range (Normal range 95-100)"
+                "useConceptReferenceRange": true
               }
             },
             {
@@ -953,7 +946,7 @@
                 "hideWhenExpression": "age <= 5"
               }
             },
-            	
+
             {
               "label": "MUAC:",
               "type": "obs",
@@ -968,98 +961,101 @@
                 "hideWhenExpression": "(age > 5 && sex !== 'F') || (sex === 'F' &&  age > 49)"
               }
             },
-           {
-							"label": " Weight for height Z-score:",
-							"id": "WeightheightScore",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c",
-								"max": "4",
-								"min": "-4",
-								"calculate": {
-									"calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
-								}
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "age>5"
-							}
-						},
-						{
-							"label": "Weight for height Z score diagnosis:",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "9cf8b8c5-a9fb-4662-9585-97dfbfd9d245",
-								"calculate": {
-									"calculateExpression": " weight && height && parseInt(WeightheightScore) >=0 && parseInt(WeightheightScore) <= 4? 'a899e7b4-1350-11df-a1f1-0026b9348838' :weight && height && parseInt(WeightheightScore) === -1 ? '492da2d3-5137-4261-ba07-f961e8c27efb' :weight && height && parseInt(WeightheightScore) === -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' :weight && height && parseInt(WeightheightScore) === -3 || parseInt(WeightheightScore) === -4 ? '0306539c-f24f-49f5-b059-b646adbec47c' :''"
-								},
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Normal"
-									},
-									{
-										"concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
-										"label": "Mild acute malnutrition"
-									},
-									{
-										"concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
-										"label": "Moderate acute malnutrition"
-									},
-									{
-										"concept": "0306539c-f24f-49f5-b059-b646adbec47c",
-										"label": "Severe acute malnutrition"
-									}
-								]
-							},
-							"id": "weightHeightDiagnosis",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "age>5 || isEmpty(WeightheightScore)"
-							}
-						},
-           
-						{
-							"label": "BMI for age (+18) categorization:",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Normal"
-									},
-									{
-										"concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
-										"label": "Mild acute malnutrition"
-									},
-									{
-										"concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
-										"label": "Moderate acute malnutrition"
-									},
-									{
-										"concept": "0306539c-f24f-49f5-b059-b646adbec47c",
-										"label": "Severe acute malnutrition"
-									},
-									{
-										"concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
-										"label": "Overweight"
-									},
-									{
-										"concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
-										"label": "Obesity"
-									}
-								]
-							},
-							"id": "bmiCategorization",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "age<18 || isEmpty(bmi)"
-							}
-						},
+            {
+              "label": " Weight for height Z-score:",
+              "id": "WeightheightScore",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c",
+                "max": "4",
+                "min": "-4",
+                "calculate": {
+                  "calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age>5"
+              }
+            },
+            {
+              "label": "Weight for height Z score diagnosis:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9cf8b8c5-a9fb-4662-9585-97dfbfd9d245",
+                "calculate": {
+                  "calculateExpression": " weight && height && parseInt(WeightheightScore) >=0 && parseInt(WeightheightScore) <= 4? 'a899e7b4-1350-11df-a1f1-0026b9348838' :weight && height && parseInt(WeightheightScore) === -1 ? '492da2d3-5137-4261-ba07-f961e8c27efb' :weight && height && parseInt(WeightheightScore) === -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' :weight && height && parseInt(WeightheightScore) === -3 || parseInt(WeightheightScore) === -4 ? '0306539c-f24f-49f5-b059-b646adbec47c' :''"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
+                    "label": "Mild acute malnutrition"
+                  },
+                  {
+                    "concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
+                    "label": "Moderate acute malnutrition"
+                  },
+                  {
+                    "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+                    "label": "Severe acute malnutrition"
+                  }
+                ]
+              },
+              "id": "weightHeightDiagnosis",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age>5 || isEmpty(WeightheightScore)"
+              }
+            },
+
+            {
+              "label": "BMI for age (+18) categorization:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
+                "calculate": {
+                  "calculateExpression": "bmi && (bmi > 30 ? '2a60e784-1314-4454-91ba-7ea4cc2c3b15' : bmi > 25 ? '1505faef-c8aa-422c-b356-da065b88ec9c' : bmi > 18.5 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : bmi > 16 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' : '0306539c-f24f-49f5-b059-b646adbec47c')"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
+                    "label": "Mild acute malnutrition"
+                  },
+                  {
+                    "concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
+                    "label": "Moderate acute malnutrition"
+                  },
+                  {
+                    "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+                    "label": "Severe acute malnutrition"
+                  },
+                  {
+                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "label": "Overweight"
+                  },
+                  {
+                    "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
+                    "label": "Obesity"
+                  }
+                ]
+              },
+              "id": "bmiCategorization",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age<18 || isEmpty(bmi)"
+              }
+            },
             {
               "label": "LMP:",
               "type": "obs",
@@ -1084,17 +1080,15 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "9806572c-0225-4b17-b21b-a0f44f9d07f0",
-               
+
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
-                    
                   },
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
-                    
                   }
                 ]
               },
@@ -1157,5 +1151,4 @@
       ]
     }
   ]
- 
 }

@@ -3270,7 +3270,7 @@
               }
             },
             {
-              "label": "Patient Outcome ",
+              "label": "Patient outcome:",
               "type": "obs",
               "id": "outcomePatient",
               "questionOptions": {
@@ -3279,7 +3279,7 @@
                 "answers": [
                   {
                     "concept": "48155468-0e21-401a-87f5-d037ae0e8db0",
-                    "label": "Released Home"
+                    "label": "Released home"
                   },
                   {
                     "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
@@ -3322,7 +3322,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(outcomePatient) || outcomePatient !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
               }
             },
 
