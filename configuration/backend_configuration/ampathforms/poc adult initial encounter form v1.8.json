@@ -1,7 +1,13 @@
 {
-  "name": "AMPATH POC Adult Initial Encounter Form v1.5",
+  "name": "AMPATH POC Adult Initial Encounter Form v1.8",
   "uuid": "xxxx",
+  "description": "A form for adult Initial clients.",
+  "version": "1.8",
+  "published": true,
+  "retired": false,
+  "encounter": "ADULTINITIAL",
   "processor": "EncounterFormProcessor",
+  "encounterType": "8d5b27bc-c2cc-11de-8d13-0010c6dffd0f",
   "referencedForms": [],
   "pages": [
     {

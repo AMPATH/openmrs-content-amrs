@@ -1,7 +1,14 @@
 {
   "name": "POC Adult Return Visit Form v2.1",
-  "uuid": "xxxx",
+  "description": "Outpatient Adult Return Visit.",
+  "version": "2.1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "ADULTRETURN",
   "processor": "EncounterFormProcessor",
+  "encounterType": "8d5b2be0-c2cc-11de-8d13-0010c6dffd0f",
+  "referencedForms": [],
   "pages": [
     {
       "label": "Encounter Details",
