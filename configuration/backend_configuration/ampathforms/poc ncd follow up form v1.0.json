@@ -1271,6 +1271,33 @@
                 "buttonLabel": "Add appointments",
                 "workspaceName": "appointments-form-workspace"
               }
+            },
+            {
+              "label": "Return to clinic date:",
+              "type": "obs",
+              "required": "false",
+              "id": "rtc",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [
+                  15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330,
+                  360
+                ]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+                
+                
+              ]
             }
           ]
         }
