@@ -3,7 +3,7 @@
   "description": "Outpatient Adult Return Visit.",
   "version": "2.1",
   "published": true,
-  "uuid": "",
+  "uuid": "f6b22154-7df7-38a4-96bc-f457be0ae823",
   "retired": false,
   "encounter": "ADULTRETURN",
   "processor": "EncounterFormProcessor",
@@ -7832,7 +7832,7 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-			{
+            {
               "label": "Hypertension:",
               "type": "obs",
               "id": "htnType",
@@ -7854,7 +7854,7 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-           
+
             {
               "type": "obsGroup",
               "label": "Mental health drugs started, detailed",
