@@ -1,0 +1,927 @@
+{
+  "name": "POC Nutrition Assessment Form v1.0",
+  "description": "Nutrition Form",
+  "version": "1.0",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "NUTRITIONENCOUNTER",
+  "encounterType": "3cd9dd0a-a5d1-4482-9f45-a0fea4f5e556",
+  "pages": [
+    {
+      "label": "Visit Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Nutritional Assessment",
+      "sections": [
+        {
+          "label": "Nutrition Health Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit type:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                   {
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                    "label": "New visit"
+                  },
+                  {
+                    "concept": "244b67bf-da2d-4009-9bc9-91a52a92defe",
+                    "label": "Revisit"
+                  },
+                  {
+                    "concept": "97772927-7aa2-4c30-be98-85183e4b0efe",
+                    "label": "Referred from other facilites"
+                  }
+                ]
+              },
+              "id": "visitScheduled",
+              "required": "true"
+            },
+            {
+              "label": "Facility Name",
+              "type": "obs",
+              "id": "otheRfaCility",
+              "questionOptions": {
+                "concept": "99f8ac81-cea1-43eb-88fb-29a9ea2d77cf",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitScheduled !== '97772927-7aa2-4c30-be98-85183e4b0efe'"
+              }
+            },
+            {
+              "label": "Patient Pregnant/Lactating",
+              "type": "obs",
+              "id": "peGsTaTus",
+              "required": "true",
+              "questionOptions": {
+                "concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89d109c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "aa9895bc-1971-4926-b7a3-67b5fba1b2d5",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "Not Applicable"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15 || sex !== 'F'"
+              }
+            },
+            {
+              "label": "Serostatus",
+              "type": "obs",
+              "id": "sErOsTaTus",
+              "required": "true",
+              "questionOptions": {
+                "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Patient on ARVs",
+              "type": "obs",
+              "id": "paTonARVs",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a89ae254-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(sErOsTaTus) || sErOsTaTus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Coexisiting medical condition:",
+              "type": "obs",
+              "id": "exMedsCond",
+              "questionOptions": {
+                "concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a890a96a-1350-11df-a1f1-0026b9348838",
+                    "label": "TB",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a893436e-1350-11df-a1f1-0026b9348838",
+                    "label": "Diabetes",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8986880-1350-11df-a1f1-0026b9348838",
+                    "label": "Hypertension",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others (Specify)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Other: (Specify)",
+              "type": "obs",
+              "id": "SpecifYexMedsCond",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(exMedsCond) || arrayContains(exMedsCond, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Patient has edema:",
+              "type": "obs",
+              "id": "pEdeMa",
+              "questionOptions": {
+                "concept": "8a0a32df-754e-41a0-b5ae-82f260e37ea1",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Anaemia levels",
+              "type": "obs",
+              "id": "anEamiAleV",
+              "questionOptions": {
+                "concept": "c4d011c3-c7d3-4d76-afb9-138fd71acac3",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not Done"
+                  },
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a89efccc-1350-11df-a1f1-0026b9348838",
+                    "label": "Mild"
+                  },
+                  {
+                    "concept": "a89efdee-1350-11df-a1f1-0026b9348838",
+                    "label": "Moderate"
+                  },
+                  {
+                    "concept": "a89eff1a-1350-11df-a1f1-0026b9348838",
+                    "label": "Severe"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Metabolic Disorders:",
+              "type": "obs",
+              "id": "meTDisorderS",
+              "questionOptions": {
+                "concept": "2572925d-520c-4480-81dd-f268e8e94284",
+                "rendering": "checkbox",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89cee50-1350-11df-a1f1-0026b9348838",
+                    "label": "Lypodystrophy",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "4b42e125-bfe0-45d2-9175-bf1c7b3e11b7",
+                    "label": "Dyslipidemia",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "266957f4-ec02-4754-a2f6-15449f1ddb03",
+                    "label": "Type II Diabetes",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Diagnosis",
+              "id": "DiagNosIS",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "dataSource": "diagnoses",
+                "rank": 1,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Patient's SAM/MAM",
+              "type": "obs",
+              "id": "pSAmAM",
+              "questionOptions": {
+                "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "76ab49de-c5f4-43dc-a368-0274ee834ad3",
+                    "label": "1st Time Diagnosis"
+                  },
+                  {
+                    "concept": "672fb9c6-e457-475b-aa92-b345cf2bf3f5",
+                    "label": "Relapse"
+                  },
+                  {
+                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                    "label": "Re-admission"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Nutrition Intervention",
+      "sections": [
+        {
+          "label": "Nutrition Intervention Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Did the client consent to receive nutrition intervention?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9d9ccb6b-73ae-48dd-83f9-12c782ce6685",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "consentGiven",
+              "required": "true"
+            },
+            {
+              "label": "First 0 - 6 Months",
+              "type": "obs",
+              "id": "fiRstSix",
+              "questionOptions": {
+                "concept": "a898d16c-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a8d9b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Exclusive breastfeeding"
+                  },
+                  {
+                    "concept": "a89ad1ec-1350-11df-a1f1-0026b9348838",
+                    "label": "Exclusive replacement feeding"
+                  },
+                  {
+                    "concept": "a8ae86e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Mixed feeding"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age > 2"
+              }
+            },
+            {
+              "label": "6 - 12 Months",
+              "type": "obs",
+              "id": "fiRsttWelVe",
+              "questionOptions": {
+                "concept": "a89abee6-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89cca10-1350-11df-a1f1-0026b9348838",
+                    "label": "Breastfeeding"
+                  },
+                  {
+                    "concept": "0509988e-c7ef-4ecd-9bf5-2f84e941a82f",
+                    "label": "Not Breastfeeding"
+                  },
+                  {
+                    "concept": "11fe7789-9dd6-44ab-903a-e6a9a99feaf8",
+                    "label": "Not Known"
+                  },
+                  {
+                    "concept": "39213beb-4d3d-493a-ad5d-40db847a07c3",
+                    "label": "Began complimentary feeding"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age > 2"
+              }
+            },
+            {
+              "label": "Infant and Young child feeding (post natal):",
+              "type": "obs",
+              "id": "poStNatal",
+              "questionOptions": {
+                "concept": "a5479325-25be-425a-8ddc-1b80f9bd2a10",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8aafc70-1350-11df-a1f1-0026b9348838",
+                    "label": "Breastfeeding"
+                  },
+                  {
+                    "concept": "afe7e86e-28c0-4496-89f4-661fc5f0d0ca",
+                    "label": "Replacement feeding"
+                  },
+                  {
+                    "concept": "39213beb-4d3d-493a-ad5d-40db847a07c3",
+                    "label": "Complimentary feeding"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age > 2"
+              }
+            },
+            {
+              "label": "Maternal Nutrition:",
+              "type": "obs",
+              "id": "mateRnaLnUt",
+              "questionOptions": {
+                "concept": "1362a7cc-1d54-4881-9b33-cf622c07e698",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "de932209-ed00-4191-855f-2d3ca4f819fb",
+                    "label": "Pre-natal"
+                  },
+                  {
+                    "concept": "ab8f6fc4-7762-403e-8b2a-98cba34054d5",
+                    "label": "Post Natal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 10 || sex !== 'F'"
+              }
+            },
+            {
+              "label": "Critical nutrition practices:",
+              "type": "obs",
+              "id": "critiQalNutrion",
+              "questionOptions": {
+                "concept": "8e77cd98-ea1f-42ca-861b-fff968a9ad32",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "42c0032e-e404-4e64-9564-06cc1473d5d0",
+                    "label": "Nutrition counselling",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+                    "label": "Dietary/Energy needs",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "5089194e-2c8a-4f28-baf6-72d10f0a98a5",
+                    "label": "Sanitation",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "f7b861c9-33cb-40d0-9495-7ec6113d988f",
+                    "label": "Positive living behaviour",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "d7f24e71-36ce-4766-9348-239a7838ed52",
+                    "label": "Exercise",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "06124c37-007d-4b94-a24d-ae04cc06ee44",
+                    "label": "Safe drinking water",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "587ac48b-2837-40d6-83b4-d75476eae9c4",
+                    "label": "Prompt treatment for opportunistic Infections",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "c6f38251-5b52-489c-854e-ec2d3994a6cd",
+                    "label": "Drug food interactions side effects",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Therapeutic foods",
+              "type": "obs",
+              "id": "prActNutrion",
+              "required": "true",
+              "questionOptions": {
+                "concept": "3854c254-89d8-46c9-b671-5226613223d4",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "297391f9-a070-4268-9379-a4ca2f8c1721",
+                    "label": "RUTF",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "6d58c121-6176-4107-b3ce-cdbff7361c24",
+                    "label": "F-75",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "e9b84640-615b-4f3d-bc4c-6603b69c52cc",
+                    "label": "F-100",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "f342fab8-23d9-4fb7-8187-a67449cd4813",
+                    "label": "Resomal",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Other (Specify)",
+              "type": "obs",
+              "id": "specifyNutFoods",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(prActNutrion, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Supplemental Foods:",
+              "type": "obs",
+              "id": "suppFooDs",
+              "questionOptions": {
+                "concept": "47c21d71-1ba8-4d50-8898-fc31c4b162a4",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "092412d7-15f7-4f0a-b52f-e16e391f8ba2",
+                    "label": "FBF",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "96f88d61-0a7c-4026-8720-fee91b1b4f35",
+                    "label": "CSB",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "297391f9-a070-4268-9379-a4ca2f8c1721",
+                    "label": "RUSF",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a4cf50d6-4947-486e-9c0e-870dd12e1b5a",
+                    "label": "Liquid nutrition supplements",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Other (Specify)",
+              "type": "obs",
+              "id": "specifySuppFoods",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(suppFooDs, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Micronutrients:",
+              "type": "obs",
+              "id": "micRoFooDs",
+              "questionOptions": {
+                "concept": "54f50b94-6cbe-45df-b9cb-b529eaf1f1b1",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8f53762-bc6f-4385-bbc8-41aba4294b2d",
+                    "label": "Vitamin A",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a897cfd8-1350-11df-a1f1-0026b9348838",
+                    "label": "B6",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89541d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Multi-vitamins",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "c36c2ec2-3f71-40ea-b568-7b19dc9dde1e",
+                    "label": "Iron-folate",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "abd5fbcd-2dd2-41d4-92b1-266ec1a1869d",
+                    "label": "Zinc",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "062c84df-f131-40f7-87da-0e8f8fcc7900",
+                    "label": "Multiple Micronutrients",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "consentGiven !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Other (Specify)",
+              "type": "obs",
+              "id": "specifymiCroFoods",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(micRoFooDs, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Nutritional Outcome",
+      "sections": [
+        {
+          "label": "Nutrition Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Please state the current status of continuing SAM/MAM Patients:",
+              "type": "obs",
+              "id": "caRdStatUs",
+              "questionOptions": {
+                "concept": "3a6d13ec-0765-4de3-a538-2ffad63ab082",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "5544AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Gaining Weight"
+                  },
+                  {
+                    "concept": "832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Losing Weight"
+                  },
+                  {
+                    "concept": "128378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Static Weight"
+                  },
+                  {
+                    "concept": "159791AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Cured"
+                  },
+                  {
+                    "concept": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Discharged"
+                  },
+                  {
+                    "concept": "163484AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Refused Nutrition Support"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Referral and Transfers:",
+              "type": "obs",
+              "id": "referStatUs",
+              "questionOptions": {
+                "concept": "1788AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Refer for admission"
+                  },
+                  {
+                    "concept": "164407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Referral for other clinics"
+                  },
+                  {
+                    "concept": "163316AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Referral for livelihood support"
+                  },
+                  {
+                    "concept": "159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Transferred Out"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Criteria for admission",
+              "type": "obs",
+              "id": "criticAds",
+              "questionOptions": {
+                "concept": "167381AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "1362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Edema +"
+                  },
+                  {
+                    "concept": "1363AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Edema ++"
+                  },
+                  {
+                    "concept": "1364AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Edema +++"
+                  },
+                  {
+                    "concept": "1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "MUAC"
+                  },
+                  {
+                    "concept": "162584AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "WHZ"
+                  },
+                  {
+                    "concept": "1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "BMI for Age"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "referStatUs !== '5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Type of admission",
+              "type": "obs",
+              "id": "typEAddi",
+              "questionOptions": {
+                "concept": "162477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "164144AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "New"
+                  },
+                  {
+                    "concept": "d5ea1533-7346-4e0b-8626-9bff6cd183b2",
+                    "label": "Re-Admission"
+                  },
+                  {
+                    "concept": "160033AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Relapse"
+                  },
+                  {
+                    "concept": "160031AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Returned Defaulter"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "referStatUs !== '5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Next Appointment Date",
+              "required": false,
+              "id": "appointmentWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add appointments",
+                "workspaceName": "appointments-form-workspace"
+              }
+            },
+            {
+              "label": "Cadre",
+              "type": "obs",
+              "id": "DesGniTionCadre",
+              "questionOptions": {
+                "concept": "5619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "c23d3224-2218-4007-8f22-e1f3d5a8e58a",
+                    "label": "Nutritionist"
+                  },
+                  {
+                    "concept": "1577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Nurse"
+                  },
+                  {
+                    "concept": "162591AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Doctor"
+                  },
+                  {
+                    "concept": "1574AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Clinical Officer"
+                  },
+                  {
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Others"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Other (Specify)",
+              "type": "obs",
+              "id": "specifyDesGate",
+              "questionOptions": {
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "DesGniTionCadre !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Provider's Name:",
+              "type": "encounterProvider",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "ProviderSnAme",
+              "hide": {
+                "hideWhenExpression": "isEmpty(DesGniTionCadre)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
+}

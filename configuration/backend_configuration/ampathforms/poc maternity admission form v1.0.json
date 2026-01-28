@@ -540,11 +540,11 @@
           ]
         },
         {
-          "label": "Patner Testing:",
+          "label": "Patner Testing",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Has the client's partner been tested for HIV?:",
+              "label": "Has the client's partner been tested for HIV?",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
