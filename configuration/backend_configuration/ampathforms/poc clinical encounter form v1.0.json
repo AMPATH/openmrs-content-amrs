@@ -1370,7 +1370,7 @@
               "id": "pregnancyComplications",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "158dfa2a2-5302-405f-9abe-90b0c564970d",
+                "concept": "71c4a177-ee57-4cee-b2dc-57edf2269119",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1404,7 +1404,7 @@
               "id": "nedicationpregnancyComplications",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "",
+                "concept": "fca74b3e-5eeb-43f7-b50a-6fbaff934ef3",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
