@@ -84,7 +84,7 @@
               "required": "true"
             },
             {
-              "label": "Facility Name",
+              "label": "Facility name:",
               "type": "obs",
               "id": "otheRfaCility",
               "questionOptions": {
@@ -97,7 +97,7 @@
               }
             },
             {
-              "label": "Patient Pregnant/Lactating",
+              "label": "Patient Pregnant/Lactating:",
               "type": "obs",
               "id": "peGsTaTus",
               "required": "true",
@@ -124,7 +124,7 @@
               }
             },
             {
-              "label": "Serostatus",
+              "label": "Serostatus:",
               "type": "obs",
               "id": "sErOsTaTus",
               "required": "true",
@@ -148,7 +148,7 @@
               }
             },
             {
-              "label": "Patient on ARVs",
+              "label": "Patient on ARVs:",
               "type": "obs",
               "id": "paTonARVs",
               "required": "true",
@@ -238,7 +238,7 @@
               }
             },
             {
-              "label": "Anaemia levels",
+              "label": "Anaemia levels:",
               "type": "obs",
               "id": "anEamiAleV",
               "questionOptions": {
@@ -247,7 +247,7 @@
                 "answers": [
                   {
                     "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Not Done"
+                    "label": "Not done"
                   },
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
@@ -269,12 +269,12 @@
               }
             },
             {
-              "label": "Metabolic Disorders:",
+              "label": "Metabolic disorders:",
               "type": "obs",
               "id": "meTDisorderS",
               "questionOptions": {
                 "concept": "2572925d-520c-4480-81dd-f268e8e94284",
-                "rendering": "checkbox",
+                "rendering": "multiCheckbox",
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
@@ -299,7 +299,7 @@
               }
             },
             {
-              "label": "Diagnosis",
+              "label": "Diagnosis:",
               "id": "DiagNosIS",
               "type": "diagnosis",
               "questionOptions": {
@@ -315,7 +315,7 @@
               }
             },
             {
-              "label": "Patient's SAM/MAM",
+              "label": "Patient's SAM/MAM:",
               "type": "obs",
               "id": "pSAmAM",
               "questionOptions": {
@@ -369,7 +369,7 @@
               "required": "true"
             },
             {
-              "label": "First 0 - 6 Months",
+              "label": "First 0 - 6 months:",
               "type": "obs",
               "id": "fiRstSix",
               "questionOptions": {
@@ -395,7 +395,7 @@
               }
             },
             {
-              "label": "6 - 12 Months",
+              "label": "6 - 12 months:",
               "type": "obs",
               "id": "fiRsttWelVe",
               "questionOptions": {
@@ -451,7 +451,7 @@
               }
             },
             {
-              "label": "Maternal Nutrition:",
+              "label": "Maternal nutrition:",
               "type": "obs",
               "id": "mateRnaLnUt",
               "questionOptions": {
@@ -516,7 +516,7 @@
                   },
                   {
                     "concept": "587ac48b-2837-40d6-83b4-d75476eae9c4",
-                    "label": "Prompt treatment for opportunistic Infections",
+                    "label": "Prompt treatment for opportunistic infections",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
@@ -531,7 +531,7 @@
               }
             },
             {
-              "label": "Therapeutic foods",
+              "label": "Therapeutic foods:",
               "type": "obs",
               "id": "prActNutrion",
               "required": "true",
@@ -575,7 +575,7 @@
               }
             },
             {
-              "label": "Other (Specify)",
+              "label": "Other (Specify):",
               "type": "obs",
               "id": "specifyNutFoods",
               "questionOptions": {
@@ -588,7 +588,7 @@
               }
             },
             {
-              "label": "Supplemental Foods:",
+              "label": "Supplemental foods:",
               "type": "obs",
               "id": "suppFooDs",
               "questionOptions": {
@@ -631,7 +631,7 @@
               }
             },
             {
-              "label": "Other (Specify)",
+              "label": "Other (Specify):",
               "type": "obs",
               "id": "specifySuppFoods",
               "questionOptions": {
@@ -682,7 +682,7 @@
                   },
                   {
                     "concept": "062c84df-f131-40f7-87da-0e8f8fcc7900",
-                    "label": "Multiple Micronutrients",
+                    "label": "Multiple micronutrients",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
@@ -697,7 +697,7 @@
               }
             },
             {
-              "label": "Other (Specify)",
+              "label": "Other (Specify):",
               "type": "obs",
               "id": "specifymiCroFoods",
               "questionOptions": {
@@ -721,93 +721,93 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Please state the current status of continuing SAM/MAM Patients:",
+              "label": "Please state the current status of continuing SAM/MAM patients:",
               "type": "obs",
               "id": "caRdStatUs",
               "questionOptions": {
-                "concept": "3a6d13ec-0765-4de3-a538-2ffad63ab082",
+                "concept": "f3a13593-416b-405f-89e0-9152bd7cce95",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "5544AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Gaining Weight"
+                    "concept": "a8a8ea5c-1350-11df-a1f1-0026b9348838",
+                    "label": "Gaining weight"
                   },
                   {
-                    "concept": "832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Losing Weight"
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Losing weight"
                   },
                   {
-                    "concept": "128378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Static Weight"
+                    "concept": "5c76568b-e999-4663-8668-e1b4f7996e0d",
+                    "label": "Static weight"
                   },
                   {
-                    "concept": "159791AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8afe014-1350-11df-a1f1-0026b9348838",
                     "label": "Cured"
                   },
                   {
-                    "concept": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "48155468-0e21-401a-87f5-d037ae0e8db0",
                     "label": "Discharged"
                   },
                   {
-                    "concept": "163484AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89e3274-1350-11df-a1f1-0026b9348838",
                     "label": "Refused Nutrition Support"
                   }
                 ]
               }
             },
             {
-              "label": "Referral and Transfers:",
+              "label": "Referral and transfers:",
               "type": "obs",
               "id": "referStatUs",
               "questionOptions": {
-                "concept": "1788AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a47396-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
                     "label": "Refer for admission"
                   },
                   {
-                    "concept": "164407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
                     "label": "Referral for other clinics"
                   },
                   {
-                    "concept": "163316AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "e9750b60-f3c3-4bf4-a1df-81558fbb47d0",
                     "label": "Referral for livelihood support"
                   },
                   {
-                    "concept": "159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "5520f234-258e-49f0-97ab-701b98fab608",
                     "label": "Transferred Out"
                   }
                 ]
               }
             },
             {
-              "label": "Criteria for admission",
+              "label": "Criteria for admission:",
               "type": "obs",
               "id": "criticAds",
               "questionOptions": {
-                "concept": "167381AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a07a48-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "1362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
                     "label": "Edema +"
                   },
                   {
-                    "concept": "1363AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a45bd6-1350-11df-a1f1-0026b9348838",
                     "label": "Edema ++"
                   },
                   {
-                    "concept": "1364AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a45ca8-1350-11df-a1f1-0026b9348838",
                     "label": "Edema +++"
                   },
                   {
-                    "concept": "1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
                     "label": "MUAC"
                   },
                   {
-                    "concept": "162584AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "f15e19b3-6522-4dbe-92ed-552012e050a9",
                     "label": "WHZ"
                   },
                   {
@@ -817,41 +817,41 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "referStatUs !== '5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "referStatUs !== 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
-              "label": "Type of admission",
+              "label": "Type of admission:",
               "type": "obs",
               "id": "typEAddi",
               "questionOptions": {
-                "concept": "162477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a89eea66-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "164144AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "5c1e610c-36f4-456c-be9b-11c106591f7f",
                     "label": "New"
                   },
                   {
-                    "concept": "d5ea1533-7346-4e0b-8626-9bff6cd183b2",
+                    "concept": "4e704740-b85b-4edb-a5bf-6707878688b8",
                     "label": "Re-Admission"
                   },
                   {
-                    "concept": "160033AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "672fb9c6-e457-475b-aa92-b345cf2bf3f5",
                     "label": "Relapse"
                   },
                   {
-                    "concept": "160031AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89e3bf2-1350-11df-a1f1-0026b9348838",
                     "label": "Returned Defaulter"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "referStatUs !== '5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "referStatUs !== 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
-              "label": "Next Appointment Date",
+              "label": "Next appointment date:",
               "required": false,
               "id": "appointmentWorkspaceLauncher",
               "questionOptions": {
@@ -861,31 +861,31 @@
               }
             },
             {
-              "label": "Cadre",
+              "label": "Cadre:",
               "type": "obs",
               "id": "DesGniTionCadre",
               "questionOptions": {
-                "concept": "5619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
+                "concept": "5f4b48df-bacc-4c04-8988-10fa2a572d8e",
+                "rendering": "select",
                 "answers": [
                   {
-                    "concept": "c23d3224-2218-4007-8f22-e1f3d5a8e58a",
+                    "concept": "385aa16d-3af8-4fc8-b490-f861bc1da684",
                     "label": "Nutritionist"
                   },
                   {
-                    "concept": "1577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8b02f92-1350-11df-a1f1-0026b9348838",
                     "label": "Nurse"
                   },
                   {
-                    "concept": "162591AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
                     "label": "Doctor"
                   },
                   {
-                    "concept": "1574AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "bc640b5f-43a7-4a9d-afac-1a5cdfd5ba45",
                     "label": "Clinical Officer"
                   },
                   {
-                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Others"
                   }
                 ]
@@ -895,20 +895,20 @@
               }
             },
             {
-              "label": "Other (Specify)",
+              "label": "Other (Specify):",
               "type": "obs",
               "id": "specifyDesGate",
               "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "DesGniTionCadre !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "DesGniTionCadre !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
-              "label": "Provider's Name:",
+              "label": "Provider's name:",
               "type": "encounterProvider",
               "questionOptions": {
                 "rendering": "ui-select-extended"
