@@ -987,7 +987,7 @@
 									}
 								]
 							},
-							"id": "finalResult",
+							"id": "finalResults",
 							"validators": [],
 							"hide": {
 								"hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"

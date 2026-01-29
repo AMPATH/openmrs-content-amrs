@@ -1050,7 +1050,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1182,7 +1182,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1267,7 +1267,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1286,7 +1286,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1309,7 +1309,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1346,7 +1346,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -1367,7 +1367,7 @@
 								"rendering": "repeating"
 							},
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"questions": [
 								{
@@ -1381,7 +1381,7 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									}
 								},
 								{
@@ -1452,7 +1452,7 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									}
 								},
 								{
@@ -1479,7 +1479,7 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									}
 								},
 								{
@@ -1506,7 +1506,7 @@
 									},
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									}
 								}
 							],
@@ -1527,7 +1527,7 @@
 								"attributeType": "573af09d-4c3e-47c2-9a9d-4d78aff35312"
 							},
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -1597,7 +1597,7 @@
 								"rendering": "select"
 							},
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"type": "personAttribute"
 						}
@@ -2020,7 +2020,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2043,7 +2043,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2097,7 +2097,7 @@
 								"rendering": "multiCheckbox"
 							},
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2401,7 +2401,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2737,7 +2737,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2893,7 +2893,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -3162,7 +3162,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -3252,7 +3252,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -3292,7 +3292,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -3324,7 +3324,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -3652,7 +3652,7 @@
 										}
 									],
 									"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									}
 								}
 							]
@@ -4438,7 +4438,7 @@
 							},
 							"type": "obs",
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -5385,7 +5385,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__Ms7Gpssop"
 						},
@@ -5412,7 +5412,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__zznK4ErIo"
 						},
@@ -5451,7 +5451,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__HFC10oK4q"
 						},
@@ -5474,7 +5474,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__pGoMzn3Jy"
 						},
@@ -5533,7 +5533,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__oDFtKp2Gw"
 						},
@@ -5588,7 +5588,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__9IxLyz7vJ"
 						},
@@ -5627,7 +5627,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__KIMtMs79r"
 						},
@@ -5654,7 +5654,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__EELvpKEvC"
 						},
@@ -5689,7 +5689,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__wI6vzGJsw"
 						},
@@ -5712,7 +5712,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__otutIFJEq"
 						},
@@ -5747,7 +5747,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__6KDDGMrHL"
 						},
@@ -5778,7 +5778,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "__MGnswLqEG"
 						}
@@ -5798,7 +5798,7 @@
 								"rows": 15
 							},
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -6416,7 +6416,7 @@
 								}
 							},
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"label": "CD4 Count:",
 							"validators": [
@@ -6462,7 +6462,7 @@
 							"label": "CD4 test qualitative (VISITECT):",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -6498,7 +6498,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -6534,7 +6534,7 @@
 							},
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -7419,7 +7419,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -7440,7 +7440,7 @@
 							"validators": [],
 							"id": "staging",
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -7531,7 +7531,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -8142,7 +8142,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -8366,7 +8366,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -8545,7 +8545,7 @@
 								"rendering": "group"
 							},
 							"hide": {
-								"hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"questions": [
 								{
@@ -8609,7 +8609,7 @@
 										}
 									],
 									"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									}
 								}
 							],
@@ -9035,7 +9035,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -9091,7 +9091,7 @@
 							],
 							"id": "cryptoPlan",
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -9163,7 +9163,7 @@
 							],
 							"id": "pcpPlan",
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -9206,7 +9206,7 @@
 							],
 							"id": "toxoPlan",
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -9249,7 +9249,7 @@
 							],
 							"id": "kaposiPlan",
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						}
 					]
@@ -9280,7 +9280,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "aztDispensed"
 						},
@@ -9307,7 +9307,7 @@
 							},
 							"id": "nvpDispensed",
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -9908,7 +9908,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									},
 							"id": "phdpServices"
 						}
@@ -10093,7 +10093,7 @@
 									"type": "obs",
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									}
 								},
 								{
@@ -10147,7 +10147,7 @@
 								"rendering": "repeating"
 							},
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"questions": [
 								{
@@ -10275,7 +10275,7 @@
 									"type": "obs",
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 									}
 								},
 								{
@@ -10334,7 +10334,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
 							},
 							"id": "patientCategorization"
 						}
