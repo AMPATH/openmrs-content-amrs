@@ -7810,7 +7810,6 @@
               ],
               "id": "__qxL9JJy92"
             },
-           
 
             {
               "type": "obsGroup",
@@ -8041,14 +8040,14 @@
         }
       ]
     },
-{
+    {
       "label": "NCD Section",
       "sections": [
         {
           "label": "Disease Type",
           "isExpanded": "true",
           "questions": [
-             {
+            {
               "label": "Diabetes:",
               "type": "obs",
               "id": "dmType",
@@ -8070,29 +8069,8 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
+
             {
-              "label": "Hypertension:",
-              "type": "obs",
-              "id": "htnType",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "e614eb89-bbb6-4b7e-b9cd-dcecf83983ef",
-                "answers": [
-                  {
-                    "concept": "3f9c143a-07eb-45d3-8b32-229179f55b82",
-                    "label": "New HTN patient"
-                  },
-                  {
-                    "concept": "ffdcb89d-4794-43b1-8c78-1d99612f83e1",
-                    "label": "Known HTN patient"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
-              }
-            },
- {
               "label": "Type of diabetes:",
               "type": "obs",
               "id": "diaType",
@@ -8118,11 +8096,11 @@
                   }
                 ]
               },
-             "hide": {
+              "hide": {
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-            
+
             {
               "label": "Date of diagnosis:",
               "type": "obs",
@@ -8200,7 +8178,8 @@
               "questionOptions": {
                 "concept": "9ff2aae1-c03e-405e-bd11-39e06228a1a7",
                 "rendering": "date"
-              },"validators": [
+              },
+              "validators": [
                 {
                   "type": "date",
                   "allowFutureDates": "false"
@@ -8209,35 +8188,12 @@
               "hide": {
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
-            },
-            
-            {
-              "label": "Type of hypertension:",
-              "type": "obs",
-              "id": "typeHypco",
-              "questionOptions": {
-                "concept": "9deaa3dd-1381-4b2d-b16e-1b7097530d28",
-                "rendering": "text"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
-              }
-            },
-            {
-              "label": "Type of diabetes:",
-              "type": "obs",
-              "id": "typeDiabtsco",
-              "questionOptions": {
-                "concept": "6f8ef247-a73f-421c-9fcb-ed5c3260b8aa",
-                "rendering": "text"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
-              }
             }
+
+            
           ]
         },
-         {
+        {
           "label": "Current Lifestyle",
           "isExpanded": "true",
           "questions": [
@@ -8340,7 +8296,7 @@
             }
           ]
         },
-         {
+        {
           "label": "Complications",
           "isExpanded": "true",
           "questions": [
@@ -8360,44 +8316,44 @@
                   {
                     "concept": "acb3f446-541a-4d53-a1f6-dcafb2cc84b1",
                     "label": "Visual impairment",
-                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a89cf602-1350-11df-a1f1-0026b9348838",
                     "label": "Heart failure",
-                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
                     "label": "Kidney failure(CKD)",
-                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "fa077a35-635e-464e-9caf-9187911d1570",
                     "label": "Diabetic foot ulcer",
-                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "48365a67-f0f9-4d31-9c6e-73d62c152776",
                     "label": "Erectile dysfunction",
-                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
 
                   {
                     "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
                     "label": "Stroke",
-                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "e7516737-706a-4a32-8727-c5add875925f",
                     "label": "Peripheral vascular disease",
-                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
 
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other",
-                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
               },
@@ -8407,7 +8363,7 @@
             }
           ]
         },
-         {
+        {
           "label": "Examinations",
           "isExpanded": "true",
           "questions": [
@@ -8477,7 +8433,7 @@
                   {
                     "concept": "1dbb0b77-81e9-4c56-bdf5-c597222dac84",
                     "label": "Gum disease",
-                     "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                    "disableWhenExpression": "myValue === 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "8bcec322-7112-4f93-adc4-7b78c258dfa2",
@@ -8851,8 +8807,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             }
-
-            
           ]
         }
       ]

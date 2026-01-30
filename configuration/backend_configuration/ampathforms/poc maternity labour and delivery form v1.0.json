@@ -420,7 +420,7 @@
                   },
                   {
                     "concept": "1d5986e2-f858-4f0f-9887-2b19c5a76d32",
-                    "label": "Macerated Still Birth"
+                    "label": "Macerated still birth"
                   }
                 ]
               }
@@ -438,7 +438,7 @@
               "validators": []
             },
             {
-              "label": "Sex",
+              "label": "Sex:",
               "id": "gender",
               "type": "obs",
               "questionOptions": {
@@ -477,7 +477,7 @@
               "validators": []
             },
             {
-              "label": "Kangaroo Mother Care:",
+              "label": "Kangaroo mother care:",
               "id": "kangaroo",
               "questionOptions": {
                 "concept": "8bb313e9-ff98-4126-93e3-dd741572c309",
@@ -537,7 +537,7 @@
               "validators": []
             },
             {
-              "label": "Birth with deformity",
+              "label": "Birth with deformity:",
               "id": "birthDeformity",
               "questionOptions": {
                 "concept": "8c2dd314-41fc-402f-a5db-a8d2c371342d",
@@ -557,7 +557,7 @@
               "validators": []
             },
             {
-              "label": "Indicate type of deformity",
+              "label": "Indicate type of deformity:",
               "id": "deformityType",
               "questionOptions": {
                 "concept": "839a0824-647f-49d0-b137-c35dfe0720af",
