@@ -1,0 +1,451 @@
+{
+  "name": "POC MNCH Immunization Form v1.0",
+  "description": "Outpatient immunization Visit.",
+  "version": "1.0",
+  "published": true,
+  "uuid": "7bdd1e6b-1157-41fb-8daa-994277780b2b",
+  "retired": false,
+  "encounter": "IMMUNIZATIONVISIT",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "39d11cc0-300e-42a0-9b13-03661f45d264",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Immunization",
+      "sections": [
+        {
+          "label": "Immunization",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encDate"
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            },
+            {
+              "label": "Vaccine:",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "a89c9658-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "immunizations",
+              "questions": [
+                {
+                  "label": "Immunization:",
+                  "id": "previousimmAdministered",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a898d0a4-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a89840bc-1350-11df-a1f1-0026b9348838",
+                        "label": "BCG vaccine"
+                      },
+                      {
+                        "concept": "a897de60-1350-11df-a1f1-0026b9348838",
+                        "label": "Oral polio vaccine (OPV)"
+                      },
+                      {
+                        "concept": "79c722a0-17cf-4aca-bdec-fee0810bc5ba",
+                        "label": "Inactivated polio vaccine (IPV)"
+                      },
+                      {
+                        "concept": "a897dcb2-1350-11df-a1f1-0026b9348838",
+                        "label": "DPT/Hep B/Hib"
+                      },
+                      {
+                        "concept": "f60456b4-2797-4f98-8fb5-41830f205427",
+                        "label": "Pneumococcal conjugate vaccine (PCV 10)"
+                      },
+                      {
+                        "concept": "b3a3a3da-48bb-48f9-b9d5-154f08c4fad3",
+                        "label": "Rotavirus "
+                      },
+                      {
+                        "concept": "8ce0c11b-26d8-4341-b381-5ec8ce1c4719",
+                        "label": "Measles/Rubella"
+                      },
+                      {
+                        "concept": "a8acb5f6-1350-11df-a1f1-0026b9348838",
+                        "label": "Yellow fever"
+                      },
+                      {
+                        "concept": "a8909844-1350-11df-a1f1-0026b9348838",
+                        "label": "Measles at 6 months"
+                      }
+                    ]
+                  },
+                  "type": "obs"
+                },
+                {
+                  "label": "Sequence no:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "bb1e6b95-0d35-4065-80cc-d774d1c9b964",
+                    "max": "",
+                    "min": ""
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "arrayContainsAny(['a89840bc-1350-11df-a1f1-0026b9348838','a897de60-1350-11df-a1f1-0026b9348838','79c722a0-17cf-4aca-bdec-fee0810bc5ba','a8acb5f6-1350-11df-a1f1-0026b9348838','a8909844-1350-11df-a1f1-0026b9348838'], previousimmAdministered)"
+                  },
+                  "id": "sequenceNumber"
+                },
+                {
+                  "label": "Batch no:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "e6c14692-638d-4c20-93e1-ca0b94174714",
+                    "max": "",
+                    "min": ""
+                  },
+                  "id": "lotNumber"
+                },
+                {
+                  "label": "Expiry date:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                    "weeksList": ""
+                  },
+                  "id": "expiryDate"
+                },
+                {
+                  "label": "Dose:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "db4a2478-1a3b-4c46-9769-a500c64ae5ba",
+                    "max": "",
+                    "min": ""
+                  },
+                  "id": "medicationDispensed"
+                },
+                {
+                  "label": "Unit:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "8e140ec8-bee9-49ae-9bc4-76d3d743896c"
+                  },
+                  "id": "medDose"
+                },
+                {
+                  "label": "Date given:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4",
+                    "weeksList": "",
+                    "conceptMappings": [
+                      {
+                        "type": "MCL/CIEL",
+                        "value": "1410"
+                      }
+                    ]
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                      "message": "Date given should not be greater than the encounter date."
+                    }
+                  ],
+                  "id": "dateGiven"
+                },
+                {
+                  "label": "Date of next visit:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                    "weeksList": ""
+                  },
+                  "id": "nextVisit",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment()).isAfter((new moment(myValue)), 'day')",
+                      "message": "Next visit date should be a future date"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "BCG scar checked?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "52b124ab-e402-47cc-992b-890d4303f0c0",
+                "conceptMappings": [
+                  {
+                    "type": "MCL/CIEL",
+                    "value": "160265"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "bcgScar"
+            },
+            {
+              "label": "Date checked:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4",
+                "weeksList": "",
+                "conceptMappings": [
+                  {
+                    "type": "MCL/CIEL",
+                    "value": "1410"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDate": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                  "message": "Date should not be greater than the encounter date."
+                }
+              ],
+              "id": "dateGiven"
+            },
+            {
+              "label": "Date BCG repeated:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "bb85532e-8f7e-476f-81d7-5580e0385852",
+                "weeksList": "",
+                "conceptMappings": [
+                  {
+                    "type": "MCL/CIEL",
+                    "value": "160753"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDate": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                  "message": "Date should not be greater than the encounter date."
+                }
+              ],
+              "id": "dateRepeated"
+            }
+          ]
+        },
+        {
+          "label": "Vitamin A Capsules From 6 Months",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Vitamin A capsules:",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "a8a0654e-1350-11df-a1f1-0026b9348838"
+              },
+              "questions": [
+                {
+                  "label": "Drug:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "drug",
+                    "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
+                    "conceptMappings": [
+                      {
+                        "type": "MCL/CIEL",
+                        "value": "1282"
+                      },
+                      {
+                        "type": "local",
+                        "value": "1895"
+                      }
+                    ]
+                  },
+                  "id": "drug"
+                },
+                {
+                  "label": "Sequence no:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "bb1e6b95-0d35-4065-80cc-d774d1c9b964",
+                    "max": "",
+                    "min": ""
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "arrayContainsAny(['a89840bc-1350-11df-a1f1-0026b9348838','a897de60-1350-11df-a1f1-0026b9348838','79c722a0-17cf-4aca-bdec-fee0810bc5ba','a8acb5f6-1350-11df-a1f1-0026b9348838','a8909844-1350-11df-a1f1-0026b9348838'], previousimmAdministered)"
+                  },
+                  "id": "sequenceNumber"
+                },
+                {
+                  "label": "Vitamin A given:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "7f4915e0-87c0-4f9f-8c81-0ad45fd42b23",
+                    "conceptMappings": [
+                      {
+                        "type": "MCL/CIEL",
+                        "value": "161534"
+                      }
+                    ],
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  },
+                  "id": "vitA"
+                },
+                {
+                  "label": "Date given:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4"
+                  },
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDate": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                      "message": "Date should not be greater than the encounter date."
+                    }
+                  ],
+                  "id": "dateGiven"
+                },
+                {
+                  "label": "Date of next visit:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                    "weeksList": ""
+                  },
+                  "id": "nextVisit",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment()).isAfter((new moment(myValue)), 'day')",
+                      "message": "Next visit date should be a future date"
+                    }
+                  ]
+                }
+              ],
+              "id": "__Ez6LMCquH"
+            },
+            {
+              "label": "Fully immunized child:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a45988-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "type": "local",
+                    "value": "2300"
+                  },
+                  {
+                    "type": "MCL/CIEL",
+                    "value": "164134"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "immunizedChild"
+            },
+            {
+              "label": "Date given last vaccine:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "f539fe70-d892-4fad-9d56-968e1ef1796d",
+                "weeksList": "",
+                "conceptMappings": [
+                  {
+                    "type": "MCL/CIEL",
+                    "value": "162585"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDate": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                  "message": "Date should not be greater than the encounter date."
+                }
+              ],
+              "id": "lastVaccine"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
