@@ -2353,7 +2353,7 @@
               }
             },
             {
-              "label": "Type",
+              "label": "Type:",
               "type": "obs",
               "id": "oedemaGrading",
               "questionOptions": {
@@ -2436,7 +2436,7 @@
                 "rendering": "multiCheckbox",
                 "answers": [
                   {
-                    "concept": "1a899f04c-1350-11df-a1f1-0026b9348838",
+                    "concept": "a899f04c-1350-11df-a1f1-0026b9348838",
                     "label": "Abdominal"
                   },
                   {

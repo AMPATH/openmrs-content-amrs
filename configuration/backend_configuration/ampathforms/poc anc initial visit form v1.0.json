@@ -494,11 +494,8 @@
 									{
 										"concept": "fa5a4dd8-60cd-4085-80b6-4aea76809926",
 										"label": "Known positive"
-									},
-									{
-										"concept": "4e704740-b85b-4edb-a5bf-6707878688b8",
-										"label": "Revisit"
 									}
+									
 								],
 								"rendering": "select"
 							},
