@@ -1,5 +1,5 @@
 Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units,
 a89c1ef8-1350-11df-a1f1-0026b9348838,,MCL/CIEL:1267;HL7-MedicationDispenseStatus:Completed,COMPLETED,,,DONE,,,Generic answer to a question.,,,Finding,N/A,,,
-fff6953a-5f4d-4b97-aff1-08c92b9bf660,,,DECLINED,,,REFUSED,,,Generic answer to a question.,,,Misc,N/A
+fff6953a-5f4d-4b97-aff1-08c92b9bf660,,HL7-MedicationDispenseStatus:Declined,DECLINED,,,REFUSED,,,Generic answer to a question.,,,Misc,N/A
 8e7927cd-69c3-4044-904f-4b354f0d2cdb,,HL7-MedicationDispenseStatus:Cancelled,CANCELLED,,,,,,The status of an activity that was not performed.,,,Misc,N/A
 a6af455a-ae0b-40bc-b435-0b5e19a97141,,HL7-MedicationDispenseStatus:on-hold,ON HOLD,,,,,,Status for transiently stopping dosing or dispensing a medication or therapy.,,,Misc,N/A
