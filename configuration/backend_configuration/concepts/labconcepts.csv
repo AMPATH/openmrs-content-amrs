@@ -1,2 +1,3 @@
 Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units,
 0cb778e1-aa83-456f-8099-6b241dbfd647,,,LABORATORY TESTS,,,LAB TESTS,,,This is a labset to collect all test as set members. To be used in o3 which only picks tests that are members to a labset.,,,LabSet,N/A,,,
+193b3ef7-a9bd-47ea-a935-cf4b744355ec,,MCL/CIEL:163620,HELICOBACTOR PYLORI AB PRESENCE IN SERUM BY IMMUNOFLUORESCENCE TEST,,,H PYLORI TEST,,,A lab test to detect the presence of Helicobacter Pylori using immunoflorescence.,,,Test,Coded,a896f3a6-1350-11df-a1f1-0026b9348838;a896d2cc-1350-11df-a1f1-0026b9348838,,

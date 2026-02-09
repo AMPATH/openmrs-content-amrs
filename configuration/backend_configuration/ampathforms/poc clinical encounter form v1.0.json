@@ -1580,7 +1580,7 @@
               "type": "obs",
               "questionOptions": {
                 "rendering": "text",
-                "concept": ""
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
               },
               "id": "milestoneDelayed",
               "hide": {
@@ -1592,7 +1592,7 @@
               "type": "obs",
               "questionOptions": {
                 "rendering": "text",
-                "concept": ""
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
               },
               "id": "milestoneRegressed",
               "hide": {
@@ -1911,7 +1911,7 @@
               "type": "obs",
               "id": "FnotOnFp",
               "questionOptions": {
-                "rendering": "multiCheckboxcheckbox",
+                "rendering": "multiCheckbox",
                 "concept": "88ad5975-4762-4108-a967-072f12f91b0b",
                 "answers": [
                   {
@@ -1928,15 +1928,15 @@
                   },
                   {
                     "concept": "c2ced4af-cb17-4138-b824-e59abeb8171d",
-                    "label": "Health Concerns"
+                    "label": "Health concerns"
                   },
                   {
                     "concept": "a8b03352-1350-11df-a1f1-0026b9348838",
-                    "label": "Religious Prohibition"
+                    "label": "Religious prohibition"
                   },
                   {
                     "concept": "2ae62639-4703-41dc-be8e-afe50640238b",
-                    "label": "Fear of Side Effects"
+                    "label": "Fear of side effects"
                   },
                   {
                     "concept": "a8ad2c20-1350-11df-a1f1-0026b9348838",
