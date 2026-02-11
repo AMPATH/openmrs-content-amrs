@@ -34,14 +34,15 @@
                 },
                 {
                   "id": "admitToLocation",
-                  "type": "encounterLocation",
+                  "label": "Admit to location",
+                  "type": "obs",
                   "required": true,
                   "questionOptions": {
-                    "rendering": "ui-select-extended",
-                    "required": true,
-                    
+                    "rendering": "remote-select",
+                    "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
+
                     "datasource": {
-                      "name": "location_datasource",
+                      "name": "location",
                       "config": {
                         "tag": "Admission Location"
                       }
