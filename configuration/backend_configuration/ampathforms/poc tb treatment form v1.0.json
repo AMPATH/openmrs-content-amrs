@@ -1,0 +1,448 @@
+{
+  "name": "POC TB Treatment Form v1.0.json",
+  "description": "TB Initial Form",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "",
+  "meta": {},
+  "pages": [
+    {
+      "label": "TB Treatment Form",
+      "sections": [
+        {
+          "label": "Visit details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encDate"
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Clinic and Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date start of treatment:",
+              "type": "obs",
+              "id": "dstartoftreatment",
+              "questionOptions": {
+                "concept": "a899e5f2-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              }
+            },
+            {
+              "label": "District:",
+              "type": "obs",
+              "id": "district",
+              "questionOptions": {
+                "concept": "83e7e388-8216-4986-8384-9e9a0b123e77",
+                "rendering": "text"
+              }
+            }
+            
+          ]
+        },
+        {
+          "label": "Patient Referral Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date referred:",
+              "type": "obs",
+              "id": "datereferredby",
+              "questionOptions": {
+                "concept": "1cd286f4-7256-4a56-b90a-6acd8734f9c9",
+                "rendering": "date"
+              }
+            },
+            {
+              "label": "Method of enrollment",
+              "type": "obs",
+              "id": "MethodOfEnrollment",
+              "questionOptions": {
+                "concept": "aad34924-d6e7-4138-a841-0fea9ee4b41f",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a3899a-1350-11df-a1f1-0026b9348838",
+                    "label": "CCC"
+                  },
+                  {
+                    "concept": "b412ae76-4ab4-4d00-800e-bd8d167769e1",
+                    "label": "HIV care clinic"
+                  },
+                  {
+                    "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
+                    "label": "Antenatal/PMTCT clinic"
+                  },
+                  {
+                    "concept": "a8a38b20-1350-11df-a1f1-0026b9348838",
+                    "label": "Private sector"
+                  },
+                  {
+                    "concept": "a8a09a0a-1350-11df-a1f1-0026b9348838",
+                    "label": "STI clinic"
+                  },
+                  {
+                    "concept": "a8a38a62-1350-11df-a1f1-0026b9348838",
+                    "label": "Home based care"
+                  },
+                  {
+                    "concept": "a8a00b4e-1350-11df-a1f1-0026b9348838",
+                    "label": "Community health worker(CHW)"
+                  },
+                  {
+                    "concept": "0ee6e201-24e8-4ac4-b9d2-1680f452958e",
+                    "label": "Self referral"
+                  },
+                  {
+                    "concept": "ecfb120e-1481-414f-9c8b-66fb94f7a861",
+                    "label": "VCT center"
+                  },
+                  {
+                    "concept": "a8a00a90-1350-11df-a1f1-0026b9348838",
+                    "label": "Chemist/pharmacist"
+                  },
+                  {
+                    "concept": "832081a7-80b4-49d7-a649-7a30dc10c6fb",
+                    "label": "Diabetes clinic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Patient Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Body Weight in Kgs",
+              "type": "obs",
+              "id": "BodWeight",
+              "questionOptions": {
+                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "250",
+                "min": "0"
+              }
+            },
+            {
+              "label": "Height in centimeters",
+              "type": "obs",
+              "id": "heiGht",
+              "questionOptions": {
+                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "270",
+                "min": "10"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Treatment Supported Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Treatment supporters name:",
+              "type": "obs",
+              "id": "tSupporterNames",
+              "questionOptions": {
+                "concept": "2b0b8aeb-d023-49cc-84cb-8415e1c4a9cd",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Relation to patient",
+              "type": "obs",
+              "id": "tSupporterRelation",
+              "questionOptions": {
+                "concept": "80b54a43-2c27-4c95-9f1c-da14581a1c8e",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89ebc80-1350-11df-a1f1-0026b9348838",
+                    "label": "PARTNER OR SPOUSE"
+                  },
+                  {
+                    "concept": "a898c32a-1350-11df-a1f1-0026b9348838",
+                    "label": "Grandparent"
+                  },
+                  {
+                    "concept": "a898c262-1350-11df-a1f1-0026b9348838",
+                    "label": "Sibling"
+                  },
+                  {
+                    "concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+                    "label": "Guardian"
+                  },
+                  {
+                    "concept": "a89ebec4-1350-11df-a1f1-0026b9348838",
+                    "label": "Parent"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Address",
+              "type": "obs",
+              "id": "tSupporterAddress",
+              "questionOptions": {
+                "concept": "160641AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Cell Phone",
+              "type": "obs",
+              "id": "treatmentSupportedNumber",
+              "questionOptions": {
+                "concept": "82f3f1dd-a5ba-4be8-9c26-44683043317f",
+                "rendering": "text"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Disease Classification",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Disease classification",
+              "type": "obs",
+              "id": "DiSclassification",
+              "questionOptions": {
+                "concept": "a8a37e1e-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a37d60-1350-11df-a1f1-0026b9348838",
+                    "label": "Extra-Pulmonary TB"
+                  },
+                  {
+                    "concept": "a8909cfe-1350-11df-a1f1-0026b9348838",
+                    "label": "Pulmonary TB"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Pulmonary Options",
+              "type": "obs",
+              "id": "pulmonaryoptions",
+              "questionOptions": {
+                "concept": "206c84c0-1697-420e-840e-a611fdf18d5d",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Smear not done"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Smear Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Smear Negative"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "DiSclassification !== '42AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Extra-Pulmonary TB",
+              "type": "obs",
+              "id": "extraPulmonaryTb",
+              "questionOptions": {
+                "concept": "161356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "checkbox",
+                "answers": [
+                  {
+                    "concept": "130059AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Pleural effusion"
+                  },
+                  {
+                    "concept": "115753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Milliary"
+                  },
+                  {
+                    "concept": "111953AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Lymph nodes"
+                  },
+                  {
+                    "concept": "111967AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Meningitis"
+                  },
+                  {
+                    "concept": "112116AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Skeleton"
+                  },
+                  {
+                    "concept": "1350AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Abdominal"
+                  },
+                  {
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "DiSclassification !== '5042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Specify other reason",
+              "type": "obs",
+              "id": "otherReferralReason",
+              "questionOptions": {
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(extraPulmonaryTb) || !arrayContains(extraPulmonaryTb,'5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Patient Classification",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient Classification",
+              "type": "obs",
+              "id": "patientClassification",
+              "questionOptions": {
+                "concept": "159871AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "159878AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "New"
+                  },
+                  {
+                    "concept": "159876AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Smear negative Relapse"
+                  },
+                  {
+                    "concept": "159874AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Treatment after Failure"
+                  },
+                  {
+                    "concept": "159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Transfer in"
+                  },
+                  {
+                    "concept": "159873AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Treatment resumed after defaulting"
+                  },
+                  {
+                    "concept": "163609AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Previous treatment history unknown"
+                  },
+                  {
+                    "concept": "159877AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Smear positive Relapse"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Transfer In Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date Transferred In",
+              "type": "obs",
+              "id": "transferindate",
+              "questionOptions": {
+                "concept": "160534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "patientClassification !== '159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Transferred from location",
+              "type": "obs",
+              "id": "transferredFromLocation",
+              "questionOptions": {
+                "concept": "160535AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "patientClassification !== '159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "District",
+              "type": "obs",
+              "id": "newDistrict",
+              "questionOptions": {
+                "concept": "161551AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "patientClassification !== '159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Date first Enrolled in TB Care",
+              "type": "obs",
+              "id": "datefirstenrolled",
+              "questionOptions": {
+                "concept": "161552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "patientClassification !== '159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "processor": "EncounterFormProcessor",
+  "referencedForms": []
+}
