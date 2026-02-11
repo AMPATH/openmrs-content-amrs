@@ -1561,7 +1561,7 @@
             {
               "label": "Return to clinic date:",
               "type": "obs",
-              "required": "false",
+              "required": "true",
               "id": "rtc",
               "questionOptions": {
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
