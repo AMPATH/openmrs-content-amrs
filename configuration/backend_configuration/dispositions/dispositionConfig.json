@@ -3,7 +3,7 @@
         "uuid": "66de7f60-b73a-11e2-9e96-0800200c9a66",
         "name": "disposition.admit",
         "type": "ADMIT",
-        "conceptCode" : "org.openmrs.module.emrapi:Admit to hospital",
+        "conceptCode" : "77eafb3f-58d3-4397-a6dc-d2c06e9062f3",
         "actions": [],
         "additionalObs": []
     },
