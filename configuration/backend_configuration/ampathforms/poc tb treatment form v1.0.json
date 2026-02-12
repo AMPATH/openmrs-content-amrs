@@ -65,25 +65,44 @@
                 "concept": "83e7e388-8216-4986-8384-9e9a0b123e77",
                 "rendering": "text"
               }
-            }
-            
-          ]
-        },
-        {
-          "label": "Patient Referral Information",
-          "isExpanded": "true",
-          "questions": [
+            },
             {
-              "label": "Date referred:",
+              "label": "Patient occupation:",
               "type": "obs",
-              "id": "datereferredby",
+              "id": "patOccupation",
               "questionOptions": {
-                "concept": "1cd286f4-7256-4a56-b90a-6acd8734f9c9",
-                "rendering": "date"
+                "concept": "a8a0a00e-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a09d0c-1350-11df-a1f1-0026b9348838",
+                    "label": "Teacher"
+                  },
+                  {
+                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                    "label": "Health care provider"
+                  },
+                  {
+                    "concept": "a8a09b90-1350-11df-a1f1-0026b9348838",
+                    "label": "Casual worker"
+                  },
+                  {
+                    "concept": "a8a09e92-1350-11df-a1f1-0026b9348838",
+                    "label": "Police officer"
+                  },
+                  {
+                    "concept": "05b4c838-a185-4bb0-8c33-71f80ea7c4cf",
+                    "label": "Student"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
               }
             },
             {
-              "label": "Method of enrollment",
+              "label": "Method of enrollment:",
               "type": "obs",
               "id": "MethodOfEnrollment",
               "questionOptions": {
@@ -139,36 +158,9 @@
             }
           ]
         },
+
         {
-          "label": "Patient Information",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "Body Weight in Kgs",
-              "type": "obs",
-              "id": "BodWeight",
-              "questionOptions": {
-                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "max": "250",
-                "min": "0"
-              }
-            },
-            {
-              "label": "Height in centimeters",
-              "type": "obs",
-              "id": "heiGht",
-              "questionOptions": {
-                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "max": "270",
-                "min": "10"
-              }
-            }
-          ]
-        },
-        {
-          "label": "Treatment Supported Information",
+          "label": "Treatment Supporter Information",
           "isExpanded": "true",
           "questions": [
             {
@@ -181,7 +173,7 @@
               }
             },
             {
-              "label": "Relation to patient",
+              "label": "Relation to patient:",
               "type": "obs",
               "id": "tSupporterRelation",
               "questionOptions": {
@@ -216,16 +208,16 @@
               }
             },
             {
-              "label": "Address",
+              "label": "Address:",
               "type": "obs",
               "id": "tSupporterAddress",
               "questionOptions": {
-                "concept": "160641AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "82f3f1dd-a5ba-4be8-9c26-44683043317f",
                 "rendering": "text"
               }
             },
             {
-              "label": "Cell Phone",
+              "label": "Cell phone:",
               "type": "obs",
               "id": "treatmentSupportedNumber",
               "questionOptions": {
@@ -236,11 +228,116 @@
           ]
         },
         {
+          "label": "Patient Type",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient type:",
+              "type": "obs",
+              "id": "patientClassification",
+              "questionOptions": {
+                "concept": "a8a388d2-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a38382-1350-11df-a1f1-0026b9348838",
+                    "label": "New"
+                  },
+                  {
+                    "concept": "a8a38508-1350-11df-a1f1-0026b9348838",
+                    "label": "Smear negative relapse"
+                  },
+                  {
+                    "concept": "a8a38440-1350-11df-a1f1-0026b9348838",
+                    "label": "Smear positive Relapse"
+                  },
+                  {
+                    "concept": "a8a3874c-1350-11df-a1f1-0026b9348838",
+                    "label": "Treatment after lost to follow up"
+                  },
+                  {
+                    "concept": "a8a3868e-1350-11df-a1f1-0026b9348838",
+                    "label": "Treatment after Failure"
+                  },
+                  {
+                    "concept": "6b509e5e-32ce-4b7c-91a2-4cba7a524211",
+                    "label": "Previous treatment history unknown"
+                  },
+
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other previously treated"
+                  },
+                  {
+                    "concept": "a8a38814-1350-11df-a1f1-0026b9348838",
+                    "label": "Transfer in"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Transfer In Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date transferred in:",
+              "type": "obs",
+              "id": "transferindate",
+              "questionOptions": {
+                "concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "patientClassification !== 'a8a38814-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Transferred from location:",
+              "type": "obs",
+              "id": "transferredFromLocation",
+              "questionOptions": {
+                "concept": "9aaf186b-41ed-4fbb-b30e-3af72be7ae76",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "patientClassification !== 'a8a38814-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "District:",
+              "type": "obs",
+              "id": "newDistrict",
+              "questionOptions": {
+                "concept": "10bca44a-930f-46ae-b686-63ddb36a713f",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "patientClassification !== 'a8a38814-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Date first enrolled in TB care:",
+              "type": "obs",
+              "id": "datefirstenrolled",
+              "questionOptions": {
+                "concept": "0c45e27d-5add-458b-ad69-58f3cca5f6a1",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "patientClassification !== 'a8a38814-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+
+        {
           "label": "Disease Classification",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Disease classification",
+              "label": "Disease classification;",
               "type": "obs",
               "id": "DiSclassification",
               "questionOptions": {
@@ -259,127 +356,213 @@
               }
             },
             {
-              "label": "Pulmonary Options",
+              "label": "Pulmonary options:",
               "type": "obs",
               "id": "pulmonaryoptions",
               "questionOptions": {
-                "concept": "206c84c0-1697-420e-840e-a611fdf18d5d",
+                "concept": "a3179f85-bc07-449b-ae2f-aef75558f0c7",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Smear not done"
+                    "concept": "cacf4f50-829c-406c-90d8-65817cb8ffbd",
+                    "label": "Bacteriologically confirmed"
                   },
                   {
                     "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                    "label": "Smear Positive"
-                  },
-                  {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Smear Negative"
+                    "label": "Clinically diagnosed"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "DiSclassification !== '42AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "DiSclassification !== 'a8909cfe-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
-              "label": "Extra-Pulmonary TB",
+              "label": "Extra-pulmonary TB:",
               "type": "obs",
               "id": "extraPulmonaryTb",
               "questionOptions": {
-                "concept": "161356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "checkbox",
+                "concept": "afe76b02-874e-41b8-9e86-0abc1d500696",
+                "rendering": "multiCheckbox",
                 "answers": [
                   {
-                    "concept": "130059AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "e2881147-8e6d-4fe7-bca3-5893e4580670",
                     "label": "Pleural effusion"
                   },
                   {
-                    "concept": "115753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89cf90e-1350-11df-a1f1-0026b9348838",
                     "label": "Milliary"
                   },
                   {
-                    "concept": "111953AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a37518-1350-11df-a1f1-0026b9348838",
                     "label": "Lymph nodes"
                   },
                   {
-                    "concept": "111967AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "77de5b35-1e83-4ad4-8756-dd9db1792012",
                     "label": "Meningitis"
                   },
                   {
-                    "concept": "112116AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "3f7aecc4-e68a-47bd-8d55-0ebc01d44349",
                     "label": "Skeleton"
                   },
                   {
-                    "concept": "1350AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89c6700-1350-11df-a1f1-0026b9348838",
                     "label": "Abdominal"
                   },
                   {
-                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "DiSclassification !== '5042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "DiSclassification !== 'a8a37d60-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
-              "label": "Specify other reason",
+              "label": "Specify other reason:",
               "type": "obs",
               "id": "otherReferralReason",
               "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(extraPulmonaryTb) || !arrayContains(extraPulmonaryTb,'5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+                "hideWhenExpression": "isEmpty(extraPulmonaryTb) || !arrayContains(extraPulmonaryTb,'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
               }
             }
           ]
         },
         {
-          "label": "Patient Classification",
+          "label": "Sputum Results",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Patient Classification",
-              "type": "obs",
-              "id": "patientClassification",
+              "label": "Sputum results:",
+              "type": "obsGroup",
               "questionOptions": {
-                "concept": "159871AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
+                "concept": "3c3f18be-6c47-49f6-8334-0d6d798f2936",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Type:",
+                  "type": "obs",
+                  "id": "testType",
+                  "questionOptions": {
+                    "concept": "1ed43665-a725-4a56-aaf2-87cc2b2f549e",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "9d7bbec6-4d1a-4a27-a17c-352512b4eb90",
+                        "label": "Fluorescence Microscopy"
+                      },
+                      {
+                        "concept": "60c071f0-f4dd-41a2-9125-ff234f978060",
+                        "label": "ZN Smear Microscopy"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Result:",
+                  "type": "obs",
+                  "id": "sputumResults",
+                  "questionOptions": {
+                    "concept": "a8945d4e-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "9f28fce5-b618-4c90-877b-ec0869103c98",
+                        "label": "Scanty"
+                      },
+                      {
+                        "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
+                        "label": "+"
+                      },
+                      {
+                        "concept": "a8a45bd6-1350-11df-a1f1-0026b9348838",
+                        "label": "++"
+                      },
+                      {
+                        "concept": "a8a45ca8-1350-11df-a1f1-0026b9348838",
+                        "label": "+++"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Negative"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Serial No:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "f37c7bb3-d392-4277-b50c-925ecb22c002"
+                  },
+                  "id": "serialNumber"
+                },
+                {
+                  "label": "Quantity:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "bdcd176e-c857-460d-a7f0-2e4bf98419bb",
+                    "max": "",
+                    "min": "",
+                    "showDate": ""
+                  },
+                  "id": "quantity"
+                },
+                {
+                  "label": "Date done:",
+                  "type": "obs",
+                  "id": "dateSputumResultsDate",
+                  "questionOptions": {
+                    "concept": "39a75842-b59a-4f58-b560-8f804911e3bb",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Chest Xray",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Chest xray findings (Month 0, 2 and Rx completion):",
+              "type": "obs",
+              "id": "xray",
+              "questionOptions": {
+                "concept": "a8908192-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
                 "answers": [
                   {
-                    "concept": "159878AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "New"
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
                   },
                   {
-                    "concept": "159876AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Smear negative Relapse"
+                    "concept": "54c176e0-aa5e-447a-9cc8-2b29ffe986ad",
+                    "label": "Abnormal suggestive TB"
                   },
                   {
-                    "concept": "159874AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Treatment after Failure"
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal others"
                   },
                   {
-                    "concept": "159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Transfer in"
-                  },
-                  {
-                    "concept": "159873AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Treatment resumed after defaulting"
-                  },
-                  {
-                    "concept": "163609AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Previous treatment history unknown"
-                  },
-                  {
-                    "concept": "159877AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Smear positive Relapse"
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not done"
                   }
                 ]
               }
@@ -387,56 +570,315 @@
           ]
         },
         {
-          "label": "Transfer In Information",
+          "label": "Culture/Sensitivity Results",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Date Transferred In",
-              "type": "obs",
-              "id": "transferindate",
+              "label": "Culture/Sensitivity Results",
+              "type": "obsGroup",
               "questionOptions": {
-                "concept": "160534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "date"
+                "concept": "5bce7bd8-ee60-49b3-8561-c829bb5ebbc3",
+                "rendering": "group"
               },
-              "hide": {
-                "hideWhenExpression": "patientClassification !== '159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              "questions": [
+                {
+                  "label": "Bacterial colonies growth:",
+                  "type": "obs",
+                  "id": "growth_no_growth",
+                  "questionOptions": {
+                    "concept": "206c84c0-1697-420e-840e-a611fdf18d5d",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "label": "Growth"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "No growth"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Number of colonies:",
+                  "type": "obs",
+                  "id": "numberOfColonies",
+                  "questionOptions": {
+                    "concept": "5cdaf2e3-2e8b-495b-8af0-8614fb81f15f",
+                    "rendering": "number"
+                  }
+                },
+                {
+                  "label": "Resistant (R)",
+                  "type": "obs",
+                  "id": "ResR",
+                  "questionOptions": {
+                    "concept": "df685c32-ab65-4e43-837d-b597936afa5d",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a8952e4a-1350-11df-a1f1-0026b9348838",
+                        "label": "S"
+                      },
+                      {
+                        "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
+                        "label": "R"
+                      },
+                      {
+                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                        "label": "INH"
+                      },
+                      {
+                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                        "label": "Z"
+                      },
+                      {
+                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                        "label": "E"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Sensitive (S)",
+                  "type": "obs",
+                  "id": "SensiTIVE",
+                  "questionOptions": {
+                    "concept": "b090510e-ccb8-40f4-a372-68a4ac2d53c0",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a8952e4a-1350-11df-a1f1-0026b9348838",
+                        "label": "S"
+                      },
+                      {
+                        "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
+                        "label": "R"
+                      },
+                      {
+                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                        "label": "INH"
+                      },
+                      {
+                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                        "label": "Z"
+                      },
+                      {
+                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                        "label": "E"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Date done:",
+                  "type": "obs",
+                  "id": "dateCultureResultsDate",
+                  "questionOptions": {
+                    "concept": "39a75842-b59a-4f58-b560-8f804911e3bb",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    }
+                  ]
+                }
+              ],
+              "id": "CultureResults"
+            }
+          ]
+        },
+        {
+          "label": "Nutrition Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Body Weight in Kgs",
+              "type": "obs",
+              "id": "BodWeight",
+              "questionOptions": {
+                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "250",
+                "min": "0"
               }
             },
             {
-              "label": "Transferred from location",
+              "label": "Height in centimeters",
               "type": "obs",
-              "id": "transferredFromLocation",
+              "id": "heiGht",
               "questionOptions": {
-                "concept": "160535AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "text"
-              },
-              "hide": {
-                "hideWhenExpression": "patientClassification !== '159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "270",
+                "min": "10"
               }
             },
             {
-              "label": "District",
+              "label": "Nutritional counselling (NC) done",
               "type": "obs",
-              "id": "newDistrict",
               "questionOptions": {
-                "concept": "161551AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "text"
+                "rendering": "select",
+                "concept": "42c0032e-e404-4e64-9564-06cc1473d5d0",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
               },
-              "hide": {
-                "hideWhenExpression": "patientClassification !== '159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              "id": "NutritionalCounsellingNC"
+            }
+          ]
+        },
+        {
+          "label": "Patient Status",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "HIV status:",
+              "type": "obs",
+              "id": "hivStatus",
+              "questionOptions": {
+                "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ]
               }
             },
             {
-              "label": "Date first Enrolled in TB Care",
+              "label": "Partner HIV status:",
               "type": "obs",
-              "id": "datefirstenrolled",
+              "id": "hivStatus",
               "questionOptions": {
-                "concept": "161552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "date"
-              },
-              "hide": {
-                "hideWhenExpression": "patientClassification !== '159872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "concept": "a8a46428-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ]
               }
+            },
+            {
+              "label": "Current ART regimen:",
+              "type": "obs",
+              "id": "hivStatus",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Negative"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Viral load:",
+              "type": "obs",
+              "id": "hivStatus",
+              "questionOptions": {
+                "concept": "1169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Negative"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "ADR",
+          "isExpanded": "true",
+          "questions": []
+        },
+        {
+          "label": "Comorbidities",
+          "isExpanded": "true",
+          "questions": []
+        },
+        {
+          "label": "Referral",
+          "isExpanded": "true",
+          "questions": []
+        },
+        {
+          "label": "Nutrition interventions",
+          "isExpanded": "true",
+          "questions": []
+        },
+        {
+          "label": "Treatment Outcome",
+          "isExpanded": "true",
+          "questions": []
+        },
+        {
+          "label": "RTC",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Return Visit date",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "id": "returnVisitDate",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                }
+              ]
             }
           ]
         }
