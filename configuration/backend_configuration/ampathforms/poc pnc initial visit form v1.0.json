@@ -4806,9 +4806,7 @@
 								],
 								"rendering": "select"
 							},
-							"hide": {
-								"hideWhenExpression": "priorHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-							},
+							
 							"type": "obs"
 						},
 						{

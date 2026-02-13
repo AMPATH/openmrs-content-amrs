@@ -3149,6 +3149,7 @@
           "questions": [
             {
               "label": "Impression",
+              "required": "true",
               "id": "clinicalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
@@ -3222,6 +3223,7 @@
           "questions": [
             {
               "label": "Final diagnosis:",
+              "required": "true",
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
@@ -3296,7 +3298,7 @@
                 ]
               }
             },
- {
+            {
               "label": "Transfer to mortuary/Funeral home:",
               "type": "obs",
               "required": true,
@@ -3327,7 +3329,7 @@
             },
 
             {
-              "label": "Appointments",
+              "label": "Appointments:",
               "id": "appointmentWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",

@@ -689,30 +689,7 @@
                 "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != '0ac4af8a-1b8e-4404-b445-c0471d6f7576'"
               }
             },
-            {
-              "label": "Type of hypertension:",
-              "type": "obs",
-              "id": "typeHypco",
-              "questionOptions": {
-                "concept": "9deaa3dd-1381-4b2d-b16e-1b7097530d28",
-                "rendering": "text"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != '0ac4af8a-1b8e-4404-b445-c0471d6f7576'"
-              }
-            },
-            {
-              "label": "Type of diabetes:",
-              "type": "obs",
-              "id": "typeDiabtsco",
-              "questionOptions": {
-                "concept": "6f8ef247-a73f-421c-9fcb-ed5c3260b8aa",
-                "rendering": "text"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != '0ac4af8a-1b8e-4404-b445-c0471d6f7576'"
-              }
-            },
+           
             {
               "label": "HIV status:",
               "type": "obs",
@@ -1358,6 +1335,10 @@
                     "label": "Low risk"
                   }
                 ]
+              },
+              "validators": [],
+               "hide": {
+                "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != 'a893436e-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1451,7 +1432,10 @@
                   }
                 ]
               },
-              "validators": []
+              "validators": [],
+               "hide": {
+                "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != 'a893436e-1350-11df-a1f1-0026b9348838'"
+              }
             }
           ]
         }
