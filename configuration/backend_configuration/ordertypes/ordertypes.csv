@@ -1,2 +1,3 @@
 Uuid,Void/Retire,Name,Description,Java class name,Parent,Concept Classes,_order:1000
-ff4485a4-f071-4423-aeb2-db6efce52b83,,Procedure and Radiology Order,Procedure and Radiology order type,org.openmrs.Order,,8caa332c-efe4-4025-8b18-3398328e1323,
+ff4485a4-f071-4423-aeb2-db6efce52b83,,Radiology Order,Radiology order type,org.openmrs.Order,,8caa332c-efe4-4025-8b18-3398328e1323,
+2315ab24-9a4e-4b36-b189-8e74d2c77394,,Procedure Order,Procedure order type,org.openmrs.Order,,47d45603-6f31-4c0c-b2b4-8da4f042388f,
