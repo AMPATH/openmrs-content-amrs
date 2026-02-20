@@ -1,13 +1,13 @@
 {
-  "name": "POC NCD Enrollment Form v1.0",
+  "name": "POC NCD Encounter Form v1.1",
   "description": "A form to record NCD data",
-  "version": "1.0",
+  "version": "1.1",
   "published": true,
-  "uuid": "6607ac70-86b1-3b70-a42f-78f1114ceb17",
+  "uuid": "",
   "retired": false,
-  "encounter": "NCDINITIAL",
+  "encounter": "NCDFOLLOWUP",
   "processor": "EncounterFormProcessor",
-  "encounterType": "5444d069-1317-4838-addf-f2bca42a48a2",
+  "encounterType": "04f60e38-70cd-4b8d-aa7e-9c408b349271",
   "referencedForms": [],
   "pages": [
     {
