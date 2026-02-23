@@ -256,14 +256,9 @@
               "type": "obs",
               "questionOptions": {
                 "rendering": "date",
-                "concept": "bb85532e-8f7e-476f-81d7-5580e0385852",
-                "weeksList": "",
-                "conceptMappings": [
-                  {
-                    "type": "MCL/CIEL",
-                    "value": "160753"
-                  }
-                ]
+                "concept": "bb85532e-8f7e-476f-81d7-5580e0385852"
+                
+                
               },
               "validators": [
                 {
