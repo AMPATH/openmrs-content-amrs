@@ -1,6 +1,6 @@
 {
   "name": "POC Maternity Admission Form v1.0",
-   "description": "POC MOH 333 Maternity Register v1.0",
+  "description": "POC MOH 333 Maternity Register v1.0",
   "version": "1.0",
   "published": true,
   "uuid": "edd28e4c-8031-4361-b47c-f758617eae75",
@@ -68,9 +68,23 @@
               "id": "par",
               "questionOptions": {
                 "concept": "a899a920-1350-11df-a1f1-0026b9348838",
-                "rendering": "number"
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
               },
               "validators": []
+            },
+            {
+              "label": "Plus(Miscarriage):",
+              "type": "obs",
+              "id": "parityAbortion",
+              "required": "true",
+              "questionOptions": {
+                "concept": "cedb167d-34a4-4027-8a5c-b7fa9fe4190e",
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
+              }
             },
             {
               "label": "Gravidae:",
@@ -79,7 +93,9 @@
               "questionOptions": {
                 "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
-                "max": "50"
+                "calculate": {
+                  "calculateExpression": "calcGravida(par,parityAbortion)"
+                }
               },
               "validators": []
             },
@@ -110,6 +126,270 @@
               },
               "type": "obs",
               "validators": []
+            },
+            {
+              "label": "Gestation(weeks):",
+              "type": "obs",
+              "id": "maturity",
+              "questionOptions": {
+                "concept": "a89c293e-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "useMostRecentValue": "true",
+                "autoPopulateWithMostRecentValue": "true",
+                "min": "0",
+                "max": "44"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Obstetric History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Obstetric History",
+              "type": "obsGroup",
+              "id": "previousPregnancy",
+              "questionOptions": {
+                "concept": "0b2afb9c-d79f-42cf-92ec-c93ce24e07a3",
+                "rendering": "repeating"
+              },
+              "validators": [],
+              "questions": [
+                {
+                  "label": "Pregnancy order:",
+                  "type": "obs",
+                  "id": "test",
+                  "questionOptions": {
+                    "concept": "a8aa7c3c-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number"
+                  }
+                },
+                {
+                  "label": "Year of previous pregnancy:",
+                  "type": "obs",
+                  "id": "dateOfPreviousPregnancy",
+                  "questionOptions": {
+                    "concept": "a8aae050-1350-11df-a1f1-0026b9348838",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    }
+                  ]
+                },
+                {
+                  "label": "Number of Antenatal contacts:",
+                  "type": "obs",
+                  "id": "antenatalVisitNumber",
+                  "questionOptions": {
+                    "concept": "7ba2cfa8-3881-4ae0-b1a1-c00f1fcec157",
+                    "rendering": "number",
+                    "min": "0",
+                    "max": "30"
+                  }
+                },
+                {
+                  "label": "Place of childbirth:",
+                  "type": "obs",
+                  "id": "locationOfBirth",
+                  "questionOptions": {
+                    "concept": "a8a492d6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+                        "label": "Home"
+                      },
+                      {
+                        "concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
+                        "label": "Health Facility"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Gestational age at birth (weeks):",
+                  "type": "obs",
+                  "id": "gestationalAgeAtBirth",
+                  "questionOptions": {
+                    "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa",
+                    "rendering": "number",
+                    "min": "0",
+                    "max": "44"
+                  }
+                },
+                {
+                  "label": "Duration of labor(Hours):",
+                  "type": "obs",
+                  "id": "durationOfLabor",
+                  "questionOptions": {
+                    "concept": "a8aff9b4-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number",
+                    "min": "0",
+                    "max": "96"
+                  }
+                },
+                {
+                  "label": "Method of delivery",
+                  "type": "obs",
+                  "id": "methodOfDelivery",
+                  "questionOptions": {
+                    "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
+                        "label": "Spontaneous vaginal delivery(SVD)"
+                      },
+                      {
+                        "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
+                        "label": "Cesarean section(CS)"
+                      },
+                      {
+                        "concept": "a89ad11a-1350-11df-a1f1-0026b9348838",
+                        "label": "Breech delivery"
+                      },
+                      {
+                        "concept": "a8a351aa-1350-11df-a1f1-0026b9348838",
+                        "label": "Assisted vaginal delivery(AVD)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Birth weight (grams)",
+                  "type": "obs",
+                  "id": "birthWeight",
+                  "questionOptions": {
+                    "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
+                    "rendering": "number",
+                    "min": "0",
+                    "max": "6000"
+                  }
+                },
+                {
+                  "label": "Sex",
+                  "type": "obs",
+                  "id": "childGender",
+                  "questionOptions": {
+                    "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
+                        "label": "Female"
+                      },
+                      {
+                        "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
+                        "label": "Male"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Outcome",
+                  "type": "obs",
+                  "id": "qualitativeBirthOutcome",
+                  "questionOptions": {
+                    "concept": "a8aff7e8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a89ffcb2-1350-11df-a1f1-0026b9348838",
+                        "label": "Alive Birth"
+                      },
+                      {
+                        "concept": "dcfda2f8-d466-43d7-bcdf-a37f19ef6436",
+                        "label": "Fresh Still Birth"
+                      },
+                      {
+                        "concept": "1d5986e2-f858-4f0f-9887-2b19c5a76d32",
+                        "label": "Macerated Still Birth"
+                      },
+                      {
+                        "concept": "a890a1b8-1350-11df-a1f1-0026b9348838",
+                        "label": "Miscarriage"
+                      },
+                      {
+                        "concept": "e8074110-b989-45e3-b89c-d6092d1a2fd7",
+                        "label": "Preterm"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Infant born alive:",
+                  "type": "obs",
+                  "id": "bornAlive",
+                  "questionOptions": {
+                    "concept": "f37148bb-4e1a-41e9-82d0-040370bf2259",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Feeding method:",
+                  "type": "obs",
+                  "id": "feeDing",
+                  "questionOptions": {
+                    "concept": "a89abee6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a8a8d9b8-1350-11df-a1f1-0026b9348838",
+                        "label": "Breastfed exclusively"
+                      },
+                      {
+                        "concept": "a8ae86e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Mixed feeding"
+                      },
+                      {
+                        "concept": "39213beb-4d3d-493a-ad5d-40db847a07c3",
+                        "label": "Complementary feeding"
+                      },
+                      {
+                        "concept": "a8a70156-1350-11df-a1f1-0026b9348838",
+                        "label": "Infant formula"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Puerperium",
+                  "type": "obs",
+                  "id": "puerperiumP",
+                  "questionOptions": {
+                    "concept": "0074bc1d-0be2-4674-9a4e-71e2a8d0dbb2",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                        "label": "Normal"
+                      },
+                      {
+                        "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                        "label": "Abnormal"
+                      }
+                    ]
+                  }
+                }
+              ]
             }
           ]
         },
@@ -197,444 +477,444 @@
           "isExpanded": "true",
           "questions": [
             {
-							"label": "HIV Test One",
-							"type": "obsGroup",
-							"questionOptions": {
-								"rendering": "group",
-								"concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
-							},
-							"id": "hivTestOne",
-							"validators": [],
-							"hide": {
+              "label": "HIV Test One",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+              },
+              "id": "hivTestOne",
+              "validators": [],
+              "hide": {
                 "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
               },
-							"questions": [
-								{
-									"label": "Kit 1 name:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "3f827a28-d738-4dc0-93a8-f1439d93fe12",
-												"label": "Trinscreen"
-											},
-											{
-												"concept": "f652d638-caac-49ce-a0ed-11b2e136301a",
-												"label": "Dual Kit"
-											},
-											{
-												"concept": "ab996835-26e8-45f6-b51d-fe2110954eac",
-												"label": "Standard Q"
-											},
-											{
-												"concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
-												"label": "Determine"
-											}
-										]
-									},
-									"id": "kitName",
-									"validators": [],
-									"hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
-              }
-								},
-								{
-									"label": "Lot number:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "text",
-										"concept": "114f33e4-0026-4962-a722-a7f8784d3895"
-									},
-									"id": "lotNumber",
-									"validators": [],
-									"hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
-              }
-								},
-								{
-									"label": "Expiry date:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "date",
-										"concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
-										"weeksList": ""
-									},
-									"id": "expiryDate",
-									"validators": [
-										{
-											"type": "date",
-											"allowFutureDates": "true"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
-											"message": "The Expiry date should be in the future."
-										}
-									],
-									"hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
-              }
-								},
-								{
-									"label": "HIV test 1 results:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-												"label": "Positive"
-											},
-											{
-												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-												"label": "Negative"
-											},
-											{
-												"concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
-												"label": "Invalid"
-											}
-										]
-									},
-									"id": "testResults",
-									"validators": [],
-									"hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
-              }
-								}
-							]
-						},
-						{
-							"label": "HIV Test Two",
-							"type": "obsGroup",
-							"questionOptions": {
-								"rendering": "group",
-								"concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
-							},
-							"id": "hivTestTwo",
-							"validators": [],
-							"hide": {
+              "questions": [
+                {
+                  "label": "Kit 1 name:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "3f827a28-d738-4dc0-93a8-f1439d93fe12",
+                        "label": "Trinscreen"
+                      },
+                      {
+                        "concept": "f652d638-caac-49ce-a0ed-11b2e136301a",
+                        "label": "Dual Kit"
+                      },
+                      {
+                        "concept": "ab996835-26e8-45f6-b51d-fe2110954eac",
+                        "label": "Standard Q"
+                      },
+                      {
+                        "concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
+                        "label": "Determine"
+                      }
+                    ]
+                  },
+                  "id": "kitName",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                  }
+                },
+                {
+                  "label": "Lot number:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                  },
+                  "id": "lotNumber",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                  }
+                },
+                {
+                  "label": "Expiry date:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                    "weeksList": ""
+                  },
+                  "id": "expiryDate",
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "true"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+                      "message": "The Expiry date should be in the future."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                  }
+                },
+                {
+                  "label": "HIV test 1 results:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "label": "Positive"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Negative"
+                      },
+                      {
+                        "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                        "label": "Invalid"
+                      }
+                    ]
+                  },
+                  "id": "testResults",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "HIV Test Two",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+              },
+              "id": "hivTestTwo",
+              "validators": [],
+              "hide": {
                 "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
               },
-							"questions": [
-								{
-									"label": "Kit 2 name:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "22d8b9b3-378a-4ef1-9a38-e4d8b33348ea",
-												"label": "One step"
-											},
-											{
-												"concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
-												"label": "First response"
-											}
-										]
-									},
-									"id": "kitNameB",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(testResults) || testResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
-								},
-								{
-									"label": "Lot number:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "text",
-										"concept": "114f33e4-0026-4962-a722-a7f8784d3895"
-									},
-									"id": "lotNumberB",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameB)"
-									}
-								},
-								{
-									"label": "Expiry date:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "date",
-										"concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
-										"weeksList": ""
-									},
-									"id": "expiryDateB",
-									"validators": [
-										{
-											"type": "date",
-											"allowFutureDates": "true"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
-											"message": "The Expiry date should be in the future."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameB)"
-									}
-								},
-								{
-									"label": "HIV test 2 results:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "a89c4f0e-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-												"label": "Positive"
-											},
-											{
-												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-												"label": "Negative"
-											},
-											{
-												"concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
-												"label": "Invalid"
-											}
-										]
-									},
-									"id": "testResultsB",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameB)"
-									}
-								}
-							]
-						},
-						{
-							"label": "HIV Test",
-							"type": "obsGroup",
-							"questionOptions": {
-								"rendering": "group",
-								"concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
-							},
-							"id": "hivTestA2",
-							"validators": [],
-							"hide": {
+              "questions": [
+                {
+                  "label": "Kit 2 name:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "22d8b9b3-378a-4ef1-9a38-e4d8b33348ea",
+                        "label": "One step"
+                      },
+                      {
+                        "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+                        "label": "First response"
+                      }
+                    ]
+                  },
+                  "id": "kitNameB",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(testResults) || testResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Lot number:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                  },
+                  "id": "lotNumberB",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameB)"
+                  }
+                },
+                {
+                  "label": "Expiry date:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                    "weeksList": ""
+                  },
+                  "id": "expiryDateB",
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "true"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+                      "message": "The Expiry date should be in the future."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameB)"
+                  }
+                },
+                {
+                  "label": "HIV test 2 results:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a89c4f0e-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "label": "Positive"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Negative"
+                      },
+                      {
+                        "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                        "label": "Invalid"
+                      }
+                    ]
+                  },
+                  "id": "testResultsB",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameB)"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "HIV Test",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+              },
+              "id": "hivTestA2",
+              "validators": [],
+              "hide": {
                 "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
               },
-							"questions": [
-								{
-									"label": "Kit 1 name:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "3f827a28-d738-4dc0-93a8-f1439d93fe12",
-												"label": "Trinscreen"
-											}
-										]
-									},
-									"id": "kitNameD",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(testResultsB) || testResultsB !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || kitName ==='a8afbc9c-1350-11df-a1f1-0026b9348838' && kitNameB === 'ef44a147-c32b-491e-a5ce-e79003c90e01'"
-									}
-								},
-								{
-									"label": "Lot number:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "text",
-										"concept": "114f33e4-0026-4962-a722-a7f8784d3895"
-									},
-									"id": "lotNumberD",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameD)"
-									}
-								},
-								{
-									"label": "Expiry date:",
-									"type": "obs",
-									"validators": [
-										{
-											"type": "date",
-											"allowFutureDates": "true"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
-											"message": "Expiry date should be greater than the encounter date."
-										}
-									],
-									"questionOptions": {
-										"rendering": "date",
-										"concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
-										"weeksList": ""
-									},
-									"id": "expiryDateD",
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameD)"
-									}
-								},
-								{
-									"label": "HIV test 3 results:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "a89c4f0e-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-												"label": "Positive"
-											},
-											{
-												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-												"label": "Negative"
-											},
-											{
-												"concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
-												"label": "Invalid"
-											}
-										]
-									},
-									"id": "testResultsD",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameD)"
-									}
-								}
-							]
-						},
-						{
-							"label": "HIV Test",
-							"type": "obsGroup",
-							"questionOptions": {
-								"rendering": "group",
-								"concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
-							},
-							"id": "hivTest3",
-							"validators": [],
-							"hide": {
+              "questions": [
+                {
+                  "label": "Kit 1 name:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "3f827a28-d738-4dc0-93a8-f1439d93fe12",
+                        "label": "Trinscreen"
+                      }
+                    ]
+                  },
+                  "id": "kitNameD",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(testResultsB) || testResultsB !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || kitName ==='a8afbc9c-1350-11df-a1f1-0026b9348838' && kitNameB === 'ef44a147-c32b-491e-a5ce-e79003c90e01'"
+                  }
+                },
+                {
+                  "label": "Lot number:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                  },
+                  "id": "lotNumberD",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameD)"
+                  }
+                },
+                {
+                  "label": "Expiry date:",
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "true"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                      "message": "Expiry date should be greater than the encounter date."
+                    }
+                  ],
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                    "weeksList": ""
+                  },
+                  "id": "expiryDateD",
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameD)"
+                  }
+                },
+                {
+                  "label": "HIV test 3 results:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a89c4f0e-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "label": "Positive"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Negative"
+                      },
+                      {
+                        "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                        "label": "Invalid"
+                      }
+                    ]
+                  },
+                  "id": "testResultsD",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameD)"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "HIV Test",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "4544eade-0f9a-45c4-9425-8fa495960f50"
+              },
+              "id": "hivTest3",
+              "validators": [],
+              "hide": {
                 "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
               },
-							"questions": [
-								{
-									"label": "Kit 3 name:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
-												"label": "First response"
-											}
-										]
-									},
-									"id": "kitNameC",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(testResultsB) || testResultsB !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || kitName ==='a8afbc9c-1350-11df-a1f1-0026b9348838' && kitNameB === 'ef44a147-c32b-491e-a5ce-e79003c90e01'"
-									}
-								},
-								{
-									"label": "Lot number:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "text",
-										"concept": "114f33e4-0026-4962-a722-a7f8784d3895"
-									},
-									"id": "lotNumberC",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameC)"
-									}
-								},
-								{
-									"label": "Expiry date:",
-									"type": "obs",
-									"validators": [
-										{
-											"type": "date",
-											"allowFutureDates": "true"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
-											"message": "Expiry date should be greater than the encounter date."
-										}
-									],
-									"questionOptions": {
-										"rendering": "date",
-										"concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
-										"weeksList": ""
-									},
-									"id": "expiryDateC",
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameC)"
-									}
-								},
-								{
-									"label": "HIV test 3 results:",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "eae7ec5d-16f2-4764-bf42-c4924ebcaa24",
-										"answers": [
-											{
-												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-												"label": "Positive"
-											},
-											{
-												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-												"label": "Negative"
-											},
-											{
-												"concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
-												"label": "Invalid"
-											}
-										]
-									},
-									"id": "testResultsC",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(kitNameC)"
-									}
-								}
-							]
-						},
-						{
-							"label": "Final results at maternity:",
-							"type": "obs",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "a89c6c64-1350-11df-a1f1-0026b9348838",
-								"calculate": {
-									"calculateExpression": "String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896d2cc-1350-11df-a1f1-0026b9348838' && String(testResultsD) === 'a896f3a6-1350-11df-a1f1-0026b9348838' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsC) === 'a896f3a6-1350-11df-a1f1-0026b9348838' ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896d2cc-1350-11df-a1f1-0026b9348838' && String(testResultsC) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a896d2cc-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896d2cc-1350-11df-a1f1-0026b9348838' && String(testResultsD) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a896d2cc-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsC) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a896d2cc-1350-11df-a1f1-0026b9348838' : String(testResults) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' || String(testResultsB) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' || String(testResultsC) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' || String(testResultsD) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : ''"
-								},
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
-										"label": "Inconclusive"
-									}
-								]
-							},
-							"id": "finalResults",
-							"validators": [],
-							"hide": {
+              "questions": [
+                {
+                  "label": "Kit 3 name:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a47fa8-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
+                        "label": "First response"
+                      }
+                    ]
+                  },
+                  "id": "kitNameC",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(testResultsB) || testResultsB !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || kitName ==='a8afbc9c-1350-11df-a1f1-0026b9348838' && kitNameB === 'ef44a147-c32b-491e-a5ce-e79003c90e01'"
+                  }
+                },
+                {
+                  "label": "Lot number:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
+                  },
+                  "id": "lotNumberC",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameC)"
+                  }
+                },
+                {
+                  "label": "Expiry date:",
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "true"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                      "message": "Expiry date should be greater than the encounter date."
+                    }
+                  ],
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
+                    "weeksList": ""
+                  },
+                  "id": "expiryDateC",
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameC)"
+                  }
+                },
+                {
+                  "label": "HIV test 3 results:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "eae7ec5d-16f2-4764-bf42-c4924ebcaa24",
+                    "answers": [
+                      {
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "label": "Positive"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Negative"
+                      },
+                      {
+                        "concept": "84242457-a5f4-48fe-b4e0-0e7fa2575ad8",
+                        "label": "Invalid"
+                      }
+                    ]
+                  },
+                  "id": "testResultsC",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(kitNameC)"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Final results at maternity:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c6c64-1350-11df-a1f1-0026b9348838",
+                "calculate": {
+                  "calculateExpression": "String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896d2cc-1350-11df-a1f1-0026b9348838' && String(testResultsD) === 'a896f3a6-1350-11df-a1f1-0026b9348838' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsC) === 'a896f3a6-1350-11df-a1f1-0026b9348838' ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896d2cc-1350-11df-a1f1-0026b9348838' && String(testResultsC) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a896d2cc-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896d2cc-1350-11df-a1f1-0026b9348838' && String(testResultsD) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a896d2cc-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsB) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && String(testResultsC) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : String(testResults) === 'a896d2cc-1350-11df-a1f1-0026b9348838' ? 'a896d2cc-1350-11df-a1f1-0026b9348838' : String(testResults) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' || String(testResultsB) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' || String(testResultsC) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' || String(testResultsD) === '84242457-a5f4-48fe-b4e0-0e7fa2575ad8' ? 'a89a7ae4-1350-11df-a1f1-0026b9348838' : ''"
+                },
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                    "label": "Inconclusive"
+                  }
+                ]
+              },
+              "id": "finalResults",
+              "validators": [],
+              "hide": {
                 "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
               }
-						},
-            
+            },
+
             {
               "label": "Results given to client:",
               "type": "obs",
@@ -814,6 +1094,293 @@
               "validators": [],
               "hide": {
                 "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+		 {
+          "label": "Admission Examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Has consent been given? ",
+              "type": "obs",
+              "id": "consentGiven",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9d9ccb6b-73ae-48dd-83f9-12c782ce6685",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Height of fundus:",
+              "type": "obs",
+              "id": "fundal",
+              "questionOptions": {
+                "concept": "a8a005fe-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "min": "0",
+                "max": "48"
+              }
+            },
+            {
+              "label": "Presentation:",
+              "type": "obs",
+              "id": "presentation",
+              "questionOptions": {
+                "concept": "a8b026a0-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8b025e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Cephalic presentation"
+                  },
+                  {
+                    "concept": "a89ad11a-1350-11df-a1f1-0026b9348838",
+                    "label": "Breech Presentation"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Engagement",
+              "type": "obs",
+              "id": "engaMemt",
+              "questionOptions": {
+                "concept": "35881a01-011c-40bf-a70e-4906a11dd6e8",
+                "rendering": "number",
+                "min": "0",
+                "max": "42"
+              }
+            },
+            {
+              "label": "Position:",
+              "type": "obs",
+              "id": "posiTion",
+              "questionOptions": {
+                "concept": "a8b026a0-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "8a2b4397-fec8-4045-b7ec-925997f20ab2",
+                    "label": "Occipito-Anterior"
+                  },
+                  {
+                    "concept": "f012dc73-7ecd-4ef5-bfc8-5d8f6b672c8e",
+                    "label": "Occipito-Posterior"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Foetal Heartrate:",
+              "type": "obs",
+              "id": "foetalValue",
+              "questionOptions": {
+                "concept": "a8a007a2-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "230",
+                "min": "0"
+              }
+            },
+            {
+              "label": "Vaginal Discharge",
+              "type": "obs",
+              "id": "vagDis",
+              "questionOptions": {
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "External Genitals",
+              "type": "obs",
+              "id": "extGen",
+              "questionOptions": {
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Spleen",
+              "type": "obs",
+              "id": "spleEn",
+              "questionOptions": {
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Abnormalities",
+              "type": "obs",
+              "id": "abnoMalities",
+              "questionOptions": {
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Report On Labour",
+              "type": "obs",
+              "id": "labReprt",
+              "questionOptions": {
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Admission Diagnosis",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "remote-select",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "39ADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Mother's ART prophylaxis given during this visit?",
+              "type": "obs",
+              "id": "prophylaxisUsed",
+              "questionOptions": {
+                "concept": "1109AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "105281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Cotrimoxazole"
+                  },
+                  {
+                    "concept": "74250AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Dapsone"
+                  },
+                  {
+                    "concept": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "None"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Was mother on HAART during ANC?",
+              "type": "obs",
+              "id": "motherHaart",
+              "questionOptions": {
+                "concept": "163783AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "160123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Was mother started on HAART at maternity?",
+              "type": "obs",
+              "id": "haartMat",
+              "questionOptions": {
+                "concept": "b253d0cf-f56f-4670-bd5e-1c15c0ed2cea",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "160123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "N/A"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "AZT for the baby dispensed?",
+              "type": "obs",
+              "id": "aztDispensed",
+              "questionOptions": {
+                "concept": "1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "160123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "NVP for the baby dispensed?",
+              "type": "obs",
+              "id": "nvpDispensed",
+              "questionOptions": {
+                "concept": "1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "80586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Management Plan",
+              "type": "obs",
+              "id": "mangMt",
+              "questionOptions": {
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "text"
               }
             }
           ]
