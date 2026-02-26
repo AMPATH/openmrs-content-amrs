@@ -88,6 +88,19 @@
                 ]
               }
             },
+            {
+              "type": "obs",
+              "label": "If transfer in, specify facility transferred from:",
+              "id": "nonAmpathSpecify",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== '97772927-7aa2-4c30-be98-85183e4b0efe'"
+              }
+            },
 
             {
               "label": "ANC visit number:",
@@ -126,7 +139,10 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              }
             },
             {
               "label": "Key population:",
@@ -164,6 +180,183 @@
             }
           ]
         },
+         {
+          "label": "Treatment Supporter Details",
+          "questions": [
+            {
+              "type": "personAttribute",
+              "label": "Name",
+              "id": "name",
+              "questionOptions": {
+                "rendering": "text",
+                "isSimpleValue": true,
+                "attributeType": "573af09d-4c3e-47c2-9a9d-4d78aff35312"
+              },
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              }
+            },
+            {
+              "label": "Relationship:",
+              "id": "supporterRela",
+              "questionOptions": {
+                "attributeType": "1c5a58a8-fb62-48ff-ada1-1f70dcaf350a",
+                "concept": "2ec6c229-afb6-4d95-89d2-c2f5e2715e9a",
+                "answers": [
+                  {
+                    "concept": "a898c0dc-1350-11df-a1f1-0026b9348838",
+                    "label": "Mother"
+                  },
+                  {
+                    "concept": "a898c1a4-1350-11df-a1f1-0026b9348838",
+                    "label": "Father"
+                  },
+                  {
+                    "concept": "a898c262-1350-11df-a1f1-0026b9348838",
+                    "label": "Sibling"
+                  },
+                  {
+                    "concept": "a89cd0fa-1350-11df-a1f1-0026b9348838",
+                    "label": "Husband"
+                  },
+                  {
+                    "concept": "a89cd1c2-1350-11df-a1f1-0026b9348838",
+                    "label": "Wife"
+                  },
+                  {
+                    "concept": "a8a171a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Childrens home"
+                  },
+                  {
+                    "concept": "a89c9f54-1350-11df-a1f1-0026b9348838",
+                    "label": "Paternal grandparent"
+                  },
+                  {
+                    "concept": "a89c9e3c-1350-11df-a1f1-0026b9348838",
+                    "label": "Maternal grandparent"
+                  },
+                  {
+                    "concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Self"
+                  },
+                  {
+                    "concept": "a8a17470-1350-11df-a1f1-0026b9348838",
+                    "label": "Paternal aunt"
+                  },
+                  {
+                    "concept": "a8a17394-1350-11df-a1f1-0026b9348838",
+                    "label": "Maternal aunt"
+                  },
+                  {
+                    "concept": "a8a175f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Paternal uncle"
+                  },
+                  {
+                    "concept": "a8a1752e-1350-11df-a1f1-0026b9348838",
+                    "label": "Maternal uncle"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              },
+              "type": "personAttribute"
+            }
+          ]
+        },
+        {
+          "label": "Reproductive History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "How many pregnancies have you had? (Gravida)",
+              "type": "obs",
+              "id": "noPregnancy",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "50",
+                "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
+              }
+            },
+            {
+              "label": "How many pregnancies have you delivered? (Parity)",
+              "type": "obs",
+              "id": "noDelivery",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899a920-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
+              },
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
+              }
+            },
+            {
+              "label": "LMP:",
+              "id": "lmpDate1",
+              "questionOptions": {
+                "concept": "a89ff758-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(pattype1) && pattype1 === '375e6d4a-ba94-41ac-8ac3-5a56015c4d92'",
+                  "message": "Patient is antenatal. Please provide LMP."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(menStatus) && menStatus === 'a8ad2b4e-1350-11df-a1f1-0026b9348838'",
+                  "message": "Patient is menstruating. Please provide LMP."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": " sex !== 'F' || menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "EDD:",
+              "id": "delDate",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8aaddbc-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "calculate": {
+                  "calculateExpression": "moment(lmpDate1).isValid() ? moment(lmpDate1).add(280, 'days').toDate():''"
+                }
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(lmpDate1)).isAfter((new moment(myValue)), 'day') || (new moment(lmpDate1)).isSame((new moment(myValue)), 'day')",
+                  "message": "EDD should be greater than the encounter date."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(pregnant) && pregnant === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Patient is pregnant. Please provide EDD."
+                }
+              ]
+            }
+          ]
+        },
         {
           "label": "HIV Testing",
           "isExpanded": "true",
@@ -190,10 +383,8 @@
                 "rendering": "select"
               },
               "type": "obs",
-              "id": "currHivStatus",
-              "hide": {
-                "hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
-              }
+              "id": "currHivStatus"
+              
             },
             {
               "label": "HIV Test One",
@@ -719,247 +910,7 @@
           "label": "Enrollment History",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Is this patient transfering to the facility for care?",
-              "required": "true",
-              "id": "transferInControl",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "f5e96501-deed-4c0a-9dce-116107b4d0d9",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "type": "obsGroup",
-              "label": "Transfer in, detailed",
-              "questionOptions": {
-                "concept": "0f8b7f4e-1656-46b7-bc93-d1fe4f193f5d",
-                "rendering": "group"
-              },
-              "questions": [
-                {
-                  "label": "Transfer in from other centre:",
-                  "id": "transferIn",
-                  "questionOptions": {
-                    "rendering": "select",
-                    "concept": "35ed8aad-d6fa-429e-961a-c877e1ad4953",
-                    "answers": [
-                      {
-                        "concept": "a89c2f42-1350-11df-a1f1-0026b9348838",
-                        "label": "AMPATH"
-                      },
-                      {
-                        "concept": "a89c301e-1350-11df-a1f1-0026b9348838",
-                        "label": "Non-AMPATH"
-                      }
-                    ]
-                  },
-                  "type": "obs",
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(transferInControl) && transferInControl === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-                      "message": "Required!"
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-                  }
-                },
-                {
-                  "type": "personAttribute",
-                  "label": "If transfer in from other AMPATH clinic (specify):",
-                  "id": "transfered_in_to_ampath",
-                  "required": "false",
-                  "default": "",
-                  "questionOptions": {
-                    "rendering": "ui-select-extended",
-                    "attributeType": "7ef225db-94db-4e40-9dd8-fb121d9dc370"
-                  },
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(transferIn) && transferIn === 'a89c2f42-1350-11df-a1f1-0026b9348838'",
-                      "message": "Required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "transferIn !== 'a89c2f42-1350-11df-a1f1-0026b9348838'"
-                  }
-                },
-                {
-                  "type": "obs",
-                  "label": "If non-AMPATH, specify:",
-                  "id": "nonAmpathSpecify",
-                  "questionOptions": {
-                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-                    "rendering": "text"
-                  },
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(transferIn) && transferIn === 'a89c301e-1350-11df-a1f1-0026b9348838'",
-                      "message": "Required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "transferIn !== 'a89c301e-1350-11df-a1f1-0026b9348838'"
-                  }
-                },
-                {
-                  "label": "County from which the patient is transfering:",
-                  "id": "transferCounty",
-                  "questionOptions": {
-                    "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
-                    "rendering": "text"
-                  },
-                  "type": "obs",
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(transferIn) && transferIn === 'a89c301e-1350-11df-a1f1-0026b9348838'",
-                      "message": "Required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "transferIn !== 'a89c301e-1350-11df-a1f1-0026b9348838'"
-                  }
-                }
-              ],
-              "id": "__LDvEp2qGM"
-            },
-            {
-              "label": "Is your area of residence within the AMPATH catchment area?",
-              "id": "ampathCatchment",
-              "questionOptions": {
-                "concept": "65c5071a-0cf8-49d4-99d1-5f7da6ef6503",
-                "answers": [
-                  {
-                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
-                    "label": "Unknown"
-                  },
-                  {
-                    "concept": "5066b630-842b-4105-a66d-74f8aa50aacb",
-                    "label": "In AMPATH catchment area"
-                  },
-                  {
-                    "concept": "83df5f26-f97a-4cda-9c05-d0bdc6e4ebee",
-                    "label": "Out of AMPATH catchment area"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(transferInControl) && transferInControl === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-                  "message": "Required!"
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Point of HIV testing:",
-              "id": "pointTesting",
-              "questionOptions": {
-                "concept": "a8a17e48-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "pMTCT"
-                  },
-                  {
-                    "concept": "1219f85c-31dd-4212-92ac-77926fa5ba03",
-                    "label": "HTS"
-                  },
-                  {
-                    "concept": "a8a17b3c-1350-11df-a1f1-0026b9348838",
-                    "label": "VCT"
-                  },
-                  {
-                    "concept": "f6dd6114-a212-4187-b76c-5b6fd8a9e7ba",
-                    "label": "PHCT"
-                  },
-                  {
-                    "concept": "a8a359a2-1350-11df-a1f1-0026b9348838",
-                    "label": "DTC/PITC"
-                  },
-                  {
-                    "concept": "a890a96a-1350-11df-a1f1-0026b9348838",
-                    "label": "TB clinic"
-                  },
-                  {
-                    "concept": "ff3243bf-05f6-426d-aa49-969034962e45",
-                    "label": "Adult inpatient"
-                  },
-                  {
-                    "concept": "3e5ad07b-2ced-4925-8264-cc4d8d1438d4",
-                    "label": "Pediatric inpatient"
-                  },
-                  {
-                    "concept": "a8a17d80-1350-11df-a1f1-0026b9348838",
-                    "label": "MCH"
-                  },
-                  {
-                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
-                    "label": "OPD"
-                  },
-                  {
-                    "concept": "a8934292-1350-11df-a1f1-0026b9348838",
-                    "label": "STI"
-                  },
-                  {
-                    "concept": "3ddd3de4-dbf1-4ae9-8caf-aca6383bfd5e",
-                    "label": "OSCAR"
-                  },
-                  {
-                    "concept": "7d2c77f9-091b-41d7-8608-aff8985fd708",
-                    "label": "Tumaini"
-                  },
-                  {
-                    "concept": "a8a3899a-1350-11df-a1f1-0026b9348838",
-                    "label": "CCC"
-                  },
-                  {
-                    "concept": "3e69faed-e56f-4ff1-8831-922224d6ae6b",
-                    "label": "Self test"
-                  },
-                  {
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                    "label": "Other"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(transferInControl) && transferInControl === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-                  "message": "Required!"
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              }
-            },
+          
             {
               "label": "Date confirmed HIV positive:",
               "id": "dateConfHivPos",
@@ -1043,351 +994,11 @@
         }
       ]
     },
-    {
-      "label": "Family Information",
-      "sections": [
-        {
-          "label": "Family History",
-          "questions": [
-            {
-              "label": "Family History",
-              "type": "obsGroup",
-              "questionOptions": {
-                "concept": "aeddf768-5ac0-45e4-934b-bf69730a8c2d",
-                "rendering": "repeating"
-              },
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              },
-              "questions": [
-                {
-                  "label": "Age of family member:",
-                  "id": "ageOfFamilyMember",
-                  "type": "obs",
-                  "questionOptions": {
-                    "rendering": "number",
-                    "concept": "d67c7f03-7559-46bd-972b-6520769ec2b7",
-                    "answers": []
-                  },
-                  "validators": [],
-                  "hide": {
-                    "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-                  }
-                },
-                {
-                  "label": "Relation:",
-                  "id": "relationtoMember",
-                  "type": "obs",
-                  "questionOptions": {
-                    "rendering": "select",
-                    "concept": "2ec6c229-afb6-4d95-89d2-c2f5e2715e9a",
-                    "answers": [
-                      {
-                        "concept": "a898c0dc-1350-11df-a1f1-0026b9348838",
-                        "label": "Mother"
-                      },
-                      {
-                        "concept": "a898c1a4-1350-11df-a1f1-0026b9348838",
-                        "label": "Father"
-                      },
-                      {
-                        "concept": "a898c262-1350-11df-a1f1-0026b9348838",
-                        "label": "Sibling"
-                      },
-                      {
-                        "concept": "a8a171a0-1350-11df-a1f1-0026b9348838",
-                        "label": "Childrens home"
-                      },
-                      {
-                        "concept": "a89c9f54-1350-11df-a1f1-0026b9348838",
-                        "label": "Paternal grandparent"
-                      },
-                      {
-                        "concept": "a89c9e3c-1350-11df-a1f1-0026b9348838",
-                        "label": "Maternal grandparent"
-                      },
-                      {
-                        "concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
-                        "label": "Self"
-                      },
-                      {
-                        "concept": "a8a17470-1350-11df-a1f1-0026b9348838",
-                        "label": "Paternal aunt"
-                      },
-                      {
-                        "concept": "a8a17394-1350-11df-a1f1-0026b9348838",
-                        "label": "Maternal aunt"
-                      },
-                      {
-                        "concept": "a8a175f6-1350-11df-a1f1-0026b9348838",
-                        "label": "Paternal uncle"
-                      },
-                      {
-                        "concept": "a8a1752e-1350-11df-a1f1-0026b9348838",
-                        "label": "Maternal uncle"
-                      },
-                      {
-                        "concept": "0d34180a-cea7-4066-b057-2740c0d15767",
-                        "label": "Daughter"
-                      },
-                      {
-                        "concept": "cb657f91-8ff4-4dd4-9078-af01ec91e845",
-                        "label": "Son"
-                      },
-                      {
-                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                        "label": "Other"
-                      }
-                    ]
-                  },
-                  "validators": [],
-                  "hide": {
-                    "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-                  }
-                },
-                {
-                  "label": "HIV status of family member:",
-                  "id": "HIVStatusOfMember",
-                  "type": "obs",
-                  "questionOptions": {
-                    "rendering": "select",
-                    "concept": "e7de7f52-9d91-4be6-a369-6cde2fe2d9a6",
-                    "answers": [
-                      {
-                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                        "label": "Positive"
-                      },
-                      {
-                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                        "label": "Negative"
-                      },
-                      {
-                        "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
-                        "label": "Unknown"
-                      }
-                    ]
-                  },
-                  "validators": [],
-                  "hide": {
-                    "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-                  }
-                },
-                {
-                  "label": "In care:",
-                  "id": "memberInCare",
-                  "type": "obs",
-                  "questionOptions": {
-                    "rendering": "select",
-                    "concept": "85c60aac-51e2-411c-98c5-56ffc0169b11",
-                    "answers": [
-                      {
-                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                        "label": "Yes"
-                      },
-                      {
-                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                        "label": "No"
-                      },
-                      {
-                        "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
-                        "label": "Unknown"
-                      }
-                    ]
-                  },
-                  "validators": [],
-                  "hide": {
-                    "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-                  }
-                }
-              ],
-              "id": "__nFEvuF8JG"
-            }
-          ]
-        },
-        {
-          "label": "Treatment Supporter Details",
-          "questions": [
-            {
-              "type": "personAttribute",
-              "label": "Name",
-              "id": "name",
-              "questionOptions": {
-                "rendering": "text",
-                "isSimpleValue": true,
-                "attributeType": "573af09d-4c3e-47c2-9a9d-4d78aff35312"
-              },
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Relationship:",
-              "id": "supporterRela",
-              "questionOptions": {
-                "attributeType": "1c5a58a8-fb62-48ff-ada1-1f70dcaf350a",
-                "concept": "2ec6c229-afb6-4d95-89d2-c2f5e2715e9a",
-                "answers": [
-                  {
-                    "concept": "a898c0dc-1350-11df-a1f1-0026b9348838",
-                    "label": "Mother"
-                  },
-                  {
-                    "concept": "a898c1a4-1350-11df-a1f1-0026b9348838",
-                    "label": "Father"
-                  },
-                  {
-                    "concept": "a898c262-1350-11df-a1f1-0026b9348838",
-                    "label": "Sibling"
-                  },
-                  {
-                    "concept": "a89cd0fa-1350-11df-a1f1-0026b9348838",
-                    "label": "Husband"
-                  },
-                  {
-                    "concept": "a89cd1c2-1350-11df-a1f1-0026b9348838",
-                    "label": "Wife"
-                  },
-                  {
-                    "concept": "a8a171a0-1350-11df-a1f1-0026b9348838",
-                    "label": "Childrens home"
-                  },
-                  {
-                    "concept": "a89c9f54-1350-11df-a1f1-0026b9348838",
-                    "label": "Paternal grandparent"
-                  },
-                  {
-                    "concept": "a89c9e3c-1350-11df-a1f1-0026b9348838",
-                    "label": "Maternal grandparent"
-                  },
-                  {
-                    "concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
-                    "label": "Self"
-                  },
-                  {
-                    "concept": "a8a17470-1350-11df-a1f1-0026b9348838",
-                    "label": "Paternal aunt"
-                  },
-                  {
-                    "concept": "a8a17394-1350-11df-a1f1-0026b9348838",
-                    "label": "Maternal aunt"
-                  },
-                  {
-                    "concept": "a8a175f6-1350-11df-a1f1-0026b9348838",
-                    "label": "Paternal uncle"
-                  },
-                  {
-                    "concept": "a8a1752e-1350-11df-a1f1-0026b9348838",
-                    "label": "Maternal uncle"
-                  },
-                  {
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                    "label": "Other"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              },
-              "type": "personAttribute"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Ob/gyn History",
-      "sections": [
-        {
-          "label": "Reproductive History",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "How many pregnancies have you had? (Gravida)",
-              "type": "obs",
-              "id": "noPregnancy",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')",
-              "questionOptions": {
-                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "max": "50",
-                "min": "0"
-              },
-              "hide": {
-                "hideWhenExpression": "sex !== 'F'"
-              }
-            },
-            {
-              "label": "How many pregnancies have you delivered? (Parity)",
-              "type": "obs",
-              "id": "noDelivery",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')",
-              "questionOptions": {
-                "concept": "a899a920-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "min": "0",
-                "max": "50"
-              },
-              "hide": {
-                "hideWhenExpression": "sex !== 'F'"
-              }
-            },
-            {
-              "label": "LMP:",
-              "id": "lmpDate1",
-              "questionOptions": {
-                "concept": "a89ff758-1350-11df-a1f1-0026b9348838",
-                "rendering": "date"
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "date"
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(pattype1) && pattype1 === '375e6d4a-ba94-41ac-8ac3-5a56015c4d92'",
-                  "message": "Patient is antenatal. Please provide LMP."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(menStatus) && menStatus === 'a8ad2b4e-1350-11df-a1f1-0026b9348838'",
-                  "message": "Patient is menstruating. Please provide LMP."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": " sex !== 'F' || menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "EDD:",
-              "id": "delDate",
-              "required": "true",
-              "questionOptions": {
-                "concept": "a8aaddbc-1350-11df-a1f1-0026b9348838",
-                "rendering": "date",
-                "calculate": {
-                  "calculateExpression": "moment(lmpDate1).isValid() ? moment(lmpDate1).add(280, 'days').toDate():''"
-                }
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(new moment(lmpDate1)).isAfter((new moment(myValue)), 'day') || (new moment(lmpDate1)).isSame((new moment(myValue)), 'day')",
-                  "message": "EDD should be greater than the encounter date."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(pregnant) && pregnant === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-                  "message": "Patient is pregnant. Please provide EDD."
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
+   
+    
+        
+      
+    
     {
       "label": "Substance Use",
       "sections": [
