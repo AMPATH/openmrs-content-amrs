@@ -271,7 +271,7 @@
                   }
                 },
                 {
-                  "label": "Sex",
+                  "label": "Sex:",
                   "type": "obs",
                   "id": "childGender",
                   "questionOptions": {
@@ -290,7 +290,7 @@
                   }
                 },
                 {
-                  "label": "Outcome",
+                  "label": "Outcome:",
                   "type": "obs",
                   "id": "qualitativeBirthOutcome",
                   "questionOptions": {
@@ -393,85 +393,7 @@
             }
           ]
         },
-        {
-          "label": "Diagnosis",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "type": "obsGroup",
-              "questionOptions": {
-                "concept": "a89c2d8a-1350-11df-a1f1-0026b9348838",
-                "rendering": "repeating"
-              },
-              "label": "Diagnosis",
-              "questions": [
-                {
-                  "label": "Diagnosis",
-                  "id": "probAdded",
-                  "questionOptions": {
-                    "concept": "a8ae835e-1350-11df-a1f1-0026b9348838",
-                    "rendering": "problem"
-                  },
-                  "type": "obs",
-                  "validators": []
-                }
-              ],
-              "id": "diagnosis"
-            }
-          ]
-        },
-        {
-          "label": "Laboratory Test",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "VDRL/RPR results",
-              "id": "vdrl",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "a8945678-1350-11df-a1f1-0026b9348838",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Negative"
-                  }
-                ]
-              }
-            },
-            {
-              "label": "HIV status at ANC",
-              "id": "ancHiv",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "c6f26fda-432d-4ba1-8632-3e9c70f4f36c",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Negative"
-                  },
-                  {
-                    "concept": "fa5a4dd8-60cd-4085-80b6-4aea76809926",
-                    "label": "Known positive at 1st ANC visit"
-                  },
-                  {
-                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
-                    "label": "Unknown"
-                  }
-                ]
-              }
-            }
-          ]
-        },
+
         {
           "label": "HIV Testing",
           "isExpanded": "true",
@@ -1098,7 +1020,7 @@
             }
           ]
         },
-		 {
+        {
           "label": "Admission Examination",
           "isExpanded": "true",
           "questions": [
@@ -1182,7 +1104,7 @@
               }
             },
             {
-              "label": "Foetal Heartrate:",
+              "label": "Foetal Heart rate:",
               "type": "obs",
               "id": "foetalValue",
               "questionOptions": {
@@ -1197,191 +1119,192 @@
               "type": "obs",
               "id": "vagDis",
               "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "text"
+                "concept": "17572011-42ee-4a3d-a7bf-85faa52be41a",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  }
+                ]
               }
             },
             {
-              "label": "External Genitals",
+              "label": "External genitals examination done:",
               "type": "obs",
               "id": "extGen",
               "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "text"
+                "concept": "a216d251-1600-48d1-98ed-3fc941673932",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
               }
             },
             {
-              "label": "Spleen",
+              "label": "Spleen:",
               "type": "obs",
               "id": "spleEn",
               "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
               }
             },
             {
-              "label": "Abnormalities",
+              "label": "Abnormalities:",
               "type": "obs",
               "id": "abnoMalities",
               "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8affe64-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
               }
             },
             {
-              "label": "Report On Labour",
+              "label": "Pelvic Assessment:",
               "type": "obs",
-              "id": "labReprt",
+              "id": "pelvicAss",
               "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "ca6ca060-d00c-4269-90fe-66b357e798b2",
                 "rendering": "text"
               }
             },
+
             {
-              "label": "Admission Diagnosis",
+              "label": "Diagnosis:",
+              "required": "true",
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
-                "rendering": "remote-select",
+                "rendering": "repeating",
                 "rank": 2,
                 "datasource": {
                   "name": "diagnoses",
                   "config": {
-                    "conceptSourceUuid": "39ADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
                   }
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Nursing Notes",
+          "isExpanded": "true",
+          "questions": [
             {
-              "label": "Mother's ART prophylaxis given during this visit?",
-              "type": "obs",
-              "id": "prophylaxisUsed",
+              "label": "History of medical illness",
+              "type": "obsGroup",
+              "id": "histMedIllnessDet",
               "questionOptions": {
-                "concept": "1109AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "105281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Cotrimoxazole"
-                  },
-                  {
-                    "concept": "74250AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Dapsone"
-                  },
-                  {
-                    "concept": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "None"
-                  }
-                ]
+                "concept": "19f9abaf-d8dc-49c9-bac8-38ac5028a8e3",
+                "rendering": "group"
               },
-              "hide": {
-                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
-            },
-            {
-              "label": "Was mother on HAART during ANC?",
-              "type": "obs",
-              "id": "motherHaart",
-              "questionOptions": {
-                "concept": "163783AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "160123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No"
-                  },
-                  {
-                    "concept": "1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "N/A"
+              "validators": [],
+              "questions": [
+                {
+                  "label": "History of medical illness:",
+                  "type": "obs",
+                  "id": "histMedIllness",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
                   }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
+                }
+              ]
             },
+
             {
-              "label": "Was mother started on HAART at maternity?",
+              "label": "Medical and surgical history:",
               "type": "obs",
-              "id": "haartMat",
+              "id": "medHist",
               "questionOptions": {
-                "concept": "b253d0cf-f56f-4670-bd5e-1c15c0ed2cea",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "160123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No"
-                  },
-                  {
-                    "concept": "1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "N/A"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
-            },
-            {
-              "label": "AZT for the baby dispensed?",
-              "type": "obs",
-              "id": "aztDispensed",
-              "questionOptions": {
-                "concept": "1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "160123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
-            },
-            {
-              "label": "NVP for the baby dispensed?",
-              "type": "obs",
-              "id": "nvpDispensed",
-              "questionOptions": {
-                "concept": "1282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "80586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(patientHivStatus) || patientHivStatus !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
-            },
-            {
-              "label": "Management Plan",
-              "type": "obs",
-              "id": "mangMt",
-              "questionOptions": {
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "2d94ad90-6b6f-474d-8f2e-8b245235059c",
                 "rendering": "text"
               }
+            },
+
+            {
+              "label": "obstetric and gynaecological history",
+              "type": "obsGroup",
+              "id": "obsgynHistDet",
+              "questionOptions": {
+                "concept": "a8afff90-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "validators": [],
+              "questions": [
+                {
+                  "label": "obstetric and gynaecological history:",
+                  "type": "obs",
+                  "id": "obsgynHist",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Family and birth history",
+              "type": "obsGroup",
+              "id": "famHistDet",
+              "questionOptions": {
+                "concept": "aeddf768-5ac0-45e4-934b-bf69730a8c2d",
+                "rendering": "group"
+              },
+              "validators": [],
+              "questions": [
+                {
+                  "label": "Family and birth history:",
+                  "type": "obs",
+                  "id": "famHist",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Physical examination/Vital signs:",
+              "type": "obs",
+              "id": "physExam",
+              "questionOptions": {
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Ultrasound",
+              "type": "obsGroup",
+              "id": "ultrasoundDet",
+              "questionOptions": {
+                "concept": "e83f4f97-91eb-4858-89d8-371535c5c131",
+                "rendering": "group"
+              },
+              "validators": [],
+              "questions": [
+                {
+                  "label": "Ultrasound:",
+                  "type": "obs",
+                  "id": "ultrasound",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  }
+                }
+              ]
             }
           ]
         }

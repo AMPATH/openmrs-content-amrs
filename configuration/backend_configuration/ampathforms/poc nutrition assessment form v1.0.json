@@ -300,12 +300,12 @@
             },
             {
               "label": "Diagnosis:",
-              "id": "DiagNosIS",
+              "required": "true",
+              "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
                 "rendering": "repeating",
-                "dataSource": "diagnoses",
-                "rank": 1,
+                "rank": 2,
                 "datasource": {
                   "name": "diagnoses",
                   "config": {
@@ -811,7 +811,7 @@
                     "label": "WHZ"
                   },
                   {
-                    "concept": "1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
                     "label": "BMI for Age"
                   }
                 ]
