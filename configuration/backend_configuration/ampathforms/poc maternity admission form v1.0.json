@@ -19,11 +19,11 @@
           "questions": [
             {
               "label": "Admission date:",
-              "type": "admissionDatetime",
+              "type": "encounterDatetime",
               "required": "true",
               "id": "admDate",
               "questionOptions": {
-                "rendering": "date"
+                "rendering": "ui-select-extended"
               },
               "validators": [
                 {
@@ -1078,7 +1078,7 @@
               "type": "obs",
               "id": "engaMemt",
               "questionOptions": {
-                "concept": "35881a01-011c-40bf-a70e-4906a11dd6e8",
+                "concept": "071b66c8-eece-494b-8872-00e2710d1928",
                 "rendering": "number",
                 "min": "0",
                 "max": "42"
