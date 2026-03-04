@@ -1027,7 +1027,10 @@
                 "rendering": "select"
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              }
             },
             {
               "label": "Do you sometimes drink alcohol?",
@@ -1047,7 +1050,11 @@
                 "rendering": "select"
               },
               "type": "obs",
-              "validators": []
+              
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              }
             },
             {
               "label": "How often did you take a drink containing alcohol in the last one year?",
@@ -1083,7 +1090,10 @@
                 "rendering": "select"
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              }
             },
             {
               "label": "How many drinks containing alcohol did you have on a typical day when you were drinking in the past year?",
@@ -1119,7 +1129,10 @@
                 "rendering": "select"
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              }
             },
             {
               "label": "How often did you have six or more drinks on one occasion in the past year?",
@@ -1151,7 +1164,10 @@
                 "rendering": "select"
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              }
             }
           ]
         }
@@ -1172,7 +1188,7 @@
               },
               "questions": [
                 {
-                  "label": "Was the patient hospitalized since last visit?",
+                  "label": "Was the patient hospitalized in the past year?",
                   "id": "wasHospitalized",
                   "questionOptions": {
                     "concept": "a898c56e-1350-11df-a1f1-0026b9348838",
@@ -1189,10 +1205,13 @@
                     "rendering": "select"
                   },
                   "type": "obs",
-                  "validators": []
+                  "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              }
                 }
               ],
-              "id": "__FDnuM6zJn"
+              "id": "recentHosp"
             },
             {
               "type": "obsGroup",
@@ -1230,7 +1249,7 @@
                   }
                 }
               ],
-              "id": "__rHqoFFJrz"
+              "id": "reasonHospDet"
             }
           ]
         },
@@ -1276,6 +1295,9 @@
                 ]
               },
               "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+              },
               "id": "medHistory"
             }
           ]
@@ -1320,7 +1342,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1343,7 +1365,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1397,7 +1419,7 @@
                 "rendering": "multiCheckbox"
               },
               "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
