@@ -3,7 +3,7 @@
   "description": "POC MOH 333 Maternity Register v1.0",
   "version": "1.0",
   "published": true,
-  "uuid": "edd28e4c-8031-4361-b47c-f758617eae75",
+  "uuid": "3a9cbd83-4e6b-3f94-97be-e994680e3522",
   "retired": false,
   "encounter": "MATERNITYADMISSION",
   "processor": "EncounterFormProcessor",
@@ -21,9 +21,10 @@
               "label": "Admission date:",
               "type": "encounterDatetime",
               "required": "true",
-              "id": "admDate",
+              "default": "",
+              "id": "encDate",
               "questionOptions": {
-                "rendering": "ui-select-extended"
+                "rendering": "date"
               },
               "validators": [
                 {
@@ -938,7 +939,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838','fa5a4dd8-60cd-4085-80b6-4aea76809926'], ancHiv)"
+                "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
