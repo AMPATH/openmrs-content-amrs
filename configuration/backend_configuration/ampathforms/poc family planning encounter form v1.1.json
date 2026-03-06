@@ -376,37 +376,37 @@
               "id": "reasonsForLarcRemoval",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "164901AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "9313b80f-9eca-4186-8f45-38da8eaa5417",
                 "answers": [
                   {
-                    "concept": "161638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
                     "label": "Maturity"
                   },
                   {
-                    "concept": "160571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "9c1066e2-74f6-47ec-8873-0507434c4d25",
                     "label": "Desire to get pregnant"
                   },
                   {
-                    "concept": "164154AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Health corcens/Side effects"
+                    "concept": "a89de2d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Health corncens/Side effects"
                   },
                   {
-                    "concept": "163494AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "54551201-548b-40a8-a5ac-18cdc4c2fb92",
                     "label": "Method Switch"
                   },
                   {
-                    "concept": "160693AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "04dfb521-9532-45ed-b269-d231ca60891c",
                     "label": "Method Failure"
                   },
                   {
-                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Others(Specify)"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(typeOfVisitForMethod2) || !arrayContains(typeOfVisitForMethod2, '164161AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') || sex !== 'F' || age < 15"
+                "hideWhenExpression": "isEmpty(typeOfVisitForMethod2) || !arrayContains(typeOfVisitForMethod2, 'dd3aa98a-2230-4bfb-aabb-6be9a00ace87') || sex !== 'F' || age < 15"
               }
             },
             {
@@ -416,29 +416,13 @@
               "id": "otherSpecify",
               "questionOptions": {
                 "rendering": "text",
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "160632"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "1915"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "LOINC",
-                    "value": "48767-8"
-                  }
-                ],
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+               
                 "answers": []
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "reasonsForLarcRemoval !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "reasonsForLarcRemoval !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -447,15 +431,15 @@
               "required": "true",
               "id": "counselledOnNaturalFp",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "1379AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "concept": "cceba2d0-eba2-4c97-9517-3035d5f6dd5e",
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -470,29 +454,23 @@
               "type": "obs",
               "id": "circleBeadsGiven",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "166866AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "166866"
-                  }
-                ],
+                "rendering": "select",
+                "concept": "9cd914b4-40e3-4c07-9d83-800ae212ac3c",
+                
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(counselledOnNaturalFp) || counselledOnNaturalFp !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || sex !== 'F' || age < 15"
+                "hideWhenExpression": "isEmpty(counselledOnNaturalFp) || counselledOnNaturalFp !== 'a899b35c-1350-11df-a1f1-0026b9348838' || sex !== 'F' || age < 15"
               }
             },
             {
@@ -501,22 +479,22 @@
               "id": "clientReceivingPostpartumFp",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "1177AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "80733d16-c7e7-462d-b4f9-f2391c5c35ea",
                 "answers": [
                   {
-                    "concept": "162253AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a77c0d06-d1a2-4c56-bf9a-eaf5aa388129",
                     "label": "immediate post partum(< 48 hrs)"
                   },
                   {
-                    "concept": "c14ae81a-bce4-4f53-8b36-7e582f79759d",
+                    "concept": "d94aa153-b9e5-4118-a182-6e00beeefba8",
                     "label": "post partum (> 48 hrs to 6 weeks)"
                   },
                   {
-                    "concept": "1180AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "7723095c-825f-4c71-ab66-4bdc0a463ee5",
                     "label": "post partum (more than 6 weeks and less than 12 months)"
                   },
                   {
-                    "concept": "164820AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "8fd14559-353d-4b02-8b98-1b831ab13af1",
                     "label": "post abortion (within 7 days)"
                   }
                 ]
@@ -531,44 +509,44 @@
               "type": "obs",
               "id": "tbScreeningStatus",
               "questionOptions": {
-                "concept": "1659AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "radio",
+                "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
+                "rendering": "select",
                 "answers": [
                   {
-                    "concept": "142177AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "6cd4f017-dae4-4b65-86ee-77074555feaa",
                     "label": "Presumed TB"
                   },
                   {
-                    "concept": "1660AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "f7dfdac3-65ee-487a-98f3-9f62693272a9",
                     "label": "No TB Signs"
                   },
                   {
-                    "concept": "1662AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a11755b3-3e5b-4429-a6dc-e3dbeff78a9e",
                     "label": "On TB Treatment"
                   },
                   {
-                    "concept": "160737AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
                     "label": "Not Done"
                   }
                 ]
               }
             },
             {
-              "label": "Counselled on HIV",
+              "label": "Counselled on HIV:",
               "type": "obs",
               "required": "true",
               "id": "counselledOnHiv",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "163760AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "concept": "a8a45032-1350-11df-a1f1-0026b9348838",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -581,16 +559,16 @@
               "required": "true",
               "id": "counselledAndTested",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "161558AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "concept": "71bb9660-cb25-48d0-ab90-2dc39df8e9ab",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -603,31 +581,31 @@
               "required": "true",
               "id": "hivResults",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "159427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "concept": "a89c6c64-1350-11df-a1f1-0026b9348838",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "6f6a5e50-6ea0-45a1-90cc-800bd858f82b",
+                    "concept": "fa5a4dd8-60cd-4085-80b6-4aea76809926",
                     "label": "Known positive"
                   },
                   {
-                    "concept": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
                     "label": "Positive"
                   },
                   {
-                    "concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
                     "label": "Negative"
                   },
                   {
-                    "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
                     "label": "Unknown"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "counselledAndTested !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "counselledAndTested !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -636,23 +614,23 @@
               "required": "true",
               "id": "linkedToHivCare",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "164849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "select",
+                "concept": "2bf2a177-da8a-4033-8b7c-62577d0dc00c",
                 "conceptMappings": [],
                 "answers": [
-                  {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                   {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "hivResults !== '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "hivResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -661,23 +639,23 @@
               "required": "true",
               "id": "prepScreening",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "f1764e66-b2b7-4bd2-a539-9a28b3605ab3",
+                "rendering": "select",
+                "concept": "b24e12a5-5a37-4f3e-9c55-58bb3a1f55e9",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "ccf759b9-bdd4-4265-a71a-67a894d89dec",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Eligible"
                   },
                   {
-                    "concept": "8877e01c-10ee-45c6-bf6d-645dc6e30f27",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "Not Eligible"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "hivResults !== '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "hivResults !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -686,23 +664,23 @@
               "required": "true",
               "id": "linkedToPrepCare",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "cb583a50-2b6c-4a6a-a458-a6a3c41fa1a7",
+                "rendering": "select",
+                "concept": "d87c11f0-a81d-4796-90f7-899362cdc732",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "prepScreening !== 'ccf759b9-bdd4-4265-a71a-67a894d89dec'"
+                "hideWhenExpression": "prepScreening !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -712,18 +690,18 @@
               "id": "experiencedIntimatePartner",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "167255AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "02a5b950-53fa-4da8-b244-257b99cef73a",
                 "answers": [
                   {
-                    "concept": "167243AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a54ea51a-08be-4d89-a7eb-d0b235764a1e",
                     "label": "Intimate partner violence"
                   },
                   {
-                    "concept": "965AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "920709bc-dde6-4d21-863e-851e63c084e4",
                     "label": "reproductive coertion"
                   },
                   {
-                    "concept": "1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
                     "label": "Not Applicable"
                   }
                 ]
@@ -740,21 +718,21 @@
               "id": "cervicalCancerScreeningDone",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "6f886f9f-ee0a-4be0-8055-5e23af125c49",
+                "concept": "3086a740-face-4fcd-825b-1e627a66c93a",
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
               },
               "validators": [],
               "alert": {
-                "alertWhenExpression": "myValue === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'",
+                "alertWhenExpression": "myValue === 'a899b42e-1350-11df-a1f1-0026b9348838'",
                 "message": "Screen for Cervical Cancer"
               }
             },
@@ -765,29 +743,29 @@
               "id": "cervicalCancerResults",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "6f886f9f-ee0a-4be0-8055-5e23af125c49",
+                "concept": "6bad2971-c776-4f0e-ae15-a3fc0cbd7d0f",
                 "answers": [
                   {
-                    "concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
                     "label": "Normal"
                   },
                   {
-                    "concept": "162743AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
                     "label": "Suspected"
                   },
                   {
-                    "concept": "165792AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8af9046-1350-11df-a1f1-0026b9348838",
                     "label": "Confirmed"
                   },
                   {
-                    "concept": "1118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
                     "label": "Not done"
                   }
                 ]
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(cervicalCancerScreeningDone) || cervicalCancerScreeningDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || sex !== 'F'"
+                "hideWhenExpression": "isEmpty(cervicalCancerScreeningDone) || cervicalCancerScreeningDone !== 'a899b35c-1350-11df-a1f1-0026b9348838' || sex !== 'F'"
               }
             },
             {
