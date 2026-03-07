@@ -73,6 +73,59 @@
                 "hideWhenExpression": "age < 15"
               }
             },
+             {
+              "label": "Has special needs/disability?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "522cca7a-235d-43d4-837e-8a118f2d9f88",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "clientDisability"
+            },
+            {
+              "label": "Please indicated the type of disability:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "a89ffa64-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "ef7df6d2-e2da-478a-abbe-c6273f211702",
+                    "label": "Hearing impairment"
+                  },
+                  {
+                    "concept": "bad3e303-2b74-40ad-8f90-14ca804c4ad7",
+                    "label": "Visual impairment"
+                  },
+                  {
+                    "concept": "291e1dc4-203a-4a09-aa0c-2d0a1962a719",
+                    "label": "Mentally Challenged"
+                  },
+                  {
+                    "concept": "d2c75e8e-3c80-4851-8225-050adfa96226",
+                    "label": "Physically Challenged"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others"
+                  }
+                ]
+              },
+              "id": "disabilityTypes",
+              "hide": {
+                "hideWhenExpression": "isEmpty(clientDisability) || clientDisability !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
             {
               "label": "Pregnancy/breastfeeding status:",
               "type": "obs",
@@ -82,10 +135,7 @@
                 "rendering": "select",
                 "concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
                 "answers": [
-                  {
-                    "concept": "a89d109c-1350-11df-a1f1-0026b9348838",
-                    "label": "Pregnant"
-                  },
+                 
                   {
                     "concept": "a8a18208-1350-11df-a1f1-0026b9348838",
                     "label": "Breastfeeding"
@@ -131,6 +181,7 @@
           "label": "Family Planning",
           "isExpanded": "true",
           "questions": [
+             
             {
               "label": "First ever user of contraceptive:",
               "type": "obs",
@@ -156,6 +207,7 @@
                 "hideWhenExpression": "age < 15"
               }
             },
+           
             {
               "label": "Counselled on family planning?",
               "type": "obs",
@@ -366,7 +418,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": " age < 15 || contraceptiveDispensedF === 'eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc' || contraceptiveDispensedF === 'a8a713f8-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedM === 'eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc'"
+                "hideWhenExpression": " age < 15 || contraceptiveDispensedF !== '1934d7dd-7a59-43f0-8b6b-29e736498f15' || contraceptiveDispensedF !== 'b75702a6-908d-491b-9399-6495712c81cc' || contraceptiveDispensedF !== 'a8aff1b2-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedF !== 'a8afeb54-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedM !== '99573ebc-b11b-4f5d-866d-94c5feb28924'"
               }
             },
             {
@@ -483,19 +535,19 @@
                 "answers": [
                   {
                     "concept": "a77c0d06-d1a2-4c56-bf9a-eaf5aa388129",
-                    "label": "immediate post partum(< 48 hrs)"
+                    "label": "PPFP Less than 48 hrs"
                   },
                   {
                     "concept": "d94aa153-b9e5-4118-a182-6e00beeefba8",
-                    "label": "post partum (> 48 hrs to 6 weeks)"
+                    "label": "PPFP more than 48 hrs to 6 weeks"
                   },
                   {
                     "concept": "7723095c-825f-4c71-ab66-4bdc0a463ee5",
-                    "label": "post partum (more than 6 weeks and less than 12 months)"
+                    "label": "PPFP more than 6 weeks and less than 12 months"
                   },
                   {
                     "concept": "8fd14559-353d-4b02-8b98-1b831ab13af1",
-                    "label": "post abortion (within 7 days)"
+                    "label": "Post abortion (within 7 days)"
                   }
                 ]
               },
@@ -698,7 +750,7 @@
                   },
                   {
                     "concept": "920709bc-dde6-4d21-863e-851e63c084e4",
-                    "label": "reproductive coertion"
+                    "label": "Reproductive coertion"
                   },
                   {
                     "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
