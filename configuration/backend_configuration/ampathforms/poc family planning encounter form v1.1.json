@@ -50,7 +50,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Client Type:",
+              "label": "Client type:",
               "type": "obs",
               "required": "true",
               "id": "clientType",
@@ -106,7 +106,7 @@
               }
             },
             {
-              "label": "LMP",
+              "label": "LMP:",
               "type": "obs",
               "required": "true",
               "id": "lmp",
@@ -132,7 +132,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "First ever user of contraceptive",
+              "label": "First ever user of contraceptive:",
               "type": "obs",
               "required": "true",
               "id": "firstEverUser",
@@ -235,11 +235,11 @@
                   },
                   {
                     "concept": "236dba53-1062-46b4-8067-ec8711897dbf",
-                    "label": "IUD Hormonal (Sets)"
+                    "label": "IUD hormonal (Sets)"
                   },
                   {
                     "concept": "a8a71330-1350-11df-a1f1-0026b9348838",
-                    "label": "IUD Non hormonal (Sets)"
+                    "label": "IUD non hormonal (Sets)"
                   },
                   {
                     "concept": "eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc",
@@ -322,7 +322,7 @@
               }
             },
             {
-              "label": "Type of visit for method",
+              "label": "Type of visit for method:",
               "type": "obs",
               "required": "true",
               "id": "typeOfVisitForMethod2",
@@ -354,7 +354,7 @@
               }
             },
             {
-              "label": "Quantity dispensed",
+              "label": "Quantity dispensed:",
               "type": "obs",
               "required": "true",
               "id": "quantityDispensed",
@@ -370,7 +370,7 @@
               }
             },
             {
-              "label": "Reasons For LARC Removal",
+              "label": "Reasons for LARC removal:",
               "type": "obs",
               "required": false,
               "id": "reasonsForLarcRemoval",
@@ -388,15 +388,15 @@
                   },
                   {
                     "concept": "a89de2d8-1350-11df-a1f1-0026b9348838",
-                    "label": "Health corncens/Side effects"
+                    "label": "Health corncens/side effects"
                   },
                   {
                     "concept": "54551201-548b-40a8-a5ac-18cdc4c2fb92",
-                    "label": "Method Switch"
+                    "label": "Method switch"
                   },
                   {
                     "concept": "04dfb521-9532-45ed-b269-d231ca60891c",
-                    "label": "Method Failure"
+                    "label": "Method failure"
                   },
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
@@ -410,7 +410,7 @@
               }
             },
             {
-              "label": "Specify",
+              "label": "Specify:",
               "type": "obs",
               "required": "true",
               "id": "otherSpecify",
@@ -450,7 +450,7 @@
               }
             },
             {
-              "label": "Circle Beads given",
+              "label": "Circle beads given:",
               "type": "obs",
               "id": "circleBeadsGiven",
               "questionOptions": {
@@ -505,7 +505,7 @@
               }
             },
             {
-              "label": "TB Screening Status:",
+              "label": "TB screening status:",
               "type": "obs",
               "id": "tbScreeningStatus",
               "questionOptions": {
@@ -518,15 +518,15 @@
                   },
                   {
                     "concept": "f7dfdac3-65ee-487a-98f3-9f62693272a9",
-                    "label": "No TB Signs"
+                    "label": "No TB signs"
                   },
                   {
                     "concept": "a11755b3-3e5b-4429-a6dc-e3dbeff78a9e",
-                    "label": "On TB Treatment"
+                    "label": "On TB treatment"
                   },
                   {
                     "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Not Done"
+                    "label": "Not done"
                   }
                 ]
               }
@@ -554,7 +554,7 @@
               "validators": []
             },
             {
-              "label": "Counselled and tested",
+              "label": "Counselled and tested:",
               "type": "obs",
               "required": "true",
               "id": "counselledAndTested",
@@ -576,7 +576,7 @@
               "validators": []
             },
             {
-              "label": "HIV Results",
+              "label": "HIV results:",
               "type": "obs",
               "required": "true",
               "id": "hivResults",
@@ -609,7 +609,7 @@
               }
             },
             {
-              "label": "Linked to HIV Care?",
+              "label": "Linked to HIV care?",
               "type": "obs",
               "required": "true",
               "id": "linkedToHivCare",
@@ -634,7 +634,7 @@
               }
             },
             {
-              "label": "PrEP Screening",
+              "label": "PrEP screening:",
               "type": "obs",
               "required": "true",
               "id": "prepScreening",
@@ -649,7 +649,7 @@
                   },
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "Not Eligible"
+                    "label": "Not eligible"
                   }
                 ]
               },
@@ -659,7 +659,7 @@
               }
             },
             {
-              "label": "Linked to PrEP care",
+              "label": "Linked to prEP care:",
               "type": "obs",
               "required": "true",
               "id": "linkedToPrepCare",
@@ -684,7 +684,7 @@
               }
             },
             {
-              "label": "Experienced intimate partner violence/reproductive coertion",
+              "label": "Experienced intimate partner violence/reproductive coertion:",
               "type": "obs",
               "required": "true",
               "id": "experiencedIntimatePartner",
@@ -712,7 +712,7 @@
               }
             },
             {
-              "label": "Cervical Cancer Screening Done?",
+              "label": "Cervical cancer screening done?",
               "type": "obs",
               "required": "true",
               "id": "cervicalCancerScreeningDone",
@@ -737,7 +737,7 @@
               }
             },
             {
-              "label": "Cervical Cancer results",
+              "label": "Cervical cancer results:",
               "type": "obs",
               "required": "true",
               "id": "cervicalCancerResults",
@@ -768,176 +768,87 @@
                 "hideWhenExpression": "isEmpty(cervicalCancerScreeningDone) || cervicalCancerScreeningDone !== 'a899b35c-1350-11df-a1f1-0026b9348838' || sex !== 'F'"
               }
             },
-            {
-              "label": "Client referred for FP services",
+           {
+              "label": "Referred from:",
+              "id": "rfBy",
               "type": "obs",
-              "required": "true",
-              "id": "refferredPatient",
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "166515AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "conceptMappings": [],
-                "answers": [
-                  {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No"
-                  }
-                ]
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "age < 15"
-              }
-            },
-            {
-              "label": "Refferal reason?",
-              "type": "obs",
-              "id": "refferalsOrderd",
-              "questionOptions": {
-                "concept": "164359AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "textarea"
-              },
-              "hide": {
-                "hideWhenExpression": "refferredPatient !=='1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
-            },
-            {
-              "label": "Referred to?",
-              "type": "obs",
-              "id": "referralTo",
-              "questionOptions": {
-                "concept": "163145AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "aad34924-d6e7-4138-a841-0fea9ee4b41f",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "164407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Other health facility"
+                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Another health facility"
                   },
                   {
-                    "concept": "9008cf1c-8631-440b-8fde-061ff273c04c",
-                    "label": "Transfer within the facility"
+                    "concept": "a8a00b4e-1350-11df-a1f1-0026b9348838",
+                    "label": "Community unit"
                   },
                   {
-                    "concept": "163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Community"
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
                   }
                 ]
               },
-              "hide": {
-                "hideWhenExpression": "refferredPatient !=='1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-              }
+              "validators": []
             },
             {
-              "label": "Referral to Facility:",
+              "label": "Referred to:",
+              "id": "referralsTo",
+              "questionOptions": {
+                "concept": "6434322f-d050-4764-8c00-741e20c4c9e1",
+                "answers": [
+                  {
+                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Another health facility"
+                  },
+                  {
+                    "concept": "a8a00b4e-1350-11df-a1f1-0026b9348838",
+                    "label": "Community unit"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Reason for referral:",
+              "id": "reasonReferral",
+              "questionOptions": {
+                "concept": "2c8bb721-b642-428a-b956-7902242776ab",
+                "rendering": "text"
+              },
+              "type": "obs",
+              "validators": []
+            },
+           
+           
+            {
+              "label": "Referral to facility:",
               "type": "obs",
               "id": "transferToFacility",
               "questionOptions": {
-                "concept": "159495AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "2722deae-f4e6-42f4-8259-f7e47d425d61",
                 "rendering": "encounterLocation"
               },
               "hide": {
-                "hideWhenExpression": "referralTo !=='164407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "referralTo !=='a89c25d8-1350-11df-a1f1-0026b9348838'"
               }
             },
+           
             {
-              "label": "Department transferred to",
-              "type": "obs",
-              "id": "departmentSpecify",
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "160478AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "conceptMappings": [],
-                "answers": [
-                  {
-                    "concept": "160542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Outpatient Department"
-                  },
-                  {
-                    "concept": "167050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Inpatient Department"
-                  },
-                  {
-                    "concept": "160454AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Ophthalmology (Eye)Clinic"
-                  },
-                  {
-                    "concept": "160455AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Ear, Nose, and Throat(ENT)Clinic"
-                  },
-                  {
-                    "concept": "2a030791-14b4-4996-95ad-39c54b25f2b6",
-                    "label": "Physiotherapy clinic"
-                  },
-                  {
-                    "concept": "164164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Surgical Outpatient Clinic"
-                  },
-                  {
-                    "concept": "160457AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Paediatrics clinics"
-                  },
-                  {
-                    "concept": "1d7d7c76-d807-4f33-8c7e-2531e28126ed",
-                    "label": "Maxillofacial Clinic"
-                  },
-                  {
-                    "concept": "160448AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Medical Outpatient clinic"
-                  },
-                  {
-                    "concept": "66710a6d-5894-4f7d-a874-b449df77314d",
-                    "label": "Oncology Clinic"
-                  },
-                  {
-                    "concept": "30aff715-92de-4662-aa33-fa6b6179fed0",
-                    "label": "Dental clinic"
-                  },
-                  {
-                    "concept": "160475AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Renal Clinic"
-                  },
-                  {
-                    "concept": "5489AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Mental Health"
-                  },
-                  {
-                    "concept": "160460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Dermatology Clinic"
-                  },
-                  {
-                    "concept": "164103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Diabetic Clinic"
-                  },
-                  {
-                    "concept": "c2f85aed-695f-49b1-973e-002c37cbdebf",
-                    "label": "Occupational Therapy Clinic"
-                  },
-                  {
-                    "concept": "160465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Orthopaedic Clinic"
-                  },
-                  {
-                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Others specify"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "referralTo !=='9008cf1c-8631-440b-8fde-061ff273c04c'"
-              }
-            },
-            {
-              "label": "Remarks",
+              "label": "Remarks:",
               "type": "obs",
               "required": "false",
               "id": "remarks",
               "questionOptions": {
                 "rendering": "text",
-                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c"
               },
               "validators": []
             }
