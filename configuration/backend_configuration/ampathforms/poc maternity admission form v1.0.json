@@ -18,7 +18,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Admission date:",
+              "label": "Visit date:",
               "type": "encounterDatetime",
               "required": "true",
               "default": "",
@@ -43,14 +43,55 @@
               }
             },
             {
-              "type": "encounterLocation",
-              "label": "Facility name (site/satellite clinic required):",
-              "id": "location",
-              "required": "true",
+              "type": "obsGroup",
+              "id": "inpatientDispositionConstruct",
               "questionOptions": {
-                "rendering": "ui-select-extended"
-              }
-            },
+                "concept": "9ceedfb7-60e4-42ce-a11e-f2dbabc82112",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "id": "disposition",
+                  "type": "obs",
+                  "required": true,
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "required": true,
+                    "concept": "ce085d74-323c-4c9a-9fdf-051de81dd020",
+                    "answers": [
+                      {
+                        "concept": "77eafb3f-58d3-4397-a6dc-d2c06e9062f3"
+                      }
+                    ]
+                  },
+                  "validators": []
+                },
+                {
+                  "id": "admitToLocation",
+                  "label": "Admit to location",
+                  "type": "obs",
+                  "required": true,
+                  "questionOptions": {
+                    "rendering": "remote-select",
+                    "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
+                    "datasource": {
+                      "name": "location",
+                      "config": {
+                        "tag": "Admission Location"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "label": "Client Details",
+          "isExpanded": "true",
+          "questions": [
+           
             {
               "label": "Number of ANC visits:",
               "id": "ancNumber",
@@ -206,7 +247,7 @@
                       },
                       {
                         "concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
-                        "label": "Health Facility"
+                        "label": "Health facility"
                       }
                     ]
                   }
@@ -300,15 +341,15 @@
                     "answers": [
                       {
                         "concept": "a89ffcb2-1350-11df-a1f1-0026b9348838",
-                        "label": "Alive Birth"
+                        "label": "Alive birth"
                       },
                       {
                         "concept": "dcfda2f8-d466-43d7-bcdf-a37f19ef6436",
-                        "label": "Fresh Still Birth"
+                        "label": "Fresh still birth"
                       },
                       {
                         "concept": "1d5986e2-f858-4f0f-9887-2b19c5a76d32",
-                        "label": "Macerated Still Birth"
+                        "label": "Macerated still birth"
                       },
                       {
                         "concept": "a890a1b8-1350-11df-a1f1-0026b9348838",
