@@ -1,0 +1,954 @@
+{
+  "name": "AMPATH POC Age Friendly Prioritization Tool v1.0",
+  "uuid": "xxxx",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Age Friendly Prioritization",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider:",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Activities Of Daily Living (ADL)- Independence (No supervision, direction or personal assistance)= 1 point. Dependence (With supervision, direction, personal assistance or total care) = 0 point.",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Bathing:",
+              "required": "true",
+              "questionInfo": "1 point - Bathes self completely or needs help bathing single part of the body. 0 point - Need help with bathing more than one part of the body",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "b47cf603-86ad-4a23-a8f8-92944c9b8f83",
+                "placeholder": "1 point - Bathes self completely or needs help bathing single part of the body. 0 point - Need help with bathing more than one part of the body"
+              },
+              "validators": [],
+              "id": "bathing"
+            },
+            {
+              "label": "Dressing:",
+              "required": "true",
+              "questionInfo": "1 point - Gets clothes form closet and drawers and puts on clothes complete with fasteners. 0 point - Needs help with dressing self or needs to be completely dressed",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "07344895-e743-4b63-94ec-fb1d9d20f282",
+                "placeholder": "1 point - Gets clothes form closet and drawers and puts on clothes complete with fasteners. 0 point - Needs help with dressing self or needs to be completely dressed."
+              },
+              "validators": [],
+              "id": "dressing"
+            },
+            {
+              "label": "Toileting:",
+              "required": "true",
+              "questionInfo": "1 point - Goes to toilet, gets on and off, arranges clothes, cleans genital area without help. 0 point - Needs help transferring to the toilet, cleaning self or uses bedpan or commode",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "d0190fe3-ae8c-43f5-b8ff-651e7c201f45",
+                "placeholder": "1 point - Goes to toilet, gets on and off, arranges clothes, cleans genital area without help. 0 point - Needs help transferring to the toilet, cleaning self or uses bedpan or commode"
+              },
+              "validators": [],
+              "id": "toileting"
+            },
+            {
+              "label": "Transferring:",
+              "required": "true",
+              "questionInfo": "1 point - Moves in and out of bed or chair unassisted. Mechanical transfer aids are acceptable. 0 point - Needs help in moving from bed to chair or requires a complete transfer.",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "2d886027-049b-4431-b42f-623df184c089",
+                "placeholder": "1 point - Moves in and out of bed or chair unassisted. Mechanical transfer aids are acceptable. 0 point - Needs help in moving from bed to chair or requires a complete transfer."
+              },
+              "validators": [],
+              "id": "transferring"
+            },
+            {
+              "label": "Continence:",
+              "required": "true",
+              "questionInfo": "1 point - Exercises complete self control over urination and defacation. 0 point - Is partially or totally incontinent of bowel or bladder.",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "55405e1b-0b20-4dd1-8864-23d6c7aab6f7",
+                "placeholder": "1 point - Exercises complete self control over urination and defacation. 0 point - Is partially or totally incontinent of bowel or bladder."
+              },
+              "validators": [],
+              "id": "continence"
+            },
+            {
+              "label": "Feeding:",
+              "required": "true",
+              "questionInfo": "1 point - Gets food from plate into mouth without help. Preparation of food may be done by another person. 0 point - Needs partial ot total help with feeding or requires parenteral feeding.",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "7c21f924-ed0f-42c3-94c2-b62da29f6908",
+                "placeholder": "1 point - Gets food from plate into mouth without help. Preparation of food may be done by another person. 0 point - Needs partial ot total help with feeding or requires parenteral feeding."
+              },
+              "validators": [],
+              "id": "feeding"
+            },
+            {
+              "label": "ADL total points:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "6",
+                "min": "0",
+                "concept": "5731721e-198a-4a0b-a185-cdb696ed281b",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseFloat(bathing) + parseFloat(dressing) + parseFloat(toileting) + parseFloat(transferring) + parseFloat(continence) + parseFloat(feeding)) ? undefined: (parseFloat(bathing) + parseFloat(dressing) + parseFloat(toileting) + parseFloat(transferring) + parseFloat(continence) + parseFloat(feeding))"
+                }
+              },
+              "validators": [],
+              "id": "adlTotal"
+            }
+          ]
+        },
+        {
+          "label": "Instrumental Activities Of Daily Living Scale (IADL)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Ability to use telephone:",
+              "required": "true",
+              "questionInfo": "1 point - Operates telephone on own initiative- looks up and dials numbers etc. 0 point - Does not use telephone at all",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "1e517cc9-ef74-4265-a5a7-cd5c6f2892aa",
+                "placeholder": "1 point - Operates telephone on own initiative- looks up and dials numbers etc. 0 point - Does not use telephone at all"
+              },
+              "validators": [],
+              "id": "usePhone"
+            },
+            {
+              "label": "Shopping:",
+              "required": "true",
+              "questionInfo": "1 point - Takes care of all shopping needs independently. 0 point - Completely unable to shop",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "4404779c-fcf4-47ec-b812-f29c042a5f1e",
+                "placeholder": "1 point - Takes care of all shopping needs independently. 0 point - Completely unable to shop"
+              },
+              "validators": [],
+              "id": "shopping"
+            },
+            {
+              "label": "Food preparation:",
+              "required": "true",
+              "questionInfo": "1 point - Plans, prepares and serves adequate meals independently. 0 point - Needs to have meals prepared and served",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "55580c5d-5726-4e84-976c-92fcc8abbff1",
+                "placeholder": "1 point - Plans, prepares and serves adequate meals independently. 0 point - Needs to have meals prepared and served"
+              },
+              "validators": [],
+              "id": "foodPreparation"
+            },
+            {
+              "label": "Housekeeping:",
+              "required": "true",
+              "questionInfo": "1 point - Able to manage housekeeping, domestic tasks, dishwashing, bed making and general home maintenance. 0 point - Does not participate in any housekeeping tasks.",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "ac4a83ba-b37f-42d3-abd6-dd42945add5f",
+                "placeholder": "1 point - Able to manage housekeeping, domestic tasks, dishwashing, bed making and general home maintenance. 0 point - Does not participate in any housekeeping tasks."
+              },
+              "validators": [],
+              "id": "housekeeping"
+            },
+            {
+              "label": "Laundry:",
+              "required": "true",
+              "questionInfo": "1 point - Does personal laundry completely(Can launder when house help is not there. 0 point - All laundry must be done by others.",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "e37d45a4-5c14-4324-803e-108845c1a8e0",
+                "placeholder": "1 point - Does personal laundry completely(Can launder when house help is not there. 0 point - All laundry must be done by others."
+              },
+              "validators": [],
+              "id": "laundry"
+            },
+            {
+              "label": "Mode of transportation:",
+              "required": "true",
+              "questionInfo": "1 point -Travels independently on public transportation, drives own car or arranges travel via taxi. 0 point -Accompanied by someone to places/cannot travel alone to places or cannot travel at all.",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "f6e55502-6ddd-4714-8e67-029d6942906b",
+                "placeholder": "1 point -Travels independently on public transportation, drives own car or arranges travel via taxi. 0 point -Accompanied by someone to places/cannot travel alone to places or cannot travel at all."
+              },
+              "validators": [],
+              "id": "modeTransport"
+            },
+            {
+              "label": "Responsibility for own medications:",
+              "required": "true",
+              "questionInfo": "1 point - Is responsible for taking medication in correct dosages at correct time. 0 point -Is not capable of dispensing own medication/requires support in prepating medication in advance.",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "954b44d8-a111-476c-bda4-10880eb092fc",
+                "placeholder": "1 point - Is responsible for taking medication in correct dosages at correct time. 0 point -Is not capable of dispensing own medication/requires support in prepating medication in advance."
+              },
+              "validators": [],
+              "id": "ownMeds"
+            },
+            {
+              "label": "Ability to handle finances:",
+              "required": "true",
+              "questionInfo": "1 point - Manages financial matters independently (budgets, writes checks, pays rent, goes to bank), collects and keeps track of income. 0 point -Is not capable of dispensing own medication/requires support in prepating medication in advance.",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "329acc3f-850b-4773-a961-058ca212b5f3",
+                "placeholder": "1 point - Manages financial matters independently (budgets, writes checks, pays rent, goes to bank), collects and keeps track of income. 0 point -Is not capable of dispensing own medication/requires support in prepating medication in advance."
+              },
+              "validators": [],
+              "id": "finances"
+            },
+            {
+              "label": "IADL total points:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseFloat(usePhone)+ parseFloat(shopping)+ parseFloat(foodPreparation)+ parseFloat(housekeeping)+ parseFloat(laundry)+ parseFloat(modeTransport)+ parseFloat(ownMeds)+ parseFloat(finances)) ? undefined: (parseFloat(usePhone)+ parseFloat(shopping)+ parseFloat(foodPreparation)+ parseFloat(housekeeping)+ parseFloat(laundry)+ parseFloat(modeTransport)+ parseFloat(ownMeds)+ parseFloat(finances))"
+                },
+                "max": "8",
+                "min": "0",
+                "concept": "db7fccce-2a4e-4b44-919c-0481513a0458"
+              },
+              "validators": [],
+              "id": "iadlTotalFem",
+              "hide": {
+                "hideWhenExpression": "sex != 'F'"
+              }
+            },
+            {
+              "label": "IADL total points:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "(isNaN(parseFloat(usePhone)) ? 0 : parseFloat(usePhone)) + (isNaN(parseFloat(shopping)) ? 0 : parseFloat(shopping)) + (isNaN(parseFloat(foodPreparation)) ? 0 : parseFloat(foodPreparation)) + (isNaN(parseFloat(housekeeping)) ? 0 : parseFloat(housekeeping)) + (isNaN(parseFloat(laundry)) ? 0 : parseFloat(laundry)) + (isNaN(parseFloat(modeTransport)) ? 0 : parseFloat(modeTransport)) + (isNaN(parseFloat(ownMeds)) ? 0 : parseFloat(ownMeds)) + (isNaN(parseFloat(finances)) ? 0 : parseFloat(finances))"
+                },
+                "max": "8",
+                "min": "0",
+                "concept": "db7fccce-2a4e-4b44-919c-0481513a0458"
+              },
+              "validators": [],
+              "id": "iadlTotalMale",
+              "hide": {
+                "hideWhenExpression": "sex != 'M'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Cognitive Decline - Ask the client to remember these 3 words which you will ask later (Chicken, Flower, Shop)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Orientation in time and space: Time?(Day, Month, Year), Space?(Clinic, Hospital, Home etc):",
+              "required": "true",
+              "questionInfo": "Correct on both questions = 1 point. Wrong on either questions = 0 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "fc41d10f-077c-424c-9abb-e0f9b129b693",
+                "placeholder": "Correct on both questions = 1 point. Wrong on either questions = 0 point"
+              },
+              "validators": [],
+              "id": "timeSpace"
+            },
+            {
+              "label": "Assess abilty to recall the 3 words:",
+              "required": "true",
+              "questionInfo": "Can recall all or can recall 2 = 1 point. Can recall 1 or cannot recall any = 0 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "19a73133-db54-45e3-91cb-bfa11724f788",
+                "placeholder": "Can recall all or can recall 2 = 1 point. Can recall 1 or cannot recall any = 0 point"
+              },
+              "validators": [],
+              "id": "recallWords"
+            },
+            {
+              "label": "Cognitive decline total points:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "(isNaN(parseFloat(timeSpace)) ? 0 : parseFloat(timeSpace)) + (isNaN(parseFloat(recallWords)) ? 0 : parseFloat(recallWords))"
+                },
+                "max": "2",
+                "min": "0",
+                "concept": "f827bdac-7309-406e-9261-bd1083c3b591"
+              },
+              "validators": [],
+              "id": "cdTotal"
+            }
+          ]
+        },
+        {
+          "label": "Limited Mobility",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Chair rise test: Rise from chair 5 times within 14 secs. Did the person complete 4-5 chair rises within 14 secs?",
+              "required": "true",
+              "questionInfo": "4-5 rises = 1 point, 0-3 rises = 0 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "f348c892-67b0-44c4-b8d5-3efe522a8ab2",
+                "placeholder": "4-5 rises = 1 point, 0-3 rises = 0 point"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!isEmpty(balTesting)"
+              },
+              "id": "chairRises"
+            },
+            {
+              "label": "Have you fallen in the past 6 months?",
+              "required": "true",
+              "questionInfo": "Yes = 0 point. No = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "5f150a88-46dc-4827-a9df-252db2fc859c",
+                "placeholder": "Yes = 0 point. No = 1 point"
+              },
+              "validators": [],
+              "id": "fall"
+            },
+            {
+              "label": "Fatigue: How much of the time during the past 4 weeks did you feel tired?",
+              "required": "true",
+              "questionInfo": "All the time, Most of the time = 0 point. Some of the time, A little of the time, None of the time = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "dc86174e-04db-4750-9add-9ecc39bf3d53",
+                "placeholder": "All the time, Most of the time = 0 point. Some of the time, A little of the time, None of the time = 1 point"
+              },
+              "validators": [],
+              "id": "fatigue"
+            },
+            {
+              "label": "Mobility total points:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "(isNaN(parseFloat(chairRises)) ? 0 : parseFloat(chairRises)) + (isNaN(parseFloat(fall)) ? 0 : parseFloat(fall)) + (isNaN(parseFloat(fatigue)) ? 0 : parseFloat(fatigue))"
+                },
+                "readonly": true,
+                "max": "3",
+                "min": "0",
+                "concept": "26e729a5-38c1-4aff-ad38-e4a0ac33bbc1"
+              },
+              "validators": [],
+              "id": "mobTotal"
+            }
+          ]
+        },
+        {
+          "label": "Mini Nutrition Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Have you unintentionally lost weight of more than 3 kg in the last 3 months ?(Check patient chart):",
+              "required": "true",
+              "questionInfo": "Yes = 0 point. No = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "f7268577-1b19-44c3-8ec6-2df51a171ac9",
+                "placeholder": "Yes = 0 point. No = 1 point"
+              },
+              "validators": [],
+              "id": "weightLoss"
+            },
+            {
+              "label": "Have you experienced loss of appetite?",
+              "required": "true",
+              "questionInfo": "Yes = 0 point. No = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "87e94ab5-c8dc-4257-a6f4-edad444a5da7",
+                "placeholder": "Yes = 0 point. No = 1 point"
+              },
+              "validators": [],
+              "id": "appetiteLoss"
+            },
+            {
+              "label": "Has food intake declined over the past 3 months?",
+              "required": "true",
+              "questionInfo": "Yes = 0 point. No = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "b21f19b1-2ef7-4739-9a8d-eace30cd56ff",
+                "placeholder": "Yes = 0 point. No = 1 point"
+              },
+              "validators": [],
+              "id": "foodDecline"
+            },
+            {
+              "label": "MNA total points:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "(isNaN(parseFloat(weightLoss)) ? 0 : parseFloat(weightLoss)) + (isNaN(parseFloat(appetiteLoss)) ? 0 : parseFloat(appetiteLoss)) + (isNaN(parseFloat(foodDecline)) ? 0 : parseFloat(foodDecline))"
+                },
+                "max": "3",
+                "min": "0",
+                "concept": "c33ab36a-4057-465e-ab47-63a4fea8ba3d"
+              },
+              "validators": [],
+              "id": "mnaTotal"
+            }
+          ]
+        },
+        {
+          "label": "Visual impairment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Do you have any problems with your eyes; difficulties in seeing far, seeing near, reading or have eye disease:",
+              "required": "true",
+              "questionInfo": "Yes = 0 point. No = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "28ce1700-006b-4448-b7d3-1e275c8b4448",
+                "placeholder": "Yes = 0 point. No = 1 point"
+              },
+              "validators": [],
+              "id": "visualImpa"
+            }
+          ]
+        },
+        {
+          "label": "Hearing loss (Conduct a hand rub test from a distance of a meter away from both sides of the ears, each one at a time)",
+          "required": "true",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Hears (Hand rub test):",
+              "questionInfo": "Fail on either ear = 0 point. Fail on none = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "81b97988-d57d-4786-85d1-34ec6733d448",
+                "placeholder": "Fail on either ear = 0 point. Fail on none = 1 point"
+              },
+              "validators": [],
+              "id": "hearingLoss"
+            }
+          ]
+        },
+        {
+          "label": "Polypharmacy",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Are you taking any other medication other than the HIV medication?",
+              "required": "true",
+              "questionInfo": "Yes = 0 point. No = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "4a99e8a9-34b4-4785-9dea-963f6985c3fc",
+                "placeholder": "Yes = 0 point. No = 1 point"
+              },
+              "validators": [],
+              "id": "medication"
+            },
+            {
+              "label": "If yes, how many tablets per day?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "min": "1",
+                "concept": "a8a0630a-1350-11df-a1f1-0026b9348838"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "medication !== '0'"
+              },
+              "id": "noTablets"
+            },
+            {
+              "label": "What other medication are you using? (Indicate in freetext)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a89fc120-1350-11df-a1f1-0026b9348838"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "medication !== '0'"
+              },
+              "id": "otherMeds"
+            }
+          ]
+        },
+        {
+          "label": "Comorbidities",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Do you have any other illness other than HIV?",
+              "required": "true",
+              "questionInfo": "Yes = 0 point. No = 1 point",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "concept": "e40d3aec-d2cf-4729-bd71-19686e69059c",
+                "placeholder": "Yes = 0 point. No = 1 point"
+              },
+              "validators": [],
+              "id": "otherIllness"
+            },
+            {
+              "type": "obsGroup",
+              "label": "Comorbidities",
+              "id": "comorDetailed",
+              "questionOptions": {
+                "concept": "ebf02efb-b28c-49e8-9caf-65e96dbfa0a9",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "List them e.g Hypertension, Diabetes:",
+                  "id": "comorList",
+                  "questionOptions": {
+                    "answers": [
+                      {
+                        "concept": "a8986880-1350-11df-a1f1-0026b9348838",
+                        "label": "Hypertension"
+                      },
+                      {
+                        "concept": "a893436e-1350-11df-a1f1-0026b9348838",
+                        "label": "Diabetes"
+                      },
+                      {
+                        "concept": "291e1dc4-203a-4a09-aa0c-2d0a1962a719",
+                        "label": "Mental health"
+                      },
+                      {
+                        "concept": "a8ad5254-1350-11df-a1f1-0026b9348838",
+                        "label": "CKD"
+                      },
+                      {
+                        "concept": "acdceb9b-4b84-4e9c-bba4-eaf486b3b4b5",
+                        "label": "Cancer"
+                      },
+                      {
+                        "concept": "a890dec6-1350-11df-a1f1-0026b9348838",
+                        "label": "Arthritis"
+                      },
+                      {
+                        "concept": "a89c36a4-1350-11df-a1f1-0026b9348838",
+                        "label": "COPD"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other specify"
+                      }
+                    ],
+                    "concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
+                    "rendering": "multiCheckbox"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "otherIllness !== '0'"
+                  }
+                },
+                {
+                  "label": "Other specify:",
+                  "id": "otherComor",
+                  "questionOptions": {
+                    "answers": [],
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContainsAny(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],comorList)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Interpretation",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Activities of daily living (0-3 - Very dependent, 4-5- Moderately dependent, 6 - Independent):",
+              "id": "adlStatus",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(adlTotal) >= 0 && parseInt(adlTotal) <= 4 ? 'Very dependent' : parseInt(adlTotal) >= 4 && parseInt(adlTotal) <= 5 ? 'Moderately' : parseInt(adlTotal) === 6 ? 'Independent' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Instrumental activities of daily living (0-5 - Dependent, 6-7 - Moderate, 8 - Independent):",
+              "id": "iadlStatusF",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(iadlTotalFem) >= 0 && parseInt(iadlTotalFem) <= 5 ? 'Dependent' : parseInt(iadlTotalFem) >= 6 && parseInt(iadlTotalFem) <= 7 ? 'Moderate' : parseInt(iadlTotalFem) === 8 ? 'Independent' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sex != 'F'"
+              }
+            },
+            {
+              "label": "Instrumental activities of daily living (0-4 - Dependent, 5-8 - Independent):",
+              "id": "iadlStatusM",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(iadlTotalMale) >= 0 && parseInt(iadlTotalMale) <=4 ? 'Dependent' : parseInt(iadlTotalMale) >= 5 && parseInt(iadlTotalMale) <= 8 ? 'Independent' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sex != 'M'"
+              }
+            },
+            {
+              "label": "Cognitive decline ( 0-1 - Have cognitive decline, 2- No cognitive decline):",
+              "id": "moca",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(cdTotal) >= 0 && parseInt(cdTotal) <=1 ? 'Have cognitive decline' : parseInt(cdTotal) === 2 ? 'No cognitive decline' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Mobility (0-2 - Need medical attention, 3 - Patient okay):",
+              "id": "prove",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(mobTotal) >= 0 && parseInt(mobTotal) <=2 ? 'Need medical attention' : parseInt(mobTotal) === 3 ? 'Patient okay' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Mini Nutrition Assessment (0-2 - At risk of malnutrition, 3 - Normal nutritional status):",
+              "id": "mna",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(mnaTotal) >= 0 && parseInt(mnaTotal) <=2 ? 'At risk of malnutrition' : parseInt(mnaTotal) === 3 ? 'Normal nutritional status' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Visual ( 0 - Refer to eye specialist, 1 - Normal):",
+              "id": "visual",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(visualImpa) === 0 ? 'Refer to eye specialist' : parseInt(visualImpa) === 1 ? 'Normal' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Hearing (0 - Refer to ENT specialist, 1- Normal):",
+              "id": "hearing",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(hearingLoss) === 0 ? 'Refer to ENT specialist' : parseInt(hearingLoss) === 1 ? 'Normal' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Polypharmacy (0- Needs further assessment , 1- Patient okay):",
+              "id": "polyPharm",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(medication) === 0 ? 'Further assessment using BEERS tool' : parseInt(medication) === 1 ? 'Patient okay' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Comorbidities ( 0- Needs attention and follow up, 1- Patient okay):",
+              "id": "corm",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(otherIllness) === 0 ? 'Needs attention and follow up' : parseInt(otherIllness) === 1 ? 'Patient okay' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            }
+          ]
+        },
+        {
+          "label": "Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Referrals made to the patient:",
+              "id": "referrals",
+              "questionOptions": {
+                "concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+                    "label": "Caregiver support"
+                  },
+                  {
+                    "concept": "a8a066ca-1350-11df-a1f1-0026b9348838",
+                    "label": "ENT"
+                  },
+                  {
+                    "concept": "17f299f8-7d2f-4f5e-bba4-53a81803b3fd",
+                    "label": "Neurology clinic"
+                  },
+                  {
+                    "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
+                    "label": "Orthopedic clinic"
+                  },
+                  {
+                    "concept": "a8a8b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "Mental health services"
+                  },
+                  {
+                    "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+                    "label": "Nutritional counselling"
+                  },
+
+                  {
+                    "concept": "a8a06788-1350-11df-a1f1-0026b9348838",
+                    "label": "Ophthalmology "
+                  },
+
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Date of next review:",
+              "type": "obs",
+
+              "id": "rtc",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [
+                  15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330,
+                  360
+                ]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+              ]
+            },
+            {
+              "label": "Please enter the clinical notes below:",
+              "required": "true",
+              "type": "obs",
+              "id": "assNote",
+              "default": "",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 5
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
