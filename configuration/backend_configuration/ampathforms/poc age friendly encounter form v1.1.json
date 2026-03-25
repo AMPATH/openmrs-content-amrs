@@ -269,14 +269,14 @@
             {
               "label": "Ability to handle finances:",
               "required": "true",
-              "questionInfo": "1 point - Manages financial matters independently (budgets, writes checks, pays rent, goes to bank), collects and keeps track of income. 0 point -Is not capable of dispensing own medication/requires support in prepating medication in advance.",
+              "questionInfo": "1 point - Manages financial matters independently (budgets, writes checks, pays rent, goes to bank), collects and keeps track of income. 0 point -Is not capable of managing financial matters independently.",
               "type": "obs",
               "questionOptions": {
                 "rendering": "number",
                 "max": "1",
                 "min": "0",
                 "concept": "329acc3f-850b-4773-a961-058ca212b5f3",
-                "placeholder": "1 point - Manages financial matters independently (budgets, writes checks, pays rent, goes to bank), collects and keeps track of income. 0 point -Is not capable of dispensing own medication/requires support in prepating medication in advance."
+                "placeholder": "1 point - Manages financial matters independently (budgets, writes checks, pays rent, goes to bank), collects and keeps track of income. 0 point -Is not capable of managing financial matters independently."
               },
               "validators": [],
               "id": "finances"

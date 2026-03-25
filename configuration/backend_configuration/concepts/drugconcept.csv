@@ -46,6 +46,36 @@ ea44b13f-c0a6-4647-a8c9-19f887e1152f,,MCL/CIEL:78644,LAMOTRIGINE,,,LAMIRAX,,,Is 
 c9f9af80-c966-48fa-b257-49e168edb1a3,,MCL/CIEL:79303,MANNITOL,,,OSMITROL,,,Is a medication and medical substance used mainly as an osmotic diuretic.,,,Drug,N/A
 cf311c8c-e7d3-4816-974c-503fd36ba4a3,,MCL/CIEL:79853,MIDAZOLAM,,,MIDAZOLAN,,,"Is a short-acting benzodiazepine medication used primarily for sedation, anxiety relief, and seizure control.",,,Drug,N/A
 7547cce0-3812-4792-a571-b3e9bdeffe7e,,MCL/CIEL: 79982,MIRTAZAPINE,,,MENELAT,,,Is a prescription antidepressant used mainly to treat major depressive disorder and certain anxiety disorders.,,,Drug,N/A
-5e61214b-8723-46fa-94e5-775b6fe396c8,,MCL/CIEL:,,,,,,,,,,Drug,N/A
-75e47b6e-6b68-4abd-bc2c-a84784284f09,,MCL/CIEL:,,,,,,,,,,Drug,N/A
+5e61214b-8723-46fa-94e5-775b6fe396c8,,MCL/CIEL:80050,MOMETASONE FUROATE ,,,,,,"Is a topical corticosteroid used to reduce inflammation, redness, swelling, and itching in various conditions.",,,Drug,N/A
+75e47b6e-6b68-4abd-bc2c-a84784284f09,,MCL/CIEL:80194,MUPIROCIN,,,MUCIPROCIN,,,Is a topical antibiotic used to treat bacterial skin infections.,,,Drug,N/A
+02dd23f1-9239-4a60-ae5c-d949740daaf5,,MCL/CIEL:80234,MYCOPHENOLATE MOFETIL ,,,MOFILET,,,Is an immunosuppressant drug used to reduce the body’s immune response.,,,Drug,N/A
+43c2c3e2-fda7-4826-b61c-f6d50a347e22,,MCL/CIEL:80534,NEOSTIGMINE,,,PROSTIGMIN,,,Is a medication that stimulates muscles and the nervous system by increasing the amount of a chemical called acetylcholine.,,,Drug,N/A
+2b73c2a0-e288-42c5-b566-9a8d306076a3,,MCL/CIEL:77601,HUMAN NORMAL IMMUNOGLOBULIN,,,VIGAM-S,,,Is a preparation of antibodies (immunoglobulins) derived from healthy human plasma. It provides passive immunity to help the body fight infections.,,,Drug,N/A
+75ce54c1-dfa7-48c6-9e81-5995bd815595,,MCL/CIEL:167949,PALIPERIDONE,,,PALIDO,,,Is an antipsychotic medication used to manage certain mental health conditions.,,,Drug,N/A
+c6052910-0f86-404c-be1d-ce9fe5ea7f83,,MCL/CIEL:168112,AMLODIPINE AND PERINDOPRIL ,,,RINDOPRIL AM,,,Is a combination medicine used to treat high blood pressure (hypertension).,,,Drug,N/A
+25971b91-d28e-41ad-b1e9-d3d754336000,,MCL/CIEL:167990,AMLODIPINE AND INDAPAMIDE AND PERINDOPRIL,,,TRIPLIXAM,,,"Is a triple combination pill used to treat high blood pressure (hypertension), especially when a single drug or dual therapy isn’t enough.",,,Drug,N/A
+c13a9aa1-0360-4838-8d7d-8f2203535a41,,MCL/CIEL:82284,POLYGELINE ,,,,,,Is a synthetic plasma volume expander used to treat or prevent low blood volume (hypovolemia).,,,Drug,N/A
+641dd002-b680-46a7-831a-d04bd9d7a10b,,MCL/CIEL:82726,PROPOFOL ,,,PROVIVE,,,Is a short-acting intravenous anesthetic used to induce and maintain general anesthesia or sedation.,,,Drug,N/A
+6d468bd0-d352-4433-bc48-867a82dc7344,,MCL/CIEL:82762,PROTAMINE SULFATE (USP),,,,,,"Is a medication used to reverse the effects of heparin, a blood-thinning drug.",,,Drug,N/A
+8760e960-e7ef-482d-9137-03e150860e2c,,MCL/CIEL: 83865,SERTRALINE ,,,SERENATA,,,Is an antidepressant medication used to treat a variety of mental health conditions.,,,Drug,N/A
+e58dbaeb-7be7-4d19-a2eb-d6082f1e52bb,,MCL/CIEL:83872,SEVOFLURANE ,,,SEVOTROY,,,Is a volatile inhalational anesthetic used to induce and maintain general anesthesia.,,,Drug,N/A
+aef7d1be-0c9b-4519-b44e-0a1e3d590199,,MCL/CIEL:84071,SODIUM LACTATE,,,,,,"Is a medication and fluid used to restore electrolytes, maintain acid-base balance, and expand blood volume.",,,Drug,N/A
+9c4ba426-85bd-4bf7-adb5-2a3bb1735690,,MCL/CIEL:84583,SUXAMETHONIUM CHLORIDE,,,,,,Is a short-acting muscle relaxant used during anesthesia to facilitate procedures like intubation.,,,Drug,N/A
+8feba83b-c42f-4412-9eb5-6a1c5cc864e5,,MCL/CIEL:84647,TACROLIMUS MONOHYDRATE,,,,,,"Is the active pharmaceutical ingredient (API) in tacrolimus formulations, used to suppress the immune system in various medical contexts.",,,Drug,N/A
+0f9d21f9-e394-4144-aac8-5a41021c24a5,,MCL/CIEL:84671,TAMSULOSIN HYDROCHLORIDE,,,,,,Is a medication used to improve urine flow in men with an enlarged prostate.,,,Drug,N/A
+ea626943-6370-4e81-bcf7-2c004d07aa28,,MCL/CIEL:84824,TERBINAFINE ,,,LAMISIL,,,Is an antifungal drug used to treat fungal infections of the skin and nails.,,,Drug,N/A
+de84f6bc-0ae6-4326-91f5-e811fd96d3dc,,MCL/CIEL:85491,TRIMETAZIDINE,,,CARVIDON,,,Is a medication used to improve heart function in patients with angina (chest pain).,,,Drug,N/A
+5b6ffaa4-8de9-4acb-9f51-603f9968891f,,MCL/CIEL:168551,PHENYLEPHRINE AND TROPICAMIDE,,,TROMIDE PLUS,,,Is an eye drop combination used to dilate the pupil for diagnostic or surgical procedures.,,,Drug,N/A
+2790c96c-5808-460c-9467-5833f11ef72e,,MCL/CIEL:86769,ZUCLOPENTHIXOL DECANOATE,,,,,,Is a long-acting injectable antipsychotic used for the maintenance treatment of schizophrenia and chronic psychotic disorders.,,,Drug,N/A
+9f745312-3faf-4a92-9163-7c622cfa7046,,MCL/CIEL:72191,BIMATOPROST,,,GLORIA,,,Is a medication used to lower intraocular pressure in the eye and promote eyelash growth in some formulations.,,,Drug,N/A
+02a30e26-873a-440e-b286-42d81609f445,,MCL/CIEL:168039,BIMATOPROST AND TIMOLOL ,,,BIMAT-T,,,Is a combination eye drop used to lower intraocular pressure (IOP) in patients with glaucoma or ocular hypertension.,,,Drug,N/A
+66714bc3-9c3e-459b-8140-92e843a91503,,MCL/CIEL:167995,ESOMEPRAZOLE AND CLARITHROMYCIN AND AMOXYCILLIN COMBINATION KIT,,,PYLOKIT-AC KIT,,,Is a combination treatment (often called triple therapy) used to eradicate Helicobacter pylori infection in the stomach.,,,Drug,N/A
+2eca62ba-2320-4bd9-b601-d3b19eab8b29,,MCL/CIEL:79435,METHYLCOBALAMIN ,,,MECOBALAMIN,,,Is an active form of vitamin B12 used to support nerve function and red blood cell production.,,,Drug,N/A
+ebbad51b-b057-4956-b336-a7d703ef230f,,MCL/CIEL:80470,NEBIVOLOL,,,NODON,,,Is a cardioselective beta-blocker used mainly to treat high blood pressure and heart conditions.,,,Drug,N/A
+22abbeb6-09af-49fa-a60c-8f3458007950,,MCL/CIEL:167943,SITAGLIPTIN,,,SIPTIN,,,Is an oral medication used to manage type 2 diabetes mellitus.,,,Drug,N/A
+ce52571e-8fb5-4a16-8ca2-695ac1db5714,,MCL/CIEL:165463,SITAGLIPTIN AND METFORMIN,,,JANUMET,,,"Is a combination medication used to manage type 2 diabetes mellitus, especially when monotherapy is not sufficient.",,,Drug,N/A
+d98db9ab-ca9c-4cff-8754-75c60b8f9fe3,,MCL/CIEL:,,,,,,,,,,Drug,N/A
+8aca96c6-01ad-49a0-a192-da143b5854a9,,MCL/CIEL:,,,,,,,,,,Drug,N/A
+ffbc3cbf-e63d-4033-a62a-93cbd0ee779a,,MCL/CIEL:,,,,,,,,,,Drug,N/A
+ee5d0b09-56d6-4966-b62f-7298fbda693a,,MCL/CIEL:,,,,,,,,,,Drug,N/A
 ,,,,,,,,,,,,,
