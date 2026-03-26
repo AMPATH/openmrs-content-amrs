@@ -996,6 +996,10 @@
                         "label": "Tachycardia"
                       },
                       {
+                        "concept": "a89cff30-1350-11df-a1f1-0026b9348838",
+                        "label": "Toothache"
+                      },
+                      {
                         "concept": "ae5f2fc7-3f76-4fc3-96fa-72b354323821",
                         "label": "Tremors"
                       },
