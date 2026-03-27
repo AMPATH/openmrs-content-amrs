@@ -1,2 +1,3 @@
 Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units
-ec73e2d6-7e69-47fb-b0af-a5f9c756c12c,,,"CASH CONSULTATION",,,CASH CONSULTATION,,,"CASH CONSULTATION used by Odoo for billing",,,Service Order,N/A ,,
+ec73e2d6-7e69-47fb-b0af-a5f9c756c12c,,,"CASH CONSULTATION",,,CASH CONSULTATION,,,"CASH CONSULTATION used by Odoo for billing",,,Cash Service Order,N/A ,,
+1764494b-1f0b-491a-8f55-9970be56ce70,,,SHA CONSULTATION,,,SHA CONSULTATION,,,SHA CONSULTATION used for Odoo billing,,,SHA Service Order,N/A,,

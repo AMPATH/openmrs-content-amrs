@@ -2,4 +2,4 @@ Uuid,Void/Retire,Name,Description,Java class name,Parent,Concept Classes,_order:
 ff4485a4-f071-4423-aeb2-db6efce52b83,,Radiology Order,Radiology order type,org.openmrs.Order,,8caa332c-efe4-4025-8b18-3398328e1323,
 2315ab24-9a4e-4b36-b189-8e74d2c77394,,Procedure Order,Procedure order type,org.openmrs.Order,,47d45603-6f31-4c0c-b2b4-8da4f042388f,
 2da15461-81db-43bc-a2c0-853741bece90,,Consultation Cash Order,Cash Order Type,org.openmrs.Order,,27172298-6c42-4f8a-90f0-0dd72e2079fa,
-a6a1b98c-ceaf-4481-ae61-67251e43a128,,Consultation SHA order,SHA order Type,org.openmrs.Order,,27172298-6c42-4f8a-90f0-0dd72e2079fa,
+a6a1b98c-ceaf-4481-ae61-67251e43a128,,Consultation SHA order,SHA order Type,org.openmrs.Order,,c3f01662-8ed2-40d2-822f-bb215e1afbfc,
