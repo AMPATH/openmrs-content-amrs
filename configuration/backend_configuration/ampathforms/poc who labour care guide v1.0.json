@@ -1,0 +1,215 @@
+{
+  "name": "POC WHO Labour Care Guide v1.0",
+  "uuid": "",
+  "published": true,
+  "retired": false,
+  "encounterType": "",
+  "description": "WHO Labour Care Guide",
+  "version": "1.0",
+  "encounter": "",
+  "processor": "EncounterFormProcessor",
+
+  "pages": [
+    {
+      "label": "Labour Care Guide",
+      "sections": [
+        {
+          "label": "Visit Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encDate",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            },
+            {
+              "label": "Parity:",
+              "type": "obs",
+              "id": "parity",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899a920-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
+              },
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
+              }
+            },
+            {
+              "label": "Labour onset:",
+              "type": "obs",
+              "id": "labourOnset",
+
+              "questionOptions": {
+                "concept": "a89ece64-1350-11df-a1f1-0026b9348838",
+                "rendering": "time"
+                
+              }
+              
+            },
+            {
+              "label": "Active labour diagnosis:",
+              "id": "activeLabour",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "label": "Ruptured membranes:",
+              "id": "rupturedMembrane",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "label": "Risk factors:",
+              "id": "riskFactors",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Gravida",
+              "type": "obs",
+              "id": "noPregnancy",
+              "questionOptions": {
+                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "50",
+                "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Supportive Care",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encDate",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Labour stage:",
+              "type": "obs",
+              "id": "labourStage",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8f435457-3d4f-4831-9f4c-b8dec1550137",
+                "answers": [
+                  {
+                    "concept": "7ce6672d-d78d-4c93-adce-0d429d5f0f42",
+                    "label": "Active first stage"
+                  },
+                  {
+                    "concept": "b659e241-80d1-4527-9b92-225257940c89",
+                    "label": "Second stage"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Companion:",
+              "type": "obs",
+              "id": "companion",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "aaa420c8-5f0e-467f-af3f-49ed6d84752e",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Pain relief:",
+              "type": "obs",
+              "id": "painRelief",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "72809773-f6ca-4471-8161-fe84c49ea945",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
