@@ -2,3 +2,5 @@ Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:f
 8a2b4397-fec8-4045-b7ec-925997f20ab2,,MCL/CIEL:164148,OCCIPUT ANTERIOR POSITION,,,OCCIPITALANTERIOR,,,"Occiput Anterior indicates that the baby is coming down the birth canal, head down, with the posterior of the head coming under the pelvic bone and the baby’s face facing the mother’s sacrum.",,,Finding ,N/A,,
 f012dc73-7ecd-4ef5-bfc8-5d8f6b672c8e,,,OCCIPUT POSTERIOR POSITION,,,,,,Fetal position during labor where the back of the baby’s head (occiput) is toward the mother’s back (posterior).,,,Finding,N/A,,
 071b66c8-eece-494b-8872-00e2710d1928,,,BABY ENGAGEMENT,,,,,,Engagement of the baby,,,Question,Numeric,,
+150a1056-288e-473a-92e3-b5308bd618f5,,MCL/CIEL:159263,VAGINAL SHOW,,,,,,Is the passage of a small amount of blood-tinged mucus from the cervix through the vagina.,,,Diagnosis ,N/A,,
+594336cb-e25b-4bbc-a233-55f884eda4d8,,MCL/CIEL:165372,PELVIC EXAMINATION FINDINGS,,,,,,Refers to any observable or palpable result obtained during a pelvic examination.,,,Finding ,Coded,a899e7b4-1350-11df-a1f1-0026b9348838;a899e890-1350-11df-a1f1-0026b9348838,

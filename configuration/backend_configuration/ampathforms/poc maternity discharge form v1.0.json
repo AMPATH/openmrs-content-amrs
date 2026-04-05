@@ -3,7 +3,7 @@
    "description": "POC MOH 333 Maternity Register v1.0- Discharge form",
   "version": "1.0",
   "published": true,
-  "uuid": "67d04ed7-c448-4270-92a4-3c8a01af9196",
+  "uuid": "",
   "retired": false,
   "encounter": "MATERNITYDISCHARGE",
   "processor": "EncounterFormProcessor",
@@ -57,22 +57,171 @@
           "label": "Discharge Details",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Counselled on infant feeding:",
-              "id": "infantFeeding",
+{
+              "label": "Parity:",
               "type": "obs",
+              "id": "par",
               "questionOptions": {
-                "concept": "a89c74f2-1350-11df-a1f1-0026b9348838",
+                "concept": "a899a920-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
+              },
+              "validators": []
+            },
+            {
+              "label": "Date of admission:",
+              "id": "dateAdmission",
+              "questionOptions": {
+                "concept": "a8a01652-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                 {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                      "message": "The Expiry date should be in the future."
+                    }
+              ]
+            },
+            {
+              "label": "Date of delivery:",
+              "id": "dateDelivery",
+              "questionOptions": {
+                "concept": "a8aae050-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                      "message": "The Expiry date should be in the future."
+                    }
+              ]
+            },
+             {
+              "label": "Mode of delivery:",
+              "id": "modeDelivery",
+              "questionOptions": {
+                "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                    "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal delivery"
+                  },
+                  {
+                    "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
+                    "label": "CS"
+                  },
+                  {
+                    "concept": "a89ad11a-1350-11df-a1f1-0026b9348838",
+                    "label": "Breech"
+                  },
+                  {
+                    "concept": "a8a351aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Assisted vaginal delivery"
+                  },
+                  {
+                    "concept": "a8a350ec-1350-11df-a1f1-0026b9348838",
+                    "label": "Assisted vacuum/forceps delivery"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+             {
+              "label": "Sex of the baby:",
+              "id": "gender",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
+                    "label": "Male"
+                  },
+                  {
+                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
+                    "label": "Female"
+                  }
+                ]
+              }
+            },
+             {
+              "label": "Birth weight:",
+              "id": "birthWeight",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
+                "max": "6000",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+             {
+              "label": "Fate:",
+              "id": "statusBaby",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "9c96d26c-d8ec-49f2-b1de-0571dd08080d",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Dead"
                   },
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
+                    "label": "Alive"
                   }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Counselled on:",
+              "id": "infantFeeding",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a4a672-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89c74f2-1350-11df-a1f1-0026b9348838",
+                    "label": "Breastfeeding"
+                  },
+                  {
+                    "concept": "385b775b-b62c-478b-ae01-27eb623d4284",
+                    "label": "Personal hygiene"
+                  },
+                  {
+                    "concept": "80002a37-d099-4348-94d7-d4ffbca24da7",
+                    "label": "Immunization"
+                  },
+                  {
+                    "concept": "a8a70fde-1350-11df-a1f1-0026b9348838",
+                    "label": "Family planning"
+                  },
+                  {
+                    "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+                    "label": "Nutrition"
+                  }
+                  
+
                 ]
               },
               "validators": []
@@ -107,26 +256,7 @@
               },
               "validators": []
             },
-            {
-              "label": "Status of baby:",
-              "id": "statusBaby",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "9c96d26c-d8ec-49f2-b1de-0571dd08080d",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
-                    "label": "Dead"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "Alive"
-                  }
-                ]
-              },
-              "validators": []
-            },
+           
             {
               "label": "Referred from:",
               "id": "rfBy",
@@ -184,7 +314,45 @@
               },
               "type": "obs",
               "validators": []
+            },
+            {
+              "label": "Remarks:",
+              "required": "true",
+              "type": "obs",
+              "id": "assNote",
+              "default": "",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 5
+              }
+            },
+             {
+              "label": "Date of next review:",
+              "type": "obs",
+
+              "id": "rtc",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [
+                  15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330,
+                  360
+                ]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+              ]
             }
+            
           ]
         }
       ]

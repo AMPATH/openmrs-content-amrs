@@ -77,8 +77,14 @@
               "type": "obs",
               "validators": [
                 {
-                  "type": "date"
-                }
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                      "message": "The Expiry date should be in the future."
+                    }
               ]
             },
             {
@@ -174,7 +180,7 @@
                   "label": "Baby's name:",
                   "type": "obs",
                   "questionOptions": {
-                    "rendering": "Text",
+                    "rendering": "text",
                     "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea",
                     "max": "",
                     "min": ""

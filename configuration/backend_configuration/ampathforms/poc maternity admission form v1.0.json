@@ -91,7 +91,6 @@
           "label": "Client Details",
           "isExpanded": "true",
           "questions": [
-           
             {
               "label": "Number of ANC visits:",
               "id": "ancNumber",
@@ -151,7 +150,8 @@
               "type": "obs",
               "validators": [
                 {
-                  "type": "date"
+                  "type": "date",
+                  "allowFutureDates": "false"
                 }
               ]
             },
@@ -179,7 +179,10 @@
                 "useMostRecentValue": "true",
                 "autoPopulateWithMostRecentValue": "true",
                 "min": "0",
-                "max": "44"
+                "max": "44",
+                "calculate": {
+                  "calculateExpression": "moment().diff(moment(lmpDate1), 'weeks')"
+                }
               }
             }
           ]
@@ -1111,8 +1114,25 @@
                   {
                     "concept": "a89ad11a-1350-11df-a1f1-0026b9348838",
                     "label": "Breech Presentation"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ]
+              }
+            },
+            {
+              "label": "Presentation specify:",
+              "type": "obs",
+              "id": "otherPresentation",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+                
+              },
+              "hide": {
+                "hideWhenExpression": "presentation !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1161,16 +1181,32 @@
               "type": "obs",
               "id": "vagDis",
               "questionOptions": {
-                "concept": "17572011-42ee-4a3d-a7bf-85faa52be41a",
+                "concept": "a8a4a1cc-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Normal"
+                    "label": "No discharge"
                   },
                   {
-                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
-                    "label": "Abnormal"
+                    "concept": "a899bc6c-1350-11df-a1f1-0026b9348838",
+                    "label": "Clear discharge"
+                  },
+                  {
+                    "concept": "150a1056-288e-473a-92e3-b5308bd618f5",
+                    "label": "Show"
+                  },
+                   {
+                    "concept": "a899be2e-1350-11df-a1f1-0026b9348838",
+                    "label": "Bloody show"
+                  },
+                  {
+                    "concept": "c7be8a4a-0ad3-442e-9355-eb481a23c0a6",
+                    "label": "Blood"
+                  },
+                   {
+                    "concept": "134488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Meconium"
                   }
                 ]
               }
@@ -1199,8 +1235,18 @@
               "type": "obs",
               "id": "spleEn",
               "questionOptions": {
-                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-                "rendering": "text"
+                "concept": "a899f04c-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers":[
+                  {
+                    "concept": "a8a4cdfa-1350-11df-a1f1-0026b9348838",
+                    "label": "Palpable"
+                  },
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Not palpable"
+                  }
+                ]
               }
             },
             {
@@ -1217,8 +1263,18 @@
               "type": "obs",
               "id": "pelvicAss",
               "questionOptions": {
-                "concept": "ca6ca060-d00c-4269-90fe-66b357e798b2",
-                "rendering": "text"
+                "concept": "594336cb-e25b-4bbc-a233-55f884eda4d8",
+                "rendering": "select",
+                "answers":[
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Adequate"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Not adequate"
+                  }
+                ]
               }
             },
 
@@ -1319,7 +1375,7 @@
               ]
             },
             {
-              "label": "Physical examination/Vital signs:",
+              "label": "Physical examination:",
               "type": "obs",
               "id": "physExam",
               "questionOptions": {
