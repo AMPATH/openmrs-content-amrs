@@ -1,0 +1,2 @@
+"Uuid","Void/Retire","Name","Description","Required","Format","Format description","Validator","Location behavior","Uniqueness behavior"
+10a4349d-dd1b-4b0c-bd35-a00a22394266,,Birth Notification,Birth Notification Number,FALSE,,,,,UNIQUE
