@@ -116,7 +116,7 @@
               "validators": []
             },
             {
-              "label": "Plus(Miscarriage):",
+              "label": "Plus (Miscarriage):",
               "type": "obs",
               "id": "parityAbortion",
               "required": "true",
@@ -170,7 +170,7 @@
               "validators": []
             },
             {
-              "label": "Gestation(weeks):",
+              "label": "Gestation (weeks):",
               "type": "obs",
               "id": "maturity",
               "questionOptions": {
@@ -183,6 +183,15 @@
                 "calculate": {
                   "calculateExpression": "moment().diff(moment(lmpDate1), 'weeks')"
                 }
+              }
+            },
+            {
+              "label": "Gestation in days:",
+              "type": "obs",
+              "id": "maturityDays",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
               }
             }
           ]
@@ -1136,14 +1145,13 @@
               }
             },
             {
-              "label": "Engagement",
+              "label": "Engagement:",
               "type": "obs",
               "id": "engaMemt",
               "questionOptions": {
-                "concept": "071b66c8-eece-494b-8872-00e2710d1928",
-                "rendering": "number",
-                "min": "0",
-                "max": "42"
+                "concept": "297d7ffa-3480-4b9f-9842-d8aa10785f95",
+                "rendering": "text"
+                
               }
             },
             {
@@ -1226,6 +1234,45 @@
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "External genitals examination findings:",
+              "type": "obs",
+              "id": "extGenFindings",
+              "questionOptions": {
+                "concept": "ca6ca060-d00c-4269-90fe-66b357e798b2",
+                "rendering": "text"
+                
+              }
+            },
+            {
+              "label": "Cervical examination:",
+              "type": "obs",
+              "id": "cervicalExam",
+              "questionOptions": {
+                "concept": "4faac479-f532-424e-b4db-44a5e4639f87",
+                "rendering": "text"
+                
+              }
+            },
+            {
+              "label": "Status of membranes:",
+              "type": "obs",
+              "id": "membraneStatus",
+              "questionOptions": {
+                "concept": "12f21a18-a081-4f45-bb81-53a5017c8b2f",
+                "rendering": "select",
+                "answers":[
+                  {
+                    "concept": "380b0af9-981c-4186-895d-020a209bcff2",
+                    "label": "Ruptured"
+                  },
+                  {
+                    "concept": "59057fbe-375f-4b4c-ad6f-1dc02625a094",
+                    "label": "Intact"
                   }
                 ]
               }
@@ -1354,7 +1401,7 @@
               ]
             },
             {
-              "label": "Family and birth history",
+              "label": "Family and social history",
               "type": "obsGroup",
               "id": "famHistDet",
               "questionOptions": {
@@ -1364,7 +1411,7 @@
               "validators": [],
               "questions": [
                 {
-                  "label": "Family and birth history:",
+                  "label": "Family and social history:",
                   "type": "obs",
                   "id": "famHist",
                   "questionOptions": {

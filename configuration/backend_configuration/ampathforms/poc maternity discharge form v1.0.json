@@ -1,6 +1,6 @@
 {
   "name": "POC Maternity Discharge Form v1.0",
-   "description": "POC MOH 333 Maternity Register v1.0- Discharge form",
+  "description": "POC MOH 333 Maternity Register v1.0- Discharge form",
   "version": "1.0",
   "published": true,
   "uuid": "",
@@ -57,10 +57,11 @@
           "label": "Discharge Details",
           "isExpanded": "true",
           "questions": [
-{
+            {
               "label": "Parity:",
               "type": "obs",
               "id": "par",
+              "required": "true",
               "questionOptions": {
                 "concept": "a899a920-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
@@ -70,8 +71,35 @@
               "validators": []
             },
             {
+              "label": "Plus (Miscarriage):",
+              "type": "obs",
+              "id": "parityAbortion",
+
+              "required": "true",
+              "questionOptions": {
+                "concept": "cedb167d-34a4-4027-8a5c-b7fa9fe4190e",
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
+              }
+            },
+            {
+              "label": "Gravidae:",
+              "type": "obs",
+              "id": "grav",
+              "questionOptions": {
+                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "calcGravida(par,parityAbortion)"
+                }
+              },
+              "validators": []
+            },
+            {
               "label": "Date of admission:",
               "id": "dateAdmission",
+              "required": "true",
               "questionOptions": {
                 "concept": "a8a01652-1350-11df-a1f1-0026b9348838",
                 "rendering": "date"
@@ -82,15 +110,16 @@
                   "type": "date",
                   "allowFutureDates": "false"
                 },
-                 {
-                      "type": "js_expression",
-                      "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
-                      "message": "The Expiry date should be in the future."
-                    }
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                  "message": "The Expiry date should be in the future."
+                }
               ]
             },
             {
               "label": "Date of delivery:",
+              "required": "true",
               "id": "dateDelivery",
               "questionOptions": {
                 "concept": "a8aae050-1350-11df-a1f1-0026b9348838",
@@ -103,22 +132,23 @@
                   "allowFutureDates": "false"
                 },
                 {
-                      "type": "js_expression",
-                      "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
-                      "message": "The Expiry date should be in the future."
-                    }
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                  "message": "The Expiry date should be in the future."
+                }
               ]
             },
-             {
+            {
               "label": "Mode of delivery:",
               "id": "modeDelivery",
+              "required": "true",
               "questionOptions": {
                 "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
                     "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
-                    "label": "Normal delivery"
+                    "label": "Spontaneous vaginal delivery (SVD)"
                   },
                   {
                     "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
@@ -141,9 +171,10 @@
               "type": "obs",
               "validators": []
             },
-             {
+            {
               "label": "Sex of the baby:",
               "id": "gender",
+              "required": "true",
               "type": "obs",
               "questionOptions": {
                 "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
@@ -160,8 +191,8 @@
                 ]
               }
             },
-             {
-              "label": "Birth weight:",
+            {
+              "label": "Birth weight in grams:",
               "id": "birthWeight",
               "questionOptions": {
                 "rendering": "number",
@@ -172,7 +203,7 @@
               "type": "obs",
               "validators": []
             },
-             {
+            {
               "label": "Fate:",
               "id": "statusBaby",
               "type": "obs",
@@ -198,7 +229,7 @@
               "type": "obs",
               "questionOptions": {
                 "concept": "a8a4a672-1350-11df-a1f1-0026b9348838",
-                "rendering": "select",
+                "rendering": "multiCheckbox",
                 "answers": [
                   {
                     "concept": "a89c74f2-1350-11df-a1f1-0026b9348838",
@@ -220,8 +251,6 @@
                     "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
                     "label": "Nutrition"
                   }
-                  
-
                 ]
               },
               "validators": []
@@ -256,7 +285,7 @@
               },
               "validators": []
             },
-           
+
             {
               "label": "Referred from:",
               "id": "rfBy",
@@ -327,18 +356,13 @@
                 "rows": 5
               }
             },
-             {
+            {
               "label": "Date of next review:",
               "type": "obs",
-
               "id": "rtc",
               "questionOptions": {
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
-                "rendering": "date",
-                "weeksList": [
-                  15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330,
-                  360
-                ]
+                "rendering": "date"
               },
               "validators": [
                 {
@@ -352,7 +376,6 @@
                 }
               ]
             }
-            
           ]
         }
       ]

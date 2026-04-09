@@ -55,8 +55,69 @@
           "label": "Delivery",
           "isExpanded": "true",
           "questions": [
+             {
+              "label": "First stage, duration of labour (Hours):",
+              "id": "durLabourFirst",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "e612e85d-9e9a-4cea-ab6d-f7e14e259648",
+                "max": "96",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+             {
+              "label": "First stage, duration of labour (Minutes):",
+              "id": "durLabourMinsFirst",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "45f87cb9-3c41-47b0-b219-8abaaa913a91",
+                "max": "96",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+             {
+              "label": "Second stage, duration of labour (Hours):",
+              "id": "durLabourSecond",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "89b44f2a-81a3-4eb5-9649-06bb7ccbcbcd",
+                "max": "96",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+             {
+              "label": "Second stage, duration of labour (Minutes):",
+              "id": "durLabourMinsSecond",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d0318d59-54e7-4e01-9d45-5894b424c204",
+                "max": "96",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+             {
+              "label": "Third stage, duration of labour (Minutes):",
+              "id": "durLabourMinsThird",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "65811483-d2cb-422e-b152-d43d4196f65f",
+                "max": "96",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
             {
-              "label": "Duration of labour (Hours):",
+              "label": "Duration of labour (Total hours):",
+              "required":"true",
               "id": "durLabour",
               "questionOptions": {
                 "rendering": "number",
@@ -70,6 +131,7 @@
             {
               "label": "Date of delivery:",
               "id": "dateDelivery",
+              "required": "true",
               "questionOptions": {
                 "concept": "a8aae050-1350-11df-a1f1-0026b9348838",
                 "rendering": "date"
@@ -90,6 +152,7 @@
             {
               "label": "Time of delivery:",
               "id": "timeDelivery",
+              "required": "true",
               "questionOptions": {
                 "concept": "4bf0bdd2-4351-4f6f-bba2-581a087a955f",
                 "rendering": "time"
@@ -104,6 +167,7 @@
             {
               "label": "Gestation at birth (Weeks):",
               "id": "gestation",
+              "required": "true",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa",
@@ -114,15 +178,25 @@
               "validators": []
             },
             {
+              "label": "Gestation in days:",
+              "type": "obs",
+              "id": "maturityDays",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              }
+            },
+            {
               "label": "Mode of delivery:",
               "id": "modeDelivery",
+              "required": "true",
               "questionOptions": {
                 "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
                     "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
-                    "label": "Normal delivery"
+                    "label": "Spontaneous vaginal delivery (SVD)"
                   },
                   {
                     "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
@@ -147,6 +221,7 @@
             },
             {
               "label": "No. of babies delivered:",
+              "required": "true",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -154,45 +229,25 @@
                 "answers": [
                   {
                     "concept": "cb07a7b3-1808-4086-b7d7-d80734181c32",
-                    "label": "Single"
+                    "label": "1"
                   },
                   {
                     "concept": "6de75823-d1c6-48a6-9b0b-f219692eeef6",
-                    "label": "Twins"
+                    "label": "2"
                   },
                   {
                     "concept": "98cda56b-893c-4ed8-9cc2-8faa2d82902b",
-                    "label": "Triplets "
+                    "label": "3"
                   }
                 ]
               },
               "id": "deliveryOutcome"
             },
-            {
-              "type": "obsGroup",
-              "label": "Baby details",
-              "questionOptions": {
-                "rendering": "repeating",
-                "concept": "e2fed582-5107-4080-8488-b1618a7b26d7"
-              },
-              "questions": [
-                {
-                  "label": "Baby's name:",
-                  "type": "obs",
-                  "questionOptions": {
-                    "rendering": "text",
-                    "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea",
-                    "max": "",
-                    "min": ""
-                  },
-                  "id": "babysName"
-                }
-              ],
-              "id": "babyDetails2"
-            },
+            
             {
               "label": "Placenta complete?",
               "id": "placeComplete",
+              "required": "true",
               "questionOptions": {
                 "concept": "0e617e22-1363-4b96-849d-03c21b594e3f",
                 "rendering": "select",
@@ -213,6 +268,7 @@
             {
               "label": "Uterotonic given?",
               "id": "uterotonicgiven",
+              "required": "true",
               "questionOptions": {
                 "concept": "407e3411-9670-4e43-89ed-27622fe4e9e3",
                 "rendering": "select",
@@ -228,6 +284,10 @@
                   {
                     "concept": "8fc531ed-0526-413d-89e4-9d18906db6e3",
                     "label": "Carbetocin"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ]
               },
@@ -235,8 +295,22 @@
               "validators": []
             },
             {
+              "label": "Other specify:",
+              "type": "obs",
+              "id": "otherUterotonic",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "uterotonicgiven !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
               "label": "Vaginal examination:",
               "id": "viginaExam",
+              "required": "true",
               "questionOptions": {
                 "concept": "17572011-42ee-4a3d-a7bf-85faa52be41a",
                 "rendering": "select",
@@ -269,6 +343,7 @@
             {
               "label": "Blood loss(mls):",
               "id": "bloodLoss",
+              "required": "true",
               "questionOptions": {
                 "concept": "0976ee49-400e-46bf-b032-335c7a8c0602",
                 "rendering": "number"
@@ -279,6 +354,7 @@
             {
               "label": "Mother's status after delivery:",
               "id": "deliveryCondition",
+              "required": "true",
               "questionOptions": {
                 "concept": "47032e8f-6e2f-41d8-8afc-01cb87a9342a",
                 "rendering": "select",
@@ -297,7 +373,7 @@
               "validators": []
             },
             {
-              "label": "Date Maternal death notified:",
+              "label": "Date maternal death notified:",
               "id": "maternalDeathDate",
               "questionOptions": {
                 "concept": "a89df3d6-1350-11df-a1f1-0026b9348838",
@@ -308,16 +384,24 @@
                 {
                   "type": "date"
                 }
-              ]
+              ],
+               "hide": {
+                "hideWhenExpression": "deliveryCondition !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
+              }
             },
             {
               "label": "Delivery complications:",
               "id": "deliveryComplication",
+              "required": "true",
               "type": "obs",
               "questionOptions": {
                 "concept": "ef2d7b84-5c2a-4380-a2fd-cabac6cfb14d",
                 "rendering": "multiCheckbox",
                 "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
                   {
                     "concept": "a8937762-1350-11df-a1f1-0026b9348838",
                     "label": "A.P.H. (Ante Partum Haemorrhage)"
@@ -368,6 +452,9 @@
             }
           ]
         },
+
+
+       
         {
           "label": "Baby Details",
           "isExpanded": "true",
@@ -375,6 +462,7 @@
             {
               "label": "APGAR score at 1 min:",
               "id": "apgarOne",
+              "required": "true",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "4b98ce38-77d9-488b-8b59-251811e244a4",
@@ -387,6 +475,7 @@
             {
               "label": "APGAR score at 5 mins:",
               "id": "apgarFive",
+              "required": "true",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "a752b53e-bb83-4c76-9237-d2d85919101c",
@@ -399,6 +488,7 @@
             {
               "label": "APGAR score at 10 mins:",
               "id": "apgarTen",
+              "required": "true",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "3349c58b-8938-4162-ae6c-e64b67f392c4",
@@ -411,6 +501,7 @@
             {
               "label": "Birth outcome:",
               "id": "birthState",
+              "required": "true",
               "type": "obs",
               "questionOptions": {
                 "concept": "a8aff7e8-1350-11df-a1f1-0026b9348838",
@@ -432,8 +523,9 @@
               }
             },
             {
-              "label": "Birth weight:",
+              "label": "Birth weight in grams:",
               "id": "birthWeight",
+              "required": "true",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
@@ -446,6 +538,7 @@
             {
               "label": "Sex:",
               "id": "gender",
+              "required": "true",
               "type": "obs",
               "questionOptions": {
                 "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
@@ -465,6 +558,7 @@
             {
               "label": "Initiated on B/F in < 1hr:",
               "id": "breastFeeding",
+              "required": "true",
               "questionOptions": {
                 "concept": "4ef4150f-a8e3-4ec7-bafe-8e56af7f763e",
                 "rendering": "select",
@@ -485,6 +579,7 @@
             {
               "label": "Kangaroo mother care:",
               "id": "kangaroo",
+              "required": "true",
               "questionOptions": {
                 "concept": "8bb313e9-ff98-4126-93e3-dd741572c309",
                 "rendering": "select",
@@ -505,6 +600,7 @@
             {
               "label": "Tetracycline given at birth:",
               "id": "birthTeo",
+              "required": "true",
               "questionOptions": {
                 "concept": "c58a7f0b-1397-4533-abc1-d9a53de95805",
                 "rendering": "select",
@@ -525,6 +621,7 @@
             {
               "label": "Chlorhexidine applied on cord stump:",
               "id": "cordStump",
+              "required": "true",
               "questionOptions": {
                 "concept": "385f1782-6198-4592-9ad3-1bdf3d0e3134",
                 "rendering": "select",
@@ -545,6 +642,7 @@
             {
               "label": "Birth with deformity:",
               "id": "birthDeformity",
+              "required": "true",
               "questionOptions": {
                 "concept": "8c2dd314-41fc-402f-a5db-a8d2c371342d",
                 "rendering": "select",
@@ -596,6 +694,7 @@
             {
               "label": "Vitamin K given:",
               "id": "vitaminK",
+              "required": "true",
               "questionOptions": {
                 "concept": "8b66aefb-23c5-4c46-8ef0-65a59fc0217a",
                 "rendering": "select",
