@@ -3201,7 +3201,7 @@
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Add lab order",
-                "workspaceName": "order-basket",
+                "workspaceName": "add-lab-order",
                 "additionalProps": {
                   "orderTypeUuid": "a8af9046-1350-11df-a1f1-0026b9348838"
                 }
