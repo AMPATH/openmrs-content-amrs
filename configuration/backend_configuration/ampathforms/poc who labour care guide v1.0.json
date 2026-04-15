@@ -69,39 +69,52 @@
               "label": "Labour onset:",
               "type": "obs",
               "id": "labourOnset",
-
               "questionOptions": {
-                "concept": "a89ece64-1350-11df-a1f1-0026b9348838",
-                "rendering": "time"
-                
+                "concept": "f0d1dda9-e09e-4bb8-b4fe-1d2f2144ac71",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "f36bd911-3654-402c-bf94-326aca9091a8",
+                    "label": "Spontaneous labour"
+                  },
+                  {
+                    "concept": "8faa08f3-5166-4391-8e7d-a05cf9297301",
+                    "label": "Induced labour"
+                  },
+                  {
+                    "concept": "807f4f74-a243-4ffe-8d63-d17dfd1b1c7c",
+                    "label": "Augumented labour"
+                  }
+                ]
               }
-              
             },
             {
-              "label": "Active labour diagnosis:",
+              "label": "Active labour diagnosis date:",
               "id": "activeLabour",
               "questionOptions": {
-                "concept": "",
+                "concept": "3b85d576-ddf8-4c6a-9128-d5f265ba3cbb",
                 "rendering": "date"
               },
               "type": "obs",
               "validators": [
                 {
-                  "type": "date"
+                  "type": "date",
+                  "allowFutureDates": "false"
                 }
               ]
             },
             {
-              "label": "Ruptured membranes:",
+              "label": "Ruptured membranes date and time:",
               "id": "rupturedMembrane",
               "questionOptions": {
-                "concept": "",
-                "rendering": "date"
+                "concept": "e2ddba74-73b0-4840-a3cf-7d61a9d8853a",
+                "rendering": "datetime"
               },
               "type": "obs",
               "validators": [
                 {
-                  "type": "date"
+                  "type": "date",
+                  "allowFutureDates": "false"
                 }
               ]
             },
@@ -109,7 +122,7 @@
               "label": "Risk factors:",
               "id": "riskFactors",
               "questionOptions": {
-                "concept": "",
+                "concept": "bf48af84-e16a-4757-81da-582511e88b35",
                 "rendering": "text"
               },
               "type": "obs",
@@ -131,81 +144,685 @@
             }
           ]
         },
+
+        {
+          "label": "Labour Time",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Labour time",
+              "questionOptions": {
+                "concept": "85709d45-e3f9-4199-996b-715660e1bd6d",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Time:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "Time",
+                    "concept": "a89ece64-1350-11df-a1f1-0026b9348838"
+                  },
+                  "id": "laborTime",
+                  "validators": []
+                },
+                {
+                  "label": "Labour stage:",
+                  "type": "obs",
+                  "id": "labourStage",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "8f435457-3d4f-4831-9f4c-b8dec1550137",
+                    "answers": [
+                      {
+                        "concept": "7ce6672d-d78d-4c93-adce-0d429d5f0f42",
+                        "label": "Active first stage"
+                      },
+                      {
+                        "concept": "b659e241-80d1-4527-9b92-225257940c89",
+                        "label": "Second stage"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+
         {
           "label": "Supportive Care",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Date:",
-              "type": "encounterDatetime",
-              "required": "true",
+              "type": "obsGroup",
+              "label": "Supportive care",
               "questionOptions": {
-                "rendering": "ui-select-extended"
+                "concept": "76764d46-3927-4e8f-a08d-0b8326d84ea6",
+                "rendering": "repeating"
               },
-              "id": "encDate",
-              "validators": [
+              "questions": [
                 {
-                  "type": "date",
-                  "allowFutureDates": "false"
+                  "label": "Companion:",
+                  "type": "obs",
+                  "id": "companion",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "aaa420c8-5f0e-467f-af3f-49ed6d84752e",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Pain relief:",
+                  "type": "obs",
+                  "id": "painRelief",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "72809773-f6ca-4471-8161-fe84c49ea945",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Oral fluids:",
+                  "type": "obs",
+                  "id": "oralFluids",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "114f9886-ddaa-460e-b2c8-64404cba2d02",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Posture:",
+                  "type": "obs",
+                  "id": "posture",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "033215b6-e9b2-4c26-b59b-69634b634367",
+                    "answers": [
+                      {
+                        "concept": "aa9989fb-44db-472d-ae61-b64e4e27bd44",
+                        "label": "Mobile"
+                      },
+                      {
+                        "concept": "f8ac197b-e65d-48d1-bed3-c9f747ece32e",
+                        "label": "Supine"
+                      }
+                    ]
+                  }
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "label": "Baby",
+          "isExpanded": "true",
+          "questions": [
             {
-              "label": "Labour stage:",
-              "type": "obs",
-              "id": "labourStage",
+              "type": "obsGroup",
+              "label": "Baby",
               "questionOptions": {
-                "rendering": "select",
-                "concept": "8f435457-3d4f-4831-9f4c-b8dec1550137",
-                "answers": [
-                  {
-                    "concept": "7ce6672d-d78d-4c93-adce-0d429d5f0f42",
-                    "label": "Active first stage"
+                "concept": "dce6df10-b8e1-4cd3-b2f6-8b24588c45bb",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Baseline FHR:",
+                  "type": "obs",
+                  "id": "baselineFhr",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a007a2-1350-11df-a1f1-0026b9348838"
                   },
-                  {
-                    "concept": "b659e241-80d1-4527-9b92-225257940c89",
-                    "label": "Second stage"
+                   "alert": {
+                    "alertWhenExpression": "myValue && (myValue >= 160 || myValue < 110)",
+                    "message": "FHR Rate is out of range (Normal range 110-120)"
                   }
-                ]
-              }
-            },
+                },
+                {
+                  "label": "FHR deceleration:",
+                  "type": "obs",
+                  "id": "deceleration",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "5ba94f35-84a6-4b55-9d03-1f65d3f8d7b0",
+                    "answers": [
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      },
+                      {
+                        "concept": "d6672a83-9551-4c0f-872f-f7b0f49cd1a7",
+                        "label": "Early"
+                      },
+                      {
+                        "concept": "5d7bc3e6-84fa-4010-819f-5c724f7f3886",
+                        "label": "Late"
+                      },
+                      {
+                        "concept": "0d5856b3-ee6e-411d-8fac-ff9e3fb5bb95",
+                        "label": "Variable"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Amniotic fluid:",
+                  "type": "obs",
+                  "id": "amnioticFluids",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "c69e6dfd-7b03-40ae-a902-3cf72c79c136",
+                    "answers": [
+                      {
+                        "concept": "3f0cb9da-85a3-4d75-bfb7-ca44cf62e96e",
+                        "label": "Intact (I)"
+                      },
+                      {
+                        "concept": "6ded3159-8884-41ee-8e89-32f63eae9a85",
+                        "label": "Membrane ruptured,clear fluid (C)"
+                      },
+                      {
+                        "concept": "134488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Meconium-stained fluid (M)"
+                      },
+                      {
+                        "concept": "155311AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Blood stained meconium (B)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Meconium classification:",
+                  "type": "obs",
+                  "id": "meconium",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "465941a9-ac10-4e81-ab36-1bf83eaf4ed8",
+                    "answers": [
+                      {
+                        "concept": "d4e87600-26db-4a52-9772-e40fbafdd493",
+                        "label": "+ (Non significant)"
+                      },
+                      {
+                        "concept": "ebc1464c-0e42-429c-9d1e-9333806099ba",
+                        "label": "++ (Medium)"
+                      },
+                      {
+                        "concept": "e66f41a6-51f4-43d9-9de4-bf379447e0c1",
+                        "label": "+++ (Thick)"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "amnioticFluids !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Fetal position:",
+                  "type": "obs",
+                  "id": "fetalPosition",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8b026a0-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "8a2b4397-fec8-4045-b7ec-925997f20ab2",
+                        "label": "A=Occiput anterior position"
+                      },
+                      {
+                        "concept": "f012dc73-7ecd-4ef5-bfc8-5d8f6b672c8e",
+                        "label": "P=Occiput posterior position"
+                      },
+                      {
+                        "concept": "b14ef520-0c2a-45ca-a598-64d770dc46bd",
+                        "label": "T=Occiput transverse position"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Caput:",
+                  "type": "obs",
+                  "id": "caput",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "f1c5abf6-4710-4ec7-8160-4b4adbf42c91",
+                    "answers": [
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "0 = None"
+                      },
+                      {
+                        "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
+                        "label": "+"
+                      },
+                      {
+                        "concept": "a8a45bd6-1350-11df-a1f1-0026b9348838",
+                        "label": "++"
+                      },
+                      {
+                        "concept": "a8a45ca8-1350-11df-a1f1-0026b9348838",
+                        "label": "+++"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Moulding:",
+                  "type": "obs",
+                  "id": "moulding",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "",
+                    "answers": [
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "0 = None"
+                      },
+                      {
+                        "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
+                        "label": "+"
+                      },
+                      {
+                        "concept": "a8a45bd6-1350-11df-a1f1-0026b9348838",
+                        "label": "++"
+                      },
+                      {
+                        "concept": "a8a45ca8-1350-11df-a1f1-0026b9348838",
+                        "label": "+++"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Woman",
+          "isExpanded": "true",
+          "questions": [
             {
-              "label": "Companion:",
-              "type": "obs",
-              "id": "companion",
+              "type": "obsGroup",
+              "label": "Baby",
               "questionOptions": {
-                "rendering": "select",
-                "concept": "aaa420c8-5f0e-467f-af3f-49ed6d84752e",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                "concept": "b8736b12-7826-40e6-8841-815f06d6b2c4",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Pulse rate:",
+                  "type": "obs",
+                  "id": "pulseRate",
+                  "questionOptions": {
+                    "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number",
+                    "max": "230",
+                    "min": "0"
                   },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
+                  "alert": {
+                    "alertWhenExpression": "myValue && (myValue >= 120 || myValue < 60)",
+                    "message": "Pulse Rate is out of range (Normal range 60-120)"
                   }
-                ]
-              }
-            },
+                },
+                {
+                  "label": "Systolic B.P:",
+                  "type": "obs",
+                  "id": "sysBP",
+                  "questionOptions": {
+                    "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number"
+                  },
+                  "alert": {
+                    "alertWhenExpression": "myValue && (myValue >= 140 || myValue < 80)",
+                    "message": "Systolic is out of range (Normal range 80-140)"
+                  }
+                },
+                {
+                  "label": "Diastolic B.P:",
+                  "type": "obs",
+                  "id": "diasBP",
+                  "questionOptions": {
+                    "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number"
+                  },
+                  "alert": {
+                    "alertWhenExpression": "myValue && (myValue >= 90 || myValue < 79.5)",
+                    "message": "Diastolic is out of range (Normal range 80-89)"
+                  }
+                },
+                {
+                  "label": "Temperature (C):",
+                  "type": "obs",
+                  "id": "temperature",
+                  "questionOptions": {
+                    "concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number",
+                    "max": "43",
+                    "min": "25"
+                  },
+                  "alert": {
+                    "alertWhenExpression": "myValue && (myValue >= 37.5 || myValue < 35)",
+                    "message": "Temperature is out of range (Normal range 35-37)"
+                  }
+                },
+                {
+                  "label": "Proteinuria:",
+                  "type": "obs",
+                  "id": "protein",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a47ca6-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "P- = No proteinuria"
+                      },
+                      {
+                        "concept": "569f77cc-87b2-442c-a871-3a96e2194e8f",
+                        "label": " P trace"
+                      },
+                      {
+                        "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
+                        "label": "P+"
+                      },
+                      {
+                        "concept": "a8a45bd6-1350-11df-a1f1-0026b9348838",
+                        "label": "P++"
+                      },
+                      {
+                        "concept": "a8a45ca8-1350-11df-a1f1-0026b9348838",
+                        "label": "P+++"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Acetonuria:",
+                  "type": "obs",
+                  "id": "protein",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "b72fa772-19a9-4386-8185-6491ab97e97e",
+                    "answers": [
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "A- = No Acetonuria"
+                      },
+                      {
+                        "concept": "569f77cc-87b2-442c-a871-3a96e2194e8f",
+                        "label": " A trace"
+                      },
+                      {
+                        "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
+                        "label": "A+"
+                      },
+                      {
+                        "concept": "a8a45bd6-1350-11df-a1f1-0026b9348838",
+                        "label": "A++"
+                      },
+                      {
+                        "concept": "a8a45ca8-1350-11df-a1f1-0026b9348838",
+                        "label": "A+++"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Labour progress",
+          "isExpanded": "true",
+          "questions": [
             {
-              "label": "Pain relief:",
-              "type": "obs",
-              "id": "painRelief",
+              "type": "obsGroup",
+              "label": "labour progress",
               "questionOptions": {
-                "rendering": "select",
-                "concept": "72809773-f6ca-4471-8161-fe84c49ea945",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
+                "concept": "2234d2e6-9c82-457c-84ad-23e30a251aa4",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Contractions per 10 min:",
+                  "type": "obs",
+                  "id": "contractions",
+                  "questionOptions": {
+                    "concept": "eebf4cfb-5cf7-4efa-a860-993677d6cd31",
+                    "rendering": "number"
                   }
-                ]
-              }
+                },
+                {
+                  "label": "Duration of contractions in seconds:",
+                  "type": "obs",
+                  "id": "durationContractions",
+                  "questionOptions": {
+                    "concept": "55a3f38e-8758-483a-9a5f-d6273f5e6803",
+                    "rendering": "number"
+                  }
+                },
+                {
+                  "label": "Cervix (cm):",
+                  "type": "obs",
+                  "id": "cervix",
+                  "questionOptions": {
+                    "concept": "b95b991a-887a-42f9-914f-db0ea18b1e7f",
+                    "rendering": "number"
+                  }
+                },
+                {
+                  "label": "Descent(/5):",
+                  "type": "obs",
+                  "id": "descent",
+                  "questionOptions": {
+                    "concept": "a6e1be1a-226f-4f59-81f5-eea2ee1ac80d",
+                    "rendering": "number"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Medication",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Medication",
+              "questionOptions": {
+                "concept": "a8a37086-1350-11df-a1f1-0026b9348838",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Oxytocin administered?",
+                  "type": "obs",
+                  "id": "oxytocin",
+                  "questionOptions": {
+                    "concept": "8454e61e-0802-416a-9209-62d779d7e016",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "If yes, indicate U/L:",
+                  "type": "obs",
+                  "id": "oxyUl",
+                  "questionOptions": {
+                    "concept": "e012caff-01e4-49d3-b918-1b69cbda9306",
+                    "rendering": "number"
+                  }
+                },
+                {
+                  "label": "If yes, indicate drops/min:",
+                  "type": "obs",
+                  "id": "oxyDrops",
+                  "questionOptions": {
+                    "concept": "21ca3adc-6217-44b5-8f4b-380fce2cc3f6",
+                    "rendering": "number"
+                  }
+                },
+                {
+                  "label": "Any medication administered?",
+                  "type": "obs",
+                  "id": "medication",
+                  "questionOptions": {
+                    "concept": "a89c26b4-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Drug Order",
+                  "id": "drugsWorkspaceLauncher",
+                  "questionOptions": {
+                    "rendering": "workspace-launcher",
+                    "buttonLabel": "Add drug order",
+                    "workspaceName": "order-basket"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "medication !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "IV fluids?",
+                  "type": "obs",
+                  "id": "ivFluids",
+                  "questionOptions": {
+                    "concept": "6b0c64cd-b206-4ac5-92e4-ecb5b34c7d28",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Type of IV fluids:",
+                  "type": "obs",
+                  "id": "typeivFluids",
+                  "questionOptions": {
+                    "concept": "0917834d-9fea-4ff7-b1b4-2b306ab1e7a3",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "de26899a-3960-4bc2-b5ae-79520a920db2",
+                        "label": "Normal saline"
+                      },
+                      {
+                        "concept": "b00dd808-77a0-4ef2-8e74-7b8664c2fbc1",
+                        "label": "Dextrose"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Shared Decision Making",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Shared decision making",
+              "questionOptions": {
+                "concept": "ddee5794-187c-406f-9ccc-34d7d0224a3b",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Assessment:",
+                  "type": "obs",
+                  "id": "assNotes",
+                  "questionOptions": {
+                    "rendering": "textarea",
+                    "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                    "rows": 10
+                  }
+                },
+                {
+                  "label": "Plan:",
+                  "type": "obs",
+                  "id": "planNotes",
+                  "questionOptions": {
+                    "rendering": "textarea",
+                    "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                    "rows": 10
+                  }
+                },
+                {
+                  "label": "Provider:",
+                  "type": "encounterProvider",
+                  "required": "true",
+                  "questionOptions": {
+                    "rendering": "ui-select-extended"
+                  },
+                  "id": "encProvider "
+                }
+              ]
             }
           ]
         }
