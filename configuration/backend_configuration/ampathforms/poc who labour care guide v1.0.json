@@ -3,10 +3,10 @@
   "uuid": "",
   "published": true,
   "retired": false,
-  "encounterType": "",
+  "encounterType": "LABORCAREGUIDE",
   "description": "WHO Labour Care Guide",
   "version": "1.0",
-  "encounter": "",
+  "encounter": "26eeda6e-d490-47f3-bacd-058684be6d97",
   "processor": "EncounterFormProcessor",
 
   "pages": [
