@@ -41,4 +41,4 @@ f36bd911-3654-402c-bf94-326aca9091a8,,,SPONTANEOUS LABOUR,,,,,,Labour starts nat
 807f4f74-a243-4ffe-8d63-d17dfd1b1c7c,,,AUGUMENTED LABOUR,,,,,,Labour has already started but is assisted to progress faster.,,,Finding ,N/A,,
 f0d1dda9-e09e-4bb8-b4fe-1d2f2144ac71,,,TYPE OF LABOUR,,,,,,Question to collect type of labour onset,,,Question,Coded,f36bd911-3654-402c-bf94-326aca9091a8;807f4f74-a243-4ffe-8d63-d17dfd1b1c7c;8faa08f3-5166-4391-8e7d-a05cf9297301,
 3b85d576-ddf8-4c6a-9128-d5f265ba3cbb,,MCL/CIEL:163444,LABOUR START DATE AND TIME,,,ONSET OF CONTRACTIONS,,,The date and time that labor contractions started.,,,Finding,Datetime,,
-e2ddba74-73b0-4840-a3cf-7d61a9d8853a,,,MEMBRANES RUPTURE DATE AND TIME,,,,,,The date and time that membranes ruptured.,,,Finding,Datetime,,
+e2ddba74-73b0-4840-a3cf-7d61a9d8853a,,,MEMBRANES RUPTURE DATE AND TIME,,,,,,The date and time that membranes ruptured.,,,Finding,Date,,

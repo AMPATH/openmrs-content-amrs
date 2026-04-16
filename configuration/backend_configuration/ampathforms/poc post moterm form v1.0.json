@@ -104,7 +104,7 @@
               "validators": []
             },
             {
-              "label": "To:Officer in charge",
+              "label": "To:Officer in charge:",
               "type": "obs",
               "id": "officerIncharge",
               "questionOptions": {
@@ -114,7 +114,7 @@
               "validators": []
             },
             {
-              "label": "Police station",
+              "label": "Police station:",
               "type": "obs",
               "id": "policeStation",
               "questionOptions": {
@@ -141,7 +141,7 @@
               "validators": []
             },
             {
-              "label": "Date and time of post-Mortem:",
+              "label": "Date and time of post-mortem:",
               "type": "obs",
               "id": "dateTimeOfPostmortem",
               "datePickerFormat": "both",
@@ -153,7 +153,7 @@
             },
             
             {
-              "label": "Sex",
+              "label": "Sex:",
               "type": "obs",
               "id": "sex",
               "questionOptions": {
@@ -178,7 +178,7 @@
             },
             
             {
-              "label": "Apparent Age",
+              "label": "Apparent age:",
               "type": "obs",
               "id": "apparentAge",
               "questionOptions": {
@@ -188,7 +188,7 @@
               "validators": []
             },
             {
-              "label": "Nutrition",
+              "label": "Nutrition:",
               "type": "obs",
               "id": "nutrition",
               "questionOptions": {
@@ -198,7 +198,7 @@
               "validators": []
             },
             {
-              "label": "Physique",
+              "label": "Physique:",
               "type": "obs",
               "id": "physique",
               "questionOptions": {
@@ -208,7 +208,7 @@
               "validators": []
             },
             {
-              "label": "Height",
+              "label": "Height:",
               "type": "obs",
               "id": "height",
               "questionOptions": {
@@ -323,7 +323,7 @@
           ]
         },
         {
-          "label": "Cause of death:",
+          "label": "Cause Of Death",
           "isExpanded": "true",
           "questions": [
             {
@@ -426,7 +426,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Attachments",
+              "label": "Attachments:",
               "id": "suPPortDocs",
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -435,7 +435,7 @@
               }
             },
             {
-              "label": "Death Certificate No.",
+              "label": "Death certificate No.",
               "type": "obs",
               "id": "deathCertificateNo",
               "questionOptions": {
@@ -445,7 +445,7 @@
               "validators": []
             },
             {
-              "label": "Signed by",
+              "label": "Signed by:",
               "type": "encounterProvider",
               "id": "signedBy",
               "questionOptions": {
@@ -453,7 +453,7 @@
               }
             },
             {
-              "label": "Designation",
+              "label": "Designation:",
               "type": "obs",
               "id": "designation",
               "questionOptions": {
@@ -466,7 +466,7 @@
                   },
                   {
                     "concept": "e5d0a5a5-392b-4522-a811-ffb6fa3aba54",
-                    "label": "Medical Officer"
+                    "label": "Medical officer"
                   }
                 ]
               }

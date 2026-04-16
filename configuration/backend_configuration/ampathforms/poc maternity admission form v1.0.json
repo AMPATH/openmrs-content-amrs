@@ -320,7 +320,7 @@
                   "questionOptions": {
                     "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
                     "rendering": "number",
-                    "min": "0",
+                    "min": "200",
                     "max": "6000"
                   }
                 },

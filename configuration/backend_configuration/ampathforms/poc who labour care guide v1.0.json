@@ -21,7 +21,7 @@
               "type": "encounterDatetime",
               "required": "true",
               "questionOptions": {
-                "rendering": "ui-select-extended"
+                "rendering": "date"
               },
               "id": "encDate",
               "validators": [
@@ -107,7 +107,7 @@
               "id": "rupturedMembrane",
               "questionOptions": {
                 "concept": "e2ddba74-73b0-4840-a3cf-7d61a9d8853a",
-                "rendering": "datetime"
+                "rendering": "date"
               },
               "type": "obs",
               "validators": [
@@ -144,13 +144,10 @@
           ]
         },
 
-        {
-          "label": "Labour Time",
-          "isExpanded": "true",
-          "questions": [
+       
             {
               "type": "obsGroup",
-              "label": "Labour time",
+              "label": "Labour Time",
               "questionOptions": {
                 "concept": "85709d45-e3f9-4199-996b-715660e1bd6d",
                 "rendering": "repeating"
@@ -164,6 +161,17 @@
                     "concept": "a89ece64-1350-11df-a1f1-0026b9348838"
                   },
                   "id": "laborTime",
+                  "validators": []
+                },
+                {
+                  "label": "Labour duration:",
+                  "required":"true",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8aff9b4-1350-11df-a1f1-0026b9348838"
+                  },
+                  "id": "laborDuration",
                   "validators": []
                 },
                 {
@@ -186,16 +194,12 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "label": "Supportive Care",
-          "isExpanded": "true",
-          "questions": [
+            },
+          
+        
             {
               "type": "obsGroup",
-              "label": "Supportive care",
+              "label": "Supportive Care",
               "questionOptions": {
                 "concept": "76764d46-3927-4e8f-a08d-0b8326d84ea6",
                 "rendering": "repeating"
@@ -278,13 +282,9 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "label": "Baby",
-          "isExpanded": "true",
-          "questions": [
+            },
+        
+        
             {
               "type": "obsGroup",
               "label": "Baby",
@@ -383,7 +383,7 @@
                     ]
                   },
                   "hide": {
-                    "hideWhenExpression": "amnioticFluids !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "amnioticFluids !== '134488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   }
                 },
                 {
@@ -442,7 +442,7 @@
                   "id": "moulding",
                   "questionOptions": {
                     "rendering": "select",
-                    "concept": "",
+                    "concept": "1215d4c3-b371-481f-9b77-d54e9eeed5f4",
                     "answers": [
                       {
                         "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
@@ -464,16 +464,12 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "label": "Woman",
-          "isExpanded": "true",
-          "questions": [
+            },
+        
+        
             {
               "type": "obsGroup",
-              "label": "Baby",
+              "label": "Woman",
               "questionOptions": {
                 "concept": "b8736b12-7826-40e6-8841-815f06d6b2c4",
                 "rendering": "repeating"
@@ -569,7 +565,7 @@
                 {
                   "label": "Acetonuria:",
                   "type": "obs",
-                  "id": "protein",
+                  "id": "acetonuria",
                   "questionOptions": {
                     "rendering": "select",
                     "concept": "b72fa772-19a9-4386-8185-6491ab97e97e",
@@ -598,13 +594,9 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "label": "Labour progress",
-          "isExpanded": "true",
-          "questions": [
+            },
+        
+        
             {
               "type": "obsGroup",
               "label": "labour progress",
@@ -650,13 +642,9 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "label": "Medication",
-          "isExpanded": "true",
-          "questions": [
+            },
+         
+        
             {
               "type": "obsGroup",
               "label": "Medication",
@@ -776,16 +764,12 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "label": "Shared Decision Making",
-          "isExpanded": "true",
-          "questions": [
+            },
+        
+       
             {
               "type": "obsGroup",
-              "label": "Shared decision making",
+              "label": "Shared Decision Making",
               "questionOptions": {
                 "concept": "ddee5794-187c-406f-9ccc-34d7d0224a3b",
                 "rendering": "repeating"
@@ -826,5 +810,4 @@
         }
       ]
     }
-  ]
-}
+ 

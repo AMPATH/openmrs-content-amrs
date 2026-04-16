@@ -1635,8 +1635,9 @@
           "label": "Sexual and Reproductive History",
           "isExpanded": "true",
           "questions": [
+           
             {
-              "label": "Has patient ever had menses?",
+              "label": "Is the patient menstruating?",
               "type": "obs",
               "id": "hasLMP",
               "questionOptions": {
@@ -1658,7 +1659,7 @@
               }
             },
             {
-              "label": "Age at Menarche:",
+              "label": "Age at menarche:",
               "type": "obs",
               "id": "menarcheAge",
               "questionOptions": {

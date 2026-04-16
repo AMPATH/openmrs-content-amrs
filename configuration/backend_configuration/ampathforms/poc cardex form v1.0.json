@@ -1,81 +1,101 @@
 {
-    "name": "POC Cardex Form v1.0",
-    "uuid": "xxxx",
-    "version": "1.0",
-    "description": "Cardex information",
-    "published": true,
-    "retired": false,
-    "encounterType": "64e0f9f4-5f25-4098-bbca-ba8db6ce1696",
-    "encounter": "NURSINGNOTES",
-    "processor": "EncounterFormProcessor",
-    "pages": [
-      {
-        "label": "Encounter Details",
-        "sections": [
-          {
-            "label": "Encounter Details",
-            "isExpanded": "true",
-            "questions": [
-              {
-                "label": "Visit date",
-                "type": "encounterDatetime",
-                "required": "true",
-                "default": "",
-                "id": "encDate",
-                "questionOptions": {
-                  "rendering": "date"
+  "name": "POC Cardex Form v1.0",
+  "uuid": "xxxx",
+  "version": "1.0",
+  "description": "Cardex information",
+  "published": true,
+  "retired": false,
+  "encounterType": "64e0f9f4-5f25-4098-bbca-ba8db6ce1696",
+  "encounter": "NURSINGNOTES",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Cardex",
+      "sections": [
+        {
+          "label": "Nursing Notes",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date of admission (For inpatients only):",
+              "id": "dateAdmission",
+              "questionOptions": {
+                "concept": "a8a01652-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
                 },
-                "validators": [
-                  {
-                    "type": "date"
-                  }
-                ]
-              },
-              {
-                "type": "encounterProvider",
-                "label": "Provider",
-                "id": "provider",
-                "required": "true",
-                "default": "",
-                "questionOptions": {
-                  "rendering": "ui-select-extended"
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                  "message": "The Expiry date should be in the future."
                 }
-              },
-              {
-                "type": "encounterLocation",
-                "label": "Facility name (site/satellite clinic required):",
-                "id": "location",
-                "required": "true",
-                "questionOptions": {
-                  "rendering": "ui-select-extended"
-                }
+              ]
+            },
+            {
+              "label": "Add nursing notes:",
+              "type": "obs",
+              "id": "assNote",
+              "required": "false",
+              "default": "",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 10
               }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Cardex",
-        "sections": [
-          {
-            "label": "Nursing Notes",
-            "isExpanded": "true",
-            "questions": [
-              {
-                "label": "Add nursing notes:",
-                "type": "obs",
-                "id": "assNote",
-                "required": "false",
-                "default": "",
-                "questionOptions": {
-                  "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
-                  "rendering": "textarea",
-                  "rows": 10
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
