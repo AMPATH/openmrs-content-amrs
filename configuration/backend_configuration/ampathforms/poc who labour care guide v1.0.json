@@ -3,12 +3,11 @@
   "uuid": "",
   "published": true,
   "retired": false,
-  "encounterType": "LABORCAREGUIDE",
+  "encounterType": "26eeda6e-d490-47f3-bacd-058684be6d97",
   "description": "WHO Labour Care Guide",
   "version": "1.0",
-  "encounter": "26eeda6e-d490-47f3-bacd-058684be6d97",
+  "encounter": "LABORCAREGUIDE",
   "processor": "EncounterFormProcessor",
-
   "pages": [
     {
       "label": "Labour Care Guide",
@@ -190,7 +189,6 @@
             }
           ]
         },
-
         {
           "label": "Supportive Care",
           "isExpanded": "true",
