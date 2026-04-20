@@ -402,7 +402,7 @@
               "required": "true",
               "id": "typeOfVisitForMethod2",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "multiCheckbox",
                 "concept": "c221ff83-92fa-4980-94df-de2d85045950",
                 "answers": [
                   {
