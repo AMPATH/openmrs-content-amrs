@@ -113,14 +113,14 @@
             {
               "label": "Continence:",
               "required": "true",
-              "questionInfo": "1 point - Exercises complete self control over urination and defacation. 0 point - Is partially or totally incontinent of bowel or bladder.",
+              "questionInfo": "1 point - Exercises complete self control over urination and defecation. 0 point - Is partially or totally incontinent of bowel or bladder.",
               "type": "obs",
               "questionOptions": {
                 "rendering": "number",
                 "max": "1",
                 "min": "0",
                 "concept": "55405e1b-0b20-4dd1-8864-23d6c7aab6f7",
-                "placeholder": "1 point - Exercises complete self control over urination and defacation. 0 point - Is partially or totally incontinent of bowel or bladder."
+                "placeholder": "1 point - Exercises complete self control over urination and defecation. 0 point - Is partially or totally incontinent of bowel or bladder."
               },
               "validators": [],
               "id": "continence"

@@ -250,7 +250,6 @@
                     "concept": "feb48308-a56f-4754-8e8f-8c1698e570cb",
                     "label": "5-year implant"
                   },
-                  
                   {
                     "concept": "a8988b44-1350-11df-a1f1-0026b9348838",
                     "label": "Injectables (Depo)"
@@ -279,11 +278,10 @@
                   {
                     "concept": "a8a713f8-1350-11df-a1f1-0026b9348838",
                     "label": "Bilateral tubal ligation"
-                  },
-                  
+                  },   
                   {
                     "concept": "a893516a-1350-11df-a1f1-0026b9348838",
-                    "label": "Female condom"
+                    "label": "Condom"
                   },
                   {
                     "concept": "236dba53-1062-46b4-8067-ec8711897dbf",
@@ -369,7 +367,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "age < 15 || contraceptiveDispensedF === 'a893516a-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedM === 'a893516a-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "age < 15 || contraceptiveDispensedF !== 'a893516a-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedM !== 'a893516a-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -420,6 +418,10 @@
                   {
                     "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
                     "label": "Check-up"
+                  },
+                   {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ]
               },
@@ -820,16 +822,16 @@
                 "concept": "6bad2971-c776-4f0e-ae15-a3fc0cbd7d0f",
                 "answers": [
                   {
-                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Normal"
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
                   },
                   {
                     "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
-                    "label": "Suspected"
-                  },
-                  {
-                    "concept": "a8af9046-1350-11df-a1f1-0026b9348838",
-                    "label": "Confirmed"
+                    "label": "Suspicious for cancer"
                   },
                   {
                     "concept": "a899ea48-1350-11df-a1f1-0026b9348838",

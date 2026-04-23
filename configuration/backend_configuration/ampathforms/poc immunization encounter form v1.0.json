@@ -276,7 +276,7 @@
           ]
         },
         {
-          "label": "Vitamin A Capsules From 6 Months",
+          "label": "Vitamin A And Other Vaccines",
           "isExpanded": "true",
           "questions": [
             {
@@ -441,6 +441,193 @@
                 }
               ],
               "id": "lastVaccine"
+            }
+          ]
+        },
+         {
+          "label": "HPV Vaccination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Have you been vaccinated for HPV?",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9806572c-0225-4b17-b21b-a0f44f9d07f0')) ? undefined : HD.getObject('prevEnc').getValue('9806572c-0225-4b17-b21b-a0f44f9d07f0')",
+              "required": "true",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9806572c-0225-4b17-b21b-a0f44f9d07f0",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "id": "hpvVaccine",
+              "hide": {
+                "hideWhenExpression": "sex!== 'F' || age <9 || age >14"
+              }
+            },
+            
+            {
+              "label": "Dose received:",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('bb1e6b95-0d35-4065-80cc-d774d1c9b964')) ? undefined : HD.getObject('prevEnc').getValue('bb1e6b95-0d35-4065-80cc-d774d1c9b964')",
+              "id": "dose",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "bb1e6b95-0d35-4065-80cc-d774d1c9b964",
+                "answers": [
+                  {
+                    "label": "First dose",
+                    "concept": 1
+                  },
+                  {
+                    "label": "Second dose",
+                    "concept": 2
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && hpvVaccine === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Please indicate dose"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "hpvVaccine!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Vaccination date:",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0a35a6e4-eb93-448e-a3b0-cae66a57beb4')) ? undefined : HD.getObject('prevEnc').getValue('0a35a6e4-eb93-448e-a3b0-cae66a57beb4')",
+              "id": "doseDate",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && hpvVaccine === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Please indicate dose"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                  "message": "Vaccination date should be less than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "hpvVaccine!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Adverse Events",
+          "isExpanded": "true",
+          "questions": [
+           {
+              "type": "obsGroup",
+              "label": "Adverse events",
+              "id": "sideEff",
+              "questionOptions": {
+                "concept": "a8a072c8-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Any adverse events following immunization?",
+                  "required": "true",
+                  "id": "currSideEffect",
+                  "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('30fc0cea-b6c7-48cc-bbfb-4eb53170ce41')) ? undefined : HD.getObject('prevEnc').getValue('30fc0cea-b6c7-48cc-bbfb-4eb53170ce41')",
+                  "questionOptions": {
+                    "concept": "30fc0cea-b6c7-48cc-bbfb-4eb53170ce41",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(current_art_regimen_adult) && isEmpty(myValue) && arrayContains(current_art_regimen_adult, '98b0baf6-0b73-4429-9264-6233684b0969')",
+                      "message": "Patient is on DTG. Kindly fill the side effects."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "a8a072c8-1350-11df-a1f1-0026b9348838"
+              },
+              "label": "If yes drugs suspected to be causing side effects",
+              "questions": [
+                {
+                  "label": "Drug:",
+                  "id": "sideEffectDrug",
+                  "questionOptions": {
+                    "concept": "1682a920-c93d-4aad-b9cb-4a2b2c41ff1a",
+                    "rendering": "drug"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(currSideEffect) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                      "message": "Patient  marked as having side effects. Please provide list."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ],
+              "id": "__ovK20spEs"
+            },
+            {
+              "label": "Squint/White eye reflection (Under one year)",
+              
+              "required": "true",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "f8c7404f-762a-4015-af72-b69a97817c52",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "id": "squintEyes",
+              "hide": {
+                "hideWhenExpression": "age >1"
+              }
             }
           ]
         }

@@ -8754,22 +8754,14 @@
               },
               "id": "recievedCounselling"
             },
+
             {
               "label": "ANC counselling:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "multiCheckbox",
                 "concept": "a8a4899e-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "type": "local",
-                    "value": "2356"
-                  },
-                  {
-                    "type": "MCL/CIEL",
-                    "value": "159853"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a8a485c0-1350-11df-a1f1-0026b9348838",
@@ -8810,6 +8802,25 @@
                 "hideWhenExpression": "recievedCounselling !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               },
               "id": "ancCouncelling"
+            },
+            {
+              "label": "Has the client been issued with a treated insecticide net?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a4515e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "itnIssued"
             }
           ]
         },
