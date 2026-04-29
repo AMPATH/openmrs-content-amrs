@@ -4392,11 +4392,11 @@
           ]
         },
         {
-          "label": "Alcohol And Drug Abuse",
+          "label": "Alcohol And Drug Use",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Is the client abusing drugs or alcohol?",
+              "label": "Is the client using any drugs or alcohol?",
               "questionOptions": {
                 "concept": "1f30ffe6-6c19-477d-a3e6-8cb8ccabaad6",
                 "answers": [

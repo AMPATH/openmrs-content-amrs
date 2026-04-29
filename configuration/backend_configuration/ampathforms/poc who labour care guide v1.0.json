@@ -143,13 +143,16 @@
             }
           ]
         },
-
-       
+        {
+          "label": "Labour Care Guide",
+          "isExpanded": "true",
+          "questions": [
             {
               "type": "obsGroup",
-              "label": "Labour Time",
+              "label": "Labour Progress",
+              "id": "labourTimeGroup",
               "questionOptions": {
-                "concept": "85709d45-e3f9-4199-996b-715660e1bd6d",
+                "concept": "2234d2e6-9c82-457c-84ad-23e30a251aa4",
                 "rendering": "repeating"
               },
               "questions": [
@@ -165,7 +168,7 @@
                 },
                 {
                   "label": "Labour duration:",
-                  "required":"true",
+                  "required": "true",
                   "type": "obs",
                   "questionOptions": {
                     "rendering": "number",
@@ -192,19 +195,8 @@
                       }
                     ]
                   }
-                }
-              ]
-            },
-          
-        
-            {
-              "type": "obsGroup",
-              "label": "Supportive Care",
-              "questionOptions": {
-                "concept": "76764d46-3927-4e8f-a08d-0b8326d84ea6",
-                "rendering": "repeating"
-              },
-              "questions": [
+                },
+
                 {
                   "label": "Companion:",
                   "type": "obs",
@@ -280,19 +272,7 @@
                       }
                     ]
                   }
-                }
-              ]
-            },
-        
-        
-            {
-              "type": "obsGroup",
-              "label": "Baby",
-              "questionOptions": {
-                "concept": "dce6df10-b8e1-4cd3-b2f6-8b24588c45bb",
-                "rendering": "repeating"
-              },
-              "questions": [
+                },
                 {
                   "label": "Baseline FHR:",
                   "type": "obs",
@@ -301,7 +281,7 @@
                     "rendering": "number",
                     "concept": "a8a007a2-1350-11df-a1f1-0026b9348838"
                   },
-                   "alert": {
+                  "alert": {
                     "alertWhenExpression": "myValue && (myValue >= 160 || myValue < 110)",
                     "message": "FHR Rate is out of range (Normal range 110-120)"
                   }
@@ -462,19 +442,7 @@
                       }
                     ]
                   }
-                }
-              ]
-            },
-        
-        
-            {
-              "type": "obsGroup",
-              "label": "Woman",
-              "questionOptions": {
-                "concept": "b8736b12-7826-40e6-8841-815f06d6b2c4",
-                "rendering": "repeating"
-              },
-              "questions": [
+                },
                 {
                   "label": "Pulse rate:",
                   "type": "obs",
@@ -592,19 +560,7 @@
                       }
                     ]
                   }
-                }
-              ]
-            },
-        
-        
-            {
-              "type": "obsGroup",
-              "label": "labour progress",
-              "questionOptions": {
-                "concept": "2234d2e6-9c82-457c-84ad-23e30a251aa4",
-                "rendering": "repeating"
-              },
-              "questions": [
+                },
                 {
                   "label": "Contractions per 10 min:",
                   "type": "obs",
@@ -629,7 +585,9 @@
                   "id": "cervix",
                   "questionOptions": {
                     "concept": "b95b991a-887a-42f9-914f-db0ea18b1e7f",
-                    "rendering": "number"
+                    "rendering": "number",
+                    "min": "0",
+                    "max": "10"
                   }
                 },
                 {
@@ -638,21 +596,11 @@
                   "id": "descent",
                   "questionOptions": {
                     "concept": "a6e1be1a-226f-4f59-81f5-eea2ee1ac80d",
-                    "rendering": "number"
+                    "rendering": "number",
+                    "min": "0",
+                    "max": "5"
                   }
-                }
-              ]
-            },
-         
-        
-            {
-              "type": "obsGroup",
-              "label": "Medication",
-              "questionOptions": {
-                "concept": "a8a37086-1350-11df-a1f1-0026b9348838",
-                "rendering": "repeating"
-              },
-              "questions": [
+                },
                 {
                   "label": "Oxytocin administered?",
                   "type": "obs",
@@ -679,6 +627,9 @@
                   "questionOptions": {
                     "concept": "e012caff-01e4-49d3-b918-1b69cbda9306",
                     "rendering": "number"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "oxytocin !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -688,6 +639,9 @@
                   "questionOptions": {
                     "concept": "21ca3adc-6217-44b5-8f4b-380fce2cc3f6",
                     "rendering": "number"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "oxytocin !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -761,20 +715,11 @@
                         "label": "Other"
                       }
                     ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "ivFluids !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
-                }
-              ]
-            },
-        
-       
-            {
-              "type": "obsGroup",
-              "label": "Shared Decision Making",
-              "questionOptions": {
-                "concept": "ddee5794-187c-406f-9ccc-34d7d0224a3b",
-                "rendering": "repeating"
-              },
-              "questions": [
+                },
                 {
                   "label": "Assessment:",
                   "type": "obs",
@@ -810,4 +755,5 @@
         }
       ]
     }
- 
+  ]
+}
