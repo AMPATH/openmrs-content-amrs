@@ -1,0 +1,413 @@
+{
+  "name": "POC Social Work Form v1.0",
+  "uuid": "xxxx",
+  "version": "1.0",
+  "description": "For social work information",
+  "published": true,
+  "retired": false,
+  "encounterType": "",
+  "encounter": "",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Social work",
+      "sections": [
+        {
+          "label": "Social work",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Distance to clinic (in Km/hour):",
+              "id": "clinicDistance",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "number"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Cost of transport to clinic:",
+              "id": "clinicCost",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "number"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Married:",
+              "type": "obs",
+              "id": "married",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Spouse occupation:",
+              "type": "obs",
+              "id": "occupation",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Formal employment"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Farmer"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Not employed"
+                  },
+                  {
+                    "concept": "",
+                    "label": ""
+                  },
+                  {
+                    "concept": "",
+                    "label": "Teacher"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Health care worker"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Opharned/vulnerable:",
+              "type": "obs",
+              "id": "opharn",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Number of children:",
+              "id": "childrenNo",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "number"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Number of children in school:",
+              "id": "childrenSchool",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "number"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Opharned/vulnerable:",
+              "type": "obs",
+              "id": "opharn",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Dependent parents:",
+              "type": "obs",
+              "id": "dependentParents",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Other dependants:",
+              "type": "obs",
+              "id": "otherDependants",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Level of education:",
+              "type": "obs",
+              "id": "eduLevel",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": ""
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": ""
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Property owned:",
+              "type": "obs",
+              "id": "propertyOwned",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Livestock owned:",
+              "type": "obs",
+              "id": "livestockOwned",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Source of income:",
+              "type": "obs",
+              "id": "incomeSource",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": ""
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": ""
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Physical disability:",
+              "type": "obs",
+              "id": "physicalDisability",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": ""
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": ""
+                  }
+                ]
+              }
+            },
+             {
+              "label": "Past medical bills:",
+              "type": "obs",
+              "id": "medicalBills",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Paid by self"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Paid by NHIF"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Waived"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Credit guranteed by security"
+                  }
+                ]
+              }
+            },
+             {
+              "label": "Evidence of payment of previous bills:",
+              "type": "obs",
+              "id": "previousBills",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No"
+                  }
+                  
+                ]
+              }
+            },
+             {
+              "label": "Difficulties as described by the patient :",
+              "type": "obs",
+              "id": "previousBills",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No"
+                  }
+                  
+                ]
+              }
+            },
+            {
+              "label": "Add nursing notes:",
+              "type": "obs",
+              "id": "assNote",
+              "required": "false",
+              "default": "",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 10
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

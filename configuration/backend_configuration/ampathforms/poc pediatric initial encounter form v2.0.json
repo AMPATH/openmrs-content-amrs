@@ -6322,98 +6322,9 @@
           ]
         },
         {
-          "label": "CD4/Crag",
+          "label": "Crag",
           "questions": [
-            {
-              "type": "obs",
-              "id": "cd4_test",
-              "questionOptions": {
-                "concept": "a8a8bb18-1350-11df-a1f1-0026b9348838",
-                "showDate": "true",
-                "rendering": "number",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(cd4_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(cd4_test)"
-                  }
-                }
-              },
-              "label": "CD4 Count:",
-              "validators": []
-            },
-            {
-              "type": "obs",
-              "id": "cd4Qualitative",
-              "questionOptions": {
-                "concept": "17c84b86-294a-4902-9044-18d9143a278a",
-                "showDate": "true",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a89cd668-1350-11df-a1f1-0026b9348838",
-                    "label": "CD4 count less than 200 (<200)"
-                  },
-                  {
-                    "concept": "a89b7426-1350-11df-a1f1-0026b9348838",
-                    "label": "CD4 count greater than 200 (>200)"
-                  }
-                ],
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(cd4Qualitative) && isEmpty(myValue)",
-                      "message": "Date is result is required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(cd4Qualitative)"
-                  }
-                }
-              },
-              "label": "CD4 test qualitative (VISITECT):",
-              "validators": []
-            },
-            {
-              "type": "obs",
-              "label": "CD4 %:",
-              "id": "cd4percent_test",
-              "questionOptions": {
-                "rendering": "number",
-                "max": "100",
-                "min": "0",
-                "showDate": "true",
-                "concept": "a8970a26-1350-11df-a1f1-0026b9348838",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(cd4percent_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(cd4percent_test)"
-                  }
-                }
-              },
-              "validators": []
-            },
+           
             {
               "label": "Crag test:",
               "id": "cragTest",
@@ -6456,39 +6367,7 @@
             }
           ]
         },
-        {
-          "label": "Viral Load",
-          "questions": [
-            {
-              "type": "obs",
-              "label": "Viral load:",
-              "id": "viralLoad_test",
-              "questionOptions": {
-                "concept": "a8982474-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "max": "10000000",
-                "min": "0",
-                "showDate": "true",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(viralLoad_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(viralLoad_test)"
-                  }
-                }
-              },
-              "validators": []
-            }
-          ]
-        },
+        
         {
           "label": "HIV Test",
           "questions": [

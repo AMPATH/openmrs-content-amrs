@@ -1,5 +1,5 @@
 Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type
-5b4b4a6c-7975-4544-af7f-7f60dacd933f,,ICD-11-WHO:XM85A9,LENACAPAVIR,,,SUNLECA,,,Long-acting antiretroviral medication used to treat HIV-1 infection.,,,Drug,N/A
+5b4b4a6c-7975-4544-af7f-7f60dacd933f,,ICD-11-WHO:XM85A9;MCL/CIEL:168709;local:12876,LENACAPAVIR,,,SUNLECA,,,Long-acting antiretroviral medication used to treat HIV-1 infection.,,,Drug,N/A
 64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2,,,LONG ACTING PRE EXPOSURE PROPHYLAXIS,,,LONG ACTING PREP,,,"Long-acting PrEP (Pre-Exposure Prophylaxis) is HIV prevention that uses medications designed to protect against HIV infection for weeks or months at a time, instead of requiring a daily pill.",,,Misc,N/A
 0a3d1ea2-0b61-48d7-826b-60ec6cf04171,,MCL/CIEL:167463;local:15099,ABIRATERONE,,,ABATITOR,,,"Medication used to treat prostate cancer, especially advanced forms that have spread or no longer respond well to standard hormone therapy.",,,Drug,N/A
 bdaa4838-c84a-4484-87fe-40dc990080a8,,MCL/CIEL:70125; local:15100,ACETAZOLAMIDE,,,ACETAMIDE,,,Medication that reduces the production of certain body fluids by inhibiting the enzyme carbonic anhydrase.,,,Drug,N/A
