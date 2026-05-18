@@ -1,2 +1,5 @@
 Uuid,Privilege name,Description,_order:1000
-d63161ad-d763-4269-a503-8378af04bd31, O3 View Accounting Dashboard, Allows access to the Accounting page,
+d63161ad-d763-4269-a503-8378af04bd31,O3 View Accounting Dashboard,Allows access to the Accounting page,
+27e9310a-c388-4688-a8cf-931ee34cf109,O3 View Client Registry Dashboard,Allows access to client registry page,
+26f9a7d6-7f16-485a-9f8e-45cf02a09048,O3 View Triage Dashboard,Allows access to triage dashboard,
+17aad27b-2586-41b2-8def-66f367f5ca1d,O3 Clear Triage Queue,Allows clearing of triage queue,
