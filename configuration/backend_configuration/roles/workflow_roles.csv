@@ -2,4 +2,4 @@ Uuid,Role name,Description,Inherited roles,Privileges,_order:1000
 348d9ed0-87dd-449d-94f7-10ebcc25e7fe,O3 Accountant,Accountant role that views facility bills and records payments and waivers,,O3 View Accounting Dashboard,
 f1b98407-5b32-4daa-b386-297148a0d333,O3 Registration Clerk,"Responsibile for pulling clients from CR, registering them and adding them to triage",,O3 View Client Registry Dashboard,
 6ba59ea3-95f1-44d7-9535-8ea08fb4aa88,O3 Triage Nurse,Selects patients from Triage queue and fills their triage data,,O3 View Triage Dashboard,
-63cb6041-a91a-4638-b906-5c21b5306d7b,O3 Triage Queue Manager,Able to clear triage queue,,"O3 View Triage Dashboard,O3 Clear Triage Queue",
+63cb6041-a91a-4638-b906-5c21b5306d7b,O3 Triage Queue Manager,Able to clear triage queue,,O3 View Triage Dashboard;O3 Clear Triage Queue,
