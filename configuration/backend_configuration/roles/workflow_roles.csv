@@ -1,0 +1,2 @@
+Uuid,Role name,Description,Inherited roles,Privileges,_order:1000
+348d9ed0-87dd-449d-94f7-10ebcc25e7fe,O3 Accountant,Accountant role that views facility bills and records payments and waivers,,O3 View Accounting Dashboard,
