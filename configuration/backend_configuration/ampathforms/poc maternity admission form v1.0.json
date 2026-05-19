@@ -157,8 +157,7 @@
             },
             {
               "label": "EDD:",
-              "id": "delDate",
-              "required": "true",
+              "id": "delDate",         
               "questionOptions": {
                 "concept": "a8aaddbc-1350-11df-a1f1-0026b9348838",
                 "rendering": "date",

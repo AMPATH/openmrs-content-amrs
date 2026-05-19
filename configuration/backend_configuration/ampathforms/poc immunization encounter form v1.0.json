@@ -546,7 +546,6 @@
               "questions": [
                 {
                   "label": "Any adverse events following immunization?",
-                  "required": "true",
                   "id": "currSideEffect",
                   "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('30fc0cea-b6c7-48cc-bbfb-4eb53170ce41')) ? undefined : HD.getObject('prevEnc').getValue('30fc0cea-b6c7-48cc-bbfb-4eb53170ce41')",
                   "questionOptions": {
@@ -607,7 +606,7 @@
             {
               "label": "Squint/White eye reflection (Under one year)",
               
-              "required": "true",
+             
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -628,6 +627,25 @@
               "hide": {
                 "hideWhenExpression": "age >1"
               }
+            },
+             {
+              "label": "Has the client been issued with a treated insecticide net?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a4515e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "itnIssued"
             }
           ]
         }

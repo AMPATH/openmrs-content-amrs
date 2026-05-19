@@ -109,7 +109,7 @@
                 "hideWhenExpression": "isEmpty(clientDisability) || clientDisability !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
-           
+
             {
               "label": "Visit type:",
               "type": "obs",
@@ -122,11 +122,11 @@
                 "answers": [
                   {
                     "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
-                    "label": "New patient"
+                    "label": "New"
                   },
                   {
                     "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
-                    "label": "Return patient"
+                    "label": "Revisit"
                   },
                   {
                     "concept": "97772927-7aa2-4c30-be98-85183e4b0efe",
@@ -233,7 +233,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitType !== '456d46bb-14cf-4e9b-97b1-a0e8f727f769'"
               }
             },
             {
@@ -246,7 +246,7 @@
                 "concept": "99f8ac81-cea1-43eb-88fb-29a9ea2d77cf"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitType !== '456d46bb-14cf-4e9b-97b1-a0e8f727f769'"
               }
             },
             {
@@ -277,7 +277,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(referral) || referral !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitType !== '456d46bb-14cf-4e9b-97b1-a0e8f727f769'"
               }
             },
             {
@@ -372,8 +372,7 @@
                 }
               ],
               "id": "currMedDetailed"
-            }  
-            
+            }
           ]
         }
       ]
@@ -415,36 +414,332 @@
                 "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
+                    "concept": "a8932f00-1350-11df-a1f1-0026b9348838",
+                    "label": "Abdominal pain"
+                  },
+                  {
+                    "concept": "a0bda074-8e57-4ba7-ab9c-c008776f8d48",
+                    "label": "Abnormal uterine bleeding"
+                  },
+                  {
+                    "concept": "a89cec02-1350-11df-a1f1-0026b9348838",
+                    "label": "Anxiety"
+                  },
+                  {
+                    "concept": "a8953d90-1350-11df-a1f1-0026b9348838",
+                    "label": "Back pain"
+                  },
+                  {
+                    "concept": "a8981696-1350-11df-a1f1-0026b9348838",
+                    "label": "Bloody urine"
+                  },
+                  {
+                    "concept": "bb1637fd-dd30-4938-a7a7-30dcef155f38",
+                    "label": "Blood in stool"
+                  },
+                  {
+                    "concept": "c7356bfe-e9a8-422b-9a6a-6e42490d308e",
+                    "label": "Breast pain"
+                  },
+                  {
                     "concept": "b250872d-6178-4f59-b220-6b8fc925bc73",
                     "label": "Blurring of vision"
                   },
                   {
-                    "concept": "19ca65f5-3b42-4876-8bf0-92cd244e9c9e",
-                    "label": "Loss of consciousness"
+                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Chest pain"
                   },
                   {
-                    "concept": "52be38fc-3685-4fc9-9930-c8d4d4e20199",
-                    "label": "Recurrent dizziness"
+                    "concept": "a898314e-1350-11df-a1f1-0026b9348838",
+                    "label": "Cold and chills"
+                  },
+                  {
+                    "concept": "a8ad3b02-1350-11df-a1f1-0026b9348838",
+                    "label": "Confusion"
+                  },
+                  {
+                    "concept": "a890d73c-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough"
+                  },
+                  {
+                    "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
+                    "label": "Convulsions"
+                  },
+                  {
+                    "concept": "894e909e-881c-4ac3-b669-4c77003831ad",
+                    "label": "Coma"
+                  },
+                  {
+                    "concept": "a890d660-1350-11df-a1f1-0026b9348838",
+                    "label": "Coryza"
+                  },
+                  {
+                    "concept": "96dafdc7-720e-4eac-85d3-ae2a0f5c1d94",
+                    "label": "Crying infant"
+                  },
+                  {
+                    "concept": "a58cfd5c-a237-46fd-b0fc-bb7f2192bb69",
+                    "label": "Delirium"
+                  },
+                  {
+                    "concept": "a8935fde-1350-11df-a1f1-0026b9348838",
+                    "label": "Depression"
+                  },
+                  {
+                    "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                    "label": "Diarrhoea"
+                  },
+                  {
+                    "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Difficult in breathing"
+                  },
+                  {
+                    "concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+                    "label": "Difficulty in swallowing"
+                  },
+                  {
+                    "concept": "abb19bab-e77d-47db-b9b6-18386868e1b3",
+                    "label": "Discharge from penis"
+                  },
+                  {
+                    "concept": "e5c11905-baf7-4747-a01d-0525153e143a",
+                    "label": "Dizziness"
+                  },
+                  {
+                    "concept": "eb12bfd6-dd52-4c41-a35e-a8048c975e7f",
+                    "label": "Ear Pain"
+                  },
+                  {
+                    "concept": "9a9cb2d4-696c-4f2b-9a7b-206333597e3c",
+                    "label": "Epigastric pain"
+                  },
+                  {
+                    "concept": "05354fc6-fd53-4c40-9379-ba2b4457635e",
+                    "label": "Eye pain"
+                  },
+                  {
+                    "concept": "d301ff85-d21c-4a61-a195-ce7948db423c",
+                    "label": "Excessive sweating"
+                  },
+                  {
+                    "concept": "4a3fa87f-0f09-4b70-bfaf-ed9cba1f9aa7",
+                    "label": "Facial pain"
+                  },
+                  {
+                    "concept": "4b92fa43-a876-4fee-886b-ce4fc2e18512",
+                    "label": "Fatigue/weakness"
+                  },
+                  {
+                    "concept": "cebb22fc-5ef8-409e-b606-51fdb7039593",
+                    "label": "Flank pain"
+                  },
+                  {
+                    "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                    "label": "Fever"
                   },
                   {
                     "concept": "9b298dfb-043f-4d15-b799-0301ab84aab0",
                     "label": "Foot complaints"
                   },
                   {
-                    "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
-                    "label": "Shortness of breath on activity"
+                    "concept": "a8ad3a26-1350-11df-a1f1-0026b9348838",
+                    "label": "Focal weakness"
+                  },
+                  {
+                    "concept": "8065a17b-fbe4-4558-9ddd-0af641866c21",
+                    "label": " General body malaise"
+                  },
+                  {
+                    "concept": "4eef684c-feff-48bb-9e8e-fe5742bee979",
+                    "label": "Genital ulcer"
+                  },
+                  {
+                    "concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+                    "label": "Headache"
+                  },
+                  {
+                    "concept": "13a3c07c-e870-4cc9-b7d3-d2e5b5e60a3e",
+                    "label": "Hearing loss"
+                  },
+                  {
+                    "concept": "a89d1222-1350-11df-a1f1-0026b9348838",
+                    "label": "Hypotension"
+                  },
+                  {
+                    "concept": "a8983ae0-1350-11df-a1f1-0026b9348838",
+                    "label": "Itchiness/Pruritus"
+                  },
+                  {
+                    "concept": "a890ba5e-1350-11df-a1f1-0026b9348838",
+                    "label": "Joint pain"
+                  },
+                  {
+                    "concept": "be9da369-ba93-4a0c-afdd-616ed4b434e8",
+                    "label": "Leg pain"
+                  },
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Lethargy"
+                  },
+                  {
+                    "concept": "a8982eba-1350-11df-a1f1-0026b9348838",
+                    "label": "Loss of appetite"
+                  },
+                  {
+                    "concept": "a893378e-1350-11df-a1f1-0026b9348838",
+                    "label": "Lymphadenopathy"
+                  },
+                  {
+                    "concept": "19ca65f5-3b42-4876-8bf0-92cd244e9c9e",
+                    "label": "Loss of consciousness"
+                  },
+                  {
+                    "concept": "5d91ee3c-9ace-462f-97c1-bd0c8fcf8a5e",
+                    "label": "Memory loss"
+                  },
+                  {
+                    "concept": "6fac98a0-6d8a-4441-aeed-c447a3a12494",
+                    "label": "Mouth ulceration"
+                  },
+                  {
+                    "concept": "02dc5deb-44d1-43db-b65e-9eb0d6cedaaf",
+                    "label": "Mouth pain"
+                  },
+                  {
+                    "concept": "1fbf7fd4-ea3e-4ab1-acd9-bf215651e066",
+                    "label": "Muscle cramps"
+                  },
+                  {
+                    "concept": "a8ad5330-1350-11df-a1f1-0026b9348838",
+                    "label": "Muscle pain"
+                  },
+                  {
+                    "concept": "a890e2f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Mylagia"
+                  },
+                  {
+                    "concept": "a8ad21e4-1350-11df-a1f1-0026b9348838",
+                    "label": "Nausea"
+                  },
+                  {
+                    "concept": "a8a6b476-1350-11df-a1f1-0026b9348838",
+                    "label": "Neck stiffness"
+                  },
+                  {
+                    "concept": "bb7fc04f-13d8-4630-b9d8-e364b34b7f2f",
+                    "label": "Neck pain"
+                  },
+                  {
+                    "concept": "a8ad4ed0-1350-11df-a1f1-0026b9348838",
+                    "label": "Night sweats"
+                  },
+                  {
+                    "concept": "4ef1a2d0-132d-4a02-b0e0-00890b916343",
+                    "label": "Numbness"
+                  },
+                  {
+                    "concept": "a8a498ee-1350-11df-a1f1-0026b9348838",
+                    "label": "Unexplained bleeding"
+                  },
+                  {
+                    "concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+                    "label": "Pain when swallowing"
                   },
                   {
                     "concept": "24a2b364-aaf7-4c2d-9ecf-edf65f21c107",
                     "label": "Palpitations (Heart racing)"
                   },
                   {
-                    "concept": "a8ad3a26-1350-11df-a1f1-0026b9348838",
-                    "label": "Focal weakness"
+                    "concept": "d4abb20f-fde4-453b-b7e8-ac35debe83c2",
+                    "label": "Pelvic pain"
                   },
                   {
-                    "concept": "4ac2bdf3-16ed-4cd1-acd9-d78a1bf1cc85",
-                    "label": "Fainting"
+                    "concept": "a8ad09ca-1350-11df-a1f1-0026b9348838",
+                    "label": "Poor vision"
+                  },
+                  {
+                    "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                    "label": "Rash"
+                  },
+                  {
+                    "concept": "0df011cb-3ff1-465e-ae84-718da974aedd",
+                    "label": "Red Eye/ conjuctivitis"
+                  },
+                  {
+                    "concept": "a8ad4476-1350-11df-a1f1-0026b9348838",
+                    "label": "Refusal to feed"
+                  },
+                  {
+                    "concept": "a8983bda-1350-11df-a1f1-0026b9348838",
+                    "label": "Running/Blocked nose"
+                  },
+                  {
+                    "concept": "773bfb25-09c8-4920-89f5-5bdafe5b5b62",
+                    "label": "Scrotal pain"
+                  },
+                  {
+                    "concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
+                    "label": "Seizure"
+                  },
+                  {
+                    "concept": "4fd5f4cf-67cd-444d-8f18-a01afb4d9af0",
+                    "label": "Shoulder pain"
+                  },
+                  {
+                    "concept": "8ccbbecf-58cd-43c2-ae9a-a36a4e578b25",
+                    "label": "Shock"
+                  },
+                  {
+                    "concept": "a8932d66-1350-11df-a1f1-0026b9348838",
+                    "label": "Sore throat"
+                  },
+                  {
+                    "concept": "34c96419-d4a9-4377-8c80-3a31d0f07d13",
+                    "label": "Sleep disturbance"
+                  },
+                  {
+                    "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
+                    "label": "Shortness of breath on activity"
+                  },
+                  {
+                    "concept": "e01c7959-551c-4c40-bcbf-52ef3087cbff",
+                    "label": "Swollen legs"
+                  },
+                  {
+                    "concept": "ae5f2fc7-3f76-4fc3-96fa-72b354323821",
+                    "label": "Tremors"
+                  },
+                  {
+                    "concept": "0ca4d1dc-34df-4ec0-bf2f-0280005ce6c9",
+                    "label": "Urinary symptoms"
+                  },
+                  {
+                    "concept": "9abe711c-5e02-4aca-8d70-8b2148a17256",
+                    "label": "Watery diarrhoea"
+                  },
+                  {
+                    "concept": "c982b4fe-8403-4c67-9650-91da17aecf5e",
+                    "label": "Weakness of limbs"
+                  },
+                  {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Weight loss"
+                  },
+                  {
+                    "concept": "a89d145c-1350-11df-a1f1-0026b9348838",
+                    "label": "Vaginal bleeding"
+                  },
+                  {
+                    "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
+                    "label": "Vaginal discharge"
+                  },
+                  {
+                    "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                    "label": "Vomiting"
+                  },
+                  {
+                    "concept": "6d140ca3-118d-48ca-9d91-7b5612987413",
+                    "label": "Vertigo"
                   },
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
@@ -508,7 +803,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny('a893436e-1350-11df-a1f1-0026b9348838'],diseaseType)"
+                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'],diseaseType)"
               }
             },
             {
@@ -538,7 +833,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny('a893436e-1350-11df-a1f1-0026b9348838'],diseaseType) || sex !== 'F'"
+                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'],diseaseType) || sex !== 'F'"
               }
             },
             {
@@ -564,7 +859,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny('a893436e-1350-11df-a1f1-0026b9348838'],diseaseType) || sex !== 'M'"
+                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'],diseaseType) || sex !== 'M'"
               }
             },
             {
@@ -582,7 +877,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny('a893436e-1350-11df-a1f1-0026b9348838'],diseaseType)"
+                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'],diseaseType)"
               }
             },
             {
@@ -963,8 +1258,6 @@
           "label": "Pregnancy Status",
           "isExpanded": "true",
           "questions": [
-            
-
             {
               "label": "Is the patient pregnant?",
               "id": "pregnant",
@@ -994,7 +1287,6 @@
                 "hideWhenExpression": "sex !== 'F'"
               }
             }
-           
           ]
         },
         {
@@ -1292,8 +1584,9 @@
                 ]
               },
               "validators": [],
+             
               "hide": {
-                "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != 'a893436e-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'],diseaseType)"
               }
             },
             {
@@ -1389,12 +1682,12 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(diseaseType) || diseaseType != 'a893436e-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(diseaseType) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'],diseaseType)"
               }
             }
           ]
         },
-         {
+        {
           "label": "New Complications",
           "isExpanded": "true",
           "questions": [
@@ -1459,7 +1752,6 @@
           ]
         }
       ]
-      
     },
     {
       "label": "Patient Management",
