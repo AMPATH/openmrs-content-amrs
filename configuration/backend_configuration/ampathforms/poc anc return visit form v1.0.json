@@ -5204,76 +5204,7 @@
             }
           ]
         },
-        {
-          "label": "CD4",
-          "questions": [
-            {
-              "type": "obs",
-              "id": "cd4_test",
-              "questionOptions": {
-                "concept": "a8a8bb18-1350-11df-a1f1-0026b9348838",
-                "showDate": "true",
-                "rendering": "number",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(cd4_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(cd4_test)"
-                  }
-                }
-              },
-              "label": "CD4 Count:",
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "type": "obs",
-              "label": "CD4 %:",
-              "id": "cd4percent_test",
-              "questionOptions": {
-                "rendering": "decimal",
-                "max": "100.00",
-                "min": "0.00",
-                "showDate": "true",
-                "concept": "a8970a26-1350-11df-a1f1-0026b9348838",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(cd4percent_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(cd4percent_test)"
-                  }
-                }
-              },
-              "validators": [
-                {
-                  "type": "decimal",
-                  "decimalPlace": 1
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              }
-            }
-          ]
-        },
+        
         {
           "label": "ART Drug Sensitivity Test",
           "questions": [
@@ -5308,42 +5239,7 @@
             }
           ]
         },
-        {
-          "label": "Viral Load",
-          "questions": [
-            {
-              "type": "obs",
-              "label": "Viral load:",
-              "id": "viralLoad_test",
-              "questionOptions": {
-                "concept": "a8982474-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "max": "10000000",
-                "min": "0",
-                "showDate": "true",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(viralLoad_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(viralLoad_test)"
-                  }
-                }
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              }
-            }
-          ]
-        },
+        
         {
           "label": "Urinalysis",
           "questions": [

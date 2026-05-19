@@ -9,3 +9,6 @@ aac48226-d143-4274-80e0-264db4e368ee,,Visit,Insurance Policy Number,,0,1,org.ope
 3a988e33-a6c0-4b76-b924-01abb998944b,,Visit,Insurance Scheme,The insurance scheme the patient is using to settle payment for services,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
 cef1526a-1855-47a3-8c3a-0f32b2d84707,,Location,Logo,The Logo for the facility,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
 20eac49b-67bb-4e55-8aec-a043f6b20b75,,Location,Associated Pharmacy Location,Attribute used to associate locations with a pharmacy location,0,1,org.openmrs.customdatatype.datatype.LocationDatatype,,,,
+124a2571-43de-40f3-829a-0e0352360891,,Location,Facility Registry Code,A facility id e.g FID-44-106345-2,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
+abb96263-831a-47bf-bc0f-39232281aaa3,,Location,Regulator License Number,Regulator License Number,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
+4c2985c2-6410-48d0-800d-ec343edec0fb,,Location,SHA License Number,SHA License Number,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
