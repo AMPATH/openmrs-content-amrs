@@ -52,17 +52,39 @@
             {
               "label": "Parity:",
               "type": "obs",
-              "id": "parity",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')",
+              "id": "par",
               "questionOptions": {
                 "concept": "a899a920-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
                 "min": "0",
                 "max": "50"
               },
-              "hide": {
-                "hideWhenExpression": "sex !== 'F'"
+              "validators": []
+            },
+            {
+              "label": "Plus (Miscarriage):",
+              "type": "obs",
+              "id": "parityAbortion",
+              "required": "true",
+              "questionOptions": {
+                "concept": "cedb167d-34a4-4027-8a5c-b7fa9fe4190e",
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
               }
+            },
+            {
+              "label": "Gravidae:",
+              "type": "obs",
+              "id": "grav",
+              "questionOptions": {
+                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "calcGravida(par,parityAbortion)"
+                }
+              },
+              "validators": []
             },
             {
               "label": "Labour onset:",
@@ -126,21 +148,8 @@
               },
               "type": "obs",
               "validators": []
-            },
-            {
-              "label": "Gravida",
-              "type": "obs",
-              "id": "noPregnancy",
-              "questionOptions": {
-                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "max": "50",
-                "min": "0"
-              },
-              "hide": {
-                "hideWhenExpression": "sex !== 'F'"
-              }
             }
+            
           ]
         },
         {

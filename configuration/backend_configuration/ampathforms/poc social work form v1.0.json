@@ -65,8 +65,26 @@
               "label": "Distance to clinic (in Km/hour):",
               "id": "clinicDistance",
               "questionOptions": {
-                "concept": "",
-                "rendering": "number"
+                "concept": "a89edfee-1350-11df-a1f1-0026b9348838",
+                "rendering": "coded",
+                "answers": [
+                  {
+                    "concept": "a89ed814-1350-11df-a1f1-0026b9348838",
+                    "label": "Less that or equal to 1 kilometres"
+                  },
+                  {
+                    "concept": "a89ed8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "2 to 5 kilometres"
+                  },
+                   {
+                    "concept": "a89ed990-1350-11df-a1f1-0026b9348838",
+                    "label": "6 to 10 kilometres"
+                  },
+                  {
+                    "concept": "a89edf1c-1350-11df-a1f1-0026b9348838",
+                    "label": "Greater than 10 kilometre"
+                  }
+                ]
               },
               "type": "obs",
               "validators": []
@@ -75,7 +93,7 @@
               "label": "Cost of transport to clinic:",
               "id": "clinicCost",
               "questionOptions": {
-                "concept": "",
+                "concept": "a89ec1b2-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
               },
               "type": "obs",
@@ -86,7 +104,7 @@
               "type": "obs",
               "id": "married",
               "questionOptions": {
-                "concept": "",
+                "concept": "a899aace-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
@@ -105,32 +123,36 @@
               "type": "obs",
               "id": "occupation",
               "questionOptions": {
-                "concept": "",
+                "concept": "a8a0a00e-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "",
+                    "concept": "49c8583d-baa0-4b80-a719-8c5609129c15",
                     "label": "Formal employment"
                   },
                   {
-                    "concept": "",
+                    "concept": "a8a09c4e-1350-11df-a1f1-0026b9348838",
                     "label": "Farmer"
                   },
                   {
-                    "concept": "",
+                    "concept": "a8a09f50-1350-11df-a1f1-0026b9348838",
                     "label": "Not employed"
                   },
                   {
-                    "concept": "",
-                    "label": ""
+                    "concept": "a8a09b90-1350-11df-a1f1-0026b9348838",
+                    "label": "Casual worker"
                   },
                   {
-                    "concept": "",
+                    "concept": "a8a09d0c-1350-11df-a1f1-0026b9348838",
                     "label": "Teacher"
                   },
                   {
-                    "concept": "",
+                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
                     "label": "Health care worker"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ]
               }
@@ -140,7 +162,7 @@
               "type": "obs",
               "id": "opharn",
               "questionOptions": {
-                "concept": "",
+                "concept": "0f1f43b2-2a81-4ebb-833f-7d2b71faf85b",
                 "rendering": "select",
                 "answers": [
                   {
@@ -158,7 +180,7 @@
               "label": "Number of children:",
               "id": "childrenNo",
               "questionOptions": {
-                "concept": "",
+                "concept": "a89eed5e-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
               },
               "type": "obs",
@@ -168,37 +190,19 @@
               "label": "Number of children in school:",
               "id": "childrenSchool",
               "questionOptions": {
-                "concept": "",
+                "concept": "2c0a8492-497c-4c59-9aff-f7be6c1463ab",
                 "rendering": "number"
               },
               "type": "obs",
               "validators": []
             },
-            {
-              "label": "Opharned/vulnerable:",
-              "type": "obs",
-              "id": "opharn",
-              "questionOptions": {
-                "concept": "",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
+            
             {
               "label": "Dependent parents:",
               "type": "obs",
               "id": "dependentParents",
               "questionOptions": {
-                "concept": "",
+                "concept": "9ec5852b-408a-450b-8a2d-21c7d0520bf6",
                 "rendering": "select",
                 "answers": [
                   {
@@ -217,7 +221,7 @@
               "type": "obs",
               "id": "otherDependants",
               "questionOptions": {
-                "concept": "",
+                "concept": "3933d652-401a-48d9-adf1-a1979a4c1532",
                 "rendering": "select",
                 "answers": [
                   {
@@ -236,26 +240,38 @@
               "type": "obs",
               "id": "eduLevel",
               "questionOptions": {
-                "concept": "",
+                "concept": "a89e48ae-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": ""
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": ""
+                    "concept": "a2caaf9c-2224-42a4-80b1-1482bc159680",
+                    "label": "Pre primary"
+                  },
+                  {
+                    "concept": "a8afe910-1350-11df-a1f1-0026b9348838",
+                    "label": "Primary"
+                  },
+                  {
+                    "concept": "a8afe9d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Secondary"
+                  },
+                  {
+                    "concept": "a8afea96-1350-11df-a1f1-0026b9348838",
+                    "label": "College"
                   }
                 ]
               }
             },
             {
-              "label": "Property owned:",
+              "label": "Property owner:",
               "type": "obs",
               "id": "propertyOwned",
               "questionOptions": {
-                "concept": "",
+                "concept": "1606e82b-fe5d-402c-850f-46655e6b0633",
                 "rendering": "select",
                 "answers": [
                   {
@@ -270,11 +286,24 @@
               }
             },
             {
-              "label": "Livestock owned:",
+              "label": "Describe:",
+              "type": "obs",
+              "id": "propertyDescribe",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+                
+              },
+              "hide": {
+                    "hideWhenExpression": "propertyOwned !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+            },
+            {
+              "label": "Livestock owner:",
               "type": "obs",
               "id": "livestockOwned",
               "questionOptions": {
-                "concept": "",
+                "concept": "3c38d224-d05c-4434-abfb-d2d5f55f1a07",
                 "rendering": "select",
                 "answers": [
                   {
@@ -287,24 +316,28 @@
                   }
                 ]
               }
+            },
+            {
+              "label": "Describe:",
+              "type": "obs",
+              "id": "livestockDescribe",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+                
+              },
+              "hide": {
+                    "hideWhenExpression": "livestockOwned !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
             },
             {
               "label": "Source of income:",
               "type": "obs",
               "id": "incomeSource",
               "questionOptions": {
-                "concept": "",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": ""
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": ""
-                  }
-                ]
+                "concept": "4e93a1d8-7299-4187-adda-a1dd11bb3db0",
+                "rendering": "text"
+                
               }
             },
             {
@@ -312,42 +345,67 @@
               "type": "obs",
               "id": "physicalDisability",
               "questionOptions": {
-                "concept": "",
+                "concept": "522cca7a-235d-43d4-837e-8a118f2d9f88",
                 "rendering": "select",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": ""
+                    "label": "Yes"
                   },
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": ""
+                    "label": "No"
                   }
                 ]
               }
+            },
+            {
+              "label": "Describe:",
+              "type": "obs",
+              "id": "disabilityDescribe",
+              "questionOptions": {
+                "concept": "37e7f17b-d38c-4df0-8839-bf4f298a65e2",
+                "rendering": "text"
+                
+              },
+              "hide": {
+                    "hideWhenExpression": "physicalDisability !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+            },
+            {
+              "label": "Describe physical appearance e.g mode of dressing, nature of relatives, personal hygiene:",
+              "type": "obs",
+              "id": "physicalAppearance",
+              "questionOptions": {
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea",
+                "rows":10
+                
+              }
+              
             },
              {
               "label": "Past medical bills:",
               "type": "obs",
               "id": "medicalBills",
               "questionOptions": {
-                "concept": "",
+                "concept": "a8a71fce-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "",
+                    "concept": "a8a70e12-1350-11df-a1f1-0026b9348838",
                     "label": "Paid by self"
                   },
                   {
-                    "concept": "",
-                    "label": "Paid by NHIF"
+                    "concept": "c6b19369-795c-4ab4-a9c4-2542183339cf",
+                    "label": "Paid by SHIF"
                   },
                   {
-                    "concept": "",
+                    "concept": "a898c62c-1350-11df-a1f1-0026b9348838",
                     "label": "Waived"
                   },
                   {
-                    "concept": "",
+                    "concept": "171f9263-2ab5-4b65-87d6-7c23f2140088",
                     "label": "Credit guranteed by security"
                   }
                 ]
@@ -358,15 +416,15 @@
               "type": "obs",
               "id": "previousBills",
               "questionOptions": {
-                "concept": "",
+                "concept": "d5895dac-09f9-433a-ba2a-2594f140eb37",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                   
@@ -374,27 +432,108 @@
               }
             },
              {
-              "label": "Difficulties as described by the patient :",
+              "label": "Difficulties as described by the patient (if any):",
               "type": "obs",
-              "id": "previousBills",
+              "id": "difficulties",
               "questionOptions": {
-                "concept": "",
+                "concept": "a8b03c76-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "",
-                    "label": "Yes"
+                    "concept": "a8b03af0-1350-11df-a1f1-0026b9348838",
+                    "label": "Financial constraints"
                   },
                   {
-                    "concept": "",
-                    "label": "No"
+                    "concept": "6538283b-2760-4ae9-b612-d77513f3f965",
+                    "label": "Abandonment/destitute"
+                  },
+                  {
+                    "concept": "438f7323-e51c-44ea-9afd-ae68bb534a39",
+                    "label": "Comes form marginalized/hardship areas"
+                  },
+                  {
+                    "concept": "6e5fc5f4-8ecd-49df-ab95-589ad95d8eae",
+                    "label": "Victim of natural or man made disasters, drought, inter-ethnic violence etc"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others"
                   }
                   
                 ]
               }
             },
             {
-              "label": "Add nursing notes:",
+              "label": "Reccomendation:",
+              "type": "obs",
+              "id": "reccomendation",
+              "questionOptions": {
+                "concept": "7fb2c2f1-dc57-48ee-9d30-e7e75f296813",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a897fcd8-1350-11df-a1f1-0026b9348838",
+                    "label": "Cannot pay anything"
+                  },
+                  {
+                    "concept": "1f5222ad-b6cc-46ee-8f2d-ac2ca46da240",
+                    "label": "Can pay half the required amount"
+                  },
+                  {
+                    "concept": "3f2bda95-f1ae-4990-9860-b534ca75c5c1",
+                    "label": "Is able to pay the full amount"
+                  },
+                  
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                  
+                ]
+              }
+            },
+            {
+              "label": "Reviewed by:",
+              "type": "obs",
+              "id": "reviewedBy",
+              "required": "false",
+              "default": "",
+              "questionOptions": {
+                "concept": "474cec5a-664c-4c85-b392-05197d56a817",
+                "rendering": "text"
+                
+              }
+            },
+            {
+              "label": "Duration of assistance:",
+              "type": "obs",
+              "id": "durationAss",
+              "questionOptions": {
+                "concept": "a40396d3-3f9b-49b6-902a-a804f3d0e2a0",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "One time"
+                  },
+                  {
+                    "concept": "66449c70-1626-4e83-92ac-489afbd19574",
+                    "label": "1 month"
+                  },
+                  {
+                    "concept": "a8a45eec-1350-11df-a1f1-0026b9348838",
+                    "label": "3 months"
+                  },
+                  {
+                    "concept": "3f1e6da9-5fce-49b6-8314-9c1beb758aff",
+                    "label": "6 months"
+                  }
+                  
+                ]
+              }
+            },
+            {
+              "label": "Add notes:",
               "type": "obs",
               "id": "assNote",
               "required": "false",
@@ -405,6 +544,7 @@
                 "rows": 10
               }
             }
+            
           ]
         }
       ]

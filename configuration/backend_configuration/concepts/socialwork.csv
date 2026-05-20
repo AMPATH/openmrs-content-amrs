@@ -1,0 +1,11 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units
+9ec5852b-408a-450b-8a2d-21c7d0520bf6,,,DEPENDENT PARENTS,,,,,,Question to check whether the parents are dependent.,,,Question,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,
+3933d652-401a-48d9-adf1-a1979a4c1532,,,OTHER DEPENDANTS AVAILABLE,,,,,,Whether client has other dependants,,,Question,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,
+1606e82b-fe5d-402c-850f-46655e6b0633,,,OWNS PROPERTY,,,,,,Indicates whether the patient or household owns any property or assets.,,,Question,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,
+3c38d224-d05c-4434-abfb-d2d5f55f1a07,,,OWNS LIVESTOCK,,,,,,Indicates whether the patient or household owns livestock animals.,,,Question,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,
+171f9263-2ab5-4b65-87d6-7c23f2140088,,,CREDIT GUARANTEED BY SECURITY,,,,,,"Indicates whether the credit or loan is secured using collateral, property, assets, or other security.",,,Question,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,
+d5895dac-09f9-433a-ba2a-2594f140eb37,,,EVIDENCE OF PREVIOUS BILL PAYMENT,,,,,,Indicates whether evidence or proof of payment for previous bills was provided.,,,Question,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,
+6538283b-2760-4ae9-b612-d77513f3f965,,,ABANDONMENT,,,DESTITUTE,,,"Lacks family or social support, or is living in extreme poverty without adequate means of basic survival such as food, shelter, or clothing.",,,Misc,N/A,,
+438f7323-e51c-44ea-9afd-ae68bb534a39,,,HARDSHIP AREA,,,,,,"Underserved, insecure, or economically disadvantaged area",,,Misc,N/A,,
+1f5222ad-b6cc-46ee-8f2d-ac2ca46da240,,,CAN PAY HALF OF REQUIRED AMOUNT,,,,,,Is able to pay at least half of the required amount or cost.,,,Misc,N/A,,
+3f2bda95-f1ae-4990-9860-b534ca75c5c1,,,ABLE TO PAY FULL AMOUNT,,,,,,Is financially able to pay the full required amount or cost.,,,Misc,N/A,,
