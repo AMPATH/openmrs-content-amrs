@@ -1,8 +1,8 @@
 {
-  "name": "POC Social Work Form v1.0",
+  "name": "POC Social Economic Assessment Form v1.0",
   "uuid": "",
   "version": "1.0",
-  "description": "For social work information",
+  "description": "For social Economic Assessment Information",
   "published": true,
   "retired": false,
   "encounterType": "df555c70-1350-11df-a1f1-0026b9348838",
@@ -55,10 +55,10 @@
       ]
     },
     {
-      "label": "Social work",
+      "label": "Assessment",
       "sections": [
         {
-          "label": "Social work",
+          "label": "Assessment",
           "isExpanded": "true",
           "questions": [
             {
