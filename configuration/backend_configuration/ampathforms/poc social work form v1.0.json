@@ -1,12 +1,12 @@
 {
   "name": "POC Social Work Form v1.0",
-  "uuid": "xxxx",
+  "uuid": "",
   "version": "1.0",
   "description": "For social work information",
   "published": true,
   "retired": false,
-  "encounterType": "",
-  "encounter": "",
+  "encounterType": "df555c70-1350-11df-a1f1-0026b9348838",
+  "encounter": "ADULTSOCIOECONOMIC",
   "processor": "EncounterFormProcessor",
   "pages": [
     {
@@ -76,7 +76,7 @@
                     "concept": "a89ed8d2-1350-11df-a1f1-0026b9348838",
                     "label": "2 to 5 kilometres"
                   },
-                   {
+                  {
                     "concept": "a89ed990-1350-11df-a1f1-0026b9348838",
                     "label": "6 to 10 kilometres"
                   },
@@ -196,7 +196,7 @@
               "type": "obs",
               "validators": []
             },
-            
+
             {
               "label": "Dependent parents:",
               "type": "obs",
@@ -292,11 +292,10 @@
               "questionOptions": {
                 "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
-                
               },
               "hide": {
-                    "hideWhenExpression": "propertyOwned !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-                  }
+                "hideWhenExpression": "propertyOwned !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
             },
             {
               "label": "Livestock owner:",
@@ -324,11 +323,10 @@
               "questionOptions": {
                 "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
-                
               },
               "hide": {
-                    "hideWhenExpression": "livestockOwned !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-                  }
+                "hideWhenExpression": "livestockOwned !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
             },
             {
               "label": "Source of income:",
@@ -337,7 +335,6 @@
               "questionOptions": {
                 "concept": "4e93a1d8-7299-4187-adda-a1dd11bb3db0",
                 "rendering": "text"
-                
               }
             },
             {
@@ -366,11 +363,10 @@
               "questionOptions": {
                 "concept": "37e7f17b-d38c-4df0-8839-bf4f298a65e2",
                 "rendering": "text"
-                
               },
               "hide": {
-                    "hideWhenExpression": "physicalDisability !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-                  }
+                "hideWhenExpression": "physicalDisability !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
             },
             {
               "label": "Describe physical appearance e.g mode of dressing, nature of relatives, personal hygiene:",
@@ -379,12 +375,10 @@
               "questionOptions": {
                 "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
                 "rendering": "textarea",
-                "rows":10
-                
+                "rows": 10
               }
-              
             },
-             {
+            {
               "label": "Past medical bills:",
               "type": "obs",
               "id": "medicalBills",
@@ -411,7 +405,7 @@
                 ]
               }
             },
-             {
+            {
               "label": "Evidence of payment of previous bills:",
               "type": "obs",
               "id": "previousBills",
@@ -427,11 +421,10 @@
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
-                  
                 ]
               }
             },
-             {
+            {
               "label": "Difficulties as described by the patient (if any):",
               "type": "obs",
               "id": "difficulties",
@@ -459,7 +452,6 @@
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Others"
                   }
-                  
                 ]
               }
             },
@@ -483,12 +475,11 @@
                     "concept": "3f2bda95-f1ae-4990-9860-b534ca75c5c1",
                     "label": "Is able to pay the full amount"
                   },
-                  
+
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other"
                   }
-                  
                 ]
               }
             },
@@ -501,7 +492,6 @@
               "questionOptions": {
                 "concept": "474cec5a-664c-4c85-b392-05197d56a817",
                 "rendering": "text"
-                
               }
             },
             {
@@ -528,7 +518,6 @@
                     "concept": "3f1e6da9-5fce-49b6-8314-9c1beb758aff",
                     "label": "6 months"
                   }
-                  
                 ]
               }
             },
@@ -544,7 +533,6 @@
                 "rows": 10
               }
             }
-            
           ]
         }
       ]
