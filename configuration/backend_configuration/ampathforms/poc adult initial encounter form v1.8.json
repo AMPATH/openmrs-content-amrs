@@ -1693,15 +1693,15 @@
                 "answers": [
                   {
                     "concept": "034047bd-3fa1-4b2a-b0f0-2787e9b9f7b3",
-                    "label": "First line regimen"
+                    "label": "Initial regimen"
                   },
                   {
                     "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
-                    "label": "Second line regimen"
+                    "label": "Subsequent regimen"
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   }
                 ],
                 "rendering": "select"
@@ -1934,15 +1934,15 @@
                 "answers": [
                   {
                     "concept": "034047bd-3fa1-4b2a-b0f0-2787e9b9f7b3",
-                    "label": "First line regimen"
+                    "label": "Initial regimen"
                   },
                   {
                     "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
-                    "label": "Second line regimen"
+                    "label": "Sunsequent regimen"
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   }
                 ],
                 "rendering": "select"
@@ -6971,15 +6971,15 @@
                 "answers": [
                   {
                     "concept": "034047bd-3fa1-4b2a-b0f0-2787e9b9f7b3",
-                    "label": "First line regimen"
+                    "label": "Initial regimen"
                   },
                   {
                     "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
-                    "label": "Second line regimen"
+                    "label": "Subsequent regimen"
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   }
                 ],
                 "rendering": "select"
@@ -7137,7 +7137,7 @@
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   },
                   {
                     "concept": "24d5c8f6-e92c-47fb-becb-9cfac89939c5",
@@ -9446,7 +9446,20 @@
                         "label": "Echo"
                       }
                     ]
-                  }
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(myValue) && !arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838'],myValue)",
+                      "message": "Please order for baseline CD4."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(myValue) && !arrayContainsAny(['a8908192-1350-11df-a1f1-0026b9348838'],myValue)",
+                      "message": "Please order for Chest Xray."
+                    }
+                    
+                  ]
                 },
                 {
                   "label": "Test ordered: Other (specify):",
@@ -9680,6 +9693,10 @@
                   {
                     "concept": "31962167-5c45-4ce6-b7fb-6dd2bed1b6fd",
                     "label": "Patient returning back to care after 3+ months IIT)"
+                  },
+                  {
+                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                    "label": "Hospitalised or seriously ill or clinically unstable"
                   }
                 ]
               },
