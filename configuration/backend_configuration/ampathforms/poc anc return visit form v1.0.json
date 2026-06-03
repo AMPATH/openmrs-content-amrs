@@ -2084,15 +2084,15 @@
                 "answers": [
                   {
                     "concept": "034047bd-3fa1-4b2a-b0f0-2787e9b9f7b3",
-                    "label": "First line regimen"
+                    "label": "Initial regimen"
                   },
                   {
                     "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
-                    "label": "Second line regimen"
+                    "label": "Subsequent regimen"
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   }
                 ],
                 "rendering": "select"
@@ -6545,15 +6545,15 @@
                 "answers": [
                   {
                     "concept": "034047bd-3fa1-4b2a-b0f0-2787e9b9f7b3",
-                    "label": "First line regimen"
+                    "label": "Initial regimen"
                   },
                   {
                     "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
-                    "label": "Second line regimen"
+                    "label": "Subsequent regimen"
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   }
                 ],
                 "rendering": "select"
@@ -6707,7 +6707,7 @@
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   },
                   {
                     "concept": "24d5c8f6-e92c-47fb-becb-9cfac89939c5",
@@ -8389,6 +8389,10 @@
                   {
                     "concept": "e43ddeb6-3984-499c-a280-3bade1039608",
                     "label": "Confirmation of treatment failure"
+                  },
+                  {
+                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                    "label": "Hospitalised or seriously ill or clinically unstable"
                   }
                 ]
               },

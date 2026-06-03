@@ -176,7 +176,7 @@
                   "validators": []
                 },
                 {
-                  "label": "Labour duration:",
+                  "label": "Hour:",
                   "required": "true",
                   "type": "obs",
                   "questionOptions": {
@@ -736,7 +736,7 @@
                   "questionOptions": {
                     "rendering": "textarea",
                     "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
-                    "rows": 10
+                    "rows": 5
                   }
                 },
                 {

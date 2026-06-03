@@ -1,0 +1,2 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units
+ab0d9436-1096-4fc4-ae3e-777ea50d6688,,,CHEST X-RAY SERVICE AVAILABLE,,,CXR SERVICE AVAILABLE,,,Indicates whether chest X-ray (CXR) services are available at the facility at the time of assessment.,,,Question,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,

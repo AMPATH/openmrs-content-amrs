@@ -1963,15 +1963,15 @@
                 "answers": [
                   {
                     "concept": "034047bd-3fa1-4b2a-b0f0-2787e9b9f7b3",
-                    "label": "First line regimen"
+                    "label": "Initial regimen"
                   },
                   {
                     "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
-                    "label": "Second line regimen"
+                    "label": "Subsequent regimen"
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   }
                 ],
                 "rendering": "select"
@@ -3695,108 +3695,9 @@
       ]
     },
     {
-      "label": "TB Screening",
+      "label": "TB Medication History And Screening",
       "sections": [
-        {
-          "label": "TB Screening Questions",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "TB Symptoms:",
-              "required": "true",
-              "questionOptions": {
-                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "None"
-                  },
-                  {
-                    "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
-                    "label": "Breathlessness"
-                  },
-                  {
-                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Chest pain"
-                  },
-                  {
-                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
-                    "label": "Cough of any duration"
-                  },
-                  {
-                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
-                    "label": "Fever for = 2 weeks"
-                  },
-                  {
-                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
-                    "label": "New exposure to household contact with TB"
-                  },
-                  {
-                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
-                    "label": "Noticeable weight loss"
-                  },
-                  {
-                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
-                    "label": "Night sweats = 2 weeks"
-                  },
-                  {
-                    "concept": "a8ad462e-1350-11df-a1f1-0026b9348838",
-                    "label": "Abdomen swelling"
-                  },
-                  {
-                    "concept": "f218c60e-4b54-475a-a4fa-facab9216da8",
-                    "label": "Groin swelling"
-                  },
-                  {
-                    "concept": "a8a774b0-1350-11df-a1f1-0026b9348838",
-                    "label": "Joints swelling"
-                  },
-                  {
-                    "concept": "4639388c-ee31-4dcf-abb4-ad71253493bb",
-                    "label": "Neck swelling"
-                  }
-                ],
-                "rendering": "multiCheckbox"
-              },
-              "type": "obs",
-              "validators": [],
-              "id": "__rqHFE1nuD"
-            },
-            {
-              "label": "TB Status:",
-              "id": "tbstatus",
-              "required": "true",
-              "questionOptions": {
-                "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
-                "answers": [
-                  {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "No signs"
-                  },
-                  {
-                    "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
-                    "label": "On TB treatment"
-                  },
-                  {
-                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
-                    "label": "Presumed TB"
-                  },
-                  {
-                    "concept": "a8af9046-1350-11df-a1f1-0026b9348838",
-                    "label": "Confirmed"
-                  },
-                  {
-                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Not assessed"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "validators": []
-            }
-          ]
-        },
+        
         {
           "label": "Tuberculosis History",
           "isExpanded": "true",
@@ -4200,6 +4101,134 @@
                   }
                 }
               ]
+            }
+          ]
+        },
+        {
+          "label": "TB Screening Questions",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "TB Symptoms:",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough of any duration"
+                  },
+                  {
+                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+                    "label": "Persistent fever (Temperature > 37.5°C)"
+                  },
+                  {
+                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
+                    "label": "Drenching night sweats"
+                  },
+                  {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unexplained weight loss"
+                  },
+                  {
+                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Chest pain"
+                  },
+                  {
+                    "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
+                    "label": "Difficulty in breathing"
+                  },
+                  {
+                    "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
+                    "label": "Body Mass Index (BMI) <18.5"
+                  },
+                  {
+                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
+                    "label": "History of contact with a person with TB or chronic cough"
+                  },
+                  {
+                    "concept": "a89cb0d4-1350-11df-a1f1-0026b9348838",
+                    "label": "Poor weight gain or faltering of the growth curve"
+                  },
+                  {
+                    "concept": "a8a5a5fe-1350-11df-a1f1-0026b9348838",
+                    "label": "Z-score <-2 (for weight-for-age or height-for-age) "
+                  },
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Reduced playfulness/less active (lethargy)"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [],
+              "id": "tbSymptoms",
+               "hide": {
+                "hideWhenExpression": "onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Is chest xray service available?",
+              "id": "xrayService",
+              "questionOptions": {
+                "concept": "ab0d9436-1096-4fc4-ae3e-777ea50d6688",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(tbSymptoms) && arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'],tbSymptoms) && isEmpty(myValue)",
+                  "message": "Patient has been marked as having TB symptoms. This question is required."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'],tbSymptoms)"
+              }
+            },
+            {
+              "label": "TB status:",
+              "id": "tbstatus",
+              "required": "true",
+              "questionOptions": {
+                "calculate": {
+                  "calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838'"
+                },
+                "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "Not TB presumptive"
+                  },
+
+                  {
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+                    "label": "Presumed TB"
+                  },
+                  {
+                    "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
+                    "label": "On TB treatment"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
             }
           ]
         },
@@ -7216,15 +7245,15 @@
                 "answers": [
                   {
                     "concept": "034047bd-3fa1-4b2a-b0f0-2787e9b9f7b3",
-                    "label": "First line regimen"
+                    "label": "Initial regimen"
                   },
                   {
                     "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
-                    "label": "Second line regimen"
+                    "label": "Subsequent regimen"
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
-                    "label": "Third line regimen"
+                    "label": "Constructive regimen"
                   }
                 ],
                 "rendering": "select"
@@ -9498,8 +9527,13 @@
                   },
                   {
                     "concept": "31962167-5c45-4ce6-b7fb-6dd2bed1b6fd",
-                    "label": "Patient returning back to care after 3+ months IIT)"
+                    "label": "Patient returning back to care after 3+ months (IIT)"
+                  },
+                  {
+                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                    "label": "Hospitalised or seriously ill or clinically unstable "
                   }
+
                 ]
               },
               "validators": [

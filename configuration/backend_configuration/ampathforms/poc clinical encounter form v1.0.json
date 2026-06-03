@@ -1655,7 +1655,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex !== 'F' (|| sex === 'F' && (age < 10 || age > 49)) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "sex !== 'F' || ( sex === 'F' && (age < 10 || age > 49)) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1669,7 +1669,7 @@
                 "min": "8"
               },
               "hide": {
-                "hideWhenExpression": "sex !== 'F' ||sex === 'F' && (age < 10 || age > 49) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || hasLMP !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "sex !== 'F' || sex === 'F' && (age < 10 || age > 49) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || hasLMP !=='a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
