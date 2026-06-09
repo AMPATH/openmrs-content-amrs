@@ -73,7 +73,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "PMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "a8a17b3c-1350-11df-a1f1-0026b9348838",
@@ -1033,27 +1033,20 @@
                     "label": "Standard Q"
                   },
                   {
-                    "concept": "a8afbc9c-1350-11df-a1f1-0026b9348838",
-                    "label": "Determine"
-                  },
-                  {
-                    "concept": "22d8b9b3-378a-4ef1-9a38-e4d8b33348ea",
-                    "label": "One step"
-                  },
-                  {
-                    "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
-                    "label": "First response"
+                    "concept": "3e69faed-e56f-4ff1-8831-922224d6ae6b",
+                    "label": "Self test"
                   }
                 ]
               },
               "validators": []
             },
             {
-              "label": "HIV self test kit?",
+              "label": "Self test kit:",
               "type": "obs",
+              "id": "selfTestKit",
               "questionOptions": {
-                "rendering": "select",
                 "concept": "3e43c71c-682d-4109-a739-e02c67ddf0f2",
+                "rendering": "select",
                 "answers": [
                   {
                     "concept": "c7be8a4a-0ad3-442e-9355-eb481a23c0a6",
@@ -1065,8 +1058,12 @@
                   }
                 ]
               },
-              "id": "selfTest"
+              "validators": [],
+               "hide": {
+                "hideWhenExpression": "hivTestKit !== '3e69faed-e56f-4ff1-8831-922224d6ae6b'"
+              }
             },
+
             {
               "label": "Names of HTS provider that tested the patient? (Record at least 2 names, If the provider's name is unknown, indicate facility)",
               "required": "true",

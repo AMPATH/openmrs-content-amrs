@@ -25,3 +25,4 @@ f0a205ed-9262-41df-8da1-547ad531e104,,MCL/CIEL:167340,TAENIA SAGINATA,,,BEEF TAP
 57cddafe-16b5-43a6-8564-32b79975e40a,,MCL/CIEL:167337,HYMENOLEPIS NANA,,,TENIA ENANA,,,"Is the smallest and most common human tapeworm, especially in children.",,,Organism,N/A,,,
 99d821e8-59fc-4ff1-8a4c-bc3c0a6191fc,,,SCHISTOSOMA MANSONI,,,,,,Is a parasitic flatworm (trematode) that causes intestinal schistosomiasis and liver disease.,,,Organism,N/A,,,
 18072b35-2890-4514-8891-0796af2912be,,MCL/CIEL:161451,STOOL TEST,,,,,,Is a complex set to collect all the stool lab test questions. ,,,Labset,N/A,,,
+9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634,,MCL/CIEL:161500;LOINC:1988-5,C-REACTIVE PROTEIN,,,CRP,,,"Is a blood test that measures the level of C-reactive protein, a substance produced by the liver in response to inflammation in the body.",,,Test,Numeric,,mg/L,
