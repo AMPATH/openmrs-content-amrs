@@ -435,7 +435,7 @@
                   },
                   {
                     "concept": "a8a488d6-1350-11df-a1f1-0026b9348838",
-                    "label": "Supplememntary feeding program"
+                    "label": "Supplementary feeding program"
                   },
                   {
                     "concept": "55f41f90-5650-4292-8fb2-8c1eadd95cb1",
@@ -1155,6 +1155,28 @@
               "id": "patnerStatus"
             },
             {
+              "label": "Risk assessement outcome:",
+              "required":"true",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "03019f05-7e81-4bbe-a24c-bf6e8188e566",
+                "answers": [
+                  {
+                    "concept": "4fae298d-c3c2-4483-ad31-bea9b637ae2b",
+                    "label": "High risk"
+                  },
+                  {
+                    "concept": "d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb",
+                    "label": "Low risk"
+                  }
+                  
+                ]
+              },
+              "validators": [],
+              "id": "riskAssessment"
+            },
+            {
               "label": "Population type:",
               "id": "popType",
               "required": "true",
@@ -1392,7 +1414,7 @@
                 "answers": [
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "pMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "1219f85c-31dd-4212-92ac-77926fa5ba03",
@@ -2156,7 +2178,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "PMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "a8909060-1350-11df-a1f1-0026b9348838",
@@ -2284,7 +2306,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "pMTCT"
+                    "label": "VTP"
                   }
                 ],
                 "rendering": "select"
@@ -2562,7 +2584,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "PMTCT"
+                    "label": "VTP"
                   }
                 ]
               },
@@ -3463,6 +3485,29 @@
         {
           "label": "Other Medications",
           "questions": [
+             {
+              "label": "Hepatitis B prophylaxis:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0a91f50f-b4a8-49db-9707-9dc9f29aa421",
+                "answers": [
+                  {
+                    "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+                    "label": "3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "Emtri200mg/TDF300(Truvada)"
+                  }
+                ]
+              },
+              "id": "hpvProphy",
+              "hide": {
+                "hideWhenExpression": "hepB !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+
+            },
             {
               "label": "Please add any other medications the patient is taking",
               "type": "obsGroup",
@@ -4523,28 +4568,8 @@
               "type": "obs",
               "validators": [],
               "id": "__JII8IExGE"
-            },
-            {
-              "label": "Hepatitis B infected:",
-              "id": "hep_infec",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89c4bee-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a89c4bee-1350-11df-a1f1-0026b9348838')",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a89c4bee-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": []
             }
+            
           ]
         },
         {
@@ -4683,107 +4708,7 @@
             }
           ]
         },
-        {
-          "label": "TB Screening Questions",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "TB Symptoms:",
-              "required": "true",
-              "questionOptions": {
-                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "None"
-                  },
-                  {
-                    "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
-                    "label": "Breathlessness"
-                  },
-                  {
-                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Chest pain"
-                  },
-                  {
-                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
-                    "label": "Cough of any duration"
-                  },
-                  {
-                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
-                    "label": "Fever for = 2 weeks"
-                  },
-                  {
-                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
-                    "label": "New exposure to household contact with TB"
-                  },
-                  {
-                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
-                    "label": "Noticeable weight loss"
-                  },
-                  {
-                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
-                    "label": "Night sweats = 2 weeks"
-                  },
-                  {
-                    "concept": "a8ad462e-1350-11df-a1f1-0026b9348838",
-                    "label": "Abdomen swelling"
-                  },
-                  {
-                    "concept": "f218c60e-4b54-475a-a4fa-facab9216da8",
-                    "label": "Groin swelling"
-                  },
-                  {
-                    "concept": "a8a774b0-1350-11df-a1f1-0026b9348838",
-                    "label": "Joints swelling"
-                  },
-                  {
-                    "concept": "4639388c-ee31-4dcf-abb4-ad71253493bb",
-                    "label": "Neck swelling"
-                  }
-                ],
-                "rendering": "multiCheckbox"
-              },
-              "type": "obs",
-              "validators": [],
-              "id": "__IquJ8y0JI"
-            },
-            {
-              "label": "TB Status:",
-              "id": "tbstatus",
-              "required": "true",
-              "questionOptions": {
-                "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
-                "answers": [
-                  {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "No signs"
-                  },
-                  {
-                    "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
-                    "label": "On TB treatment"
-                  },
-                  {
-                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
-                    "label": "Suspect"
-                  },
-                  {
-                    "concept": "a8af9046-1350-11df-a1f1-0026b9348838",
-                    "label": "Confirmed"
-                  },
-                  {
-                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Not assessed"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "validators": []
-            }
-          ]
-        },
-        {
+         {
           "label": "Tuberculosis History",
           "isExpanded": "true",
           "questions": [
@@ -5170,6 +5095,98 @@
             }
           ]
         },
+        {
+          "label": "TB Screening Questions",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "TB Symptoms:",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough of any duration"
+                  },
+                  {
+                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+                    "label": "Persistent fever (Temperature > 37.5°C)"
+                  },
+                  {
+                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
+                    "label": "Drenching night sweats"
+                  },
+                  {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unexplained weight loss"
+                  },
+                  {
+                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Chest pain"
+                  },
+                  {
+                    "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
+                    "label": "Difficulty in breathing"
+                  },
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Fatigue (lethargy) "
+                  },
+                  {
+                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
+                    "label": "History of contact with a person with TB or chronic cough"
+                  },
+                  {
+                    "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
+                    "label": "Body Mass Index (BMI) <18.5"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [],
+              "id": "tbSymptoms",
+              "hide": {
+                "hideWhenExpression": "onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "TB status:",
+              "id": "tbstatus",
+              "required": "true",
+              "questionOptions": {
+                "calculate": {
+                  "calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838'"
+                },
+                "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "Not TB presumptive"
+                  },
+
+                  {
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+                    "label": "Presumed TB"
+                  },
+                  {
+                    "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
+                    "label": "On TB treatment"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+       
         {
           "label": "Other Conditions:",
           "isExpanded": "true",
@@ -6197,6 +6214,74 @@
                   ],
                   "hide": {
                     "hideWhenExpression": "isEmpty(creatinine_test)"
+                  }
+                }
+              },
+              "validators": [
+                {
+                  "type": "decimal",
+                  "decimalPlace": 1
+                }
+              ]
+            },
+            {
+              "label": "eGFR:",
+              "id": "egfr",
+              "questionOptions": {
+                "concept": "23bc7e2f-ab06-45ca-a55d-d4fb058a671a",
+                "showDate": "true",
+                "rendering": "decimal",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(egfr) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(egfr)"
+                  }
+                }
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "decimal",
+                  "decimalPlace": 1
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(creatinine_test)",
+                  "message": "Patient has creatinine results. Please calculate eGFR"
+                }
+              ]
+            },
+            {
+              "type": "obs",
+              "label": "CRP:",
+              "id": "crp_test",
+              "questionOptions": {
+                "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
+                "rendering": "decimal",
+                
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(crp_test) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(crp_test)"
                   }
                 }
               },
@@ -7587,6 +7672,25 @@
                 ]
               },
               "id": "bsMps"
+            },
+            {
+              "label": "Hepatitis B:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c7a4c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ]
+              },
+              "id": "hepB"
             }
           ]
         }
@@ -7772,7 +7876,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "PMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "a8909060-1350-11df-a1f1-0026b9348838",
@@ -8736,7 +8840,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Crag test:",
+              "label": "CrAg test:",
               "id": "cragTest",
               "questionOptions": {
                 "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
@@ -8826,7 +8930,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(cragTest) && !isEmpty(myValue) && !arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'],myValue)&&(cragTest==='a896f3a6-1350-11df-a1f1-0026b9348838')",
-                  "message": "Crag test is positive. Therefore patient should be on crypto."
+                  "message": "CrAg test is positive. Therefore patient should be on crypto."
                 }
               ],
               "id": "cryptoPlan",
@@ -9486,7 +9590,7 @@
                       },
                       {
                         "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-                        "label": "Crag test"
+                        "label": "CrAg test"
                       },
                       {
                         "concept": "57677735-4310-4841-8902-dae4bac24d20",
@@ -9499,6 +9603,14 @@
                       {
                         "concept": "a8908192-1350-11df-a1f1-0026b9348838",
                         "label": "CXR"
+                      },
+                      {
+                        "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
+                        "label": "CRP"
+                      },
+                      {
+                        "concept": "a89c7a4c-1350-11df-a1f1-0026b9348838",
+                        "label": "Hepatitis B"
                       },
                       {
                         "concept": "a8945d4e-1350-11df-a1f1-0026b9348838",
@@ -9672,19 +9784,19 @@
                       },
                       {
                         "concept": "635f446c-bab9-428a-9930-ae4f46363c0c",
-                        "label": "PMTCT new positives"
+                        "label": "VTP new positives"
                       },
                       {
                         "concept": "e883376e-80cb-4ec7-a958-f0fbc0a0bad3",
-                        "label": "PMTCT known positives"
+                        "label": "VTP known positives"
                       },
                       {
                         "concept": "0998e404-d0ea-4271-abe0-a8a69c08c2cf",
-                        "label": "PMTCT NP <=6 weeks in PNC"
+                        "label": "VTP NP <=6 weeks in PNC"
                       },
                       {
                         "concept": "4d74eab9-4cad-4efb-8d58-82b53d23fcb9",
-                        "label": "PMTCT NP >6 weeks in PNC"
+                        "label": "VTP NP >6 weeks in PNC"
                       }
                     ]
                   },
@@ -9766,7 +9878,7 @@
                   }
                 },
                 {
-                  "label": "PMTCT justification category:",
+                  "label": "VTP justification category:",
                   "type": "obs",
                   "id": "patCategory1",
                   "questionOptions": {

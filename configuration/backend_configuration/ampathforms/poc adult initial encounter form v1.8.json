@@ -480,7 +480,7 @@
                 "answers": [
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "pMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "1219f85c-31dd-4212-92ac-77926fa5ba03",
@@ -1542,7 +1542,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "PMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "a8909060-1350-11df-a1f1-0026b9348838",
@@ -1667,7 +1667,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "pMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "a8ab1e12-1350-11df-a1f1-0026b9348838",
@@ -1908,7 +1908,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "PMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "a8ab1e12-1350-11df-a1f1-0026b9348838",
@@ -4222,82 +4222,73 @@
                     "label": "None"
                   },
                   {
-                    "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
-                    "label": "Breathlessness"
+                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough of any duration"
+                  },
+                  {
+                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+                    "label": "Persistent fever (Temperature > 37.5°C)"
+                  },
+                  {
+                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
+                    "label": "Drenching night sweats"
+                  },
+                  {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unexplained weight loss"
                   },
                   {
                     "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
                     "label": "Chest pain"
                   },
                   {
-                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
-                    "label": "Cough of any duration"
+                    "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
+                    "label": "Difficulty in breathing"
                   },
                   {
-                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
-                    "label": "Fever for = 2 weeks"
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Fatigue (lethargy) "
                   },
                   {
                     "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
-                    "label": "New exposure to household contact with TB"
+                    "label": "History of contact with a person with TB or chronic cough"
                   },
                   {
-                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
-                    "label": "Noticeable weight loss"
-                  },
-                  {
-                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
-                    "label": "Night sweats = 2 weeks"
-                  },
-                  {
-                    "concept": "a8ad462e-1350-11df-a1f1-0026b9348838",
-                    "label": "Abdomen swelling"
-                  },
-                  {
-                    "concept": "f218c60e-4b54-475a-a4fa-facab9216da8",
-                    "label": "Groin swelling"
-                  },
-                  {
-                    "concept": "a8a774b0-1350-11df-a1f1-0026b9348838",
-                    "label": "Joints swelling"
-                  },
-                  {
-                    "concept": "4639388c-ee31-4dcf-abb4-ad71253493bb",
-                    "label": "Neck swelling"
+                    "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
+                    "label": "Body Mass Index (BMI) <18.5"
                   }
                 ],
                 "rendering": "multiCheckbox"
               },
               "type": "obs",
               "validators": [],
-              "id": "tbSymptoms"
+              "id": "tbSymptoms",
+              "hide": {
+                "hideWhenExpression": "onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
             },
             {
-              "label": "TB Status:",
+              "label": "TB status:",
               "id": "tbstatus",
               "required": "true",
               "questionOptions": {
+                "calculate": {
+                  "calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838'"
+                },
                 "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "No signs"
+                    "label": "Not TB presumptive"
+                  },
+
+                  {
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+                    "label": "Presumed TB"
                   },
                   {
                     "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
                     "label": "On TB treatment"
-                  },
-                  {
-                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
-                    "label": "Suspect"
-                  },
-                  {
-                    "concept": "a8af9046-1350-11df-a1f1-0026b9348838",
-                    "label": "Confirmed"
-                  },
-                  {
-                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Not assessed"
                   }
                 ],
                 "rendering": "select"
@@ -5077,6 +5068,38 @@
             },
             {
               "type": "obs",
+              "label": "CRP:",
+              "id": "crp_test",
+              "questionOptions": {
+                "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
+                "rendering": "decimal",
+                
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(crp_test) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(crp_test)"
+                  }
+                }
+              },
+              "validators": [
+                {
+                  "type": "decimal",
+                  "decimalPlace": 1
+                }
+              ]
+            },
+            {
+              "type": "obs",
               "label": "SGPT(ALT):",
               "id": "sgptalt_test",
               "questionOptions": {
@@ -5621,12 +5644,10 @@
           ]
         },
         {
-          "label": "Crag",
+          "label": "CrAg",
           "questions": [
-            
-            
             {
-              "label": "Crag test:",
+              "label": "CrAg test:",
               "id": "cragTest",
               "questionOptions": {
                 "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
@@ -5667,7 +5688,7 @@
             }
           ]
         },
-       
+
         {
           "label": "HIV Test",
           "questions": [
@@ -6651,7 +6672,7 @@
                   },
                   {
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
-                    "label": "PMTCT"
+                    "label": "VTP"
                   },
                   {
                     "concept": "a8909060-1350-11df-a1f1-0026b9348838",
@@ -8130,7 +8151,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(cragTest) && !isEmpty(myValue) && !arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'],myValue)&&(cragTest==='a896f3a6-1350-11df-a1f1-0026b9348838')",
-                  "message": "Crag test is positive. Therefore patient should be on crypto."
+                  "message": "CrAg test is positive. Therefore patient should be on crypto."
                 }
               ],
               "id": "cryptoPlan"
@@ -8545,37 +8566,62 @@
                   "label": "If tabs, number",
                   "questionOptions": {
                     "concept": "a8a0630a-1350-11df-a1f1-0026b9348838",
-                    "rendering": "number"
+                    "rendering": "decimal"
                   },
                   "type": "obs",
-                  "id": "__LL5nztFEJ"
+                  "id": "__LL5nztFEJ",
+                  "validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 2
+										}
+									]
                 },
                 {
                   "label": "If caps, number",
                   "questionOptions": {
                     "concept": "ea404923-fe2b-4812-aec5-3be7fbe712f7",
-                    "rendering": "number"
+                    "rendering": "decimal"
                   },
                   "type": "obs",
-                  "id": "__2GxGLDLxv"
+                  "id": "__2GxGLDLxv",
+                  "validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 2
+										}
+									]
                 },
                 {
                   "label": "If mg, number",
                   "questionOptions": {
                     "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-                    "rendering": "number"
+                    "rendering": "decimal"
                   },
                   "type": "obs",
-                  "id": "__sFEtorKyz"
+                  "id": "__sFEtorKyz",
+                  "validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 2
+										}
+									]
                 },
                 {
                   "label": "If ml, number",
                   "questionOptions": {
                     "concept": "a8a08286-1350-11df-a1f1-0026b9348838",
-                    "rendering": "number"
+                    "rendering": "decimal"
                   },
                   "type": "obs",
-                  "id": "__2v0LKvvoD"
+                  "id": "__2v0LKvvoD",
+                  "validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 2
+										}
+									]
+
                 }
               ],
               "id": "__uKyEKyzLv"
@@ -8739,8 +8785,6 @@
           "label": "Current Lifestyle",
           "isExpanded": "true",
           "questions": [
-            
-
             {
               "label": "Physical activity (At least 30 minutes 5 days a week):",
               "type": "obs",
@@ -9223,6 +9267,7 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
+           
 
             {
               "label": "Lifestyle advice:",
@@ -9299,7 +9344,304 @@
               "hide": {
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
-            }
+            },
+             {
+							"type": "obsGroup",
+							"label": "Hypertenstion drugs started, detailed",
+							"required": "true",
+							"id": "hyperdetailed",
+							"hide": {
+								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a8986880-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
+							},
+							"questionOptions": {
+								"rendering": "repeating",
+								"concept": "2a6868b8-7142-4e94-acc5-dbcaa95cf822"
+							},
+							"questions": [
+								{
+									"label": "Hypertension treatment:",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')) ? undefined : HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')",
+									"id": "antiHypertensive",
+									"questionOptions": {
+										"concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
+										"answers": [
+											{
+												"concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
+												"label": "Amlodipine"
+											},
+											{
+												"concept": "22857905-ef07-4702-b576-bdb02677e301",
+												"label": "Amlodipine/Losartan"
+											},
+											{
+												"concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
+												"label": "Atenolol"
+											},
+											{
+												"concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
+												"label": "Atorvastatin"
+											},
+											{
+												"concept": "a8a43994-1350-11df-a1f1-0026b9348838",
+												"label": "Carvedilol"
+											},
+											{
+												"concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
+												"label": "Clopidogrel"
+											},
+											{
+												"concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
+												"label": "Digoxin"
+											},
+											{
+												"concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
+												"label": "Enalapril"
+											},
+											{
+												"concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
+												"label": "Enoxaparin"
+											},
+											{
+												"concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
+												"label": "Felodipine"
+											},
+											{
+												"concept": "b0e484db-ab3c-4851-9cb6-56bfaf2348a5",
+												"label": "Frusemide"
+											},
+											{
+												"concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
+												"label": "HCTZ"
+											},
+											{
+												"concept": "4ef71275-29e3-4b5a-940c-267473ab61b6",
+												"label": "Lisinopril 20mg/HCTZ 12.5mg"
+											},
+											{
+												"concept": "a8a43750-1350-11df-a1f1-0026b9348838",
+												"label": "Losartan"
+											},
+											{
+												"concept": "e476d21f-911d-4d2e-8c37-1ce76e48930f",
+												"label": "Losartan 50mg/Hydrochlorothiazide 12.5mg"
+											},
+											{
+												"concept": "d6dd4ede-2a46-4eb1-99b7-360fb4e329e5",
+												"label": "Metropolol"
+											},
+											{
+												"concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
+												"label": "Nifedipine"
+											},
+											{
+												"concept": "a8939044-1350-11df-a1f1-0026b9348838",
+												"label": "Propranolol"
+											},
+											{
+												"concept": "c06c7786-0657-41db-babc-a16c350d35da",
+												"label": "Rosuvastatin"
+											},
+											{
+												"concept": "a8a43a52-1350-11df-a1f1-0026b9348838",
+												"label": "Spironolactone"
+											},
+											{
+												"concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
+												"label": "Telmisartan"
+											},
+											{
+												"concept": "59611435-e869-4a8d-8e58-649b7630e471",
+												"label": "Junior ASA"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Frequency",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "Once a day",
+												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Twice a day",
+												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Three times a day",
+												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Four times a day",
+												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "As needed",
+												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(antiHypertensive)"
+									},
+									"id": "medFreq"
+								},
+								{
+									"label": "Number of mg:",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+										"rendering": "decimal"
+									},
+									"type": "obs",
+									"id": "numberMg",
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 2
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(antiHypertensive)"
+									}
+								}
+							]
+						},
+						{
+							"type": "obsGroup",
+							"label": "Diabetes drugs started, detailed",
+							"id": "diabetesdetailed",
+							"hide": {
+								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
+							},
+							"questionOptions": {
+								"rendering": "repeating",
+								"concept": "a6812b99-3126-40b8-8c9c-2f511a6912b1"
+							},
+							"questions": [
+								{
+									"label": "Diabetes treatment:",
+									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')) ? undefined : HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')",
+									"id": "antiDiabetics",
+									"questionOptions": {
+										"concept": "78809200-7f7f-4d6f-b515-31088765d442",
+										"answers": [
+											{
+												"concept": "a8a4320a-1350-11df-a1f1-0026b9348838",
+												"label": "Gliclazide"
+											},
+											{
+												"concept": "a8a4314c-1350-11df-a1f1-0026b9348838",
+												"label": "Glibenclamide"
+											},
+											{
+												"concept": "a8a43386-1350-11df-a1f1-0026b9348838",
+												"label": "Glimepiride"
+											},
+											{
+												"concept": "a8a42ecc-1350-11df-a1f1-0026b9348838",
+												"label": "Insulin 70/30"
+											},
+											{
+												"concept": "a8a42fbc-1350-11df-a1f1-0026b9348838",
+												"label": "Insulin NPH"
+											},
+											{
+												"concept": "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
+												"label": "Insulin humalogue"
+											},
+											{
+												"concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
+												"label": "Insulin glargine"
+											},
+											{
+												"concept": "a8a4344e-1350-11df-a1f1-0026b9348838",
+												"label": "Metformin"
+											},
+											{
+												"concept": "a8a43b1a-1350-11df-a1f1-0026b9348838",
+												"label": "Pioglitazone"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Frequency",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"label": "Once a day",
+												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Twice a day",
+												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Three times a day",
+												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Four times a day",
+												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "As needed",
+												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(antiDiabetics)"
+									},
+									"id": "medFreq"
+								},
+								{
+									"label": "Number of mg:",
+									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+									"questionOptions": {
+										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+										"rendering": "decimal"
+									},
+									"type": "obs",
+									"id": "numberMg",
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 2
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(antiDiabetics)"
+									}
+								}
+							]
+						}
           ]
         }
       ]
@@ -9339,7 +9681,7 @@
                       },
                       {
                         "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-                        "label": "Crag test"
+                        "label": "CrAg test"
                       },
                       {
                         "concept": "57677735-4310-4841-8902-dae4bac24d20",
@@ -9352,6 +9694,10 @@
                       {
                         "concept": "a8908192-1350-11df-a1f1-0026b9348838",
                         "label": "CXR"
+                      },
+                      {
+                        "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
+                        "label": "CRP"
                       },
                       {
                         "concept": "a8a46fd6-1350-11df-a1f1-0026b9348838",
@@ -9458,7 +9804,6 @@
                       "failsWhenExpression": "isEmpty(myValue) && !arrayContainsAny(['a8908192-1350-11df-a1f1-0026b9348838'],myValue)",
                       "message": "Please order for Chest Xray."
                     }
-                    
                   ]
                 },
                 {
@@ -9512,7 +9857,7 @@
                         "concept": "a8a17d80-1350-11df-a1f1-0026b9348838"
                       },
                       {
-                        "label": "PMTCT",
+                        "label": "VTP",
                         "concept": "a89fbedc-1350-11df-a1f1-0026b9348838"
                       },
                       {
@@ -9741,19 +10086,19 @@
                   },
                   {
                     "concept": "635f446c-bab9-428a-9930-ae4f46363c0c",
-                    "label": "PMTCT new positives"
+                    "label": "VTP new positives"
                   },
                   {
                     "concept": "e883376e-80cb-4ec7-a958-f0fbc0a0bad3",
-                    "label": "PMTCT known positives"
+                    "label": "VTP known positives"
                   },
                   {
                     "concept": "0998e404-d0ea-4271-abe0-a8a69c08c2cf",
-                    "label": "PMTCT NP upto <=6 weeks in PNC"
+                    "label": "VTP NP upto <=6 weeks in PNC"
                   },
                   {
                     "concept": "4d74eab9-4cad-4efb-8d58-82b53d23fcb9",
-                    "label": "PMTCT NP >6 weeks in PNC"
+                    "label": "VTP NP >6 weeks in PNC"
                   }
                 ]
               },
@@ -9835,7 +10180,7 @@
               }
             },
             {
-              "label": "PMTCT justification category:",
+              "label": "VTP justification category:",
               "type": "obs",
               "id": "patCategory1",
               "questionOptions": {

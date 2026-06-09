@@ -313,7 +313,7 @@
               "required": "true",
               "questionOptions": {
                 "concept": "17572011-42ee-4a3d-a7bf-85faa52be41a",
-                "rendering": "select",
+                "rendering": "multiCheckbox",
                 "answers": [
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",

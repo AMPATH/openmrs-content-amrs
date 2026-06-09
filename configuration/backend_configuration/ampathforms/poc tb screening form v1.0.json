@@ -73,37 +73,42 @@
                     "label": "None"
                   },
                   {
-                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
-                    "label": "Fever"
-                  },
-                  {
                     "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
-                    "label": "Cough"
+                    "label": "Cough of any duration"
                   },
                   {
-                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
-                    "label": "Unintended weight loss"
+                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+                    "label": "Persistent fever (Temperature > 37.5°C)"
                   },
                   {
                     "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
                     "label": "Drenching night sweats"
                   },
                   {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unexplained weight loss"
+                  },
+                  {
                     "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
                     "label": "Chest pain"
                   },
                   {
-                    "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
-                    "label": "Breathlessness"
+                    "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
+                    "label": "Difficulty in breathing"
+                  },
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Fatigue (lethargy)"
                   },
                   {
                     "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
-                    "label": "New exposure to household contact with TB"
+                    "label": "History of contact with a person with TB or chronic cough"
                   },
                   {
                     "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
-                    "label": "BMI < 18.5"
+                    "label": "Body mass index (BMI) <18.5"
                   }
+                  
                 ],
                 "rendering": "multiCheckbox"
               },
