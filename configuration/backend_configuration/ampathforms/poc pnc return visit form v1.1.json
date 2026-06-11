@@ -1098,6 +1098,20 @@
                 "message": "Please provide triple therapy prophylaxis for the baby."
               }
             },
+             {
+              "label": "Indicate high risk findings:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "bf48af84-e16a-4757-81da-582511e88b35",
+                "rows":5
+              },
+              "validators": [],
+              "id": "highRiskAssessment",
+              "hide": {
+                "hideWhenExpression": "riskAssessment !== '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
+              }  
+            },
             {
               "label": "Eligible for Pre Exposure prophylaxis?",
               "type": "obs",
@@ -1119,7 +1133,7 @@
               "validators": [
                  {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && (finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' || riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
+                  "failsWhenExpression": "isEmpty(myValue) && (finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' && riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
                   "message": "Required!"
                 }
               ],
