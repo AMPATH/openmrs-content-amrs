@@ -2,12 +2,12 @@
   "name": "POC HIV Exposed Infant Follow-up Card v1.4",
   "description": "A form for HIV Exposed clients.",
   "version": "1.4",
-  "published": true,
-  "uuid": "",
+  "published": false,
+  "uuid": "5e019c94-0f80-49b7-8593-28100eb4f787",
   "retired": false,
   "encounter": "HEIFOLLOWUP",
   "processor": "EncounterFormProcessor",
-  "encounterType": "5e019c94-0f80-49b7-8593-28100eb4f787",
+  "encounterType": "26bfc6b7-28d0-41ab-90c5-e101af46d06d",
   "referencedForms": [],
   "pages": [
     {
