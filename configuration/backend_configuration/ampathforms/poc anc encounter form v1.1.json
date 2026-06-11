@@ -965,7 +965,7 @@
               "validators": [
                  {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && (finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' || riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
+                  "failsWhenExpression": "isEmpty(myValue) && (finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' && riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
                   "message": "Required!"
                 }
               ],
