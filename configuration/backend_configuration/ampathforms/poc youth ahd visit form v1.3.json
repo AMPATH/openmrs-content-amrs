@@ -4495,50 +4495,61 @@
                   },
                   {
                     "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
-                    "label": "Cough of any duration"
+                    "label": "Cough of any duration",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
-                    "label": "Persistent fever (Temperature > 37.5°C)"
+                    "label": "Persistent fever (Temperature > 37.5°C)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
-                    "label": "Drenching night sweats"
+                    "label": "Drenching night sweats",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
-                    "label": "Unexplained weight loss"
+                    "label": "Unexplained weight loss",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Chest pain"
+                    "label": "Chest pain",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
-                    "label": "Difficulty in breathing"
+                    "label": "Difficulty in breathing",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
-                    "label": "Body Mass Index (BMI) <18.5"
+                    "label": "Body Mass Index (BMI) <18.5",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
-                    "label": "History of contact with a person with TB or chronic cough"
+                    "label": "History of contact with a person with TB or chronic cough",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a89cb0d4-1350-11df-a1f1-0026b9348838",
-                    "label": "Poor weight gain or faltering of the growth curve"
+                    "label": "Poor weight gain or faltering of the growth curve",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a8a5a5fe-1350-11df-a1f1-0026b9348838",
-                    "label": "Z-score <-2 (for weight-for-age or height-for-age) "
+                    "label": "Z-score <-2 (for weight-for-age or height-for-age) ",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
                     "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
-                    "label": "Reduced playfulness/less active (lethargy)"
+                    "label": "Reduced playfulness/less active (lethargy)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
                 ],
-                "rendering": "multiCheckbox"
+                "rendering": "checkbox"
               },
               "type": "obs",
               "validators": [],
@@ -4573,7 +4584,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "!arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'],tbSymptoms)"
+                "hideWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'],tbSymptoms)"
               }
             },
             {
