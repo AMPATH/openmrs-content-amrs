@@ -1,0 +1,3086 @@
+{
+  "name": "AMPATH POC Medication Refill Encounter Form v1.6",
+  "description": "AMPATH POC Medication Refill Encounter Form.",
+  "version": "1.6",
+  "published": true,
+  "uuid": "b4d413c0-c360-46eb-9e37-1cd979e34122",
+  "retired": false,
+  "encounter": "DRUGPICKUP",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "987009c6-6f24-43f7-9640-c285d6553c63",
+
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Medication Refill",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "id": "encDate",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "required": "true",
+              "id": "provider",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Patient Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient type:",
+              "required": "true",
+              "id": "pattype",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89eea66-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89ee8ea-1350-11df-a1f1-0026b9348838",
+                    "label": "Adult"
+                  },
+                  {
+                    "concept": "a89ee9a8-1350-11df-a1f1-0026b9348838",
+                    "label": "Ped"
+                  },
+                  {
+                    "concept": "800aa4cc-85ed-4340-9044-a37c036a4446",
+                    "label": "Youth"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2','380d79a7-6fb0-41bf-be3d-aa3d25da187c','d4ac2aa5-2899-42fb-b08a-d40161815b48','6c5d74f4-943f-489a-b1c4-b2accfae92fb','dcdefd27-82b9-48e3-821b-3ffc6463564e','0becf5b9-0522-47c8-960c-c9d660c56501','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','0bcccab0-59ce-4a25-a158-cc722427ff3f','a2a265dc-508d-4f31-94ee-0bf8a58049d7','52fddd42-f9ea-4946-8733-f0e584360780','43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201', '0d608b80-1cb5-4c85-835a-29072683ca27','3c1906a1-6d85-4184-9a43-0912cbac3d74','30003687-44e5-4861-bd9c-d58e2fe81b8f'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Was this visit scheduled?",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b6440-1350-11df-a1f1-0026b9348838",
+                    "label": "Scheduled visit"
+                  },
+                  {
+                    "concept": "a89ff816-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit early"
+                  },
+                  {
+                    "concept": "a89ff8de-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit late"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','0bcccab0-59ce-4a25-a158-cc722427ff3f','a2a265dc-508d-4f31-94ee-0bf8a58049d7','52fddd42-f9ea-4946-8733-f0e584360780', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              },
+              "id": "__unEDGJz9v"
+            },
+            {
+              "type": "obsGroup",
+              "label": "Individual who picked/picking drugs detailed",
+              "questionOptions": {
+                "concept": "a8a36d7a-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Individual who picked/picking drugs",
+                  "required": "true",
+                  "id": "pickDrugs",
+                  "questionOptions": {
+                    "concept": "a89cd410-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a898c0dc-1350-11df-a1f1-0026b9348838",
+                        "label": "Mother"
+                      },
+                      {
+                        "concept": "a898c1a4-1350-11df-a1f1-0026b9348838",
+                        "label": "Father"
+                      },
+                      {
+                        "concept": "a89cd0fa-1350-11df-a1f1-0026b9348838",
+                        "label": "Husband"
+                      },
+                      {
+                        "concept": "a89cd1c2-1350-11df-a1f1-0026b9348838",
+                        "label": "Wife"
+                      },
+                      {
+                        "concept": "cb657f91-8ff4-4dd4-9078-af01ec91e845",
+                        "label": "Son"
+                      },
+                      {
+                        "concept": "0d34180a-cea7-4066-b057-2740c0d15767",
+                        "label": "Daughter"
+                      },
+                      {
+                        "concept": "a898c262-1350-11df-a1f1-0026b9348838",
+                        "label": "Sibling"
+                      },
+                      {
+                        "concept": "a898c32a-1350-11df-a1f1-0026b9348838",
+                        "label": " Grandparent"
+                      },
+                      {
+                        "concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+                        "label": "Care taker/Guardian"
+                      },
+                      {
+                        "concept": "a8aaf07c-1350-11df-a1f1-0026b9348838",
+                        "label": "Friend/Colleague"
+                      },
+                      {
+                        "concept": "a89cd352-1350-11df-a1f1-0026b9348838",
+                        "label": "Neighbor"
+                      },
+                      {
+                        "concept": "a8a17470-1350-11df-a1f1-0026b9348838",
+                        "label": "Paternal aunt"
+                      },
+                      {
+                        "concept": "a8a17394-1350-11df-a1f1-0026b9348838",
+                        "label": "Maternal aunt"
+                      },
+                      {
+                        "concept": "a8a175f6-1350-11df-a1f1-0026b9348838",
+                        "label": "Paternal uncle"
+                      },
+                      {
+                        "concept": "a8a1752e-1350-11df-a1f1-0026b9348838",
+                        "label": "Maternal uncle"
+                      },
+                      {
+                        "concept": "517593e9-5f95-47cb-a13c-b64b2a6fec9c",
+                        "label": "Peer educator"
+                      },
+                      {
+                        "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                        "label": "Health care worker(HCW)"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  }
+                },
+                {
+                  "label": "Other (specify)",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "pickDrugs !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "id": "otherPickDrugs"
+                }
+              ],
+              "id": "pickingDrugsDetailed"
+            },
+            {
+              "label": "Individual who picked/picking drugs",
+              "required": "true",
+              "id": "pickDrugsDelivery",
+              "questionOptions": {
+                "concept": "a89cd410-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "517593e9-5f95-47cb-a13c-b64b2a6fec9c",
+                    "label": "Peer educator"
+                  },
+                  {
+                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                    "label": "Health care worker(HCW)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['a2a265dc-508d-4f31-94ee-0bf8a58049d7'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Facility ART refill model:",
+              "required": "true",
+              "id": "facilityModel",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "d5e8c52f-7a38-44ed-a76a-bc771cc9b2ee",
+                "answers": [
+                  {
+                    "concept": "20838ff5-7a28-4877-889c-300155627a6f",
+                    "label": "FT-Fast track"
+                  },
+                  {
+                    "concept": "bf6b9fc9-a3bb-4881-aa06-df9071c47e33",
+                    "label": "FAG-Facility ART distribution group"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['0becf5b9-0522-47c8-960c-c9d660c56501','30003687-44e5-4861-bd9c-d58e2fe81b8f'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Community ART refill model:",
+              "required": "true",
+              "id": "communityModelTs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e",
+                "answers": [
+                  {
+                    "concept": "7e5e7759-e9f7-4b16-b904-041fcdddb390",
+                    "label": "ICAD-Individual Community ART distribution"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a2a265dc-508d-4f31-94ee-0bf8a58049d7'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Community ART refill model:",
+              "required": "true",
+              "id": "communityModelComm",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e",
+                "answers": [
+                  {
+                    "concept": "7e5e7759-e9f7-4b16-b904-041fcdddb390",
+                    "label": "ICAD-Individual Community ART distribution"
+                  },
+                  {
+                    "concept": "33363568-fb62-4063-b0ac-e37be1d23514",
+                    "label": "CPM-Community pharmacy model"
+                  },
+                  {
+                    "concept": "771b200c-8525-4425-b763-7e1cdca1b01f",
+                    "label": "CARG-Community ART group -peer led"
+                  },
+                  {
+                    "concept": "fb36b5af-3f83-460b-a10f-fc7923ed7914",
+                    "label": "CARG-Community ART group -HCW led"
+                  },
+                  {
+                    "concept": "fc3e030d-f29a-4385-8171-4b2c3559016a",
+                    "label": "CADP-Community ART distribution points"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['3c1906a1-6d85-4184-9a43-0912cbac3d74'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Community ART refill model:",
+              "required": "true",
+              "id": "communityModelCargs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e",
+                "answers": [
+                  {
+                    "concept": "771b200c-8525-4425-b763-7e1cdca1b01f",
+                    "label": "CARG-Community ART group -peer led"
+                  },
+                  {
+                    "concept": "fb36b5af-3f83-460b-a10f-fc7923ed7914",
+                    "label": "CARG-Community ART group -HCW led"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['0d608b80-1cb5-4c85-835a-29072683ca27'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Patient current care program:",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8afbb16-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89c301e-1350-11df-a1f1-0026b9348838",
+                    "label": "Non AMPATH plus"
+                  },
+                  {
+                    "concept": "b823cbd4-1b30-4cdb-aebe-ba1192ae1c24",
+                    "label": "Newly diagnosed, not enrolled in care"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "visitTypeUuid !== '52e67f49-4ec3-41b2-bfe2-93144ea03eb2'"
+              },
+              "id": "__J2DxKFKMJ"
+            },
+            {
+              "label": "Mother deceased:",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a0b670-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "pattype !== 'a89ee9a8-1350-11df-a1f1-0026b9348838' || !arrayContains (['43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              },
+              "id": "__MMLsyvp04"
+            },
+            {
+              "label": "Father deceased:",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a0b788-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "pattype !== 'a89ee9a8-1350-11df-a1f1-0026b9348838' || !arrayContains (['43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              },
+              "id": "__tLu0DD9nM"
+            },
+            {
+              "label": "Mode of drug delivery:",
+              "questionOptions": {
+                "concept": "5f6c4030-c633-40bd-aab1-906295ec496a",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "daccda68-f5c7-4e47-8e6a-f18590049170",
+                    "label": "Courier/rider services"
+                  },
+                  {
+                    "concept": "517593e9-5f95-47cb-a13c-b64b2a6fec9c",
+                    "label": "Peer"
+                  },
+                  {
+                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                    "label": "Health care worker"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['517593e9-5f95-47cb-a13c-b64b2a6fec9c','a8aaf158-1350-11df-a1f1-0026b9348838'], pickDrugsDelivery) && communityModelComm !== '7e5e7759-e9f7-4b16-b904-041fcdddb390'"
+              },
+              "id": "modeDelivery"
+            },
+            {
+              "label": "Name of Health Care Worker/Peer",
+              "questionOptions": {
+                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21",
+                "rendering": "text"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['517593e9-5f95-47cb-a13c-b64b2a6fec9c','a8aaf158-1350-11df-a1f1-0026b9348838'], pickDrugsDelivery) && communityModelComm !== '7e5e7759-e9f7-4b16-b904-041fcdddb390'"
+              },
+              "id": "peerName"
+            },
+            {
+              "label": "Place of drug delivery:",
+              "questionOptions": {
+                "concept": "42f9692c-a3f0-497b-8584-1ee0a3110b46",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+                    "label": "Home"
+                  },
+                  {
+                    "concept": "b4d9b6fa-0219-43e6-bd67-4edeafc53899",
+                    "label": "Church"
+                  },
+                  {
+                    "concept": "47b68004-65e5-4b2d-aa56-e16fc52f33a6",
+                    "label": "Shopping centre"
+                  },
+                  {
+                    "concept": "9c78d916-5ad1-42ba-83c3-e3355e9963e4",
+                    "label": "Institution"
+                  },
+                  {
+                    "concept": "a89f0956-1350-11df-a1f1-0026b9348838",
+                    "label": "Market"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['517593e9-5f95-47cb-a13c-b64b2a6fec9c','a8aaf158-1350-11df-a1f1-0026b9348838'], pickDrugsDelivery) && communityModelComm !== '7e5e7759-e9f7-4b16-b904-041fcdddb390'"
+              },
+              "id": "placeDelivery"
+            },
+            {
+              "type": "obsGroup",
+              "label": "Reason for not picking own meds detailed",
+              "questionOptions": {
+                "concept": "a8a36cbc-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Reason for not picking own meds",
+                  "id": "notpickMeds",
+                  "questionOptions": {
+                    "concept": "a89de3a0-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a89de152-1350-11df-a1f1-0026b9348838",
+                        "label": "Travelling"
+                      },
+                      {
+                        "concept": "a89de21a-1350-11df-a1f1-0026b9348838",
+                        "label": "Work/School"
+                      },
+                      {
+                        "concept": "a89de2d8-1350-11df-a1f1-0026b9348838",
+                        "label": "Too sick to come"
+                      },
+                      {
+                        "concept": "a897fdaa-1350-11df-a1f1-0026b9348838",
+                        "label": "Lacked transport/Fare"
+                      },
+                      {
+                        "concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
+                        "label": " Inpatient care or hospitalization"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": " Other"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','0bcccab0-59ce-4a25-a158-cc722427ff3f','a2a265dc-508d-4f31-94ee-0bf8a58049d7','52fddd42-f9ea-4946-8733-f0e584360780', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  }
+                },
+                {
+                  "label": "Other reason(specify)",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "notpickMeds !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "id": "__xGIK7EIot"
+                }
+              ],
+              "id": "__KErHGyEus"
+            }
+          ]
+        },
+        {
+          "label": "ART History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Is the patient on any ART?",
+              "id": "onArt",
+              "required": "true",
+              "historicalExpression": "arrayContainsAny(['a89b7c50-1350-11df-a1f1-0026b9348838','a89b7ae8-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'], HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')) ? 'a899b35c-1350-11df-a1f1-0026b9348838' : HD.getObject('prevEnc').getValue('a89ae254-1350-11df-a1f1-0026b9348838')",
+              "historicalPrepopulate": "true",
+              "questionOptions": {
+                "concept": "a89ae254-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Reason for use:",
+              "id": "reasonUse",
+              "type": "obs",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8a30d1c-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8a30d1c-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a8a30d1c-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89adc46-1350-11df-a1f1-0026b9348838",
+                    "label": "Treatment"
+                  },
+                  {
+                    "concept": "a8a19c20-1350-11df-a1f1-0026b9348838",
+                    "label": "PEP"
+                  },
+                  {
+                    "concept": "27ac429d-8a42-476e-b2f6-65bde0b8c935",
+                    "label": "PrEP"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== '52e67f49-4ec3-41b2-bfe2-93144ea03eb2'"
+              }
+            },
+            {
+              "label": "Line of ART patient is taking:",
+              "id": "current_arv_line",
+              "historicalExpression": "!_.isEmpty(HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('04616f5d-b961-4f41-bbd7-bcc0dd235577')",
+              "questionOptions": {
+                "concept": "04616f5d-b961-4f41-bbd7-bcc0dd235577",
+                "answers": [
+                  {
+                    "concept": "034047bd-3fa1-4b2a-b0f0-2787e9b9f7b3",
+                    "label": "Initial regimen"
+                  },
+                  {
+                    "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
+                    "label": "Subsequent regimen"
+                  },
+                  {
+                    "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
+                    "label": "Constructive regimen"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Patient previously marked as on ART. Please provide the treatment category."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'||  arrayContains (['6bf34991-7414-4b5e-ad75-ca217d4c4939'],visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Patient's ART regimen, peds:",
+              "id": "current_art_regimen_ped",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')) ? (_.isEmpty(HD.getObject('prevEnc').getValue('a8a08344-1350-11df-a1f1-0026b9348838'))? HD.getObject('prevEnc').getValue('a8a3084e-1350-11df-a1f1-0026b9348838') : HD.getObject('prevEnc').getValue('a8a08344-1350-11df-a1f1-0026b9348838.a8a3084e-1350-11df-a1f1-0026b9348838')) : HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a8a3084e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+                    "label": "DTG50mg/3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+                    "label": "TAF25mg/3TC300mg/DTG50mg"
+                  },
+                  {
+                    "concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+                    "label": "TDF300mg/3TC300mg/EFV400mg"
+                  },
+                  {
+                    "concept": "20185c04-9334-11df-8193-000d6014b64c",
+                    "label": "ZDV60mg/3TC30mg/NVP50mg"
+                  },
+                  {
+                    "concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
+                    "label": "ZDV300mg/3TC150mg/NVP200mg >25kgs"
+                  },
+                  {
+                    "concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
+                    "label": "TDF300mg/3TC300mg/EFV600mg >35kgs"
+                  },
+                  {
+                    "concept": "a897e608-1350-11df-a1f1-0026b9348838",
+                    "label": "NVP200mg/D4T30mg/3TC150mg"
+                  },
+                  {
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD) "
+                  },
+                  {
+                    "concept": "b58a28d2-36de-11e0-93be-0026b9348838",
+                    "label": "ABC60mg/3TC30mg"
+                  },
+                  {
+                    "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+                    "label": "ABC120mg/3TC60mg"
+                  },
+                  {
+                    "concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+                    "label": "ABC600mg/3TC300mg"
+                  },
+                  {
+                    "concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+                    "label": "ZDV60mg/3TC30mg"
+                  },
+                  {
+                    "concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+                    "label": "3TC150mg/ZDV300mg >25kgs"
+                  },
+                  {
+                    "concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+                    "label": "3TC300mg/TDF300mg >25kgs"
+                  },
+                  {
+                    "concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
+                    "label": "Lopinavir 80mg/Ritonavir 20mg"
+                  },
+                  {
+                    "concept": "ddefd319-fb5d-4c0e-a125-ff7bdb6fe44f",
+                    "label": "Lopinavir 40mg/Ritonavir 10mg"
+                  },
+                  {
+                    "concept": "fa8266f6-36df-11e0-93be-0026b9348838",
+                    "label": "Lopinavir 200mg/Ritonavir 50mg"
+                  },
+                  {
+                    "concept": "3115e231-1077-4488-a7d5-83167263b9a2",
+                    "label": "Lopinavir 100mg/Ritonavir 25mg"
+                  },
+                  {
+                    "concept": "3cbfb0b9-721e-4d42-92a3-7d37269aab24",
+                    "label": " Atazanavir 300mg/ritonavir 100mg"
+                  },
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "Emtri200mg/TDF300(Truvada)"
+                  },
+                  {
+                    "concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+                    "label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+                  },
+                  {
+                    "concept": "41e57216-3b62-49b1-b0b9-9a9b7de3361d",
+                    "label": "Cabotegravir 30mg/Rilpivirine 25mg PO"
+                  },
+                  {
+                    "concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+                    "label": "Darunavir 400mg/Ritonavir 50mg (DVR/r 400mg/50mg)"
+                  },
+                  {
+                    "concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
+                    "label": "Nevirapine 100mg"
+                  },
+                  {
+                    "concept": "0485075a-3111-11e0-8090-0026b9348838",
+                    "label": "Nevirapine 200mg"
+                  },
+                  {
+                    "concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+                    "label": "Efavirenz 200mg"
+                  },
+                  {
+                    "concept": "ff9096b6-d86c-403a-9bda-eab02252dbf3",
+                    "label": "Efavirenz 250mg"
+                  },
+                  {
+                    "concept": "492de98c-86c6-4fd8-af89-325448f12ed9",
+                    "label": "Efavirenz 300mg"
+                  },
+                  {
+                    "concept": "55e0461f-b28f-42de-a3c6-328d7f17c44b",
+                    "label": "Efavirenz 350mg"
+                  },
+                  {
+                    "concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
+                    "label": "Efavirenz 400mg"
+                  },
+                  {
+                    "concept": "4677ad3e-3120-11e0-8090-0026b9348838",
+                    "label": "Efavirenz 600mg"
+                  },
+                  {
+                    "concept": "d6262526-3113-11e0-8090-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "a89673f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Lamivudine 75mg"
+                  },
+                  {
+                    "concept": "52441ef8-3126-11e0-8090-0026b9348838",
+                    "label": " Abacavir 300mg"
+                  },
+                  {
+                    "concept": "21d417bc-3114-11e0-8090-0026b9348838",
+                    "label": " Zidovudine 300mg "
+                  },
+                  {
+                    "concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+                    "label": " Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+                    "label": " Ritonavir 80mg"
+                  },
+                  {
+                    "concept": "67f62fd8-d43e-4c62-a18a-e8bb5a46fc5c",
+                    "label": " Raltegravir 25mg"
+                  },
+                  {
+                    "concept": "c2c66e99-1345-4fdb-b101-89b2e43d40e5",
+                    "label": " Raltegravir 100mg"
+                  },
+                  {
+                    "concept": "da698164-870d-11e0-85d3-000d6014b64c",
+                    "label": " Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir"
+                  },
+                  {
+                    "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+                    "label": "Etravirine 100mg"
+                  },
+                  {
+                    "concept": "687d2b97-3336-4843-946e-597a31380746",
+                    "label": "Darunavir 75mg"
+                  },
+                  {
+                    "concept": "9732900a-4b81-4522-af1c-7d25ae6aad0a",
+                    "label": "Darunavir 150mg"
+                  },
+                  {
+                    "concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+                    "label": "Darunavir 600mg"
+                  },
+                  {
+                    "concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+                    "label": "Dolutegravir 50mg"
+                  },
+                  {
+                    "concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+                    "label": "Dolutegravir 10mg"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && pattype !== 'a89ee8ea-1350-11df-a1f1-0026b9348838'",
+                  "message": "Patient  marked as on ART. Please provide the Regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838' || !arrayContains (['a89ee9a8-1350-11df-a1f1-0026b9348838', '800aa4cc-85ed-4340-9044-a37c036a4446'], pattype) "
+              }
+            },
+            {
+              "label": "Patient's ART regimen, adults:",
+              "id": "current_art_regimen_adult",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')) ? (_.isEmpty(HD.getObject('prevEnc').getValue('a8a08344-1350-11df-a1f1-0026b9348838'))? HD.getObject('prevEnc').getValue('a899cf5e-1350-11df-a1f1-0026b9348838') : HD.getObject('prevEnc').getValue('a8a08344-1350-11df-a1f1-0026b9348838.a899cf5e-1350-11df-a1f1-0026b9348838')) : HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899cf5e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+                    "label": "DTG50mg/3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+                    "label": "TAF25mg/3TC300mg/DTG50mg"
+                  },
+                  {
+                    "concept": "1c4a75d0-cc91-4752-b0a5-4b833326ff7a",
+                    "label": "TDF300mg/3TC300mg/EFV600mg"
+                  },
+                  {
+                    "concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+                    "label": "TDF300mg/3TC300mg/EFV400mg"
+                  },
+                  {
+                    "concept": "6a73f32d-1870-4527-af6e-74443251ded2",
+                    "label": "NVP200/ZDV300/3TC150"
+                  },
+                  {
+                    "concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+                    "label": "ABC600mg/3TC300mg"
+                  },
+                  {
+                    "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+                    "label": "3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a896758e-1350-11df-a1f1-0026b9348838",
+                    "label": "3TC150mg/ZDV300mg"
+                  },
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "Emtri200mg/TDF300(Truvada)"
+                  },
+                  {
+                    "concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+                    "label": "Aluvia(Kaletra)200mg/LPV50mg"
+                  },
+                  {
+                    "concept": "a8afc066-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir 300mg/Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
+                    "label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
+                  },
+                  {
+                    "concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+                    "label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+                  },
+                  {
+                    "concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+                    "label": "Darunavir 400mg/Ritonavir 50mg (DRV/r400mg/50mg)"
+                  },
+                  {
+                    "concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+                    "label": "Dolutegravir 50mg"
+                  },
+                  {
+                    "concept": "8fa45026-3de4-42dc-ad95-689f64c5286b",
+                    "label": "Tenofovir alafenamide 25mg"
+                  },
+                  {
+                    "concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Abacavir 300mg"
+                  },
+                  {
+                    "concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+                    "label": "Efavirenz 200mg"
+                  },
+                  {
+                    "concept": "a89673f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
+                    "label": "Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
+                    "label": "Zidovudine 300mg"
+                  },
+                  {
+                    "concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+                    "label": "Darunavir 600mg"
+                  },
+                  {
+                    "concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+                    "label": " Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+                    "label": " Ritonavir 80mg"
+                  },
+                  {
+                    "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+                    "label": "Etravirine 100mg"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && pattype === 'a89ee8ea-1350-11df-a1f1-0026b9348838'",
+                  "message": "Patient  marked as on ART. Please provide the Regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['a89ee9a8-1350-11df-a1f1-0026b9348838', '800aa4cc-85ed-4340-9044-a37c036a4446'], pattype) || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "PCP Prophylaxis History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Is the patient on PCP prophylaxis?",
+              "id": "pcpProphylaxisCurrent",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a899e282-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899e282-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8989396-1350-11df-a1f1-0026b9348838",
+                    "label": "Septrin"
+                  },
+                  {
+                    "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
+                    "label": "Dapsone 100mg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "required": "true",
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "TB Prophylaxis History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Is the patient on TB prophylaxis?",
+              "type": "obs",
+              "required": "true",
+              "id": "onTbProphylaxis",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a899e35e-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899e35e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "162724df-5a66-4ae3-bbf6-5dc6dbba4ebb",
+                    "label": "Isoniazid 100mg (6H)"
+                  },
+                  {
+                    "concept": "b150ccdc-e7ec-4f99-b592-6f3fa73b3aea",
+                    "label": "Isoniazid 300mg (6H)"
+                  },
+                  {
+                    "concept": "aeaed1af-5b0d-401e-a32a-e96cf4072ab5",
+                    "label": "Isoniazid 300mg and Rifapentine 300mg (3HP)"
+                  },
+                  {
+                    "concept": "177635d0-793b-4a66-8324-976c46f795af",
+                    "label": "Rifampicin 150mg and Isonaizid 75mg (3RH)"
+                  },
+                  {
+                    "concept": "e5e24e6d-e6b0-4c81-8f7b-0e366df29426",
+                    "label": "Rifampicin 70mg and Isonaizid 50mg (3RH)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Tuberculosis History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "onTbTreatment",
+              "required": "true",
+              "label": "Is patient on TB treatment?",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a8afcc82-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "label": "Start date of TB treatment",
+              "questionOptions": {
+                "concept": "a8afdb8c-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Start date of TB treatment:",
+                  "id": "startDateOfTbTreatment",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8afdb8c-1350-11df-a1f1-0026b9348838.a899e5f2-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a899e5f2-1350-11df-a1f1-0026b9348838",
+                    "rendering": "date"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(onTbTreatment) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbTreatment) && isEmpty(myValue)",
+                      "message": "You indicated patient on tb treatment, indicate start date."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(isEmpty(onTbTreatment) || !arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbTreatment)) && !isEmpty(myValue)",
+                      "message": "You indicated patient is not on tb treatment, therefore start date should not be indicated."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ],
+              "id": "__HH47FJxFo"
+            },
+            {
+              "type": "obsGroup",
+              "label": "Current TB regimen",
+              "questionOptions": {
+                "concept": "a8afdb8c-1350-11df-a1f1-0026b9348838",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Current TB regimen",
+                  "type": "obs",
+                  "id": "tb_current",
+                  "questionOptions": {
+                    "concept": "a899e444-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a899f51a-1350-11df-a1f1-0026b9348838",
+                        "label": "RHZE"
+                      },
+                      {
+                        "concept": "a897d1a4-1350-11df-a1f1-0026b9348838",
+                        "label": "RHZ"
+                      },
+                      {
+                        "concept": "a8a382ba-1350-11df-a1f1-0026b9348838",
+                        "label": "RHE"
+                      },
+                      {
+                        "concept": "a89b1ca6-1350-11df-a1f1-0026b9348838",
+                        "label": "RH"
+                      },
+                      {
+                        "concept": "a899e19c-1350-11df-a1f1-0026b9348838",
+                        "label": "EH"
+                      },
+                      {
+                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                        "label": "Ethambutol"
+                      },
+                      {
+                        "concept": "a8a3243c-1350-11df-a1f1-0026b9348838",
+                        "label": "MDR drugs"
+                      },
+                      {
+                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                        "label": "INH"
+                      },
+                      {
+                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                        "label": "Pyrazinamide"
+                      },
+                      {
+                        "concept": "a8952e4a-1350-11df-a1f1-0026b9348838",
+                        "label": "Streptomycin"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      },
+                      {
+                        "concept": "b8aa06ca-93c6-40ea-b144-c74f841926f4",
+                        "label": "Rifabutin"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "tabs/day",
+                  "questionOptions": {
+                    "concept": "a8a07386-1350-11df-a1f1-0026b9348838",
+                    "max": "30",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "field": "tb_current",
+                    "value": [
+                      "a899f51a-1350-11df-a1f1-0026b9348838",
+                      "a897d1a4-1350-11df-a1f1-0026b9348838",
+                      "a8a382ba-1350-11df-a1f1-0026b9348838"
+                    ]
+                  },
+                  "id": "__wE7nrJtuz"
+                },
+                {
+                  "label": "mg",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "max": "1000",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "field": "tb_current",
+                    "value": [
+                      "a899e19c-1350-11df-a1f1-0026b9348838",
+                      "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                      "a8952e4a-1350-11df-a1f1-0026b9348838"
+                    ]
+                  },
+                  "id": "__KyHwGr6ou"
+                },
+                {
+                  "label": "mg/day",
+                  "questionOptions": {
+                    "concept": "a8a0744e-1350-11df-a1f1-0026b9348838",
+                    "max": "2000",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "field": "tb_current",
+                    "value": [
+                      "a896cc00-1350-11df-a1f1-0026b9348838",
+                      "a8971c64-1350-11df-a1f1-0026b9348838"
+                    ]
+                  },
+                  "id": "__wtnsEHnqH"
+                },
+                {
+                  "label": "tabs",
+                  "questionOptions": {
+                    "concept": "a8a0630a-1350-11df-a1f1-0026b9348838",
+                    "max": "180",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "field": "tb_current",
+                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                  },
+                  "id": "__nKrowIxKq"
+                }
+              ],
+              "id": "__E4u71wvqr"
+            }
+          ]
+        },
+        {
+          "label": "Cryptococcal Secondary Prevention",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Cryptococcus Tx:",
+              "id": "cryptCurrent",
+              "questionOptions": {
+                "concept": "a899e516-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8971e12-1350-11df-a1f1-0026b9348838",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Other Medications",
+          "questions": [
+            {
+              "label": "Please add any other medications the patient is taking",
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "a8a072c8-1350-11df-a1f1-0026b9348838",
+                "rendering": "repeating"
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['40353c46-cd54-4629-a5d1-0a1f1108b19f', '52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              },
+              "questions": [
+                {
+                  "label": "Other drugs:",
+                  "questionOptions": {
+                    "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "drug"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  },
+                  "id": "__ynFF63vGD"
+                }
+              ],
+              "id": "__nxHLHKvHM"
+            }
+          ]
+        },
+        {
+          "label": "Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Dispense condom today?",
+              "id": "disCondom",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8b034d8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','5e304e47-b912-47c5-8cfb-0e795490dbe6','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780', '52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Patient on family planning?",
+              "id": "famPlanning",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "774961c6-232f-4332-8a9f-f5c55ebe86d0",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','5e304e47-b912-47c5-8cfb-0e795490dbe6','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780', '52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Is the patient pregnant?",
+              "id": "preg",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
+                "answers": [
+                  {
+                    "concept": "a89d109c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "aa9895bc-1971-4926-b7a3-67b5fba1b2d5",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sex === 'M' && arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','5e304e47-b912-47c5-8cfb-0e795490dbe6','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780', '52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Is the patient feeling sick?",
+              "id": "sick",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a18f14-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','5e304e47-b912-47c5-8cfb-0e795490dbe6','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780','52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "If yes, indicate any danger signs present:",
+              "id": "sickness",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "a8a45730-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Fatigue"
+                  },
+                  {
+                    "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                    "label": "Fever"
+                  },
+                  {
+                    "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                    "label": "Nausea /Vomiting"
+                  },
+                  {
+                    "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                    "label": "Diarrhea"
+                  },
+                  {
+                    "concept": "a890d73c-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough"
+                  },
+                  {
+                    "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                    "label": "Rash"
+                  },
+                  {
+                    "concept": "a8982b54-1350-11df-a1f1-0026b9348838",
+                    "label": "Genital sore / Discharge"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sick !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Adherence concerns?",
+              "id": "adherence",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89d15f6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','5e304e47-b912-47c5-8cfb-0e795490dbe6','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780','52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Refer to clinician today?",
+              "id": "refClinician",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8af5356-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) &&  preg === 'a89d109c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Referral to clinician is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && sick === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Referral to clinician is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && adherence === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Referral to clinician is required."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','5e304e47-b912-47c5-8cfb-0e795490dbe6','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780','52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','693559d3-4e44-4d33-83f9-bc70ca56fe34'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Medication refills picked up?",
+              "id": "medPick",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a70d718f-90ad-4269-bb8a-6db51a68e628",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','5e304e47-b912-47c5-8cfb-0e795490dbe6','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780','52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "ART Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "required": "true",
+              "id": "arvPlan",
+              "label": "ART plan:",
+              "questionOptions": {
+                "concept": "a89b75d4-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue regimen"
+                  },
+                  {
+                    "concept": "a898c938-1350-11df-a1f1-0026b9348838",
+                    "label": "Change dose"
+                  },
+                  {
+                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                    "label": "Change regimen"
+                  },
+                  {
+                    "concept": "a89b7ae8-1350-11df-a1f1-0026b9348838",
+                    "label": "Change formulation"
+                  },
+                  {
+                    "concept": "a8a00158-1350-11df-a1f1-0026b9348838",
+                    "label": "Drug substitution"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "Not on ARVS"
+                  },
+                  {
+                    "concept": "a8a00220-1350-11df-a1f1-0026b9348838",
+                    "label": "Restart"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start ARVs"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop all"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "message": "Patient marked as on ART in ART History section. Therefore plan can only be drug substitution, continue regimen, change dose, chage regimen, change"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onArt) && onArt === 'a899b42e-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "message": "Patient marked as not on ART in ART History section. Therefore plan can only be None,Start"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "label": "ART change reason",
+              "questionOptions": {
+                "concept": "a8a07688-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "id": "arvChangeReason",
+                  "label": "Reason for stopping/change/substitution/interruption:",
+                  "questionOptions": {
+                    "concept": "a89b7110-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a89ce50e-1350-11df-a1f1-0026b9348838",
+                        "label": "Adherence concerns"
+                      },
+                      {
+                        "concept": "a8981934-1350-11df-a1f1-0026b9348838",
+                        "label": "Clinical treatment failure"
+                      },
+                      {
+                        "concept": "c0c9eab3-46f6-453c-b29d-dc1c242317c5",
+                        "label": "Drug out of stock"
+                      },
+                      {
+                        "concept": "a890a96a-1350-11df-a1f1-0026b9348838",
+                        "label": "Due to new TB"
+                      },
+                      {
+                        "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                        "label": "Illness/hospitalization"
+                      },
+                      {
+                        "concept": "c6537e06-9fc2-47da-b679-e2a32824407f",
+                        "label": "Immunologic failure"
+                      },
+                      {
+                        "concept": "a8a6f56c-1350-11df-a1f1-0026b9348838",
+                        "label": "Lost to follow-up"
+                      },
+                      {
+                        "concept": "a8a07b10-1350-11df-a1f1-0026b9348838",
+                        "label": "New drug available"
+                      },
+                      {
+                        "concept": "a8b03af0-1350-11df-a1f1-0026b9348838",
+                        "label": "Patient lacks finances"
+                      },
+                      {
+                        "concept": "abe0cbb6-8d08-487a-b18e-7af873945fcc",
+                        "label": "Planned Rx interruption"
+                      },
+                      {
+                        "concept": "a8909e8e-1350-11df-a1f1-0026b9348838",
+                        "label": "Pregnancy"
+                      },
+                      {
+                        "concept": "e38b3e51-8a27-4bf6-b0c8-e0b285e4bb2f",
+                        "label": "Risk of pregnancy"
+                      },
+                      {
+                        "concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+                        "label": "Other patient decisions"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      },
+                      {
+                        "concept": "4ee08cb4-fc93-44a0-a330-4e3fb45ca625",
+                        "label": "Optimization"
+                      },
+                      {
+                        "concept": "a890d1ba-1350-11df-a1f1-0026b9348838",
+                        "label": "Toxicity"
+                      },
+                      {
+                        "concept": "93fe19e8-fec4-4e4b-85f1-239e1fabd761",
+                        "label": "Virologic failure"
+                      },
+                      {
+                        "concept": "4ee08cb4-fc93-44a0-a330-4e3fb45ca625",
+                        "label": "Optimization"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(arvPlan) && isEmpty(myValue) && arrayContains(['a898c938-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838','a89b7ae8-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838'], arvPlan)",
+                      "message": "You indicated patient is changing/changing dose/substituting/stopping arvs, reason for changing should be selected."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a898c938-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838','a89b7ae8-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838'], arvPlan)"
+                  }
+                },
+                {
+                  "id": "arvToxicityCause",
+                  "label": "If toxicity, please provide cause:",
+                  "questionOptions": {
+                    "concept": "a8a032fe-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a877c7f6-1350-11df-a1f1-0026b9348838",
+                        "label": "Anaemia"
+                      },
+                      {
+                        "concept": "a8909060-1350-11df-a1f1-0026b9348838",
+                        "label": "Hepatitis"
+                      },
+                      {
+                        "concept": "a89d0c0a-1350-11df-a1f1-0026b9348838",
+                        "label": "IRIS"
+                      },
+                      {
+                        "concept": "a8a01dfa-1350-11df-a1f1-0026b9348838",
+                        "label": "Lactic Acidosis"
+                      },
+                      {
+                        "concept": "a89cee50-1350-11df-a1f1-0026b9348838",
+                        "label": "Lipo-dystrophy"
+                      },
+                      {
+                        "concept": "a897fe86-1350-11df-a1f1-0026b9348838",
+                        "label": "Neuropathy"
+                      },
+                      {
+                        "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                        "label": "Persistent Vomiting"
+                      },
+                      {
+                        "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                        "label": "Rash"
+                      },
+                      {
+                        "concept": "a8a16d0e-1350-11df-a1f1-0026b9348838",
+                        "label": "Steven-Johnson syndrome"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(arvChangeReason)&&isEmpty(myValue) && (arvChangeReason==='a890d1ba-1350-11df-a1f1-0026b9348838')",
+                      "message": "You indicated patient is changing /changing dose/substituting/stopping arvs due to toxicity, cause should be selected."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(arvChangeReason) && !isEmpty(myValue) && (arvChangeReason!=='a890d1ba-1350-11df-a1f1-0026b9348838')",
+                      "message": "You indicated patient is not changing/dose/substituting/stopping arvs due to toxicity, cause should be selected."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "arvChangeReason!=='a890d1ba-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "If toxicity: Other (specify):",
+                  "id": "q24cToxOther",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(arvToxicityCause) && isEmpty(myValue) && (arvToxicityCause==='a8aaf3e2-1350-11df-a1f1-0026b9348838')",
+                      "message": "You indicated patient is changing /changing dose/substituting/stopping arvs due to other toxicity, indicate the other cause."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(arvToxicityCause) && !isEmpty(myValue) && (arvToxicityCause!=='a8aaf3e2-1350-11df-a1f1-0026b9348838')",
+                      "message": "You indicated patient is not changing /changing dose/substituting/stopping arvs due to other toxicity, other cause is not required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "arvToxicityCause!=='a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ],
+              "id": "__JMtMLMHDJ"
+            },
+            {
+              "label": "ART regimen started, peds:",
+              "id": "artStartedPed",
+              "questionOptions": {
+                "concept": "a89b6a62-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+                    "label": "DTG50mg/3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+                    "label": "TAF25mg/3TC300mg/DTG50mg"
+                  },
+                  {
+                    "concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+                    "label": "TDF300mg/3TC300mg/EFV400mg"
+                  },
+                  {
+                    "concept": "20185c04-9334-11df-8193-000d6014b64c",
+                    "label": "ZDV60mg/3TC30mg/NVP50mg"
+                  },
+                  {
+                    "concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
+                    "label": "ZDV300mg/3TC150mg/NVP200mg >25kgs"
+                  },
+                  {
+                    "concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
+                    "label": "TDF300mg/3TC300mg/EFV600mg >35kgs"
+                  },
+                  {
+                    "concept": "a897e608-1350-11df-a1f1-0026b9348838",
+                    "label": "NVP200mg/D4T30mg/3TC150mg"
+                  },
+                  {
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD) "
+                  },
+                  {
+                    "concept": "b58a28d2-36de-11e0-93be-0026b9348838",
+                    "label": "ABC60mg/3TC30mg"
+                  },
+                  {
+                    "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+                    "label": "ABC120mg/3TC60mg"
+                  },
+                  {
+                    "concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+                    "label": "ABC600mg/3TC300mg"
+                  },
+                  {
+                    "concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+                    "label": "ZDV60mg/3TC30mg"
+                  },
+                  {
+                    "concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+                    "label": "3TC150mg/ZDV300mg >25kgs"
+                  },
+                  {
+                    "concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+                    "label": "3TC300mg/TDF300mg >25kgs"
+                  },
+                  {
+                    "concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
+                    "label": "Lopinavir 80mg/Ritonavir 20mg"
+                  },
+                  {
+                    "concept": "ddefd319-fb5d-4c0e-a125-ff7bdb6fe44f",
+                    "label": "Lopinavir 40mg/Ritonavir 10mg"
+                  },
+                  {
+                    "concept": "fa8266f6-36df-11e0-93be-0026b9348838",
+                    "label": "Lopinavir 200mg/Ritonavir 50mg"
+                  },
+                  {
+                    "concept": "3115e231-1077-4488-a7d5-83167263b9a2",
+                    "label": "Lopinavir 100mg/Ritonavir 25mg"
+                  },
+                  {
+                    "concept": "3cbfb0b9-721e-4d42-92a3-7d37269aab24",
+                    "label": " Atazanavir 300mg/ritonavir 100mg"
+                  },
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "Emtri200mg/TDF300(Truvada)"
+                  },
+                  {
+                    "concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+                    "label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+                  },
+                  {
+                    "concept": "41e57216-3b62-49b1-b0b9-9a9b7de3361d",
+                    "label": "Cabotegravir 30mg/Rilpivirine 25mg PO"
+                  },
+                  {
+                    "concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+                    "label": "Darunavir 400mg/Ritonavir 50mg (DVR/r 400mg/50mg)"
+                  },
+                  {
+                    "concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
+                    "label": "Nevirapine 100mg"
+                  },
+                  {
+                    "concept": "0485075a-3111-11e0-8090-0026b9348838",
+                    "label": "Nevirapine 200mg"
+                  },
+                  {
+                    "concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+                    "label": "Efavirenz 200mg"
+                  },
+                  {
+                    "concept": "ff9096b6-d86c-403a-9bda-eab02252dbf3",
+                    "label": "Efavirenz 250mg"
+                  },
+                  {
+                    "concept": "492de98c-86c6-4fd8-af89-325448f12ed9",
+                    "label": "Efavirenz 300mg"
+                  },
+                  {
+                    "concept": "55e0461f-b28f-42de-a3c6-328d7f17c44b",
+                    "label": "Efavirenz 350mg"
+                  },
+                  {
+                    "concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
+                    "label": "Efavirenz 400mg"
+                  },
+                  {
+                    "concept": "4677ad3e-3120-11e0-8090-0026b9348838",
+                    "label": "Efavirenz 600mg"
+                  },
+                  {
+                    "concept": "d6262526-3113-11e0-8090-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "52441ef8-3126-11e0-8090-0026b9348838",
+                    "label": " Abacavir 300mg"
+                  },
+                  {
+                    "concept": "21d417bc-3114-11e0-8090-0026b9348838",
+                    "label": " Zidovudine 300mg "
+                  },
+                  {
+                    "concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+                    "label": " Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+                    "label": " Ritonavir 80mg"
+                  },
+                  {
+                    "concept": "67f62fd8-d43e-4c62-a18a-e8bb5a46fc5c",
+                    "label": " Raltegravir 25mg"
+                  },
+                  {
+                    "concept": "c2c66e99-1345-4fdb-b101-89b2e43d40e5",
+                    "label": " Raltegravir 100mg"
+                  },
+                  {
+                    "concept": "da698164-870d-11e0-85d3-000d6014b64c",
+                    "label": " Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir"
+                  },
+                  {
+                    "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+                    "label": "Etravirine 100mg"
+                  },
+                  {
+                    "concept": "687d2b97-3336-4843-946e-597a31380746",
+                    "label": "Darunavir 75mg"
+                  },
+                  {
+                    "concept": "9732900a-4b81-4522-af1c-7d25ae6aad0a",
+                    "label": "Darunavir 150mg"
+                  },
+                  {
+                    "concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+                    "label": "Darunavir 600mg"
+                  },
+                  {
+                    "concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+                    "label": "Dolutegravir 50mg"
+                  },
+                  {
+                    "concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+                    "label": "Dolutegravir 10mg"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "pattype === 'a89ee9a8-1350-11df-a1f1-0026b9348838' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], arvPlan)",
+                  "message": "Patient marked as on ART in ART History section. Therefore plan can only be drug substitution, continue regimen, change dose, change regimen, change Formulation,stop all"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], arvPlan)",
+                  "message": "Based on the plan selected, you may not choose a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'],arvPlan) || arrayContains (['a89ee8ea-1350-11df-a1f1-0026b9348838'], pattype)"
+              }
+            },
+            {
+              "label": "ART regimen started, adult:",
+              "id": "artStartedAdult",
+              "questionOptions": {
+                "concept": "a89b6a62-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+                    "label": "DTG50mg/3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+                    "label": "TAF25mg/3TC300mg/DTG50mg"
+                  },
+                  {
+                    "concept": "1c4a75d0-cc91-4752-b0a5-4b833326ff7a",
+                    "label": "TDF300mg/3TC300mg/EFV600mg"
+                  },
+                  {
+                    "concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+                    "label": "TDF300mg/3TC300mg/EFV400mg"
+                  },
+                  {
+                    "concept": "6a73f32d-1870-4527-af6e-74443251ded2",
+                    "label": "NVP200/ZDV300/3TC150"
+                  },
+                  {
+                    "concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+                    "label": "ABC600mg/3TC300mg"
+                  },
+                  {
+                    "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+                    "label": "3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a896758e-1350-11df-a1f1-0026b9348838",
+                    "label": "3TC150mg/ZDV300mg"
+                  },
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "Emtri200mg/TDF300(Truvada)"
+                  },
+                  {
+                    "concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+                    "label": "Aluvia(Kaletra)200mg/LPV50mg"
+                  },
+                  {
+                    "concept": "a8afc066-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir 300mg/Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
+                    "label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
+                  },
+                  {
+                    "concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+                    "label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+                  },
+                  {
+                    "concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+                    "label": "Darunavir 400mg/Ritonavir 50mg (DRV/r400mg/50mg)"
+                  },
+                  {
+                    "concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+                    "label": "Dolutegravir 50mg"
+                  },
+                  {
+                    "concept": "8fa45026-3de4-42dc-ad95-689f64c5286b",
+                    "label": "Tenofovir alafenamide 25mg"
+                  },
+                  {
+                    "concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Abacavir 300mg"
+                  },
+                  {
+                    "concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+                    "label": "Efavirenz 200mg"
+                  },
+                  {
+                    "concept": "a89673f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
+                    "label": "Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
+                    "label": "Zidovudine 300mg"
+                  },
+                  {
+                    "concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+                    "label": "Darunavir 600mg"
+                  },
+                  {
+                    "concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+                    "label": " Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+                    "label": " Ritonavir 80mg"
+                  },
+                  {
+                    "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+                    "label": "Etravirine 100mg"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "pattype === 'a89ee8ea-1350-11df-a1f1-0026b9348838' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], arvPlan)",
+                  "message": "Patient marked as on ART in ART History section. Therefore plan can only be drug substitution, continue regimen, change dose, change regimen, change Formulation,stop all"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], arvPlan)",
+                  "message": "Based on the plan selected, you may not choose a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'],arvPlan) || arrayContains (['a89ee9a8-1350-11df-a1f1-0026b9348838', '800aa4cc-85ed-4340-9044-a37c036a4446'], pattype)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "PCP Prophylaxis Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "required": "true",
+              "id": "pcpProphylaxisPlan",
+              "label": "PCP prophylaxis plan:",
+              "questionOptions": {
+                "concept": "a89b7e12-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue"
+                  },
+                  {
+                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                    "label": "Change Regimen"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(pcpProphylaxisCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(pcpProphylaxisCurrent==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "message": "Patient marked as not on PCP prophylaxis. Therefore plan can only be none or start."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(pcpProphylaxisCurrent) && !isEmpty(myValue) && arrayContains(['a8989396-1350-11df-a1f1-0026b9348838','a890c9e0-1350-11df-a1f1-0026b9348838'],pcpProphylaxisCurrent)&&!(arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'], myValue))",
+                  "message": "Patient marked as on PCP Prophylaxis. Therefore plan can only be change regimen,continue or stop."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "If Start/Change, regimen:",
+              "id": "pcpPlanMedication",
+              "questionOptions": {
+                "concept": "a89b82cc-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
+                    "label": "Dapsone"
+                  },
+                  {
+                    "concept": "a8989396-1350-11df-a1f1-0026b9348838",
+                    "label": "Septrin"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(pcpProphylaxisPlan) && isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838'], pcpProphylaxisPlan)",
+                  "message": "You indicated patient is starting/changing PCP regimen. Please select regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838'], pcpProphylaxisPlan)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "TB Prophylaxis Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "TB prophylaxis plan:",
+              "required": "true",
+              "id": "tbpropplan",
+              "questionOptions": {
+                "concept": "a89c1cfa-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onTbProphylaxis) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(onTbProphylaxis==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "message": "Patient marked as not on TB prophylaxis. Therefore plan can only be none or start."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onTbProphylaxis) && !isEmpty(myValue) && arrayContains(['162724df-5a66-4ae3-bbf6-5dc6dbba4ebb','b150ccdc-e7ec-4f99-b592-6f3fa73b3aea'],onTbProphylaxis)&&!(arrayContains(['a89b7d36-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'], myValue))",
+                  "message": "Patient marked as on TB Prophylaxis. Therefore plan can only be continue or stop."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201', 'fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "label": "stopping reason",
+              "questionOptions": {
+                "concept": "a8a0780e-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "If stopping, reason:",
+                  "required": "true",
+                  "id": "tbpropreasonstop",
+                  "questionOptions": {
+                    "concept": "a89c1e12-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a890a96a-1350-11df-a1f1-0026b9348838",
+                        "label": "Active TB"
+                      },
+                      {
+                        "concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
+                        "label": "Completed"
+                      },
+                      {
+                        "concept": "ecafa614-49c5-4eba-84c7-b85b0d9e2c46",
+                        "label": "Pill burden"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      },
+                      {
+                        "concept": "a890d1ba-1350-11df-a1f1-0026b9348838",
+                        "label": "Toxicity"
+                      },
+                      {
+                        "concept": "a89eb744-1350-11df-a1f1-0026b9348838",
+                        "label": "Lack of drugs"
+                      },
+                      {
+                        "concept": "a89ce50e-1350-11df-a1f1-0026b9348838",
+                        "label": "Poor adherence"
+                      },
+                      {
+                        "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+                        "label": "Side effects (Adverse drug reaction)"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "tbpropplan !== 'a89b7d36-1350-11df-a1f1-0026b9348838' || !arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201', 'fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+                  }
+                },
+                {
+                  "label": "If toxicity, please provide cause:",
+                  "id": "toxCause",
+                  "questionOptions": {
+                    "concept": "a8a032fe-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a877c7f6-1350-11df-a1f1-0026b9348838",
+                        "label": "Anaemia"
+                      },
+                      {
+                        "concept": "a8909060-1350-11df-a1f1-0026b9348838",
+                        "label": "Hepatitis"
+                      },
+                      {
+                        "concept": "a89d0c0a-1350-11df-a1f1-0026b9348838",
+                        "label": "IRIS"
+                      },
+                      {
+                        "concept": "a8a01dfa-1350-11df-a1f1-0026b9348838",
+                        "label": "Lactic Acidosis"
+                      },
+                      {
+                        "concept": "a89cee50-1350-11df-a1f1-0026b9348838",
+                        "label": "Lipo-dystrophy"
+                      },
+                      {
+                        "concept": "a897fe86-1350-11df-a1f1-0026b9348838",
+                        "label": "Neuropathy"
+                      },
+                      {
+                        "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                        "label": "Persistent vomiting"
+                      },
+                      {
+                        "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                        "label": "Rash"
+                      },
+                      {
+                        "concept": "a8a16d0e-1350-11df-a1f1-0026b9348838",
+                        "label": "Steven-Johnson syndrome"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "tbpropreasonstop !== 'a890d1ba-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "If toxicity, please provide cause: Other (specify):",
+                  "id": "toxcauseOther",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "toxCause !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ],
+              "id": "__DM6tFuGJq"
+            },
+            {
+              "label": "TB prophylaxis regimen started:",
+              "questionOptions": {
+                "concept": "a89b83bc-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "162724df-5a66-4ae3-bbf6-5dc6dbba4ebb",
+                    "label": "Isoniazid 100mg (6H)"
+                  },
+                  {
+                    "concept": "b150ccdc-e7ec-4f99-b592-6f3fa73b3aea",
+                    "label": "Isoniazid 300mg (6H)"
+                  },
+                  {
+                    "concept": "aeaed1af-5b0d-401e-a32a-e96cf4072ab5",
+                    "label": "Isoniazid 300mg and Rifapentine 300mg (3HP)"
+                  },
+                  {
+                    "concept": "177635d0-793b-4a66-8324-976c46f795af",
+                    "label": "Rifampicin 150mg and Isonaizid 75mg (3RH)"
+                  },
+                  {
+                    "concept": "e5e24e6d-e6b0-4c81-8f7b-0e366df29426",
+                    "label": "Rifampicin 70mg and Isonaizid 50mg (3RH)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "id": "prophyReg",
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], tbpropplan)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "TB Treatment Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "TB Treatment Started, detailed",
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "a89fe6f0-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "TB Treatment plan:",
+                  "id": "tbTreatmentPlan",
+                  "required": "true",
+                  "questionOptions": {
+                    "concept": "a89c1fd4-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
+                      },
+                      {
+                        "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                        "label": "Continue regimen"
+                      },
+                      {
+                        "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                        "label": "Start induction"
+                      },
+                      {
+                        "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                        "label": "Change to continuation"
+                      },
+                      {
+                        "concept": "a898c938-1350-11df-a1f1-0026b9348838",
+                        "label": "Re-dose"
+                      },
+                      {
+                        "concept": "a8a00158-1350-11df-a1f1-0026b9348838",
+                        "label": "Substitution"
+                      },
+                      {
+                        "concept": "a8a00220-1350-11df-a1f1-0026b9348838",
+                        "label": "Restart"
+                      },
+                      {
+                        "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                        "label": "Stop"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(onTbTreatment) && onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
+                      "message": "Patient marked as on TB in TB History section. Therefore plan can only be drug substitution, continue regimen, change dose, change regimen"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(onTbTreatment) && onTbTreatment === 'a899b42e-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
+                      "message": "Patient marked as not on TB in TB History section. Therefore plan can only be None,Start"
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+                  }
+                }
+              ],
+              "id": "__G2tMqxvzG"
+            },
+            {
+              "type": "obsGroup",
+              "label": "tbMedPickupSite",
+              "questionOptions": {
+                "concept": "b55a6d42-3189-4d4c-97bf-772dfe17b887",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Site of TB meds pick-up:",
+                  "id": "tbMedPickupSite",
+                  "questionOptions": {
+                    "concept": "16db21cd-10cb-4c31-bb5a-b7619bfbea66",
+                    "answers": [
+                      {
+                        "concept": "a89c2f42-1350-11df-a1f1-0026b9348838",
+                        "label": "This AMPATH site"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+                  }
+                },
+                {
+                  "label": "Other Specify:",
+                  "id": "medspickOther",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "tbMedPickupSite !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ],
+              "id": "__IFqKMFGvr"
+            },
+            {
+              "label": "TB Treatment Started, detailed",
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "a89fe6f0-1350-11df-a1f1-0026b9348838",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "TB regimen started",
+                  "questionOptions": {
+                    "concept": "a89c218c-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a899f51a-1350-11df-a1f1-0026b9348838",
+                        "label": "RHZE"
+                      },
+                      {
+                        "concept": "a897d1a4-1350-11df-a1f1-0026b9348838",
+                        "label": "RHZ"
+                      },
+                      {
+                        "concept": "a8a382ba-1350-11df-a1f1-0026b9348838",
+                        "label": "RHE"
+                      },
+                      {
+                        "concept": "a89b1ca6-1350-11df-a1f1-0026b9348838",
+                        "label": "RH"
+                      },
+                      {
+                        "concept": "a899e19c-1350-11df-a1f1-0026b9348838",
+                        "label": "EH"
+                      },
+                      {
+                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                        "label": "Ethambutol"
+                      },
+                      {
+                        "concept": "a8a3243c-1350-11df-a1f1-0026b9348838",
+                        "label": "MDR drugs"
+                      },
+                      {
+                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                        "label": "INH"
+                      },
+                      {
+                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                        "label": "Pyrazinamide"
+                      },
+                      {
+                        "concept": "a8952e4a-1350-11df-a1f1-0026b9348838",
+                        "label": "Streptomycin"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      },
+                      {
+                        "concept": "b8aa06ca-93c6-40ea-b144-c74f841926f4",
+                        "label": "Rifabutin"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "id": "q26f",
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838', 'a89b7d36-1350-11df-a1f1-0026b9348838'], tbTreatmentPlan)"
+                  }
+                },
+                {
+                  "label": "tabs/day",
+                  "questionOptions": {
+                    "concept": "a8a07386-1350-11df-a1f1-0026b9348838",
+                    "max": "30",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "field": "q26f",
+                    "value": [
+                      "a899f51a-1350-11df-a1f1-0026b9348838",
+                      "a897d1a4-1350-11df-a1f1-0026b9348838",
+                      "a8a382ba-1350-11df-a1f1-0026b9348838"
+                    ]
+                  },
+                  "id": "__u9w6DEp9J"
+                },
+                {
+                  "label": "mg",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "max": "1000",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "field": "q26f",
+                    "value": [
+                      "a899e19c-1350-11df-a1f1-0026b9348838",
+                      "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                      "a8952e4a-1350-11df-a1f1-0026b9348838"
+                    ]
+                  },
+                  "id": "__5tFyFxoLK"
+                },
+                {
+                  "label": "mg/day",
+                  "questionOptions": {
+                    "concept": "a8a0744e-1350-11df-a1f1-0026b9348838",
+                    "max": "2000",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "field": "q26f",
+                    "value": [
+                      "a896cc00-1350-11df-a1f1-0026b9348838",
+                      "a8971c64-1350-11df-a1f1-0026b9348838"
+                    ]
+                  },
+                  "id": "__JyLM3Kqrt"
+                },
+                {
+                  "label": "tabs",
+                  "questionOptions": {
+                    "concept": "a8a0630a-1350-11df-a1f1-0026b9348838",
+                    "max": "180",
+                    "min": "0",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "field": "q26f",
+                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                  },
+                  "id": "__MJvHFMpGq"
+                }
+              ],
+              "id": "__J8nMDoHLw"
+            }
+          ]
+        },
+        {
+          "label": "Cryptococcal Treatment Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Cryptococcal treatment plan",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a89c2790-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue"
+                  },
+                  {
+                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                    "label": "Change regimen"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(cryptCurrent==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "message": "Patient marked as not on Cryptococcus Treatment. Therefore plan can only be none or start."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','fcc9a836-0200-45f2-81b4-b4a687a10247','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780'], visitTypeUuid)"
+              },
+              "id": "__GsE6IFDpn"
+            }
+          ]
+        },
+        {
+          "label": "Additional Medication Orders",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Additional medication orders",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "a8a0654e-1350-11df-a1f1-0026b9348838"
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+              },
+              "questions": [
+                {
+                  "label": "Drug",
+                  "questionOptions": {
+                    "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "drug"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  },
+                  "id": "__2Fvroszqq"
+                },
+                {
+                  "label": "Frequency",
+                  "questionOptions": {
+                    "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Once a day",
+                        "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Twice a day",
+                        "concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Three times a day",
+                        "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Four times a day",
+                        "concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "As needed",
+                        "concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+                      },
+                      {
+                        "label": "Other",
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  },
+                  "id": "__DwFrwoKK6"
+                },
+                {
+                  "label": "If tabs, number",
+                  "questionOptions": {
+                    "concept": "a8a0630a-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  },
+                  "id": "__JKtLyppuG"
+                },
+                {
+                  "label": "If caps, number",
+                  "questionOptions": {
+                    "concept": "ea404923-fe2b-4812-aec5-3be7fbe712f7",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  },
+                  "id": "__yKJqIwHDq"
+                },
+                {
+                  "label": "If mg, number",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  },
+                  "id": "__sswFyIvtn"
+                },
+                {
+                  "label": "If ml, number",
+                  "questionOptions": {
+                    "concept": "a8a08286-1350-11df-a1f1-0026b9348838",
+                    "rendering": "number"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201'], visitTypeUuid)"
+                  },
+                  "id": "__vHrrM4yvs"
+                }
+              ],
+              "id": "__qFGIoxrIt"
+            }
+          ]
+        },
+        {
+          "label": "Refill Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Which facility did the patient pick drugs from:",
+              "type": "obs",
+              "id": "facilityDrugs",
+              "required": "true",
+              "questionOptions": {
+                "concept": "2de21f17-b9ec-4934-8b79-a6e7baa3a5a0",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89c2f42-1350-11df-a1f1-0026b9348838",
+                    "label": "AMRS"
+                  },
+                  {
+                    "concept": "7e381b07-81d5-4425-be84-f188b61b4bd1",
+                    "label": "NON AMRS"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','015af4d4-67cb-45a3-9929-8dbd53b1e47c','5e304e47-b912-47c5-8cfb-0e795490dbe6','52fddd42-f9ea-4946-8733-f0e584360780','18f59064-961e-4d51-9ccf-e950f04b4c66','0bcccab0-59ce-4a25-a158-cc722427ff3f'], visitTypeUuid)"
+              }
+            },
+            {
+              "label": "Facility MFL code:",
+              "type": "obs",
+              "id": "mfl",
+              "questionOptions": {
+                "concept": "e8ec983c-3d04-48e0-bb86-c4bf03866212",
+                "rendering": "number"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(myValue).length > 5",
+                  "message": "MFL code should not have more than 5 digits"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(facilityDrugs) && facilityDrugs === '7e381b07-81d5-4425-be84-f188b61b4bd1'",
+                  "message": "Please provide MFL code."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+              }
+            },
+            {
+              "label": "Sub County:",
+              "type": "obs",
+              "id": "subcounty",
+              "default": "",
+              "questionOptions": {
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+              }
+            },
+            {
+              "label": "Facility contact person:",
+              "type": "obs",
+              "id": "facContactPerson",
+              "default": "",
+              "questionOptions": {
+                "concept": "703736b5-0f17-4b96-89fd-76f0093d8d78",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+              }
+            },
+            {
+              "label": "Facility contact number:",
+              "type": "obs",
+              "id": "facContactNumber",
+              "default": "",
+              "questionOptions": {
+                "concept": "bcb3220f-57b5-467e-ad8a-282df45a3642",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+              }
+            },
+            {
+              "label": "Days of refill:",
+              "type": "obs",
+              "id": "RefillDays",
+              "default": "",
+              "questionOptions": {
+                "concept": "f57913d6-4452-4b58-9cd8-d264a908d44d",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+              }
+            },
+            {
+              "label": "Reason for refill:",
+              "type": "obs",
+              "id": "refillReason",
+              "questionOptions": {
+                "concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+                    "label": "Follow up"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(facilityDrugs) || facilityDrugs!== '7e381b07-81d5-4425-be84-f188b61b4bd1'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Remarks",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Please enter remarks below:",
+              "type": "obs",
+              "id": "assNote",
+              "required": "false",
+              "default": "",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 5
+              }
+            }
+          ]
+        },
+        {
+          "label": "Next Appointment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Return to clinic date:",
+              "required": "true",
+              "type": "obs",
+              "id": "rtc",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "arrayContains (['52e67f49-4ec3-41b2-bfe2-93144ea03eb2','0d608b80-1cb5-4c85-835a-29072683ca27','3c1906a1-6d85-4184-9a43-0912cbac3d74','0becf5b9-0522-47c8-960c-c9d660c56501','9bf3fadd-4938-40fa-a093-4e01bf197876','6bf34991-7414-4b5e-ad75-ca217d4c4939'], visitTypeUuid)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

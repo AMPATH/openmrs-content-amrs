@@ -526,27 +526,91 @@
                   }
                 },
                 {
-                  "label": "Patient had contact with TB infected person in the last 12 months?",
-                  "type": "obs",
-                  "id": "contactTB",
-                  "questionOptions": {
-                    "concept": "f66ad7cb-c9fa-42b2-8f7b-863eddb7eb98",
-                    "rendering": "select",
-                    "answers": [
-                      {
-                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                        "label": "Yes"
-                      },
-                      {
-                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                        "label": "No"
-                      }
-                    ]
+              "label": "TB Screening:",
+              "type": "obs",
+              "required": true,
+              "id": "tbScreening",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a48bec-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
                   },
-                  "hide": {
-                    "hideWhenExpression": "cOmplaIntField !== 'a890d73c-1350-11df-a1f1-0026b9348838'"
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
                   }
-                },
+                ]
+              }
+            },
+            {
+              "label": "If yes, any features of TB?",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough of any duration",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+                    "label": "Persistent fever (Temperature > 37.5°C)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
+                    "label": "Drenching night sweats",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unexplained weight loss",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Chest pain",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
+                    "label": "Difficulty in breathing",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Fatigue (lethargy)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
+                    "label": "History of contact with a person with TB or chronic cough",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
+                    "label": "Body mass index (BMI) <18.5",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                  
+                ],
+                "rendering": "checkbox"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(tbScreening) || tbScreening != 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              },
+              "id": "tbSymptoms"
+            },
                 {
                   "label": "Number of motions per day:",
                   "type": "obs",
@@ -1303,7 +1367,7 @@
                   }
                 },
                 {
-                  "label": "Date of Onset:",
+                  "label": "Date of onset:",
                   "type": "obs",
                   "id": "dateOnsetAdverse",
                   "questionOptions": {
@@ -1600,7 +1664,7 @@
               }
             },
             {
-              "label": "Mode of Feeding:",
+              "label": "Mode of feeding:",
               "type": "obs",
               "id": "modeFeeding",
               "questionOptions": {

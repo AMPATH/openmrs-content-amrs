@@ -904,7 +904,7 @@
               },
               "id": "patnerStatus"
             },
-            {
+             {
               "label": "Risk assessement outcome:",
               "required":"true",
               "type": "obs",
@@ -924,7 +924,60 @@
                 ]
               },
               "validators": [],
-              "id": "riskAssessment"
+              "id": "riskAssessment",
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && myValue === '4fae298d-c3c2-4483-ad31-bea9b637ae2b' && (currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926' || finalResult === 'a896f3a6-1350-11df-a1f1-0026b9348838')",
+                "message": "Please provide triple therapy prophylaxis for the baby."
+              }
+            },
+            {
+              "label": "Indicate high risk findings:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "bf48af84-e16a-4757-81da-582511e88b35",
+                "rows":5
+              },
+              "validators": [],
+              "id": "highRiskAssessment",
+              "hide": {
+                "hideWhenExpression": "riskAssessment !== '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
+              }  
+            },
+            {
+              "label": "Eligible for Pre Exposure prophylaxis?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "70d8f5b1-8a10-453a-a1e2-1de96a87f31f",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                  
+                ]
+              },
+              "validators": [
+                 {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && (finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' || riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
+                  "message": "Required!"
+                }
+              ],
+              "id": "elligiblePrep",
+              "hide": {
+                "hideWhenExpression": "finalResult !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || riskAssessment !== '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
+              },
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && elligiblePrep === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                "message": "Please refer for PrEP services."
+              }
+
             }
           ]
         },
@@ -3680,106 +3733,6 @@
           ]
         },
         {
-          "label": "TB Screening Questions",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "TB Symptoms:",
-              "required": "true",
-              "questionOptions": {
-                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "None"
-                  },
-                  {
-                    "concept": "a8ad1276-1350-11df-a1f1-0026b9348838",
-                    "label": "Breathlessness"
-                  },
-                  {
-                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Chest pain"
-                  },
-                  {
-                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
-                    "label": "Cough of any duration"
-                  },
-                  {
-                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
-                    "label": "Fever for = 2 weeks"
-                  },
-                  {
-                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
-                    "label": "New exposure to household contact with TB"
-                  },
-                  {
-                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
-                    "label": "Noticeable weight loss"
-                  },
-                  {
-                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
-                    "label": "Night sweats = 2 weeks"
-                  },
-                  {
-                    "concept": "a8ad462e-1350-11df-a1f1-0026b9348838",
-                    "label": "Abdomen swelling"
-                  },
-                  {
-                    "concept": "f218c60e-4b54-475a-a4fa-facab9216da8",
-                    "label": "Groin swelling"
-                  },
-                  {
-                    "concept": "a8a774b0-1350-11df-a1f1-0026b9348838",
-                    "label": "Joints swelling"
-                  },
-                  {
-                    "concept": "4639388c-ee31-4dcf-abb4-ad71253493bb",
-                    "label": "Neck swelling"
-                  }
-                ],
-                "rendering": "multiCheckbox"
-              },
-              "type": "obs",
-              "validators": [],
-              "id": "__IquJ8y0JI"
-            },
-            {
-              "label": "TB Status:",
-              "id": "tbstatus",
-              "required": "true",
-              "questionOptions": {
-                "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
-                "answers": [
-                  {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "No signs"
-                  },
-                  {
-                    "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
-                    "label": "On TB treatment"
-                  },
-                  {
-                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
-                    "label": "Suspect"
-                  },
-                  {
-                    "concept": "a8af9046-1350-11df-a1f1-0026b9348838",
-                    "label": "Confirmed"
-                  },
-                  {
-                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Not assessed"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "validators": []
-            }
-          ]
-        },
-        {
           "label": "Tuberculosis History",
           "isExpanded": "true",
           "questions": [
@@ -4169,6 +4122,133 @@
             }
           ]
         },
+        {
+          "label": "TB Screening Questions",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "TB Symptoms:",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
+                 "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough of any duration",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+                    "label": "Persistent fever (Temperature > 37.5°C)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
+                    "label": "Drenching night sweats",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unexplained weight loss",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Chest pain",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
+                    "label": "Difficulty in breathing",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Fatigue (lethargy)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
+                    "label": "History of contact with a person with TB or chronic cough",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89cd730-1350-11df-a1f1-0026b9348838",
+                    "label": "Body Mass Index (BMI) <18.5",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ],
+                "rendering": "checkbox"
+              },
+              "type": "obs",
+              "validators": [],
+              "id": "tbSymptoms"
+            },
+            {
+              "label": "Is chest xray service available?",
+              "id": "xrayService",
+              "questionOptions": {
+                "concept": "ab0d9436-1096-4fc4-ae3e-777ea50d6688",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(tbSymptoms) && arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'],tbSymptoms) && isEmpty(myValue)",
+                  "message": "Patient has been marked as having TB symptoms. This question is required."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'],tbSymptoms)"
+              }
+            },
+            {
+              "label": "TB status:",
+              "id": "tbstatus",
+              "required": "true",
+              "questionOptions": {
+                "calculate": {
+									"calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838'"
+                },
+                "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "Not TB presumptive"
+                  },
+                  {
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+                    "label": "Presumed TB"
+                  },
+                  {
+                    "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
+                    "label": "On TB treatment"
+                  }
+                  
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+        
         {
           "label": "Other Conditions:",
           "isExpanded": "true",

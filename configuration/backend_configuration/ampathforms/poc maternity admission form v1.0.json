@@ -452,6 +452,34 @@
           "isExpanded": "true",
           "questions": [
             {
+              "label": "HIV testing done:",
+              "required": "true",
+              "questionOptions": {
+                "concept": "71bb9660-cb25-48d0-ab90-2dc39df8e9ab",
+                "answers": [
+                  {
+                    "concept": "76ab49de-c5f4-43dc-a368-0274ee834ad3",
+                    "label": "Initial"
+                  },
+                  {
+                    "concept": "9ee34e6b-b9ed-4306-b41f-476406895a4a",
+                    "label": "Retest"
+                  },
+                  {
+                    "concept": "fa5a4dd8-60cd-4085-80b6-4aea76809926",
+                    "label": "Known positive"
+                  },
+                  {
+                    "concept": "4e704740-b85b-4edb-a5bf-6707878688b8",
+                    "label": "Revisit"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "id": "currHivStatus"
+            },
+            {
               "label": "HIV Test One",
               "type": "obsGroup",
               "questionOptions": {
@@ -461,7 +489,7 @@
               "id": "hivTestOne",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                "hideWhenExpression": "isEmpty(currHivStatus) ||  arrayContains(['fa5a4dd8-60cd-4085-80b6-4aea76809926','4e704740-b85b-4edb-a5bf-6707878688b8'],currHivStatus)"
               },
               "questions": [
                 {
@@ -492,7 +520,7 @@
                   "id": "kitName",
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                    "hideWhenExpression": "isEmpty(currHivStatus) ||  arrayContains(['fa5a4dd8-60cd-4085-80b6-4aea76809926','4e704740-b85b-4edb-a5bf-6707878688b8'],currHivStatus)"
                   }
                 },
                 {
@@ -503,9 +531,8 @@
                     "concept": "114f33e4-0026-4962-a722-a7f8784d3895"
                   },
                   "id": "lotNumber",
-                  "validators": [],
                   "hide": {
-                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                    "hideWhenExpression": "isEmpty(currHivStatus) ||  arrayContains(['fa5a4dd8-60cd-4085-80b6-4aea76809926','4e704740-b85b-4edb-a5bf-6707878688b8'],currHivStatus)"
                   }
                 },
                 {
@@ -529,7 +556,7 @@
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                    "hideWhenExpression": "isEmpty(currHivStatus) ||  arrayContains(['fa5a4dd8-60cd-4085-80b6-4aea76809926','4e704740-b85b-4edb-a5bf-6707878688b8'],currHivStatus)"
                   }
                 },
                 {
@@ -556,7 +583,7 @@
                   "id": "testResults",
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                    "hideWhenExpression": "isEmpty(currHivStatus) ||  arrayContains(['fa5a4dd8-60cd-4085-80b6-4aea76809926','4e704740-b85b-4edb-a5bf-6707878688b8'],currHivStatus)"
                   }
                 }
               ]
@@ -571,7 +598,7 @@
               "id": "hivTestTwo",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                "hideWhenExpression": "isEmpty(currHivStatus) ||  arrayContains(['fa5a4dd8-60cd-4085-80b6-4aea76809926','4e704740-b85b-4edb-a5bf-6707878688b8'],currHivStatus)"
               },
               "questions": [
                 {
@@ -594,7 +621,7 @@
                   "id": "kitNameB",
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "isEmpty(testResults) || testResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "isEmpty(currHivStatus) ||  arrayContains(['fa5a4dd8-60cd-4085-80b6-4aea76809926','4e704740-b85b-4edb-a5bf-6707878688b8'],currHivStatus)"
                   }
                 },
                 {
@@ -673,7 +700,7 @@
               "id": "hivTestA2",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                "hideWhenExpression": "isEmpty(currHivStatus) ||  arrayContains(['fa5a4dd8-60cd-4085-80b6-4aea76809926','4e704740-b85b-4edb-a5bf-6707878688b8'],currHivStatus)"
               },
               "questions": [
                 {
@@ -771,7 +798,7 @@
               "id": "hivTest3",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                "hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
               },
               "questions": [
                 {
@@ -783,7 +810,7 @@
                     "answers": [
                       {
                         "concept": "ef44a147-c32b-491e-a5ce-e79003c90e01",
-                        "label": "First response"
+                        "label": "First Response"
                       }
                     ]
                   },
@@ -860,7 +887,7 @@
               ]
             },
             {
-              "label": "Final results at maternity:",
+              "label": "Final results:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -883,13 +910,12 @@
                   }
                 ]
               },
-              "id": "finalResults",
+              "id": "finalResult",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                "hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
               }
             },
-
             {
               "label": "Results given to client:",
               "type": "obs",
@@ -910,7 +936,7 @@
               "id": "resultGiven",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a899b50a-1350-11df-a1f1-0026b9348838'], ancHiv)"
+                "hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
               }
             }
           ]
