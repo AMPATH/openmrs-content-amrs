@@ -1119,7 +1119,7 @@
                   }
                   
                 ],
-                "rendering": "multiCheckbox"
+                "rendering": "checkbox"
               },
               "type": "obs",
               "validators": [],
