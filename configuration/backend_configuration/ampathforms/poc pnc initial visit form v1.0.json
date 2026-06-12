@@ -2537,56 +2537,58 @@
           "label": "ART History",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "AZT for the baby:",
+           {
+              "label": "ARV prophylaxis for the baby?",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
-                    "concept": "eb49215f-7278-430b-95c1-b7fe9899aad1",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "N/A"
                   }
+                  
                 ]
               },
               "id": "aztDispensed",
               "hide": {
-                "hideWhenExpression": "priorHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
-              "label": "NVP for the baby:",
+              "label": "If yes indicate drug:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
+                "concept": "a89addfe-1350-11df-a1f1-0026b9348838",
                 "answers": [
-                  {
-                    "concept": "a8967656-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                 {
+                    "concept": "25dc9ae0-02ad-41f5-a458-c592f5d0f584",
+                    "label": "AZT"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
+                    "concept": "b8ebbdaf-986f-4c14-a5e7-ad3d3ba2bba2",
+                    "label": "NVP"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "N/A"
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                  },
+                  {
+                    "concept": "20185c04-9334-11df-8193-000d6014b64c",
+                    "label": "3TC30mg/NVP50mg/ZDV60mg"
                   }
+
                 ]
               },
-              "id": "nvpDispensed",
+              "id": "drugDispensed",
               "hide": {
-                "hideWhenExpression": "priorHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "aztDispensed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
