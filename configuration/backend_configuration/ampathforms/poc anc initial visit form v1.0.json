@@ -9295,11 +9295,11 @@
                 "concept": "a89addfe-1350-11df-a1f1-0026b9348838",
                 "answers": [
                  {
-                    "concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
+                    "concept": "25dc9ae0-02ad-41f5-a458-c592f5d0f584",
                     "label": "AZT"
                   },
                   {
-                    "concept": "a8967656-1350-11df-a1f1-0026b9348838",
+                    "concept": "b8ebbdaf-986f-4c14-a5e7-ad3d3ba2bba2",
                     "label": "NVP"
                   },
                   {
@@ -10264,6 +10264,10 @@
                   {
                     "concept": "a8a70fde-1350-11df-a1f1-0026b9348838",
                     "label": "Family planning"
+                  },
+                  {
+                    "concept": "75149ac3-2804-4e84-8220-0861523bbea1",
+                    "label": "PrEP services"
                   },
                   {
                     "concept": "a8983f22-1350-11df-a1f1-0026b9348838",

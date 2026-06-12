@@ -3352,7 +3352,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'],tbSymptoms)"
+                "hideWhenExpression": "onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms)"
               }
             },
             {
