@@ -5223,7 +5223,7 @@
               "required": "true",
               "questionOptions": {
                 "calculate": {
-                  "calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838'"
+                  "calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838':''"
                 },
                 "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
                 "answers": [
