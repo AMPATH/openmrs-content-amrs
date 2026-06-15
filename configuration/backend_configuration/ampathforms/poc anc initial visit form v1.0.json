@@ -4872,7 +4872,7 @@
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
                 ],
-                "rendering": "checkbox"
+                "rendering": "multiCheckbox"
               },
               "type": "obs",
               "validators": [],
@@ -7378,7 +7378,24 @@
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
                     "label": "Negative"
                   }
-                ]
+                ],
+                "showDate":"true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(hepB) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(hepB)"
+                  }
+                }
+
               },
               "id": "hepB"
             }
@@ -9674,16 +9691,7 @@
                     ]
                   },
                   "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(myValue) && !arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838'],myValue)",
-                      "message": "Please order for baseline CD4."
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(myValue) && !arrayContainsAny(['a8908192-1350-11df-a1f1-0026b9348838'],myValue)",
-                      "message": "Please order for Chest Xray."
-                    }
+                    
                   ]
                 },
                 {

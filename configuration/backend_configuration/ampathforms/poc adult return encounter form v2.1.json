@@ -4267,7 +4267,7 @@
                   }
                   
                 ],
-                "rendering": "checkbox"
+                "rendering": "multiCheckbox"
               },
               "type": "obs",
               "validators": [],
@@ -4303,6 +4303,10 @@
               ],
               "hide": {
                 "hideWhenExpression": "onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms)"
+              },
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms)",
+                "message": "Please order chest xray imaging for the client under the test orders section."
               }
             },
             {

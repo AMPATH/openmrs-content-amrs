@@ -171,7 +171,7 @@
                       },
                       {
                         "concept": "a8a17d80-1350-11df-a1f1-0026b9348838",
-                        "label": "MCH (PMTCT)"
+                        "label": "VTP"
                       },
                       {
                         "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
@@ -261,7 +261,7 @@
             {
               "label": "Initiated on TPT?:",
               "questionOptions": {
-                "concept": "a89b83bc-1350-11df-a1f1-0026b9348838",
+                "concept": "163784d2-6c55-4ceb-abf0-df8cebb385f1",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -383,7 +383,7 @@
               }
             },
             {
-              "label": "Mother received drugs for PMTCT:",
+              "label": "Mother received drugs for VTP:",
               "required": "true",
               "id": "receivePmtct",
               "historicalExpression": "HD.getObject('prevEnc').getValue('a8a0af22-1350-11df-a1f1-0026b9348838')",
@@ -883,10 +883,13 @@
                     },
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(hbvAntigen)",
+                      "failsWhenExpression": "!isEmpty(hbvAntigen) && isEmpty(myValue)",
                       "message": "Date result is required."
                     }
-                  ]
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(hbvAntigen)"
+                  }
                 }
               },
               "validators": []
@@ -926,14 +929,14 @@
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "isEmpty(antibodyTest) || antibodyTest === 'a899ea48-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "isEmpty(antibodyTest)"
                   }
                 }
               },
               "validators": []
             },
             {
-              "label": "Hepatitis B antibody (HBsAb)",
+              "label": "Hepatitis B antibody (HBsAb):",
               "type": "obs",
               "id": "hbvAntibody",
               "questionOptions": {
@@ -957,10 +960,13 @@
                     },
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(hbvAntibody)",
+                      "failsWhenExpression": "!isEmpty(hbvAntibody) && isEmpty(myValue)",
                       "message": "Date result is required."
                     }
-                  ]
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(hbvAntibody)"
+                  }
                 }
               },
               "validators": []
@@ -1077,30 +1083,23 @@
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "No signs"
+                    "label": "Not TB presumptive"
                   },
                   {
                     "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
                     "label": "Presumed TB"
                   },
                   {
-                    "concept": "a8af9046-1350-11df-a1f1-0026b9348838",
-                    "label": "Confirmed"
-                  },
-                  {
                     "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
-                    "label": "TB Rx"
-                  },
-                  {
-                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Not done (ND)"
+                    "label": "On TB treatment"
                   }
+                  
                 ],
                 "rendering": "select"
               },
               "type": "obs",
               "validators": [],
-              "id": "__ypLGsxuyM"
+              "id": "tbStatus"
             },
             {
               "label": "Milestones:",
@@ -1134,27 +1133,40 @@
       "label": "ART prophylaxis:",
       "sections": [
         {
-          "label": "Peds ART prophylaxis:",
+          "label": "ART prophylaxis:",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Peds ART prophylaxis?",
+              "label": "ART prophylaxis?",
               "type": "obs",
               "questionOptions": {
                 "rendering": "multiCheckbox",
                 "concept": "a89b6a62-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
+                    "concept": "25dc9ae0-02ad-41f5-a458-c592f5d0f584",
+                    "label": "AZT"
+                  },
+                  {
+                    "concept": "b8ebbdaf-986f-4c14-a5e7-ad3d3ba2bba2",
+                    "label": "NVP"
+                  },
+                  {
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                  },
+                  {
+                    "concept": "20185c04-9334-11df-8193-000d6014b64c",
+                    "label": "3TC30mg/NVP50mg/ZDV60mg"
+                  },
+
+                  {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
                   },
                   {
-                    "concept": "25dc9ae0-02ad-41f5-a458-c592f5d0f584",
-                    "label": " Zidovudine"
-                  },
-                  {
-                    "concept": "b8ebbdaf-986f-4c14-a5e7-ad3d3ba2bba2",
-                    "label": "Nevirapine"
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ]
               },
@@ -1556,7 +1568,7 @@
                     "concept": "a8a17d80-1350-11df-a1f1-0026b9348838"
                   },
                   {
-                    "label": "PMTCT",
+                    "label": "VTP",
                     "concept": "a89fbedc-1350-11df-a1f1-0026b9348838"
                   },
                   {

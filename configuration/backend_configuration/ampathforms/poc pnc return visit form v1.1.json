@@ -1094,7 +1094,7 @@
               "validators": [],
               "id": "riskAssessment",
               "alert": {
-                "alertWhenExpression": "!isEmpty(myValue) && myValue === '4fae298d-c3c2-4483-ad31-bea9b637ae2b' && (currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926' || finalResult === 'a896f3a6-1350-11df-a1f1-0026b9348838')",
+                "alertWhenExpression": "!isEmpty(myValue) && myValue === '4fae298d-c3c2-4483-ad31-bea9b637ae2b' && (currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926' || finalResults === 'a896f3a6-1350-11df-a1f1-0026b9348838')",
                 "message": "Please provide triple therapy prophylaxis for the baby."
               }
             },
@@ -1133,13 +1133,13 @@
               "validators": [
                  {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && (finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' && riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
+                  "failsWhenExpression": "isEmpty(myValue) && (finalResults === 'a896d2cc-1350-11df-a1f1-0026b9348838' && riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
                   "message": "Required!"
                 }
               ],
               "id": "elligiblePrep",
               "hide": {
-                "hideWhenExpression": "finalResult !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || riskAssessment !== '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
+                "hideWhenExpression": "finalResults !== 'a896d2cc-1350-11df-a1f1-0026b9348838' || riskAssessment !== '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
               },
               "alert": {
                 "alertWhenExpression": "!isEmpty(myValue) && elligiblePrep === 'a899b35c-1350-11df-a1f1-0026b9348838'",
@@ -3942,7 +3942,7 @@
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
                 ],
-                "rendering": "checkbox"
+                "rendering": "multiCheckbox"
               },
               "type": "obs",
               "validators": [],
@@ -6230,7 +6230,24 @@
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
                     "label": "Negative"
                   }
-                ]
+                ],
+                "showDate":"true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(hepB) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(hepB)"
+                  }
+                }
+
               },
               "id": "hepB"
             }
