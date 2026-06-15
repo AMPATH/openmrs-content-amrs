@@ -4182,7 +4182,7 @@
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
                 ],
-                "rendering": "checkbox"
+                "rendering": "multiCheckbox"
               },
               "type": "obs",
               "validators": [],
