@@ -57,7 +57,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Visit Type?",
+              "label": "Visit type?",
               "type": "obs",
               "required": "true",
               "id": "visitType",
