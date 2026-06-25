@@ -15,3 +15,4 @@ abb96263-831a-47bf-bc0f-39232281aaa3,,Location,Regulator License Number,Regulato
 8fb13f77-df77-4b61-93ca-60972eae378b,,Provider,License Status,"Provider Licence status e.g Licenced, Not Licensed",0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
 c73daf69-ddd0-4fce-98ec-6f9d875193e3,,Provider,Specialty,Provider speciality e.g Internal medicine,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
 4962a633-c4f8-474c-857c-5c68c72fbbe3,,Visit,SHA Claims Visit Consent Token,SHA Claims Visit Consent Token,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
+b8782ae6-b2a0-4f2d-aebf-5f950064c812,,Visit,SHA Sub-benefit Coverage,SHA Claims Sub-benefit coverage,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
