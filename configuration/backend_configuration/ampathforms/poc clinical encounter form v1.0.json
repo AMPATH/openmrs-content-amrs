@@ -602,10 +602,16 @@
                   }
                   
                 ],
-                "rendering": "checkbox"
+                "rendering": "multiCheckbox"
               },
               "type": "obs",
-              "validators": [],
+              "validators": [{
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                  "message": "'None' cannot be selected together with other symptoms."
+                }
+
+              ],
               "hide": {
                 "hideWhenExpression": "isEmpty(tbScreening) || tbScreening != 'a899b35c-1350-11df-a1f1-0026b9348838'"
               },

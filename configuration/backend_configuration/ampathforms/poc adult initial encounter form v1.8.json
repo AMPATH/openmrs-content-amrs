@@ -3029,6 +3029,40 @@
           "isExpanded": "true",
           "questions": [
             {
+              "label": "Fluconazole prophylaxis:",
+              "required": "true",
+              "id": "flucoProphy",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')) ? undefined : HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')",
+              "questionOptions": {
+                "concept": "212fdebe-4745-4f60-aaa0-35f4193abaf8",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
               "label": "Cryptococcal meningitis treatment:",
               "required": "true",
               "id": "cryptCurrent",
@@ -3041,11 +3075,35 @@
                     "label": "None"
                   },
                   {
-                    "concept": "a8971e12-1350-11df-a1f1-0026b9348838",
-                    "label": "Fluconazole"
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
+                  },
+                  {
+                    "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
+                    "label": "Flucytosine 100mg/kg"
+                  },
+                  {
+                    "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
+                    "label": "Liposomal amphotericin B 10mg/kg"
+                  },
+                  {
+                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
+                    "label": "Amphotericin B deoxycholate 1mg/kg"
                   }
                 ],
-                "rendering": "select"
+                "rendering": "multiCheckbox"
               },
               "type": "obs",
               "validators": []
@@ -4270,7 +4328,13 @@
                 "rendering": "multiCheckbox"
               },
               "type": "obs",
-              "validators": [],
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                  "message": "'None' cannot be selected together with other symptoms."
+                }
+              ],
               "id": "tbSymptoms",
               "hide": {
                 "hideWhenExpression": "onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838'"
@@ -5653,7 +5717,7 @@
           ]
         },
         {
-          "label": "CrAg",
+          "label": "CrAg And CSF",
           "questions": [
             {
               "label": "CrAg test:",
@@ -5693,7 +5757,54 @@
                 }
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896d2cc-1350-11df-a1f1-0026b9348838'",
+                "message": "Please consider intiating patient on fluconazole prophylaxis"
+              }
+              
+            },
+             {
+              "label": "CSF Cryptococcal Ag test:",
+              "id": "csfTest",
+              "questionOptions": {
+                "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                  
+                ],
+                "showDate": "true",
+                "rendering": "select",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(csfTest) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(csfTest)"
+                  }
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
+                "message": "Please initiate the patient on crypto menengitis treatment"
+              }
+              
             }
           ]
         },
@@ -8113,6 +8224,46 @@
           "isExpanded": "true",
           "questions": [
             {
+              "label": "Fluconazole prophylaxis plan:",
+              "required": "true",
+              "id": "flucoProphyPlan", 
+              "questionOptions": {
+                "concept": "88cd24fe-b031-4aad-9d87-1b39ef243b18",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+               "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(flucoProphy) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && (flucoProphy==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "message": "Patient marked as not on prophylaxis. Therefore plan can only be none or start."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy !== 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
+                }
+              ]
+            },
+            {
               "label": "Cryptococcal meningitis treatment plan:",
               "type": "obs",
               "required": "true",
@@ -8156,12 +8307,8 @@
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(cragTest) && !isEmpty(myValue) && !arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'],myValue)&&(cragTest==='a896f3a6-1350-11df-a1f1-0026b9348838')",
-                  "message": "CrAg test is positive. Therefore patient should be on crypto."
                 }
+                
               ],
               "id": "cryptoPlan"
             },
@@ -9153,7 +9300,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
+                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
             {
@@ -9693,6 +9840,11 @@
                         "label": "CrAg test"
                       },
                       {
+                        "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
+                        "label": "CSF Cryptococcal Ag test"
+                      },
+                      
+                      {
                         "concept": "57677735-4310-4841-8902-dae4bac24d20",
                         "label": "DST"
                       },
@@ -9804,7 +9956,11 @@
                   },
                   "validators": [
                     
-                  ]
+                  ],
+                  "alert": {
+                "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], tbSymptoms))",
+                "message": "Enrollment requires CD4 and CXR orders. Please add them before submission."
+              }
                 },
                 {
                   "label": "Test ordered: Other (specify):",

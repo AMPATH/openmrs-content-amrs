@@ -70,7 +70,7 @@
                         "label": "Inactivated polio vaccine (IPV)"
                       },
                       {
-                        "concept": "a897dcb2-1350-11df-a1f1-0026b9348838",
+                        "concept": "96ecae74-0704-475e-ade3-17cd6b080926",
                         "label": "DPT/Hep B/Hib"
                       },
                       {
@@ -96,6 +96,14 @@
                       {
                         "concept": "48e6cfb0-e122-4eb6-a08e-989f0a028ff2",
                         "label": "Typhoid conjuvate vaccine"
+                      },
+                      {
+                        "concept": "a8a48430-1350-11df-a1f1-0026b9348838",
+                        "label": "Vitamin A"
+                      },
+                      {
+                        "concept": "ac915c6a-aae9-4fda-b189-e3297e64ba90",
+                        "label": "Hepatitis B Immunoglobulins"
                       }
                     ]
                   },

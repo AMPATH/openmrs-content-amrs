@@ -752,31 +752,49 @@
                       },
                       {
                         "concept": "a897de60-1350-11df-a1f1-0026b9348838",
-                        "label": "OPV"
+                        "label": "Oral polio vaccine (OPV)"
+                      },
+                      {
+                        "concept": "79c722a0-17cf-4aca-bdec-fee0810bc5ba",
+                        "label": "Inactivated polio vaccine (IPV)"
                       },
                       {
                         "concept": "96ecae74-0704-475e-ade3-17cd6b080926",
-                        "label": "Penta"
+                        "label": "DPT/Hep B/Hib"
                       },
                       {
                         "concept": "f60456b4-2797-4f98-8fb5-41830f205427",
-                        "label": "PCV-10"
+                        "label": "Pneumococcal conjugate vaccine (PCV 10)"
                       },
                       {
                         "concept": "22b92c90-026c-469c-9e63-786ecc1cd2fc",
                         "label": "Rotavirus"
                       },
+                      
                       {
-                        "concept": "79c722a0-17cf-4aca-bdec-fee0810bc5ba",
-                        "label": "IPV"
+                        "concept": "8ce0c11b-26d8-4341-b381-5ec8ce1c4719",
+                        "label": "Measles/Rubella"
+                      },
+                      {
+                        "concept": "a8acb5f6-1350-11df-a1f1-0026b9348838",
+                        "label": "Yellow fever"
                       },
                       {
                         "concept": "a8909844-1350-11df-a1f1-0026b9348838",
-                        "label": "Measles"
+                        "label": "Measles at 6 months"
+                      },
+                      {
+                        "concept": "48e6cfb0-e122-4eb6-a08e-989f0a028ff2",
+                        "label": "Typhoid conjuvate vaccine"
                       },
                       {
                         "concept": "a8a48430-1350-11df-a1f1-0026b9348838",
                         "label": "Vitamin A"
+                      },
+                      
+                      {
+                        "concept": "ac915c6a-aae9-4fda-b189-e3297e64ba90",
+                        "label": "Hepatitis B Immunoglobulins"
                       },
                       {
                         "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
