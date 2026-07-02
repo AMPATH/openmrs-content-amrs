@@ -1,0 +1,439 @@
+{
+  "name": "POC Clinical Summary Form v1.0",
+  "description": "Clinical Summary",
+  "version": "1.0",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "",
+  "encounter": "",
+  "pages": [
+    {
+      "label": "Visit Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Patient Details",
+          "isExpanded": "true",
+          "questions": [
+             {
+              "label": "Date of birth:",
+              "type": "obs",
+              "id": "dateOfBirth",
+              "questionOptions": {
+                "concept": "e4e69e0e-d4b5-4ca1-b4b3-87aa77107ec7",
+                "rendering": "date"
+              },
+              
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+             {
+              "label": "ART start date:",
+              "type": "obs",
+              "id": "artDate",
+              "questionOptions": {
+                "concept": "9e67bf9f-4242-40c5-806b-9145b8c07e77",
+                "rendering": "date"
+              },
+              
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Gender:",
+              "type": "obs",
+              "id": "gender",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a0d2e0f8-5109-497a-9313-fcc3576d1185",
+                "answers": [
+                  {
+                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
+                    "label": "Male"
+                  },
+                  {
+                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
+                    "label": "Female"
+                  }
+                ]
+              }
+            },
+             {
+              "label": "Current weight:",
+              "type": "obs",
+              "id": "currWeight",
+              "questionOptions": {
+                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Height:",
+              "type": "obs",
+              "id": "height",
+              "questionOptions": {
+                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "What is the primary reason for this consultation:",
+              "type": "obs",
+              "id": "consulReason",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "",
+                "answers": [
+                  {
+                    "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+                    "label": "Adverse drug reaction"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Private cross-over patient"
+                  },
+                  {
+                    "concept": "c0c9eab3-46f6-453c-b29d-dc1c242317c5",
+                    "label": "Single TDF out of stock"
+                  },
+                  {
+                    "concept": "01eedbcc-ea21-40cc-b150-fcaca5eef501",
+                    "label": "Drug interactions"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Second line failure"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Study cross-over patient"
+                  },
+                  {
+                    "concept": "a8981934-1350-11df-a1f1-0026b9348838",
+                    "label": "First line failure"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Single AZT out of stock"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other (Please Specify)"
+                  }
+                 
+                ]
+              }
+              
+            },
+            {
+              "label": "Clinical Evaluation: history, physical, diagnostics, working diagnosis:(excluding the information in the table below)",
+              "type": "obs",
+              "id": "clinicalEvaluation",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Adherence and Treatment Failure Evaluation",
+          "isExpanded": "true",
+          "questions": [
+            
+            
+            {
+              "label": "Number and findings of adherence counselling/assessment sessions done in the last 3-6 months including the following:",
+              "type": "obs",
+              "id": "adherenceFindings",
+              "questionOptions": {
+                "concept": "195aa8f6-ac22-4de4-90aa-13a3603939ad",
+                "rendering": "textarea",
+                "placeholder": "Findings from MMAS-8, adherence barriers identified, recommendations",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Number of home visits conducted in last 3-6 months, and findings:",
+              "type": "obs",
+              "id": "homeVisits",
+              "questionOptions": {
+                "concept": "743bee17-bb4d-4bf5-bbfe-a58a7cca5a3f",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Describe support structures (e.g. treatment buddy, support group attendance, caregivers) in place for this patient:",
+              "type": "obs",
+              "id": "supportStructure",
+              "questionOptions": {
+                "concept": "b47a14e7-11cc-46c9-a3c7-066b42f046ac",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Evidence of adherence concerns (e.g. missed appointments, pill counts?):",
+              "type": "obs",
+              "id": "adherenceConcerns",
+              "questionOptions": {
+                "concept": "6e71ce5a-0108-4fd2-8826-14abc012700a",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Describe daily witnessed ingestion done in last 3-6 months (Who performed it, which tool was used, how long was the session done etc.):",
+              "type": "obs",
+              "id": "ingestionDone",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Describe likely root cause/s of poor adherence, for this patient (e.g. stigma, disclosure, side effects, alcohol or other drugs, mental health issues, caregiver changes, religious beliefs, inadequate preparation, etc):",
+              "type": "obs",
+              "id": "poorAdherence",
+              "questionOptions": {
+                "concept": "a486c342-fa15-4965-bbad-ff5c312deeae",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Describe likely root cause/s of poor adherence, for this patient (e.g. stigma, disclosure, side effects, alcohol or other drugs, mental health issues, caregiver changes, religious beliefs, inadequate preparation, etc):",
+              "type": "obs",
+              "id": "poorAdherence",
+              "questionOptions": {
+                "concept": "a486c342-fa15-4965-bbad-ff5c312deeae",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Evaluation for other causes of treatment failure",
+          "isExpanded": "true",
+          "questions": [
+            
+    
+            {
+              "label": " Inadequate dosing/dose adjustments (particularly for children):",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Drug-drug interactions:",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Drug-food interactions:",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": " Impaired absorption (e.g. chronic severe diarrhea):",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            }
+            
+          ]
+        },
+         {
+          "label": "Other Relevant ART History",
+          "isExpanded": "true",
+          "questions": [
+            
+    
+            {
+              "label": "Comment on treatment interruptions, if any:",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "Has facility multidisciplinary team discussed the patient’s case?. If yes, comment on date, deliberations and recommendations:",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "placeholder": "indicate how treatment failure was established and confirmed, proposed regimen and dosage, current source of drugs if patient already on 3rd line",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            },
+            {
+              "label": "MDT members who participated in the case discussion (names and titles):",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "placeholder": "",
+                "rows":5
+              },
+              
+              "validators": [
+              ]
+            }
+            
+            
+          ]
+        }
+
+      ]
+    }
+  ]
+  
+}
