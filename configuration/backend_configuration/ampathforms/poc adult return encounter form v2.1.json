@@ -5256,6 +5256,39 @@
                   "decimalPlace": 1
                 }
               ]
+            },
+            {
+              "label": "APRI score:",
+              "id": "apri_score",
+              "questionOptions": {
+                "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
+               "calculateExpression": "ast_test && platelets_test ? Number(((((ast_test / 89) * 100) / platelets_test).toFixed(2))) : null",
+                "min": "0.00",
+                "showDate": "true",
+                "rendering": "decimal",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(apri_score) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(apri_score)"
+                  }
+                }
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "decimal",
+                  "decimalPlace": 1
+                }
+              ]
             }
           ]
         },

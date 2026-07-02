@@ -5445,6 +5445,39 @@
                   "decimalPlace": 1
                 }
               ]
+            },
+            {
+              "label": "APRI score:",
+              "id": "apri_score",
+              "questionOptions": {
+                "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
+               "calculateExpression": "ast_test && platelets_test ? Number(((((ast_test / 89) * 100) / platelets_test).toFixed(2))) : null",
+                "min": "0.00",
+                "showDate": "true",
+                "rendering": "decimal",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(apri_score) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(apri_score)"
+                  }
+                }
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "decimal",
+                  "decimalPlace": 1
+                }
+              ]
             }
           ]
         },
@@ -6356,6 +6389,37 @@
                 ]
               },
               "id": "syphillisSerology"
+            },
+             {
+              "label": "Syphilis stage:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "91a6d539-4774-4963-a437-3f73959e739e",
+                "answers": [
+                  {
+                    "concept": "d3b85253-c25b-4c4c-848a-aaec5594f1df",
+                    "label": "Primary"
+                  },
+                  {
+                    "concept": "37dfb10a-e479-41a1-b06d-c226ec15df9d",
+                    "label": "Secondary"
+                  },
+                  {
+                    "concept": "fe2ebdac-920a-433d-aa19-924520b56596",
+                    "label": "Latent"
+                  },
+                  {
+                    "concept": "eb4e84ce-3c8e-41a5-94db-de8917bce1bd",
+                    "label": "Tertiary"
+                  }
+                  
+                ]
+              },
+              "id": "syphillisStaging",
+              "hide": {
+                "hideWhenExpression": "syphillisSerology !== 'a89b3ab0-1350-11df-a1f1-0026b9348838'"
+              }
             },
             {
               "label": "Has the client been treated for syphilis?",

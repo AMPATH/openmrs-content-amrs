@@ -1525,8 +1525,8 @@
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "5fa91048-651b-4e66-82e5-cc047434a61d",
-                    "label": "Initial PCR (Birth testing - 0-2 weeks)"
+                    "concept": "40a893e8-d30a-4b4c-8f4a-eca3bcdfbd0d",
+                    "label": "Initial PCR (Birth testing or 1st contact)"
                   },
                   {
                     "concept": "43c9e462-6d9b-4f05-9a91-ae9fe56e86fa",
