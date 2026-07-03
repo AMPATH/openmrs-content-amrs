@@ -5481,7 +5481,10 @@
             }
           ]
         },
-         {
+          {
+          "label": "CrAg And CSF",
+          "questions": [
+            {
               "label": "CrAg test:",
               "id": "cragTest",
               "questionOptions": {
@@ -5524,6 +5527,48 @@
                 "hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
               }
             },
+            {
+              "label": "CSF Cryptococcal Ag test:",
+              "id": "csfTest",
+              "questionOptions": {
+                "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ],
+                "showDate": "true",
+                "rendering": "select",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(csfTest) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(csfTest)"
+                  }
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
+                "message": "Please initiate the patient on crypto menengitis treatment"
+              }
+            }
+          ]
+        },
         {
           "label": "ART Drug Sensitivity Test",
           "questions": [

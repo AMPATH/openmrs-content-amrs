@@ -1019,9 +1019,9 @@
               },
               "id": "patnerStatus"
             },
-             {
+            {
               "label": "Risk assessement outcome:",
-              "required":"true",
+              "required": "true",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -1035,7 +1035,6 @@
                     "concept": "d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb",
                     "label": "Low risk"
                   }
-                  
                 ]
               },
               "validators": [],
@@ -1045,19 +1044,19 @@
                 "message": "Please provide triple therapy prophylaxis for the baby."
               }
             },
-             {
+            {
               "label": "Indicate high risk findings:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "bf48af84-e16a-4757-81da-582511e88b35",
-                "rows":5
+                "rows": 5
               },
               "validators": [],
               "id": "highRiskAssessment",
               "hide": {
                 "hideWhenExpression": "riskAssessment !== '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
-              }  
+              }
             },
             {
               "label": "Eligible for Pre Exposure prophylaxis?",
@@ -1074,11 +1073,10 @@
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
-                  
                 ]
               },
               "validators": [
-                 {
+                {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(myValue) && (finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' && riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
                   "message": "Required!"
@@ -1092,7 +1090,6 @@
                 "alertWhenExpression": "!isEmpty(myValue) && elligiblePrep === 'a899b35c-1350-11df-a1f1-0026b9348838'",
                 "message": "Please refer for PrEP services."
               }
-
             }
           ]
         },
@@ -3210,7 +3207,7 @@
           "label": "Advanced HIV Disease Treatment History",
           "isExpanded": "true",
           "questions": [
-             {
+            {
               "label": "Fluconazole prophylaxis:",
               "required": "true",
               "id": "flucoProphy",
@@ -3460,7 +3457,7 @@
             }
           ]
         },
-         {
+        {
           "label": "Adult Vaccination",
           "questions": [
             {
@@ -4873,7 +4870,7 @@
             }
           ]
         },
-       {
+        {
           "label": "TB Screening Questions",
           "isExpanded": "true",
           "questions": [
@@ -4882,7 +4879,7 @@
               "required": "true",
               "questionOptions": {
                 "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
-                 "answers": [
+                "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
@@ -4979,7 +4976,7 @@
             }
           ]
         },
-        
+
         {
           "label": "Other Conditions:",
           "isExpanded": "true",
@@ -6017,14 +6014,14 @@
                 }
               ]
             },
-             {
+            {
               "type": "obs",
               "label": "CRP:",
               "id": "crp_test",
               "questionOptions": {
                 "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
                 "rendering": "decimal",
-                
+
                 "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
@@ -6597,7 +6594,7 @@
               "id": "apri_score",
               "questionOptions": {
                 "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
-               "calculateExpression": "ast_test && platelets_test ? Number(((((ast_test / 89) * 100) / platelets_test).toFixed(2))) : null",
+                "calculateExpression": "ast_test && platelets_test ? Number(((((ast_test / 89) * 100) / platelets_test).toFixed(2))) : null",
                 "min": "0.00",
                 "showDate": "true",
                 "rendering": "decimal",
@@ -6627,7 +6624,10 @@
             }
           ]
         },
- {
+        {
+          "label": "CrAg And CSF",
+          "questions": [
+            {
               "label": "CrAg test:",
               "id": "cragTest",
               "questionOptions": {
@@ -6670,6 +6670,48 @@
                 "hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
               }
             },
+            {
+              "label": "CSF Cryptococcal Ag test:",
+              "id": "csfTest",
+              "questionOptions": {
+                "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ],
+                "showDate": "true",
+                "rendering": "select",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(csfTest) && isEmpty(myValue)",
+                      "message": "Date is result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(csfTest)"
+                  }
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
+                "message": "Please initiate the patient on crypto menengitis treatment"
+              }
+            }
+          ]
+        },
 
         {
           "label": "Urinalysis",
@@ -7464,7 +7506,7 @@
               },
               "id": "syphillisSerology"
             },
-             {
+            {
               "label": "Syphilis stage:",
               "type": "obs",
               "questionOptions": {
@@ -7487,7 +7529,6 @@
                     "concept": "eb4e84ce-3c8e-41a5-94db-de8917bce1bd",
                     "label": "Tertiary"
                   }
-                  
                 ]
               },
               "id": "syphillisStaging",
@@ -7553,7 +7594,7 @@
                     "label": "Negative"
                   }
                 ],
-                "showDate":"true",
+                "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
                     {
@@ -7569,11 +7610,10 @@
                     "hideWhenExpression": "isEmpty(hepB)"
                   }
                 }
-
               },
               "id": "hepB"
             },
-             {
+            {
               "label": "Hepatitis B prophylaxis:",
               "type": "obs",
               "questionOptions": {
@@ -7594,7 +7634,6 @@
               "hide": {
                 "hideWhenExpression": "hepB !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
-
             }
           ]
         }
@@ -9215,11 +9254,10 @@
           "label": "Advanced HIV Disease Treatment Plan",
           "isExpanded": "true",
           "questions": [
-           
-             {
+            {
               "label": "Fluconazole prophylaxis plan:",
               "required": "true",
-              "id": "flucoProphyPlan", 
+              "id": "flucoProphyPlan",
               "questionOptions": {
                 "concept": "88cd24fe-b031-4aad-9d87-1b39ef243b18",
                 "answers": [
@@ -9243,7 +9281,7 @@
                 "rendering": "select"
               },
               "type": "obs",
-               "validators": [
+              "validators": [
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(flucoProphy) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && (flucoProphy==='a899e0ac-1350-11df-a1f1-0026b9348838')",
@@ -9304,7 +9342,6 @@
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "id": "cryptoPlan",
               "hide": {
@@ -9490,7 +9527,6 @@
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
-                  
                 ]
               },
               "id": "aztDispensed",
@@ -9505,7 +9541,7 @@
                 "rendering": "select",
                 "concept": "a89addfe-1350-11df-a1f1-0026b9348838",
                 "answers": [
-                 {
+                  {
                     "concept": "25dc9ae0-02ad-41f5-a458-c592f5d0f584",
                     "label": "AZT"
                   },
@@ -9521,7 +9557,6 @@
                     "concept": "20185c04-9334-11df-8193-000d6014b64c",
                     "label": "3TC30mg/NVP50mg/ZDV60mg"
                   }
-
                 ]
               },
               "id": "drugDispensed",
@@ -9587,7 +9622,7 @@
               },
               "id": "tetanusToxoidDose"
             },
-           
+
             {
               "label": "Supplements",
               "type": "obs",
@@ -9870,9 +9905,7 @@
                       }
                     ]
                   },
-                  "validators": [
-                    
-                  ]
+                  "validators": []
                 },
                 {
                   "label": "Test ordered: Other (specify):",
@@ -9908,10 +9941,10 @@
                         "concept": "e43ddeb6-3984-499c-a280-3bade1039608",
                         "label": "Confirmation of treatment failure"
                       },
-					  {
-                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
-                    "label": "Hospitalised or seriously ill or clinically unstable"
-                  }
+                      {
+                        "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                        "label": "Hospitalised or seriously ill or clinically unstable"
+                      }
                     ]
                   },
                   "validators": [

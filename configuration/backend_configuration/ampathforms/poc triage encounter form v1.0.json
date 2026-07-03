@@ -354,6 +354,7 @@
               "hide": {
                 "hideWhenExpression": "age <= 5"
               }
+             
             },
             {
               "label": "BMI: (Kg/m2)",
