@@ -344,6 +344,16 @@
               "type": "obs",
               "validators": []
             },
+             {
+              "type": "encounterProvider",
+              "label": "Provider:",
+              "id": "provider_2",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
             {
               "label": "Remarks:",
               "required": "true",

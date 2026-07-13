@@ -21,7 +21,7 @@
               "type": "encounterDatetime",
               "required": "true",
               "questionOptions": {
-                "rendering": "ui-select-extended"
+                "rendering": "date"
               },
               "id": "encDate",
               "validators": [
@@ -931,7 +931,6 @@
             {
               "label": "Height(cm):",
               "type": "obs",
-
               "id": "height",
               "questionOptions": {
                 "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
@@ -947,7 +946,6 @@
            {
               "label": "Height(cm):",
               "type": "obs",
-
               "id": "heightForBMI",
               "questionOptions": {
                 "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
@@ -976,10 +974,7 @@
               "hide": {
                 "hideWhenExpression": "age <= 5 && isEmpty(mobilityAdult) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
               }
-            },
-            
-            
-            
+            },      
             {
               "label": "MUAC:",
               "type": "obs",
@@ -1046,7 +1041,6 @@
                 "hideWhenExpression": "age>5 || isEmpty(WeightheightScore)"
               }
             },
-
             {
               "label": "BMI for age (+18) categorization:",
               "type": "obs",
