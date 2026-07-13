@@ -8083,49 +8083,50 @@
           "label": "Advanced HIV Disease Treatment Plan",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "CrAg test:",
-              "id": "cragTest",
+           {
+              "label": "Fluconazole prophylaxis plan:",
+              "required": "true",
+              "id": "flucoProphyPlan",
               "questionOptions": {
-                "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
+                "concept": "88cd24fe-b031-4aad-9d87-1b39ef243b18",
                 "answers": [
                   {
-                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                    "label": "Positive"
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue"
                   },
                   {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Negative"
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
                   },
                   {
-                    "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
-                    "label": "Poor sample quality"
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
                   }
                 ],
-                "showDate": "true",
-                "rendering": "select",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-                      "message": "Date is result is required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(cragTest)"
-                  }
-                }
+                "rendering": "select"
               },
               "type": "obs",
-              "validators": [],
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(flucoProphy) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && (flucoProphy==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "message": "Patient marked as not on prophylaxis. Therefore plan can only be none or start."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
+                }
+              ],
               "hide": {
                 "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
+           
             {
               "label": "Cryptococcal meningitis treatment plan:",
               "type": "obs",
@@ -8180,6 +8181,55 @@
               "id": "cryptoPlan",
               "hide": {
                 "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+             {
+              "label": "If Start/Change, regimen:",
+              "id": "MeningitisMedication",
+              "questionOptions": {
+                "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
+                  },
+                  {
+                    "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
+                    "label": "Flucytosine 100mg/kg"
+                  },
+                  {
+                    "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
+                    "label": "Liposomal amphotericin B 10mg/kg"
+                  },
+                  {
+                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
+                    "label": "Amphotericin B deoxycholate 1mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptoPlan) && isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)",
+                  "message": "You indicated patient is starting/changing regimen. Please select regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)"
               }
             },
             {

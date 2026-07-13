@@ -9289,7 +9289,7 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy !== 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
                 }
               ],
@@ -9905,7 +9905,11 @@
                       }
                     ]
                   },
-                  "validators": []
+                  "validators": [],
+                  "alert": {
+                "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], tbSymptoms))",
+                "message": "Enrollment requires CD4 and CXR orders. Please add them before submission."
+              }
                 },
                 {
                   "label": "Test ordered: Other (specify):",

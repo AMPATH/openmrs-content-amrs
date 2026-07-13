@@ -8291,7 +8291,7 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy !== 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
                 }
               ]
@@ -8344,6 +8344,55 @@
                 
               ],
               "id": "cryptoPlan"
+            },
+             {
+              "label": "If Start/Change, regimen:",
+              "id": "MeningitisMedication",
+              "questionOptions": {
+                "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
+                  },
+                  {
+                    "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
+                    "label": "Flucytosine 100mg/kg"
+                  },
+                  {
+                    "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
+                    "label": "Liposomal amphotericin B 10mg/kg"
+                  },
+                  {
+                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
+                    "label": "Amphotericin B deoxycholate 1mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptoPlan) && isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)",
+                  "message": "You indicated patient is starting/changing regimen. Please select regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)"
+              }
             },
             {
               "label": "Reason for stopping:",
