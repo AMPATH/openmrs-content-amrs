@@ -9781,13 +9781,6 @@
                   "label": "Tests Ordered",
                   "id": "order1",
                   "type": "testOrder",
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "(isEmpty(myValue) || !arrayContains(myValue, 'a8982474-1350-11df-a1f1-0026b9348838')) && (currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926' || finalResult === 'a896f3a6-1350-11df-a1f1-0026b9348838')",
-                      "message": "Viral load order is required for HIV-positive clients."
-                    }
-                  ],
                   "questionOptions": {
                     "rendering": "repeating",
                     "orderSettingUuid": "6f0c9a92-6f24-11e3-af88-005056821db0",
@@ -9927,7 +9920,14 @@
                     "rendering": "text"
                   },
                   "type": "obs",
-                  "validators": [],
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(isEmpty(order1) || !arrayContains(order1, 'a8982474-1350-11df-a1f1-0026b9348838')) && (currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926' || finalResult === 'a896f3a6-1350-11df-a1f1-0026b9348838')",
+                      "message": "Pre ART Viral load order is required for new pregnant HIV-positive clients."
+                    }
+                    
+                  ],
                   "id": "__xD0H17y8M"
                 },
                 {
