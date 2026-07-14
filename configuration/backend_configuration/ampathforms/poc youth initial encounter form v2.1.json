@@ -9764,7 +9764,13 @@
                     "rendering": "text"
                   },
                   "type": "obs",
-                  "validators": [],
+                  "validators": [
+                     {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(isEmpty(order1) || !arrayContains(order1, 'a896cce6-1350-11df-a1f1-0026b9348838') || !arrayContains(order1, 'a8908192-1350-11df-a1f1-0026b9348838')) && finalResult === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
+                      "message": "Newly diagnosed HIV-positive clients require both CD4 and CXR orders."
+                    }
+                  ],
                   "id": "otherTestOrder"
                 }
               ],
