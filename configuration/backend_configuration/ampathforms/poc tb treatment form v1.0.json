@@ -834,7 +834,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(viralLoad_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {

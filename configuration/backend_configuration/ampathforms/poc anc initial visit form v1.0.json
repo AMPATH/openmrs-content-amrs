@@ -5999,7 +5999,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(creatinine_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6031,7 +6031,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(crp_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6064,7 +6064,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sgptalt_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6098,7 +6098,7 @@
                   {
                     "type": "js_expression",
                     "failsWhenExpression": "!isEmpty(ast_test) && isEmpty(myValue)",
-                    "message": "Date is result is required."
+                    "message": "Date of result is required."
                   }
                 ],
                 "hide": {
@@ -6131,10 +6131,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(rbs_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(rbs_test)"
                   }
                 }
@@ -6165,10 +6165,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(fbs_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(fbs_test)"
                   }
                 }
@@ -6199,10 +6199,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(a1c_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(a1c_test)"
                   }
                 }
@@ -6233,10 +6233,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(ldl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(ldl_test)"
                   }
                 }
@@ -6267,10 +6267,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(hdl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(hdl_test)"
                   }
                 }
@@ -6301,10 +6301,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(tg_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(tg_test)"
                   }
                 }
@@ -6335,10 +6335,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(chol_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(chol_test)"
                   }
                 }
@@ -6369,10 +6369,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(microAlb_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(microAlb_test)"
                   }
                 }
@@ -6403,10 +6403,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(urea_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(urea_test)"
                   }
                 }
@@ -6440,7 +6440,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(hgbgdl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6472,7 +6472,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(testWBCmm) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6540,7 +6540,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(alcmm_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6573,7 +6573,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(mcv_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6594,10 +6594,13 @@
               "id": "apri_score",
               "questionOptions": {
                 "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
-                "calculateExpression": "ast_test && platelets_test ? Number(((((ast_test / 89) * 100) / platelets_test).toFixed(2))) : null",
+
                 "min": "0.00",
                 "showDate": "true",
                 "rendering": "decimal",
+                "calculate": {
+                  "calculateExpression": "!isEmpty(ast_test) && !isEmpty(platelets_test) && platelets_test != 0 ? Math.round(((((ast_test / 89) * 100) / platelets_test) * 100)) / 100 : ''"
+                },
                 "shownDateOptions": {
                   "validators": [
                     {
@@ -6606,7 +6609,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(apri_score) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6656,7 +6659,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6695,7 +6698,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(csfTest) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7165,7 +7168,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(genexpert_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7209,7 +7212,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumgene_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7265,7 +7268,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumafp_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7313,7 +7316,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumculture_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7353,7 +7356,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(tst_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7418,7 +7421,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(cxrcode_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7459,7 +7462,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(ultrasound) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7603,7 +7606,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(hepB) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -9778,6 +9781,13 @@
                   "label": "Tests Ordered",
                   "id": "order1",
                   "type": "testOrder",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(isEmpty(myValue) || !arrayContains(myValue, 'a8982474-1350-11df-a1f1-0026b9348838')) && (currHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926' || finalResult === 'a896f3a6-1350-11df-a1f1-0026b9348838')",
+                      "message": "Viral load order is required for HIV-positive clients."
+                    }
+                  ],
                   "questionOptions": {
                     "rendering": "repeating",
                     "orderSettingUuid": "6f0c9a92-6f24-11e3-af88-005056821db0",
@@ -9905,11 +9915,10 @@
                       }
                     ]
                   },
-                  "validators": [],
                   "alert": {
-                "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], tbSymptoms))",
-                "message": "Enrollment requires CD4 and CXR orders. Please add them before submission."
-              }
+                    "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], myValue))",
+                    "message": "Enrollment requires CD4 and CXR orders. Please add them before submission."
+                  }
                 },
                 {
                   "label": "Test ordered: Other (specify):",

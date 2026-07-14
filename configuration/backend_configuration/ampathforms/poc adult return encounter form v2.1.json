@@ -899,7 +899,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(myValue) && !isEmpty(caTestResult) && caTestResult !== 'a89ad3a4-1350-11df-a1f1-0026b9348838' ",
-                  "message": "Date is result is required."
+                  "message": "Date of result is required."
                 },
                 {
                   "type": "js_expression",
@@ -3218,7 +3218,7 @@
           "label": "Advanced HIV Disease Treatment History",
           "isExpanded": "true",
           "questions": [
-             {
+            {
               "label": "Fluconazole prophylaxis:",
               "required": "true",
               "id": "flucoProphy",
@@ -4320,7 +4320,6 @@
                     "label": "Body mass index (BMI) <18.5",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
-                  
                 ],
                 "rendering": "multiCheckbox"
               },
@@ -4376,7 +4375,7 @@
               "required": "true",
               "questionOptions": {
                 "calculate": {
-									"calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838':''"
+                  "calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838':''"
                 },
                 "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
                 "answers": [
@@ -4392,7 +4391,6 @@
                     "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
                     "label": "On TB treatment"
                   }
-                  
                 ],
                 "rendering": "select"
               },
@@ -4630,7 +4628,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(creatinine_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4660,7 +4658,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(egfr) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4681,14 +4679,14 @@
                 }
               ]
             },
-             {
+            {
               "type": "obs",
               "label": "CRP:",
               "id": "crp_test",
               "questionOptions": {
                 "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
                 "rendering": "decimal",
-                
+
                 "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
@@ -4698,7 +4696,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(crp_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4731,7 +4729,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sgptalt_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4755,21 +4753,21 @@
                 "rendering": "decimal",
                 "max": "3500.00",
                 "min": "0.00",
-                "showDate": "true"
-              },
-              "shownDateOptions": {
-                "validators": [
-                  {
-                    "type": "date"
-                  },
-                  {
-                    "type": "js_expression",
-                    "failsWhenExpression": "!isEmpty(ast_test) && isEmpty(myValue)",
-                    "message": "Date is result is required."
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(ast_test) && isEmpty(myValue)",
+                      "message": "Date of result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(ast_test)"
                   }
-                ],
-                "hide": {
-                  "hideWhenExpression": "isEmpty(ast_test)"
                 }
               },
               "validators": [
@@ -4779,6 +4777,7 @@
                 }
               ]
             },
+
             {
               "label": "RBS mmol/L:",
               "id": "rbs_test",
@@ -4798,10 +4797,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(rbs_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(rbs_test)"
                   }
                 }
@@ -4832,10 +4831,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(fbs_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(fbs_test)"
                   }
                 }
@@ -4866,10 +4865,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(a1c_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(a1c_test)"
                   }
                 }
@@ -4900,10 +4899,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(ldl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(ldl_test)"
                   }
                 }
@@ -4934,10 +4933,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(hdl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(hdl_test)"
                   }
                 }
@@ -4968,10 +4967,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(tg_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(tg_test)"
                   }
                 }
@@ -5002,10 +5001,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(chol_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(chol_test)"
                   }
                 }
@@ -5036,10 +5035,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(microAlb_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(microAlb_test)"
                   }
                 }
@@ -5070,10 +5069,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(urea_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(urea_test)"
                   }
                 }
@@ -5107,7 +5106,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(hgbgdl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5140,7 +5139,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(testWBCmm) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5208,7 +5207,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(alcmm_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5241,7 +5240,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(mcv_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5262,10 +5261,13 @@
               "id": "apri_score",
               "questionOptions": {
                 "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
-               "calculateExpression": "ast_test && platelets_test ? Number(((((ast_test / 89) * 100) / platelets_test).toFixed(2))) : null",
+
                 "min": "0.00",
                 "showDate": "true",
                 "rendering": "decimal",
+                "calculate": {
+                  "calculateExpression": "!isEmpty(ast_test) && !isEmpty(platelets_test) && platelets_test != 0 ? Math.round(((((ast_test / 89) * 100) / platelets_test) * 100)) / 100 : ''"
+                },
                 "shownDateOptions": {
                   "validators": [
                     {
@@ -5274,7 +5276,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(apri_score) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5295,7 +5297,6 @@
         {
           "label": "CrAg And CSF",
           "questions": [
-            
             {
               "label": "CrAg test:",
               "id": "cragTest",
@@ -5325,7 +5326,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5339,9 +5340,8 @@
                 "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896d2cc-1350-11df-a1f1-0026b9348838'",
                 "message": "Please consider intiating patient on fluconazole prophylaxis"
               }
-              
             },
-             {
+            {
               "label": "CSF Cryptococcal Ag test:",
               "id": "csfTest",
               "questionOptions": {
@@ -5355,7 +5355,6 @@
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
                     "label": "Negative"
                   }
-                  
                 ],
                 "showDate": "true",
                 "rendering": "select",
@@ -5367,7 +5366,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(csfTest) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5381,7 +5380,6 @@
                 "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
                 "message": "Please initiate the patient on crypto meningitis treatment"
               }
-              
             }
           ]
         },
@@ -5403,7 +5401,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(drugSensitivity_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5416,7 +5414,7 @@
             }
           ]
         },
-       
+
         {
           "label": "Urinalysis",
           "questions": [
@@ -5713,7 +5711,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(genexpert_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5757,7 +5755,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumgene_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5813,7 +5811,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumafp_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5861,7 +5859,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumculture_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5901,7 +5899,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(tst_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5937,7 +5935,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(tblam) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -6002,7 +6000,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(cxrcode_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -7601,7 +7599,7 @@
             {
               "label": "Fluconazole prophylaxis plan:",
               "required": "true",
-              "id": "flucoProphyPlan", 
+              "id": "flucoProphyPlan",
               "questionOptions": {
                 "concept": "88cd24fe-b031-4aad-9d87-1b39ef243b18",
                 "answers": [
@@ -7625,7 +7623,7 @@
                 "rendering": "select"
               },
               "type": "obs",
-               "validators": [
+              "validators": [
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(flucoProphy) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && (flucoProphy==='a899e0ac-1350-11df-a1f1-0026b9348838')",
@@ -7683,14 +7681,13 @@
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "id": "cryptoPlan",
               "hide": {
                 "hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
               }
             },
-              {
+            {
               "label": "If Start/Change, regimen:",
               "id": "MeningitisMedication",
               "questionOptions": {
@@ -8376,8 +8373,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             }
-
-            
           ]
         },
         {
@@ -8917,7 +8912,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-            
 
             {
               "label": "Lifestyle advice:",
@@ -8996,302 +8990,302 @@
               }
             },
             {
-							"type": "obsGroup",
-							"label": "Hypertenstion drugs started, detailed",
-							"required": "true",
-							"id": "hyperdetailed",
-							"hide": {
-								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a8986880-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
-							},
-							"questionOptions": {
-								"rendering": "repeating",
-								"concept": "2a6868b8-7142-4e94-acc5-dbcaa95cf822"
-							},
-							"questions": [
-								{
-									"label": "Hypertension treatment:",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')) ? undefined : HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')",
-									"id": "antiHypertensive",
-									"questionOptions": {
-										"concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
-										"answers": [
-											{
-												"concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
-												"label": "Amlodipine"
-											},
-											{
-												"concept": "22857905-ef07-4702-b576-bdb02677e301",
-												"label": "Amlodipine/Losartan"
-											},
-											{
-												"concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
-												"label": "Atenolol"
-											},
-											{
-												"concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
-												"label": "Atorvastatin"
-											},
-											{
-												"concept": "a8a43994-1350-11df-a1f1-0026b9348838",
-												"label": "Carvedilol"
-											},
-											{
-												"concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
-												"label": "Clopidogrel"
-											},
-											{
-												"concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
-												"label": "Digoxin"
-											},
-											{
-												"concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
-												"label": "Enalapril"
-											},
-											{
-												"concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
-												"label": "Enoxaparin"
-											},
-											{
-												"concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
-												"label": "Felodipine"
-											},
-											{
-												"concept": "b0e484db-ab3c-4851-9cb6-56bfaf2348a5",
-												"label": "Frusemide"
-											},
-											{
-												"concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
-												"label": "HCTZ"
-											},
-											{
-												"concept": "4ef71275-29e3-4b5a-940c-267473ab61b6",
-												"label": "Lisinopril 20mg/HCTZ 12.5mg"
-											},
-											{
-												"concept": "a8a43750-1350-11df-a1f1-0026b9348838",
-												"label": "Losartan"
-											},
-											{
-												"concept": "e476d21f-911d-4d2e-8c37-1ce76e48930f",
-												"label": "Losartan 50mg/Hydrochlorothiazide 12.5mg"
-											},
-											{
-												"concept": "d6dd4ede-2a46-4eb1-99b7-360fb4e329e5",
-												"label": "Metropolol"
-											},
-											{
-												"concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
-												"label": "Nifedipine"
-											},
-											{
-												"concept": "a8939044-1350-11df-a1f1-0026b9348838",
-												"label": "Propranolol"
-											},
-											{
-												"concept": "c06c7786-0657-41db-babc-a16c350d35da",
-												"label": "Rosuvastatin"
-											},
-											{
-												"concept": "a8a43a52-1350-11df-a1f1-0026b9348838",
-												"label": "Spironolactone"
-											},
-											{
-												"concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
-												"label": "Telmisartan"
-											},
-											{
-												"concept": "59611435-e869-4a8d-8e58-649b7630e471",
-												"label": "Junior ASA"
-											}
-										],
-										"rendering": "multiCheckbox"
-									},
-									"type": "obs",
-									"validators": []
-								},
-								{
-									"label": "Frequency",
-									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"label": "Once a day",
-												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Twice a day",
-												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Three times a day",
-												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Four times a day",
-												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "As needed",
-												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
-											},
-											{
-												"label": "Other",
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
-											}
-										],
-										"rendering": "select"
-									},
-									"type": "obs",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(antiHypertensive)"
-									},
-									"id": "medFreq"
-								},
-								{
-									"label": "Number of mg:",
-									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "decimal"
-									},
-									"type": "obs",
-									"id": "numberMg",
-									"validators": [
-										{
-											"type": "decimal",
-											"decimalPlace": 2
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(antiHypertensive)"
-									}
-								}
-							]
-						},
-						{
-							"type": "obsGroup",
-							"label": "Diabetes drugs started, detailed",
-							"id": "diabetesdetailed",
-							"hide": {
-								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
-							},
-							"questionOptions": {
-								"rendering": "repeating",
-								"concept": "a6812b99-3126-40b8-8c9c-2f511a6912b1"
-							},
-							"questions": [
-								{
-									"label": "Diabetes treatment:",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')) ? undefined : HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')",
-									"id": "antiDiabetics",
-									"questionOptions": {
-										"concept": "78809200-7f7f-4d6f-b515-31088765d442",
-										"answers": [
-											{
-												"concept": "a8a4320a-1350-11df-a1f1-0026b9348838",
-												"label": "Gliclazide"
-											},
-											{
-												"concept": "a8a4314c-1350-11df-a1f1-0026b9348838",
-												"label": "Glibenclamide"
-											},
-											{
-												"concept": "a8a43386-1350-11df-a1f1-0026b9348838",
-												"label": "Glimepiride"
-											},
-											{
-												"concept": "a8a42ecc-1350-11df-a1f1-0026b9348838",
-												"label": "Insulin 70/30"
-											},
-											{
-												"concept": "a8a42fbc-1350-11df-a1f1-0026b9348838",
-												"label": "Insulin NPH"
-											},
-											{
-												"concept": "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
-												"label": "Insulin humalogue"
-											},
-											{
-												"concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
-												"label": "Insulin glargine"
-											},
-											{
-												"concept": "a8a4344e-1350-11df-a1f1-0026b9348838",
-												"label": "Metformin"
-											},
-											{
-												"concept": "a8a43b1a-1350-11df-a1f1-0026b9348838",
-												"label": "Pioglitazone"
-											}
-										],
-										"rendering": "multiCheckbox"
-									},
-									"type": "obs",
-									"validators": []
-								},
-								{
-									"label": "Frequency",
-									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"label": "Once a day",
-												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Twice a day",
-												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Three times a day",
-												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Four times a day",
-												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "As needed",
-												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
-											},
-											{
-												"label": "Other",
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
-											}
-										],
-										"rendering": "select"
-									},
-									"type": "obs",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(antiDiabetics)"
-									},
-									"id": "medFreq"
-								},
-								{
-									"label": "Number of mg:",
-									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "decimal"
-									},
-									"type": "obs",
-									"id": "numberMg",
-									"validators": [
-										{
-											"type": "decimal",
-											"decimalPlace": 2
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(antiDiabetics)"
-									}
-								}
-							]
-						}
+              "type": "obsGroup",
+              "label": "Hypertenstion drugs started, detailed",
+              "required": "true",
+              "id": "hyperdetailed",
+              "hide": {
+                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a8986880-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
+              },
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "2a6868b8-7142-4e94-acc5-dbcaa95cf822"
+              },
+              "questions": [
+                {
+                  "label": "Hypertension treatment:",
+                  "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')) ? undefined : HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')",
+                  "id": "antiHypertensive",
+                  "questionOptions": {
+                    "concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
+                    "answers": [
+                      {
+                        "concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
+                        "label": "Amlodipine"
+                      },
+                      {
+                        "concept": "22857905-ef07-4702-b576-bdb02677e301",
+                        "label": "Amlodipine/Losartan"
+                      },
+                      {
+                        "concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Atenolol"
+                      },
+                      {
+                        "concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
+                        "label": "Atorvastatin"
+                      },
+                      {
+                        "concept": "a8a43994-1350-11df-a1f1-0026b9348838",
+                        "label": "Carvedilol"
+                      },
+                      {
+                        "concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
+                        "label": "Clopidogrel"
+                      },
+                      {
+                        "concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
+                        "label": "Digoxin"
+                      },
+                      {
+                        "concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
+                        "label": "Enalapril"
+                      },
+                      {
+                        "concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
+                        "label": "Enoxaparin"
+                      },
+                      {
+                        "concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
+                        "label": "Felodipine"
+                      },
+                      {
+                        "concept": "b0e484db-ab3c-4851-9cb6-56bfaf2348a5",
+                        "label": "Frusemide"
+                      },
+                      {
+                        "concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
+                        "label": "HCTZ"
+                      },
+                      {
+                        "concept": "4ef71275-29e3-4b5a-940c-267473ab61b6",
+                        "label": "Lisinopril 20mg/HCTZ 12.5mg"
+                      },
+                      {
+                        "concept": "a8a43750-1350-11df-a1f1-0026b9348838",
+                        "label": "Losartan"
+                      },
+                      {
+                        "concept": "e476d21f-911d-4d2e-8c37-1ce76e48930f",
+                        "label": "Losartan 50mg/Hydrochlorothiazide 12.5mg"
+                      },
+                      {
+                        "concept": "d6dd4ede-2a46-4eb1-99b7-360fb4e329e5",
+                        "label": "Metropolol"
+                      },
+                      {
+                        "concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
+                        "label": "Nifedipine"
+                      },
+                      {
+                        "concept": "a8939044-1350-11df-a1f1-0026b9348838",
+                        "label": "Propranolol"
+                      },
+                      {
+                        "concept": "c06c7786-0657-41db-babc-a16c350d35da",
+                        "label": "Rosuvastatin"
+                      },
+                      {
+                        "concept": "a8a43a52-1350-11df-a1f1-0026b9348838",
+                        "label": "Spironolactone"
+                      },
+                      {
+                        "concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
+                        "label": "Telmisartan"
+                      },
+                      {
+                        "concept": "59611435-e869-4a8d-8e58-649b7630e471",
+                        "label": "Junior ASA"
+                      }
+                    ],
+                    "rendering": "multiCheckbox"
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Frequency",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Once a day",
+                        "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Twice a day",
+                        "concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Three times a day",
+                        "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Four times a day",
+                        "concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "As needed",
+                        "concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+                      },
+                      {
+                        "label": "Other",
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(antiHypertensive)"
+                  },
+                  "id": "medFreq"
+                },
+                {
+                  "label": "Number of mg:",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "decimal"
+                  },
+                  "type": "obs",
+                  "id": "numberMg",
+                  "validators": [
+                    {
+                      "type": "decimal",
+                      "decimalPlace": 2
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(antiHypertensive)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "obsGroup",
+              "label": "Diabetes drugs started, detailed",
+              "id": "diabetesdetailed",
+              "hide": {
+                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
+              },
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "a6812b99-3126-40b8-8c9c-2f511a6912b1"
+              },
+              "questions": [
+                {
+                  "label": "Diabetes treatment:",
+                  "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')) ? undefined : HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')",
+                  "id": "antiDiabetics",
+                  "questionOptions": {
+                    "concept": "78809200-7f7f-4d6f-b515-31088765d442",
+                    "answers": [
+                      {
+                        "concept": "a8a4320a-1350-11df-a1f1-0026b9348838",
+                        "label": "Gliclazide"
+                      },
+                      {
+                        "concept": "a8a4314c-1350-11df-a1f1-0026b9348838",
+                        "label": "Glibenclamide"
+                      },
+                      {
+                        "concept": "a8a43386-1350-11df-a1f1-0026b9348838",
+                        "label": "Glimepiride"
+                      },
+                      {
+                        "concept": "a8a42ecc-1350-11df-a1f1-0026b9348838",
+                        "label": "Insulin 70/30"
+                      },
+                      {
+                        "concept": "a8a42fbc-1350-11df-a1f1-0026b9348838",
+                        "label": "Insulin NPH"
+                      },
+                      {
+                        "concept": "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
+                        "label": "Insulin humalogue"
+                      },
+                      {
+                        "concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
+                        "label": "Insulin glargine"
+                      },
+                      {
+                        "concept": "a8a4344e-1350-11df-a1f1-0026b9348838",
+                        "label": "Metformin"
+                      },
+                      {
+                        "concept": "a8a43b1a-1350-11df-a1f1-0026b9348838",
+                        "label": "Pioglitazone"
+                      }
+                    ],
+                    "rendering": "multiCheckbox"
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Frequency",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Once a day",
+                        "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Twice a day",
+                        "concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Three times a day",
+                        "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Four times a day",
+                        "concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "As needed",
+                        "concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+                      },
+                      {
+                        "label": "Other",
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(antiDiabetics)"
+                  },
+                  "id": "medFreq"
+                },
+                {
+                  "label": "Number of mg:",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "decimal"
+                  },
+                  "type": "obs",
+                  "id": "numberMg",
+                  "validators": [
+                    {
+                      "type": "decimal",
+                      "decimalPlace": 2
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(antiDiabetics)"
+                  }
+                }
+              ]
+            }
           ]
         }
       ]
