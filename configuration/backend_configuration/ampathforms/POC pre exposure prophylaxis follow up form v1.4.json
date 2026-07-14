@@ -935,7 +935,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(creatinineTest) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {

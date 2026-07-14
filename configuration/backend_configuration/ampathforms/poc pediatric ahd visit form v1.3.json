@@ -4200,7 +4200,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(creatinine_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4225,7 +4225,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(egfr) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4263,7 +4263,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(crp_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4296,7 +4296,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sgptalt_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4325,7 +4325,7 @@
                   {
                     "type": "js_expression",
                     "failsWhenExpression": "!isEmpty(ast_test) && isEmpty(myValue)",
-                    "message": "Date is result is required."
+                    "message": "Date of result is required."
                   }
                 ],
                 "hide": {
@@ -4352,10 +4352,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(rbs_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(rbs_test)"
                   }
                 }
@@ -4380,10 +4380,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(fbs_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(fbs_test)"
                   }
                 }
@@ -4408,10 +4408,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(a1c_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(a1c_test)"
                   }
                 }
@@ -4436,10 +4436,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(ldl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(ldl_test)"
                   }
                 }
@@ -4464,10 +4464,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(hdl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(hdl_test)"
                   }
                 }
@@ -4492,10 +4492,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(tg_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(tg_test)"
                   }
                 }
@@ -4520,10 +4520,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(chol_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(chol_test)"
                   }
                 }
@@ -4548,10 +4548,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(microAlb_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(microAlb_test)"
                   }
                 }
@@ -4576,10 +4576,10 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(urea_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
-                  "hde": {
+                  "hide": {
                     "hideWhenExpression": "isEmpty(urea_test)"
                   }
                 }
@@ -4607,7 +4607,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(hgbgdl_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4634,7 +4634,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(testWBCmm) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4692,7 +4692,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(alcmm_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4720,7 +4720,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(mcv_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4766,7 +4766,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(cragTest) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4806,7 +4806,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(csfTest) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -4842,7 +4842,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(drugSensitivity_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5152,7 +5152,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(genexpert_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5196,7 +5196,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumgene_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5252,7 +5252,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumafp_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5300,7 +5300,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(sputumculture_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5340,7 +5340,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(tst_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
@@ -5405,7 +5405,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "!isEmpty(cxrcode_test) && isEmpty(myValue)",
-                      "message": "Date is result is required."
+                      "message": "Date of result is required."
                     }
                   ],
                   "hide": {
