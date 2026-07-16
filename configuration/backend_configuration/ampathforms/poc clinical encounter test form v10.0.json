@@ -6111,7 +6111,7 @@
                     "datasource": {
                     "name": "endpoint",
                     "config": {
-                    "endpointUrl": "/openmrs/ws/rest/v1/provider",
+                    "endpointUrl": "https://kibana.ampath.or.ke/openmrs/ws/rest/v1/provider",
                       "labelKey": "display",
                       "valueKey": "uuid"
                     }
