@@ -6100,6 +6100,23 @@
               "hide": {
                 "hideWhenExpression": "referralTo !=='59312903-dde9-4f7a-b6cf-7b41863b7e81'"
               }
+            },
+            {
+                "label": "Doctor",
+                "id": "doctor",
+                "type": "obs",
+                "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "remote-select",
+                    "datasource": {
+                    "name": "endpoint",
+                    "config": {
+                    "endpointUrl": "/openmrs/ws/rest/v1/provider",
+                      "labelKey": "display",
+                      "valueKey": "uuid"
+                    }
+                 }
+             }
             }
           ]
         }
