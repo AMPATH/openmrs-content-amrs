@@ -6102,32 +6102,21 @@
               }
             },
             {
-              "type": "obsGroup",
-              "label": "Consulting Doctors",
-              "required": "true",
+              "label": "Doctor",
+              "id": "doctor",
+              "type": "obs",
               "questionOptions": {
-                "concept": "a8a003a6-1350-11df-a1f1-0026b9348838",
-                "rendering": "repeating"
-              },
-              "questions": [
-                {
-                  "label": "Doctor",
-                  "id": "doctor",
-                  "type": "obs",
-                  "questionOptions": {
-                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-                    "rendering": "remote-select",
-                    "datasource": {
-                      "name": "endpoint",
-                      "config": {
-                        "endpointUrl": "http://staging.ampath.or.ke/openmrs/ws/rest/v1/provider",
-                        "labelKey": "display",
-                        "valueKey": "uuid"
-                      }
-                    }
+                "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+                "rendering": "remote-select",
+                "datasource": {
+                  "name": "endpoint",
+                  "config": {
+                    "endpointUrl": "http://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
+                    "labelKey": "display",
+                    "valueKey": "provider_national_id"
                   }
                 }
-              ]
+              }
             }
           ]
         }
