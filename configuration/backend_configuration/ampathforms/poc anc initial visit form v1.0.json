@@ -9907,11 +9907,8 @@
                         "label": "Echo"
                       }
                     ]
-                  },
-                  "alert": {
-                    "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], myValue))",
-                    "message": "Enrollment requires CD4 and CXR orders. Please add them before submission."
                   }
+                  
                 },
                 {
                   "label": "Test ordered: Other (specify):",

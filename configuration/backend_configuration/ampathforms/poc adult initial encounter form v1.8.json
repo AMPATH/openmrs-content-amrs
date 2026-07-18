@@ -10040,12 +10040,12 @@
                     ]
                   },
                   "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(order1) || !arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838'], order1) || !arrayContainsAny(['a8908192-1350-11df-a1f1-0026b9348838'], order1)",
-                      "message": "CD4 and CXR orders are required."
-                    }
-                  ]
+                  
+                  ],
+                  "alert": {
+                    "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], myValue))",
+                    "message": "Newly enrolled clients require baseline CD4 and CXR test orders. Please order them before form submission."
+                  }
                   
                 },
                 {
