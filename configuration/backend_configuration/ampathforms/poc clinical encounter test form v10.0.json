@@ -6111,7 +6111,7 @@
                 "datasource": {
                   "name": "endpoint",
                   "config": {
-                    "endpointUrl": "http://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
+                    "endpointUrl": "https://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
                     "labelKey": "display",
                     "valueKey": "provider_national_id"
                   }
