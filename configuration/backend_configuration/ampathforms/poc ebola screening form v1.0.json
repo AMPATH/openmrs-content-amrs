@@ -1,0 +1,448 @@
+{
+  "name": "POC OPD Ebola Screening Form v1.0",
+  "uuid": "",
+  "published": true,
+  "retired": false,
+  "encounterType": "31a27b46-0cf3-43ff-aa16-01a25f2797f5",
+  "description": "OPD Ebola Screening information",
+  "version": "1.0",
+  "encounter": "EBOLASCREENING",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Ebola Screening",
+      "sections": [
+        {
+          "label": "Visit Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "id": "encDate",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Complaints and History of complaints",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Presenting symptoms",
+              "type": "obs",
+              "id": "presentingSymptoms",
+              "questionOptions": {
+                "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                "rendering": "checkbox",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8932f00-1350-11df-a1f1-0026b9348838",
+                    "label": "Abdominal pain",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a0bda074-8e57-4ba7-ab9c-c008776f8d48",
+                    "label": "Bleeding from body openings",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                    "label": "Diarrhoea",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                    "label": "Fever",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "8065a17b-fbe4-4558-9ddd-0af641866c21",
+                    "label": " General Body Malaise",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+                    "label": "Headache",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Lethargy/severe weakness",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a890e2f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Mylagia",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                    "label": "Vomiting",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Exposure And Risk History",
+              "isExpanded": "true",
+              "questions": [
+                {
+                  "label": "Occupation:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "concept": "a8a0a00e-1350-11df-a1f1-0026b9348838",
+
+                    "answers": [
+                      {
+                        "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                        "label": "Truck driver"
+                      },
+                      {
+                        "concept": "05b4c838-a185-4bb0-8c33-71f80ea7c4cf",
+                        "label": "Student"
+                      },
+                      {
+                        "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                        "label": "Healthcare worker"
+                      },
+                      {
+                        "concept": "e77a5de0-22d7-424e-978d-d3464d4170aa",
+                        "label": "Health laboratory worker"
+                      },
+                      {
+                        "concept": "a0ba3638-97da-49e0-a8eb-fdac507b148f",
+                        "label": "Working with animals"
+                      },
+                      {
+                        "concept": "6c28b299-2e99-43c2-9156-1dd77f789661",
+                        "label": "Mortuary attendant"
+                      },
+                      {
+                        "concept": "a89ff500-1350-11df-a1f1-0026b9348838",
+                        "label": "Commercial sex worker"
+                      },
+                      {
+                        "concept": "7764a54b-3e5d-4c8a-b64b-4ed21ba217b0",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "id": "occupation"
+                },
+                {
+                  "label": "Has the patient travelled in the past 21 days prior to symptom onset?:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "concept": "99cb7581-e0a3-43f0-b8c8-fdeda483a154",
+
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      },
+                      {
+                        "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                        "label": "Unknown"
+                      }
+                    ]
+                  },
+                  "id": "patientTravelled"
+                },
+                {
+                  "label": "If yes, country:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "concept": "a26e67cd-c5eb-492c-a1ce-6723b245f3b5",
+                    "answers": [
+                      {
+                        "concept": "cdf42685-8d0e-4dd0-916e-d1425f999a60",
+                        "label": "Democratic Republic of Congo"
+                      },
+                      {
+                        "concept": "543c8bc2-f411-4ef4-bd94-2c25a1927bc0",
+                        "label": "Uganda"
+                      },
+                      {
+                        "concept": "32476a73-a789-4c52-ba1d-e4df4dd6d877",
+                        "label": "Tanzania"
+                      },
+
+                      {
+                        "concept": "53455ab4-15f1-4afb-88c5-c9ddcdbd4e4a",
+                        "label": "Rwanda"
+                      },
+
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "id": "reportingCountry"
+                },
+                {
+                  "label": "Has the patient had contact with a symptomatic or deceased person withing the last 21 days?",
+                  "type": "obs",
+                  "id": "contactDeceased",
+                  "questionOptions": {
+                    "concept": "913a9396-bca3-4817-9b5c-52d915d0d252",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Suspected case?",
+                  "type": "obs",
+                  "id": "suspectedCase",
+                  "questionOptions": {
+                    "concept": "6cd4f017-dae4-4b65-86ee-77074555feaa",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Actions Taken",
+              "isExpanded": "true",
+              "questions": [
+                {
+                  "label": "Patient isolated:",
+                  "type": "obs",
+                  "id": "patientIsolated",
+                  "questionOptions": {
+                    "concept": "54b79cba-b1a6-4953-9ab5-7584bf5e393e",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Health worker used PPE",
+                  "type": "obs",
+                  "id": "healthWorkerUsedPPE",
+                  "questionOptions": {
+                    "concept": "bf26d59b-b597-4a4c-8578-2986e0b5d136",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Specimen collected for Ebola testing?",
+                  "type": "obs",
+                  "id": "ebolaTestingSpecimenCollected",
+                  "questionOptions": {
+                    "concept": "dfcdcaf9-5317-4651-9846-9b4fd9334fb9",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Referred to designated Ebola treatment center?",
+                  "type": "obs",
+                  "id": "ebolaTreamentCenter",
+                  "questionOptions": {
+                    "concept": "5a96fc07-cf1b-4704-8174-23380b104b0e",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Contact tracing initiated?",
+                  "type": "obs",
+                  "id": "ebolaContactTracing",
+                  "questionOptions": {
+                    "concept": "0ce2c4af-f6e1-41cb-b544-cfba74360713",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Decontamination/disinfection of area done?",
+                  "type": "obs",
+                  "id": "ebolaDecontamination",
+                  "questionOptions": {
+                    "concept": "2ed2b5e4-8c3e-4cd8-a82e-5fb5ec8d55b8",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "label": "Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Final Disposition:",
+              "type": "obs",
+              "id": "finalOutcome",
+              "questionOptions": {
+                "concept": "d5d4206b-052b-4781-8701-1d2a781ada46",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8af5018-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue with routine care"
+                  },
+
+                  {
+                    "concept": "3b48afa0-88df-4e18-ae13-60de2035a2a9",
+                    "label": "Isolated and tested"
+                  },
+                  {
+                    "concept": "fff6953a-5f4d-4b97-aff1-08c92b9bf660",
+                    "label": "Declined isolation and testing"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+
+        {
+          "label": "Clinical Notes",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Clinical notes:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rows": "5"
+              },
+              "id": "clinicalNotes"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

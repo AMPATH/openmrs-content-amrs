@@ -10040,8 +10040,12 @@
                     ]
                   },
                   "validators": [
-                    
-                  ]
+                  
+                  ],
+                  "alert": {
+                    "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], myValue))",
+                    "message": "Newly enrolled clients require baseline CD4 and CXR test orders. Please order them before form submission."
+                  }
                   
                 },
                 {
@@ -10051,13 +10055,7 @@
                     "rendering": "text"
                   },
                   "type": "obs",
-                  "validators": [
-                     {
-                      "type": "js_expression",
-                      "failsWhenExpression": "(isEmpty(order1) || !arrayContains(order1, 'a896cce6-1350-11df-a1f1-0026b9348838') || !arrayContains(order1, 'a8908192-1350-11df-a1f1-0026b9348838')) && finalResult === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
-                      "message": "Newly diagnosed HIV-positive clients require both CD4 and CXR orders."
-                    }
-                  ],
+                  "validators": [],
                   "id": "otherTestOrder"
                 }
               ],

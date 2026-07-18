@@ -216,7 +216,7 @@
                     "label": "Dead"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
                     "label": "Alive"
                   }
                 ]
@@ -345,14 +345,32 @@
               "validators": []
             },
              {
-              "type": "encounterProvider",
-              "label": "Provider:",
-              "id": "provider_2",
-              "required": "true",
-              "default": "",
+              "type": "obsGroup",
+              "label": "Consulting Doctors",
+              "required":"true",
               "questionOptions": {
-                "rendering": "ui-select-extended"
-              }
+                "concept": "a8a003a6-1350-11df-a1f1-0026b9348838",
+                "rendering": "repeating"
+              },
+                "questions": [
+                   {
+                      "label": "Doctor",
+                      "id": "doctor",
+                      "type": "obs",
+                      "questionOptions": {
+                        "concept": "5f4b48df-bacc-4c04-8988-10fa2a572d8e",
+                        "rendering": "remote-select",
+                        "datasource": {
+                          "name": "endpoint",
+                          "config": {
+                            "endpointUrl": "https://jsonplaceholder.typicode.com/users",
+                            "labelKey": "name",
+                            "valueKey": "id"
+                          }
+                        }
+                      }
+                    }
+                ]
             },
             {
               "label": "Remarks:",
