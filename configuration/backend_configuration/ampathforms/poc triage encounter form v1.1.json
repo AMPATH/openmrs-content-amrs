@@ -1,5 +1,5 @@
 {
-   "name": "POC OPD Triage Encounter Form v1.1",
+  "name": "POC OPD Triage Encounter Form v1.1",
   "uuid": "",
   "published": true,
   "retired": false,
@@ -38,7 +38,7 @@
               "questionOptions": {
                 "rendering": "ui-select-extended"
               },
-              "id": "encProvider "
+              "id": "encProvider"
             },
             {
               "label": "Location:",
@@ -51,30 +51,10 @@
             }
           ]
         },
-         {
+        {
           "label": "Complaints and History of complaints",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Patient having complaint(s) today?",
-              "type": "obs",
-              "id": "complaintsToday",
-              "required": "true",
-              "questionOptions": {
-                "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
             {
               "label": "Presenting complaints",
               "type": "obsGroup",
@@ -84,9 +64,7 @@
                 "rendering": "repeating"
               },
               "validators": [],
-              "hide": {
-                "hideWhenExpression": "complaintsToday !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              },
+
               "questions": [
                 {
                   "label": "Complaint:",
@@ -568,42 +546,7 @@
                     "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
                   }
                 },
-                {
-                  "label": "Patient had contact with TB Infected person in the last 12 months?",
-                  "type": "obs",
-                  "id": "contactTB",
-                  "required": "true",
-                  "questionOptions": {
-                    "concept": "f66ad7cb-c9fa-42b2-8f7b-863eddb7eb98",
-                    "rendering": "select",
-                    "answers": [
-                      {
-                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                        "label": "Yes"
-                      },
-                      {
-                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                        "label": "No"
-                      }
-                    ]
-                  },
-                  "hide": {
-                    "hideWhenExpression": "cOmplaIntField !== 'a890d73c-1350-11df-a1f1-0026b9348838'"
-                  }
-                },
-                {
-                  "label": "Number of motions per day:",
-                  "type": "obs",
-                  "id": "numberMotions",
-                  "questionOptions": {
-                    "concept": "f3515e5a-d4b2-4470-a4f5-f17fd2858d13",
-                    "rendering": "number",
-                    "min": "0"
-                  },
-                  "hide": {
-                    "hideWhenExpression": "cOmplaIntField !== 'a890861a-1350-11df-a1f1-0026b9348838'"
-                  }
-                },
+
                 {
                   "label": "Onset status:",
                   "type": "obs",
@@ -762,7 +705,6 @@
                 "hideWhenExpression": "age < 3"
               }
             }
-            
           ]
         },
         {
@@ -778,12 +720,9 @@
                 "rendering": "number",
                 "max": "43",
                 "min": "25"
-              },
-              "alert": {
-                "useConceptReferenceRange": true
               }
             },
-             {
+            {
               "label": "Mode of collection?",
               "type": "obs",
               "id": "tempMode",
@@ -818,9 +757,6 @@
                 "rendering": "number",
                 "max": "230",
                 "min": "0"
-              },
-              "alert": {
-                "useConceptReferenceRange": true
               }
             },
             {
@@ -830,9 +766,6 @@
               "questionOptions": {
                 "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
-              },
-              "alert": {
-                "useConceptReferenceRange": true
               }
             },
             {
@@ -842,9 +775,6 @@
               "questionOptions": {
                 "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
-              },
-              "alert": {
-                "useConceptReferenceRange": true
               }
             },
             {
@@ -854,9 +784,6 @@
               "questionOptions": {
                 "concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
-              },
-              "alert": {
-                "useConceptReferenceRange": true
               }
             },
             {
@@ -866,12 +793,9 @@
               "questionOptions": {
                 "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
-              },
-              "alert": {
-                "useConceptReferenceRange": true
               }
             },
-             {
+            {
               "label": "Mode of collection?",
               "type": "obs",
               "id": "satMode",
@@ -925,7 +849,7 @@
                 "min": "0"
               },
               "hide": {
-                "hideWhenExpression": "age <= 5 && isEmpty(mobilityAdult) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
+                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
               }
             },
             {
@@ -943,7 +867,7 @@
                 "hideWhenExpression": "!(age >= 0 && age <=5)"
               }
             },
-           {
+            {
               "label": "Height(cm):",
               "type": "obs",
               "id": "heightForBMI",
@@ -955,10 +879,10 @@
               },
               "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
               "hide": {
-                "hideWhenExpression": "age <= 5 && isEmpty(mobilityAdult) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
+                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
               }
             },
-             {
+            {
               "label": "BMI: (Kg/m2)",
               "type": "obs",
               "id": "bmi",
@@ -972,9 +896,9 @@
                 }
               },
               "hide": {
-                "hideWhenExpression": "age <= 5 && isEmpty(mobilityAdult) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
+                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
               }
-            },      
+            },
             {
               "label": "MUAC:",
               "type": "obs",
@@ -1101,13 +1025,12 @@
                 "hideWhenExpression": "sex !== 'F'  ||  (sex ==='F' && (age < 10 || age > 49))"
               }
             },
-             {
+            {
               "label": "Client vaccinated against HPV?",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "9806572c-0225-4b17-b21b-a0f44f9d07f0",
-
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1164,32 +1087,28 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "TEWS Score",
+              "label": "TEWS score",
               "type": "obs",
               "id": "tewsScore",
+              "readOnly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "4d62cace-4faf-4cf8-a156-4fe31bdde5b8",
-                "readOnly": "true",
                 "calculate": {
-                  "calculateExpression": "calcSouthAfricanTEWS(age, height, respRate, pulseRate, temperature, sysBP, avpuLevel, avpuLevelAdult, mobilityChild, mobilityAdult, traumaInjury).score"
+                  "calculateExpression": "isEmpty(respRate) || isEmpty(pulseRate) || isEmpty(sysBP) || isEmpty(temperature) ? '' : ((parseFloat(respRate) < 9 ? 2 : parseFloat(respRate) <= 14 ? 0 : parseFloat(respRate) <= 20 ? 1 : parseFloat(respRate) <= 29 ? 2 : 3) + (parseFloat(pulseRate) <= 40 ? 2 : parseFloat(pulseRate) <= 50 ? 1 : parseFloat(pulseRate) <= 100 ? 0 : parseFloat(pulseRate) <= 110 ? 1 : parseFloat(pulseRate) <= 129 ? 2 : 3) + (parseFloat(sysBP) <= 70 ? 3 : parseFloat(sysBP) <= 80 ? 2 : parseFloat(sysBP) <= 100 ? 1 : parseFloat(sysBP) <= 199 ? 0 : 2) + (parseFloat(temperature) < 35 ? 2 : parseFloat(temperature) <= 38.4 ? 0 : 2) + (avpuLevelAdult === '04f9358a-226d-4fe1-9cd7-d47eabab15db' ? 0 : avpuLevelAdult === '7ca3ba0c-7c11-418e-b7e0-4200c96107be' ? 1 : avpuLevelAdult === '9c057035-7d44-4a40-9f47-ac3798a13a96' ? 2 : avpuLevelAdult === '485a3b99-5cfa-43f6-9f3a-b1eb384385ee' ? 3 : 0) + (mobilityAdult === '47e7d083-eafd-4fb4-b8c6-7f91fbaa0d3f' ? 0 : mobilityAdult === '128c543a-717e-4697-a7d7-a1627586d4b3' ? 1 : mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb' ? 2 : 0) + (traumaInjury === 'a899b35c-1350-11df-a1f1-0026b9348838' ? 1 : 0))"
                 }
-              },
-              "alert": {
-                "useTewsRange": true
               }
             },
             {
               "label": "TEWS Category",
               "type": "obs",
               "id": "tewsCategory",
+              "disable": {
+                "disableExpression": "true"
+              },
               "questionOptions": {
                 "rendering": "select",
                 "concept": "57fb7e0d-61be-4315-bd42-03839bf6deb5",
-                "readOnly": "true",
-                "calculate": {
-                  "calculateExpression": "calcSouthAfricanTEWS(age, height, respRate, pulseRate, temperature, sysBP, avpuLevel, avpuLevelAdult, mobilityChild, mobilityAdult, traumaInjury).priority"
-                },
                 "answers": [
                   {
                     "concept": "cf29c4d3-4c69-44f2-b1ac-3a4e3d8c112c",
@@ -1207,7 +1126,10 @@
                     "concept": "bbd99c12-67e9-4381-8b4c-1f231e86f8e2",
                     "label": "Routine"
                   }
-                ]
+                ],
+                "calculate": {
+                  "calculateExpression": "isEmpty(tewsScore) ? '' : Number(tewsScore) <= 2 ? 'bbd99c12-67e9-4381-8b4c-1f231e86f8e2' : Number(tewsScore) <= 4 ? '4bee29de-f909-4fff-af43-e498b44d2b7c' : Number(tewsScore) <= 6 ? '2df4bf62-52c3-46e5-9a86-86a830de1b1a' : 'cf29c4d3-4c69-44f2-b1ac-3a4e3d8c112c'"
+                }
               }
             }
           ]
@@ -1231,5 +1153,4 @@
       ]
     }
   ]
-  
 }
