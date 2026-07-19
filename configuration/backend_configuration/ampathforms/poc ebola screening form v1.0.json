@@ -234,7 +234,6 @@
                   "hide": {
                     "hideWhenExpression": "patientTravelled !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
-
                 },
                 {
                   "label": "Has the patient had contact with a symptomatic or deceased person withing the last 21 days?",
@@ -273,6 +272,24 @@
                       }
                     ]
                   }
+                },
+                {
+                  "label": "Symptom onset date:",
+                  "type": "obs",
+                  "id": "onsetDate",
+                  "questionOptions": {
+                    "concept": "bb85532e-8f7e-476f-81d7-5580e0385852",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "suspectedCase !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
                 }
               ]
             },
@@ -300,6 +317,18 @@
                   }
                 },
                 {
+                  "label": "Location:",
+                  "type": "obs",
+                  "id": "depRefer",
+                  "questionOptions": {
+                    "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
+                    "rendering": "textarea"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "patientIsolated !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
                   "label": "Health worker used PPE:",
                   "type": "obs",
                   "id": "healthWorkerUsedPPE",
@@ -316,6 +345,36 @@
                         "label": "No"
                       }
                     ]
+                  }
+                },
+                {
+                  "label": "If yes, specify:",
+                  "type": "obs",
+                  "id": "ppeSpecify",
+                  "questionOptions": {
+                    "concept": "40371129-fae3-4420-a2e6-e264a1f7824f",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "8f0de395-ba18-4ad0-aa81-58b4c5dbf98c",
+                        "label": "Gloves"
+                      },
+                      {
+                        "concept": "2476022a-14fd-4a50-8534-5f48d03a02c0",
+                        "label": "Gown"
+                      },
+                      {
+                        "concept": "cb784fb6-fa14-4ee3-8afa-018dc5c68421",
+                        "label": "Mask/Respirator"
+                      },
+                      {
+                        "concept": "32807813-84df-442b-87ba-84e2da627758",
+                        "label": "Face shield "
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "patientIsolated !=='a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -338,6 +397,29 @@
                   }
                 },
                 {
+                  "label": "Specimen type:",
+                  "type": "obs",
+                  "id": "specimenType",
+                  "questionOptions": {
+                    "concept": "32fd65f2-881a-4074-9185-9dda5c870f57",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "c7be8a4a-0ad3-442e-9355-eb481a23c0a6",
+                        "label": "Blood"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ],
+                    "hide": {
+                      "hideWhenExpression": "ebolaTestingSpecimenCollected !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                    }
+                  }
+                },
+
+                {
                   "label": "Referred to designated Ebola treatment center?",
                   "type": "obs",
                   "id": "ebolaTreamentCenter",
@@ -354,6 +436,40 @@
                         "label": "No"
                       }
                     ]
+                  }
+                },
+                {
+                  "label": "Facility name:",
+                  "type": "obs",
+                  "id": "depRefer",
+                  "questionOptions": {
+                    "concept": "c4d83fcb-c4db-4317-b8e7-0470f02e185a",
+                    "rendering": "textarea"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "referralTo !=='59312903-dde9-4f7a-b6cf-7b41863b7e81'"
+                  }
+                },
+                {
+                  "label": "Transport provided:",
+                  "type": "obs",
+                  "id": "transportProvided",
+                  "questionOptions": {
+                    "concept": "208101ed-d0cb-4fac-b86e-67a8dffdc3ca",
+                    "rendering": "radio",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "referralTo !=='59312903-dde9-4f7a-b6cf-7b41863b7e81'"
                   }
                 },
                 {
@@ -398,13 +514,49 @@
             }
           ]
         },
-
+        {
+          "label": "Pregnancy Status",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient pregnant?",
+              "type": "obs",
+              "id": "ebolaPregnancy",
+              "questionOptions": {
+                "concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Gestation in weeks:",
+              "type": "obs",
+              "id": "gestationWeeks",
+              "questionOptions": {
+                "concept": "a89c293e-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": "ebolaPregnancy !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
         {
           "label": "Plan",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Final Disposition:",
+              "label": "Final disposition:",
               "type": "obs",
               "id": "finalOutcome",
               "questionOptions": {
@@ -443,6 +595,32 @@
                 "rows": "5"
               },
               "id": "clinicalNotes"
+            }
+          ]
+        },
+        {
+          "label": "Reporting",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Case reported to?",
+              "type": "obs",
+              "id": "caseReportedTo",
+              "questionOptions": {
+                "concept": "58fd4938-8976-4c43-b01a-6ce794d4f80b",
+                "rendering": "text"
+                
+              }
+            },
+            {
+              "label": "Date reported:",
+              "type": "obs",
+              "id": "dateReported",
+              "questionOptions": {
+                "concept": "1ee303c7-363b-48ad-a79c-457cf9cfba01",
+                "rendering": "date"
+              }
+              
             }
           ]
         }
