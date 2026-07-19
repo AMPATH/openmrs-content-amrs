@@ -374,7 +374,7 @@
                     ]
                   },
                   "hide": {
-                    "hideWhenExpression": "patientIsolated !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "healthWorkerUsedPPE !=='a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -412,11 +412,12 @@
                         "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                         "label": "Other"
                       }
-                    ],
-                    "hide": {
+                    ]
+                    
+                  },
+                  "hide": {
                       "hideWhenExpression": "ebolaTestingSpecimenCollected !=='a899b35c-1350-11df-a1f1-0026b9348838'"
                     }
-                  }
                 },
 
                 {
@@ -447,7 +448,7 @@
                     "rendering": "textarea"
                   },
                   "hide": {
-                    "hideWhenExpression": "referralTo !=='59312903-dde9-4f7a-b6cf-7b41863b7e81'"
+                    "hideWhenExpression": "ebolaTreamentCenter !=='a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -469,7 +470,7 @@
                     ]
                   },
                   "hide": {
-                    "hideWhenExpression": "referralTo !=='59312903-dde9-4f7a-b6cf-7b41863b7e81'"
+                    "hideWhenExpression": "ebolaTreamentCenter !=='a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
