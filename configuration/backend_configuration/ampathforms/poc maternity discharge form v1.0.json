@@ -42,6 +42,7 @@
                 "rendering": "ui-select-extended"
               }
             },
+            
             {
               "type": "encounterLocation",
               "label": "Facility name (site/satellite clinic required):",
@@ -344,33 +345,22 @@
               "type": "obs",
               "validators": []
             },
-             {
-              "type": "obsGroup",
-              "label": "Consulting Doctors",
-              "required":"true",
+           {
+              "label": "Doctor",
+              "id": "doctor",
+              "type": "obs",
               "questionOptions": {
-                "concept": "a8a003a6-1350-11df-a1f1-0026b9348838",
-                "rendering": "repeating"
-              },
-                "questions": [
-                   {
-                      "label": "Doctor",
-                      "id": "doctor",
-                      "type": "obs",
-                      "questionOptions": {
-                        "concept": "5f4b48df-bacc-4c04-8988-10fa2a572d8e",
-                        "rendering": "remote-select",
-                        "datasource": {
-                          "name": "endpoint",
-                          "config": {
-                            "endpointUrl": "https://jsonplaceholder.typicode.com/users",
-                            "labelKey": "name",
-                            "valueKey": "id"
-                          }
-                        }
-                      }
-                    }
-                ]
+                "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+                "rendering": "remote-select",
+                "datasource": {
+                  "name": "endpoint",
+                  "config": {
+                    "endpointUrl": "https://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
+                    "labelKey": "display",
+                    "valueKey": "provider_national_id"
+                  }
+                }
+              }
             },
             {
               "label": "Remarks:",
