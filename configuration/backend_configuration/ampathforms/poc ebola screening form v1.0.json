@@ -324,8 +324,9 @@
                     "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
                     "rendering": "textarea"
                   },
+                  "validators":[],
                   "hide": {
-                    "hideWhenExpression": "patientIsolated !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "patientIsolated !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -353,7 +354,7 @@
                   "id": "ppeSpecify",
                   "questionOptions": {
                     "concept": "40371129-fae3-4420-a2e6-e264a1f7824f",
-                    "rendering": "radio",
+                    "rendering": "checkbox",
                     "answers": [
                       {
                         "concept": "8f0de395-ba18-4ad0-aa81-58b4c5dbf98c",
@@ -373,8 +374,9 @@
                       }
                     ]
                   },
+                  "validators":[],
                   "hide": {
-                    "hideWhenExpression": "healthWorkerUsedPPE !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "healthWorkerUsedPPE !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -415,9 +417,10 @@
                     ]
                     
                   },
+                  "validators":[],
                   "hide": {
-                      "hideWhenExpression": "ebolaTestingSpecimenCollected !=='a899b35c-1350-11df-a1f1-0026b9348838'"
-                    }
+                    "hideWhenExpression": "ebolaTestingSpecimenCollected !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
                 },
 
                 {
@@ -447,8 +450,9 @@
                     "concept": "c4d83fcb-c4db-4317-b8e7-0470f02e185a",
                     "rendering": "textarea"
                   },
+                  "validators":[],
                   "hide": {
-                    "hideWhenExpression": "ebolaTreamentCenter !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "ebolaTreamentCenter !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -469,8 +473,9 @@
                       }
                     ]
                   },
-                  "hide": {
-                    "hideWhenExpression": "ebolaTreamentCenter !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                  "validators":[],
+                 "hide": {
+                    "hideWhenExpression": "ebolaTreamentCenter !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 },
                 {
@@ -547,7 +552,7 @@
                 "rendering": "number"
               },
               "hide": {
-                "hideWhenExpression": "ebolaPregnancy !=='a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "ebolaPregnancy !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
