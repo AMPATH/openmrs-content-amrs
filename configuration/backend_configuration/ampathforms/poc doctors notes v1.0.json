@@ -67,8 +67,9 @@
               "type": "obs",
               "id": "vitalSignsReview",
               "questionOptions": {
-                "concept": "28ca42ab-8b11-42a3-beed-4db0d837c9a3",
-                "rendering": "textarea"
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea",
+                "rows": 3
               }
             },
 
@@ -107,36 +108,11 @@
               "id": "clinicaInterpratation",
               "questionOptions": {
                 "concept": "bf48af84-e16a-4757-81da-582511e88b35",
-                "rendering": "textarea"
+                "rendering": "textarea",
+                "rows": 3
               }
             },
-            {
-              "label": "Destination",
-              "type": "obs",
-              "id": "referStO",
-              "questionOptions": {
-                "concept": "678bff8f-694d-42cc-9f70-b10e15daca9f",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "678bff8f-694d-42cc-9f70-b10e15daca9f",
-                    "label": "Discharge home"
-                  },
-                  {
-                    "concept": "e609e8e7-12e0-45d0-a92b-ed044de21a3d",
-                    "label": "Transferring to another ward"
-                  },
-                  {
-                    "concept": "0c5565c5-45cf-40ab-aa6d-5694aeabae18",
-                    "label": "Referring to another facility"
-                  },
-                  {
-                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
-                    "label": "Deceased"
-                  }
-                ]
-              }
-            },
+           
             {
               "label": "Doctors notes:",
               "required": "true",
