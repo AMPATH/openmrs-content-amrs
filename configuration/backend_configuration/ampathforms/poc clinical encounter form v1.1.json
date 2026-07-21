@@ -2,9 +2,9 @@
   "name": "POC Clinical Encounter Form v1.1",
   "description": "Clinical Encounter",
   "version": "1.1",
-  "uuid": "",
+  "uuid": "ae398c08-7e84-3782-9f3c-6bd5b3fb65ea",
   "processor": "EncounterFormProcessor",
-  "published": false,
+  "published": true,
   "retired": false,
   "encounterType": "81166f83-1ee6-486e-8f56-aca528fc0fc0",
   "encounter": "GENCONSULTATION",
@@ -1839,7 +1839,7 @@
               "id": "finalDiagnosis",
               "questionOptions": {
                 "concept": "a8ae835e-1350-11df-a1f1-0026b9348838",
-                "rendering": "multiCheckbox",
+                "rendering": "select",
                 "answers": [
                   {
                     "concept": "149514AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -4483,7 +4483,7 @@
               "id": "secondaryDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
-                "rendering": "remote-select",
+                "rendering": "repeating",
                 "rank": 3,
                 "datasource": {
                   "name": "diagnoses",
