@@ -75,7 +75,6 @@
               "label": "Plus (Miscarriage):",
               "type": "obs",
               "id": "parityAbortion",
-
               "required": "true",
               "questionOptions": {
                 "concept": "cedb167d-34a4-4027-8a5c-b7fa9fe4190e",
@@ -84,7 +83,6 @@
                 "max": "50"
               }
             },
-
             {
               "label": "Date of admission:",
               "id": "dateAdmission",
@@ -345,12 +343,12 @@
               "type": "obs",
               "validators": []
             },
-            {
-              "label": "Drug prescription:",
+             {
+              "label": "Prescribe Drug(s):",
               "id": "drugsWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "Prescribe drug(s)",
+                "buttonLabel": "Prescribe drugs",
                 "workspaceName": "order-basket"
               }
             },
