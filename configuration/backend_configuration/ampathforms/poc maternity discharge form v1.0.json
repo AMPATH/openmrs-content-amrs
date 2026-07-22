@@ -152,7 +152,7 @@
                     "label": "Spontaneous vertex delivery (SVD)"
                   },
                   {
-                    "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
+                    "concept": "5403cb46-88c9-4770-8f77-1cf2a1cf5931",
                     "label": "CS"
                   },
                   {
@@ -345,7 +345,29 @@
               "type": "obs",
               "validators": []
             },
-           {
+            {
+              "label": "Drug Order",
+              "id": "drugsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe drug(s)",
+                "workspaceName": "order-basket"
+              }
+            },
+           
+            {
+              "label": "Discharge instructions:",
+              "required": "true",
+              "type": "obs",
+              "id": "assNote",
+              "default": "",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 5
+              }
+            },
+            {
               "label": "Doctor",
               "id": "doctor",
               "type": "obs",
@@ -360,18 +382,6 @@
                     "valueKey": "provider_national_id"
                   }
                 }
-              }
-            },
-            {
-              "label": "Remarks:",
-              "required": "true",
-              "type": "obs",
-              "id": "assNote",
-              "default": "",
-              "questionOptions": {
-                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
-                "rendering": "textarea",
-                "rows": 5
               }
             },
             {

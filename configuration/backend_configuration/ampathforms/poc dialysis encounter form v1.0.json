@@ -1,0 +1,916 @@
+{
+  "name": "Dialysis Flow Chart v1.0",
+  "description": "A data collection tool used to document haemodialysis session details, infection screening status, vascular access, dialysis prescription, machine checks, dialysis process, connection details, post-dialysis monitoring, nursing care and post-dialysis remarks.",
+  "version": "1.0",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Dialysis Flow Chart",
+      "sections": [
+        {
+          "label": "Encounter and Session Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Patient No.",
+              "type": "obs",
+              "required": "false",
+              "id": "patientNumber",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": ""
+              }
+            },
+            {
+              "label": "Treatment Number",
+              "type": "obs",
+              "required": "false",
+              "id": "treatmentNumber",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "fef5711d-e22f-428c-a7f7-2fd7e2cf5e85"
+              }
+            },
+            {
+              "label": "Session number",
+              "type": "obs",
+              "required": "false",
+              "id": "sessionNumber",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": ""
+              }
+            },
+            {
+              "label": "Blood Group",
+              "type": "obs",
+              "required": "false",
+              "id": "bloodGroup",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8945754-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "A Positive",
+                    "concept": "a896e8c0-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "A Negative",
+                    "concept": "a896ea6e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "B Positive",
+                    "concept": "a896ec1c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "B Negative",
+                    "concept": "a896edca-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "AB Positive",
+                    "concept": "a89b47a8-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "AB Negative",
+                    "concept": "a89b48de-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "O Positive",
+                    "concept": "a896f04a-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "O Negative",
+                    "concept": "a896f1f8-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Screening Status",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "HIV Status",
+              "type": "obs",
+              "required": "false",
+              "id": "hivStatus",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Hepatitis C Status",
+              "type": "obs",
+              "required": "false",
+              "id": "hepatitisCStatus",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a89c4e46-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Hepatitis B Status",
+              "type": "obs",
+              "required": "false",
+              "id": "hepatitisBStatus",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a89c4bee-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Syphilis Status",
+              "type": "obs",
+              "required": "false",
+              "id": "syphilisStatus",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8945678-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                   {
+                    "label": "Positive",
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Dialysis Access",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Types of Access",
+              "type": "obs",
+              "required": "false",
+              "id": "typesOfAccess",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "bcd17180-9081-42d3-baf1-3ca67ef87a38",
+                "answers": [
+                  {
+                    "label": "Arteriovenous (AV) fistula",
+                    "concept": "f333b529-a251-4efa-a775-447546f0f352"
+                  },
+                  {
+                    "label": "AV (Arteriovenous) Graft",
+                    "concept": "44476ff6-c630-4f3e-88c4-0bb2131e1028"
+                  },
+                  {
+                    "label": "Tunneled Central Venous catheter",
+                    "concept": "17e63da8-b17e-4c45-91c6-361a7add8913"
+                  },
+                  {
+                    "label": "Non-Tunneled Central Venous catheter",
+                    "concept": "46ecb402-8c26-483b-b495-e0af9d717bad"
+                  },
+                  {
+                    "label": "Peritoneal catheter",
+                    "concept": "891b3e19-a520-4b39-982d-e5f2845d6802"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Dialysis Prescription",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Dialysis solution",
+              "type": "obs",
+              "required": "false",
+              "id": "dialysisSolution",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "5f721302-e1d2-4ba2-9b23-e64bc7bfa216",
+                "answers": [
+                  {
+                    "label": "Acid Concentrate",
+                    "concept": "902f0398-1b22-45df-8a88-bd75475da697"
+                  },
+                  {
+                    "label": "Bicarbonate solution",
+                    "concept": "162861AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "Others",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Potassium concentration (K+ Bath)",
+              "type": "obs",
+              "required": "false",
+              "id": "potassiumConcentrationBath",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "f7572a5a-5e88-40ec-8bff-91d967f488f0",
+                "units": "mEq/L"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "Specify other dialysis solution",
+              "type": "obs",
+              "required": "false",
+              "id": "specifyOtherDialysisSolution",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d7f01f09-1e8b-4129-bdf6-dbae6e9aa69c"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(dialysisSolution) || !arrayContains(dialysisSolution, '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+              }
+            },
+            {
+              "label": "Membrane Type",
+              "type": "obs",
+              "required": "false",
+              "id": "membraneType",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fe901d83-a2d1-4845-b5ca-0b0810b76c1b",
+                "answers": [
+                  {
+                    "label": "Cellulose-based",
+                    "concept": "73062AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "Synthetic",
+                    "concept": "782cdf23-b58b-429c-9a08-952ee8dc7825"
+                  },
+                  {
+                    "label": "Others",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Specify other membrane type",
+              "type": "obs",
+              "required": "false",
+              "id": "specifyOtherMembraneType",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "hide": {
+                "hideWhenExpression": "membraneType !== 'Others'"
+              }
+            },
+            {
+              "label": "Flux Type",
+              "type": "obs",
+              "required": "false",
+              "id": "fluxType",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c1befdd0-7821-46e4-b178-9366a9508765",
+                "answers": [
+                  {
+                    "label": "High flux membrane",
+                    "concept": "02485c94-503c-4b96-95ac-72b28eb75e18"
+                  },
+                  {
+                    "label": "Low-flux membrane",
+                    "concept": "64cc59f5-71fd-4eba-aacf-1d0f2dbf7861"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Dialyzer",
+              "type": "obs",
+              "required": "false",
+              "id": "dialyzer",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "31d46c3f-7846-4fa5-9923-ffa1db15388e",
+                "answers": [
+                  {
+                    "label": "Standard",
+                    "concept": "53ae87fd-c697-4a62-a93e-cfddd9f1b0db"
+                  },
+                  {
+                    "label": "High-performance",
+                    "concept": "7b00ddbe-f159-4892-8745-bb67b0c07975"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Dialyzer size",
+              "type": "obs",
+              "required": "false",
+              "id": "dialyzerSize",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "c7c848bf-8220-4c91-b16b-930a07a36695",
+                "units": "m2"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Dialysis Machine Checks",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Machine check date and time",
+              "type": "obs",
+              "datePickerFormat": "both",
+              "required": "false",
+              "id": "machineCheckDate",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "ade394a7-402f-48ff-8f8d-0e6b818ba9a3"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Blood leaks",
+              "type": "obs",
+              "required": "false",
+              "id": "bloodLeaks",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6123f967-0f40-48a2-a6a9-dd5b399df71c",
+                "answers": [
+                  {
+                    "label": "No leaks detected",
+                    "concept": "750ab08d-d120-43cf-8d0d-a14910dc4807"
+                  },
+                  {
+                    "label": "Leaks detected",
+                    "concept": "4147ebd2-0135-48fe-8407-d36337f5373b"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Blood leak date and time",
+              "type": "obs",
+              "datePickerFormat": "both",
+              "required": "false",
+              "id": "bloodLeakDateTime",
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "fccbed61-831e-4e17-a650-413e0e542891"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "bloodLeaks !== 'Leaks detected'"
+              }
+            },
+            {
+              "label": "Air Detector",
+              "type": "obs",
+              "required": "false",
+              "id": "airDetector",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7f754fb4-8ed0-4a72-9f99-559e139f3da7",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "Air detected",
+                    "concept": "da8dc364-6865-4885-b460-5a18ae0d495a"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Air detector date and time",
+              "type": "obs",
+              "datePickerFormat": "both",
+              "required": "false",
+              "id": "airDetectorDateTime",
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "c3ba172e-df53-4387-9ede-9c05ec21010c"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "airDetector !== 'Air detected'"
+              }
+            },
+            {
+              "label": "Temperature (C) of dialysis fluid:",
+              "type": "obs",
+              "id": "temperature",
+              "questionOptions": {
+                "concept": "5088AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "number",
+                "max": "43",
+                "min": "25"
+              },
+              "alert": {
+                "useConceptReferenceRange": true
+              }
+            },
+            {
+              "label": "Conductivity",
+              "type": "obs",
+              "required": "false",
+              "id": "conductivity",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "bc9ba25b-d4c7-419f-9823-62122709c8c9",
+                "units": "mS/cm"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "Transmembrane pressure (TMP)",
+              "type": "obs",
+              "required": "false",
+              "id": "transmembranePressureTmp",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b82c6ff6-6009-4194-bfab-95d6922ac51c",
+                "units": "mmHg"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Dialysis Process",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Dialysis start time",
+              "type": "obs",
+              "required": "false",
+              "id": "dialysisStartTime",
+              "datePickerFormat": "timer",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "3f5f89fd-cb78-4548-9d41-0946399a5ba7"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Blood pressure before dialysis",
+              "type": "obs",
+              "required": "false",
+              "id": "bloodPressureBeforeDialysis",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "008bf719-6c0d-4a61-b5eb-d8bb7da058f9"
+              }
+            },
+            {
+              "label": "Pulse rate before dialysis",
+              "type": "obs",
+              "required": "false",
+              "id": "pulseRateBeforeDialysis",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5087AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "Arterial pressure",
+              "type": "obs",
+              "required": "false",
+              "id": "arterialPressure",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "163187AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "units": "mmHg"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "Venous pressure",
+              "type": "obs",
+              "required": "false",
+              "id": "venousPressure",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "162646AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "units": "mmHg"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "UF (ultrafiltration) rate",
+              "type": "obs",
+              "required": "false",
+              "id": "ultrafiltrationRate",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "161132AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "UF (ultrafiltration) volume",
+              "type": "obs",
+              "required": "false",
+              "id": "ultrafiltrationVolume",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "167162AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "Fluid",
+              "type": "obs",
+              "required": "false",
+              "id": "fluid",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "160531AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              }
+            },
+            {
+              "label": "Remarks",
+              "type": "obs",
+              "required": "false",
+              "id": "remarks",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "1111fedc-77e3-4220-994f-3267b0651446",
+                "rows": 3
+              }
+            }
+          ]
+        },
+        {
+          "label": "Connection Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Connected by",
+              "type": "obs",
+              "required": "false",
+              "id": "connectedBy",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "166103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              }
+            },
+            {
+              "label": "Connection time",
+              "type": "obs",
+              "required": "true",
+              "id": "connectionTime",
+              "datePickerFormat": "timer",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "9fdee776-981d-496f-891d-9752a3916058"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Disconnected by",
+              "type": "obs",
+              "required": "false",
+              "id": "disconnectedBy",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              }
+            },
+            {
+              "label": "Disconnection time",
+              "type": "obs",
+              "required": "true",
+              "id": "disconnectionTime",
+              "datePickerFormat": "timer",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "f1c4341a-3239-4b73-bde7-75e07627748f"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Post-Dialysis Monitoring",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Systolic B.P after dialysis",
+              "type": "obs",
+              "id": "sysBP",
+              "questionOptions": {
+                "concept": "5085AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "number"
+              },
+              "alert": {
+                "useConceptReferenceRange": true
+              }
+            },
+            {
+              "label": "Diastolic B.P after dialysis",
+              "type": "obs",
+              "id": "diasBP",
+              "questionOptions": {
+                "concept": "5086AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "number"
+              },
+              "alert": {
+                "useConceptReferenceRange": true
+              }
+            },
+            {
+              "label": "Total UF Volume",
+              "type": "obs",
+              "required": "false",
+              "id": "totalUfVolume",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "162661AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "Fluid balance",
+              "type": "obs",
+              "required": "false",
+              "id": "fluidBalance",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b8734463-8a64-4e43-abc9-c8617c6f0b42"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "Extraction system",
+              "type": "obs",
+              "required": "false",
+              "id": "extractionSystem",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "750a018d-9c79-445a-a026-4cc9540751b5",
+                "answers": [
+                  {
+                    "label": "Poor",
+                    "concept": "159407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "Clean",
+                    "concept": "161917AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "Dirty",
+                    "concept": "872f97ea-4654-43f0-a480-2a058afed780"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Assessment data prior to dialysis",
+              "type": "obs",
+              "required": "false",
+              "id": "assessmentDataPriorToDialysis",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "4802a063-38e8-4b20-87dd-46a92dc91656",
+                "rows": 3
+              }
+            },
+            {
+              "label": "Nursing Diagnosis",
+              "type": "obs",
+              "required": "false",
+              "id": "nursingDiagnosis",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "d44492fd-1b0f-4ec1-9ac8-0e1eb2ebe10b",
+                "rows": 3
+              }
+            },
+            {
+              "label": "Expected outcome",
+              "type": "obs",
+              "required": "false",
+              "id": "expectedOutcome",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ebe0537c-0894-4eb0-90b4-7699de963329",
+                "rows": 3
+              }
+            },
+            {
+              "label": "Intervention",
+              "type": "obs",
+              "required": "false",
+              "id": "intervention",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "7a2aeb44-09d4-4a92-836c-62466e4d30db",
+                "rows": 3
+              }
+            },
+            {
+              "label": "Medication prescribed",
+              "type": "obs",
+              "required": "false",
+              "id": "medicationPrescribedLoadingDose",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "165504AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              }
+            },
+            {
+              "label": "Additional orders",
+              "type": "obs",
+              "required": "false",
+              "id": "additionalOrders",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "302AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 3
+              }
+            },
+            {
+              "label": "Lab results",
+              "type": "obs",
+              "required": "false",
+              "id": "labResults",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "161577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 3
+              }
+            },
+            {
+              "label": "Post dialysis Remarks",
+              "type": "obs",
+              "required": "false",
+              "id": "postDialysisRemarks",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "160716AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 4
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
+}

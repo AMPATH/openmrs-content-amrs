@@ -2,7 +2,7 @@
   "name": "POC Doctor's Review Notes v1.0",
   "description": "Doctor's Review Notes",
   "version": "1.0",
-  "uuid": "",
+  "uuid": "799e4490-22a9-3162-89ef-46a6f3fb14f4",
   "processor": "EncounterFormProcessor",
   "published": true,
   "retired": false,
