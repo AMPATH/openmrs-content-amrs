@@ -1017,7 +1017,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1040,7 +1040,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1067,7 +1067,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1094,7 +1094,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
@@ -1180,6 +1180,29 @@
               }
             },
             {
+              "label": "Lie:",
+              "type": "obs",
+              "id": "lie",
+              "questionOptions": {
+                "concept": "394f9ff9-1c93-4bb0-80a7-31d10ef5a1cd",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "b14ef520-0c2a-45ca-a598-64d770dc46bd",
+                    "label": "Transverse"
+                  },
+                  {
+                    "concept": "82c549e8-2d31-4d67-af55-58b9d48fe31b",
+                    "label": "Longitudinal"
+                  },
+                  {
+                    "concept": "9b66f44f-78d7-4f5e-bad4-5e930096083a",
+                    "label": "Oblique"
+                  }
+                ]
+              }
+            },
+            {
               "label": "Position:",
               "type": "obs",
               "id": "posiTion",
@@ -1210,7 +1233,7 @@
               }
             },
             {
-              "label": "Vaginal Discharge",
+              "label": "Vaginal discharge:",
               "type": "obs",
               "id": "vagDis",
               "questionOptions": {
@@ -1302,25 +1325,7 @@
                 ]
               }
             },
-            {
-              "label": "Spleen:",
-              "type": "obs",
-              "id": "spleEn",
-              "questionOptions": {
-                "concept": "a899f04c-1350-11df-a1f1-0026b9348838",
-                "rendering": "select",
-                "answers":[
-                  {
-                    "concept": "a8a4cdfa-1350-11df-a1f1-0026b9348838",
-                    "label": "Palpable"
-                  },
-                  {
-                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Not palpable"
-                  }
-                ]
-              }
-            },
+            
             {
               "label": "Abnormalities:",
               "type": "obs",
@@ -1331,7 +1336,7 @@
               }
             },
             {
-              "label": "Pelvic Assessment:",
+              "label": "Pelvic assessment:",
               "type": "obs",
               "id": "pelvicAss",
               "questionOptions": {

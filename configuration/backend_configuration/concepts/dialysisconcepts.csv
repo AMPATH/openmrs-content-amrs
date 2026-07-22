@@ -1,0 +1,12 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units
+f333b529-a251-4efa-a775-447546f0f352,,,ARTERIOVENOUS FISTULA (AVF),,,AVF,,,"A surgically created connection between an artery and a vein, usually in the arm, used as the preferred long-term vascular access for hemodialysis.",,,Misc,N/A,,
+44476ff6-c630-4f3e-88c4-0bb2131e1028,,,ARTERIOVENOUS GRAFT (AVG),,,AVG,,,A synthetic tube surgically placed between an artery and a vein to provide vascular access for hemodialysis when an arteriovenous fistula is not suitable.,,,Misc,N/A,,
+17e63da8-b17e-4c45-91c6-361a7add8913,,,TUNNELED CENTRAL VENOUS CATHETER,,,,,,A long-term central venous catheter inserted under the skin and into a large vein to provide vascular access for hemodialysis.,,,Misc,N/A,,
+46ecb402-8c26-483b-b495-e0af9d717bad,,,NON-TUNNELED CENTRAL VENOUS CATHETER,,,,,,A temporary central venous catheter inserted directly into a large vein for immediate or short-term hemodialysis access.,,,Misc,N/A,,
+891b3e19-a520-4b39-982d-e5f2845d6802,,,PERITONEAL DIALYSIS CATHETER,,,,,,A catheter surgically inserted into the peritoneal cavity to facilitate peritoneal dialysis by allowing dialysate to enter and leave the abdomen.,,,Misc,N/A,,
+bcd17180-9081-42d3-baf1-3ca67ef87a38,,,TYPE OF DIALYSIS ACCESS,,,,,,Indicates the type of access currently being used by the patient to perform dialysis. This may be a vascular access for hemodialysis or a peritoneal access for peritoneal dialysis.,,,Question ,Coded,f333b529-a251-4efa-a775-447546f0f352;44476ff6-c630-4f3e-88c4-0bb2131e1028;17e63da8-b17e-4c45-91c6-361a7add8913;46ecb402-8c26-483b-b495-e0af9d717bad;891b3e19-a520-4b39-982d-e5f2845d6802,
+0901591e-3429-414d-a25b-93ac59fac63c,,,BICARBONATE DIALYSIS SOLUTION,,,,,,A bicarbonate-buffered dialysate commonly used for routine hemodialysis to correct metabolic acidosis and remove waste products.,,,Misc,N/A,,
+9168c41b-0cb1-49cf-8295-9825842445cd,,,,,,,,,,,,,,,
+3b13a08b-16c7-4829-9b77-ade146cdf44b,,,,,,,,,,,,,,,
+8acc93c3-741a-4d5f-87c6-679fcfccb382,,,,,,,,,,,,,,,
+d35023a1-df02-4078-bace-fea61bd44f24,,,,,,,,,,,,,,,
