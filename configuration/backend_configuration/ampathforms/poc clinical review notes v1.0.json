@@ -1,8 +1,8 @@
 {
-  "name": "POC Doctor's Review Notes v1.0",
-  "description": "Doctor's Review Notes",
+  "name": "POC Clinical Review Notes v1.0",
+  "description": "Clinical Review Notes",
   "version": "1.0",
-  "uuid": "799e4490-22a9-3162-89ef-46a6f3fb14f4",
+  "uuid": "",
   "processor": "EncounterFormProcessor",
   "published": true,
   "retired": false,
