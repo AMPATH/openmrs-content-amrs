@@ -42,7 +42,7 @@
                 "rendering": "ui-select-extended"
               }
             },
-            
+
             {
               "type": "encounterLocation",
               "label": "Facility name (site/satellite clinic required):",
@@ -84,19 +84,7 @@
                 "max": "50"
               }
             },
-            {
-              "label": "Gravidae:",
-              "type": "obs",
-              "id": "grav",
-              "questionOptions": {
-                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "calculate": {
-                  "calculateExpression": "calcGravida(par,parityAbortion)"
-                }
-              },
-              "validators": []
-            },
+
             {
               "label": "Date of admission:",
               "id": "dateAdmission",
@@ -171,6 +159,18 @@
               },
               "type": "obs",
               "validators": []
+            },
+            {
+              "label": "Additional notes:",
+              "required": "true",
+              "type": "obs",
+              "id": "addNotes",
+              "default": "",
+              "questionOptions": {
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                "rendering": "textarea",
+                "rows": 5
+              }
             },
             {
               "label": "Sex of the baby:",
@@ -346,7 +346,7 @@
               "validators": []
             },
             {
-              "label": "Drug Order",
+              "label": "Drug prescription:",
               "id": "drugsWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -354,7 +354,7 @@
                 "workspaceName": "order-basket"
               }
             },
-           
+
             {
               "label": "Discharge instructions:",
               "required": "true",
@@ -368,7 +368,7 @@
               }
             },
             {
-              "label": "Doctor",
+              "label": "Doctor:",
               "id": "doctor",
               "type": "obs",
               "questionOptions": {
