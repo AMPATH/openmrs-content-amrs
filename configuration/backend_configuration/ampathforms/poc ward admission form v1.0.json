@@ -78,7 +78,7 @@
   "encounter": "ADMISSIONREQUEST",
   "encounterType": "b062e97b-71fb-4c80-9f7d-72076475884a",
   "referencedForms": [],
-  "uuid": "",
+  "uuid": "5232d2c3-a302-3a3e-a322-52885c1994e3",
   "description": "Create an admission request to an inpatient ward",
   "version": "1.0",
   "published": true,
