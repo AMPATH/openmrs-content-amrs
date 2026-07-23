@@ -315,15 +315,7 @@
                 ]
               }
             },
-            {
-              "label": "Emergency procedure?",
-              "type": "obs",
-              "id": "asaEmergencyModifier",
-              "questionOptions": {
-                "concept": "5cc24a9d-0813-5947-9aa9-417d95ffdb56",
-                "rendering": "checkbox"
-              }
-            },
+            
             {
               "label": "Birth & Developmental History",
               "type": "obs",
@@ -572,7 +564,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(bloodProductsReq) || bloodProductsReq !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "isEmpty(bloodProductsReq) || bloodProductsReq !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {

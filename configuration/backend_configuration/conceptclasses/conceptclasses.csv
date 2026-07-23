@@ -14,3 +14,4 @@ e2c52f55-c7b4-49f7-9f82-1ffa2fe6023f,,InteractSet,Set of drugs that interact wit
 27172298-6c42-4f8a-90f0-0dd72e2079fa,,Cash Service Order,For cash consultation orders
 c3f01662-8ed2-40d2-822f-bb215e1afbfc,,SHA Service Order,For SHA consultation orders
 3074ff03-fb5f-4b72-bf04-5207602dbd96,,Old Diagnosis,For exisiting diagnosis in AMRS before pulling full ICD 11 diagnosis from KNHTS for claims
+4d923f53-b950-4282-804b-0afd67afbcd8,,SHA Intervention Switch,SHA Intervention Switch
