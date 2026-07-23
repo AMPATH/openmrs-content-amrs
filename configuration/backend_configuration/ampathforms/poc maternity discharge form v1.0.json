@@ -284,34 +284,30 @@
               },
               "validators": []
             },
-
-            {
-              "label": "Referred from:",
-              "id": "rfBy",
+{
+              "label": "Referring patient today?",
               "type": "obs",
+              "id": "visitReferral",
               "questionOptions": {
-                "concept": "aad34924-d6e7-4138-a841-0fea9ee4b41f",
                 "rendering": "select",
+                "concept": "5a96fc07-cf1b-4704-8174-23380b104b0e",
                 "answers": [
                   {
-                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
-                    "label": "Health facility"
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
                   },
                   {
-                    "concept": "a8a00b4e-1350-11df-a1f1-0026b9348838",
-                    "label": "Community unit"
-                  },
-                  {
-                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
-                    "label": "N/A"
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
                   }
                 ]
-              },
-              "validators": []
+              }
             },
+           
             {
-              "label": "Referred to:",
-              "id": "referralsTo",
+              "label": "If yes, referred to:",
+              "id": "referredTo",
+              "type": "obs",
               "questionOptions": {
                 "concept": "6434322f-d050-4764-8c00-741e20c4c9e1",
                 "answers": [
@@ -330,9 +326,25 @@
                 ],
                 "rendering": "multiCheckbox"
               },
-              "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(visitReferral) || visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
             },
+            {
+              "label": "If health facility, specify:",
+              "id": "healthFacility",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a00c0e-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(visitReferral) || visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            
             {
               "label": "Reason for referral:",
               "id": "reasonReferral",
@@ -341,7 +353,10 @@
                 "rendering": "text"
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(visitReferral) || visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
             },
              {
               "label": "Prescribe Drug(s):",

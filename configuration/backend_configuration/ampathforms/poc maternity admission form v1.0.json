@@ -3,11 +3,11 @@
   "description": "POC MOH 333 Maternity Register v1.0",
   "version": "1.0",
   "published": true,
-  "uuid": "3a9cbd83-4e6b-3f94-97be-e994680e3522",
+  "uuid": "b062e97b-71fb-4c80-9f7d-72076475884a",
   "retired": false,
-  "encounter": "MATERNITYADMISSION",
+  "encounter": "ADMISSIONREQUEST",
   "processor": "EncounterFormProcessor",
-  "encounterType": "1bf4f1f6-8965-4fb4-a7f0-29d31fefb1ac",
+  "encounterType": "b062e97b-71fb-4c80-9f7d-72076475884a",
   "referencedForms": [],
   "pages": [
     {

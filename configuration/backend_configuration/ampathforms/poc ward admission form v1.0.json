@@ -47,7 +47,26 @@
                       }
                     }
                   }
-                }
+                },
+                 {
+              "label": "Patient category:",
+              "type": "obs",
+              "id": "payCategory",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8a71fce-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "50d22d55-e6af-4a77-9283-2e901c3060ad",
+                    "label": "Maternity"
+                  },
+                  {
+                    "concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
+                    "label": "General inpatient"
+                  }
+                ]
+              }
+            }
               ]
             }
           ]
@@ -56,8 +75,8 @@
     }
   ],
   "processor": "EncounterFormProcessor",
-  "encounter": "TRANSFERREQUEST",
-  "encounterType": "b2c4d5e6-7f8a-4e9b-8c1d-2e3f8e4a3b8f",
+  "encounter": "ADMISSIONREQUEST",
+  "encounterType": "b062e97b-71fb-4c80-9f7d-72076475884a",
   "referencedForms": [],
   "uuid": "",
   "description": "Create an admission request to an inpatient ward",
