@@ -1,5 +1,5 @@
 {
-	"name": "ONCOLOGY POC Cervical Cancer Screening Form v1.0",
+  "name": "ONCOLOGY POC Cervical Cancer Screening Form v1.0",
   "uuid": "04640e1c-de9b-4028-9506-296409e41761",
   "description": "Oncology POC Cervical Cancer Screening Form v1.0 - a form used when screening patients for cervical cancer.",
   "version": "1.0",
@@ -8,1235 +8,1223 @@
   "encounter": "ONCOLOGYVIA",
   "processor": "EncounterFormProcessor",
   "encounterType": "238625fc-8a25-44b2-aa5a-8bf48fa0e18d",
-	
-	"pages": [
-		{
-			"label": "Encounter Details",
-			"sections": [
-				{
-					"label": "Encounter Details",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Visit date:",
-							"type": "encounterDatetime",
-							"required": "true",
-							"default": "",
-							"id": "encDate",
-							"questionOptions": {
-								"rendering": "date"
-							},
-							"validators": [
-								{
-									"type": "date"
-								}
-							]
-						},
-						{
-							"type": "encounterProvider",
-							"label": "Provider",
-							"id": "provider",
-							"required": "true",
-							"default": "",
-							"questionOptions": {
-								"rendering": "ui-select-extended"
-							}
-						},
-						{
-							"type": "encounterLocation",
-							"label": "Facility name (site/satellite clinic required)",
-							"id": "location",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "ui-select-extended"
-							}
-						},
-						{
-							"type": "obs",
-							"label": "HIV Status",
-							"isExpanded": "true",
-							"questions": [
-								{
-									"label": "What is your current HIV status?",
-									"id": "hivStatus",
-									"type": "obs",
-									"required": "true",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9e4d6436-4040-46a3-a0ae-6dbc0acfe593')) ? undefined : HD.getObject('prevEnc').getValue('9e4d6436-4040-46a3-a0ae-6dbc0acfe593')",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
-										"answers": [
-											{
-												"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-												"label": "HIV positive"
-											},
-											{
-												"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-												"label": "HIV negative"
-											},
-											{
-												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
-												"label": "Unknown"
-											}
-										]
-									},
-									"validators": []
-								},
-								{
-									"label": "Are you currently in HIV care or under ART?",
-									"id": "currentlyOnArt",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "a8afba58-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-												"label": "Yes"
-											},
-											{
-												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-												"label": "No"
-											}
-										]
-									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && hivStatus == 'a896f3a6-1350-11df-a1f1-0026b9348838'",
-											"message": "Please indicate whether the client is currently in HIV care or under ART"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(hivStatus) || hivStatus != 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
-								},
-								{
-									"label": "At which AMPATH facility are you receiving HIV care?",
-									"id": "careLocation",
-									"type": "personAttribute",
-									"questionOptions": {
-										"rendering": "ui-select-extended",
-										"attributeType": "8d87236c-c2cc-11de-8d13-0010c6dffd0f"
-									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && hivStatus == 'a899b35c-1350-11df-a1f1-0026b9348838'",
-											"message": "Please indicate the facility where the client is receiving HIV care"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(currentlyOnArt) || currentlyOnArt != 'a899b35c-1350-11df-a1f1-0026b9348838'"
-									}
-								},
-								{
-									"label": "For a non-AMPATH client, please specify the primary HIV care facility",
-									"id": "nonAMPATHCareLocation",
-									"type": "obs",
-									"questionOptions": {
-										"concept": "5a1a5ae4-e0ee-47fd-9b16-e54f55c3f000",
-										"rendering": "text",
-										"placeholder": ""
-									},
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(currentlyOnArt) || currentlyOnArt != 'a899b35c-1350-11df-a1f1-0026b9348838'"
-									}
-								}
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Pre-Clinical Review",
-			"sections": [
-				{
-					"label": "Pre-Clinic Review",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Current visit",
-							"id": "visitType",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a89b6440-1350-11df-a1f1-0026b9348838",
-										"label": "Scheduled visit"
-									},
-									{
-										"concept": "a89ff816-1350-11df-a1f1-0026b9348838",
-										"label": "Unscheduled visit early"
-									},
-									{
-										"concept": "a89ff8de-1350-11df-a1f1-0026b9348838",
-										"label": "Unscheduled visit late"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "If early or late unscheduled visit, what was the scheduled visit date?",
-							"id": "actualDate",
-							"type": "obs",
-							"required": {
-								"type": "conditionalRequired",
-								"referenceQuestionId": "visitType",
-								"referenceQuestionAnswers": [
-									"a89ff816-1350-11df-a1f1-0026b9348838",
-									"a89ff8de-1350-11df-a1f1-0026b9348838"
-								]
-							},
-							"questionOptions": {
-								"rendering": "date",
-								"concept": "dc1942b2-5e50-4adc-949d-ad6c905f054e"
-							},
-							"validators": [
-								{
-									"type": "date",
-									"allowFutureDates": "true"
-								},
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "!isEmpty(visitType) && arrayContains(['a89ff816-1350-11df-a1f1-0026b9348838','a89ff8de-1350-11df-a1f1-0026b9348838'], visitType) && isEmpty(myValue)",
-									"message": "Patient visit marked as unscheduled. Please provide the scheduled date."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "!arrayContains(['a89ff816-1350-11df-a1f1-0026b9348838','a89ff8de-1350-11df-a1f1-0026b9348838'], visitType)"
-							}
-						},
-						{
-							"label": "Visit type:",
-							"id": "typeOfVisit",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
-										"label": "Initial screening"
-									},
-									{
-										"concept": "a89526f2-1350-11df-a1f1-0026b9348838",
-										"label": "Routine screening"
-									},
-									{
-										"concept": "19a7233b-2db1-4d7b-a2fb-4473e6b58f9d",
-										"label": "Post-Treatment screening"
-									},
-									{
-										"concept": "a89adc46-1350-11df-a1f1-0026b9348838",
-										"label": "Treatment visit"
-									},
-									{
-										"concept": "3a60fe6f-a116-41ce-9daf-1340085bc02d",
-										"label": "Complications"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": []
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Reproductive Health",
-			"sections": [
-				{
-					"label": "Reproductive History",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Number of pregnancies had (gravida):",
-							"type": "obs",
-							"id": "noPregnancy",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')",
-							"questionOptions": {
-								"concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
-								"rendering": "number",
-								"max": "50",
-								"min": "0"
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "sex !== 'F'"
-							}
-						},
-						{
-							"label": "Number of pregnancies delivered (parity):",
-							"type": "obs",
-							"id": "noDelivery",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')",
-							"questionOptions": {
-								"concept": "a899a920-1350-11df-a1f1-0026b9348838",
-								"rendering": "number",
-								"min": "0"
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "!isEmpty(noPregnancy) && isEmpty(myValue) && noPregnancy < noDelivery))",
-									"message": "Parity should not be greater than gravida."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "sex !== 'F'"
-							}
-						},
-						{
-							"label": "Menstruation status:",
-							"id": "menStatus",
-							"questionOptions": {
-								"concept": "a8a185d2-1350-11df-a1f1-0026b9348838",
-								"rendering": "select",
-								"answers": [
-									{
-										"label": "Menstruating",
-										"concept": "a8ad2b4e-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "Postmenopausal",
-										"concept": "5cc1c1a7-dfcc-47dc-ad73-c386c188fad8"
-									},
-									{
-										"label": "Amenorrhea",
-										"concept": "a8a18514-1350-11df-a1f1-0026b9348838"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "sex !== 'F'"
-							}
-						},
-						{
-							"label": "Last menstrual period:",
-							"id": "lmpDate1",
-							"questionOptions": {
-								"concept": "a89ff758-1350-11df-a1f1-0026b9348838",
-								"rendering": "date"
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "date"
-								},
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "!isEmpty(pattype1) && pattype1 === '375e6d4a-ba94-41ac-8ac3-5a56015c4d92' && isEmpty(myValue)",
-									"message": "Patient is antenatal. Please indicate when they had their last menstrual period."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Is the patient pregnant?",
-							"id": "pregnant",
-							"questionOptions": {
-								"concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Last delivery date:",
-							"id": "lastDelDate",
-							"questionOptions": {
-								"concept": "a8aae050-1350-11df-a1f1-0026b9348838",
-								"rendering": "date"
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
-									"message": "The last delivery date should be lesser than the encounter date."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Estimated delivery date:",
-							"id": "delDate",
-							"questionOptions": {
-								"concept": "a8aaddbc-1350-11df-a1f1-0026b9348838",
-								"rendering": "date",
-								"calculate": {
-									"calculateExpression": "moment(lmpDate1).isValid() ? moment(lmpDate1).add(280, 'days').toDate():''"
-								}
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "(new moment(lmpDate1)).isAfter((new moment(myValue)), 'day') || (new moment(lmpDate1)).isSame((new moment(myValue)), 'day')",
-									"message": "The estimated delivery date should be greater than the encounter date."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "pregnant !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Reason why the patient is not pregnant?",
-							"id": "reasonNotPreg",
-							"questionOptions": {
-								"concept": "f701166d-9820-420d-b0bc-c98ad4747dec",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "5bafcbc0-e499-4741-85e3-52e93f68f08c",
-										"label": "Pregnancy not suspected"
-									},
-									{
-										"concept": "6cb93e09-cd9a-4333-994a-9cd65dfa8c12",
-										"label": "Pregnancy test is negative"
-									},
-									{
-										"concept": "c662737e-d529-4b49-9ad3-2d72eeb56b45",
-										"label": "Using hormonal contraceptive"
-									},
-									{
-										"concept": "3bca6c9c-333c-433e-ac07-7e44e0501b49",
-										"label": "Postpartum < 6 weeks"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "pregnant!== 'a899b42e-1350-11df-a1f1-0026b9348838'"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Prior VIA",
-			"sections": [
-				{
-					"label": "Prior VIA",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Prior VIA:",
-							"type": "obs",
-							"required": "true",
-							"id": "priorviatest",
-							"questionOptions": {
-								"concept": "cf33d31f-b96b-4437-a6b8-ff5f43855f9b",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									},
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									}
-								]
-							},
-							"validators": []
-						},
-						{
-							"label": "Prior VIA result:",
-							"id": "priorviaresult",
-							"type": "obs",
-							"historicalExpression": "HD.getObject('prevEnc').getValue('f165c64a-9354-4145-9b06-4ee437630218')",
-							"questionOptions": {
-								"concept": "f165c64a-9354-4145-9b06-4ee437630218",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									}
-								],
-								"showDate": "true",
-								"shownDateOptions": {
-									"validators": [
-										{
-											"type": "date"
-										},
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(priorviaresult) && isEmpty(myValue)",
-											"message": "Date result is required."
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(priorviaresult)"
-									}
-								}
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(priorviatest) || priorviatest !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Routine Screening",
-			"sections": [
-				{
-					"label": "Routine Screening",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Screening method:",
-							"type": "obs",
-							"id": "screeningMethod",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "multiCheckbox",
-								"concept": "6750ddf9-bd32-4d8f-bee0-b5fc192a20a3",
-								"answers": [
-									{
-										"concept": "b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65",
-										"label": "VIA"
-									},
-									{
-										"concept": "a89b2dcc-1350-11df-a1f1-0026b9348838",
-										"label": "HPV"
-									},
-									{
-										"concept": "a8983ff4-1350-11df-a1f1-0026b9348838",
-										"label": "Pap smear"
-									},
-									{
-										"concept": "44ffeaba-ffeb-4aa5-a141-3f144b75d3cb",
-										"label": "Colposcopy"
-									}
-								]
-							},
-							"validators": []
-						},
-						{
-							"label": "VIA test result:",
-							"type": "obs",
-							"id": "currentVia",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65",
-								"answers": [
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "260e6d24-1634-4467-a070-e8359f6827f7",
-										"label": "Suspicious for cancer"
-									}
-								]
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65'],screeningMethod)",
-									"message": "Please indicate VIA results"
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "isEmpty(screeningMethod) ||  !arrayContains(screeningMethod,'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
-							}
-						},
-						{
-							"label": "Observations noted from positive VIA test:",
-							"id": "viaObservations",
-							"type": "obs",
-							"questionOptions": {
-								"concept": "65634e0b-af9a-4b64-9255-0fa14e098077",
-								"rendering": "multiCheckbox",
-								"answers": [
-									{
-										"concept": "2e293b85-4915-48fe-ac36-5448ff0ffa3f",
-										"label": "Abnormal vessels"
-									},
-									{
-										"concept": "0dc3cb9a-67f0-4883-a681-c077641d9467",
-										"label": "Aceto-white"
-									},
-									{
-										"concept": "a0bda074-8e57-4ba7-ab9c-c008776f8d48",
-										"label": "Excessive bleeding"
-									},
-									{
-										"concept": "8d6d4d79-f9bc-4322-be06-668c9e9ca402",
-										"label": "Friable tissue"
-									},
-									{
-										"concept": "779e7248-301f-43c2-a24e-87d1cb13abfb",
-										"label": "Punctuations"
-									},
-									{
-										"concept": "be87ae99-9e94-4946-bee3-390a40bd8b23",
-										"label": "Ulceration"
-									},
-									{
-										"concept": "71d6f6d5-9d40-4592-a04d-0a0f796bcb26",
-										"label": "Yellow-staining lesion"
-									}
-								]
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(currentVia) || currentVia !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Cervix impression:",
-							"id": "cervixImp",
-							"questionOptions": {
-								"concept": "149f4d06-5ac1-41b0-b914-771fb9d7f192",
-								"rendering": "multiCheckbox",
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Normal"
-									},
-									{
-										"concept": "943178f7-4710-4102-8698-a2acc44cb79a",
-										"label": "Positive VIA + aceto-white only"
-									},
-									{
-										"concept": "96df6fa5-311c-4a16-ac18-6f5c038a519b",
-										"label": "Positive VIA + suspicious lesion for cancer"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
-							}
-						},
-						{
-							"label": "Vagina impression:",
-							"id": "vaginaImp",
-							"questionOptions": {
-								"concept": "e469db48-fd1c-4e27-be37-391e653cf043",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Normal"
-									},
-									{
-										"concept": "a89cef0e-1350-11df-a1f1-0026b9348838",
-										"label": "Warts"
-									},
-									{
-										"concept": "f565757c-ed02-43bc-825e-d442a99a2ddf",
-										"label": "Suspicious of cancer"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
-							}
-						},
-						{
-							"label": "Vulva impression:",
-							"id": "vulvaImp",
-							"questionOptions": {
-								"concept": "7367cc87-b229-461a-9db8-3979fe57e00d",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Normal"
-									},
-									{
-										"concept": "a89cef0e-1350-11df-a1f1-0026b9348838",
-										"label": "Warts"
-									},
-									{
-										"concept": "f565757c-ed02-43bc-825e-d442a99a2ddf",
-										"label": "Suspicious of cancer"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
-							}
-						},
-						{
-							"label": "Have you received HPV results:",
-							"type": "obs",
-							"id": "hpvReceive",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "bfbd547d-4449-48d6-a464-7938602bc4e5",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'a89b2dcc-1350-11df-a1f1-0026b9348838')"
-							}
-						},
-						{
-							"label": "HPV test result:",
-							"type": "obs",
-							"id": "currentHpv",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "a8a46fd6-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									}
-								]
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && hpvReceive === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-									"message": "Please indicate HPV results"
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "isEmpty(hpvReceive) || hpvReceive !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "HPV type:",
-							"type": "obs",
-							"id": "hpvType",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "86f923bb-d4c8-4bb1-8fe8-f01c518ba782",
-								"answers": [
-									{
-										"concept": "c4e39e88-9aab-442b-85aa-df82bf31b748",
-										"label": "PCR - HPV TYPE 16"
-									},
-									{
-										"concept": "beff241a-25da-4584-b340-870d9e8a7037",
-										"label": "PCR - HPV TYPE 18"
-									},
-									{
-										"concept": "82687078-ebd1-46ef-b34f-2a65081fb2c4",
-										"label": "HPV TYPE 45"
-									}
-								]
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(currentHpv) || currentHpv !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Pap smear test result:",
-							"type": "obs",
-							"id": "currentPapSmear",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "e18f3f12-4ab6-49ae-8bf7-840ffdea309e",
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Normal"
-									},
-									{
-										"concept": "5f7bdc04-6bb5-4e2e-aa82-f84a5793f675",
-										"label": "ASCUS/ASC-H"
-									},
-									{
-										"concept": "6bc54b4a-2e87-4c33-8f9f-c5adf5dac037",
-										"label": "LSIL"
-									},
-									{
-										"concept": "21251f72-4ffe-47e2-a3b4-794c8c639fb9",
-										"label": "HSIL/CIS"
-									},
-									{
-										"concept": "e9099e9f-f4a0-4444-822f-d97618682c21",
-										"label": "AGUS"
-									},
-									{
-										"concept": "2a99821e-7c66-4c65-977b-98d956955ee2",
-										"label": "Invasive Cancer"
-									}
-								]
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['a8983ff4-1350-11df-a1f1-0026b9348838'],screeningMethod)",
-									"message": "Please indicate pap smear results"
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'a8983ff4-1350-11df-a1f1-0026b9348838')"
-							}
-						},
-						{
-							"label": "Colposcopy finding:",
-							"type": "obs",
-							"id": "colpoFinding",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "44ffeaba-ffeb-4aa5-a141-3f144b75d3cb",
-								"answers": [
-									{
-										"concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-										"label": "Negative"
-									},
-									{
-										"concept": "a899e890-1350-11df-a1f1-0026b9348838",
-										"label": "Positive"
-									},
-									{
-										"concept": "260e6d24-1634-4467-a070-e8359f6827f7",
-										"label": "Suspicious of cancer"
-									}
-								]
-							},
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['44ffeaba-ffeb-4aa5-a141-3f144b75d3cb'],screeningMethod)",
-									"message": "Please indicate colposcopy finding"
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, '44ffeaba-ffeb-4aa5-a141-3f144b75d3cb')"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Procedure Done",
-			"sections": [
-				{
-					"label": "Procedure Done",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"type": "obsGroup",
-							"label": "Procedures done on this visit",
-							"id": "procedureVisit",
-							"questionOptions": {
-								"concept": "0dda52ff-15a0-434d-9685-78817e799a5c",
-								"rendering": "group"
-							},
-							"questions": [
-								{
-									"label": "Procedure done on this visit:",
-									"id": "ProceDone",
-									"required": "true",
-									"questionOptions": {
-										"concept": "c9e077f0-7a61-447a-937a-c96de21a7894",
-										"rendering": "multiCheckbox",
-										"answers": [
-											{
-												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-												"label": "None"
-											},
-											{
-												"concept": "a65eda85-e203-4fc8-a7e5-3717e96e635b",
-												"label": "Endocervical curettage"
-											},
-											{
-												"concept": "1171d9b2-8fc1-4d81-a938-f1b711a4e79f",
-												"label": "Cervical biopsy"
-											},
-											{
-												"concept": "cf25a4b6-1623-4adf-9a15-4e510e5d965e",
-												"label": "Endometrial biopsy"
-											},
-											{
-												"concept": "369dd7ae-7d43-429e-b76e-bcf5baf4f4b2",
-												"label": "Punch biopsy"
-											},
-											{
-												"concept": "20b46f93-b052-4da3-8e58-176be9fc7b01",
-												"label": "Vaginal biopsy"
-											},
-											{
-												"concept": "4d1b8d14-017e-4673-9e9c-b848f146e6e9",
-												"label": "Vault biopsy"
-											},
-											{
-												"concept": "6fdb4c14-6372-4472-bed6-a71a64beb7af",
-												"label": "Vulval biopsy"
-											},
-											{
-												"concept": "a0f80527-8410-44ec-ac58-546005464c34",
-												"label": "Polypectomy"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
-											}
-										]
-									},
-									"type": "obs",
-									"validators": []
-								},
-								{
-									"label": "What other procedure was done that is not listed above?",
-									"type": "obs",
-									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-										"rendering": "text",
-										"placeholder": "Specify name of other procedure done"
-									},
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(ProceDone) || !arrayContains(ProceDone, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
-									},
-									"id": "__EIv1rozD2"
-								}
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Treatment Plan",
-			"sections": [
-				{
-					"label": "Pre-Cancer Treatment",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Treatment method:",
-							"type": "obs",
-							"id": "preCancerTreatment",
-							"required": "true",
-							"questionOptions": {
-								"concept": "94f54710-6ee0-45cd-ad5f-a990fcb47bc1",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-										"label": "None"
-									},
-									{
-										"concept": "dcb72b0b-c1cb-4f32-aa82-e8f7b74cc16e",
-										"label": "Cryotherapy"
-									},
-									{
-										"concept": "b6fccd82-c622-4c3e-9563-39899e709b3b",
-										"label": "LEEP"
-									},
-									{
-										"concept": "a829a2a1-5ea5-400e-a3a5-2069f6d1e05b",
-										"label": "Thermocoagulation"
-									},
-									{
-										"concept": "a89ebb04-1350-11df-a1f1-0026b9348838",
-										"label": "Other treatment methods e.g. Hysterectomy, Cone biopsy"
-									}
-								]
-							},
-							"validators": []
-						},
-						{
-							"label": "Other treatment methods not listed above:",
-							"type": "obs",
-							"id": "otherTreatmentMethod",
-							"questionOptions": {
-								"concept": "dc15823d-e6ec-48fc-beac-bc4239d9bfcb",
-								"rendering": "text"
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(preCancerTreatment) || preCancerTreatment != 'a89ebb04-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Status of cryotherapy:",
-							"type": "obs",
-							"id": "cryoStatus",
-							"required": "true",
-							"questionOptions": {
-								"concept": "3559e1b4-4d8c-418d-9688-cef2616b14da",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "1fa9c243-135a-4b31-935e-8046dbac14bb",
-										"label": "Done"
-									},
-									{
-										"concept": "5b91df2c-079f-4f92-8524-a1d9c80b874f",
-										"label": "Single Visit Approach"
-									},
-									{
-										"concept": "cf62a186-fbe1-420f-8dbf-350acb0a6dcd",
-										"label": "Postponed"
-									},
-									{
-										"concept": "0c5565c5-45cf-40ab-aa6d-5694aeabae18",
-										"label": "Referred"
-									}
-								]
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(preCancerTreatment) || preCancerTreatment !== 'dcb72b0b-c1cb-4f32-aa82-e8f7b74cc16e'"
-							}
-						},
-						{
-							"label": "Status of LEEP:",
-							"type": "obs",
-							"id": "leepStatus",
-							"required": "true",
-							"questionOptions": {
-								"concept": "4d1f03ed-742e-4342-a853-c92094c12f9f",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "5b91df2c-079f-4f92-8524-a1d9c80b874f",
-										"label": "Single Visit Approach"
-									},
-									{
-										"concept": "cf62a186-fbe1-420f-8dbf-350acb0a6dcd",
-										"label": "Postponed"
-									},
-									{
-										"concept": "0c5565c5-45cf-40ab-aa6d-5694aeabae18",
-										"label": "Referred for LEEP"
-									}
-								]
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(preCancerTreatment) || preCancerTreatment !== 'b6fccd82-c622-4c3e-9563-39899e709b3b'"
-							}
-						},
-						{
-							"label": "Status of thermocoagulation:",
-							"type": "obs",
-							"id": "thermocoagStatus",
-							"required": "true",
-							"questionOptions": {
-								"concept": "42b79c20-8113-4af6-abb3-2897a19bd4a2",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "1fa9c243-135a-4b31-935e-8046dbac14bb",
-										"label": "Done"
-									},
-									{
-										"concept": "5b91df2c-079f-4f92-8524-a1d9c80b874f",
-										"label": "Single Visit Approach"
-									},
-									{
-										"concept": "cf62a186-fbe1-420f-8dbf-350acb0a6dcd",
-										"label": "Postponed"
-									},
-									{
-										"concept": "0c5565c5-45cf-40ab-aa6d-5694aeabae18",
-										"label": "Referred"
-									}
-								]
-							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "isEmpty(preCancerTreatment) || preCancerTreatment !== 'a829a2a1-5ea5-400e-a3a5-2069f6d1e05b'"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Assessment",
-			"sections": [
-				{
-					"label": "Assessment Notes",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Please enter your assessment below:",
-							"type": "obs",
-							"id": "assNote",
-							"default": "",
-							"questionOptions": {
-								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
-								"rendering": "textarea",
-								"rows": 10
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Follow-up Plan",
-			"sections": [
-				{
-					"label": "Follow-up Plan",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Follow-up plan:",
-							"id": "viaPlan",
-							"required": "true",
-							"questionOptions": {
-								"concept": "a2583303-bb32-4eed-9ec8-0b7bb5e778a9",
-								"rendering": "select",
-								"answers": [
-									{
-										"concept": "643f3157-e7b9-4731-a767-75636fd23054",
-										"label": "Return for results"
-									},
-									{
-										"concept": "678d493f-bdfe-440b-a87a-6153552939cd",
-										"label": "VIA follow up in 3 to 6 months"
-									},
-									{
-										"concept": "57faac4e-1221-4b88-8948-f6ee24c5f0eb",
-										"label": "Routine yearly VIA"
-									},
-									{
-										"concept": "be9da123-70dd-4800-8d62-c3fa9a621627",
-										"label": "Routine 3 year VIA"
-									},
-									{
-										"concept": "44ffeaba-ffeb-4aa5-a141-3f144b75d3cb",
-										"label": "Colposcopy planned"
-									},
-									{
-										"concept": "f1ff60fd-df32-44df-904d-a50fc5c89ec1",
-										"label": "Gynecologic Oncology clinic referral"
-									},
-									{
-										"concept": "afa60fca-148e-47f7-9987-87c144d25fb1",
-										"label": "3 yearly HPV"
-									},
-									{
-										"concept": "d41529fd-3684-431e-872d-e69e0fbe609d",
-										"label": "2 yearly pap smear"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "!isEmpty(hivStatus) && hivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['be9da123-70dd-4800-8d62-c3fa9a621627'], myValue)",
-									"message": "Patient HIV status marked as HIV positive in HIV status section. Therefore plan can not be Routine 3 year VIA"
-								}
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Next Appointment",
-			"sections": [
-				{
-					"label": "Next Appointment",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Return to clinic date:",
-							"type": "obs",
-							"required": "true",
-							"questionOptions": {
-								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
-								"rendering": "date",
-								"weeksList": [
-									15,
-									30,
-									45,
-									60,
-									90,
-									120,
-									180,
-									210,
-									240,
-									270,
-									300,
-									330,
-									360,
-									720
-								]
-							},
-							"validators": [
-								{
-									"type": "date",
-									"allowFutureDates": "true"
-								},
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
-									"message": "Return to clinic date should be greater than the encounter date."
-								}
-							],
-							"id": "__y1MJHnxMz"
-						}
-					]
-				}
-			]
-		}
-	]
+
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required)",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "obs",
+              "label": "HIV Status",
+              "isExpanded": "true",
+              "questions": [
+                {
+                  "label": "What is your current HIV status?",
+                  "id": "hivStatus",
+                  "type": "obs",
+                  "required": "true",
+                  "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9e4d6436-4040-46a3-a0ae-6dbc0acfe593')) ? undefined : HD.getObject('prevEnc').getValue('9e4d6436-4040-46a3-a0ae-6dbc0acfe593')",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+                    "answers": [
+                      {
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "label": "HIV positive"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "HIV negative"
+                      },
+                      {
+                        "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                        "label": "Unknown"
+                      }
+                    ]
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "Are you currently in HIV care or under ART?",
+                  "id": "currentlyOnArt",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8afba58-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(myValue) && hivStatus == 'a896f3a6-1350-11df-a1f1-0026b9348838'",
+                      "message": "Please indicate whether the client is currently in HIV care or under ART"
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(hivStatus) || hivStatus != 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "At which AMPATH facility are you receiving HIV care?",
+                  "id": "careLocation",
+                  "type": "personAttribute",
+                  "questionOptions": {
+                    "rendering": "ui-select-extended",
+                    "attributeType": "8d87236c-c2cc-11de-8d13-0010c6dffd0f"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(myValue) && hivStatus == 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                      "message": "Please indicate the facility where the client is receiving HIV care"
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(currentlyOnArt) || currentlyOnArt != 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "For a non-AMPATH client, please specify the primary HIV care facility",
+                  "id": "nonAMPATHCareLocation",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "5a1a5ae4-e0ee-47fd-9b16-e54f55c3f000",
+                    "rendering": "text",
+                    "placeholder": ""
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(currentlyOnArt) || currentlyOnArt != 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Pre-Clinical Review",
+      "sections": [
+        {
+          "label": "Pre-Clinic Review",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Current visit",
+              "id": "visitType",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b6440-1350-11df-a1f1-0026b9348838",
+                    "label": "Scheduled visit"
+                  },
+                  {
+                    "concept": "a89ff816-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit early"
+                  },
+                  {
+                    "concept": "a89ff8de-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit late"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "If early or late unscheduled visit, what was the scheduled visit date?",
+              "id": "actualDate",
+              "type": "obs",
+              "required": {
+                "type": "conditionalRequired",
+                "referenceQuestionId": "visitType",
+                "referenceQuestionAnswers": [
+                  "a89ff816-1350-11df-a1f1-0026b9348838",
+                  "a89ff8de-1350-11df-a1f1-0026b9348838"
+                ]
+              },
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "dc1942b2-5e50-4adc-949d-ad6c905f054e"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(visitType) && arrayContains(['a89ff816-1350-11df-a1f1-0026b9348838','a89ff8de-1350-11df-a1f1-0026b9348838'], visitType) && isEmpty(myValue)",
+                  "message": "Patient visit marked as unscheduled. Please provide the scheduled date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89ff816-1350-11df-a1f1-0026b9348838','a89ff8de-1350-11df-a1f1-0026b9348838'], visitType)"
+              }
+            },
+            {
+              "label": "Visit type:",
+              "id": "typeOfVisit",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                    "label": "Initial screening"
+                  },
+                  {
+                    "concept": "a89526f2-1350-11df-a1f1-0026b9348838",
+                    "label": "Routine screening"
+                  },
+                  {
+                    "concept": "19a7233b-2db1-4d7b-a2fb-4473e6b58f9d",
+                    "label": "Post-Treatment screening"
+                  },
+                  {
+                    "concept": "a89adc46-1350-11df-a1f1-0026b9348838",
+                    "label": "Treatment visit"
+                  },
+                  {
+                    "concept": "3a60fe6f-a116-41ce-9daf-1340085bc02d",
+                    "label": "Complications"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Reproductive Health",
+      "sections": [
+        {
+          "label": "Reproductive History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Number of pregnancies had (gravida):",
+              "type": "obs",
+              "id": "noPregnancy",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "50",
+                "min": "0"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
+              }
+            },
+            {
+              "label": "Number of pregnancies delivered (parity):",
+              "type": "obs",
+              "id": "noDelivery",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899a920-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "min": "0"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(noPregnancy) && isEmpty(myValue) && noPregnancy < noDelivery))",
+                  "message": "Parity should not be greater than gravida."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
+              }
+            },
+            {
+              "label": "Menstruation status:",
+              "id": "menStatus",
+              "questionOptions": {
+                "concept": "a8a185d2-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "label": "Menstruating",
+                    "concept": "a8ad2b4e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Postmenopausal",
+                    "concept": "5cc1c1a7-dfcc-47dc-ad73-c386c188fad8"
+                  },
+                  {
+                    "label": "Amenorrhea",
+                    "concept": "a8a18514-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
+              }
+            },
+            {
+              "label": "Last menstrual period:",
+              "id": "lmpDate1",
+              "questionOptions": {
+                "concept": "a89ff758-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(pattype1) && pattype1 === '375e6d4a-ba94-41ac-8ac3-5a56015c4d92' && isEmpty(myValue)",
+                  "message": "Patient is antenatal. Please indicate when they had their last menstrual period."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Is the patient pregnant?",
+              "id": "pregnant",
+              "questionOptions": {
+                "concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Last delivery date:",
+              "id": "lastDelDate",
+              "questionOptions": {
+                "concept": "a8aae050-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "The last delivery date should be lesser than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Estimated delivery date:",
+              "id": "delDate",
+              "questionOptions": {
+                "concept": "a8aaddbc-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "calculate": {
+                  "calculateExpression": "moment(lmpDate1).isValid() ? moment(lmpDate1).add(280, 'days').toDate():''"
+                }
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(lmpDate1)).isAfter((new moment(myValue)), 'day') || (new moment(lmpDate1)).isSame((new moment(myValue)), 'day')",
+                  "message": "The estimated delivery date should be greater than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "pregnant !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Reason why the patient is not pregnant?",
+              "id": "reasonNotPreg",
+              "questionOptions": {
+                "concept": "f701166d-9820-420d-b0bc-c98ad4747dec",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "5bafcbc0-e499-4741-85e3-52e93f68f08c",
+                    "label": "Pregnancy not suspected"
+                  },
+                  {
+                    "concept": "6cb93e09-cd9a-4333-994a-9cd65dfa8c12",
+                    "label": "Pregnancy test is negative"
+                  },
+                  {
+                    "concept": "c662737e-d529-4b49-9ad3-2d72eeb56b45",
+                    "label": "Using hormonal contraceptive"
+                  },
+                  {
+                    "concept": "3bca6c9c-333c-433e-ac07-7e44e0501b49",
+                    "label": "Postpartum < 6 weeks"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "pregnant!== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prior VIA",
+      "sections": [
+        {
+          "label": "Prior VIA",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Prior VIA:",
+              "type": "obs",
+              "required": "true",
+              "id": "priorviatest",
+              "questionOptions": {
+                "concept": "cf33d31f-b96b-4437-a6b8-ff5f43855f9b",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Prior VIA result:",
+              "id": "priorviaresult",
+              "type": "obs",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('f165c64a-9354-4145-9b06-4ee437630218')",
+              "questionOptions": {
+                "concept": "f165c64a-9354-4145-9b06-4ee437630218",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ],
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(priorviaresult) && isEmpty(myValue)",
+                      "message": "Date result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(priorviaresult)"
+                  }
+                }
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(priorviatest) || priorviatest !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Routine Screening",
+      "sections": [
+        {
+          "label": "Routine Screening",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Screening method:",
+              "type": "obs",
+              "id": "screeningMethod",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "6750ddf9-bd32-4d8f-bee0-b5fc192a20a3",
+                "answers": [
+                  {
+                    "concept": "b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65",
+                    "label": "VIA"
+                  },
+                  {
+                    "concept": "a89b2dcc-1350-11df-a1f1-0026b9348838",
+                    "label": "HPV"
+                  },
+                  {
+                    "concept": "a8983ff4-1350-11df-a1f1-0026b9348838",
+                    "label": "Pap smear"
+                  },
+                  {
+                    "concept": "44ffeaba-ffeb-4aa5-a141-3f144b75d3cb",
+                    "label": "Colposcopy"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "VIA test result:",
+              "type": "obs",
+              "id": "currentVia",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65",
+                "answers": [
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+                    "label": "Suspicious for cancer"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65'],screeningMethod)",
+                  "message": "Please indicate VIA results"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethod) ||  !arrayContains(screeningMethod,'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
+              }
+            },
+            {
+              "label": "Observations noted from positive VIA test:",
+              "id": "viaObservations",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "65634e0b-af9a-4b64-9255-0fa14e098077",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "2e293b85-4915-48fe-ac36-5448ff0ffa3f",
+                    "label": "Abnormal vessels"
+                  },
+                  {
+                    "concept": "0dc3cb9a-67f0-4883-a681-c077641d9467",
+                    "label": "Aceto-white"
+                  },
+                  {
+                    "concept": "a0bda074-8e57-4ba7-ab9c-c008776f8d48",
+                    "label": "Excessive bleeding"
+                  },
+                  {
+                    "concept": "8d6d4d79-f9bc-4322-be06-668c9e9ca402",
+                    "label": "Friable tissue"
+                  },
+                  {
+                    "concept": "779e7248-301f-43c2-a24e-87d1cb13abfb",
+                    "label": "Punctuations"
+                  },
+                  {
+                    "concept": "be87ae99-9e94-4946-bee3-390a40bd8b23",
+                    "label": "Ulceration"
+                  },
+                  {
+                    "concept": "71d6f6d5-9d40-4592-a04d-0a0f796bcb26",
+                    "label": "Yellow-staining lesion"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(currentVia) || currentVia !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Cervix impression:",
+              "id": "cervixImp",
+              "questionOptions": {
+                "concept": "149f4d06-5ac1-41b0-b914-771fb9d7f192",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "943178f7-4710-4102-8698-a2acc44cb79a",
+                    "label": "Positive VIA + aceto-white only"
+                  },
+                  {
+                    "concept": "96df6fa5-311c-4a16-ac18-6f5c038a519b",
+                    "label": "Positive VIA + suspicious lesion for cancer"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
+              }
+            },
+            {
+              "label": "Vagina impression:",
+              "id": "vaginaImp",
+              "questionOptions": {
+                "concept": "e469db48-fd1c-4e27-be37-391e653cf043",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a89cef0e-1350-11df-a1f1-0026b9348838",
+                    "label": "Warts"
+                  },
+                  {
+                    "concept": "f565757c-ed02-43bc-825e-d442a99a2ddf",
+                    "label": "Suspicious of cancer"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
+              }
+            },
+            {
+              "label": "Vulva impression:",
+              "id": "vulvaImp",
+              "questionOptions": {
+                "concept": "7367cc87-b229-461a-9db8-3979fe57e00d",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a89cef0e-1350-11df-a1f1-0026b9348838",
+                    "label": "Warts"
+                  },
+                  {
+                    "concept": "f565757c-ed02-43bc-825e-d442a99a2ddf",
+                    "label": "Suspicious of cancer"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65')"
+              }
+            },
+            {
+              "label": "Have you received HPV results:",
+              "type": "obs",
+              "id": "hpvReceive",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "bfbd547d-4449-48d6-a464-7938602bc4e5",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'a89b2dcc-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "HPV test result:",
+              "type": "obs",
+              "id": "currentHpv",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a46fd6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && hpvReceive === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Please indicate HPV results"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(hpvReceive) || hpvReceive !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "HPV type:",
+              "type": "obs",
+              "id": "hpvType",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "86f923bb-d4c8-4bb1-8fe8-f01c518ba782",
+                "answers": [
+                  {
+                    "concept": "c4e39e88-9aab-442b-85aa-df82bf31b748",
+                    "label": "PCR - HPV TYPE 16"
+                  },
+                  {
+                    "concept": "beff241a-25da-4584-b340-870d9e8a7037",
+                    "label": "PCR - HPV TYPE 18"
+                  },
+                  {
+                    "concept": "82687078-ebd1-46ef-b34f-2a65081fb2c4",
+                    "label": "HPV TYPE 45"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(currentHpv) || currentHpv !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Pap smear test result:",
+              "type": "obs",
+              "id": "currentPapSmear",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e18f3f12-4ab6-49ae-8bf7-840ffdea309e",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "5f7bdc04-6bb5-4e2e-aa82-f84a5793f675",
+                    "label": "ASCUS/ASC-H"
+                  },
+                  {
+                    "concept": "6bc54b4a-2e87-4c33-8f9f-c5adf5dac037",
+                    "label": "LSIL"
+                  },
+                  {
+                    "concept": "21251f72-4ffe-47e2-a3b4-794c8c639fb9",
+                    "label": "HSIL/CIS"
+                  },
+                  {
+                    "concept": "e9099e9f-f4a0-4444-822f-d97618682c21",
+                    "label": "AGUS"
+                  },
+                  {
+                    "concept": "2a99821e-7c66-4c65-977b-98d956955ee2",
+                    "label": "Invasive Cancer"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['a8983ff4-1350-11df-a1f1-0026b9348838'],screeningMethod)",
+                  "message": "Please indicate pap smear results"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, 'a8983ff4-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Colposcopy finding:",
+              "type": "obs",
+              "id": "colpoFinding",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "44ffeaba-ffeb-4aa5-a141-3f144b75d3cb",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+                    "label": "Suspicious of cancer"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['44ffeaba-ffeb-4aa5-a141-3f144b75d3cb'],screeningMethod)",
+                  "message": "Please indicate colposcopy finding"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethod) || !arrayContains(screeningMethod, '44ffeaba-ffeb-4aa5-a141-3f144b75d3cb')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Procedure Done",
+      "sections": [
+        {
+          "label": "Procedure Done",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Procedures done on this visit",
+              "id": "procedureVisit",
+              "questionOptions": {
+                "concept": "0dda52ff-15a0-434d-9685-78817e799a5c",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Procedure done on this visit:",
+                  "id": "ProceDone",
+                  "required": "true",
+                  "questionOptions": {
+                    "concept": "c9e077f0-7a61-447a-937a-c96de21a7894",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
+                      },
+                      {
+                        "concept": "a65eda85-e203-4fc8-a7e5-3717e96e635b",
+                        "label": "Endocervical curettage"
+                      },
+                      {
+                        "concept": "1171d9b2-8fc1-4d81-a938-f1b711a4e79f",
+                        "label": "Cervical biopsy"
+                      },
+                      {
+                        "concept": "cf25a4b6-1623-4adf-9a15-4e510e5d965e",
+                        "label": "Endometrial biopsy"
+                      },
+                      {
+                        "concept": "369dd7ae-7d43-429e-b76e-bcf5baf4f4b2",
+                        "label": "Punch biopsy"
+                      },
+                      {
+                        "concept": "20b46f93-b052-4da3-8e58-176be9fc7b01",
+                        "label": "Vaginal biopsy"
+                      },
+                      {
+                        "concept": "4d1b8d14-017e-4673-9e9c-b848f146e6e9",
+                        "label": "Vault biopsy"
+                      },
+                      {
+                        "concept": "6fdb4c14-6372-4472-bed6-a71a64beb7af",
+                        "label": "Vulval biopsy"
+                      },
+                      {
+                        "concept": "a0f80527-8410-44ec-ac58-546005464c34",
+                        "label": "Polypectomy"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "What other procedure was done that is not listed above?",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text",
+                    "placeholder": "Specify name of other procedure done"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(ProceDone) || !arrayContains(ProceDone, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "id": "__EIv1rozD2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment Plan",
+      "sections": [
+        {
+          "label": "Pre-Cancer Treatment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Treatment method:",
+              "type": "obs",
+              "id": "preCancerTreatment",
+              "required": "true",
+              "questionOptions": {
+                "concept": "94f54710-6ee0-45cd-ad5f-a990fcb47bc1",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "dcb72b0b-c1cb-4f32-aa82-e8f7b74cc16e",
+                    "label": "Cryotherapy"
+                  },
+                  {
+                    "concept": "b6fccd82-c622-4c3e-9563-39899e709b3b",
+                    "label": "LEEP"
+                  },
+                  {
+                    "concept": "a829a2a1-5ea5-400e-a3a5-2069f6d1e05b",
+                    "label": "Thermocoagulation"
+                  },
+                  {
+                    "concept": "a89ebb04-1350-11df-a1f1-0026b9348838",
+                    "label": "Other treatment methods e.g. Hysterectomy, Cone biopsy"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Other treatment methods not listed above:",
+              "type": "obs",
+              "id": "otherTreatmentMethod",
+              "questionOptions": {
+                "concept": "dc15823d-e6ec-48fc-beac-bc4239d9bfcb",
+                "rendering": "text"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(preCancerTreatment) || preCancerTreatment != 'a89ebb04-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Status of cryotherapy:",
+              "type": "obs",
+              "id": "cryoStatus",
+              "required": "true",
+              "questionOptions": {
+                "concept": "3559e1b4-4d8c-418d-9688-cef2616b14da",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "1fa9c243-135a-4b31-935e-8046dbac14bb",
+                    "label": "Done"
+                  },
+                  {
+                    "concept": "5b91df2c-079f-4f92-8524-a1d9c80b874f",
+                    "label": "Single Visit Approach"
+                  },
+                  {
+                    "concept": "cf62a186-fbe1-420f-8dbf-350acb0a6dcd",
+                    "label": "Postponed"
+                  },
+                  {
+                    "concept": "0c5565c5-45cf-40ab-aa6d-5694aeabae18",
+                    "label": "Referred"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(preCancerTreatment) || preCancerTreatment !== 'dcb72b0b-c1cb-4f32-aa82-e8f7b74cc16e'"
+              }
+            },
+            {
+              "label": "Status of LEEP:",
+              "type": "obs",
+              "id": "leepStatus",
+              "required": "true",
+              "questionOptions": {
+                "concept": "4d1f03ed-742e-4342-a853-c92094c12f9f",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "5b91df2c-079f-4f92-8524-a1d9c80b874f",
+                    "label": "Single Visit Approach"
+                  },
+                  {
+                    "concept": "cf62a186-fbe1-420f-8dbf-350acb0a6dcd",
+                    "label": "Postponed"
+                  },
+                  {
+                    "concept": "0c5565c5-45cf-40ab-aa6d-5694aeabae18",
+                    "label": "Referred for LEEP"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(preCancerTreatment) || preCancerTreatment !== 'b6fccd82-c622-4c3e-9563-39899e709b3b'"
+              }
+            },
+            {
+              "label": "Status of thermocoagulation:",
+              "type": "obs",
+              "id": "thermocoagStatus",
+              "required": "true",
+              "questionOptions": {
+                "concept": "42b79c20-8113-4af6-abb3-2897a19bd4a2",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "1fa9c243-135a-4b31-935e-8046dbac14bb",
+                    "label": "Done"
+                  },
+                  {
+                    "concept": "5b91df2c-079f-4f92-8524-a1d9c80b874f",
+                    "label": "Single Visit Approach"
+                  },
+                  {
+                    "concept": "cf62a186-fbe1-420f-8dbf-350acb0a6dcd",
+                    "label": "Postponed"
+                  },
+                  {
+                    "concept": "0c5565c5-45cf-40ab-aa6d-5694aeabae18",
+                    "label": "Referred"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(preCancerTreatment) || preCancerTreatment !== 'a829a2a1-5ea5-400e-a3a5-2069f6d1e05b'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Assessment",
+      "sections": [
+        {
+          "label": "Assessment Notes",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Please enter your assessment below:",
+              "type": "obs",
+              "id": "assNote",
+              "default": "",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 10
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow-up Plan",
+      "sections": [
+        {
+          "label": "Follow-up Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Follow-up plan:",
+              "id": "viaPlan",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a2583303-bb32-4eed-9ec8-0b7bb5e778a9",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "643f3157-e7b9-4731-a767-75636fd23054",
+                    "label": "Return for results"
+                  },
+                  {
+                    "concept": "678d493f-bdfe-440b-a87a-6153552939cd",
+                    "label": "VIA follow up in 3 to 6 months"
+                  },
+                  {
+                    "concept": "57faac4e-1221-4b88-8948-f6ee24c5f0eb",
+                    "label": "Routine yearly VIA"
+                  },
+                  {
+                    "concept": "be9da123-70dd-4800-8d62-c3fa9a621627",
+                    "label": "Routine 3 year VIA"
+                  },
+                  {
+                    "concept": "44ffeaba-ffeb-4aa5-a141-3f144b75d3cb",
+                    "label": "Colposcopy planned"
+                  },
+                  {
+                    "concept": "f1ff60fd-df32-44df-904d-a50fc5c89ec1",
+                    "label": "Gynecologic Oncology clinic referral"
+                  },
+                  {
+                    "concept": "afa60fca-148e-47f7-9987-87c144d25fb1",
+                    "label": "3 yearly HPV"
+                  },
+                  {
+                    "concept": "d41529fd-3684-431e-872d-e69e0fbe609d",
+                    "label": "2 yearly pap smear"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(hivStatus) && hivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['be9da123-70dd-4800-8d62-c3fa9a621627'], myValue)",
+                  "message": "Patient HIV status marked as HIV positive in HIV status section. Therefore plan can not be Routine 3 year VIA"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Next Appointment",
+      "sections": [
+        {
+          "label": "Next Appointment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Return to clinic date:",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [
+                  15, 30, 45, 60, 90, 120, 180, 210, 240, 270, 300, 330, 360,
+                  720
+                ]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+              ],
+              "id": "__y1MJHnxMz"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
