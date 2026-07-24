@@ -1614,7 +1614,7 @@
                 "rendering": "multiCheckbox",
                 "answers": [
                   {
-                    "concept": "a899f04c-1350-11df-a1f1-0026b9348838",
+                    "concept": "a899c13a-1350-11df-a1f1-0026b9348838",
                     "label": "GIT"
                   },
                   {
@@ -1622,17 +1622,14 @@
                     "label": "CNS"
                   },
                   {
-                    "concept": "a899b87a-1350-11df-a1f1-0026b9348838",
+                    "concept": "a899ef84-1350-11df-a1f1-0026b9348838",
                     "label": "CVS"
                   },
                   {
                     "concept": "a899b79e-1350-11df-a1f1-0026b9348838",
                     "label": "ENT"
                   },
-                  {
-                    "concept": "c6533a94-206e-4687-a2d4-73401e6895cb",
-                    "label": "Eye"
-                  },
+                  
                   {
                     "concept": "a899c2fc-1350-11df-a1f1-0026b9348838",
                     "label": "Genitourinary"
@@ -1678,7 +1675,7 @@
                 "rendering": "textarea"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899b87a-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899ef84-1350-11df-a1f1-0026b9348838')"
               }
             },
 
@@ -1696,15 +1693,15 @@
             },
 
             {
-              "label": "Gastrointerstinal findings notes:",
+              "label": "Gastrointestinal findings notes:",
               "type": "obs",
               "id": "abdoMenFindNoteS",
               "questionOptions": {
-                "concept": "d2c5aa73-eca6-4ce3-bfe7-2421eb010928",
+                "concept": "90d4640d-5da3-4a5e-913f-8501467250ad",
                 "rendering": "textarea"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, '1a899f04c-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c13a-1350-11df-a1f1-0026b9348838')"
               }
             },
 
@@ -1726,7 +1723,7 @@
               "type": "obs",
               "id": "musculoskeletalFindingNotes",
               "questionOptions": {
-                "concept": "a80f32d7-43a8-41ce-aea8-0581b67af82b",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "textarea"
               },
               "hide": {
