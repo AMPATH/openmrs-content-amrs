@@ -284,7 +284,7 @@
               },
               "validators": []
             },
-{
+            {
               "label": "Referring patient today?",
               "type": "obs",
               "id": "visitReferral",
@@ -303,7 +303,7 @@
                 ]
               }
             },
-           
+
             {
               "label": "If yes, referred to:",
               "id": "referredTo",
@@ -344,7 +344,7 @@
                 "hideWhenExpression": "isEmpty(visitReferral) || visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
-            
+
             {
               "label": "Reason for referral:",
               "id": "reasonReferral",
@@ -358,7 +358,7 @@
                 "hideWhenExpression": "isEmpty(visitReferral) || visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
-             {
+            {
               "label": "Prescribe Drug(s):",
               "id": "drugsWorkspaceLauncher",
               "questionOptions": {
