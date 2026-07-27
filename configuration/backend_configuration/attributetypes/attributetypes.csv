@@ -17,3 +17,4 @@ c73daf69-ddd0-4fce-98ec-6f9d875193e3,,Provider,Specialty,Provider speciality e.g
 4962a633-c4f8-474c-857c-5c68c72fbbe3,,Visit,SHA Claims Visit Consent Token,SHA Claims Visit Consent Token,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
 b8782ae6-b2a0-4f2d-aebf-5f950064c812,,Visit,SHA Sub-benefit Coverage,SHA Claims Sub-benefit coverage,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
 8d73f8d7-dded-44a0-9f72-e23523c96503,,Provider,Licensing Body,Practitioner Licensing body e.g KMPDC,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
+49df844d-79c0-40fc-8ca9-c27d6391f647,,Location,Claim Visit Start Service Points,Service Points in which Claim visit can be started from in a facility,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
