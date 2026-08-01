@@ -429,7 +429,7 @@
               }
             },
             {
-              "label": "Other Signs and Symptoms",
+              "label": "Other Signs and Symptoms:",
               "type": "obs",
               "id": "otherSpecifySymptomsFemale",
               "questionOptions": {
@@ -441,7 +441,7 @@
               }
             },
             {
-              "label": "Symptoms and Signs",
+              "label": "Symptoms and Signs:",
               "type": "obs",
               "id": "symptomsSignsMale",
               "required": "true",

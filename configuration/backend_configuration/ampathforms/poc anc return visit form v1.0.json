@@ -5451,12 +5451,11 @@
               "id": "apri_score",
               "questionOptions": {
                 "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
-               
                 "min": "0.00",
                 "showDate": "true",
                 "rendering": "decimal",
                 "calculate": {
-                  "calculateExpression": "!isEmpty(ast_test) && !isEmpty(platelets_test) && platelets_test != 0 ? Math.round(((((ast_test / 89) * 100) / platelets_test) * 100)) / 100 : ''"
+                  "calculateExpression": "!isEmpty(ast_test) && !isEmpty(platelets_test) && platelets_test != 0 ? Math.round(((((ast_test / 40) * 100) / platelets_test) * 100)) / 100 : ''"
                 },
                 "shownDateOptions": {
                   "validators": [
@@ -5485,10 +5484,10 @@
           ]
         },
           {
-          "label": "CrAg And CSF",
+          "label": "CrAg",
           "questions": [
             {
-              "label": "CrAg test:",
+              "label": "Blood CrAg:",
               "id": "cragTest",
               "questionOptions": {
                 "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
@@ -5531,7 +5530,7 @@
               }
             },
             {
-              "label": "CSF Cryptococcal Ag test:",
+              "label": "CSF CrAg:",
               "id": "csfTest",
               "questionOptions": {
                 "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
@@ -8764,11 +8763,11 @@
                       },
                       {
                         "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-                        "label": "CrAg test"
+                        "label": "Blood CrAg"
                       },
                       {
                         "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
-                        "label": "CSF Cryptococcal Ag test"
+                        "label": "CSF CrAg"
                       },
                       {
                         "concept": "57677735-4310-4841-8902-dae4bac24d20",
@@ -8841,6 +8840,10 @@
                       {
                         "concept": "a8945678-1350-11df-a1f1-0026b9348838",
                         "label": "VDRL"
+                      },
+                       {
+                        "concept": "a898ff66-1350-11df-a1f1-0026b9348838",
+                        "label": "TPHA"
                       },
                       {
                         "concept": "a894590c-1350-11df-a1f1-0026b9348838",

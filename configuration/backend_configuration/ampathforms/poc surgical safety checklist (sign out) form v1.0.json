@@ -1,0 +1,199 @@
+{
+	"name": "POC Surgical Safety Checklist (Sign Out)Form v1.0",
+	"description": "A form used to capture Surgical Safety Checklist Sign Out",
+	"version": "1.0",
+	"published": true,
+	"uuid": "",
+	"retired": false,
+	"encounter": "",
+    "processor": "EncounterFormProcessor",
+	"encounterType": "",
+	"pages": [
+		{
+			"label": "Surgical Safety Checklist Details",
+			"sections": [
+				{
+					"label": "Visit Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Date of surgery:",
+							"type": "encounterDatetime",
+							"required": "true",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "false"
+								}
+							]
+						},
+						{
+							"label": "Provider:",
+							"type": "encounterProvider",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"hide": {
+								"hideWhenExpression": "!isEmpty(encDate)"
+							},
+							"id": "encProvider "
+						},
+						{
+							"label": "Location:",
+							"type": "encounterLocation",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"hide": {
+								"hideWhenExpression": "!isEmpty(encDate)"
+							},
+							"id": "encLocation"
+						},
+						{
+							"label": "Diagnosis",
+							"id": "finalDiagnosisId",
+							"readonly": true,
+							"type": "diagnosis",
+							"questionOptions": {
+								"rendering": "repeating",
+								"rank": 2,
+								"datasource": {
+									"name": "diagnoses",
+									"config": {
+										"conceptSourceUuid": "",
+										"useMostRecentValue": "true",
+										"autoPopulateWithMostRecentValue": "true"
+									}
+								}
+							}
+						},
+						{
+							"label": "Procedure",
+							"type": "obs",
+							"id": "proceDure",
+							"readonly": true,
+							"questionOptions": {
+								"concept": "",
+								"rendering": "text",
+								"useMostRecentValue": "true",
+								"autoPopulateWithMostRecentValue": "true"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Before Any Team Member Leaves Room",
+			"sections": [
+				{
+					"label": "Sign Out",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Sign out time",
+							"type": "obs",
+							"datePickerFormat": "both",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": ""
+							},
+							"id": "leavesDateTime",
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "false"
+								}
+							],
+							"required": "true"
+						},
+						{
+							"label": "Has the surgical team members verified the following?",
+							"type": "obs",
+							"id": "surgteamVerification",
+							"questionOptions": {
+								"rendering": "checkbox",
+								"concept": "",
+								"answers": [
+									{
+										"concept": "",
+										"label": "Name of procedure (s)"
+									},
+									{
+										"concept": "",
+										"label": "Instrument, sponge, and needle counts are correct"
+									},
+									{
+										"concept": "",
+										"label": "All specimens are labelled and forms completed per protocol"
+									},
+									{
+										"concept": "",
+										"label": "Equipment/instrument problems to be addressed"
+									},
+									{
+										"concept": "",
+										"label": "Where patient will be immediately recovered followed by ward for post op"
+									}
+								]
+							}
+						},
+						{
+							"label": "Surgeon, anaesthesia, and nurse review done?",
+							"type": "obs",
+							"id": "surgnurseVerification",
+							"questionOptions": {
+								"rendering": "checkbox",
+								"concept": "",
+								"answers": [
+									{
+										"concept": "",
+										"label": "Any key concerns for recovery and management of patient"
+									},
+									{
+										"concept": "",
+										"label": "For C-S, reviewing team includes newborn provider"
+									}
+								]
+							}
+						},
+						{
+							"label": "Surgeon:",
+							"type": "encounterProvider",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encSurgeon"
+						},
+						{
+							"label": "Scrub Nurse:",
+							"type": "encounterProvider",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encScrub"
+						},
+						{
+							"label": "Anaesthetist:",
+							"type": "encounterProvider",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encAnaesthetist"
+						}
+					]
+				}
+			]
+		}
+	]
+	
+}

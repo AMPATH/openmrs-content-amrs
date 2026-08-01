@@ -6964,7 +6964,7 @@
               "id": "apri_score",
               "questionOptions": {
                 "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
-               
+
                 "min": "0.00",
                 "showDate": "true",
                 "rendering": "decimal",
@@ -6998,10 +6998,10 @@
           ]
         },
         {
-          "label": "CrAg And CSF",
+          "label": "CrAg",
           "questions": [
             {
-              "label": "CrAg test:",
+              "label": "Blood CrAg:",
               "id": "cragTest",
               "questionOptions": {
                 "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
@@ -7044,7 +7044,7 @@
               }
             },
             {
-              "label": "CSF Cryptococcal Ag test:",
+              "label": "CSF CrAg:",
               "id": "csfTest",
               "questionOptions": {
                 "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
@@ -9197,7 +9197,7 @@
                 "hideWhenExpression": "priorHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
-             {
+            {
               "label": "If Start/Change, regimen:",
               "id": "MeningitisMedication",
               "questionOptions": {
@@ -9898,11 +9898,11 @@
                       },
                       {
                         "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-                        "label": "CrAg test"
+                        "label": "Blood CrAg"
                       },
                       {
                         "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
-                        "label": "CSF Cryptococcal Ag test"
+                        "label": "CSF CrAg"
                       },
                       {
                         "concept": "57677735-4310-4841-8902-dae4bac24d20",
@@ -9977,6 +9977,10 @@
                         "label": "VDRL"
                       },
                       {
+                        "concept": "a898ff66-1350-11df-a1f1-0026b9348838",
+                        "label": "TPHA"
+                      },
+                      {
                         "concept": "a894590c-1350-11df-a1f1-0026b9348838",
                         "label": "Urinalysis"
                       },
@@ -10006,10 +10010,7 @@
                       }
                     ]
                   },
-                  "validators": [
-                    
-                  ]
-                  
+                  "validators": []
                 },
                 {
                   "label": "Test ordered: Other (specify):",

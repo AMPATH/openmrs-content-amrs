@@ -1938,7 +1938,7 @@
                   },
                   {
                     "concept": "8f8a715d-e49a-4b2c-aa3a-83fa9d7a4254",
-                    "label": "Sunsequent regimen"
+                    "label": "Subsequent regimen"
                   },
                   {
                     "concept": "a90ebdd2-351f-485a-b850-4938fcca2729",
@@ -5753,10 +5753,10 @@
           ]
         },
         {
-          "label": "CrAg And CSF",
+          "label": "CrAg",
           "questions": [
             {
-              "label": "CrAg test:",
+              "label": "Blood CrAg:",
               "id": "cragTest",
               "questionOptions": {
                 "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
@@ -5801,7 +5801,7 @@
               
             },
              {
-              "label": "CSF Cryptococcal Ag test:",
+              "label": "CSF CrAg:",
               "id": "csfTest",
               "questionOptions": {
                 "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
@@ -9922,11 +9922,11 @@
                       },
                       {
                         "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
-                        "label": "CrAg test"
+                        "label": "Blood CrAg"
                       },
                       {
                         "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",
-                        "label": "CSF Cryptococcal Ag test"
+                        "label": "CSF CrAg"
                       },
                       
                       {
@@ -10044,7 +10044,7 @@
                   ],
                   "alert": {
                     "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], myValue))",
-                    "message": "Newly enrolled clients require baseline CD4 and CXR test orders. Please order them before form submission."
+                    "message": "This client is newly enrolled. Please order baseline CD4 and CXR before submitting the form."
                   }
                   
                 },

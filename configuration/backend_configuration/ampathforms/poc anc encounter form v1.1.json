@@ -5836,11 +5836,11 @@
           ]
         },
         {
-          "label": "CrAg And CSF",
+          "label": "CrAg",
           "questions": [
             
             {
-              "label": "CrAg test:",
+              "label": "Blood CrAg:",
               "id": "cragTest",
               "questionOptions": {
                 "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",
@@ -5883,7 +5883,7 @@
               }
             },
              {
-              "label": "CSF Cryptococcal Ag test:",
+              "label": "CSF CrAg:",
               "id": "csfTest",
               "questionOptions": {
                 "concept": "700b68ab-43eb-486e-b51c-dd6eb8cc2749",

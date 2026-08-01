@@ -1150,7 +1150,7 @@
               "id": "condomIssue"
             },
             {
-              "label": "PrEP status:",
+              "label": "PrEP plan:",
               "type": "obs",
               "required": "true",
               "id": "prepStatus",
@@ -1199,10 +1199,7 @@
                     "concept": "7e7d4555-362a-498a-b5ed-abcddcfce2a7",
                     "label": "Client preference"
                   },
-                  {
-                    "concept": "c0c9eab3-46f6-453c-b29d-dc1c242317c5",
-                    "label": "Stock out"
-                  },
+                  
                   {
                     "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
                     "label": "Adverse drug reactions"
@@ -1210,11 +1207,8 @@
                   {
                     "concept": "01eedbcc-ea21-40cc-b150-fcaca5eef501",
                     "label": "Drug interactions"
-                  },
-                  {
-                    "concept": "7a5af985-b862-4e44-8024-7f131eaeba01",
-                    "label": "Discontinuing inj. PrEP"
                   }
+                  
                 ],
                 "rendering": "multiCheckbox"
               },
