@@ -215,7 +215,7 @@
                   },
                   {
                     "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
-                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                    "label": "ABC60mg/3TC30mg/DTG5mg"
                   },
                   {
                     "concept": "20185c04-9334-11df-8193-000d6014b64c",
@@ -1526,19 +1526,19 @@
                 "answers": [
                   {
                     "concept": "40a893e8-d30a-4b4c-8f4a-eca3bcdfbd0d",
-                    "label": "Initial PCR (Birth testing or 1st contact)"
+                    "label": "Birth testing (0-2 weeks) or 1st contact"
                   },
                   {
                     "concept": "43c9e462-6d9b-4f05-9a91-ae9fe56e86fa",
-                    "label": "Second PCR (6-8 weeks)"
+                    "label": "Second PCR"
                   },
                   {
                     "concept": "369cf77d-725a-4c2b-a2f2-f2e906aa2363",
-                    "label": "Third PCR (6 months)"
+                    "label": "Third PCR"
                   },
                   {
                     "concept": "0a91f50f-b4a8-49db-9707-9dc9f29aa421",
-                    "label": "Fourth PCR (12 months)"
+                    "label": "Fourth PCR"
                   },
                   {
                     "concept": "68962236-c3c1-411c-9185-c4abd286598b",

@@ -1043,7 +1043,7 @@
             {
               "label": "Self test kit:",
               "type": "obs",
-              "id": "selfTestKit",
+              "id": "selfKit",
               "questionOptions": {
                 "concept": "3e43c71c-682d-4109-a739-e02c67ddf0f2",
                 "rendering": "select",
@@ -1062,6 +1062,7 @@
                "hide": {
                 "hideWhenExpression": "hivTestKit !== '3e69faed-e56f-4ff1-8831-922224d6ae6b'"
               }
+               
             },
 
             {

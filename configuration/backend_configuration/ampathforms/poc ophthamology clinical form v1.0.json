@@ -1,11 +1,14 @@
 {
-  "name": "Ophthamology Clinical Form v1.0",
-  "description": "A form used to capture ophthamology clinical Cases",
+  "name": "POC Ophthalmology Clinical Form v1.0",
+  "description": "A form used to capture ophthalmology clinical cases",
   "version": "1.0",
-  "published": true,
-  "uuid": "",
+  "published": false,
+  "uuid": "41cbf93d-c851-4d47-8817-198fabf1786b",
   "retired": false,
-  "encounter": "",
+  "encounter": "OPHTHALMOLOGYCONSULTATION",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "f4a3689f-74f3-4934-8f42-8aee45557b29",
+  "referencedForms": [],
   "pages": [
     {
       "label": "Patient Details",
@@ -17,7 +20,7 @@
             {
               "label": "Visit date:",
               "type": "encounterDatetime",
-              "required": "true",
+              "required": true,
               "id": "encDate",
               "questionOptions": {
                 "rendering": "date",
@@ -26,15 +29,15 @@
               "validators": [
                 {
                   "type": "date",
-                  "allowFutureDates": "false"
+                  "allowFutureDates": false
                 }
               ]
             },
             {
               "label": "Provider:",
               "type": "encounterProvider",
-              "id": "encProvider ",
-              "required": "true",
+              "id": "encProvider",
+              "required": true,
               "questionOptions": {
                 "rendering": "ui-select-extended"
               },
@@ -46,7 +49,7 @@
               "label": "Location:",
               "type": "encounterLocation",
               "id": "encLocation",
-              "required": "true",
+              "required": true,
               "questionOptions": {
                 "rendering": "ui-select-extended"
               },
@@ -57,7 +60,7 @@
             {
               "label": "Visit Type?",
               "type": "obs",
-              "required": "true",
+              "required": true,
               "id": "visitType",
               "questionOptions": {
                 "rendering": "radio",
@@ -97,7 +100,7 @@
               }
             },
             {
-              "label": "Referral from",
+              "label": "Referral from:",
               "type": "obs",
               "required": true,
               "id": "referralSpecification",
@@ -130,10 +133,10 @@
               "id": "reasonVisit",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "4b59ac07-cf72-4f46-b8c0-4f62b1779f7e",
+                "concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
-                    "concept": "167391AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
                     "label": "Routine follow-up"
                   },
                   {
@@ -145,19 +148,19 @@
                     "label": "Post-procedure review"
                   },
                   {
-                    "concept": "159794AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "7b6a9ea0-0193-4036-a56b-63295241f086",
                     "label": "Treatment continuation"
                   },
                   {
-                    "concept": "120202AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89ac184-1350-11df-a1f1-0026b9348838",
                     "label": "Complication/new symptoms"
                   },
                   {
-                    "concept": "1687AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a48066-1350-11df-a1f1-0026b9348838",
                     "label": "New disease"
                   },
                   {
-                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other"
                   }
                 ]
@@ -166,7 +169,7 @@
             {
               "label": "Specify other reasons",
               "type": "obs",
-              "required": "true",
+              "required": true,
               "id": "otherReasons",
               "questionOptions": {
                 "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
@@ -174,7 +177,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "reasonVisit !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "reasonVisit !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
@@ -183,53 +186,39 @@
           "label": "Clinical Assessment",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Presenting Complaints (HPI)",
-              "type": "obs",
-              "id": "ClinICNotes",
-              "questionOptions": {
-                "concept": "160430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "textarea"
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
-              }
-            },
+            
             {
               "label": "Symptoms since last visit",
               "type": "obs",
-              "id": "symptomsLastvisit",
-              "required": "true",
+              "id": "symptomsLastVisit",
+              "required": true,
               "questionOptions": {
-                "concept": "5219AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "9bf6db02-0eb9-427a-b6ef-a548ed3441d6",
                 "rendering": "radio",
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "visitType !== '244b67bf-da2d-4009-9bc9-91a52a92defe'"
               }
+              
             },
             {
               "label": "Presenting Complaints (HPI)",
               "type": "obs",
               "id": "presentingComplaints",
               "questionOptions": {
-                "concept": "160430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "9e903280-385f-473d-9dfb-01bdb6b661a5",
                 "rendering": "textarea"
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "symptomsLastvisit !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "symptomsLastVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -250,7 +239,7 @@
               "type": "obs",
               "id": "socialHis",
               "questionOptions": {
-                "concept": "162143AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "0e316db3-2a2c-4762-b011-928c5ce438f5",
                 "rendering": "textarea"
               },
               "validators": [],
@@ -261,27 +250,27 @@
             {
               "label": "Physical findings:",
               "type": "obs",
-              "required": "true",
+              "required": true,
               "id": "genExamFindings",
               "questionOptions": {
-                "concept": "1391AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
                 "rendering": "textarea"
               }
             },
             {
               "label": "Eye assessed",
               "type": "obs",
-              "id": "eyeAssesed",
+              "id": "eyeAssessed",
               "questionOptions": {
                 "rendering": "checkbox",
                 "concept": "e41272a6-43ab-45a6-82e8-2974bef005a8",
                 "answers": [
                   {
-                    "concept": "d2e3d499-c907-4084-b6b2-2824fac80fb3",
+                    "concept": "a8a69554-1350-11df-a1f1-0026b9348838",
                     "label": "Right"
                   },
                   {
-                    "concept": "75839949-bb67-4e9d-8bb1-ce9ea868b802",
+                    "concept": "a8a69234-1350-11df-a1f1-0026b9348838",
                     "label": "Left"
                   }
                 ]
@@ -292,7 +281,7 @@
               "type": "obs",
               "id": "visualAcuityEye",
               "questionOptions": {
-                "concept": "160350AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "d4fdff35-8bfa-4c18-a974-85e33098190f",
                 "rendering": "select",
                 "answers": [
                   {
@@ -459,15 +448,15 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(eyeAssesed) || !arrayContains(eyeAssesed, ['d2e3d499-c907-4084-b6b2-2824fac80fb3'])"
+                "hideWhenExpression": "isEmpty(eyeAssessed) || !arrayContains(eyeAssessed, ['d2e3d499-c907-4084-b6b2-2824fac80fb3'])"
               }
             },
             {
               "label": "Visual acuity findings (left eye)",
               "type": "obs",
-              "id": "visualAcuityEyeleft",
+              "id": "visualAcuityLeftEye",
               "questionOptions": {
-                "concept": "160349AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "45925d53-2dbb-45af-b09e-0193838319b0",
                 "rendering": "select",
                 "answers": [
                   {
@@ -634,30 +623,35 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(eyeAssesed) || !arrayContains(eyeAssesed, ['75839949-bb67-4e9d-8bb1-ce9ea868b802'])"
+                "hideWhenExpression": "isEmpty(eyeAssessed) || !arrayContains(eyeAssessed, ['75839949-bb67-4e9d-8bb1-ce9ea868b802'])"
               }
             },
-            {
+             {
               "label": "Impression",
+              "required": "true",
               "id": "clinicalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
                 "rendering": "repeating",
+                "dataSource": "diagnoses",
                 "rank": 1,
                 "datasource": {
                   "name": "diagnoses",
                   "config": {
-                    "conceptSourceUuid": "39ADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
                   }
                 }
+              },
+              "hide": {
+                "hideWhenExpression": "visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
-              "label": "Order any Investigation?",
+              "label": "Order any investigation?",
               "type": "obs",
               "id": "investigationOrderd",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "e2486ac1-cac8-4755-ac21-9fa362017c44",
                 "answers": [
                   {
@@ -671,23 +665,22 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "visitTo === '167050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
             },
-            {
+             {
               "label": "Lab Order",
-              "required": false,
               "id": "labsWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "Add lab order",
-                "workspaceName": "order-basket",
+                "buttonLabel": "Lab order",
+                "workspaceName": "add-lab-order",
                 "additionalProps": {
-                  "orderTypeUuid": "52a447d3-a64a-11e3-9aeb-50e549534c5e"
+                  "orderTypeUuid": "a8af9046-1350-11df-a1f1-0026b9348838"
                 }
               },
               "hide": {
-                "hideWhenExpression": "visitTo === '167050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || investigationOrderd !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -695,35 +688,35 @@
               "id": "imagingWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "Add imaging order",
+                "buttonLabel": "Add imaging Order",
                 "workspaceName": "order-basket",
                 "additionalProps": {
-                  "orderTypeUuid": "52a447d3-a64a-11e3-9aeb-50e549534c5e"
+                  "orderTypeUuid": "8caa332c-efe4-4025-8b18-3398328e1323"
                 }
               },
               "hide": {
-                "hideWhenExpression": "visitTo === '167050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || investigationOrderd !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
               "label": "Clinical Status",
               "type": "obs",
-              "id": "clinicalStats",
-              "required": "true",
+              "id": "clinicalStatus",
+              "required": true,
               "questionOptions": {
-                "concept": "165908AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "c2ced4af-cb17-4138-b824-e59abeb8171d",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "1855AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "19cd1e34-ebc1-44a1-b193-679bb7daf999",
                     "label": "Stable"
                   },
                   {
-                    "concept": "163053AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "fab4bad8-bda3-4e76-8498-decb4e691d14",
                     "label": "Improving"
                   },
                   {
-                    "concept": "160115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "1eaea093-f156-4cae-ae29-5758f6c664aa",
                     "label": "Deteriorating"
                   }
                 ]
@@ -739,23 +732,23 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Main Diagnosis",
+              "label": "Primary diagnosis",
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
-                "rendering": "remote-select",
+                "rendering": "repeating",
                 "rank": 2,
                 "datasource": {
                   "name": "diagnoses",
                   "config": {
-                    "conceptSourceUuid": "39ADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
                   }
                 }
               }
             },
             {
-              "label": "Diagnosis Categorization",
-              "required": "true",
+              "label": "Diagnosis categorization:",
+              "required": true,
               "type": "obs",
               "id": "dxCategory",
               "questionOptions": {
@@ -764,20 +757,17 @@
                 "answers": [
                   {
                     "concept": "a8a48066-1350-11df-a1f1-0026b9348838",
-                    "label": "New diagnosis"
+                    "label": "New case"
                   },
                   {
                     "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
-                    "label": "Pre-Existing diagnosis"
+                    "label": "Known case"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(finalDiagnosisId)"
               }
             },
             {
-              "label": "Secondary Diagnosis",
+              "label": "Secondary diagnosis:",
               "id": "secondaryDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
@@ -786,14 +776,13 @@
                 "datasource": {
                   "name": "diagnoses",
                   "config": {
-                    "conceptSourceUuid": "39ADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
                   }
                 }
               }
             },
             {
-              "label": "Prescribe drug",
-              "required": false,
+              "label": "Prescribe Drug(s):",
               "id": "drugsWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -802,40 +791,40 @@
               }
             },
             {
-              "label": "Procedure Orders",
+              "label": "Procedures Order",
               "id": "proceduresWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "Add Procedures  order",
+                "buttonLabel": "Order Procedures",
                 "workspaceName": "order-basket",
                 "additionalProps": {
-                  "orderTypeUuid": "52a447d3-a64a-11e3-9aeb-50e549534c5e"
+                  "orderTypeUuid": "2315ab24-9a4e-4b36-b189-8e74d2c77394"
                 }
               }
             },
             {
               "label": "Visit Outcome ",
               "type": "obs",
-              "required": "true",
+              "required": true,
               "id": "outcomePatient",
               "questionOptions": {
-                "concept": "160433AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "7c579743-5ef7-4e2c-839f-5b95597cb01c",
                 "rendering": "radio",
                 "answers": [
                   {
-                    "concept": "160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Released Home"
+                    "concept": "48155468-0e21-401a-87f5-d037ae0e8db0",
+                    "label": "Released home"
                   },
                   {
-                    "concept": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
                     "label": "Admit"
                   },
                   {
-                    "concept": "1693AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "e609e8e7-12e0-45d0-a92b-ed044de21a3d",
                     "label": "Referral"
                   },
                   {
-                    "concept": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
                     "label": "Deceased"
                   }
                 ]
@@ -851,19 +840,19 @@
                 "workspaceName": "appointments-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "outcomePatient !== '160429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && outcomePatient !== '1693AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "outcomePatient !== 'aae97bcc-258e-4c2b-bcef-5c701139a66b' && outcomePatient !== '60ccc5fd-6a97-49b4-81e9-bbffdf8f0c9d'"
               }
             },
             {
               "label": "Reffered For?",
               "type": "obs",
-              "id": "refferalsOrderd",
+              "id": "referralsOrdered",
               "questionOptions": {
                 "concept": "2c8bb721-b642-428a-b956-7902242776ab",
                 "rendering": "textarea"
               },
               "hide": {
-                "hideWhenExpression": "outcomePatient !=='1693AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "outcomePatient !=='e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
               }
             },
             {
@@ -885,7 +874,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "outcomePatient !=='1693AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "outcomePatient !=='e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
               }
             },
             {
@@ -894,10 +883,10 @@
               "id": "transferToFacility",
               "questionOptions": {
                 "concept": "2722deae-f4e6-42f4-8259-f7e47d425d61",
-                "rendering": "encounterLocation"
+                "rendering": "encounter-location"
               },
               "hide": {
-                "hideWhenExpression": "referralTo !=='164407AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "referralTo !=='ab396b67-273c-4c97-9f90-f858d79b13b1'"
               }
             },
             {
@@ -906,27 +895,27 @@
               "id": "departmentSpecify",
               "questionOptions": {
                 "rendering": "checkbox",
-                "concept": "c4d83fcb-c4db-4317-b8e7-0470f02e185a",
+                "concept": "a89c2344-1350-11df-a1f1-0026b9348838",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "160454AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a06788-1350-11df-a1f1-0026b9348838",
                     "label": "Ophthalmology (Eye)Clinic"
                   },
                   {
-                    "concept": "160455AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a066ca-1350-11df-a1f1-0026b9348838",
                     "label": "Ear, Nose, and Throat(ENT)Clinic"
                   },
                   {
-                    "concept": "2a030791-14b4-4996-95ad-39c54b25f2b6",
+                    "concept": "a8a06846-1350-11df-a1f1-0026b9348838",
                     "label": "Physiotherapy clinic"
                   },
                   {
-                    "concept": "164164AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "63c079d9-87fb-4bea-b860-863bff0e29c5",
                     "label": "Surgical Outpatient Clinic"
                   },
                   {
-                    "concept": "160457AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a37996-1350-11df-a1f1-0026b9348838",
                     "label": "Paediatrics clinics"
                   },
                   {
@@ -934,61 +923,61 @@
                     "label": "Maxillofacial Clinic"
                   },
                   {
-                    "concept": "160448AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
                     "label": "Medical Outpatient clinic"
                   },
                   {
-                    "concept": "66710a6d-5894-4f7d-a874-b449df77314d",
+                    "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
                     "label": "Oncology Clinic"
                   },
                   {
-                    "concept": "30aff715-92de-4662-aa33-fa6b6179fed0",
+                    "concept": "a8a0660c-1350-11df-a1f1-0026b9348838",
                     "label": "Dental clinic"
                   },
                   {
-                    "concept": "160475AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "597896cd-2841-42e9-8fb0-4292f82ac7b6",
                     "label": "Renal Clinic"
                   },
                   {
-                    "concept": "5489AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "36cec0b9-8a27-49f9-ae73-08b25f4605d0",
                     "label": "Mental Health"
                   },
                   {
-                    "concept": "160460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "0d516ea7-218f-43d4-b5c0-58d126529271",
                     "label": "Dermatology Clinic"
                   },
                   {
-                    "concept": "164103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "832081a7-80b4-49d7-a649-7a30dc10c6fb",
                     "label": "Diabetic Clinic"
                   },
                   {
-                    "concept": "c2f85aed-695f-49b1-973e-002c37cbdebf",
+                    "concept": "a8a0690e-1350-11df-a1f1-0026b9348838",
                     "label": "Occupational Therapy Clinic"
                   },
                   {
-                    "concept": "160465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
                     "label": "Orthopaedic Clinic"
                   },
                   {
-                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Others specify"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "referralTo !=='163266AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                "hideWhenExpression": "referralTo !=='59312903-dde9-4f7a-b6cf-7b41863b7e81'"
               }
             },
             {
-              "label": "Specify other",
+              "label": "Specify other:",
               "type": "obs",
-              "id": "otherTransferto",
+              "id": "otherTransferTo",
               "questionOptions": {
                 "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "textarea"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(departmentSpecify) || !arrayContains(departmentSpecify, '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+                "hideWhenExpression": "isEmpty(departmentSpecify) || !arrayContains(departmentSpecify, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
               }
             }
           ]
@@ -1001,38 +990,38 @@
               "type": "obsGroup",
               "id": "inpatientDispositionConstruct",
               "questionOptions": {
-                "concept": "CIEL:169405",
+                "concept": "9ceedfb7-60e4-42ce-a11e-f2dbabc82112",
                 "rendering": "group"
               },
               "questions": [
                 {
                   "id": "disposition",
-                  "label": "Disposition",
+                  "label": "Disposition:",
                   "type": "obs",
                   "required": true,
                   "questionOptions": {
                     "rendering": "radio",
                     "required": true,
-                    "concept": "CIEL:169402",
+                    "concept": "ce085d74-323c-4c9a-9fdf-051de81dd020",
                     "answers": [
                       {
-                        "concept": "CIEL:168619"
+                        "concept": "77eafb3f-58d3-4397-a6dc-d2c06e9062f3"
                       }
                     ]
                   },
                   "hide": {
-                    "hideWhenExpression": "outcomePatient !=='1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                    "hideWhenExpression": "outcomePatient !=='057dae68-3d6f-4d79-926c-ed75a0ce7fd5'"
                   },
                   "validators": []
                 },
                 {
                   "id": "admitToLocation",
-                  "label": "Admit To Location",
+                  "label": "Admit To location:",
                   "type": "obs",
                   "required": true,
                   "questionOptions": {
-                    "rendering": "remote-select",
-                    "concept": "CIEL:169403",
+                    "rendering": "encounter-location",
+                    "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
                     "datasource": {
                       "name": "location",
                       "config": {
@@ -1041,7 +1030,7 @@
                     }
                   },
                   "hide": {
-                    "hideWhenExpression": "outcomePatient !=='1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                    "hideWhenExpression": "outcomePatient !=='057dae68-3d6f-4d79-926c-ed75a0ce7fd5'"
                   }
                 }
               ]
@@ -1050,8 +1039,6 @@
         }
       ]
     }
-  ],
-  "processor": "EncounterFormProcessor",
-  "encounterType": "465a92f2-baf8-42e9-9612-53064be868e8",
-  "referencedForms": []
+  ]
+  
 }
