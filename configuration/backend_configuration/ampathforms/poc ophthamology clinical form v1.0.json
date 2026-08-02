@@ -2,7 +2,7 @@
   "name": "POC Ophthalmology Clinical Form v1.0",
   "description": "A form used to capture ophthalmology clinical cases",
   "version": "1.0",
-  "published": false,
+  "published": true,
   "uuid": "41cbf93d-c851-4d47-8817-198fabf1786b",
   "retired": false,
   "encounter": "OPHTHALMOLOGYCONSULTATION",
@@ -58,7 +58,7 @@
               }
             },
             {
-              "label": "Visit Type?",
+              "label": "Visit type?",
               "type": "obs",
               "required": true,
               "id": "visitType",
@@ -78,7 +78,7 @@
               }
             },
             {
-              "label": "Is this Visit a referral?",
+              "label": "Is this visit a referral?",
               "type": "obs",
               "id": "visitReferral",
               "questionOptions": {
@@ -128,7 +128,7 @@
               }
             },
             {
-              "label": "Reason for Visit",
+              "label": "Reason for visit:",
               "type": "obs",
               "id": "reasonVisit",
               "questionOptions": {
@@ -167,7 +167,7 @@
               }
             },
             {
-              "label": "Specify other reasons",
+              "label": "Specify other reasons:",
               "type": "obs",
               "required": true,
               "id": "otherReasons",
@@ -188,7 +188,7 @@
           "questions": [
             
             {
-              "label": "Symptoms since last visit",
+              "label": "Symptoms since last visit:",
               "type": "obs",
               "id": "symptomsLastVisit",
               "required": true,
@@ -209,7 +209,7 @@
               
             },
             {
-              "label": "Presenting Complaints (HPI)",
+              "label": "Presenting complaints (HPI):",
               "type": "obs",
               "id": "presentingComplaints",
               "questionOptions": {
@@ -222,7 +222,7 @@
               }
             },
             {
-              "label": "Past medical/Surgical history",
+              "label": "Past medical/Surgical history:",
               "type": "obs",
               "id": "pastSurg",
               "questionOptions": {
@@ -235,7 +235,7 @@
               }
             },
             {
-              "label": "Social history",
+              "label": "Social history:",
               "type": "obs",
               "id": "socialHis",
               "questionOptions": {
@@ -258,7 +258,7 @@
               }
             },
             {
-              "label": "Eye assessed",
+              "label": "Eye assessed:",
               "type": "obs",
               "id": "eyeAssessed",
               "questionOptions": {
@@ -277,7 +277,7 @@
               }
             },
             {
-              "label": "Visual acuity findings (right eye)",
+              "label": "Visual acuity findings (right eye):",
               "type": "obs",
               "id": "visualAcuityEye",
               "questionOptions": {
@@ -452,7 +452,7 @@
               }
             },
             {
-              "label": "Visual acuity findings (left eye)",
+              "label": "Visual acuity findings (left eye):",
               "type": "obs",
               "id": "visualAcuityLeftEye",
               "questionOptions": {
@@ -627,7 +627,7 @@
               }
             },
              {
-              "label": "Impression",
+              "label": "Impression:",
               "required": "true",
               "id": "clinicalDiagnosisId",
               "type": "diagnosis",
@@ -669,7 +669,7 @@
               }
             },
              {
-              "label": "Lab Order",
+              "label": "Lab Order:",
               "id": "labsWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -684,7 +684,7 @@
               }
             },
             {
-              "label": "Radiology & Imaging Order",
+              "label": "Radiology & Imaging Order:",
               "id": "imagingWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -699,7 +699,7 @@
               }
             },
             {
-              "label": "Clinical Status",
+              "label": "Clinical status:",
               "type": "obs",
               "id": "clinicalStatus",
               "required": true,
@@ -732,7 +732,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Primary diagnosis",
+              "label": "Primary diagnosis:",
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
@@ -782,7 +782,7 @@
               }
             },
             {
-              "label": "Prescribe Drug(s):",
+              "label": "Prescribe drug(s):",
               "id": "drugsWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -791,7 +791,7 @@
               }
             },
             {
-              "label": "Procedures Order",
+              "label": "Procedures order:",
               "id": "proceduresWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -803,7 +803,7 @@
               }
             },
             {
-              "label": "Visit Outcome ",
+              "label": "Visit outcome:",
               "type": "obs",
               "required": true,
               "id": "outcomePatient",
@@ -831,7 +831,7 @@
               }
             },
             {
-              "label": "Next Appointment",
+              "label": "Next appointment:",
               "required": false,
               "id": "appointmentWorkspaceLauncher",
               "questionOptions": {
@@ -844,7 +844,7 @@
               }
             },
             {
-              "label": "Reffered For?",
+              "label": "Reffered for?",
               "type": "obs",
               "id": "referralsOrdered",
               "questionOptions": {
@@ -878,7 +878,7 @@
               }
             },
             {
-              "label": "Transfer to Facility:",
+              "label": "Transfer to facility:",
               "type": "obs",
               "id": "transferToFacility",
               "questionOptions": {
@@ -890,7 +890,7 @@
               }
             },
             {
-              "label": "Department referred to",
+              "label": "Department referred to:",
               "type": "obs",
               "id": "departmentSpecify",
               "questionOptions": {
@@ -912,7 +912,7 @@
                   },
                   {
                     "concept": "63c079d9-87fb-4bea-b860-863bff0e29c5",
-                    "label": "Surgical Outpatient Clinic"
+                    "label": "Surgical outpatient clinic"
                   },
                   {
                     "concept": "a8a37996-1350-11df-a1f1-0026b9348838",
@@ -920,15 +920,15 @@
                   },
                   {
                     "concept": "1d7d7c76-d807-4f33-8c7e-2531e28126ed",
-                    "label": "Maxillofacial Clinic"
+                    "label": "Maxillofacial clinic"
                   },
                   {
                     "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
-                    "label": "Medical Outpatient clinic"
+                    "label": "Medical outpatient clinic"
                   },
                   {
                     "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
-                    "label": "Oncology Clinic"
+                    "label": "Oncology clinic"
                   },
                   {
                     "concept": "a8a0660c-1350-11df-a1f1-0026b9348838",
@@ -936,27 +936,27 @@
                   },
                   {
                     "concept": "597896cd-2841-42e9-8fb0-4292f82ac7b6",
-                    "label": "Renal Clinic"
+                    "label": "Renal clinic"
                   },
                   {
                     "concept": "36cec0b9-8a27-49f9-ae73-08b25f4605d0",
-                    "label": "Mental Health"
+                    "label": "Mental health"
                   },
                   {
                     "concept": "0d516ea7-218f-43d4-b5c0-58d126529271",
-                    "label": "Dermatology Clinic"
+                    "label": "Dermatology clinic"
                   },
                   {
                     "concept": "832081a7-80b4-49d7-a649-7a30dc10c6fb",
-                    "label": "Diabetic Clinic"
+                    "label": "Diabetic clinic"
                   },
                   {
                     "concept": "a8a0690e-1350-11df-a1f1-0026b9348838",
-                    "label": "Occupational Therapy Clinic"
+                    "label": "Occupational therapy clinic"
                   },
                   {
                     "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
-                    "label": "Orthopaedic Clinic"
+                    "label": "Orthopaedic clinic"
                   },
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
@@ -1016,7 +1016,7 @@
                 },
                 {
                   "id": "admitToLocation",
-                  "label": "Admit To location:",
+                  "label": "Admit to location:",
                   "type": "obs",
                   "required": true,
                   "questionOptions": {
