@@ -18,3 +18,5 @@ c73daf69-ddd0-4fce-98ec-6f9d875193e3,,Provider,Specialty,Provider speciality e.g
 b8782ae6-b2a0-4f2d-aebf-5f950064c812,,Visit,SHA Sub-benefit Coverage,SHA Claims Sub-benefit coverage,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
 8d73f8d7-dded-44a0-9f72-e23523c96503,,Provider,Licensing Body,Practitioner Licensing body e.g KMPDC,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
 49df844d-79c0-40fc-8ca9-c27d6391f647,,Location,Claim Visit Start Service Points,Service Points in which Claim visit can be started from in a facility,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
+79072572-80c0-4a38-9da0-afe207e3ef2d,,Visit,SHA Claim Scheme Code,SHA Claim visit scheme code e.g UHC,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
+97d892fe-38a4-4cfb-bdf7-2a03dff6e7cf,,Visit,SHA Claim Service Type,SHA Claim visit service type e.g CAPITATION,0,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,,
