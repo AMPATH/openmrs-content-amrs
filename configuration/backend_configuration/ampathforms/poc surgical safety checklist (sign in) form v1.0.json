@@ -2,11 +2,10 @@
   "name": "POC Surgical Safety Checklist (Sign In) Form v1.0",
   "description": "A form used to capture Surgical Safety Checklist Sign In",
   "version": "1.0",
-  "published": false,
+  "published": true,
   "uuid": "c71c5a96-125b-4c0e-a7a0-7eac005cdea1",
   "retired": false,
   "encounter": "SURGICALSAFETYSIGNIN",
-  "processor": "EncounterFormProcessor",
   "encounterType": "83d8d046-9130-4c03-87a3-fc6283908c25",
   "pages": [
     {
@@ -335,5 +334,4 @@
       ]
     }
   ]
-  
 }

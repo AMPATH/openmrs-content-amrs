@@ -174,26 +174,34 @@
             },
             {
               "label": "Previous diagnosis:",
-              "type": "obs",
-              "id": "previousDiagnosis",
+              "required": "true",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
               "questionOptions": {
-                "rendering": "text",
-                "concept": "97fbc848-8260-4b84-bf0e-190a74e31ff3"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(diagnosisChanged) || diagnosisChanged !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "rendering": "remote-select",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
               }
             },
             {
               "label": "Revised diagnosis:",
-              "type": "obs",
-              "id": "revisedDiagnosis",
+              "required": "true",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
               "questionOptions": {
-                "rendering": "text",
-                "concept": "628d47f2-0e43-4ea7-b5b9-04a5193713b9"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(diagnosisChanged) || diagnosisChanged !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "rendering": "remote-select",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
               }
             }
           ]
@@ -270,7 +278,7 @@
                     "label": "Improving"
                   },
                   {
-                    "concept": "9b172e36-8bfc-4d7c-83b2-3adbee1f1276",
+                    "concept": "1eaea093-f156-4cae-ae29-5758f6c664aa",
                     "label": "Deteriorating"
                   },
                   {
@@ -286,10 +294,10 @@
               "id": "deterioratingExplanation",
               "questionOptions": {
                 "rendering": "textarea",
-                "concept": "3e554629-ea8b-4176-9289-33a886e122d5"
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(currentCondition) || currentCondition !== '9b172e36-8bfc-4d7c-83b2-3adbee1f1276'"
+                "hideWhenExpression": "isEmpty(currentCondition) || currentCondition !== '1eaea093-f156-4cae-ae29-5758f6c664aa'"
               }
             }
           ]

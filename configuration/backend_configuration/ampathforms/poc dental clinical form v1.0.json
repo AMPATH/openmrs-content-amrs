@@ -490,10 +490,8 @@
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Add lab order",
-                "workspaceName": "add-lab-order",
-                "additionalProps": {
-                  "orderTypeUuid": "53eb4768-1359-11df-a1f1-0026b9348838"
-                }
+                "workspaceName": "add-lab-order"
+                
               }
             }
           ]
@@ -507,12 +505,13 @@
           "label": "Treatment/Management Plan",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Final diagnosis:",
+           {
+              "label": "Primary diagnosis:",
+              "required": "true",
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
-                "rendering": "repeating",
+                "rendering": "remote-select",
                 "rank": 2,
                 "datasource": {
                   "name": "diagnoses",
@@ -522,23 +521,44 @@
                 }
               }
             },
+
             {
               "label": "Diagnosis categorization:",
+              "required": "true",
               "type": "obs",
               "id": "dxCategory",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "radio",
                 "concept": "7d44ddef-9173-429b-ab1b-13cb675288c8",
+
                 "answers": [
                   {
                     "concept": "a8a48066-1350-11df-a1f1-0026b9348838",
-                    "label": "New diagnosis"
+                    "label": "New case"
                   },
                   {
                     "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
-                    "label": "Pre-existing diagnosis"
+                    "label": "Known case"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(finalDiagnosisId)"
+              }
+            },
+            {
+              "label": "Secondary diagnosis:",
+              "id": "secondaryDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "rank": 3,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
               }
             },
             {

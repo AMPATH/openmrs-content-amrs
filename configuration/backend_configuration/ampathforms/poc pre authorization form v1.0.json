@@ -1,0 +1,718 @@
+{
+  "name": "POC Pre-authorization Form v1.0",
+  "description": "A form used to capture Pre-authorization Details",
+  "version": "1.0",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "PREAUTHORIZATION",
+  "encounterType": "18b10189-a89f-430d-83e9-14663fef258c",
+  "pages": [
+    {
+      "label": "Pre-authorization Details",
+      "sections": [
+        {
+          "label": "Visit Details",
+          "isExpanded": true,
+          "questions": [
+            {
+              "label": "Date of surgery:",
+              "type": "encounterDatetime",
+              "required": true,
+              "default": "",
+              "id": "encounterDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider:",
+              "id": "provider",
+              "required": true,
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "label": "Type of intervention:",
+              "type": "obs",
+              "id": "typeOfIntervention",
+              "questionOptions": {
+                "concept": "aea44bfb-c8b1-4cce-b891-af74181d0f57",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "63c079d9-87fb-4bea-b860-863bff0e29c5",
+                    "label": "Surgical"
+                  },
+                  {
+                    "concept": "597896cd-2841-42e9-8fb0-4292f82ac7b6",
+                    "label": "Renal"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Dialysis Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Start date:",
+              "type": "obs",
+              "required": "false",
+              "id": "startDate",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "bb85532e-8f7e-476f-81d7-5580e0385852"
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '597896cd-2841-42e9-8fb0-4292f82ac7b6'"
+              }
+            },
+            {
+              "label": "Session number:",
+              "type": "obs",
+              "required": "false",
+              "id": "sessionNumber",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "86f4e2e2-c2e8-4d0b-9ed7-34900d55ae09"
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '597896cd-2841-42e9-8fb0-4292f82ac7b6'"
+              }
+            },
+            {
+              "label": "Frequency of sessions:",
+              "type": "obs",
+              "id": "frequencyOfSessions",
+              "questionOptions": {
+                "rendering": "radio",
+
+                "concept": "a40396d3-3f9b-49b6-902a-a804f3d0e2a0",
+                "answers": [
+                  {
+                    "concept": "f0e1c7a2-3d5b-4f8e-9c6b-1d2e3f4a5b6c",
+                    "label": "Once a week"
+                  },
+                  {
+                    "concept": "a1b2c3d4-5e6f-7g8h-9i0j-k1l2m3n4o5p6",
+                    "label": "Twice a week"
+                  },
+                  {
+                    "concept": "690b2ab2-4cbc-4df4-be19-64b8a93981ab",
+                    "label": "One time every 2 weeks"
+                  },
+                  {
+                    "concept": "72ec1de0-4bf0-4c40-9329-b8f574a64132",
+                    "label": "One time every 3 weeks"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "One a month"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '597896cd-2841-42e9-8fb0-4292f82ac7b6'"
+              }
+            },
+            {
+              "label": "Clinical indication:",
+              "type": "obs",
+              "id": "clinicalIndication",
+              "questionOptions": {
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                "rendering": "textarea",
+                "rows": 3
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '597896cd-2841-42e9-8fb0-4292f82ac7b6'"
+              }
+            }
+          ]
+        },
+
+        {
+          "label": "Complaints and History of complaints",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Presenting complaints:",
+              "type": "obsGroup",
+              "id": "ComplaintLodgeByClient",
+              "questionOptions": {
+                "concept": "9014962e-3efe-46b0-a393-c8c8bddadaa7",
+                "rendering": "repeating",
+                "min": 1
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              },
+              "questions": [
+                {
+                  "label": "Complaint:",
+                  "type": "obs",
+                  "id": "cOmplaIntField",
+                  "questionOptions": {
+                    "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a8932f00-1350-11df-a1f1-0026b9348838",
+                        "label": "Abdominal pain"
+                      },
+                      {
+                        "concept": "a0bda074-8e57-4ba7-ab9c-c008776f8d48",
+                        "label": "Abnormal uterine bleeding"
+                      },
+                      {
+                        "concept": "a89cec02-1350-11df-a1f1-0026b9348838",
+                        "label": "Anxiety"
+                      },
+                      {
+                        "concept": "a8953d90-1350-11df-a1f1-0026b9348838",
+                        "label": "Back pain"
+                      },
+                      {
+                        "concept": "a8981696-1350-11df-a1f1-0026b9348838",
+                        "label": "Bloody urine"
+                      },
+                      {
+                        "concept": "bb1637fd-dd30-4938-a7a7-30dcef155f38",
+                        "label": "Blood in stool"
+                      },
+                      {
+                        "concept": "c7356bfe-e9a8-422b-9a6a-6e42490d308e",
+                        "label": "Breast pain"
+                      },
+                      {
+                        "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                        "label": "Chest pain"
+                      },
+                      {
+                        "concept": "a898314e-1350-11df-a1f1-0026b9348838",
+                        "label": "Cold and chills"
+                      },
+                      {
+                        "concept": "a8ad3b02-1350-11df-a1f1-0026b9348838",
+                        "label": "Confusion"
+                      },
+                      {
+                        "concept": "a890d73c-1350-11df-a1f1-0026b9348838",
+                        "label": "Cough"
+                      },
+                      {
+                        "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
+                        "label": "Convulsions"
+                      },
+                      {
+                        "concept": "894e909e-881c-4ac3-b669-4c77003831ad",
+                        "label": "Coma"
+                      },
+                      {
+                        "concept": "a890d660-1350-11df-a1f1-0026b9348838",
+                        "label": "Coryza"
+                      },
+                      {
+                        "concept": "96dafdc7-720e-4eac-85d3-ae2a0f5c1d94",
+                        "label": "Crying infant"
+                      },
+                      {
+                        "concept": "a58cfd5c-a237-46fd-b0fc-bb7f2192bb69",
+                        "label": "Delirium"
+                      },
+                      {
+                        "concept": "a8935fde-1350-11df-a1f1-0026b9348838",
+                        "label": "Depression"
+                      },
+                      {
+                        "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                        "label": "Diarrhoea"
+                      },
+                      {
+                        "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
+                        "label": "Difficult in breathing"
+                      },
+                      {
+                        "concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+                        "label": "Difficulty in swallowing"
+                      },
+                      {
+                        "concept": "abb19bab-e77d-47db-b9b6-18386868e1b3",
+                        "label": "Discharge from penis"
+                      },
+                      {
+                        "concept": "e5c11905-baf7-4747-a01d-0525153e143a",
+                        "label": "Dizziness"
+                      },
+                      {
+                        "concept": "eb12bfd6-dd52-4c41-a35e-a8048c975e7f",
+                        "label": "Ear Pain"
+                      },
+                      {
+                        "concept": "9a9cb2d4-696c-4f2b-9a7b-206333597e3c",
+                        "label": "Epigastric pain"
+                      },
+                      {
+                        "concept": "05354fc6-fd53-4c40-9379-ba2b4457635e",
+                        "label": "Eye pain"
+                      },
+                      {
+                        "concept": "d301ff85-d21c-4a61-a195-ce7948db423c",
+                        "label": "Excessive sweating"
+                      },
+                      {
+                        "concept": "4a3fa87f-0f09-4b70-bfaf-ed9cba1f9aa7",
+                        "label": "Facial pain"
+                      },
+                      {
+                        "concept": "4b92fa43-a876-4fee-886b-ce4fc2e18512",
+                        "label": "Fatigue/weakness"
+                      },
+                      {
+                        "concept": "cebb22fc-5ef8-409e-b606-51fdb7039593",
+                        "label": "Flank pain"
+                      },
+                      {
+                        "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                        "label": "Fever"
+                      },
+                      {
+                        "concept": "8065a17b-fbe4-4558-9ddd-0af641866c21",
+                        "label": " General body malaise"
+                      },
+                      {
+                        "concept": "4eef684c-feff-48bb-9e8e-fe5742bee979",
+                        "label": "Genital ulcer"
+                      },
+                      {
+                        "concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+                        "label": "Headache"
+                      },
+                      {
+                        "concept": "13a3c07c-e870-4cc9-b7d3-d2e5b5e60a3e",
+                        "label": "Hearing loss"
+                      },
+                      {
+                        "concept": "a89d1222-1350-11df-a1f1-0026b9348838",
+                        "label": "Hypotension"
+                      },
+                      {
+                        "concept": "a8983ae0-1350-11df-a1f1-0026b9348838",
+                        "label": "Itchiness/Pruritus"
+                      },
+                      {
+                        "concept": "a890ba5e-1350-11df-a1f1-0026b9348838",
+                        "label": "Joint pain"
+                      },
+                      {
+                        "concept": "be9da369-ba93-4a0c-afdd-616ed4b434e8",
+                        "label": "Leg pain"
+                      },
+                      {
+                        "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                        "label": "Lethargy"
+                      },
+                      {
+                        "concept": "a8982eba-1350-11df-a1f1-0026b9348838",
+                        "label": "Loss of appetite"
+                      },
+                      {
+                        "concept": "a893378e-1350-11df-a1f1-0026b9348838",
+                        "label": "Lymphadenopathy"
+                      },
+                      {
+                        "concept": "5d91ee3c-9ace-462f-97c1-bd0c8fcf8a5e",
+                        "label": "Memory loss"
+                      },
+                      {
+                        "concept": "6fac98a0-6d8a-4441-aeed-c447a3a12494",
+                        "label": "Mouth ulceration"
+                      },
+                      {
+                        "concept": "02dc5deb-44d1-43db-b65e-9eb0d6cedaaf",
+                        "label": "Mouth pain"
+                      },
+                      {
+                        "concept": "1fbf7fd4-ea3e-4ab1-acd9-bf215651e066",
+                        "label": "Muscle cramps"
+                      },
+                      {
+                        "concept": "a8ad5330-1350-11df-a1f1-0026b9348838",
+                        "label": "Muscle pain"
+                      },
+                      {
+                        "concept": "a890e2f4-1350-11df-a1f1-0026b9348838",
+                        "label": "Mylagia"
+                      },
+                      {
+                        "concept": "a8ad21e4-1350-11df-a1f1-0026b9348838",
+                        "label": "Nausea"
+                      },
+                      {
+                        "concept": "a8a6b476-1350-11df-a1f1-0026b9348838",
+                        "label": "Neck stiffness"
+                      },
+                      {
+                        "concept": "bb7fc04f-13d8-4630-b9d8-e364b34b7f2f",
+                        "label": "Neck pain"
+                      },
+                      {
+                        "concept": "a8ad4ed0-1350-11df-a1f1-0026b9348838",
+                        "label": "Night sweats"
+                      },
+                      {
+                        "concept": "4ef1a2d0-132d-4a02-b0e0-00890b916343",
+                        "label": "Numbness"
+                      },
+                      {
+                        "concept": "a8a498ee-1350-11df-a1f1-0026b9348838",
+                        "label": "Unexplained bleeding"
+                      },
+                      {
+                        "concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+                        "label": "Pain when swallowing"
+                      },
+                      {
+                        "concept": "d4abb20f-fde4-453b-b7e8-ac35debe83c2",
+                        "label": "Pelvic pain"
+                      },
+                      {
+                        "concept": "a8ad09ca-1350-11df-a1f1-0026b9348838",
+                        "label": "Poor vision"
+                      },
+                      {
+                        "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                        "label": "Rash"
+                      },
+                      {
+                        "concept": "0df011cb-3ff1-465e-ae84-718da974aedd",
+                        "label": "Red Eye/ conjuctivitis"
+                      },
+                      {
+                        "concept": "a8ad4476-1350-11df-a1f1-0026b9348838",
+                        "label": "Refusal to feed"
+                      },
+                      {
+                        "concept": "a8983bda-1350-11df-a1f1-0026b9348838",
+                        "label": "Running/Blocked nose"
+                      },
+                      {
+                        "concept": "773bfb25-09c8-4920-89f5-5bdafe5b5b62",
+                        "label": "Scrotal pain"
+                      },
+                      {
+                        "concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
+                        "label": "Seizure"
+                      },
+                      {
+                        "concept": "4fd5f4cf-67cd-444d-8f18-a01afb4d9af0",
+                        "label": "Shoulder pain"
+                      },
+                      {
+                        "concept": "8ccbbecf-58cd-43c2-ae9a-a36a4e578b25",
+                        "label": "Shock"
+                      },
+                      {
+                        "concept": "a8932d66-1350-11df-a1f1-0026b9348838",
+                        "label": "Sore throat"
+                      },
+                      {
+                        "concept": "34c96419-d4a9-4377-8c80-3a31d0f07d13",
+                        "label": "Sleep disturbance"
+                      },
+                      {
+                        "concept": "e01c7959-551c-4c40-bcbf-52ef3087cbff",
+                        "label": "Swollen legs"
+                      },
+                      {
+                        "concept": "ae5f2fc7-3f76-4fc3-96fa-72b354323821",
+                        "label": "Tremors"
+                      },
+                      {
+                        "concept": "0ca4d1dc-34df-4ec0-bf2f-0280005ce6c9",
+                        "label": "Urinary symptoms"
+                      },
+                      {
+                        "concept": "9abe711c-5e02-4aca-8d70-8b2148a17256",
+                        "label": "Watery diarrhoea"
+                      },
+                      {
+                        "concept": "c982b4fe-8403-4c67-9650-91da17aecf5e",
+                        "label": "Weakness of limbs"
+                      },
+                      {
+                        "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                        "label": "Weight loss"
+                      },
+                      {
+                        "concept": "a89d145c-1350-11df-a1f1-0026b9348838",
+                        "label": "Vaginal bleeding"
+                      },
+                      {
+                        "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
+                        "label": "Vaginal discharge"
+                      },
+                      {
+                        "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                        "label": "Vomiting"
+                      },
+                      {
+                        "concept": "6d140ca3-118d-48ca-9d91-7b5612987413",
+                        "label": "Vertigo"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              }
+                },
+                {
+                  "label": "Specify other complaints:",
+                  "type": "obs",
+                  "id": "OtherSpecificComplaints",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "textarea"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "History of presenting illness:",
+              "type": "obs",
+              "id": "ClinICNotes",
+              "questionOptions": {
+                "concept": "9e903280-385f-473d-9dfb-01bdb6b661a5",
+                "rendering": "textarea",
+                "rows": 5
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "General Examination Findings",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "General examination notes:",
+              "type": "obs",
+              "id": "generalExamNotes",
+              "questionOptions": {
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea",
+                "rows": 4
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              }
+            },
+            {
+              "label": "Investigation report details:",
+              "type": "obs",
+              "id": "investigationResultsReceived",
+              "questionOptions": {
+                "rendering": "textarea",
+                "rows": 2,
+                "concept": "7b64016c-ae2d-4ec1-bdc1-e920b0e94b9d"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Anaesthesia and Surgical Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Type of anaesthesia:",
+              "type": "obs",
+              "id": "PlannedAnaesthesia",
+              "questionOptions": {
+                "concept": "2ea4944e-51e4-52c7-a209-8dcc2e889054",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "7a69a31a-d88f-4ebd-a00b-cb5b4581de00",
+                    "label": "General"
+                  },
+                  {
+                    "concept": "074225d4-b1be-56e9-93f6-255ebf106df3",
+                    "label": "Local Anaesthesia"
+                  },
+                  {
+                    "concept": "3fa5c3a8-41e5-493a-9ab7-7177fc6f8c82",
+                    "label": "Sedation"
+                  },
+
+                  {
+                    "concept": "f45ac884-e73e-4b02-9d8b-49c4e3ce5a15",
+                    "label": "Spinal Anaesthesia"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              }
+            },
+            {
+              "label": "Is the patient's condition related to employment?",
+              "type": "obs",
+              "id": "employmentRelatedCondition",
+              "questionOptions": {
+                "concept": "7dcf0456-a9ec-42d3-aa75-d406d3e5abb1",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              }
+            },
+            {
+              "label": "Is the patient's condition related to auto/other accident?",
+              "type": "obs",
+              "id": "autoAccidentRelatedCondition",
+              "questionOptions": {
+                "concept": "855b3a01-53c9-4129-923d-79863d318580",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Insuarance Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Is the patient co-insured?",
+              "type": "obs",
+              "id": "coInsured",
+              "questionOptions": {
+                "concept": "415dbca0-2d9b-4d6a-98b7-b855a023cbbb",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Co-insurance Details if the patient is co-insured:",
+              "type": "obs",
+              "id": "coInsuredDetails",
+              "questionOptions": {
+                "concept": "226c4f3a-3db3-4244-adc3-bc224b90d8fe",
+                "rendering": "textarea",
+                "rows": 2
+              }
+            }
+          ]
+        },
+        {
+          "label": "Diagnosis",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Primary diagnosis:",
+              "required": "true",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "remote-select",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "Doctor:",
+          "id": "doctor",
+          "type": "obs",
+          "questionOptions": {
+            "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+            "rendering": "remote-select",
+            "datasource": {
+              "name": "endpoint",
+              "config": {
+                "endpointUrl": "https://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
+                "labelKey": "display",
+                "valueKey": "provider_national_id"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

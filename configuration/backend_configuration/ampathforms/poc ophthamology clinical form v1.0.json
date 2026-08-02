@@ -193,7 +193,7 @@
               "id": "symptomsLastVisit",
               "required": true,
               "questionOptions": {
-                "concept": "9bf6db02-0eb9-427a-b6ef-a548ed3441d6",
+                "concept": "ba076236-5614-4b40-bb9f-cac7a35c8ec1",
                 "rendering": "radio",
                 "answers": [
                   {

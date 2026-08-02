@@ -1,0 +1,109 @@
+{
+  "name": "POC Treatment Sheet Form v1.0",
+  "description": "Treatment Sheet Form",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "TREATMENTSHEET",
+  "encounterType": "ca1e6906-6365-416f-a030-b70bfe960322",
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": true,
+					"questions": [
+						{
+							"id": "encDate",
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": true,
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"id": "encounterProvider",
+							"label": "Provider",
+							"type": "encounterProvider",
+							"required": true,
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"id": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required)",
+							"type": "encounterLocation",
+							"required": true,
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"id": "medicationGiven",
+							"label": "Medication given?",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89c26b4-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"id": "fluidGiven",
+							"label": "Fluid given?",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "114f9886-ddaa-460e-b2c8-64404cba2d02",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"label": "Clinical Comments",
+					"isExpanded": true,
+					"questions": [
+						{
+							"id": "clinicalNotes",
+							"label": "Clinical notes:",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "a89ffbf4-1350-11df-a1f1-0026b9348838",
+								"rendering": "textarea",
+								"rows": 20
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

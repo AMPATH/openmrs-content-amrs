@@ -2,7 +2,7 @@
   "name": "PreOperative Checklist Form v1.0",
   "description": "PreOperative Checklist  Form",
   "version": "1",
-  "published": false,
+  "published": true,
   "uuid": "",
   "retired": false,
   "encounter": "PREOPERATIVECHECKLIST",
@@ -269,7 +269,7 @@
           ]
         },
         {
-          "label": " Blood Results",
+          "label": "Blood Results",
           "isExpanded": true,
           "questions": [
             {

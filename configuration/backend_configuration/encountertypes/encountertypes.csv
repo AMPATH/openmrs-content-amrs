@@ -33,3 +33,6 @@ f4a3689f-74f3-4934-8f42-8aee45557b29,,OPHTHALMOLOGYCONSULTATION,Clinical ophthal
 4e346fd8-d326-4399-aa4f-a0c0b489f029,,CLINICALADDENDUM,For clinical addendum,,,CLINICALADDENDUM,
 874d41be-07e2-4f82-91c5-0e995544bde1,,PREOPERATIVECHECKLIST,For pre operative checklist,,,PREOPERATIVECHECKLIST,
 8329e1cc-32b5-4c05-ab69-fcc86064af56,,SURGICALSAFETYSIGNOUT,Surgical safety checklist completed before any team member leaves the operating room,,,AMPATH POC Surgical Safety Checklist Sign Out,
+ca1e6906-6365-416f-a030-b70bfe960322,,TREATMENTSHEET,For inpatient treatment sheet,,,TREATMENTSHEET,
+9ff78ba9-1338-446c-917a-c49368a102e8,,OPDDEATHREPORTING,For recording general outpatient form,,,POCDEATHREPORTING,
+18b10189-a89f-430d-83e9-14663fef258c,,PREAUTHORIZATION,For surgical pre authorization,,,,
