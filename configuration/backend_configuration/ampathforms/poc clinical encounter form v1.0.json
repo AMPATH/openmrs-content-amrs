@@ -3272,10 +3272,8 @@
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Add lab order",
-                "workspaceName": "add-lab-order",
-                "additionalProps": {
-                  "orderTypeUuid": "a8af9046-1350-11df-a1f1-0026b9348838"
-                }
+                "workspaceName": "add-lab-order"
+                
               },
               "hide": {
                 "hideWhenExpression": "visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || investigationOrderd !== 'a899b35c-1350-11df-a1f1-0026b9348838'"

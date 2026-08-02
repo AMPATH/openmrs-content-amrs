@@ -61,3 +61,4 @@ c821dbc9-d4ad-4b49-afe2-ba8df0472095,,,VENOUS PRESSURE,,,,,,Venous pressure reco
 4142ea1d-aa4e-42e7-9dca-28f9f5408a52,,,PRE-DIALYSIS SYSTOLIC BLOOD PRESSURE,,,,,,Systolic blood pressure measured before a haemodialysis session.,,,Question,Numeric,,mmHg
 513f9b55-5809-4ce3-a253-df384373ad47,,,PRE-DIALYSIS DIASTOLIC BLOOD PRESSURE,,,,,,Diastolic blood pressure measured before a haemodialysis session.,,,Question,Numeric,,mmHg
 36c0253a-ec3f-4ed4-8f09-af531803f083,,,DIALYSATE TEMPERATURE,,,,,,Temperature of the dialysate fluid used during a haemodialysis session.,,,Question,Numeric,,Â°C
+fcc32072-a3cd-492d-b3d6-bac08dbd086b,,,HEMODIALYSIS,,,,,,A renal replacement therapy in which the patient’s blood is circulated through a dialysis machine to remove waste products and excess fluid before being returned to the body.,,,Procedure order,N/A,,

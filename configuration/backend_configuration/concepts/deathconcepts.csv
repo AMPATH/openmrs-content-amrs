@@ -1,0 +1,9 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units
+8febb099-7a39-479e-8201-6dabb9f032b0,,,BASIS OF DEATH CERTIFICATION,,,,,,Records the basis on which the certifying practitioner completed the medical certificate of cause of death.,,,Question,Coded,686eeb6b-ea4d-4758-8f3a-1dbc70696461;226b15a0-ceb0-43f5-8132-932b869990e5;fa3bcb0e-d49b-43bc-be6a-e22fa09cefec,
+686eeb6b-ea4d-4758-8f3a-1dbc70696461,,,ATTENDENDED DECEASED BEFORE DEATH,,,,,,Certifies that the practitioner attended the deceased before death.,,,Misc,N/A,,
+226b15a0-ceb0-43f5-8132-932b869990e5,,,EXAMINED THE BODY AFTER DEATH,,,,,,Certifies that the practitioner examined the body after death.,,,Misc,N/A,,
+fa3bcb0e-d49b-43bc-be6a-e22fa09cefec,,,CONDUCTED A POST-MORTERM EXAMINATION,,,,,,Certifies that the practitioner conducted a post-mortem examination of the body and that the information provided is correct to the best of their knowledge.,,,Misc,N/A,,
+ff372de5-538f-4760-8eb6-4ead5d9bc732,,,IMMEDIATE CAUSE OF DEATH,,,,,,Records the disease or condition directly leading to death.,,,Question,Text,,
+54ee7553-cd18-4c89-baa2-6f4dc5475e42,,,ANTECEDENT CAUSE OF DEATH,,,,,,Records the morbid condition that gave rise to the immediate cause of death.,,,Question,Text,,
+bc98f744-a867-423f-b31f-978ef26cbcdd,,,UNDERLYING CAUSE OF DEATH,,,,,,Records the disease or condition that initiated the chain of events leading to death.,,,Question,Text,,
+ce0c53b5-f503-4038-9056-c30f802a7ecf,,,OTHER SIGNIFICANT CONDITIONS CONTRIBUTING TO DEATH ,,,,,,Records other significant conditions contributing to death but not part of the direct causal sequence.,,,Question,Text,,

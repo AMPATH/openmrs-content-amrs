@@ -63,6 +63,10 @@
                   {
                     "concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
                     "label": "General inpatient"
+                  },
+                  {
+                    "concept": "3cfb070d-70ac-4d20-bb60-88ea08e36178",
+                    "label": "Surgical inpatient"
                   }
                 ]
               }
