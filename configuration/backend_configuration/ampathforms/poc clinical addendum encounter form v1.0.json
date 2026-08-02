@@ -1,0 +1,398 @@
+{
+  "name": "POC Clinical Addendum Form v1.0",
+  "description": "Clinical Addendum",
+  "version": "1.0",
+  "uuid": "5ea17410-70c2-4859-80eb-2b4c84e52ae8",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "4e346fd8-d326-4399-aa4f-a0c0b489f029",
+  "encounter": "CLINICALADDENDUM",
+  "pages": [
+    {
+      "label": "Visit Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Addendum Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Original note being supplemented:",
+              "type": "obs",
+              "id": "originalNoteType",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "4b4f8a57-8a98-427b-9c60-a1bf8bd847cc",
+                "answers": [
+                  {
+                    "concept": "2b066296-ae3d-4f60-a3f4-7560a9ebe808",
+                    "label": "Admission note"
+                  },
+                  {
+                    "concept": "83dddfa1-91e6-420b-8ddf-2a9fee2a6ce5",
+                    "label": "Consultant review"
+                  },
+                  {
+                    "concept": "f9645577-78d5-4d73-afc6-dd1ed4a0ecb9",
+                    "label": "Ward round"
+                  },
+                  {
+                    "concept": "666c3b18-c788-40f2-9c29-2a99adb89c14",
+                    "label": "Nursing note"
+                  },
+                  {
+                    "concept": "8eebe664-a39e-4ada-a764-4e4dfecdad4c",
+                    "label": "Operative note"
+                  },
+                  {
+                    "concept": "09be66d5-5388-4082-90eb-990dd7ee5dc6",
+                    "label": "Procedure note"
+                  },
+                  {
+                    "concept": "4ba44851-7d06-44d0-8d9b-f26a9de38328",
+                    "label": "Discharge summary"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Other (Specify):",
+              "type": "obs",
+              "id": "originalNoteTypeOther",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(originalNoteType) || !arrayContains(originalNoteType, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Clinical Addendum",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Additional history:",
+              "type": "obs",
+              "id": "additionalHistory",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0d3eea0d-0410-4c75-93d3-115abc961b73"
+              },
+              "validators": []
+            },
+            {
+              "label": "Additional examination findings:",
+              "type": "obs",
+              "id": "additionalExamFindings",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0be0fcdf-41ac-4474-bbd3-ad19a441cb19"
+              },
+              "validators": []
+            },
+            {
+              "label": "Investigation results received:",
+              "type": "obs",
+              "id": "investigationResultsReceived",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "7b64016c-ae2d-4ec1-bdc1-e920b0e94b9d"
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Impact on Diagnosis",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Did this new information change the diagnosis?",
+              "type": "obs",
+              "id": "diagnosisChanged",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8fd328b8-92e6-4412-87dc-f64b013d10e3",
+                "answers": [
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Previous diagnosis:",
+              "type": "obs",
+              "id": "previousDiagnosis",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "97fbc848-8260-4b84-bf0e-190a74e31ff3"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(diagnosisChanged) || diagnosisChanged !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Revised diagnosis:",
+              "type": "obs",
+              "id": "revisedDiagnosis",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "628d47f2-0e43-4ea7-b5b9-04a5193713b9"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(diagnosisChanged) || diagnosisChanged !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Impact on Management",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Medication changes:",
+              "type": "obs",
+              "id": "medicationChanges",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "e2edc881-a716-47f5-96c0-86e4055efad5"
+              }
+            },
+            {
+              "label": "Procedures performed:",
+              "type": "obs",
+              "id": "proceduresPerformed",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "2d94ad90-6b6f-474d-8f2e-8b245235059c"
+              }
+            },
+            {
+              "label": "Specialist recommendations:",
+              "type": "obs",
+              "id": "specialistRecommendations",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "734696cf-24ab-429c-a831-280ce8cfe6e7"
+              }
+            },
+            {
+              "label": "Isolation precautions:",
+              "type": "obs",
+              "id": "isolationPrecautions",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "2c34fa9f-aa2c-49fb-8937-9b0946d961db"
+              }
+            },
+            {
+              "label": "Monitoring instructions:",
+              "type": "obs",
+              "id": "monitoringInstructions",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "6446a7a9-599d-4894-8fdc-918cb4298169"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Patient Status",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Current condition?",
+              "type": "obs",
+              "id": "currentCondition",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8663a5be-5075-4c68-9ae0-51b8dcb3b62d",
+                "answers": [
+                  {
+                    "concept": "19cd1e34-ebc1-44a1-b193-679bb7daf999",
+                    "label": "Stable"
+                  },
+                  {
+                    "concept": "fab4bad8-bda3-4e76-8498-decb4e691d14",
+                    "label": "Improving"
+                  },
+                  {
+                    "concept": "9b172e36-8bfc-4d7c-83b2-3adbee1f1276",
+                    "label": "Deteriorating"
+                  },
+                  {
+                    "concept": "4bee29de-f909-4fff-af43-e498b44d2b7c",
+                    "label": "Critical"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "If deteriorating, explain?",
+              "type": "obs",
+              "id": "deterioratingExplanation",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "3e554629-ea8b-4176-9289-33a886e122d5"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(currentCondition) || currentCondition !== '9b172e36-8bfc-4d7c-83b2-3adbee1f1276'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Communication",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient informed?",
+              "type": "obs",
+              "id": "patientInformed",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "68d8af9f-3d53-4a85-9da0-ec9fb4893934",
+                "answers": [
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Next of kin informed?",
+              "type": "obs",
+              "id": "nextOfKinInformed",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "69872799-1a5d-4297-a2de-5ba081ce84fd",
+                "answers": [
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Consultant informed?",
+              "type": "obs",
+              "id": "consultantInformed",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "980e7a19-49ba-4324-b65f-0b96ca38aa04",
+                "answers": [
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Follow-up Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Repeat investigations:",
+              "type": "obs",
+              "id": "repeatInvestigations",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "3ef186b2-caee-4ee1-9d2a-69a13ece9cf4"
+              }
+            },
+            {
+              "label": "Expected discharge date:",
+              "type": "obs",
+              "id": "expectedDischargeDate",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a8a01710-1350-11df-a1f1-0026b9348838"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && (new moment(myValue)).isSameOrBefore((new moment()), 'day')",
+                  "message": "Expected discharge date must be a future date."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

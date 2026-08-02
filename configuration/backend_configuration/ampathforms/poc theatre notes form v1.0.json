@@ -1,455 +1,454 @@
 {
-	"name": "POC Theatre Notes Form v1.0",
-	"description": "Post Procedure Form",
-	"version": "1.0",
-	"published": true,
-	"uuid": "51ecd052-ccbc-30a4-af07-e7ab4517d66d",
-	"retired": false,
-	"encounter": "PROCEDUREFORM",
-    "encounterType": "d85b0700-89a4-47c2-a80e-84dcff43d07a",
-	"pages": [
-		{
-			"label": "Visit Details",
-			"sections": [
-				{
-					"label": "Encounter Details",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Visit date:",
-							"type": "encounterDatetime",
-							"required": "true",
-							"id": "encDate",
-							"questionOptions": {
-								"rendering": "date"
-							},
-							"validators": [
-								{
-									"type": "date",
-									"allowFutureDates": "false"
-								}
-							]
-						},
-						{
-							"label": "Provider:",
-							"type": "encounterProvider",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "ui-select-extended"
-							},
-							"id": "encProvider "
-						},
-						{
-							"label": "Location:",
-							"type": "encounterLocation",
-							"required": "true",
-							"questionOptions": {
-								"rendering": "ui-select-extended"
-							},
-							"id": "encLocation"
-						}
-					]
-				}
-			]
-		},
-		{
-			"label": "Post Operation Details",
-			"sections": [
-				{
-					"label": "Post Operation",
-					"isExpanded": "true",
-					"questions": [
-						{
-							"label": "Date and Time of surgery",
-							"type": "obs",
-							"id": "surGeryDateTime",
-							"datePickerFormat": "both",
-							"questionOptions": {
-								"rendering": "date",
-								"concept": "eb22f892-21fe-4c2a-8047-f016fd2162c1"
-							},
-							"hide": {
-								"hideWhenExpression": ""
-							}
-						},
-						{
-							"label": "Time of Out(AM or PM)",
-							"type": "obs",
-							"id": "TimeOfOut ",
-							"datePickerFormat": "timer",
-							"questionOptions": {
-								"concept": "90ad1db5-2f2b-55bc-941c-d579e0d67bac",
-								"rendering": "date"
-							},
-							"validators": [
-								{
-									"type": "date",
-									"allowFutureDates": "false"
-								}
-							]
-						},
-						{
-							"label": "Total time taken",
-							"type": "obs",
-							"required": "false",
-							"id": "TotalTimeTaken",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "7852e330-aa9f-5000-b723-77f6ae2b47b4"
-							}
-						},
-						{
-							"label": "Operative Procedure",
-							"type": "obs",
-							"id": "proCedureOps",
-							"questionOptions": {
-								"concept": "6e7f1f6a-be77-51e3-a6fb-cf5166f08c2c",
-								"rendering": "text"
-							},
-							"hide": {
-								"hideWhenExpression": "pregnancyComplications !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-							}
-						},
-						{
-							"label": "Procedure Details",
-							"type": "obsGroup",
-							"id": "deTailSpRoc",
-							"questionOptions": {
-								"rendering": "group",
-								"concept": "3a864aee-e924-50f0-9a65-40ea8f92bb4d"
-							},
-							"questions": [
-								{
-									"label": "Anaesthesia Type",
-									"type": "obs",
-									"id": "loCalReg",
-									"questionOptions": {
-										"concept": "98665705-8612-5512-9ac9-d74335937590",
-										"rendering": "select",
-										"answers": [
-											{
-												"concept": "3fa5c3a8-41e5-493a-9ab7-7177fc6f8c82",
-												"label": "Inhalation (mask) "
-											},
-											{
-												"concept": "f45ac884-e73e-4b02-9d8b-49c4e3ce5a15",
-												"label": "Intravenous"
-											},
-											{
-												"concept": "a9826823-2aa9-508c-8cbe-2d82f3d19ed6",
-												"label": "Spinal"
-											},
-											{
-												"concept": "739b25f3-f4b1-5c42-b643-25c4cc91037b",
-												"label": "Epidural"
-											},
-											{
-												"concept": "2d27ea0d-3139-5e12-86c2-b65f3bcaa110",
-												"label": "Local Infiltration"
-											},
-											{
-												"concept": "1a1b1fdd-958f-577c-bec4-61e9cc5d8ba5",
-												"label": "Topical"
-											}
-										]
-									}
-								},
-								{
-									"label": "Position of the Patient",
-									"type": "obs",
-									"id": "patIEntpoSItIon",
-									"questionOptions": {
-										"concept": "94d8a9ba-5964-5a2a-b397-4057176fb350",
-										"rendering": "select",
-										"answers": [
-											{
-												"concept": "f8ac197b-e65d-48d1-bed3-c9f747ece32e",
-												"label": "Supine"
-											},
-											{
-												"concept": "1e1979ed-d6be-5bc4-ad23-6936ba896cc3",
-												"label": "Fowler’s"
-											},
-											{
-												"concept": "d0c35c8d-0600-5e94-9af6-4c8e0625081b",
-												"label": "Prone"
-											},
-											{
-												"concept": "a896252a-1350-11df-a1f1-0026b9348838",
-												"label": "Lateral"
-											},
-											{
-												"concept": "e725e6a0-3a80-52f8-b55a-9468f4a7b400",
-												"label": "Trendelenburg"
-											},
-											{
-												"concept": "4889f1c1-9654-5931-8fe5-1f3f5ec3b648",
-												"label": "Reverse Trendelenburg"
-											},
-											{
-												"concept": "847968bd-34ab-5bfd-b889-dbe016a5c6bc",
-												"label": "Lithotomy"
-											},
-											{
-												"concept": "8c6c1eaa-469c-499d-9a8a-425772c23ce8",
-												"label": "Sitting"
-											},
-											{
-												"concept": "f873a005-7a67-5312-b1cf-08fafb465782",
-												"label": "Jack-knife"
-											},
-											{
-												"concept": "c7e24b95-94b0-58e4-9d97-0d36f8e80d9d",
-												"label": "Sim's Position"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
-											}
-										]
-									}
-								},
-								{
-									"label": "Other (Specify)",
-									"type": "obs",
-									"id": "OthersUsedposition",
-									"required": "true",
-									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-										"rendering": "text"
-									},
-									"hide": {
-										"hideWhenExpression": "patIEntpoSItIon !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
-									}
-								},
-								{
-									"label": "Location of Incision",
-									"type": "obs",
-									"id": "IncisLocaTion",
-									"questionOptions": {
-										"concept": "a4c76df4-cfb0-56ba-8929-d2d031a71b51",
-										"rendering": "text"
-									}
-								},
-								{
-									"label": "Type of Incision",
-									"type": "obs",
-									"id": "typeIncisLocaTion",
-									"questionOptions": {
-										"concept": "1b2fa23c-14e9-5f60-ad57-6b8618763811",
-										"rendering": "select",
-										"answers": [
-											{
-												"concept": "81ab82a4-e309-561c-8e43-a2fe0d19813c",
-												"label": "Midline"
-											},
-											{
-												"concept": "563bbe57-9854-5a41-83f0-86134f5017d6",
-												"label": "Pfannenstiel"
-											},
-											{
-												"concept": "a895703a-1350-11df-a1f1-0026b9348838",
-												"label": "Inguinal"
-											},
-											{
-												"concept": "46b0ad8c-da6a-58a6-8a7a-f2107603b738",
-												"label": "Supra-umbilical/infra-umbilical"
-											},
-											{
-												"concept": "f4603d32-4205-559f-b33c-e5d8557a3dfc",
-												"label": "Kocher"
-											},
-											{
-												"concept": "33c764a8-8029-5b6b-a182-dfaa6742af1e",
-												"label": "Transverse"
-											},
-											{
-												"concept": "cfe1e040-9e23-5bb2-b54f-5ab686ca2481",
-												"label": "Paramedian"
-											},
-											{
-												"concept": "43dd68b1-d85c-523a-a716-636fdc27d4bd",
-												"label": "McBurney"
-											},
-											{
-												"concept": "c885291e-3f0b-523f-b245-04f91c785ee6",
-												"label": "Lanz"
-											},
-											{
-												"concept": "8bfa9e07-3a7e-5aa4-9e37-0fd55490f28c",
-												"label": "Rutherfold Morrison "
-											},
-											{
-												"concept": "dfe162a5-5524-5c7c-b81d-6ba87c5f7d4b",
-												"label": "Battle"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
-											}
-										]
-									}
-								},
-								{
-									"label": "Other (Specify)",
-									"type": "obs",
-									"id": "OthersUsedinCision",
-									"required": "true",
-									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-										"rendering": "text"
-									},
-									"hide": {
-										"hideWhenExpression": "IncisLocaTion !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
-									}
-								},
-								{
-									"label": "Closure Method",
-									"type": "obs",
-									"id": "clOseMethod",
-									"questionOptions": {
-										"concept": "b1766bab-c54f-576c-ba4c-ef726f7798b3",
-										"rendering": "select",
-										"answers": [
-											{
-												"concept": "1f1aad44-ed87-50d8-8f09-c3993d94db99",
-												"label": "Absorbable Suture"
-											},
-											{
-												"concept": "9f611bac-1b5c-5ae5-877c-b3c3886fa139",
-												"label": "Non Absorbable Suture"
-											},
-											{
-												"concept": "a7e18d63-57ce-51ad-a018-dfad3e8b359d",
-												"label": "Skin Staples"
-											},
-											{
-												"concept": "462fb0e7-3f1b-53f7-b0f1-9f90802854ff",
-												"label": "Adhesive Strips"
-											},
-											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
-											}
-										]
-									},
-									"hide": {
-										"hideWhenExpression": ""
-									}
-								},
-								{
-									"label": "Other Method (Specify)",
-									"type": "obs",
-									"id": "OthersMethOd",
-									"required": "true",
-									"questionOptions": {
-										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-										"rendering": "text"
-									},
-									"hide": {
-										"hideWhenExpression": "clOseMethod !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
-									}
-								}
-							]
-						},
-						{
-							"label": "Findings",
-							"type": "obs",
-							"required": "true",
-							"id": "FinDings",
-							"questionOptions": {
-								"rendering": "textarea",
-								"concept": "165ffe53-a38b-5047-8624-90b51ae3d653",
-								"rows": "15"
-							}
-						},
-						{
-							"label": "Was specimen for histology collected?",
-							"type": "obs",
-							"id": "HisToloGySpeci",
-							"questionOptions": {
-								"concept": "76fe51dc-fe09-5a63-9026-b0596f2b86ca",
-								"rendering": "radio",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									}
-								]
-							},
-							"hide": {
-								"hideWhenExpression": ""
-							}
-						},
-						{
-							"label": "Type of specimen:",
-							"type": "obs",
-							"id": "speCimeNtYpe",
-							"questionOptions": {
-								"concept": "71ab5215-6091-5fcb-ada0-00dbb5aaf52f",
-								"rendering": "text"
-							},
-							"hide": {
-								"hideWhenExpression": "HisToloGySpeci !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
-						},
-						{
-							"label": "Procedure notes:",
-							"type": "obs",
-							"required": "true",
-							"id": "ProcedureNotes",
-							"questionOptions": {
-								"rendering": "textarea",
-								"concept": "de9fc3f5-36f1-5d75-bb5b-f22a0b19eadb",
-								"rows": "15"
-							}
-						},
-						{
-							"label": "Post procedure notes:",
-							"type": "obs",
-							"required": "true",
-							"id": "PostProcedureNotes",
-							"questionOptions": {
-								"rendering": "textarea",
-								"concept": "50f92509-d28b-5a5b-8875-88f2b72c86e6",
-								"rows": "15"
-							}
-						},
-						{
-							"label": "Anaesthetist notes:",
-							"type": "obs",
-							"required": "true",
-							"id": "AnaesthetistNotes",
-							"questionOptions": {
-								"rendering": "textarea",
-								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
-								"rows": "15"
-							}
-						},
-						{
-							"label": "Diagnosis:",
-							"id": "clinicalDiagnosisId",
-							"type": "diagnosis",
-							"questionOptions": {
-								"rendering": "repeating",
-								"dataSource": "diagnoses",
-								"rank": 1,
-								"datasource": {
-									"name": "diagnoses",
-									"config": {
-										"conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
-									}
-								}
-							}
-						}
-					]
-				}
-			]
-		}
-	]
-	
+  "name": "POC Theatre Notes Form v1.0",
+  "description": "Post Procedure Form",
+  "version": "1.0",
+  "published": true,
+  "uuid": "51ecd052-ccbc-30a4-af07-e7ab4517d66d",
+  "retired": false,
+  "encounter": "PROCEDUREFORM",
+  "encounterType": "d85b0700-89a4-47c2-a80e-84dcff43d07a",
+  "pages": [
+    {
+      "label": "Visit Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Post Operation Details",
+      "sections": [
+        {
+          "label": "Post Operation",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date and Time of surgery",
+              "type": "obs",
+              "id": "surGeryDateTime",
+              "datePickerFormat": "both",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "eb22f892-21fe-4c2a-8047-f016fd2162c1"
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Time of Out(AM or PM)",
+              "type": "obs",
+              "id": "TimeOfOut ",
+              "datePickerFormat": "timer",
+              "questionOptions": {
+                "concept": "90ad1db5-2f2b-55bc-941c-d579e0d67bac",
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Total time taken",
+              "type": "obs",
+              "required": "false",
+              "id": "TotalTimeTaken",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "7852e330-aa9f-5000-b723-77f6ae2b47b4"
+              }
+            },
+            {
+              "label": "Operative Procedure",
+              "type": "obs",
+              "id": "proCedureOps",
+              "questionOptions": {
+                "concept": "6e7f1f6a-be77-51e3-a6fb-cf5166f08c2c",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "pregnancyComplications !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Procedure Details",
+              "type": "obsGroup",
+              "id": "deTailSpRoc",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "3a864aee-e924-50f0-9a65-40ea8f92bb4d"
+              },
+              "questions": [
+                {
+                  "label": "Anaesthesia Type",
+                  "type": "obs",
+                  "id": "loCalReg",
+                  "questionOptions": {
+                    "concept": "98665705-8612-5512-9ac9-d74335937590",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "3fa5c3a8-41e5-493a-9ab7-7177fc6f8c82",
+                        "label": "Inhalation (mask) "
+                      },
+                      {
+                        "concept": "f45ac884-e73e-4b02-9d8b-49c4e3ce5a15",
+                        "label": "Intravenous"
+                      },
+                      {
+                        "concept": "a9826823-2aa9-508c-8cbe-2d82f3d19ed6",
+                        "label": "Spinal"
+                      },
+                      {
+                        "concept": "739b25f3-f4b1-5c42-b643-25c4cc91037b",
+                        "label": "Epidural"
+                      },
+                      {
+                        "concept": "2d27ea0d-3139-5e12-86c2-b65f3bcaa110",
+                        "label": "Local Infiltration"
+                      },
+                      {
+                        "concept": "1a1b1fdd-958f-577c-bec4-61e9cc5d8ba5",
+                        "label": "Topical"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Position of the Patient",
+                  "type": "obs",
+                  "id": "patIEntpoSItIon",
+                  "questionOptions": {
+                    "concept": "94d8a9ba-5964-5a2a-b397-4057176fb350",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "f8ac197b-e65d-48d1-bed3-c9f747ece32e",
+                        "label": "Supine"
+                      },
+                      {
+                        "concept": "1e1979ed-d6be-5bc4-ad23-6936ba896cc3",
+                        "label": "Fowler’s"
+                      },
+                      {
+                        "concept": "d0c35c8d-0600-5e94-9af6-4c8e0625081b",
+                        "label": "Prone"
+                      },
+                      {
+                        "concept": "a896252a-1350-11df-a1f1-0026b9348838",
+                        "label": "Lateral"
+                      },
+                      {
+                        "concept": "e725e6a0-3a80-52f8-b55a-9468f4a7b400",
+                        "label": "Trendelenburg"
+                      },
+                      {
+                        "concept": "4889f1c1-9654-5931-8fe5-1f3f5ec3b648",
+                        "label": "Reverse Trendelenburg"
+                      },
+                      {
+                        "concept": "847968bd-34ab-5bfd-b889-dbe016a5c6bc",
+                        "label": "Lithotomy"
+                      },
+                      {
+                        "concept": "8c6c1eaa-469c-499d-9a8a-425772c23ce8",
+                        "label": "Sitting"
+                      },
+                      {
+                        "concept": "f873a005-7a67-5312-b1cf-08fafb465782",
+                        "label": "Jack-knife"
+                      },
+                      {
+                        "concept": "c7e24b95-94b0-58e4-9d97-0d36f8e80d9d",
+                        "label": "Sim's Position"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Other (Specify)",
+                  "type": "obs",
+                  "id": "OthersUsedposition",
+                  "required": "true",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "patIEntpoSItIon !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Location of Incision",
+                  "type": "obs",
+                  "id": "IncisLocaTion",
+                  "questionOptions": {
+                    "concept": "a4c76df4-cfb0-56ba-8929-d2d031a71b51",
+                    "rendering": "text"
+                  }
+                },
+                {
+                  "label": "Type of Incision",
+                  "type": "obs",
+                  "id": "typeIncisLocaTion",
+                  "questionOptions": {
+                    "concept": "1b2fa23c-14e9-5f60-ad57-6b8618763811",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "81ab82a4-e309-561c-8e43-a2fe0d19813c",
+                        "label": "Midline"
+                      },
+                      {
+                        "concept": "563bbe57-9854-5a41-83f0-86134f5017d6",
+                        "label": "Pfannenstiel"
+                      },
+                      {
+                        "concept": "a895703a-1350-11df-a1f1-0026b9348838",
+                        "label": "Inguinal"
+                      },
+                      {
+                        "concept": "46b0ad8c-da6a-58a6-8a7a-f2107603b738",
+                        "label": "Supra-umbilical/infra-umbilical"
+                      },
+                      {
+                        "concept": "f4603d32-4205-559f-b33c-e5d8557a3dfc",
+                        "label": "Kocher"
+                      },
+                      {
+                        "concept": "33c764a8-8029-5b6b-a182-dfaa6742af1e",
+                        "label": "Transverse"
+                      },
+                      {
+                        "concept": "cfe1e040-9e23-5bb2-b54f-5ab686ca2481",
+                        "label": "Paramedian"
+                      },
+                      {
+                        "concept": "43dd68b1-d85c-523a-a716-636fdc27d4bd",
+                        "label": "McBurney"
+                      },
+                      {
+                        "concept": "c885291e-3f0b-523f-b245-04f91c785ee6",
+                        "label": "Lanz"
+                      },
+                      {
+                        "concept": "8bfa9e07-3a7e-5aa4-9e37-0fd55490f28c",
+                        "label": "Rutherfold Morrison "
+                      },
+                      {
+                        "concept": "dfe162a5-5524-5c7c-b81d-6ba87c5f7d4b",
+                        "label": "Battle"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Other (Specify)",
+                  "type": "obs",
+                  "id": "OthersUsedinCision",
+                  "required": "true",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "IncisLocaTion !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Closure Method",
+                  "type": "obs",
+                  "id": "clOseMethod",
+                  "questionOptions": {
+                    "concept": "b1766bab-c54f-576c-ba4c-ef726f7798b3",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "1f1aad44-ed87-50d8-8f09-c3993d94db99",
+                        "label": "Absorbable Suture"
+                      },
+                      {
+                        "concept": "9f611bac-1b5c-5ae5-877c-b3c3886fa139",
+                        "label": "Non Absorbable Suture"
+                      },
+                      {
+                        "concept": "a7e18d63-57ce-51ad-a018-dfad3e8b359d",
+                        "label": "Skin Staples"
+                      },
+                      {
+                        "concept": "462fb0e7-3f1b-53f7-b0f1-9f90802854ff",
+                        "label": "Adhesive Strips"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": ""
+                  }
+                },
+                {
+                  "label": "Other Method (Specify)",
+                  "type": "obs",
+                  "id": "OthersMethOd",
+                  "required": "true",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "clOseMethod !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Findings",
+              "type": "obs",
+              "required": "true",
+              "id": "FinDings",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "165ffe53-a38b-5047-8624-90b51ae3d653",
+                "rows": "15"
+              }
+            },
+            {
+              "label": "Was specimen for histology collected?",
+              "type": "obs",
+              "id": "HisToloGySpeci",
+              "questionOptions": {
+                "concept": "76fe51dc-fe09-5a63-9026-b0596f2b86ca",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": ""
+              }
+            },
+            {
+              "label": "Type of specimen:",
+              "type": "obs",
+              "id": "speCimeNtYpe",
+              "questionOptions": {
+                "concept": "71ab5215-6091-5fcb-ada0-00dbb5aaf52f",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "HisToloGySpeci !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Procedure notes:",
+              "type": "obs",
+              "required": "true",
+              "id": "ProcedureNotes",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "de9fc3f5-36f1-5d75-bb5b-f22a0b19eadb",
+                "rows": "15"
+              }
+            },
+            {
+              "label": "Post procedure notes:",
+              "type": "obs",
+              "required": "true",
+              "id": "PostProcedureNotes",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "50f92509-d28b-5a5b-8875-88f2b72c86e6",
+                "rows": "15"
+              }
+            },
+            {
+              "label": "Anaesthetist notes:",
+              "type": "obs",
+              "required": "true",
+              "id": "AnaesthetistNotes",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rows": "15"
+              }
+            },
+            {
+              "label": "Diagnosis:",
+              "id": "clinicalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "dataSource": "diagnoses",
+                "rank": 1,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

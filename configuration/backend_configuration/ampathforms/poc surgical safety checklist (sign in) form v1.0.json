@@ -2,24 +2,26 @@
   "name": "POC Surgical Safety Checklist (Sign In) Form v1.0",
   "description": "A form used to capture Surgical Safety Checklist Sign In",
   "version": "1.0",
-  "published": true,
-  "uuid": "2061790f-815e-43a9-8a1e-dae9e4956c2a",
+  "published": false,
+  "uuid": "c71c5a96-125b-4c0e-a7a0-7eac005cdea1",
   "retired": false,
-  "encounter": "",
+  "encounter": "SURGICALSAFETYSIGNIN",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "83d8d046-9130-4c03-87a3-fc6283908c25",
   "pages": [
     {
       "label": "Surgical Safety Checklist Details",
       "sections": [
         {
           "label": "Visit Details",
-          "isExpanded": "true",
+          "isExpanded": true,
           "questions": [
             {
               "label": "Date of surgery:",
               "type": "encounterDatetime",
-              "required": "true",
+              "required": true,
               "default": "",
-              "id": "encDate",
+              "id": "encounterDate",
               "questionOptions": {
                 "rendering": "date"
               },
@@ -33,7 +35,7 @@
               "type": "encounterProvider",
               "label": "Provider:",
               "id": "provider",
-              "required": "true",
+              "required": true,
               "default": "",
               "questionOptions": {
                 "rendering": "ui-select-extended"
@@ -50,8 +52,8 @@
             },
 
             {
-              "label": "Diagnosis",
-              "id": "finalDiagnosisId",
+              "label": "Diagnosis:",
+              "id": "finalDiagnosis",
               "type": "diagnosis",
               "questionOptions": {
                 "rendering": "repeating",
@@ -59,7 +61,7 @@
                 "datasource": {
                   "name": "diagnoses",
                   "config": {
-                    "conceptSourceUuid": ""
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
                   }
                 }
               }
@@ -67,9 +69,9 @@
             {
               "label": "Procedure:",
               "type": "obs",
-              "id": "proceDure",
+              "id": "procedure",
               "questionOptions": {
-                "concept": "",
+                "concept": "2d94ad90-6b6f-474d-8f2e-8b245235059c",
                 "rendering": "text"
               }
             }
@@ -82,7 +84,7 @@
       "sections": [
         {
           "label": "Sign In",
-          "isExpanded": "true",
+          "isExpanded": true,
           "questions": [
             {
               "label": "Sign In Time",
@@ -90,47 +92,47 @@
               "datePickerFormat": "both",
               "questionOptions": {
                 "rendering": "date",
-                "concept": ""
+                "concept": "f3ca6995-450e-4c58-a8cd-5abd9f7215b6"
               },
               "id": "anesthesiaDateTime",
               "validators": [
                 {
                   "type": "date",
-                  "allowFutureDates": "false"
+                  "allowFutureDates": false
                 }
               ],
-              "required": "true"
+              "required": true
             },
             {
               "label": "Has the following been Verified?",
               "type": "obs",
               "id": "verificationDetails",
               "questionOptions": {
-                "concept": "",
+                "concept": "2717eead-7411-4df6-ae2d-db8d798c1b76",
                 "rendering": "checkbox",
                 "answers": [
                   {
-                    "concept": "",
+                    "concept": "c8f2c084-47e3-4ef4-8c8b-184015b85e77",
                     "label": "All operating team members have been mobilized"
                   },
                   {
-                    "concept": "",
+                    "concept": "1b73920c-5c9e-42f6-81fe-c8b587f40d5a",
                     "label": "For C-S, includes newborn provider"
                   },
                   {
-                    "concept": "",
+                    "concept": "059db04a-9f5f-408a-afd8-bf4518c70ee0",
                     "label": "Level of urgency for surgery"
                   },
                   {
-                    "concept": "",
+                    "concept": "b8eae89b-170a-4afa-8a8b-0cce64008698",
                     "label": "Patient has confirmed her identity, procedure(s), and consent."
                   },
                   {
-                    "concept": "",
+                    "concept": "2cd11dab-c5ae-4fcd-8e1b-c558f87061d8",
                     "label": "Sterility of equipment and instruments"
                   },
                   {
-                    "concept": "",
+                    "concept": "2c3df4ff-e402-41c3-af54-21a69c3ea093",
                     "label": "Anesthesia machine and medication check complete"
                   },
                   {
@@ -138,43 +140,43 @@
                     "label": "Pulse oximeter on the patient and functioning"
                   },
                   {
-                    "concept": "",
+                    "concept": "a899c59a-1350-11df-a1f1-0026b9348838",
                     "label": "Patient has known allergy"
                   },
                   {
-                    "concept": "",
+                    "concept": "4a1ee37c-0701-4563-bc62-6237497de495",
                     "label": "Antibiotic prophylaxis given 15-60 minutes before expected skin incision"
                   },
                   {
-                    "concept": "",
+                    "concept": "a6ad4aa5-a93f-4a32-82c4-dbc6493ac5a3",
                     "label": "Antacid prophylaxis has been given"
                   },
                   {
-                    "concept": "",
+                    "concept": "f70608dd-c9ed-424a-8b34-79e1b4d19534",
                     "label": "Patient has a difficulty airway or aspiration risk"
                   },
                   {
-                    "concept": "",
+                    "concept": "a877b1bc-1350-11df-a1f1-0026b9348838",
                     "label": "Risk of >500 ml blood loss (7 ml/kg in children)"
                   },
                   {
-                    "concept": "",
+                    "concept": "a8908a16-1350-11df-a1f1-0026b9348838",
                     "label": "Haemoglobin results"
                   },
                   {
-                    "concept": "",
+                    "concept": "a8970954-1350-11df-a1f1-0026b9348838",
                     "label": "Platelets Results"
                   },
                   {
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "concept": "0cb778e1-aa83-456f-8099-6b241dbfd647",
                     "label": "Other critical lab results"
                   },
                   {
-                    "concept": "",
+                    "concept": "a8945754-1350-11df-a1f1-0026b9348838",
                     "label": "Blood group/Rh"
                   },
                   {
-                    "concept": "",
+                    "concept": "5552a230-dc0e-4d5f-895e-ab775be72680",
                     "label": "For C.S, newborn resuscitation equipment and asssistance available"
                   }
                 ]
@@ -189,11 +191,11 @@
                 "concept": "9de0b024-73ff-4c17-b5ac-8c781d80785a",
                 "answers": [
                   {
-                    "concept": "4bee29de-f909-4fff-af43-e498b44d2b7c",
+                    "concept": "cf29c4d3-4c69-44f2-b1ac-3a4e3d8c112c",
                     "label": "Emergency"
                   },
                   {
-                    "concept": "26995049-fc00-43f4-a725-851fd517a1ac",
+                    "concept": "a08fb3c7-d31e-42e5-a515-71d8f4f6989d",
                     "label": "Elective"
                   },
                   {
@@ -203,7 +205,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, '7446f4c3-15d3-4e21-b9d9-55ae1cbe5c65')"
+                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, '059db04a-9f5f-408a-afd8-bf4518c70ee0')"
               }
             },
             {
@@ -212,7 +214,7 @@
               "id": "knownAllergy",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "",
+                "concept": "a899c59a-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -225,16 +227,16 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, '110247AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'a899c59a-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
               "label": "Difficulty airway or aspiration risk?",
               "type": "obs",
-              "id": "diffAspiration",
+              "id": "difficultAirwayAspirationRisk",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "",
+                "concept": "93724e78-0acd-4cd1-9b3e-7f210433c3e1",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -247,23 +249,23 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'f29a31c7-7b8f-4544-bcb1-f984429e63e0')"
+                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'f70608dd-c9ed-424a-8b34-79e1b4d19534')"
               }
             },
             {
               "label": "Risk for Blood Loss",
               "type": "obs",
-              "id": "bloodlossrisk",
+              "id": "bloodLossRisk",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "",
+                "concept": "77caee68-1353-48b1-9590-f293a0bb5a47",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes, and adequate IV access & fluids plannned"
                   },
                   {
-                    "concept": "",
+                    "concept": "b9347ab4-bf5b-42d9-8027-1053356734c2",
                     "label": "Blood is available"
                   },
                   {
@@ -277,7 +279,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'fb10f0ba-9f73-44ef-97af-cf5769adcf1e')"
+                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'a877b1bc-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -289,19 +291,19 @@
                 "rendering": "numeric"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, '165397AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'a8908a16-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
               "label": "Platelets Value (10^3/mL)",
               "type": "obs",
-              "id": "pltValue",
+              "id": "plateletValue",
               "questionOptions": {
                 "concept": "a8970954-1350-11df-a1f1-0026b9348838",
                 "rendering": "numeric"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'ac1fc824-52b0-4284-a2ee-b1780263a48d')"
+                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'a8970954-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -309,30 +311,29 @@
               "type": "obs",
               "id": "criticalValue",
               "questionOptions": {
-                "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                "concept": "6f5207f4-6785-433b-943e-c2d03e7d3ea7",
                 "rendering": "text"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, '0cb778e1-aa83-456f-8099-6b241dbfd647')"
               }
             },
             {
               "label": "Blood group/Rh",
               "type": "obs",
-              "id": "bloodGrp",
+              "id": "bloodGroup",
               "questionOptions": {
                 "concept": "a8945754-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, '163126AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+                "hideWhenExpression": "isEmpty(verificationDetails) || !arrayContains(verificationDetails, 'a8945754-1350-11df-a1f1-0026b9348838')"
               }
             }
           ]
         }
       ]
     }
-  ],
-  "processor": "EncounterFormProcessor",
-  "encounterType": "d14dde5b-95dc-40a1-8ff0-acad34fb58b2"
+  ]
+  
 }
