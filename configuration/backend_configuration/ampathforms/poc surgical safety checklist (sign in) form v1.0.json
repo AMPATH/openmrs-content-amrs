@@ -3,7 +3,7 @@
   "description": "A form used to capture Surgical Safety Checklist Sign In",
   "version": "1.0",
   "published": true,
-  "uuid": "c71c5a96-125b-4c0e-a7a0-7eac005cdea1",
+  "uuid": "570e576f-b2ba-3099-84c3-6d805430e78a",
   "retired": false,
   "encounter": "SURGICALSAFETYSIGNIN",
   "encounterType": "83d8d046-9130-4c03-87a3-fc6283908c25",
@@ -86,17 +86,17 @@
           "isExpanded": true,
           "questions": [
             {
-              "label": "Sign In Time",
+              "label": "Sign In time:",
               "type": "obs",
               "datePickerFormat": "both",
               "questionOptions": {
-                "rendering": "date",
+                "rendering": "datetime",
                 "concept": "f3ca6995-450e-4c58-a8cd-5abd9f7215b6"
               },
               "id": "anesthesiaDateTime",
               "validators": [
                 {
-                  "type": "date",
+                  "type": "datetime",
                   "allowFutureDates": false
                 }
               ],
@@ -322,7 +322,7 @@
               "type": "obs",
               "id": "bloodGroup",
               "questionOptions": {
-                "concept": "a8945754-1350-11df-a1f1-0026b9348838",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rendering": "text"
               },
               "hide": {
