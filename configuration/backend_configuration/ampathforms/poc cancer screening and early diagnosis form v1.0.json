@@ -99,7 +99,7 @@
               }
             },
             {
-              "label": "Number of cigarette per day",
+              "label": "Number of cigarette per day:",
               "type": "obs",
               "id": "smokeDays",
               "questionOptions": {
