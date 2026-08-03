@@ -3,10 +3,9 @@
   "description": "A form used to capture Surgical Safety Checklist Sign Out",
   "version": "1.0",
   "published": true,
-  "uuid": "9323d899-3c23-4496-a28e-a2603c59eca7",
+  "uuid": "19a68271-50c0-3765-a2c9-c85b3e8c8d5c",
   "retired": false,
   "encounter": "SURGICALSAFETYSIGNOUT",
-
   "encounterType": "8329e1cc-32b5-4c05-ab69-fcc86064af56",
   "pages": [
     {
@@ -79,7 +78,7 @@
               "datePickerFormat": "both",
               "questionOptions": {
                 "rendering": "datetime",
-                "concept": "a89ecf22-1350-11df-a1f1-0026b9348838"
+                "concept": "52ff51ce-3a95-4e32-b389-966c2a6b2a77"
               },
               "id": "leavesDateTime",
               "validators": [

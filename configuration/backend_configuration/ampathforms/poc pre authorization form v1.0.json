@@ -3,7 +3,7 @@
   "description": "A form used to capture Pre-authorization Details",
   "version": "1.0",
   "published": true,
-  "uuid": "",
+  "uuid": "cce578f6-b3e2-3077-91ab-9016cf0f4fa5",
   "retired": false,
   "encounter": "PREAUTHORIZATION",
   "encounterType": "18b10189-a89f-430d-83e9-14663fef258c",
@@ -52,6 +52,7 @@
             {
               "label": "Type of intervention:",
               "type": "obs",
+              "required": true,
               "id": "typeOfIntervention",
               "questionOptions": {
                 "concept": "aea44bfb-c8b1-4cce-b891-af74181d0f57",
@@ -64,6 +65,23 @@
                   {
                     "concept": "597896cd-2841-42e9-8fb0-4292f82ac7b6",
                     "label": "Renal"
+                  },
+                  {
+                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  
+                  {
+                    "concept": "5771e408-a5e5-402b-9f29-b76106dfc71a",
+                    "label": "Imaging"
+                  },
+                  {
+                    "concept": "a8a06788-1350-11df-a1f1-0026b9348838",
+                    "label": "Optical"
+                  },
+                  {
+                    "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
+                    "label": "Oncology"
                   }
                 ]
               }
@@ -110,11 +128,11 @@
                 "concept": "a40396d3-3f9b-49b6-902a-a804f3d0e2a0",
                 "answers": [
                   {
-                    "concept": "f0e1c7a2-3d5b-4f8e-9c6b-1d2e3f4a5b6c",
+                    "concept": "5dcfe297-2ef7-4f1c-97e3-a519c18fcc84",
                     "label": "Once a week"
                   },
                   {
-                    "concept": "a1b2c3d4-5e6f-7g8h-9i0j-k1l2m3n4o5p6",
+                    "concept": "6f4a4c5b-34d4-4577-b1f2-c0e5d5a61374",
                     "label": "Twice a week"
                   },
                   {
@@ -139,14 +157,42 @@
             {
               "label": "Clinical indication:",
               "type": "obs",
-              "id": "clinicalIndication",
+              "id": "clinicalIndicationRenal",
               "questionOptions": {
-                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
-                "rendering": "textarea",
-                "rows": 3
+                "concept": "85b45e49-2428-4898-b9f8-62a1b8a4b4e4",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "9da6f97d-6f7c-4d14-aaa8-7180b11d7d64",
+                    "label": "End-Stage renal disease"
+                  },
+                  {
+                    "concept": "16bcc8b6-7eee-43ef-b8da-89ed597dc1c9",
+                    "label": "Acute kidney failure"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+                
               },
               "hide": {
                 "hideWhenExpression": "typeOfIntervention !== '597896cd-2841-42e9-8fb0-4292f82ac7b6'"
+              }
+            },
+             {
+              "label": "Clinical indication:",
+              "type": "obs",
+              "id": "clinicalIndication",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "placeholder": "Please specify clinical indication"
+                
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['63c079d9-87fb-4bea-b860-863bff0e29c5','5771e408-a5e5-402b-9f29-b76106dfc71a','a8a06788-1350-11df-a1f1-0026b9348838','073ea366-834b-49bd-b4db-ce4e6c61bbc3'),typeOfIntervention])"
               }
             }
           ]
@@ -489,8 +535,8 @@
                     ]
                   },
                   "hide": {
-                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
-              }
+                    "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+                  }
                 },
                 {
                   "label": "Specify other complaints:",
@@ -659,6 +705,9 @@
                     "label": "No"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['63c079d9-87fb-4bea-b860-863bff0e29c5','597896cd-2841-42e9-8fb0-4292f82ac7b6',''),typeOfIntervention])"
               }
             },
             {
@@ -669,6 +718,9 @@
                 "concept": "226c4f3a-3db3-4244-adc3-bc224b90d8fe",
                 "rendering": "textarea",
                 "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "coInsured !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
@@ -692,25 +744,25 @@
                   }
                 }
               }
-            }
-          ]
-        },
-        {
-          "label": "Doctor:",
-          "id": "doctor",
-          "type": "obs",
-          "questionOptions": {
-            "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
-            "rendering": "remote-select",
-            "datasource": {
-              "name": "endpoint",
-              "config": {
-                "endpointUrl": "https://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
-                "labelKey": "display",
-                "valueKey": "provider_national_id"
+            },
+            {
+              "label": "Doctor:",
+              "id": "doctor",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+                "rendering": "remote-select",
+                "datasource": {
+                  "name": "endpoint",
+                  "config": {
+                    "endpointUrl": "https://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
+                    "labelKey": "display",
+                    "valueKey": "provider_national_id"
+                  }
+                }
               }
             }
-          }
+          ]
         }
       ]
     }
