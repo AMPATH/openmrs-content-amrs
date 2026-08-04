@@ -2,7 +2,7 @@
   "name": "POC Clinical Encounter Form v1.1",
   "description": "Clinical Encounter",
   "version": "1.1",
-  "uuid": "ae398c08-7e84-3782-9f3c-6bd5b3fb65ea",
+  "uuid": "441da659-3e4b-33ab-8293-a7a287dcdd12",
   "processor": "EncounterFormProcessor",
   "published": true,
   "retired": false,
@@ -481,7 +481,6 @@
                     "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
                   }
                 },
-
                 {
                   "label": "Duration (Days):",
                   "type": "obs",
@@ -570,7 +569,6 @@
             }
           ]
         },
-
         {
           "label": "Pediatric History",
           "isExpanded": "true",
@@ -1283,7 +1281,7 @@
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
-                    "concept": "551599b9-2632-4a61-b105-05cd1d3a562e",
+                    "concept": "a89540f6-1350-11df-a1f1-0026b9348838",
                     "label": "Oedema",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
@@ -1625,7 +1623,6 @@
                     "concept": "a899b79e-1350-11df-a1f1-0026b9348838",
                     "label": "ENT"
                   },
-
                   {
                     "concept": "a899c2fc-1350-11df-a1f1-0026b9348838",
                     "label": "Genitourinary"
@@ -1648,7 +1645,6 @@
                 "hideWhenExpression": "syStemsRevieW !== 'a899e890-1350-11df-a1f1-0026b9348838'"
               }
             },
-
             {
               "label": "CNS findings notes:",
               "type": "obs",
@@ -1661,7 +1657,6 @@
                 "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c4be-1350-11df-a1f1-0026b9348838')"
               }
             },
-
             {
               "label": "CVS findings notes:",
               "type": "obs",
@@ -1674,7 +1669,6 @@
                 "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899ef84-1350-11df-a1f1-0026b9348838')"
               }
             },
-
             {
               "label": "ENT findings notes:",
               "type": "obs",
@@ -1687,7 +1681,6 @@
                 "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899b79e-1350-11df-a1f1-0026b9348838')"
               }
             },
-
             {
               "label": "Gastrointestinal findings notes:",
               "type": "obs",
@@ -1700,7 +1693,6 @@
                 "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c13a-1350-11df-a1f1-0026b9348838')"
               }
             },
-
             {
               "label": "Genitourinary findings notes:",
               "type": "obs",
@@ -1713,7 +1705,6 @@
                 "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c2fc-1350-11df-a1f1-0026b9348838')"
               }
             },
-
             {
               "label": "Musculoskeletal findings notes:",
               "type": "obs",
@@ -1726,7 +1717,6 @@
                 "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c3d8-1350-11df-a1f1-0026b9348838')"
               }
             },
-
             {
               "label": "Respiratory findings notes:",
               "type": "obs",
@@ -1739,7 +1729,6 @@
                 "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a8b0f31e-1350-11df-a1f1-0026b9348838')"
               }
             },
-
             {
               "label": "Skin finding notes:",
               "type": "obs",
@@ -1828,7 +1817,8 @@
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
-                "rendering": "remote-select",
+                "rendering": "repeating",
+                "dataSource": "diagnoses",
                 "rank": 2,
                 "datasource": {
                   "name": "diagnoses",
@@ -1838,7 +1828,6 @@
                 }
               }
             },
-
             {
               "label": "Diagnosis categorization:",
               "required": "true",
@@ -1847,7 +1836,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "7d44ddef-9173-429b-ab1b-13cb675288c8",
-
                 "answers": [
                   {
                     "concept": "a8a48066-1350-11df-a1f1-0026b9348838",

@@ -5,9 +5,9 @@
   "published": true,
   "uuid": "b062e97b-71fb-4c80-9f7d-72076475884a",
   "retired": false,
-  "encounter": "ADMISSIONREQUEST",
+  "encounter": "MATERNITYADMISSION",
   "processor": "EncounterFormProcessor",
-  "encounterType": "b062e97b-71fb-4c80-9f7d-72076475884a",
+  "encounterType": "1bf4f1f6-8965-4fb4-a7f0-29d31fefb1ac",
   "referencedForms": [],
   "pages": [
     {

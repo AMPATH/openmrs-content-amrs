@@ -55,7 +55,7 @@
     },
 
     {
-      "label": "Patient Examination",
+      "label": "Patient Examination And Management",
       "sections": [
         {
           "label": "Objective",
@@ -98,9 +98,28 @@
           ]
         },
         {
-          "label": "Assessment",
+          "label": "Patient Management",
           "isExpanded": "true",
           "questions": [
+            {
+              "label": "Prescribe Drug(s):",
+              "id": "drugsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe drugs",
+                "workspaceName": "add-drug-order"
+              }
+            },
+            {
+              "label": "Procedures Order",
+              "id": "proceduresWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order Procedures",
+                "workspaceName": "order-basket"
+               
+              }
+            },
             {
               "label": "Clinical interpratation:",
               "required": "true",
