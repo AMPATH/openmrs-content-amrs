@@ -13,7 +13,7 @@
       "sections": [
         {
           "label": "Visit Details",
-          "isExpanded": true,
+          "isExpanded": "true",
           "questions": [
             {
               "label": "Date of surgery:",
@@ -70,22 +70,17 @@
       "sections": [
         {
           "label": "Sign Out",
-          "isExpanded": true,
+          "isExpanded": "true",
           "questions": [
             {
               "label": "Sign out time",
               "type": "obs",
-              "datePickerFormat": "both",
               "questionOptions": {
-                "rendering": "datetime",
-                "concept": "52ff51ce-3a95-4e32-b389-966c2a6b2a77"
+                "rendering": "time",
+                "concept": "a89ecf22-1350-11df-a1f1-0026b9348838"
               },
               "id": "leavesDateTime",
               "validators": [
-                {
-                  "type": "date",
-                  "allowFutureDates": false
-                }
               ],
               "required": true
             },

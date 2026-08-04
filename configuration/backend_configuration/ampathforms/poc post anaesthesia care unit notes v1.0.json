@@ -1,0 +1,201 @@
+{
+  "name": "POC Post Anaesthesia Care Unit Notes v1.0.",
+  "description": "A form used to capture Post-anaesthesia Care Unit Notes",
+  "version": "1.0",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "",
+  "encounterType": "",
+  "pages": [
+    {
+      "label": "Post Anaesthesia Care Unit Notes",
+      "sections": [
+        {
+          "label": "Visit Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Encounter date:",
+              "type": "encounterDatetime",
+              "required": true,
+              "default": "",
+              "id": "encounterDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider:",
+              "id": "provider",
+              "required": true,
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        },
+
+        {
+          "label": "Patient Examination And Management",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Arrival time:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "time",
+                "concept": ""
+              },
+              "id": "arrivalTime",
+              "validators": [],
+              "required": true
+            },
+             {
+              "label": "Procedure:",
+              "type": "obs",
+              "id": "procedure",
+              "questionOptions": {
+                "concept": "2d94ad90-6b6f-474d-8f2e-8b245235059c",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Type of anaesthesia:",
+              "type": "obs",
+              "id": "PlannedAnaesthesia",
+              "questionOptions": {
+                "concept": "2ea4944e-51e4-52c7-a209-8dcc2e889054",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "7a69a31a-d88f-4ebd-a00b-cb5b4581de00",
+                    "label": "General"
+                  },
+                  {
+                    "concept": "074225d4-b1be-56e9-93f6-255ebf106df3",
+                    "label": "Local anaesthesia"
+                  },
+                  {
+                    "concept": "3fa5c3a8-41e5-493a-9ab7-7177fc6f8c82",
+                    "label": "Sedation"
+                  },
+
+                  {
+                    "concept": "f45ac884-e73e-4b02-9d8b-49c4e3ce5a15",
+                    "label": "Spinal anaesthesia"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '63c079d9-87fb-4bea-b860-863bff0e29c5'"
+              }
+            },
+            {
+              "label": "Received from:",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text"
+              }
+            },
+            {
+              "label": "Received By:",
+              "type": "obs",
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Patient Assessment",
+          "isExpanded": "true",
+          "questions": [
+
+
+            { 
+              "label": "Airway:",
+              "type": "obs",
+              "required": true,
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Patent"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Oral Airway in Situ"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Normal"
+                  },
+
+                  {
+                    "concept": "",
+                    "label": "Imaging"
+                  }
+                
+                ]
+              }
+            },
+            { 
+              "label": "Airway:",
+              "type": "obs",
+              "required": true,
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Patent"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Oral Airway in Situ"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Normal"
+                  },
+
+                  {
+                    "concept": "",
+                    "label": "Imaging"
+                  }
+                
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

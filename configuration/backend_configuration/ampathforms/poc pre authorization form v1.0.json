@@ -13,23 +13,9 @@
       "sections": [
         {
           "label": "Visit Details",
-          "isExpanded": true,
+          "isExpanded": "true",
           "questions": [
-            {
-              "label": "Date of surgery:",
-              "type": "encounterDatetime",
-              "required": true,
-              "default": "",
-              "id": "encounterDate",
-              "questionOptions": {
-                "rendering": "date"
-              },
-              "validators": [
-                {
-                  "type": "date"
-                }
-              ]
-            },
+            
             {
               "type": "encounterProvider",
               "label": "Provider:",
@@ -70,7 +56,7 @@
                     "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
                     "label": "Normal"
                   },
-                  
+
                   {
                     "concept": "5771e408-a5e5-402b-9f29-b76106dfc71a",
                     "label": "Imaging"
@@ -155,7 +141,7 @@
               }
             },
             {
-              "label": "Clinical indication:",
+              "label": "Kidney status:",
               "type": "obs",
               "id": "clinicalIndicationRenal",
               "questionOptions": {
@@ -175,29 +161,26 @@
                     "label": "Other"
                   }
                 ]
-                
               },
               "hide": {
                 "hideWhenExpression": "typeOfIntervention !== '597896cd-2841-42e9-8fb0-4292f82ac7b6'"
               }
             },
-             {
+            {
               "label": "Clinical indication:",
               "type": "obs",
               "id": "clinicalIndication",
               "questionOptions": {
-                "concept": "",
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
                 "rendering": "textarea",
                 "placeholder": "Please specify clinical indication"
-                
               },
               "hide": {
-                "hideWhenExpression": "!arrayContains(['63c079d9-87fb-4bea-b860-863bff0e29c5','5771e408-a5e5-402b-9f29-b76106dfc71a','a8a06788-1350-11df-a1f1-0026b9348838','073ea366-834b-49bd-b4db-ce4e6c61bbc3'),typeOfIntervention])"
+                "hideWhenExpression": "!arrayContains(['63c079d9-87fb-4bea-b860-863bff0e29c5','5771e408-a5e5-402b-9f29-b76106dfc71a','a8a06788-1350-11df-a1f1-0026b9348838','073ea366-834b-49bd-b4db-ce4e6c61bbc3','597896cd-2841-42e9-8fb0-4292f82ac7b6'],typeOfIntervention)"
               }
             }
           ]
         },
-
         {
           "label": "Complaints and History of complaints",
           "isExpanded": "true",
@@ -707,7 +690,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!arrayContains(['63c079d9-87fb-4bea-b860-863bff0e29c5','597896cd-2841-42e9-8fb0-4292f82ac7b6',''),typeOfIntervention])"
+                "hideWhenExpression": "!arrayContains(['63c079d9-87fb-4bea-b860-863bff0e29c5','597896cd-2841-42e9-8fb0-4292f82ac7b6',''],typeOfIntervention)"
               }
             },
             {
@@ -735,7 +718,8 @@
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
-                "rendering": "remote-select",
+                "rendering": "repeating",
+                "dataSource": "diagnoses",
                 "rank": 2,
                 "datasource": {
                   "name": "diagnoses",

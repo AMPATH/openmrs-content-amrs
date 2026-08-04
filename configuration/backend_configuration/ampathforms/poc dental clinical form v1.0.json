@@ -511,7 +511,8 @@
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
-                "rendering": "remote-select",
+                "rendering": "repeating",
+                "dataSource": "diagnoses",
                 "rank": 2,
                 "datasource": {
                   "name": "diagnoses",

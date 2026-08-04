@@ -278,15 +278,21 @@
               }
             },
             {
-              "label": "Discharging doctor",
-              "type": "encounterProvider",
-              "required": false,
-              "id": "dischargingDoctor",
+              "label": "Doctor:",
+              "id": "doctor",
+              "type": "obs",
               "questionOptions": {
-                "rendering": "ui-select-extended",
-                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
-              },
-              "validators": []
+                "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+                "rendering": "remote-select",
+                "datasource": {
+                  "name": "endpoint",
+                  "config": {
+                    "endpointUrl": "https://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
+                    "labelKey": "display",
+                    "valueKey": "provider_national_id"
+                  }
+                }
+              }
             }
           ]
         }

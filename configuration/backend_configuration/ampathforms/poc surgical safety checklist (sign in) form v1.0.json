@@ -13,7 +13,7 @@
       "sections": [
         {
           "label": "Visit Details",
-          "isExpanded": true,
+          "isExpanded": "true",
           "questions": [
             {
               "label": "Date of surgery:",
@@ -83,23 +83,17 @@
       "sections": [
         {
           "label": "Sign In",
-          "isExpanded": true,
+          "isExpanded": "true",
           "questions": [
             {
-              "label": "Sign In time:",
+              "label": "Sign in time:",
               "type": "obs",
-              "datePickerFormat": "both",
               "questionOptions": {
-                "rendering": "datetime",
-                "concept": "f3ca6995-450e-4c58-a8cd-5abd9f7215b6"
+                "rendering": "time",
+                "concept": "a89ece64-1350-11df-a1f1-0026b9348838"
               },
               "id": "anesthesiaDateTime",
-              "validators": [
-                {
-                  "type": "datetime",
-                  "allowFutureDates": false
-                }
-              ],
+              "validators": [],
               "required": true
             },
             {

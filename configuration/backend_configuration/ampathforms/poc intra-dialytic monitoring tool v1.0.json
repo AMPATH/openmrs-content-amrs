@@ -1,0 +1,177 @@
+{
+  "name": "POC Intra-Dialytic Monitoring Tool v1.1",
+  "uuid": "",
+  "published": true,
+  "retired": false,
+  "encounterType": "2b49f2e9-9793-41e9-9221-570477d1d0f8",
+  "description": "Intra-dialytic monitoring information",
+  "version": "1.1",
+  "encounter": "INTRADIALYTIC",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Triage and Monitoring",
+      "sections": [
+        {
+          "label": "Visit Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "id": "encDate",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+
+        {
+          "label": "Monitoring Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Time:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "Time",
+                "concept": "a89ece64-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "laborTime",
+              "validators": []
+            },
+            {
+              "label": "Temperature (C):",
+              "type": "obs",
+              "id": "temperature",
+              "questionOptions": {
+                "concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "43",
+                "min": "25"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 37.5 || myValue < 35)",
+                "message": "Temperature is out of range (Normal range 35-37)"
+              }
+            },
+
+            {
+              "label": "Pulse rate:",
+              "type": "obs",
+              "id": "pulseRate",
+              "questionOptions": {
+                "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "230",
+                "min": "0"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 100.5 || myValue < 59.5)",
+                "message": "Pulse Rate is out of range (Normal range 60-100)"
+              }
+            },
+            {
+              "label": "Systolic B.P:",
+              "type": "obs",
+              "id": "sysBP",
+              "questionOptions": {
+                "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 130.5 || myValue < 119.5)",
+                "message": "Systolic is out of range (Normal range 120-130)"
+              }
+            },
+            {
+              "label": "Diastolic B.P:",
+              "type": "obs",
+              "id": "diasBP",
+              "questionOptions": {
+                "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "alert": {
+                "alertWhenExpression": "myValue && (myValue >= 85.5 || myValue < 79.5)",
+                "message": "Diastolic is out of range (Normal range 80-85)"
+              }
+            },
+            {
+              "label": "UF (ultrafiltration) volume:",
+              "type": "obs",
+              "required": "false",
+              "id": "ultrafiltrationVolume",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "ee950b31-7f1f-49fd-914a-b297d89144b9"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "label": "Heparin drug administered:",
+              "type": "obs",
+              "required": "false",
+              "id": "heparinDoseAdministered",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "c9795629-501f-4c4e-971f-ca4692fe2db0"
+              },
+              "validators": [
+                {
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Remarks",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Remarks:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rows": "5"
+              },
+              "id": "triageNotes"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
