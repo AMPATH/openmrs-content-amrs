@@ -152,6 +152,36 @@
                   },
                   {
                     "concept": "",
+                    "label": "Endotracheal Tube in Place"
+                  },
+
+                  {
+                    "concept": "",
+                    "label": "Requires Airway Support"
+                  }
+                
+                ]
+              }
+            },
+            { 
+              "label": "Breathing:",
+              "type": "obs",
+              "required": true,
+              "id": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Spontaneous and regular"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Shallow Breathing"
+                  },
+                  {
+                    "concept": "",
                     "label": "Normal"
                   },
 
