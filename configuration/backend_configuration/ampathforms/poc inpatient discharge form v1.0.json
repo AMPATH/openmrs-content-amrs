@@ -5,8 +5,8 @@
     "description": "Form for inpatient discharge",
     "published": true,
     "retired": false,
-    "encounterType": "181820aa-88c9-479b-9077-af92f5364329",
-    "encounter": "DISCHARGE",
+    "encounterType": "7649d97d-ac9f-444d-877c-7468ef286e7e",
+    "encounter": "GENERALDISCHARGE",
     "processor": "EncounterFormProcessor",
     "pages": [
       {
