@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/openmrs/openmrs-contrib-json-schemas/main/form.schema.json",
   "name": "POC Pre-authorization Form v1.0",
   "description": "A form used to capture Pre-authorization Details",
   "version": "1.0",
@@ -165,7 +166,13 @@
               "hide": {
                 "hideWhenExpression": "typeOfIntervention !== '597896cd-2841-42e9-8fb0-4292f82ac7b6'"
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Indication",
+          "isExpanded": "true",
+          "questions": [
             {
               "label": "Clinical indication:",
               "type": "obs",
@@ -182,17 +189,106 @@
           ]
         },
         {
+          "label": "Optical Details",
+          "isExpanded": "true",
+          "questions": [
+             {
+              "label": "Is this new request?",
+              "type": "obs",
+              "id": "newRequest",
+              "questionOptions": {
+                "concept": "aad64a84-1a63-47e3-a806-fb704b52b709",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a8a48066-1350-11df-a1f1-0026b9348838",
+                    "label": "New"
+                  },
+                  {
+                    "concept": "f021d384-65cd-47b5-b96c-6dc738a00452",
+                    "label": "Replacement"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== 'a8a06788-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Lens prescription:",
+              "type": "obs",
+              "id": "lens",
+              "questionOptions": {
+                "concept": "f0e18a8e-5912-4b5b-aae0-6f83b5de77af",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "51fc8b51-c35d-4025-9d25-fef5d0d44b47",
+                    "label": "Framed"
+                  },
+                  {
+                    "concept": "da45c81a-e0fc-4589-8094-cb6fb7a7a285",
+                    "label": "Contact"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== 'a8a06788-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Eye examination amount:",
+              "type": "obs",
+              "id": "eyeExaminationAmount",
+              "questionOptions": {
+                "concept": "a04a2d91-e540-45d4-a650-70bf4cab0b3f",
+                "rendering": "number"
+
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== 'a8a06788-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+             {
+              "label": "Frame amount:",
+              "type": "obs",
+              "id": "frameAmount",
+              "questionOptions": {
+                "concept": "424b5c35-f37f-4ec7-8b4a-a64c34c5f5ef",
+                "rendering": "number"
+
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== 'a8a06788-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+             {
+              "label": "Lens amount:",
+              "type": "obs",
+              "id": "lensAmount",
+              "questionOptions": {
+                "concept": "2dfe99ac-b32b-4cb9-b6e7-8e557a43624b",
+                "rendering": "number"
+
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== 'a8a06788-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
           "label": "Complaints and History of complaints",
           "isExpanded": "true",
           "questions": [
             {
               "label": "Presenting complaints:",
               "type": "obsGroup",
-              "id": "ComplaintLodgeByClient",
+              "id": "complaintLodgedByClient",
               "questionOptions": {
                 "concept": "9014962e-3efe-46b0-a393-c8c8bddadaa7",
                 "rendering": "repeating",
-                "min": 1
+                "min": "1"
               },
               "validators": [],
               "hide": {
@@ -202,7 +298,7 @@
                 {
                   "label": "Complaint:",
                   "type": "obs",
-                  "id": "cOmplaIntField",
+                  "id": "complaint",
                   "questionOptions": {
                     "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
                     "rendering": "select",
@@ -524,14 +620,14 @@
                 {
                   "label": "Specify other complaints:",
                   "type": "obs",
-                  "id": "OtherSpecificComplaints",
+                  "id": "otherSpecificComplaints",
                   "questionOptions": {
                     "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                     "rendering": "textarea"
                   },
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "complaint !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
                   }
                 }
               ]
@@ -539,7 +635,7 @@
             {
               "label": "History of presenting illness:",
               "type": "obs",
-              "id": "ClinICNotes",
+              "id": "clinicNotes",
               "questionOptions": {
                 "concept": "9e903280-385f-473d-9dfb-01bdb6b661a5",
                 "rendering": "textarea",
@@ -593,7 +689,7 @@
             {
               "label": "Type of anaesthesia:",
               "type": "obs",
-              "id": "PlannedAnaesthesia",
+              "id": "plannedAnaesthesia",
               "questionOptions": {
                 "concept": "2ea4944e-51e4-52c7-a209-8dcc2e889054",
                 "rendering": "radio",
