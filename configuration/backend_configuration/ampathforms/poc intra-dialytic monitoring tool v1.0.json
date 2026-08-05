@@ -57,13 +57,13 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Time:",
+              "label": "Time (Mins):",
               "type": "obs",
               "questionOptions": {
                 "rendering": "Time",
-                "concept": "a89ece64-1350-11df-a1f1-0026b9348838"
+                "concept": "d8ff0032-ffea-4d43-89ed-39b66359478d"
               },
-              "id": "laborTime",
+              "id": "timeMins",
               "validators": []
             },
             {

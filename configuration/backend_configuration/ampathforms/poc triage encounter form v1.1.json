@@ -727,7 +727,7 @@
               }
             },
             {
-              "label": "Mode of collection?",
+              "label": "Oxygen status:",
               "type": "obs",
               "id": "tempMode",
               "questionOptions": {
