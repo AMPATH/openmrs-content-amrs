@@ -3,7 +3,7 @@
   "name": "POC Pre-authorization Form v1.0",
   "description": "A form used to capture Pre-authorization Details",
   "version": "1.0",
-  "published": false,
+  "published": true,
   "uuid": "cce578f6-b3e2-3077-91ab-9016cf0f4fa5",
   "retired": false,
   "encounter": "PREAUTHORIZATION",
