@@ -117,7 +117,7 @@
               }
             },
             {
-              "label": "Received By:",
+              "label": "Received by:",
               "type": "obs",
               "id": "",
               "questionOptions": {
@@ -148,11 +148,11 @@
                   },
                   {
                     "concept": "",
-                    "label": "Oral Airway in Situ"
+                    "label": "Oral airway in situ"
                   },
                   {
                     "concept": "",
-                    "label": "Endotracheal Tube in Place"
+                    "label": "Endotracheal tube in Place"
                   },
 
                   {
