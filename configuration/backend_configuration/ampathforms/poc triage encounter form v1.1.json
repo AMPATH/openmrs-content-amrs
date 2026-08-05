@@ -714,6 +714,7 @@
             {
               "label": "Temperature (C):",
               "type": "obs",
+              "required": "true",
               "id": "temperature",
               "questionOptions": {
                 "concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
@@ -727,7 +728,7 @@
               }
             },
             {
-              "label": "Oxygen status:",
+              "label": "Temperature measurement method:",
               "type": "obs",
               "id": "tempMode",
               "questionOptions": {
@@ -755,6 +756,7 @@
             {
               "label": "Pulse rate:",
               "type": "obs",
+              "required": "true",
               "id": "pulseRate",
               "questionOptions": {
                 "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
@@ -769,6 +771,7 @@
             },
             {
               "label": "Systolic B.P:",
+              "required": "true",
               "type": "obs",
               "id": "sysBP",
               "questionOptions": {
@@ -782,6 +785,7 @@
             },
             {
               "label": "Diastolic B.P:",
+              "required": "true",
               "type": "obs",
               "id": "diasBP",
               "questionOptions": {
@@ -795,6 +799,7 @@
             },
             {
               "label": "Respiratory rate:",
+              "required": "true",
               "type": "obs",
               "id": "respRate",
               "questionOptions": {
@@ -809,6 +814,7 @@
             {
               "label": "Oxygen saturation:",
               "type": "obs",
+              
               "id": "oxygenSat",
               "questionOptions": {
                 "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
@@ -820,7 +826,7 @@
               }
             },
             {
-              "label": "Mode of collection?",
+              "label": "Oxygen status:",
               "type": "obs",
               "id": "satMode",
               "questionOptions": {
