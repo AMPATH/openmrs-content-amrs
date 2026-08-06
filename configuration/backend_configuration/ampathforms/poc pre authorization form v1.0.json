@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/openmrs/openmrs-contrib-json-schemas/main/form.schema.json",
   "name": "POC Pre-authorization Form v1.0",
   "description": "A form used to capture Pre-authorization Details",
   "version": "1.0",
@@ -57,7 +56,6 @@
                     "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
                     "label": "Normal"
                   },
-
                   {
                     "concept": "5771e408-a5e5-402b-9f29-b76106dfc71a",
                     "label": "Imaging"
