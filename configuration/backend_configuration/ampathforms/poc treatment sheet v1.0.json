@@ -13,7 +13,7 @@
 			"sections": [
 				{
 					"label": "Encounter Details",
-					"isExpanded": true,
+					"isExpanded": "true",
 					"questions": [
 						{
 							"id": "encDate",
@@ -89,7 +89,7 @@
 				},
 				{
 					"label": "Clinical Comments",
-					"isExpanded": true,
+					"isExpanded": "true",
 					"questions": [
 						{
 							"id": "clinicalNotes",

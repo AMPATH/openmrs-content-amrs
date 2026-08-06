@@ -1,0 +1,1460 @@
+{
+ "name": "POC Mental Health Screening Form v1.4",
+  "description": "POC mental health screening",
+  "version": "1.4",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "HIVMENTALHEALTHSCREENING",
+  "encounterType": "37770eca-8a2f-48d6-b3c8-54af0fa989c2",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "label": "Marital status:",
+              "required": "true",
+              "id": "maritalStatus",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a899a9f2-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899af10-1350-11df-a1f1-0026b9348838",
+                    "label": "Cohabitating"
+                  },
+                  {
+                    "concept": "a899ad58-1350-11df-a1f1-0026b9348838",
+                    "label": "Divorced"
+                  },
+                  {
+                    "concept": "a8aa76b0-1350-11df-a1f1-0026b9348838",
+                    "label": "Married monogamous"
+                  },
+                  {
+                    "concept": "a8b03712-1350-11df-a1f1-0026b9348838",
+                    "label": "Married polygamous"
+                  },
+                  {
+                    "concept": "a899aba0-1350-11df-a1f1-0026b9348838",
+                    "label": "Separated"
+                  },
+                  {
+                    "concept": "a899ac7c-1350-11df-a1f1-0026b9348838",
+                    "label": "Single"
+                  },
+                  {
+                    "concept": "a899ae34-1350-11df-a1f1-0026b9348838",
+                    "label": "Widowed"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            }      
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Mental Health Screening",
+      "sections": [
+        {
+          "label": "PHQ-9 (Over the last 2 weeks, how often have you been bothered by any of the following problems? Please answer these questions as you reflect on the last 2 weeks)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Not being able to enjoy activities you used to enjoy? (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "pleasure",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0975c82b-7905-446f-bd16-2f5e373543db')) ? undefined : HD.getObject('prevEnc').getValue('0975c82b-7905-446f-bd16-2f5e373543db')",
+              "questionInfo": "Kwa wiki mbili iliyopita, umekuwa na hamu au raha ndogo katika kufanya mambo (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "0975c82b-7905-446f-bd16-2f5e373543db",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Feeling down, depressed, or hopeless? (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "depressed",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('fa7f8ebd-449d-4f09-a5ed-fd9c05302c67')) ? undefined : HD.getObject('prevEnc').getValue('fa7f8ebd-449d-4f09-a5ed-fd9c05302c67')",
+              "questionInfo": "Kwa wiki mbili iliyopita, uhisi kuwa chini, huzuni au kutokuwa na tumaini (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "fa7f8ebd-449d-4f09-a5ed-fd9c05302c67",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "On a day that you had little interest, was it most of the day?",
+              "id": "dayInterest",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0262e582-2150-4c36-834f-a7fd697a92db",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty (pleasure) || pleasure == 0"
+              }
+            },
+            {
+              "label": "On a day that you felt down, was it most of the day?",
+              "id": "dayFeeling",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8e32d7cc-b2c4-43f3-9380-210464c276be",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty (depressed) || depressed == 0"
+              }
+            },
+            {
+              "label": "Trouble falling or staying asleep or sleeping too much: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "sleep",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('dfc873d9-e7ad-4481-abce-c836fcb0a3d5')) ? undefined : HD.getObject('prevEnc').getValue('dfc873d9-e7ad-4481-abce-c836fcb0a3d5')",
+              "required": "true",
+              "questionInfo": "Shida ya kupata usingizi au kulala, au kulala sana (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "concept": "dfc873d9-e7ad-4481-abce-c836fcb0a3d5",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Feeling tired or having little energy: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)(0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+              "id": "tired",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('99dbc9ed-82df-4a95-99ca-145e61ee15d6')) ? undefined : HD.getObject('prevEnc').getValue('99dbc9ed-82df-4a95-99ca-145e61ee15d6')",
+              "required": "true",
+              "questionInfo": "Kuhisi uchovu au kuwa na nguvu kidogo (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "concept": "99dbc9ed-82df-4a95-99ca-145e61ee15d6",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Poor appetite or overeating: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "appetite",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('bc0bfec9-72b9-4cd1-85e5-289629443e09')) ? undefined : HD.getObject('prevEnc').getValue('bc0bfec9-72b9-4cd1-85e5-289629443e09')",
+              "required": "true",
+              "questionInfo": "Hamu kidogo ya kula au kula kupita kiasi (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "concept": "bc0bfec9-72b9-4cd1-85e5-289629443e09",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Feeling bad about yourself, or that you are a failure or that you have let yourself or your family down: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "failure",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('1e8ab77f-8c42-4a79-98a2-77795bd08b96')) ? undefined : HD.getObject('prevEnc').getValue('1e8ab77f-8c42-4a79-98a2-77795bd08b96')",
+              "required": "true",
+              "questionInfo": "Kuhisi vibaya juu yako mwenyewe au kwamba umeshindwa au umejishusha mwenyewe na familia yako (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "concept": "1e8ab77f-8c42-4a79-98a2-77795bd08b96",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Trouble concentrating on things such as reading the newspapers or watching television) (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "concentrate",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('c3b17b63-9f68-4265-8c5c-ac159360348b')) ? undefined : HD.getObject('prevEnc').getValue('c3b17b63-9f68-4265-8c5c-ac159360348b')",
+              "required": "true",
+              "questionInfo": "Shida ya kuzingatia mambo, kama vile kusoma gazeti au kutazama televisheni (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "concept": "c3b17b63-9f68-4265-8c5c-ac159360348b",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Walking or speaking so slowly that other people have noticed. Or the opposite, being so uneasy that you are not able to sit still or remain calm in one place: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "speak",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('f3c67cdc-7a42-413b-8f52-dabba34d0bd9')) ? undefined : HD.getObject('prevEnc').getValue('f3c67cdc-7a42-413b-8f52-dabba34d0bd9')",
+              "required": "true",
+              "questionInfo": "Kusonga au kuongea polepole kiasi kwamba watu wengine wangeweza kugundua au kinyume chake kusongasonga sana au kutotulia kiasi kwamba umekuwa ukizunguka sana kuliko kawaida(0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "concept": "f3c67cdc-7a42-413b-8f52-dabba34d0bd9",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Thoughts that you would be better off dead or of hurting yourself: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "dead",
+              "required": "true",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('68c39c36-9956-49a6-bfbb-4e3cbef3c8ff')) ? undefined : HD.getObject('prevEnc').getValue('68c39c36-9956-49a6-bfbb-4e3cbef3c8ff')",
+              "questionInfo": "Mawazo kwamba utakuwa bora ukifa, au kujiumiza mwenyewe (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "concept": "68c39c36-9956-49a6-bfbb-4e3cbef3c8ff",
+                "rendering": "number",
+                "max": "3",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "PHQ-9 total score",
+              "id": "phqscore",
+              "questionOptions": {
+                "concept": "00bde79f-a625-4d9f-96d4-908cbb693fe0",
+                "rendering": "number",
+                "max": "27",
+                "min": "0",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseInt(pleasure) + parseInt(depressed) + parseInt(tired)+ parseInt(sleep)+ parseInt(failure)+ parseInt(appetite)+ parseInt(concentrate)+ parseInt(speak)+ parseInt(dead)) ? undefined: (parseInt(pleasure) + parseInt(depressed) + parseInt(tired)+ parseInt(sleep)+ parseInt(failure)+ parseInt(appetite)+ parseInt(concentrate)+ parseInt(speak)+ parseInt(dead))"
+                }
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "PHQ-9 score rating",
+              "id": "scorePh",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "type": "control",
+                "validators": [],
+                "calculate": {
+                  "calculateExpression": "parseInt(phqscore) >= 0 && parseInt(phqscore) <= 4 ? 'Depression unlikely' : parseInt(phqscore) >= 5 && parseInt(phqscore) <= 9 ? 'Mild depression': parseInt(phqscore) >= 10 && parseInt(phqscore) <= 14 ? 'Moderate depression': parseInt(phqscore) >= 15 && parseInt(phqscore) <= 19 ? 'Moderate severe depression' : parseInt(phqscore) >= 20 && parseInt(phqscore) <= 27 ? 'Severe depression' : 'Unknown'"
+                }
+              }
+            },
+            {
+              "label": "If you checked off any problems, how difficult have these made it for you to do your work, take care of things at home, or get along with other people?",
+              "id": "difficulty",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89e5c40-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a89e5c40-1350-11df-a1f1-0026b9348838')",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89e5c40-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89e5880-1350-11df-a1f1-0026b9348838",
+                    "label": "Not difficult at all"
+                  },
+                  {
+                    "concept": "a89e5934-1350-11df-a1f1-0026b9348838",
+                    "label": "Somewhat difficult "
+                  },
+                  {
+                    "concept": "a89e59f2-1350-11df-a1f1-0026b9348838",
+                    "label": "Very difficult "
+                  },
+                  {
+                    "concept": "a89e5b14-1350-11df-a1f1-0026b9348838",
+                    "label": "Extremely difficult"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Anxiety  Assessment (Over the last 2 weeks, how often have you been bothered by any of the following problems? Please answer these questions as you reflect on the last 2 weeks) GAD-7",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Feeling nervous or anxious: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "nervous",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('47f25591-56b4-4812-84e5-71a3f365072e')) ? undefined : HD.getObject('prevEnc').getValue('47f25591-56b4-4812-84e5-71a3f365072e')",
+              "questionInfo": "Kuhisi wasiwasi, hofu, au kutotulia (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "3",
+                "min": "0",
+                "concept": "47f25591-56b4-4812-84e5-71a3f365072e",
+                "answers": []
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Cannot stop worrying: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "worrying",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('820471e1-d0ed-4869-a1b2-12013329924a')) ? undefined : HD.getObject('prevEnc').getValue('820471e1-d0ed-4869-a1b2-12013329924a')",
+              "questionInfo": "Kutokuwa na uwezo wa kuacha au kudhibiti wasiwasi (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "3",
+                "min": "0",
+                "concept": "820471e1-d0ed-4869-a1b2-12013329924a",
+                "answers": []
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Worrying about too many different things: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "differentthings",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('830a03bc-86c7-4682-a535-2260d8f5697c')) ? undefined : HD.getObject('prevEnc').getValue('830a03bc-86c7-4682-a535-2260d8f5697c')",
+              "required": "true",
+              "questionInfo": "Kuhangaika sana kuhusu mambo mbalimbali (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "3",
+                "min": "0",
+                "concept": "830a03bc-86c7-4682-a535-2260d8f5697c",
+                "answers": []
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Trouble becoming or reamining calm: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "troublerelaxing",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0ffd6152-e55b-4f00-a1fc-a5f6a82a2375')) ? undefined : HD.getObject('prevEnc').getValue('0ffd6152-e55b-4f00-a1fc-a5f6a82a2375')",
+              "required": "true",
+              "questionInfo": "Kushindwa kupumzika (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "3",
+                "min": "0",
+                "concept": "0ffd6152-e55b-4f00-a1fc-a5f6a82a2375",
+                "answers": []
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Being so uneasy that it is hard to sit still: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "restless",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('d512c530-b32e-4ff3-873e-e2d89574182a')) ? undefined : HD.getObject('prevEnc').getValue('d512c530-b32e-4ff3-873e-e2d89574182a')",
+              "required": "true",
+              "questionInfo": "Kutokuwa na utulivu kiasi kwamba ni vigumu kukaa tuli (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "3",
+                "min": "0",
+                "concept": "d512c530-b32e-4ff3-873e-e2d89574182a",
+                "answers": []
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Becoming easily annoyed or irritable: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "irritable",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('c0021922-d222-4ca3-95c4-5416573b7b7e')) ? undefined : HD.getObject('prevEnc').getValue('c0021922-d222-4ca3-95c4-5416573b7b7e')",
+              "required": "true",
+              "questionInfo": "Kukasirishwa au kuwa na hasira kwa urahisi (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "3",
+                "min": "0",
+                "concept": "c0021922-d222-4ca3-95c4-5416573b7b7e",
+                "answers": []
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Feeling afraid as if something bad might happen: (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "id": "afraid",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9c02cbcf-11de-497f-ac27-ca37522d89b8')) ? undefined : HD.getObject('prevEnc').getValue('9c02cbcf-11de-497f-ac27-ca37522d89b8')",
+              "required": "true",
+              "questionInfo": "Kuhisi hofu kana kwamba kitu kibaya kinaweza kutokea (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "3",
+                "min": "0",
+                "concept": "9c02cbcf-11de-497f-ac27-ca37522d89b8",
+                "answers": []
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "GAD total score",
+              "id": "score",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "cc82893a-d9df-4961-ba5b-5c715077953a",
+                "answers": [],
+                "max": "21",
+                "min": "0",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseInt(nervous) + parseInt(worrying) + parseInt(differentthings)+ parseInt(troublerelaxing)+ parseInt(restless)+ parseInt(irritable)+ parseInt(afraid)) ? undefined: (parseInt(nervous) + parseInt(worrying) + parseInt(differentthings)+ parseInt(troublerelaxing)+ parseInt(restless)+ parseInt(irritable)+ parseInt(afraid))"
+                }
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "GAD score rating",
+              "id": "scoreGad",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "type": "control",
+                "validators": [],
+                "calculate": {
+                  "calculateExpression": "parseInt(score) >= 0 && parseInt(score) <= 4 ? 'Minimal anxiety' : parseInt(score) >= 5 && parseInt(score) <= 9 ? 'Mild anxiety': parseInt(score) >= 10 && parseInt(score) <= 14 ? 'Moderate anxiety': parseInt(score) >= 15 && parseInt(score) <= 21 ? 'Severe anxiety' : 'Unknown'"
+                }
+              }
+            },
+            {
+              "label": "If you checked off any problems, how difficult have these made it for you to do your work, take care of things at home, or get along with other people?",
+              "id": "difficultyGad",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89e5c40-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a89e5c40-1350-11df-a1f1-0026b9348838')",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89e5c40-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89e5880-1350-11df-a1f1-0026b9348838",
+                    "label": "Not difficult at all"
+                  },
+                  {
+                    "concept": "a89e5934-1350-11df-a1f1-0026b9348838",
+                    "label": "Somewhat difficult "
+                  },
+                  {
+                    "concept": "a89e59f2-1350-11df-a1f1-0026b9348838",
+                    "label": "Very difficult "
+                  },
+                  {
+                    "concept": "a89e5b14-1350-11df-a1f1-0026b9348838",
+                    "label": "Extremely difficult"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "nervous == 0 && worrying == 0 "
+              }
+            }
+          ]
+        },
+        {
+          "label": "Substance Abuse",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "In the past 12 months, how many times have you used alcohol? (beer, wine, spirits, makali, tei, pombe, maji, changaa, keg etc.)",
+              "questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Alcoholic beverages (beer, wine, spirits, makali, tei, pombe, maji, changaa, keg etc.)?",
+              "id": "alcohol",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8a77d02-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8a77d02-1350-11df-a1f1-0026b9348838')",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a77d02-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never (Sijawahi)"
+                  },
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "Once/twice(Mara moja au mara mbili)"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly (Kila mwezi)"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly or more (Kila wiki ama zaidi)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <10 || age >24"
+              }
+            },
+            {
+              "label": "In the past 12 months, how many times have you used tobacco? (Cigarettes, fegi, sigara, moshi, kuber, master fwaka, lyft)",
+              "questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Tobacco products (cigarettes, fegi, sigara, moshi, kuber, master fwaka, lyft)?",
+              "id": "tobacco",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ea12042d-a3c5-4017-bdad-67a202d3aa5b')) ? undefined : HD.getObject('prevEnc').getValue('ea12042d-a3c5-4017-bdad-67a202d3aa5b')",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "ea12042d-a3c5-4017-bdad-67a202d3aa5b",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never (Sijawahi)"
+                  },
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "Once/twice(Mara moja au mara mbili)"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly (Kila mwezi)"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly or more (Kila wiki ama zaidi)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <10 || age >24"
+              }
+            },
+            {
+              "label": "In the past 12 months, how many times have you used cannabis? (Marijuana, pot, grass, hash, blunt, ndom, ngwai, bangi, kachoma, shada, shash, weed, ndukulu, hela, kwaburu, kete)",
+              "questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Cannabis (marijuana, pot, grass, hash, blunt, ndom, ngwai, bangi, kachoma, shada, shash, weed, ndukulu, hela, kwaburu, kete etc.)?",
+              "id": "cannabis",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ea29f0be-06ca-4dc1-9be9-8d412fd768af')) ? undefined : HD.getObject('prevEnc').getValue('ea29f0be-06ca-4dc1-9be9-8d412fd768af')",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "ea29f0be-06ca-4dc1-9be9-8d412fd768af",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never (Sijawahi)"
+                  },
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "Once/twice(Mara moja au mara mbili)"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly (Kila mwezi)"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly or more (Kila wiki ama zaidi)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age <10 || age >24)"
+              }
+            },
+            {
+              "label": "In the past 12 months, how many times have you used miraa? Mogoka (speed, meth, ecstasy, ice, etc.)",
+              "questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Miraa/Mogoka (speed, meth, ecstasy, ice, etc.)?",
+              "id": "miraa",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('fb04284c-db98-4ef6-9ec3-59a58b975b6b')) ? undefined : HD.getObject('prevEnc').getValue('fb04284c-db98-4ef6-9ec3-59a58b975b6b')",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "fb04284c-db98-4ef6-9ec3-59a58b975b6b",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never (Sijawahi)"
+                  },
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "Once/twice(Mara moja au mara mbili)"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly (Kila mwezi)"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly or more (Kila wiki ama zaidi)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && (alcohol !== 'a899d120-1350-11df-a1f1-0026b9348838' || tobacco !== 'a899d120-1350-11df-a1f1-0026b9348838' || cannabis !== 'a899d120-1350-11df-a1f1-0026b9348838')",
+                  "message": "This field is required"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age <10 || age >24) || (alcohol === 'a899d120-1350-11df-a1f1-0026b9348838' && tobacco === 'a899d120-1350-11df-a1f1-0026b9348838' && cannabis === 'a899d120-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "In the past 12 months, how many times have you used prescription pills? (Heroin, morphine, codeine, unga, tramadol, pethidine, betapine etc.)",
+              "questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Opioids (heroin, morphine, codeine, unga, tramadol, pethidine, betapine, etc.)?",
+              "id": "prescriptionPills",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('c0e79654-0f67-4b39-8aaa-bbfd502639a8')) ? undefined : HD.getObject('prevEnc').getValue('c0e79654-0f67-4b39-8aaa-bbfd502639a8')",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c0e79654-0f67-4b39-8aaa-bbfd502639a8",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never (Sijawahi)"
+                  },
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "Once/twice(Mara moja au mara mbili)"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly (Kila mwezi)"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly or more (Kila wiki ama zaidi)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && (alcohol !== 'a899d120-1350-11df-a1f1-0026b9348838' || tobacco !== 'a899d120-1350-11df-a1f1-0026b9348838' || cannabis !== 'a899d120-1350-11df-a1f1-0026b9348838')",
+                  "message": "This field is required"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age <10 || age >24) || (alcohol === 'a899d120-1350-11df-a1f1-0026b9348838' && tobacco === 'a899d120-1350-11df-a1f1-0026b9348838' && cannabis === 'a899d120-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "In the past 12 months, how many times have you used coccaine? (Coke, crack, white paper, coke powder etc)",
+              "questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Cocaine (coke, crack, white paper, coke powder etc.)?",
+              "id": "coccaine",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('fb2c96ba-7151-496c-afd1-da4714eaa884')) ? undefined : HD.getObject('prevEnc').getValue('fb2c96ba-7151-496c-afd1-da4714eaa884')",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "fb2c96ba-7151-496c-afd1-da4714eaa884",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never (Sijawahi)"
+                  },
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "Once/twice(Mara moja au mara mbili)"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly (Kila mwezi)"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly or more (Kila wiki ama zaidi)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && (alcohol !== 'a899d120-1350-11df-a1f1-0026b9348838' || tobacco !== 'a899d120-1350-11df-a1f1-0026b9348838' || cannabis !== 'a899d120-1350-11df-a1f1-0026b9348838')",
+                  "message": "This field is required"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age <10 || age >24) || (alcohol === 'a899d120-1350-11df-a1f1-0026b9348838' && tobacco === 'a899d120-1350-11df-a1f1-0026b9348838' && cannabis === 'a899d120-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "In the past 12 months, how many times have you used inhalants? (Nitrous, glue, petrol, paint thinner, bieri, glue, gum, mafuta ya ndege, jet fuel, petrol, gaga etc.)",
+              "questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Inhalants (nitrous, glue, petrol, paint thinner, bieri, glue, gum, mafuta ya ndege, jet fuel, petrol, gaga etc.)?",
+              "id": "inhalants",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('2d92466b-a3dc-4a35-b01f-7c4d8fd64835')) ? undefined : HD.getObject('prevEnc').getValue('2d92466b-a3dc-4a35-b01f-7c4d8fd64835')",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "2d92466b-a3dc-4a35-b01f-7c4d8fd64835",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never (Sijawahi)"
+                  },
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "Once/twice(Mara moja au mara mbili)"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly (Kila mwezi)"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly or more (Kila wiki ama zaidi)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && (alcohol !== 'a899d120-1350-11df-a1f1-0026b9348838' || tobacco !== 'a899d120-1350-11df-a1f1-0026b9348838' || cannabis !== 'a899d120-1350-11df-a1f1-0026b9348838')",
+                  "message": "This field is required"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age <10 || age >24) || (alcohol === 'a899d120-1350-11df-a1f1-0026b9348838' && tobacco === 'a899d120-1350-11df-a1f1-0026b9348838' && cannabis === 'a899d120-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "In the past 12 months, how many times have you used hallucinogen? (LSD, acid, mushrooms/mash, trips, ketamine, taptap)",
+              "questionInfo": "Kwa mwaka moja uliopita, ni mara ngapi umetumia: Hallucinogens (LSD, acid, mushrooms/mash, trips, ketamine, taptap)?",
+              "id": "hallucinogen",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('dc15a7cf-2698-4a23-b076-28eed2c6c593')) ? undefined : HD.getObject('prevEnc').getValue('dc15a7cf-2698-4a23-b076-28eed2c6c593')",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "dc15a7cf-2698-4a23-b076-28eed2c6c593",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never (Sijawahi)"
+                  },
+                  {
+                    "concept": "992fa969-c0a2-46c1-8ddc-da79f7f54448",
+                    "label": "Once/twice(Mara moja au mara mbili)"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly (Kila mwezi)"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly or more (Kila wiki ama zaidi)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && (alcohol !== 'a899d120-1350-11df-a1f1-0026b9348838' || tobacco !== 'a899d120-1350-11df-a1f1-0026b9348838' || cannabis !== 'a899d120-1350-11df-a1f1-0026b9348838')",
+                  "message": "This field is required"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age <10 || age >24) || (alcohol === 'a899d120-1350-11df-a1f1-0026b9348838' && tobacco === 'a899d120-1350-11df-a1f1-0026b9348838' && cannabis === 'a899d120-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Substance use disorder (SUD)",
+              "id": "sud",
+              "questionOptions": {
+                "calculate": {
+                  "calculateExpression": "(alcohol=='a899d8d2-1350-11df-a1f1-0026b9348838' || tobacco=='a899d8d2-1350-11df-a1f1-0026b9348838' || cannabis=='a899d8d2-1350-11df-a1f1-0026b9348838' || miraa=='a899d8d2-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d8d2-1350-11df-a1f1-0026b9348838' || cocaine=='a899d8d2-1350-11df-a1f1-0026b9348838' || inhalants=='a899d8d2-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d8d2-1350-11df-a1f1-0026b9348838') ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : (alcohol=='a899d7f6-1350-11df-a1f1-0026b9348838' || tobacco=='a899d7f6-1350-11df-a1f1-0026b9348838' || cannabis=='a899d7f6-1350-11df-a1f1-0026b9348838' || miraa=='a899d7f6-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d7f6-1350-11df-a1f1-0026b9348838' || cocaine=='a899d7f6-1350-11df-a1f1-0026b9348838' || inhalants=='a899d7f6-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d7f6-1350-11df-a1f1-0026b9348838') && !(alcohol=='a899d8d2-1350-11df-a1f1-0026b9348838' || tobacco=='a899d8d2-1350-11df-a1f1-0026b9348838' || cannabis=='a899d8d2-1350-11df-a1f1-0026b9348838' || miraa=='a899d8d2-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d8d2-1350-11df-a1f1-0026b9348838' || cocaine=='a899d8d2-1350-11df-a1f1-0026b9348838' || inhalants=='a899d8d2-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d8d2-1350-11df-a1f1-0026b9348838') ? 'a89efdee-1350-11df-a1f1-0026b9348838' : (alcohol=='a899d120-1350-11df-a1f1-0026b9348838' || alcohol=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(alcohol=='a899d7f6-1350-11df-a1f1-0026b9348838' || alcohol=='a899d8d2-1350-11df-a1f1-0026b9348838') && (tobacco=='a899d120-1350-11df-a1f1-0026b9348838' || tobacco=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(tobacco=='a899d7f6-1350-11df-a1f1-0026b9348838' || tobacco=='a899d8d2-1350-11df-a1f1-0026b9348838') && (cannabis=='a899d120-1350-11df-a1f1-0026b9348838' || cannabis=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(cannabis=='a899d7f6-1350-11df-a1f1-0026b9348838' || cannabis=='a899d8d2-1350-11df-a1f1-0026b9348838') && (miraa=='a899d120-1350-11df-a1f1-0026b9348838' || miraa=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(miraa=='a899d7f6-1350-11df-a1f1-0026b9348838' || miraa=='a899d8d2-1350-11df-a1f1-0026b9348838') && (prescriptionPills=='a899d120-1350-11df-a1f1-0026b9348838' || prescriptionPills=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(prescriptionPills=='a899d7f6-1350-11df-a1f1-0026b9348838' || prescriptionPills=='a899d8d2-1350-11df-a1f1-0026b9348838') && (cocaine=='a899d120-1350-11df-a1f1-0026b9348838' || cocaine=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(cocaine=='a899d7f6-1350-11df-a1f1-0026b9348838' || cocaine=='a899d8d2-1350-11df-a1f1-0026b9348838') && (inhalants=='a899d120-1350-11df-a1f1-0026b9348838' || inhalants=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(inhalants=='a899d7f6-1350-11df-a1f1-0026b9348838' || inhalants=='a899d8d2-1350-11df-a1f1-0026b9348838') && (hallucinogen=='a899d120-1350-11df-a1f1-0026b9348838' || hallucinogen=='992fa969-c0a2-46c1-8ddc-da79f7f54448') && !(hallucinogen=='a899d7f6-1350-11df-a1f1-0026b9348838' || hallucinogen=='a899d8d2-1350-11df-a1f1-0026b9348838') ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : null"
+                },
+                "rendering": "select",
+                "concept": "",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89efdee-1350-11df-a1f1-0026b9348838",
+                    "label": "Mild moderate SUD"
+                  },
+                  {
+                    "concept": "a89eff1a-1350-11df-a1f1-0026b9348838",
+                    "label": "Severe SUD"
+                  }
+                ]
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <10 || age >24"
+              }
+            },
+            {
+              "label": "Do you sometimes drink alcohol?",
+              "id": "drinkAlcohol",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ec7ac-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <24"
+              }
+            },
+            {
+              "label": "How often do you have six or more drinks on one occasion or one day?",
+              "id": "moreDrinks",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a77eba-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "a899d9ae-1350-11df-a1f1-0026b9348838",
+                    "label": "Daily or almost daily"
+                  },
+                  {
+                    "concept": "a899d8d2-1350-11df-a1f1-0026b9348838",
+                    "label": "Weekly"
+                  },
+                  {
+                    "concept": "a899d71a-1350-11df-a1f1-0026b9348838",
+                    "label": "Less than monthly"
+                  },
+                  {
+                    "concept": "a899d7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Monthly"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "drinkAlcohol !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Has a relative or friend, doctor or other health worker been concerned about your drinking or suggested you cut down?",
+              "id": "concerned",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "46491a1d-0537-47f9-aaee-4a4fdb555362",
+                "answers": [
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "63952b8b-32f0-4cb0-bbc8-a3a89d49fac0",
+                    "label": "Yes, during the past year"
+                  },
+                  {
+                    "concept": "cc9e3e26-bdad-4003-b963-b085da936693",
+                    "label": "Yes but not in the past year"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "drinkAlcohol !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Have you ever felt you should cut down on drinking?",
+              "id": "cutDown",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8d5ca135-1b7f-4853-99b2-9146d00b2171",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "drinkAlcohol !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Have people annoyed you by criticizing your drinking?",
+              "id": "annoyed",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "d31e5b9d-f0af-4e32-8df0-184c3ed3a1e4",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "drinkAlcohol !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Have you ever felt bad or quilty about your drinking? ",
+              "id": "quilty",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "ecb178cf-bc45-418d-89d7-01bc066523fd",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "drinkAlcohol !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Have you ever had a drink first thing in the morning to steady your nerves or get rid of a hangover(Eye-opener)?",
+              "id": "eyeOpener",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9d30b60d-d3ec-4cad-956f-98f883e8508e",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "drinkAlcohol !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "In your life, which of the following substances have you ever used?",
+              "id": "subsatanceUseEver",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "a8b01fe8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8b01c78-1350-11df-a1f1-0026b9348838",
+                    "label": "Tobacco products (cigarettes, chewing tobaccos, cigars etc)"
+                  },
+                  {
+                    "concept": "a8b01f20-1350-11df-a1f1-0026b9348838",
+                    "label": "Alcoholic beverages (beer, wine, spirits etc)"
+                  },
+                  {
+                    "concept": "a8b01d9a-1350-11df-a1f1-0026b9348838",
+                    "label": "Cannabis (marijuana, pot, grass, hash,etc)"
+                  },
+                  {
+                    "concept": "9f7b4063-f103-4a7f-a3c9-aedcbe35f1d1",
+                    "label": "Coccaine (coke, crack, etc)"
+                  },
+                  {
+                    "concept": "21a5fb6f-955d-48fc-8ff0-244d4458d951",
+                    "label": "Amphetamine-type stimulants (speed, meth, ecstasy, etc)"
+                  },
+                  {
+                    "concept": "a8b01e62-1350-11df-a1f1-0026b9348838",
+                    "label": "Inhalants (nitrous, glue, petrol, paint thinner, etc)"
+                  },
+                  {
+                    "concept": "f7177766-1651-41d7-b36c-eff72c39cd6a",
+                    "label": "Sedactives or sleeping pills (diazepam, alprazolam, flunitrazepam, midazolam, etc)"
+                  },
+                  {
+                    "concept": "ca5a3af8-92ee-4151-bb56-732c1238c718",
+                    "label": "Hallucinogens (LSD, acid, mushrooms, trips, ketamine etc)"
+                  },
+                  {
+                    "concept": "019a7dc0-153d-4008-a7dd-100ee43ff836",
+                    "label": "Opioids (heroin, morphine, methadone, buprenorphine, codeine, etc"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other "
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <24"
+              }
+            },
+            {
+              "label": "In the last one month have you used any of the substance you mentioned above?",
+              "id": "usedSubstance",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a731f8b2-5973-439c-9736-a16e7776d176",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <24 || arrayContains(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],subsatanceUseEver)"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Mental Health Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Have you ever had thoughts of ending your life?",
+              "id": "endingLife",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "48db001c-049a-496a-8580-46a4c8586357",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <=19 "
+              }
+            },
+            {
+              "label": "In the last one month did you have thoughts of ending your life?",
+              "id": "ending",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "4d58728a-b77d-4139-b5aa-0f5183e0c4b7",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <=19 "
+              }
+            },
+            {
+              "label": "If yes, do you currently have specific plans or specific methods on how you would do that e.g hanging, poisoning?",
+              "id": "plans",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "84c375d7-f5d9-4046-81a3-2fd041ffa23b",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <=19 || ending !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Have you ever experienced hearing voices others can not hear?",
+              "id": "hearVoices",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3b943704-1448-417c-9490-6e761d6a453c",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <=19 "
+              }
+            },
+            {
+              "label": "Have you ever experienced seeing things others can not see?",
+              "id": "seeingThings",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a0c5a0b6-2036-46d7-9edb-c8a792311e45",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <=19 "
+              }
+            },
+            {
+              "label": "Have you ever experienced having beliefs that someone was out to harm you?",
+              "id": "havingBeliefs",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "af3dc7cd-f3d6-47f7-9a2a-a57e193d2e1a",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <=19 "
+              }
+            },
+            {
+              "label": "Have you ever been treated for mental illness?",
+              "id": "mentalIllness",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "aa4670f9-918d-466b-98f5-4dd267466eca",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "11fe7789-9dd6-44ab-903a-e6a9a99feaf8",
+                    "label": "Not sure"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age <=19 "
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Assessment Notes",
+      "sections": [
+        {
+          "label": "Assessment Notes",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Please enter your assessment below:",
+              "type": "obs",
+              "id": "assNote",
+              "required": "false",
+              "default": "",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "placeholder": "Indicate your assessment here",
+                "rows": 8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Management Plan",
+      "sections": [
+        {
+          "label": "Mental Health Interventions And Referrals",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Interventions provided:",
+              "id": "mhIntervention",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "9dee6ba4-7d63-44b0-820f-3834486d56af",
+                "answers": [
+                  {
+                    "concept": "ea5d6f38-5081-4652-81c5-ae35f7ed8665",
+                    "label": "Encouragement/praise for not using substances"
+                  },
+                  {
+                    "concept": "a89e2efa-1350-11df-a1f1-0026b9348838",
+                    "label": "Substance use motivational counselling"
+                  },
+                  {
+                    "concept": "a89ec9e6-1350-11df-a1f1-0026b9348838",
+                    "label": "Enhanced adherence counselling"
+                  },
+                  {
+                    "concept": "a89e2df6-1350-11df-a1f1-0026b9348838",
+                    "label": "Psychosocial support group"
+                  },
+                  {
+                    "concept": "94215ae3-7d96-4a46-90b2-b339ef7a182e",
+                    "label": "Psychological counselling"
+                  },
+                  {
+                    "concept": "554f2668-f64e-4497-abff-af6079089a80",
+                    "label": "Home visit"
+                  },
+                  {
+                    "concept": "cb19cd3a-48c9-48c6-994b-4e99b3a56f41",
+                    "label": "Negotiated TCAs"
+                  },
+                  {
+                    "concept": "5c941db9-4a23-411d-8517-f60e8b7e459d",
+                    "label": "Socioeconomic support"
+                  },
+                  {
+                    "concept": "a89fbbd0-1350-11df-a1f1-0026b9348838",
+                    "label": "Longer TCA's or MMD"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "type": "obsGroup",
+              "label": "Referrals ordered detailed",
+              "id": "referralPlan",
+              "questionOptions": {
+                "concept": "a8a07c8c-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Referrals (check all that apply):",
+                  "id": "careReferral",
+                  "questionOptions": {
+                    "concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
+                      },
+                      {
+                        "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+                        "label": "Physician"
+                      },
+                      {
+                        "concept": "a8a06f08-1350-11df-a1f1-0026b9348838",
+                        "label": "Psychiatry services"
+                      },
+                      {
+                        "concept": "aebb850d-9f1c-48a0-8827-6c105b980970",
+                        "label": "Legal services"
+                      },
+                      {
+                        "concept": "a8a8b190-1350-11df-a1f1-0026b9348838",
+                        "label": "Social worker"
+                      },
+                      {
+                        "concept": "94215ae3-7d96-4a46-90b2-b339ef7a182e",
+                        "label": "Psychologist/counsellor"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "concern !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Other referrals:",
+                  "id": "otherCareref",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],careReferral)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
+}

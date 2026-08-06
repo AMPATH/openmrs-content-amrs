@@ -139,7 +139,7 @@
               ]
             },
             {
-              "label": "Heparin drug administered:",
+              "label": "Heparin drug administered (IU):",
               "type": "obs",
               "required": "false",
               "id": "heparinDoseAdministered",
