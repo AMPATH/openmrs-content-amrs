@@ -154,26 +154,7 @@
           "label": "Complaints and History of complaints",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Patient having complaint(s) today?",
-              "type": "obs",
-              "id": "complaintsToday",
-              "required": "true",
-              "questionOptions": {
-                "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
+           
             {
               "label": "Presenting complaints",
               "type": "obsGroup",
@@ -283,29 +264,7 @@
                     "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
                   }
                 },
-                {
-                  "label": "Patient had contact with TB infected person in the last 12 months?",
-                  "type": "obs",
-                  "id": "contactTB",
-                  "required": "true",
-                  "questionOptions": {
-                    "concept": "f66ad7cb-c9fa-42b2-8f7b-863eddb7eb98",
-                    "rendering": "select",
-                    "answers": [
-                      {
-                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                        "label": "Yes"
-                      },
-                      {
-                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                        "label": "No"
-                      }
-                    ]
-                  },
-                  "hide": {
-                    "hideWhenExpression": ""
-                  }
-                },
+                
                 {
                   "label": "Duration (Days):",
                   "type": "obs",
@@ -573,16 +532,15 @@
               }
             },
             {
-              "label": "Order procedures:",
-              "required": false,
-              "id": "procWorkspaceLauncher",
+              "label": "Procedures Order",
+              "id": "proceduresWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "Add procedures",
-                "workspaceName": "add-procedures-order"
-              },
-              "hide": {
-                "hideWhenExpression": ""
+                "buttonLabel": "Order Procedures",
+                "workspaceName": "order-basket",
+                "additionalProps": {
+                  "orderTypeUuid": "2315ab24-9a4e-4b36-b189-8e74d2c77394"
+                }
               }
             },
             {
@@ -607,7 +565,7 @@
                 "answers": [
                   {
                     "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
-                    "label": "Released Home"
+                    "label": "Released home"
                   },
                   {
                     "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",

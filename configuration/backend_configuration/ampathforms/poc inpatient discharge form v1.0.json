@@ -66,8 +66,9 @@
               "id": "FinAlDiagnosis",
               "type": "diagnosis",
               "questionOptions": {
-                "rendering": "remote-select",
-                "rank": 1,
+                "rendering": "repeating",
+                "dataSource": "diagnoses",
+                "rank": 2,
                 "datasource": {
                   "name": "diagnoses",
                   "config": {
