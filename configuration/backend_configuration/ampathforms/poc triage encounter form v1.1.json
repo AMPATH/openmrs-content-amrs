@@ -771,13 +771,19 @@
             },
             {
               "label": "Systolic B.P:",
-              "required": "true",
               "type": "obs",
               "id": "sysBP",
               "questionOptions": {
                 "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
               },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age > 10 && isEmpty(myValue)",
+                  "message": "Systolic blood pressure is required. Patients is older than 10 years."
+                }
+              ],
               "alert": {
                 "alertWhenExpression": "myValue && (myValue >= 130.5 || myValue < 119.5)",
                 "message": "Systolic is out of range (Normal range 120-130)"
@@ -785,13 +791,19 @@
             },
             {
               "label": "Diastolic B.P:",
-              "required": "true",
               "type": "obs",
               "id": "diasBP",
               "questionOptions": {
                 "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
               },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age > 10 && isEmpty(myValue)",
+                  "message": "Diastolic blood pressure is required. Patients is older than 10 years."
+                }
+              ],
               "alert": {
                 "alertWhenExpression": "myValue && (myValue >= 85.5 || myValue < 79.5)",
                 "message": "Diastolic is out of range (Normal range 80-85)"
