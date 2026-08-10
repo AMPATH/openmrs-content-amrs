@@ -1,0 +1,1384 @@
+{
+  "$schema": "http://json.openmrs.org/form.schema.json",
+  "name": "POC Critical Assessment Form v1.0",
+  "version": "1.0",
+  "published": false,
+  "uuid": "5f2abf8f-4a3d-4cd0-a481-b4fac0a7cd29",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "eb177fb5-56c7-490b-acc6-819ee238d657",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Visit Details",
+      "sections": [
+        {
+          "label": "Visit Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date of Assessment",
+              "id": "encounterDatetime",
+              "type": "encounterDatetime",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "required": true
+            },
+            {
+              "label": "Location",
+              "id": "encounterLocation",
+              "type": "encounterLocation",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "label": "Assessed By (Provider)",
+              "id": "encounterProvider",
+              "type": "encounterProvider",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Clinical Assessment",
+      "sections": [
+        {
+          "label": "Neurological Assessment (Symptom Screen)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Neurological Symptoms",
+              "type": "obsGroup",
+              "id": "neurologicalSymptomsGroup",
+              "questionOptions": {
+                "concept": "96bdf6b6-47ad-4fea-97dd-3e266344bf5e",
+                "rendering": "repeating"
+              },
+              "validators": [],
+              "questions": [
+                {
+                  "label": "Symptom:",
+                  "type": "obs",
+                  "id": "neurologicalSymptom",
+                  "questionOptions": {
+                    "concept": "efb6735e-9e22-4d6d-b6d2-26fccefa0c25",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+                        "label": "Headache"
+                      },
+                      {
+                        "concept": "6d140ca3-118d-48ca-9d91-7b5612987413",
+                        "label": "Dizziness/Vertigo"
+                      },
+                      {
+                        "concept": "a6d50d8c-6d5f-47af-8e8d-4dfb6130737f",
+                        "label": "Altered Consciousness"
+                      },
+                      {
+                        "concept": "a8ad3b02-1350-11df-a1f1-0026b9348838",
+                        "label": "Confusion"
+                      },
+                      {
+                        "concept": "5d91ee3c-9ace-462f-97c1-bd0c8fcf8a5e",
+                        "label": "Memory Loss"
+                      },
+                      {
+                        "concept": "6d043014-42ee-4802-80ae-d7679e8fb3f1",
+                        "label": "Agitation"
+                      },
+                      {
+                        "concept": "ed04c0d9-3471-4c3e-802c-f83ea31174ab",
+                        "label": "Drowsiness"
+                      },
+                      {
+                        "concept": "a58cfd5c-a237-46fd-b0fc-bb7f2192bb69",
+                        "label": "Delirium"
+                      },
+                      {
+                        "concept": "9f9073c1-370e-4299-9126-760063656fa8",
+                        "label": "Seizures"
+                      },
+                      {
+                        "concept": "a8a6e3b0-1350-11df-a1f1-0026b9348838",
+                        "label": "Weakness"
+                      },
+                      {
+                        "concept": "a89d0d90-1350-11df-a1f1-0026b9348838",
+                        "label": "Numbness/Tingling"
+                      },
+                      {
+                        "concept": "6aa2a823-64e5-4d40-ab34-83b0c44bfc1b",
+                        "label": "Speech Difficulty"
+                      },
+                      {
+                        "concept": "66d88183-bce1-4d11-b665-e1b74d3a23f2",
+                        "label": "Difficulty Swallowing"
+                      },
+                      {
+                        "concept": "4865af31-e7bf-42b2-ae74-8b5fecde8e2f",
+                        "label": "Visual Disturbance"
+                      },
+                      {
+                        "concept": "043e004d-93e3-4bda-9c57-e58b131fb3b3",
+                        "label": "Tremors"
+                      },
+                      {
+                        "concept": "176b1642-04a5-4f3c-b31d-81ba56780188",
+                        "label": "Poor Coordination"
+                      },
+                      {
+                        "concept": "8f7be105-5757-4d03-bbde-4e33bc409e36",
+                        "label": "Balance Problems"
+                      }
+                    ]
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "Severity:",
+                  "type": "obs",
+                  "id": "symptomSeverity",
+                  "questionOptions": {
+                    "concept": "f985471b-ab4e-4e8d-8a94-b6a0b06d14a2",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
+                      },
+                      {
+                        "concept": "a89efccc-1350-11df-a1f1-0026b9348838",
+                        "label": "Mild"
+                      },
+                      {
+                        "concept": "a89efdee-1350-11df-a1f1-0026b9348838",
+                        "label": "Moderate"
+                      },
+                      {
+                        "concept": "a89eff1a-1350-11df-a1f1-0026b9348838",
+                        "label": "Severe"
+                      }
+                    ]
+                  },
+                  "validators": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Pain Assessment (SOCRATES)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Site (S) - where is the pain located?",
+              "id": "siteSWhereIsThePainLocated",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "68eda348-f8de-4dfc-905d-287a5ff45a6c"
+              }
+            },
+            {
+              "label": "Onset (O) - when did it start, sudden or gradual?",
+              "id": "onsetOWhenDidItStartSuddenOrGradual",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f680b47b-2ac3-48ac-9bd8-09bc526bcc3a"
+              }
+            },
+            {
+              "label": "Character (C) - sharp, dull, burning, etc.",
+              "id": "characterCSharpDullBurningEtc",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d4775e7d-2498-4f57-9f67-11804a162401"
+              }
+            },
+            {
+              "label": "Radiation (R) - does it spread anywhere?",
+              "id": "radiationRDoesItSpreadAnywhere",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "3ad93ca0-9960-4cc6-bf76-9b8556e26182"
+              }
+            },
+            {
+              "label": "Associated symptoms (A)",
+              "id": "associatedSymptomsA",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "3dd4f36f-9842-43ea-934f-f90b10bd935f"
+              }
+            },
+            {
+              "label": "Time course (T) - constant, intermittent, duration",
+              "id": "timeCourseTConstantIntermittentDuration",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "080e856f-9337-470e-804d-086dd413f6b1"
+              }
+            },
+            {
+              "label": "Exacerbating/relieving factors (E)",
+              "id": "exacerbatingRelievingFactorsE",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d08c520e-6bc2-4adc-ad1f-69544424f818"
+              }
+            },
+            {
+              "label": "Severity (S) - 0-10 pain scale",
+              "id": "severityS010PainScale",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5c304041-d45d-4be4-804b-c1724521ef00",
+                "min": "0",
+                "max": "10"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Ventilator Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Ventilator Assessment Method",
+              "id": "ventilatorAssessmentMethod",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "c08d378b-3f10-4beb-907b-cdaebd6b7983",
+                "answers": [
+                  {
+                    "concept": "5765ade6-93ca-40c3-b56f-de6d112a883e",
+                    "label": "Observation"
+                  },
+                  {
+                    "concept": "9666d836-6521-4b81-9c55-8be289498f46",
+                    "label": "Auscultation"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Sepsis Screening",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Sepsis Screening - Tests Ordered",
+              "id": "sepsisScreeningTestsOrdered",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "a89c2268-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8b0281c-1350-11df-a1f1-0026b9348838",
+                    "label": "BLOOD CULTURE"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Glasgow Coma Scale (GCS)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Eye Opening (E)",
+              "id": "eyeOpeningE",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "51b77834-5396-41dc-b9d5-2e818eb7f5d6",
+                "answers": [
+                  {
+                    "concept": "a00fc81e-93f8-4129-a736-855bb04e4ad9",
+                    "label": "Spontaneous (4)"
+                  },
+                  {
+                    "concept": "f40e636e-d869-4b3a-9de9-99aa7bf7d5fa",
+                    "label": "To Speech (3)"
+                  },
+                  {
+                    "concept": "3904f523-e077-45a8-aa1b-415bc38b1c25",
+                    "label": "To Pain (2)"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None (1)"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Verbal Response (V)",
+              "id": "verbalResponseV",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "476e08c4-785e-4ac8-ba6e-ce0842450b8f",
+                "answers": [
+                  {
+                    "concept": "d023ce15-f420-4ee1-a936-442b40879a6e",
+                    "label": "Oriented (5)"
+                  },
+                  {
+                    "concept": "b9e34dd9-1d27-4489-a59f-b4629f0bf3cd",
+                    "label": "Confused (4)"
+                  },
+                  {
+                    "concept": "517b245f-9c22-4ca8-9eb5-4d7a7a506aa1",
+                    "label": "Inappropriate words (3)"
+                  },
+                  {
+                    "concept": "83280a85-a05c-47b5-83f4-2e2606fb2c05",
+                    "label": "Incomprehensible sounds (2)"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None (1)"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Motor response (M)",
+              "id": "motorResponseM",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "058706bc-976c-4ea7-b39e-c7c9a4d3da11",
+                "answers": [
+                  {
+                    "concept": "6d56348f-7aee-4e62-a1a0-8965a4a7da7f",
+                    "label": "Obeys commands (6)"
+                  },
+                  {
+                    "concept": "75cab364-84bb-4b1e-8f80-eeacc02a6083",
+                    "label": "Localizes pain (5)"
+                  },
+                  {
+                    "concept": "59941dd1-1517-4a5c-b627-20a1f092595d",
+                    "label": "Withdraws from pain (4)"
+                  },
+                  {
+                    "concept": "7db9f7f4-de9d-43e3-af19-0bdf0d81a0cc",
+                    "label": "Flexion to pain (3)"
+                  },
+                  {
+                    "concept": "ae01cc4e-40ce-419b-bc21-bf6b2f472514",
+                    "label": "Extension to pain (2)"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None (1)"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Total GCS Score (out of 15)",
+              "id": "totalGcsScoreOutOf15",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "f4a2bf98-410b-4bc8-9676-1e2935eaed7c",
+                "min": "3",
+                "max": "15",
+                "calculate": {
+                  "calculateExpression": "!isEmpty(eyeOpeningE) && !isEmpty(verbalResponseV) && !isEmpty(motorResponseM) ? (eyeOpeningE === 'a00fc81e-93f8-4129-a736-855bb04e4ad9' ? 4 : eyeOpeningE === 'f40e636e-d869-4b3a-9de9-99aa7bf7d5fa' ? 3 : eyeOpeningE === '3904f523-e077-45a8-aa1b-415bc38b1c25' ? 2 : 1) + (verbalResponseV === 'd023ce15-f420-4ee1-a936-442b40879a6e' ? 5 : verbalResponseV === 'b9e34dd9-1d27-4489-a59f-b4629f0bf3cd' ? 4 : verbalResponseV === '517b245f-9c22-4ca8-9eb5-4d7a7a506aa1' ? 3 : verbalResponseV === '83280a85-a05c-47b5-83f4-2e2606fb2c05' ? 2 : 1) + (motorResponseM === '6d56348f-7aee-4e62-a1a0-8965a4a7da7f' ? 6 : motorResponseM === '75cab364-84bb-4b1e-8f80-eeacc02a6083' ? 5 : motorResponseM === '59941dd1-1517-4a5c-b627-20a1f092595d' ? 4 : motorResponseM === '7db9f7f4-de9d-43e3-af19-0bdf0d81a0cc' ? 3 : motorResponseM === 'ae01cc4e-40ce-419b-bc21-bf6b2f472514' ? 2 : 1) : ''"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "label": "GCS Severity Category (auto-calculated)",
+              "id": "gcsSeverityCategory",
+              "type": "obs",
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "c864eed1-9722-4da4-a9f6-b3a597d67785",
+                "calculate": {
+                  "calculateExpression": "isEmpty(totalGcsScoreOutOf15) ? '' : totalGcsScoreOutOf15 <= 8 ? 'Severe' : totalGcsScoreOutOf15 <= 12 ? 'Moderate' : 'Mild'"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "Pupillary Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Pupil Size - Left (mm)",
+              "id": "pupilSizeLeftMm",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "621b407c-6280-451c-9e1a-f56cfc205e2f",
+                "min": "1",
+                "max": "9"
+              }
+            },
+            {
+              "label": "Pupil Size - Right (mm)",
+              "id": "pupilSizeRightMm",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "799f22ac-c3f3-4a80-891f-63f1d0ea872b",
+                "min": "1",
+                "max": "9"
+              }
+            },
+            {
+              "label": "Equal",
+              "id": "equal",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b211e6e0-5fd0-4bd9-b84a-569f86e6340f",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Reaction to light",
+              "id": "reactionToLight",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "351ba8fb-bbde-444f-a41a-087cd5c3c412",
+                "answers": [
+                  {
+                    "concept": "9ac20270-eaff-47ec-8bd6-ddaac672676f",
+                    "label": "Bright (Left)"
+                  },
+                  {
+                    "concept": "b0118858-f730-477c-ae59-0056d6e7e371",
+                    "label": "Sluggish (Left)"
+                  },
+                  {
+                    "concept": "e5307c38-6fc0-4193-ad42-08e9022bb470",
+                    "label": "Fixed (Left)"
+                  },
+                  {
+                    "concept": "543d060f-cd75-4100-ac08-a1bcd7b458a8",
+                    "label": "Bright (Right)"
+                  },
+                  {
+                    "concept": "17a3c5dc-abd0-4482-b87c-05f66950633d",
+                    "label": "Sluggish (Right)"
+                  },
+                  {
+                    "concept": "15658a31-0a85-4a1f-b561-dcc8577bc028",
+                    "label": "Fixed (Right)"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Accommodation",
+              "id": "accommodation",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "fd322646-0a18-4c4c-b4ad-eab426814378",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Muscle Strength (Medical Research Council Scale)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Right arm - Power (MRC 0-5)",
+              "id": "rightArmPowerMrc05",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "43a9eeef-bee7-4097-ac2d-7bf845beb720",
+                "answers": [
+                  {
+                    "concept": "953d0d05-4aa9-48e1-82d1-0ab88e18e6ef",
+                    "label": "0.0"
+                  },
+                  {
+                    "concept": "a89c7bbe-1350-11df-a1f1-0026b9348838",
+                    "label": "1.0"
+                  },
+                  {
+                    "concept": "a8a481ec-1350-11df-a1f1-0026b9348838",
+                    "label": "2.0"
+                  },
+                  {
+                    "concept": "a8a482b4-1350-11df-a1f1-0026b9348838",
+                    "label": "3.0"
+                  },
+                  {
+                    "concept": "54c45b4f-63c8-4108-86df-7e23ccf7af67",
+                    "label": "4.0"
+                  },
+                  {
+                    "concept": "a89c7c72-1350-11df-a1f1-0026b9348838",
+                    "label": "5.0"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Left Arm - Power (MRC 0-5)",
+              "id": "leftArmPowerMrc05",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "cabd234e-a5d3-4074-bc81-6ebc88daa0e0",
+                "answers": [
+                  {
+                    "concept": "953d0d05-4aa9-48e1-82d1-0ab88e18e6ef",
+                    "label": "0.0"
+                  },
+                  {
+                    "concept": "a89c7bbe-1350-11df-a1f1-0026b9348838",
+                    "label": "1.0"
+                  },
+                  {
+                    "concept": "a8a481ec-1350-11df-a1f1-0026b9348838",
+                    "label": "2.0"
+                  },
+                  {
+                    "concept": "a8a482b4-1350-11df-a1f1-0026b9348838",
+                    "label": "3.0"
+                  },
+                  {
+                    "concept": "54c45b4f-63c8-4108-86df-7e23ccf7af67",
+                    "label": "4.0"
+                  },
+                  {
+                    "concept": "a89c7c72-1350-11df-a1f1-0026b9348838",
+                    "label": "5.0"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Right Leg - Power (MRC 0-5)",
+              "id": "rightLegPowerMrc05",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "32ab6948-11d4-46e1-b880-0320a6b19e66",
+                "answers": [
+                  {
+                    "concept": "953d0d05-4aa9-48e1-82d1-0ab88e18e6ef",
+                    "label": "0.0"
+                  },
+                  {
+                    "concept": "a89c7bbe-1350-11df-a1f1-0026b9348838",
+                    "label": "1.0"
+                  },
+                  {
+                    "concept": "a8a481ec-1350-11df-a1f1-0026b9348838",
+                    "label": "2.0"
+                  },
+                  {
+                    "concept": "a8a482b4-1350-11df-a1f1-0026b9348838",
+                    "label": "3.0"
+                  },
+                  {
+                    "concept": "54c45b4f-63c8-4108-86df-7e23ccf7af67",
+                    "label": "4.0"
+                  },
+                  {
+                    "concept": "a89c7c72-1350-11df-a1f1-0026b9348838",
+                    "label": "5.0"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Left Leg - Power (MRC 0-5)",
+              "id": "leftLegPowerMrc05",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8edfac81-eda8-4d85-8d5b-4e41d5f44ae1",
+                "answers": [
+                  {
+                    "concept": "953d0d05-4aa9-48e1-82d1-0ab88e18e6ef",
+                    "label": "0.0"
+                  },
+                  {
+                    "concept": "a89c7bbe-1350-11df-a1f1-0026b9348838",
+                    "label": "1.0"
+                  },
+                  {
+                    "concept": "a8a481ec-1350-11df-a1f1-0026b9348838",
+                    "label": "2.0"
+                  },
+                  {
+                    "concept": "a8a482b4-1350-11df-a1f1-0026b9348838",
+                    "label": "3.0"
+                  },
+                  {
+                    "concept": "54c45b4f-63c8-4108-86df-7e23ccf7af67",
+                    "label": "4.0"
+                  },
+                  {
+                    "concept": "a89c7c72-1350-11df-a1f1-0026b9348838",
+                    "label": "5.0"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "MRC Scale Reference (0-5, informational)",
+              "id": "mrcScaleReference05Informational",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "af84001c-85bf-4f76-88cf-fcecdfcd7e3a",
+                "answers": [
+                  {
+                    "concept": "eedfa950-d958-4ae3-bc54-cc50b1d788d8",
+                    "label": "0 = No movement"
+                  },
+                  {
+                    "concept": "d3a58141-08ba-47c9-ae18-47560afd8801",
+                    "label": "1 = Flicker"
+                  },
+                  {
+                    "concept": "5af77a3b-b311-427d-8894-7dbc89b26dac",
+                    "label": "2 = Movement with gravity eliminated"
+                  },
+                  {
+                    "concept": "6dd69a42-7a04-4407-9208-2fceb86288e1",
+                    "label": "3 = Movement against gravity"
+                  },
+                  {
+                    "concept": "121790f0-42d7-4b05-8ca5-7626816f11c9",
+                    "label": "4 = Movement against resistance"
+                  },
+                  {
+                    "concept": "e6b833bd-e833-455a-b1dc-a174ab399e10",
+                    "label": "5 = Normal power"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Sensory Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Light Touch",
+              "id": "lightTouch",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "ffeaf8df-854d-4cec-8717-48c0ef7ffc90",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "dfda124c-244b-4c13-afb9-ecf37bbba8d3",
+                    "label": "Impaired"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Pain",
+              "id": "pain",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8917a921-3b41-41d5-9a64-08ebe470e6e5",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "dfda124c-244b-4c13-afb9-ecf37bbba8d3",
+                    "label": "Impaired"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Temperature",
+              "id": "temperature",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "776896c9-bf82-43ff-978d-d095f32ce607",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "dfda124c-244b-4c13-afb9-ecf37bbba8d3",
+                    "label": "Impaired"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Vibration",
+              "id": "vibration",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "12429c88-3e86-48fa-aad0-852edceb7f26",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "dfda124c-244b-4c13-afb9-ecf37bbba8d3",
+                    "label": "Impaired"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Proprioception",
+              "id": "proprioception",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "7562344b-92ac-4a37-9279-2c5b551a1873",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "dfda124c-244b-4c13-afb9-ecf37bbba8d3",
+                    "label": "Impaired"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Cranial Nerve Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "CN I Olfactory",
+              "id": "cnIOlfactory",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "300d110b-bbd9-4477-a1d1-44da39f0d34c",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CN II Optic",
+              "id": "cnIiOptic",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "7120846f-0ec1-4b0e-992c-236c4949ad0d",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CN III, IV, VI Eye Movement",
+              "id": "cnIiiIvViEyeMovement",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "5627be8a-e8a1-4e8e-98d3-12c3b2b1ad2f",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CN V Trigeminal",
+              "id": "cnVTrigeminal",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "cec3b0d1-85c5-4273-b0ed-7b39e67334f8",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CN VII Facial",
+              "id": "cnViiFacial",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "62e67caa-acfe-46d7-9ff8-87efd8fac607",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CN VIII Vestibulocochlear",
+              "id": "cnViiiVestibulocochlear",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e049fba6-a3a6-44eb-b865-8d036384f095",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CN IX, X Glossopharyngeal/Vagus",
+              "id": "cnIxXGlossopharyngealVagus",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c93058fa-1a60-4714-8e94-c8e00e70471c",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CN XI Accessory",
+              "id": "cnXiAccessory",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b84cd4c3-235c-42b1-8348-7ed1084441ca",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CN XII Hypoglossal",
+              "id": "cnXiiHypoglossal",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a261c9f0-9c9a-4986-99e9-c5f32e2a0352",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal"
+                  },
+                  {
+                    "concept": "07f2a212-6cd8-441a-b293-a849c9acd9dc",
+                    "label": "Not tested"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Reflexes",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Biceps Reflex",
+              "id": "bicepsReflex",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8965ce8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "7b46b42f-d09f-46a0-8587-695fe74b98a6",
+                    "label": "Increased"
+                  },
+                  {
+                    "concept": "a8a4bafe-1350-11df-a1f1-0026b9348838",
+                    "label": "Decreased"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Triceps Reflex",
+              "id": "tricepsReflex",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e66819a2-d650-4f66-8331-6147652204ec",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "7b46b42f-d09f-46a0-8587-695fe74b98a6",
+                    "label": "Increased"
+                  },
+                  {
+                    "concept": "a8a4bafe-1350-11df-a1f1-0026b9348838",
+                    "label": "Decreased"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Knee Reflex",
+              "id": "kneeReflex",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "23007f14-a582-4444-9091-3218bc912e0e",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "7b46b42f-d09f-46a0-8587-695fe74b98a6",
+                    "label": "Increased"
+                  },
+                  {
+                    "concept": "a8a4bafe-1350-11df-a1f1-0026b9348838",
+                    "label": "Decreased"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Ankle Reflex",
+              "id": "ankleReflex",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8965ea0-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "7b46b42f-d09f-46a0-8587-695fe74b98a6",
+                    "label": "Increased"
+                  },
+                  {
+                    "concept": "a8a4bafe-1350-11df-a1f1-0026b9348838",
+                    "label": "Decreased"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Plantar Response Reflex",
+              "id": "plantarResponseReflex",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e050ac59-56dc-484b-b16a-87a8636e0351",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "7b46b42f-d09f-46a0-8587-695fe74b98a6",
+                    "label": "Increased"
+                  },
+                  {
+                    "concept": "a8a4bafe-1350-11df-a1f1-0026b9348838",
+                    "label": "Decreased"
+                  },
+                  {
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
+                    "label": "Absent"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Functional Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Walking",
+              "id": "walking",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "31b95466-7a6d-4a38-a7e7-678d91dbfa9c",
+                "answers": [
+                  {
+                    "concept": "927f5d67-c00b-400c-add9-a773ff116bad",
+                    "label": "Independent"
+                  },
+                  {
+                    "concept": "38a8164e-260d-4c4d-a6e6-61b4fa1c0154",
+                    "label": "Needs assistance"
+                  },
+                  {
+                    "concept": "a8bcf7f7-b15d-4933-8eee-e57cedb38cf8",
+                    "label": "Dependent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Transfers",
+              "id": "transfers",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0dffc7da-1852-4fd3-aa60-5e9a2e59bc9a",
+                "answers": [
+                  {
+                    "concept": "927f5d67-c00b-400c-add9-a773ff116bad",
+                    "label": "Independent"
+                  },
+                  {
+                    "concept": "38a8164e-260d-4c4d-a6e6-61b4fa1c0154",
+                    "label": "Needs assistance"
+                  },
+                  {
+                    "concept": "a8bcf7f7-b15d-4933-8eee-e57cedb38cf8",
+                    "label": "Dependent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Feeding",
+              "id": "feeding",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "7ddee787-c5b8-4b23-a70f-119207728368",
+                "answers": [
+                  {
+                    "concept": "927f5d67-c00b-400c-add9-a773ff116bad",
+                    "label": "Independent"
+                  },
+                  {
+                    "concept": "38a8164e-260d-4c4d-a6e6-61b4fa1c0154",
+                    "label": "Needs assistance"
+                  },
+                  {
+                    "concept": "a8bcf7f7-b15d-4933-8eee-e57cedb38cf8",
+                    "label": "Dependent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Toileting",
+              "id": "toileting",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "576f3954-6bdb-4e13-a20c-93f2cb1beb0e",
+                "answers": [
+                  {
+                    "concept": "927f5d67-c00b-400c-add9-a773ff116bad",
+                    "label": "Independent"
+                  },
+                  {
+                    "concept": "38a8164e-260d-4c4d-a6e6-61b4fa1c0154",
+                    "label": "Needs assistance"
+                  },
+                  {
+                    "concept": "a8bcf7f7-b15d-4933-8eee-e57cedb38cf8",
+                    "label": "Dependent"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Communication",
+              "id": "communication",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8b02d58-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "927f5d67-c00b-400c-add9-a773ff116bad",
+                    "label": "Independent"
+                  },
+                  {
+                    "concept": "38a8164e-260d-4c4d-a6e6-61b4fa1c0154",
+                    "label": "Needs assistance"
+                  },
+                  {
+                    "concept": "a8bcf7f7-b15d-4933-8eee-e57cedb38cf8",
+                    "label": "Dependent"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Neurological Red Flags",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Auto-Detected Alerts (from GCS, pupils, and power findings above)",
+              "id": "autoDetectedAlerts",
+              "type": "obs",
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1ffaf55d-efb4-428d-8d25-62501c51cf6b",
+                "calculate": {
+                  "calculateExpression": "!isEmpty(totalGcsScoreOutOf15) && totalGcsScoreOutOf15 <= 8 && equal === 'a899b42e-1350-11df-a1f1-0026b9348838' ? 'GCS \\u2264 8, Unequal pupils' : !isEmpty(totalGcsScoreOutOf15) && totalGcsScoreOutOf15 <= 8 ? 'GCS \\u2264 8' : equal === 'a899b42e-1350-11df-a1f1-0026b9348838' ? 'Unequal pupils' : 'No auto-detected alerts'"
+                }
+              }
+            },
+            {
+              "label": "Neurological Red Flags",
+              "id": "neurologicalRedFlags",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "a0ef3171-7d05-46e6-928c-4af4d80ecde7",
+                "answers": [
+                  {
+                    "concept": "19ca65f5-3b42-4876-8bf0-92cd244e9c9e",
+                    "label": "Sudden loss of consciousness"
+                  },
+                  {
+                    "concept": "c3fc9171-bb63-45f4-9795-56a38681f9a0",
+                    "label": "New-onset seizures"
+                  },
+                  {
+                    "concept": "47be78d0-6bca-413d-8112-6fc272f8a76c",
+                    "label": "GCS ≤ 8"
+                  },
+                  {
+                    "concept": "0457851c-e1bc-489f-bb76-147954c118e8",
+                    "label": "Unequal pupils"
+                  },
+                  {
+                    "concept": "043da71a-4409-478a-8b47-47f7eedc5b1d",
+                    "label": "Persistent vomiting"
+                  },
+                  {
+                    "concept": "f34a9bd8-8a4a-4889-8cad-e5e77b4ca93a",
+                    "label": "Acute paralysis"
+                  },
+                  {
+                    "concept": "ded69dce-1c01-436a-98c6-4ed85537ead7",
+                    "label": "Severe headache with neurological deficit"
+                  },
+                  {
+                    "concept": "f639e948-14b7-45e2-b7e0-6bc26f0914c1",
+                    "label": "Stroke symptoms"
+                  },
+                  {
+                    "concept": "397a25bc-544f-4759-942a-8c3b2e0f302b",
+                    "label": "Signs of raised intracranial pressure"
+                  },
+                  {
+                    "concept": "90752dff-c36a-40b8-a233-5b6e9e7460d9",
+                    "label": "Airway compromise due to neurological disease"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "description": "Critical assessment covering neurological, pain, ventilator, sepsis, pupillary, functional, and red-flag findings.",
+  "retired": false,
+  "encounter": "CRITICALASSESSMENT"
+}

@@ -814,7 +814,6 @@
             {
               "label": "Oxygen saturation:",
               "type": "obs",
-              
               "id": "oxygenSat",
               "questionOptions": {
                 "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
