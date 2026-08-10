@@ -877,7 +877,7 @@
               "validators": []
             },
             {
-              "label": "Hepatitis B antigen (HBsAg)",
+              "label": "Hepatitis B surface antigen (HBsAg)",
               "type": "obs",
               "id": "hbvAntigen",
               "questionOptions": {
@@ -954,7 +954,7 @@
               "validators": []
             },
             {
-              "label": "Hepatitis B antibody (HBsAb):",
+              "label": "Hepatitis B surface antibody (HBsAb):",
               "type": "obs",
               "id": "hbvAntibody",
               "questionOptions": {
@@ -1346,11 +1346,11 @@
                       },
                       {
                         "concept": "a89c7a4c-1350-11df-a1f1-0026b9348838",
-                        "label": "Hepatitis B antigen (HBsAg)"
+                        "label": "Hepatitis B surface antigen (HBsAg)"
                       },
                       {
                         "concept": "a89c4bee-1350-11df-a1f1-0026b9348838",
-                        "label": "Hepatitis B antibody (HBsAb)"
+                        "label": "Hepatitis B surface antibody (HBsAb)"
                       },
                       {
                         "concept": "7243bed9-0bc7-4702-af28-a06ab1981e19",

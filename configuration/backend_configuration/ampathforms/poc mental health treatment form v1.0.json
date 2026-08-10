@@ -3,7 +3,7 @@
   "description": "POC mental health treatment",
   "version": "1.0",
   "published": true,
-  "uuid": "",
+  "uuid": "0cc509d9-20ef-32c3-8a16-609815f68f9a",
   "retired": false,
   "encounter": "MENTALHEALTHRETURN",
   "encounterType": "0d8dd637-262b-490f-b07e-e221724b2325",
@@ -54,16 +54,16 @@
               "id": "visitType",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "1cd83e2f-cd1f-4b90-b5b1-a7f4d6b53000",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "1cd83e2f-cd1f-4b90-b5b1-a7f4d6b53001",
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
                     "label": "Initial visit",
                     "conceptMappings": []
                   },
                   {
-                    "concept": "1cd83e2f-cd1f-4b90-b5b1-a7f4d6b53002",
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
                     "label": "Return visit",
                     "conceptMappings": []
                   }
@@ -200,7 +200,7 @@
               },
               "id": "typeVisit",
               "hide": {
-                "hideWhenExpression": "visitType !== '1cd83e2f-cd1f-4b90-b5b1-a7f4d6b53001'"
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             }
           ]
@@ -255,7 +255,7 @@
           "label": "Physical Examination Findings (Initial visit only)",
           "isExpanded": "true",
           "hide": {
-            "hideWhenExpression": "visitType !== '1cd83e2f-cd1f-4b90-b5b1-a7f4d6b53001'"
+            "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
           },
           "questions": [
             {
@@ -814,7 +814,7 @@
           "label": "Adherence (Return visit only)",
           "isExpanded": "true",
           "hide": {
-            "hideWhenExpression": "visitType !== '1cd83e2f-cd1f-4b90-b5b1-a7f4d6b53002'"
+            "hideWhenExpression": "visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838'"
           },
           "questions": [
             {
@@ -884,7 +884,7 @@
               },
               "id": "medsAdherence",
               "hide": {
-                "hideWhenExpression": "visitType !== '1cd83e2f-cd1f-4b90-b5b1-a7f4d6b53002'"
+                "hideWhenExpression": "visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1052,31 +1052,13 @@
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes",
-                    "conceptMappings": [
-                      {
-                        "type": "local",
-                        "value": "1065"
-                      },
-                      {
-                        "type": "MCL/CIEL",
-                        "value": "1065"
-                      }
-                    ]
+                    "label": "Yes"
+                   
                   },
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No",
-                    "conceptMappings": [
-                      {
-                        "type": "MCL/CIEL",
-                        "value": "1066"
-                      },
-                      {
-                        "type": "local",
-                        "value": "1066"
-                      }
-                    ]
+                    "label": "No"
+                    
                   }
                 ]
               },

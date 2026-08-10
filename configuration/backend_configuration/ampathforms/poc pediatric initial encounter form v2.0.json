@@ -3221,6 +3221,10 @@
                     "label": "Isoniazid 300mg (6H)"
                   },
                   {
+                    "concept": "",
+                    "label": "Rifapentine 150mg"
+                  },
+                  {
                     "concept": "aeaed1af-5b0d-401e-a32a-e96cf4072ab5",
                     "label": "Isoniazid 300mg and Rifapentine 300mg (3HP)"
                   },

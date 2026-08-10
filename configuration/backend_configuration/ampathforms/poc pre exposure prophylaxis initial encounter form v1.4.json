@@ -1080,7 +1080,7 @@
               }
             },
             {
-              "label": "Hepatitis B(HBsAg)",
+              "label": "Hepatitis B surface antigen (HBsAg)",
               "type": "obs",
               "id": "hepB",
               "questionOptions": {
