@@ -2,7 +2,7 @@
   "name": "POC Clinical Encounter Form v1.1",
   "description": "Clinical Encounter",
   "version": "1.1",
-  "uuid": "441da659-3e4b-33ab-8293-a7a287dcdd12",
+  "uuid": "",
   "processor": "EncounterFormProcessor",
   "published": true,
   "retired": false,
@@ -552,7 +552,7 @@
           ]
         },
         {
-          "label": "Family & Social history",
+          "label": "Family Social history",
           "isExpanded": "true",
           "questions": [
             {
