@@ -1,8 +1,10 @@
 {
-  "$schema": "http://json.openmrs.org/form.schema.json",
   "name": "POC Critical Assessment Form v1.0",
+   "description": "Critical assessment covering neurological, pain, ventilator, sepsis, pupillary, functional, and red-flag findings.",
+  "retired": false,
+  "encounter": "CRITICALASSESSMENT",
   "version": "1.0",
-  "published": false,
+  "published": true,
   "uuid": "5f2abf8f-4a3d-4cd0-a481-b4fac0a7cd29",
   "processor": "EncounterFormProcessor",
   "encounterType": "eb177fb5-56c7-490b-acc6-819ee238d657",
@@ -292,7 +294,11 @@
                 "concept": "a89c2268-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
-                    "concept": "a8b0281c-1350-11df-a1f1-0026b9348838",
+                    "concept": "a898f50c-1350-11df-a1f1-0026b9348838",
+                    "label": "FBC"
+                  },
+                  {
+                    "concept": "2d32b444-0c88-4452-b16c-4fe8079189f1",
                     "label": "BLOOD CULTURE"
                   }
                 ]
@@ -482,27 +488,27 @@
                 "answers": [
                   {
                     "concept": "9ac20270-eaff-47ec-8bd6-ddaac672676f",
-                    "label": "Bright (Left)"
+                    "label": "Bright (Left eye)"
                   },
                   {
                     "concept": "b0118858-f730-477c-ae59-0056d6e7e371",
-                    "label": "Sluggish (Left)"
+                    "label": "Sluggish (Left eye)"
                   },
                   {
                     "concept": "e5307c38-6fc0-4193-ad42-08e9022bb470",
-                    "label": "Fixed (Left)"
+                    "label": "Fixed (Left eye)"
                   },
                   {
                     "concept": "543d060f-cd75-4100-ac08-a1bcd7b458a8",
-                    "label": "Bright (Right)"
+                    "label": "Bright (Right eye)"
                   },
                   {
                     "concept": "17a3c5dc-abd0-4482-b87c-05f66950633d",
-                    "label": "Sluggish (Right)"
+                    "label": "Sluggish (Right eye)"
                   },
                   {
-                    "concept": "15658a31-0a85-4a1f-b561-dcc8577bc028",
-                    "label": "Fixed (Right)"
+                    "concept": "15658a3x1-0a85-4a1f-b561-dcc8577bc028",
+                    "label": "Fixed (Right eye)"
                   }
                 ]
               }
@@ -512,7 +518,7 @@
               "id": "accommodation",
               "type": "obs",
               "questionOptions": {
-                "rendering": "checkbox",
+                "rendering": "select",
                 "concept": "fd322646-0a18-4c4c-b4ad-eab426814378",
                 "answers": [
                   {
@@ -1194,7 +1200,7 @@
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "31b95466-7a6d-4a38-a7e7-678d91dbfa9c",
+                "concept": "e64230be-5bf1-4f1e-800d-d2a510e65530",
                 "answers": [
                   {
                     "concept": "927f5d67-c00b-400c-add9-a773ff116bad",
@@ -1263,7 +1269,7 @@
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "576f3954-6bdb-4e13-a20c-93f2cb1beb0e",
+                "concept": "a0cd1183-eb93-4d6f-8ead-e2ec502c6704",
                 "answers": [
                   {
                     "concept": "927f5d67-c00b-400c-add9-a773ff116bad",
@@ -1286,7 +1292,7 @@
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "a8b02d58-1350-11df-a1f1-0026b9348838",
+                "concept": "28e43c37-3550-4a65-9074-61ae97ba3692",
                 "answers": [
                   {
                     "concept": "927f5d67-c00b-400c-add9-a773ff116bad",
@@ -1377,8 +1383,6 @@
         }
       ]
     }
-  ],
-  "description": "Critical assessment covering neurological, pain, ventilator, sepsis, pupillary, functional, and red-flag findings.",
-  "retired": false,
-  "encounter": "CRITICALASSESSMENT"
+  ]
+ 
 }
