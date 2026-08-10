@@ -4,7 +4,7 @@
   "version": "1.1",
   "uuid": "",
   "processor": "EncounterFormProcessor",
-  "published": true,
+  "published": false,
   "retired": false,
   "encounterType": "81166f83-1ee6-486e-8f56-aca528fc0fc0",
   "encounter": "GENCONSULTATION",
