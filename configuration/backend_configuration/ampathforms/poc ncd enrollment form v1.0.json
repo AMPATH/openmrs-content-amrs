@@ -460,6 +460,7 @@
           "label": "Disease Type",
           "isExpanded": "true",
           "questions": [
+            
             {
               "label": "Type of disease:",
               "type": "obs",
@@ -1472,12 +1473,15 @@
           "label": "Treatment/Management",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Final diagnosis:",
-              "id": "DiagNosIS",
+           {
+              "label": "Primary diagnosis:",
+              "required": "true",
+              "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
                 "rendering": "repeating",
+                "min":"1",
+                "dataSource": "diagnoses",
                 "rank": 2,
                 "datasource": {
                   "name": "diagnoses",

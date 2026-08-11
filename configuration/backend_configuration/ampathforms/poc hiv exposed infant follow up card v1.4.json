@@ -1525,15 +1525,15 @@
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "40a893e8-d30a-4b4c-8f4a-eca3bcdfbd0d",
+                    "concept": "4cae9910-518f-410a-8d89-9205f2db7848",
                     "label": "Birth testing (0-2 weeks) or 1st contact"
                   },
                   {
-                    "concept": "43c9e462-6d9b-4f05-9a91-ae9fe56e86fa",
+                    "concept": "6834460e-ce30-4536-b95c-d4b59fb4f5b0",
                     "label": "Second PCR"
                   },
                   {
-                    "concept": "369cf77d-725a-4c2b-a2f2-f2e906aa2363",
+                    "concept": "28320fa5-9174-4691-b7c1-8f862493b8ad",
                     "label": "Third PCR"
                   },
                   {

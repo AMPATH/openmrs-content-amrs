@@ -1754,6 +1754,7 @@
               "type": "diagnosis",
               "questionOptions": {
                 "rendering": "repeating",
+                "min": "1",
                 "dataSource": "diagnoses",
                 "rank": 1,
                 "datasource": {
