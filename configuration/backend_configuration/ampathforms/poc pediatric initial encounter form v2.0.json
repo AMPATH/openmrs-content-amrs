@@ -3316,7 +3316,7 @@
           "label": "Advanced HIV Disease Treatment History",
           "isExpanded": "true",
           "questions": [
-             {
+            {
               "label": "Fluconazole prophylaxis:",
               "required": "true",
               "id": "flucoProphy",
@@ -3329,20 +3329,8 @@
                     "label": "None"
                   },
                   {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
-                  },
-                  {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg"
-                  },
-                  {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
-                  },
-                  {
-                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
                   }
                 ],
                 "rendering": "select"
@@ -3350,6 +3338,33 @@
               "type": "obs",
               "validators": []
             },
+            {
+              "label": "Cryptococcal pre-emptive therapy:",
+              "required": "true",
+              "id": "cryptPreemptive",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')) ? undefined : HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')",
+              "questionOptions": {
+                "concept": "63175ae7-835c-433c-ae56-77c2ab2433c2",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            },
+
             {
               "label": "Cryptococcal meningitis treatment:",
               "required": "true",
@@ -3363,20 +3378,12 @@
                     "label": "None"
                   },
                   {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
                   },
                   {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg"
-                  },
-                  {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
-                  },
-                  {
-                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg"
                   },
                   {
                     "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
@@ -5871,7 +5878,7 @@
               },
               "validators": []
             },
-             {
+            {
               "label": "eGFR:",
               "id": "egfr",
               "questionOptions": {
@@ -5914,7 +5921,7 @@
               "questionOptions": {
                 "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
                 "rendering": "decimal",
-                
+
                 "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
@@ -6427,7 +6434,6 @@
         {
           "label": "CrAg",
           "questions": [
-            
             {
               "label": "Blood CrAg:",
               "id": "cragTest",
@@ -6467,11 +6473,13 @@
               },
               "type": "obs",
               "validators": [],
-              "hide": {
-                "hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a896f3a6-1350-11df-a1f1-0026b9348838'], myValue)",
+                "message": "Blood CrAg negative: provide fluconazole prophylaxis. Blood CrAg positive: order CSF CrAg."
               }
+              
             },
-             {
+            {
               "label": "CSF CrAg:",
               "id": "csfTest",
               "questionOptions": {
@@ -6485,7 +6493,6 @@
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
                     "label": "Negative"
                   }
-                  
                 ],
                 "showDate": "true",
                 "rendering": "select",
@@ -6507,11 +6514,13 @@
               },
               "type": "obs",
               "validators": [],
+              "hide": {
+                "hideWhenExpression": "cragTest !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              },
               "alert": {
-                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
-                "message": "Please initiate the patient on crypto menengitis treatment"
+                "alertWhenExpression": "!isEmpty(myValue)",
+                "message": "CSF CrAg negative: provide cryptococcal pre-emptive therapy. CSF CrAg positive: provide cryptococcal meningitis treatment."
               }
-              
             }
           ]
         },
@@ -8196,8 +8205,9 @@
           "questions": [
             {
               "label": "Fluconazole prophylaxis plan:",
+              "questionInfo": "For a negative Blood CrAg result, the guideline recommends primary fluconazole 6mg/kg/day prophylaxis for 12 weeks.",
               "required": "true",
-              "id": "flucoProphyPlan", 
+              "id": "flucoProphyPlan",
               "questionOptions": {
                 "concept": "88cd24fe-b031-4aad-9d87-1b39ef243b18",
                 "answers": [
@@ -8221,7 +8231,7 @@
                 "rendering": "select"
               },
               "type": "obs",
-               "validators": [
+              "validators": [
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(flucoProphy) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && (flucoProphy==='a899e0ac-1350-11df-a1f1-0026b9348838')",
@@ -8232,7 +8242,88 @@
                   "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
                 }
-              ]
+              ],
+               "alert": {
+                "alertWhenExpression": "cragTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg is negative. Start fluconazole prophylaxis."
+              }
+            },
+            {
+              "label": "Cryptococcal pre-emptive therapy plan:",
+              "id": "cryptoPreemptiveTherapyPlan",
+              "type": "obs",
+              "questionInfo": "For Blood CrAg positive and CSF CrAg negative: start fluconazole 12mg/kg daily for 2 weeks, then 6mg/kg daily for 8 weeks, then 6mg/kg daily for at least 1 year.",
+              "questionOptions": {
+                "concept": "ea30cd3d-88b1-4b8a-8171-ed18a2878ed9",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue current"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start induction"
+                  },
+                  {
+                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                    "label": "Change to consolidation"
+                  },
+                  {
+                    "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
+                    "label": "Change to maintanance"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                  "message": "Blood CrAg is positive and CSF CrAg is negative. Select Start for cryptococcal pre-emptive therapy."
+                }
+              ],
+              
+              "alert": {
+                "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg is positive and CSF CrAg is negative. Select Start for cryptococcal pre-emptive therapy."
+              }
+            },
+            {
+              "label": "If start/change, regimen:",
+              "id": "preemptiveMedication",
+              "questionOptions": {
+                "concept": "0d18fa68-6038-43d5-a5ce-f4ebeeab076b",
+                "answers": [
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptoPlan) && isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)",
+                  "message": "You indicated patient is starting/changing regimen. Please select regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)"
+              }
             },
             {
               "label": "Cryptococcal meningitis treatment plan:",
@@ -8279,31 +8370,22 @@
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "id": "cryptoPlan"
             },
-             {
-              "label": "If Start/Change, regimen:",
+            {
+              "label": "If start/change, regimen:",
               "id": "MeningitisMedication",
               "questionOptions": {
                 "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
                   },
                   {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg"
-                  },
-                  {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
-                  },
-                  {
-                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg"
                   },
                   {
                     "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
@@ -9989,302 +10071,302 @@
               }
             },
             {
-							"type": "obsGroup",
-							"label": "Hypertenstion drugs started, detailed",
-							"required": "true",
-							"id": "hyperdetailed",
-							"hide": {
-								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a8986880-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
-							},
-							"questionOptions": {
-								"rendering": "repeating",
-								"concept": "2a6868b8-7142-4e94-acc5-dbcaa95cf822"
-							},
-							"questions": [
-								{
-									"label": "Hypertension treatment:",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')) ? undefined : HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')",
-									"id": "antiHypertensive",
-									"questionOptions": {
-										"concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
-										"answers": [
-											{
-												"concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
-												"label": "Amlodipine"
-											},
-											{
-												"concept": "22857905-ef07-4702-b576-bdb02677e301",
-												"label": "Amlodipine/Losartan"
-											},
-											{
-												"concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
-												"label": "Atenolol"
-											},
-											{
-												"concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
-												"label": "Atorvastatin"
-											},
-											{
-												"concept": "a8a43994-1350-11df-a1f1-0026b9348838",
-												"label": "Carvedilol"
-											},
-											{
-												"concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
-												"label": "Clopidogrel"
-											},
-											{
-												"concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
-												"label": "Digoxin"
-											},
-											{
-												"concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
-												"label": "Enalapril"
-											},
-											{
-												"concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
-												"label": "Enoxaparin"
-											},
-											{
-												"concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
-												"label": "Felodipine"
-											},
-											{
-												"concept": "b0e484db-ab3c-4851-9cb6-56bfaf2348a5",
-												"label": "Frusemide"
-											},
-											{
-												"concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
-												"label": "HCTZ"
-											},
-											{
-												"concept": "4ef71275-29e3-4b5a-940c-267473ab61b6",
-												"label": "Lisinopril 20mg/HCTZ 12.5mg"
-											},
-											{
-												"concept": "a8a43750-1350-11df-a1f1-0026b9348838",
-												"label": "Losartan"
-											},
-											{
-												"concept": "e476d21f-911d-4d2e-8c37-1ce76e48930f",
-												"label": "Losartan 50mg/Hydrochlorothiazide 12.5mg"
-											},
-											{
-												"concept": "d6dd4ede-2a46-4eb1-99b7-360fb4e329e5",
-												"label": "Metropolol"
-											},
-											{
-												"concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
-												"label": "Nifedipine"
-											},
-											{
-												"concept": "a8939044-1350-11df-a1f1-0026b9348838",
-												"label": "Propranolol"
-											},
-											{
-												"concept": "c06c7786-0657-41db-babc-a16c350d35da",
-												"label": "Rosuvastatin"
-											},
-											{
-												"concept": "a8a43a52-1350-11df-a1f1-0026b9348838",
-												"label": "Spironolactone"
-											},
-											{
-												"concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
-												"label": "Telmisartan"
-											},
-											{
-												"concept": "59611435-e869-4a8d-8e58-649b7630e471",
-												"label": "Junior ASA"
-											}
-										],
-										"rendering": "multiCheckbox"
-									},
-									"type": "obs",
-									"validators": []
-								},
-								{
-									"label": "Frequency",
-									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"label": "Once a day",
-												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Twice a day",
-												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Three times a day",
-												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Four times a day",
-												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "As needed",
-												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
-											},
-											{
-												"label": "Other",
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
-											}
-										],
-										"rendering": "select"
-									},
-									"type": "obs",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(antiHypertensive)"
-									},
-									"id": "medFreq"
-								},
-								{
-									"label": "Number of mg:",
-									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "decimal"
-									},
-									"type": "obs",
-									"id": "numberMg",
-									"validators": [
-										{
-											"type": "decimal",
-											"decimalPlace": 2
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(antiHypertensive)"
-									}
-								}
-							]
-						},
-						{
-							"type": "obsGroup",
-							"label": "Diabetes drugs started, detailed",
-							"id": "diabetesdetailed",
-							"hide": {
-								"hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
-							},
-							"questionOptions": {
-								"rendering": "repeating",
-								"concept": "a6812b99-3126-40b8-8c9c-2f511a6912b1"
-							},
-							"questions": [
-								{
-									"label": "Diabetes treatment:",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')) ? undefined : HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')",
-									"id": "antiDiabetics",
-									"questionOptions": {
-										"concept": "78809200-7f7f-4d6f-b515-31088765d442",
-										"answers": [
-											{
-												"concept": "a8a4320a-1350-11df-a1f1-0026b9348838",
-												"label": "Gliclazide"
-											},
-											{
-												"concept": "a8a4314c-1350-11df-a1f1-0026b9348838",
-												"label": "Glibenclamide"
-											},
-											{
-												"concept": "a8a43386-1350-11df-a1f1-0026b9348838",
-												"label": "Glimepiride"
-											},
-											{
-												"concept": "a8a42ecc-1350-11df-a1f1-0026b9348838",
-												"label": "Insulin 70/30"
-											},
-											{
-												"concept": "a8a42fbc-1350-11df-a1f1-0026b9348838",
-												"label": "Insulin NPH"
-											},
-											{
-												"concept": "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
-												"label": "Insulin humalogue"
-											},
-											{
-												"concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
-												"label": "Insulin glargine"
-											},
-											{
-												"concept": "a8a4344e-1350-11df-a1f1-0026b9348838",
-												"label": "Metformin"
-											},
-											{
-												"concept": "a8a43b1a-1350-11df-a1f1-0026b9348838",
-												"label": "Pioglitazone"
-											}
-										],
-										"rendering": "multiCheckbox"
-									},
-									"type": "obs",
-									"validators": []
-								},
-								{
-									"label": "Frequency",
-									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
-										"answers": [
-											{
-												"label": "Once a day",
-												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Twice a day",
-												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Three times a day",
-												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "Four times a day",
-												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
-											},
-											{
-												"label": "As needed",
-												"concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
-											},
-											{
-												"label": "Other",
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
-											}
-										],
-										"rendering": "select"
-									},
-									"type": "obs",
-									"validators": [],
-									"hide": {
-										"hideWhenExpression": "isEmpty(antiDiabetics)"
-									},
-									"id": "medFreq"
-								},
-								{
-									"label": "Number of mg:",
-									"historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
-									"questionOptions": {
-										"concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-										"rendering": "decimal"
-									},
-									"type": "obs",
-									"id": "numberMg",
-									"validators": [
-										{
-											"type": "decimal",
-											"decimalPlace": 2
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(antiDiabetics)"
-									}
-								}
-							]
-						}
+              "type": "obsGroup",
+              "label": "Hypertenstion drugs started, detailed",
+              "required": "true",
+              "id": "hyperdetailed",
+              "hide": {
+                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a8986880-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
+              },
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "2a6868b8-7142-4e94-acc5-dbcaa95cf822"
+              },
+              "questions": [
+                {
+                  "label": "Hypertension treatment:",
+                  "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')) ? undefined : HD.getObject('prevEnc').getValue('7c4a06ce-11eb-496f-b4db-516ab8d78aa8')",
+                  "id": "antiHypertensive",
+                  "questionOptions": {
+                    "concept": "7c4a06ce-11eb-496f-b4db-516ab8d78aa8",
+                    "answers": [
+                      {
+                        "concept": "a8a43c96-1350-11df-a1f1-0026b9348838",
+                        "label": "Amlodipine"
+                      },
+                      {
+                        "concept": "22857905-ef07-4702-b576-bdb02677e301",
+                        "label": "Amlodipine/Losartan"
+                      },
+                      {
+                        "concept": "a8a438cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Atenolol"
+                      },
+                      {
+                        "concept": "a8a43f98-1350-11df-a1f1-0026b9348838",
+                        "label": "Atorvastatin"
+                      },
+                      {
+                        "concept": "a8a43994-1350-11df-a1f1-0026b9348838",
+                        "label": "Carvedilol"
+                      },
+                      {
+                        "concept": "f8e835b8-419d-409f-be0d-2ec43dfa3aaf",
+                        "label": "Clopidogrel"
+                      },
+                      {
+                        "concept": "4039fb88-2e77-41b6-b36f-7937fb9c5b8a",
+                        "label": "Digoxin"
+                      },
+                      {
+                        "concept": "a89b5cf2-1350-11df-a1f1-0026b9348838",
+                        "label": "Enalapril"
+                      },
+                      {
+                        "concept": "1739a6d9-9436-4eeb-acc1-ea3f74a63e16",
+                        "label": "Enoxaparin"
+                      },
+                      {
+                        "concept": "49e26010-8e72-4cdb-baf7-fcbc1aab2de3",
+                        "label": "Felodipine"
+                      },
+                      {
+                        "concept": "b0e484db-ab3c-4851-9cb6-56bfaf2348a5",
+                        "label": "Frusemide"
+                      },
+                      {
+                        "concept": "a89b5dd8-1350-11df-a1f1-0026b9348838",
+                        "label": "HCTZ"
+                      },
+                      {
+                        "concept": "4ef71275-29e3-4b5a-940c-267473ab61b6",
+                        "label": "Lisinopril 20mg/HCTZ 12.5mg"
+                      },
+                      {
+                        "concept": "a8a43750-1350-11df-a1f1-0026b9348838",
+                        "label": "Losartan"
+                      },
+                      {
+                        "concept": "e476d21f-911d-4d2e-8c37-1ce76e48930f",
+                        "label": "Losartan 50mg/Hydrochlorothiazide 12.5mg"
+                      },
+                      {
+                        "concept": "d6dd4ede-2a46-4eb1-99b7-360fb4e329e5",
+                        "label": "Metropolol"
+                      },
+                      {
+                        "concept": "a8938aa4-1350-11df-a1f1-0026b9348838",
+                        "label": "Nifedipine"
+                      },
+                      {
+                        "concept": "a8939044-1350-11df-a1f1-0026b9348838",
+                        "label": "Propranolol"
+                      },
+                      {
+                        "concept": "c06c7786-0657-41db-babc-a16c350d35da",
+                        "label": "Rosuvastatin"
+                      },
+                      {
+                        "concept": "a8a43a52-1350-11df-a1f1-0026b9348838",
+                        "label": "Spironolactone"
+                      },
+                      {
+                        "concept": "c72e00e5-4944-412a-8bff-2e24bb7e5f2b",
+                        "label": "Telmisartan"
+                      },
+                      {
+                        "concept": "59611435-e869-4a8d-8e58-649b7630e471",
+                        "label": "Junior ASA"
+                      }
+                    ],
+                    "rendering": "multiCheckbox"
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Frequency",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Once a day",
+                        "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Twice a day",
+                        "concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Three times a day",
+                        "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Four times a day",
+                        "concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "As needed",
+                        "concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+                      },
+                      {
+                        "label": "Other",
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(antiHypertensive)"
+                  },
+                  "id": "medFreq"
+                },
+                {
+                  "label": "Number of mg:",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "decimal"
+                  },
+                  "type": "obs",
+                  "id": "numberMg",
+                  "validators": [
+                    {
+                      "type": "decimal",
+                      "decimalPlace": 2
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(antiHypertensive)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "obsGroup",
+              "label": "Diabetes drugs started, detailed",
+              "id": "diabetesdetailed",
+              "hide": {
+                "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny(['a893436e-1350-11df-a1f1-0026b9348838'], comorbidIllness)"
+              },
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "a6812b99-3126-40b8-8c9c-2f511a6912b1"
+              },
+              "questions": [
+                {
+                  "label": "Diabetes treatment:",
+                  "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')) ? undefined : HD.getObject('prevEnc').getValue('78809200-7f7f-4d6f-b515-31088765d442')",
+                  "id": "antiDiabetics",
+                  "questionOptions": {
+                    "concept": "78809200-7f7f-4d6f-b515-31088765d442",
+                    "answers": [
+                      {
+                        "concept": "a8a4320a-1350-11df-a1f1-0026b9348838",
+                        "label": "Gliclazide"
+                      },
+                      {
+                        "concept": "a8a4314c-1350-11df-a1f1-0026b9348838",
+                        "label": "Glibenclamide"
+                      },
+                      {
+                        "concept": "a8a43386-1350-11df-a1f1-0026b9348838",
+                        "label": "Glimepiride"
+                      },
+                      {
+                        "concept": "a8a42ecc-1350-11df-a1f1-0026b9348838",
+                        "label": "Insulin 70/30"
+                      },
+                      {
+                        "concept": "a8a42fbc-1350-11df-a1f1-0026b9348838",
+                        "label": "Insulin NPH"
+                      },
+                      {
+                        "concept": "0ea94c19-1e35-4aaa-9dd8-07bc48048145",
+                        "label": "Insulin humalogue"
+                      },
+                      {
+                        "concept": "01983012-5416-448d-b9c7-c9ec9c2062b4",
+                        "label": "Insulin glargine"
+                      },
+                      {
+                        "concept": "a8a4344e-1350-11df-a1f1-0026b9348838",
+                        "label": "Metformin"
+                      },
+                      {
+                        "concept": "a8a43b1a-1350-11df-a1f1-0026b9348838",
+                        "label": "Pioglitazone"
+                      }
+                    ],
+                    "rendering": "multiCheckbox"
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Frequency",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a06184-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "label": "Once a day",
+                        "concept": "a8a05dc4-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Twice a day",
+                        "concept": "a8a05aea-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Three times a day",
+                        "concept": "a8a05b9e-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "Four times a day",
+                        "concept": "a8a05cfc-1350-11df-a1f1-0026b9348838"
+                      },
+                      {
+                        "label": "As needed",
+                        "concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2"
+                      },
+                      {
+                        "label": "Other",
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(antiDiabetics)"
+                  },
+                  "id": "medFreq"
+                },
+                {
+                  "label": "Number of mg:",
+                  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a063c8-1350-11df-a1f1-0026b9348838')",
+                  "questionOptions": {
+                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
+                    "rendering": "decimal"
+                  },
+                  "type": "obs",
+                  "id": "numberMg",
+                  "validators": [
+                    {
+                      "type": "decimal",
+                      "decimalPlace": 2
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(antiDiabetics)"
+                  }
+                }
+              ]
+            }
           ]
         }
       ]
@@ -10439,10 +10521,7 @@
                       }
                     ]
                   },
-                  "validators": [
-                    
-                    
-                  ],
+                  "validators": [],
                   "alert": {
                     "alertWhenExpression": "!(isEmpty(myValue) && arrayContainsAny(['a896cce6-1350-11df-a1f1-0026b9348838','a8908192-1350-11df-a1f1-0026b9348838'], myValue))",
                     "message": "This client is newly enrolled. Please order baseline CD4 and CXR before submitting the form."
@@ -10455,9 +10534,7 @@
                     "rendering": "text"
                   },
                   "type": "obs",
-                  "validators": [
-                     
-                  ],
+                  "validators": [],
                   "id": "otherTestOrder"
                 }
               ],

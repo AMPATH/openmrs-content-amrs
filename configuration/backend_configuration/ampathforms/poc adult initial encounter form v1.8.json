@@ -236,7 +236,7 @@
                 "answers": [
                   {
                     "concept": "390a0eda-e4a0-4c3b-893c-ceb0ab2387f5",
-                    "label": "People in prison"
+                    "label": "People in prison settings"
                   },
                   {
                     "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
@@ -244,11 +244,11 @@
                   },
                   {
                     "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
-                    "label": "Discordant couple"
+                    "label": "HIV sero-discordant couples"
                   },
                   {
                     "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
-                    "label": "Truck drivers"
+                    "label": "Long-distance truckers and related mobile populations"
                   }
                 ]
               },
