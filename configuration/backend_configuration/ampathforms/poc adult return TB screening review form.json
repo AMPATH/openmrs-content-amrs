@@ -2,7 +2,7 @@
   "name": "POC Adult Return Encounter Form v2.2 - TB Screening Review",
   "description": "Outpatient Adult Return Visit.",
   "version": "2.2",
-  "published": false,
+  "published": true,
   "uuid": "c21976ac-efae-4664-a21e-d2e89414d0dc",
   "retired": false,
   "encounter": "ADULTRETURN",
@@ -364,80 +364,115 @@
           ]
         },
         {
-          "label": "Prevention With Positives",
+          "label": "Population Type",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Prevention with positives: At risk population:",
+              {
+              "label": "Population type:",
+              "id": "popType",
               "required": "true",
-              "historicalExpression": "HD.getObject('prevEnc').getValue('93aa3f1d-1c39-4196-b5e6-8adc916cd5d6')",
+              "questionInfo": "Indicate the population type.",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "General population"
+                  },
+                  {
+                    "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                    "label": "Key population"
+                  },
+                  {
+                    "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                    "label": "Vulnerable population"
+                  }
+                 
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Key population:",
+              "id": "keyPop",
+              "questionInfo": "Indicate the key population.",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
                 "answers": [
                   {
-                    "concept": "5da55301-e28e-4fdf-8b64-02622dedc8b0",
-                    "label": "Client of sex worker"
-                  },
-                  {
-                    "concept": "a89ff438-1350-11df-a1f1-0026b9348838",
-                    "label": "Commercial sex worker"
-                  },
-                  {
-                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
-                    "label": "Discordant couple"
-                  },
-                  {
-                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
-                    "label": "IV drug use"
-                  },
-                  {
                     "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
                     "label": "MSM"
                   },
                   {
-                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
-                    "label": "N/A"
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSW"
+                  },
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+                    "label": "PWUD"
                   }
                 ]
               },
               "type": "obs",
-              "validators": [],
-              "id": "__twDvp9zpt"
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(popType) && popType === '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6'",
+                  "message": "Required!"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "popType !== '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6'"
+              }
             },
             {
-              "label": "Prevention with positives: PWP services:",
-              "id": "pwpServices",
-              "required": "true",
-              "historicalExpression": "HD.getObject('prevEnc').getValue('9ce5dbf0-a141-4ad8-8c9d-cd2bf84fe72b')",
+              "label": "Vulnerable population:",
+              "id": "vulPop",
+              "questionInfo": "Indicate the vulnerable population.",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "9ce5dbf0-a141-4ad8-8c9d-cd2bf84fe72b",
+                "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
                 "answers": [
                   {
-                    "concept": "f0a280e8-eb88-41a8-837a-f9949ed1b9cd",
-                    "label": "Condom promotion/provision"
+                    "concept": "390a0eda-e4a0-4c3b-893c-ceb0ab2387f5",
+                    "label": "People in prison settings"
                   },
                   {
-                    "concept": "bf51f71e-937c-4da5-ae07-654acf59f5bb",
-                    "label": "Couple counseling"
+                    "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                    "label": "Fisher folk"
                   },
                   {
-                    "concept": "91f43249-73c7-427c-8300-2038fc0d6be8",
-                    "label": "Needle exchange"
+                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                    "label": "HIV sero-discordant couples"
                   },
                   {
-                    "concept": "05656545-86be-4605-9527-34fb580534b1",
-                    "label": "Targeted risk reduction"
-                  },
-                  {
-                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
-                    "label": "N/A"
+                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                    "label": "Long-distance truckers and related mobile populations"
                   }
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(popType) && popType === '729690d4-09dc-497e-a180-bfc2e9d7d21d'",
+                  "message": "Required!"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "popType !== '729690d4-09dc-497e-a180-bfc2e9d7d21d'"
+              }
             }
           ]
         },
@@ -3057,9 +3092,7 @@
                   "type": "obs",
                   "hide": {
                     "field": "tb_current",
-                    "value": [
-                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
-                    ]
+                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
                   },
                   "id": "__xxr3vpnnK"
                 }
@@ -3233,6 +3266,28 @@
                     "label": "None"
                   },
                   {
+                    "concept": "0074b2e5-c138-487a-8446-fab65882572f",
+                    "label": "Fluconazole 100mg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Cryptococcal pre-emptive therapy:",
+              "required": "true",
+              "id": "cryptPreemptive",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')) ? undefined : HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')",
+              "questionOptions": {
+                "concept": "63175ae7-835c-433c-ae56-77c2ab2433c2",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg"
                   },
@@ -3243,10 +3298,6 @@
                   {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
                     "label": "Fluconazole 800mg"
-                  },
-                  {
-                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
                   }
                 ],
                 "rendering": "select"
@@ -3269,10 +3320,6 @@
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg"
-                  },
-                  {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg"
                   },
                   {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
@@ -3360,6 +3407,7 @@
             },
             {
               "label": "PCP treatment:",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('be7384b3-2249-431e-872f-a57f0269a008')) ? undefined : HD.getObject('prevEnc').getValue('be7384b3-2249-431e-872f-a57f0269a008')",
               "required": "true",
               "id": "pcpCurrent",
               "questionOptions": {
@@ -4481,6 +4529,35 @@
               ]
             },
             {
+              "label": "Is CRP test available for this client today?",
+              "id": "crpTestAvailable",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "50ddc738-3168-4e78-8076-78e9f82e3ce6",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "The CXR result is normal. Indicate whether CRP testing is available."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
               "type": "obsGroup",
               "label": "CRP investigation",
               "id": "tbCrpInvestigation",
@@ -4489,14 +4566,14 @@
                 "rendering": "group"
               },
               "hide": {
-                "hideWhenExpression": "onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || isEmpty(tbSymptoms) || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms) || xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838' || (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || isEmpty(tbSymptoms) || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms) || xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838' || (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838' || crpTestAvailable !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               },
               "questions": [
                 {
                   "label": "Order CRP:",
                   "id": "tbCrpOrder",
                   "type": "testOrder",
-                  "questionInfo": "The CXR result is normal. Place the CRP order before entering its result.",
+                  "questionInfo": "The CXR result is normal and CRP testing is available. Place the CRP order before entering its result.",
                   "questionOptions": {
                     "rendering": "repeating",
                     "orderSettingUuid": "6f0c9a92-6f24-11e3-af88-005056821db0",
@@ -4509,13 +4586,13 @@
                     ]
                   },
                   "hide": {
-                    "hideWhenExpression": "(!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "crpTestAvailable !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   },
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                      "message": "The CXR result is normal. Place the CRP order before continuing."
+                      "failsWhenExpression": "crpTestAvailable === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                      "message": "CRP testing is available. Place the CRP order before continuing."
                     }
                   ]
                 },
@@ -4555,7 +4632,7 @@
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838' || (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "crpTestAvailable !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 }
               ]
@@ -4567,7 +4644,7 @@
               "readonly": true,
               "questionOptions": {
                 "calculate": {
-                  "calculateExpression": "(onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838' : (arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms)) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : (xrayService === 'a899b42e-1350-11df-a1f1-0026b9348838') ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult)) && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838') ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCrpResult) ? tbCrpResult : crpResult)) && (!isEmpty(tbCrpResult) ? tbCrpResult : crpResult) > 5) ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCrpResult) ? tbCrpResult : crpResult)) && (!isEmpty(tbCrpResult) ? tbCrpResult : crpResult) <= 5) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : ''"
+                  "calculateExpression": "(onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838' : (arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms)) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : (xrayService === 'a899b42e-1350-11df-a1f1-0026b9348838') ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult)) && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838') ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && crpTestAvailable === 'a899b42e-1350-11df-a1f1-0026b9348838') ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCrpResult) ? tbCrpResult : crpResult)) && (!isEmpty(tbCrpResult) ? tbCrpResult : crpResult) > 5) ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCrpResult) ? tbCrpResult : crpResult)) && (!isEmpty(tbCrpResult) ? tbCrpResult : crpResult) <= 5) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : ''"
                 },
                 "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
                 "answers": [
@@ -5495,7 +5572,7 @@
         },
         {
           "label": "CrAg",
-          "questions": [
+          "questions": [ 
             {
               "label": "Blood CrAg:",
               "id": "cragTest",
@@ -5536,8 +5613,8 @@
               "type": "obs",
               "validators": [],
               "alert": {
-                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896d2cc-1350-11df-a1f1-0026b9348838'",
-                "message": "Please consider intiating patient on fluconazole prophylaxis"
+                "alertWhenExpression": "!isEmpty(myValue) && arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a896f3a6-1350-11df-a1f1-0026b9348838'], myValue)",
+                "message": "Blood CrAg negative: provide fluconazole prophylaxis. Blood CrAg positive: order CSF CrAg."
               }
             },
             {
@@ -5575,9 +5652,12 @@
               },
               "type": "obs",
               "validators": [],
+              "hide": {
+                "hideWhenExpression": "cragTest !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              },
               "alert": {
-                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
-                "message": "Please initiate the patient on crypto meningitis treatment"
+                "alertWhenExpression": "!isEmpty(myValue)",
+                "message": "CSF CrAg negative: provide cryptococcal pre-emptive therapy. CSF CrAg positive: provide cryptococcal meningitis treatment."
               }
             }
           ]
@@ -6407,62 +6487,20 @@
                   "questionOptions": {
                     "concept": "a89b7110-1350-11df-a1f1-0026b9348838",
                     "answers": [
-                      {
-                        "concept": "a89ce50e-1350-11df-a1f1-0026b9348838",
-                        "label": "Adherence concerns"
-                      },
+                     
                       {
                         "concept": "a8981934-1350-11df-a1f1-0026b9348838",
                         "label": "Clinical treatment failure"
                       },
-                      {
-                        "concept": "c0c9eab3-46f6-453c-b29d-dc1c242317c5",
-                        "label": "Drug out of stock"
-                      },
-                      {
-                        "concept": "a890a96a-1350-11df-a1f1-0026b9348838",
-                        "label": "Due to new TB"
-                      },
-                      {
-                        "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
-                        "label": "Illness/hospitalization"
-                      },
+                     
+                    
                       {
                         "concept": "c6537e06-9fc2-47da-b679-e2a32824407f",
                         "label": "Immunologic failure"
                       },
-                      {
-                        "concept": "a8a6f56c-1350-11df-a1f1-0026b9348838",
-                        "label": "Lost to follow-up"
-                      },
-                      {
-                        "concept": "a8a07b10-1350-11df-a1f1-0026b9348838",
-                        "label": "New drug available"
-                      },
-                      {
-                        "concept": "a8b03af0-1350-11df-a1f1-0026b9348838",
-                        "label": "Patient lacks finances"
-                      },
-                      {
-                        "concept": "abe0cbb6-8d08-487a-b18e-7af873945fcc",
-                        "label": "Planned Rx interruption"
-                      },
-                      {
-                        "concept": "ecafa614-49c5-4eba-84c7-b85b0d9e2c46",
-                        "label": "Pill burden"
-                      },
-                      {
-                        "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
-                        "label": "Changing to adult regimen"
-                      },
-                      {
-                        "concept": "a8909e8e-1350-11df-a1f1-0026b9348838",
-                        "label": "Pregnancy"
-                      },
-                      {
-                        "concept": "e38b3e51-8a27-4bf6-b0c8-e0b285e4bb2f",
-                        "label": "Risk of pregnancy"
-                      },
+                      
+                    
+                     
                       {
                         "concept": "4ee08cb4-fc93-44a0-a330-4e3fb45ca625",
                         "label": "Optimization"
@@ -6475,26 +6513,8 @@
                         "concept": "93fe19e8-fec4-4e4b-85f1-239e1fabd761",
                         "label": "Virologic failure"
                       },
-                      {
-                        "concept": "5d08b98f-5123-4d6d-9972-825b6aa2f4ed",
-                        "label": "Fanconi syndrome"
-                      },
-                      {
-                        "concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
-                        "label": "Renal failure"
-                      },
-                      {
-                        "concept": "a89dca46-1350-11df-a1f1-0026b9348838",
-                        "label": "Osteopenia/Osteoporosis"
-                      },
-                      {
-                        "concept": "a898d478-1350-11df-a1f1-0026b9348838",
-                        "label": "Age >60 years"
-                      },
-                      {
-                        "concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
-                        "label": "Other patient desicion"
-                      },
+                     
+                     
                       {
                         "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                         "label": "Other"
@@ -7720,82 +7740,10 @@
                   "hide": {
                     "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], tbTreatmentPlan)"
                   }
-                },
-                {
-                  "label": "tabs/day:",
-                  "questionOptions": {
-                    "concept": "a8a07386-1350-11df-a1f1-0026b9348838",
-                    "max": "30",
-                    "min": "0",
-                    "rendering": "number"
-                  },
-                  "type": "obs",
-                  "hide": {
-                    "field": "q26f",
-                    "value": [
-                      "a899f51a-1350-11df-a1f1-0026b9348838",
-                      "a897d1a4-1350-11df-a1f1-0026b9348838",
-                      "a8a382ba-1350-11df-a1f1-0026b9348838"
-                    ]
-                  },
-                  "id": "__EpKtsGqIx"
-                },
-                {
-                  "label": "mg:",
-                  "questionOptions": {
-                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-                    "max": "2000",
-                    "min": "0",
-                    "rendering": "number"
-                  },
-                  "type": "obs",
-                  "hide": {
-                    "field": "q26f",
-                    "value": [
-                      "a899e19c-1350-11df-a1f1-0026b9348838",
-                      "a8ac5f2a-1350-11df-a1f1-0026b9348838",
-                      "a8952e4a-1350-11df-a1f1-0026b9348838"
-                    ]
-                  },
-                  "id": "__DGLJxqzpy"
-                },
-                {
-                  "label": "mg/day:",
-                  "questionOptions": {
-                    "concept": "a8a0744e-1350-11df-a1f1-0026b9348838",
-                    "max": "2000",
-                    "min": "0",
-                    "rendering": "number"
-                  },
-                  "type": "obs",
-                  "hide": {
-                    "field": "q26f",
-                    "value": [
-                      "a896cc00-1350-11df-a1f1-0026b9348838",
-                      "a8971c64-1350-11df-a1f1-0026b9348838"
-                    ]
-                  },
-                  "id": "__DKHJspsLu"
-                },
-                {
-                  "label": "tabs:",
-                  "questionOptions": {
-                    "concept": "a8a0630a-1350-11df-a1f1-0026b9348838",
-                    "max": "180",
-                    "min": "0",
-                    "rendering": "number"
-                  },
-                  "type": "obs",
-                  "hide": {
-                    "field": "q26f",
-                    "value": [
-                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
-                    ]
-                  },
-                  "id": "__yqHnx8oJx"
                 }
+                
               ],
-              "id": "__yzEyrKznM"
+              "id": "tbStartedSet"
             }
           ]
         },
@@ -7807,6 +7755,7 @@
               "label": "Fluconazole prophylaxis plan:",
               "required": "true",
               "id": "flucoProphyPlan",
+              "questionInfo": "For a negative Blood CrAg result, the guideline recommends primary fluconazole prophylaxis for 12 weeks: adults 100 mg once daily.",
               "questionOptions": {
                 "concept": "88cd24fe-b031-4aad-9d87-1b39ef243b18",
                 "answers": [
@@ -7841,12 +7790,105 @@
                   "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
                 }
-              ]
+                
+              ],
+              "alert": {
+                "alertWhenExpression": "cragTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg is negative. Start fluconazole prophylaxis."
+              }
+            },
+            {
+              "label": "Cryptococcal pre-emptive therapy plan:",
+              "id": "cryptoPreemptiveTherapyPlan",
+              "type": "obs",
+              "questionInfo": "For Blood CrAg positive and CSF CrAg negative: start fluconazole 800 mg daily for 2 weeks, then 400 mg daily for 8 weeks, then 200 mg daily for at least 1 year, following the guideline's age/weight adjustments.",
+              "questionOptions": {
+                "concept": "ea30cd3d-88b1-4b8a-8171-ed18a2878ed9",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue current"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start induction"
+                  },
+                  {
+                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                    "label": "Change to consolidation"
+                  },
+                  {
+                    "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
+                    "label": "Change to maintanance"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptPreemptive) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(cryptPreemptive==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "message": "Patient marked as not on pre-emptive therapy. Therefore plan can only be none or start."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptPreemptive) && cryptPreemptive === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "message": "Patient marked as on pre-emptive therapy in history section. Therefore plan can only be continue regimen and stop."
+                }
+                
+              ],
+              "alert": {
+                "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg is positive and CSF CrAg is negative. Select Start for cryptococcal pre-emptive therapy."
+              }
+              
+            },
+            {
+              "label": "If Start/Change, regimen:",
+              "id": "preemptiveMedication",
+              "questionOptions": {
+                "concept": "0d18fa68-6038-43d5-a5ce-f4ebeeab076b",
+                "answers": [
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptoPreemptiveTherapyPlan) && isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPreemptiveTherapyPlan)",
+                  "message": "You indicated patient is starting/changing regimen. Please select regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPreemptiveTherapyPlan)"
+              }
             },
             {
               "label": "Cryptococcal meningitis treatment plan:",
               "type": "obs",
               "required": "true",
+              "questionInfo": "For positive Blood CrAg and positive CSF CrAg, start cryptococcal meningitis treatment and manage treatment toxicity and raised intracranial pressure according to the guideline.",
               "questionOptions": {
                 "concept": "a89c2790-1350-11df-a1f1-0026b9348838",
                 "answers": [
@@ -7881,21 +7923,28 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(cryptCurrent==='a899e0ac-1350-11df-a1f1-0026b9348838')",
-                  "message": "Patient marked as not on Cryptococcus Treatment. Therefore plan can only be none or start."
+                  "message": "Patient marked as not on Cryptococcus treatment. Therefore plan can only be none or start."
                 },
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
                 }
+                
               ],
               "id": "cryptoPlan",
               "hide": {
                 "hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
+              },
+              "alert": {
+                "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg and CSF CrAg are positive. Start induction for cryptococcal meningitis treatment."
               }
+
+
             },
             {
-              "label": "If Start/Change, regimen:",
+              "label": "If start/change, regimen:",
               "id": "MeningitisMedication",
               "questionOptions": {
                 "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
@@ -7903,10 +7952,6 @@
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg"
-                  },
-                  {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg"
                   },
                   {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
@@ -7941,35 +7986,6 @@
               ],
               "hide": {
                 "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)"
-              }
-            },
-            {
-              "label": "Reason for stopping:",
-              "id": "stopCryptoReason",
-              "questionOptions": {
-                "concept": "a663409c-602b-466a-922b-326a5557ca81",
-                "answers": [
-                  {
-                    "concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
-                    "label": "Completed"
-                  },
-                  {
-                    "concept": "a890d1ba-1350-11df-a1f1-0026b9348838",
-                    "label": "Toxicity"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(cryptoPlan) && isEmpty(myValue) && arrayContains(['a89b7d36-1350-11df-a1f1-0026b9348838'], cryptoPlan)",
-                  "message": "You indicated patient is stopping crypto, reason for stopping."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "!arrayContains(['a89b7d36-1350-11df-a1f1-0026b9348838'], cryptoPlan)"
               }
             },
             {
@@ -9998,7 +10014,8 @@
                       }
                     ]
                   },
-                  "validators": []
+                  "validators": [
+                  ]
                 },
                 {
                   "label": "Test ordered: Other (specify):",
@@ -10951,16 +10968,7 @@
               "questionOptions": {
                 "concept": "318a5e8b-218c-4f66-9106-cd581dec1f95",
                 "rendering": "date",
-                "weeksList": [
-                  15,
-                  30,
-                  45,
-                  60,
-                  90,
-                  120,
-                  150,
-                  180
-                ]
+                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
               },
               "validators": [
                 {
@@ -10999,16 +11007,7 @@
               "questionOptions": {
                 "concept": "318a5e8b-218c-4f66-9106-cd581dec1f95",
                 "rendering": "date",
-                "weeksList": [
-                  15,
-                  30,
-                  45,
-                  60,
-                  90,
-                  120,
-                  150,
-                  180
-                ]
+                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
               },
               "validators": [
                 {
@@ -11044,19 +11043,7 @@
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
                 "rendering": "date",
                 "weeksList": [
-                  15,
-                  30,
-                  45,
-                  60,
-                  90,
-                  120,
-                  150,
-                  180,
-                  210,
-                  240,
-                  270,
-                  300,
-                  330,
+                  15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330,
                   360
                 ]
               },
