@@ -1,0 +1,2415 @@
+{
+  "name": "POC Newborn Unit Admission Form v1.0",
+  "processor": "EncounterFormProcessor",
+  "referencedForms": [],
+  "encounter": "New born admission",
+  "description": "A form for collecting newborn admission details",
+  "version": "1.0",
+  "published": true,
+  "retired": false,
+  "encounterType": "",
+  "uuid": "",
+  "pages": [
+    {
+      "label": "Newborn unit admission Form",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "id": "encDate"
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider "
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Baby's details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date of Admission",
+              "type": "obs",
+              "required": true,
+              "id": "dateOfAdmission",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a8a01652-1350-11df-a1f1-0026b9348838"
+                
+                
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Time of birth",
+              "type": "obs",
+              "required": true,
+              "id": "timeOfBirth",
+              "datePickerFormat": "timer",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "52ff51ce-3a95-4e32-b389-966c2a6b2a77"
+                
+              },
+              "validators": []
+            },
+            {
+              "label": "Gestation age",
+              "type": "obs",
+              "required": true,
+              "id": "gestationAge",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa"
+                
+                
+              },
+              "validators": []
+            },
+            {
+              "label": "Birth weight",
+              "type": "obs",
+              "required": true,
+              "id": "birthWeight",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a8ace206-1350-11df-a1f1-0026b9348838"
+                
+              },
+              "validators": []
+            },
+            {
+              "label": "Apgar Score (1 min):",
+              "type": "obs",
+              "id": "babyApgarScore1Min",
+              "required": "true",
+              "questionOptions": {
+                "concept": "4b98ce38-77d9-488b-8b59-251811e244a4",
+                "rendering": "number",
+                "min": "0",
+                "max": "10"
+              }
+            },
+            {
+              "label": "Apgar Score (5 min):",
+              "type": "obs",
+              "id": "babyAScore5Min",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a752b53e-bb83-4c76-9237-d2d85919101c",
+                "rendering": "number",
+                "min": "0",
+                "max": "10"
+              }
+            },
+            {
+              "label": "Apgar Score (10 min):",
+              "type": "obs",
+              "id": "babyApgarScore10Min",
+              "required": "true",
+              "questionOptions": {
+                "concept": "3349c58b-8938-4162-ae6c-e64b67f392c4",
+                "rendering": "number",
+                "min": "0",
+                "max": "10"
+              }
+            },
+            {
+              "label": "Place of delivery",
+              "type": "obs",
+              "required": true,
+              "id": "placeOfDelivery",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8a492d6-1350-11df-a1f1-0026b9348838",
+                
+                "answers": [
+                  {
+                    "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+                    "label": "Home"
+                  },
+                  {
+                    "concept": "d2224b03-669f-4f76-8ef8-0bae58101cb9",
+                    "label": "Facility"
+                  },
+                  {
+                    "concept": "fb7feb08-a769-4f08-a2f5-09e937f4582a",
+                    "label": "Born before arrival"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Mode of Delivery",
+              "type": "obs",
+              "required": true,
+              "id": "modeOfDelivery",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
+                
+                "answers": [
+                  {
+                    "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
+                    "label": "Spontaneous vaginal delivery"
+                  },
+                  {
+                    "concept": "a8a351aa-1350-11df-a1f1-0026b9348838",
+                    "label": "vacuum extractor delivery"
+                  },
+                  {
+                    "concept": "a8a350ec-1350-11df-a1f1-0026b9348838",
+                    "label": "Forceps delivery"
+                  },
+                  {
+                    "concept": "a89ad11a-1350-11df-a1f1-0026b9348838",
+                    "label": "Breech delivery"
+                  },
+                  {
+                    "concept": "a8b022e0-1350-11df-a1f1-0026b9348838",
+                    "label": "Elective Cesarean section"
+                  },
+                  {
+                    "concept": "55ae3023-9cff-4335-9e3c-7c82f2744929",
+                    "label": "Emergency Cesarean section"
+                  }
+                ]
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Mothers details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Mother's Name",
+              "type": "obs",
+              "required": true,
+              "id": "mothersName",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea"
+               
+                
+              },
+              "validators": []
+            },
+            {
+              "label": "Age",
+              "type": "obs",
+              "required": true,
+              "id": "age",
+              "questionOptions": {
+                "rendering": "number",
+                "min": "0",
+                "max": "60",
+                "concept": "a898d478-1350-11df-a1f1-0026b9348838"
+               
+              },
+              "validators": []
+            },
+            {
+              "label": "Residence Sub-location",
+              "type": "obs",
+              "required": true,
+              "id": "residenceSublocation",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00"
+                
+              },
+              "validators": []
+            },
+            {
+              "label": "Parity Term",
+              "type": "obs",
+              "id": "parityTerm",
+              "required": "true",
+              "questionOptions": {
+                "concept": "7a24a298-ba16-478a-a389-f1faf792e4fc",
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
+              }
+            },
+            {
+              "label": "Parity Abortion",
+              "type": "obs",
+              "id": "parityAbortion",
+              "required": "true",
+              "questionOptions": {
+                "concept": "cedb167d-34a4-4027-8a5c-b7fa9fe4190e",
+                "rendering": "number",
+                "min": "0",
+                "max": "50"
+              }
+            },
+            {
+              "label": "Gravida:",
+              "type": "obs",
+              "id": "graVida",
+              "questionOptions": {
+                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "calcGravida(parityTerm,parityAbortion)"
+                }
+              }
+            },
+            {
+              "label": "HIV Status",
+              "type": "obs",
+              "required": true,
+              "id": "hivStatus",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8afb80a-1350-11df-a1f1-0026b9348838",
+                
+                "answers": [
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "If HIV positive(ON ARVs)",
+              "type": "obs",
+              "required": true,
+              "id": "hivPositiveArvs",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
+                
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(hivStatus) || hivStatus !== ('a896f3a6-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Blood group",
+              "type": "obs",
+              "required": false,
+              "id": "bloodGroup",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8945754-1350-11df-a1f1-0026b9348838",
+                
+                "answers": [
+                  {
+                    "concept": "a896ea6e-1350-11df-a1f1-0026b9348838",
+                    "label": "A NEGATIVE"
+                  },
+                  {
+                    "concept": "a896e8c0-1350-11df-a1f1-0026b9348838",
+                    "label": "A POSITIVE"
+                  },
+                  {
+                    "concept": "a89b48de-1350-11df-a1f1-0026b9348838",
+                    "label": "AB NEGATIVE"
+                  },
+                  {
+                    "concept": "a89b47a8-1350-11df-a1f1-0026b9348838",
+                    "label": "AB POSITIVE"
+                  },
+                  {
+                    "concept": "a896edca-1350-11df-a1f1-0026b9348838",
+                    "label": "B NEGATIVE"
+                  },
+                  {
+                    "concept": "a896ec1c-1350-11df-a1f1-0026b9348838",
+                    "label": "B POSITIVE"
+                  },
+                  {
+                    "concept": "a896f1f8-1350-11df-a1f1-0026b9348838",
+                    "label": "O NEGATIVE"
+                  },
+                  {
+                    "concept": "a896f04a-1350-11df-a1f1-0026b9348838",
+                    "label": "O POSITIVE"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Diabetes",
+              "type": "obs",
+              "required": true,
+              "id": "diabetes",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a893436e-1350-11df-a1f1-0026b9348838",
+                
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Fever",
+              "type": "obs",
+              "required": true,
+              "id": "fever",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "On TB Treatment",
+              "type": "obs",
+              "required": true,
+              "id": "onTbTreatment",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3c0268e2-7ee6-4ae3-8f38-b1748f0bbd1b",
+               
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Delivery information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Labour 1st stage in hours",
+              "type": "obs",
+              "required": false,
+              "id": "labour1stStageInHours",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "e612e85d-9e9a-4cea-ab6d-f7e14e259648"
+                
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(modeOfDelivery) || modeOfDelivery === 'a8b022e0-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Labour 2nd stage in minutes",
+              "type": "obs",
+              "required": false,
+              "id": "labour2ndStageInMinutes",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d0318d59-54e7-4e01-9d45-5894b424c204"
+               
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(modeOfDelivery) || modeOfDelivery === 'a8b022e0-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Resuscitation",
+              "type": "obs",
+              "required": false,
+              "id": "resuscitation",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0dea6e5e-7f7b-4805-afd6-f33f78186e9c",
+               
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "297770C2-CECB-4F2E-873B-B7701EC661DF",
+                    "label": "Oxygen"
+                  },
+                  {
+                    "concept": "a039a951-3b3e-457d-ba95-1c5c7a5129a8",
+                    "label": "Bag/Mask"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Rapture of Membrane(ROM)",
+              "type": "obs",
+              "required": true,
+              "id": "raptureOfMembrane",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "163445AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+               
+                "answers": [
+                  {
+                    "concept": "162251AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "<12hrs"
+                  },
+                  {
+                    "concept": "164449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "12-18hrs"
+                  },
+                  {
+                    "concept": "163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": ">18hrs"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Given Vitamin K",
+              "type": "obs",
+              "required": true,
+              "id": "givenVitamink",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bb4d5cd5-0380-4252-8f3a-378e1acb416d",
+                
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Given eye prophylaxis",
+              "type": "obs",
+              "required": true,
+              "id": "givenEyeProphylaxis",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c58a7f0b-1397-4533-abc1-d9a53de95805",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Babies presenting problems",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Fever?",
+              "type": "obs",
+              "required": true,
+              "id": "babyFever",
+              "questionOptions": {
+                "rendering": "radio",
+                "min": "0",
+                "max": "20",
+                "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+               
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Duration of fever?",
+              "type": "obs",
+              "required": true,
+              "id": "durationOfFever",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a8a0c408-1350-11df-a1f1-0026b9348838",
+               
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(babyFever) || babyFever !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Difficulty breathing?",
+              "type": "obs",
+              "required": true,
+              "id": "difficultyBreathing",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
+               
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Diarrhoea?",
+              "type": "obs",
+              "required": true,
+              "id": "diarrhoea",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Diarrhea duration",
+              "type": "obs",
+              "required": true,
+              "id": "diarrheaDuration",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "20",
+                "min": "0",
+                "concept": "a8ad270c-1350-11df-a1f1-0026b9348838" 
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(diarrhoea) || diarrhoea !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Bloody diarrhoea?",
+              "type": "obs",
+              "required": true,
+              "id": "bloodyDiarrhoea",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bb1637fd-dd30-4938-a7a7-30dcef155f38",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(diarrhoea) || diarrhoea !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Vomits everything?",
+              "type": "obs",
+              "required": true,
+              "id": "vomitsEverything",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+               
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Difficulty feeding?",
+              "type": "obs",
+              "required": true,
+              "id": "difficultyFeeding",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "23bc3a90-d698-4af5-a1d1-77f584a44cd9",
+              
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Convulsions?",
+              "type": "obs",
+              "required": true,
+              "id": "convulsions",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
+               
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Type of convulsions",
+              "type": "obs",
+              "required": true,
+              "id": "typeOfConvulsions",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "161249AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "91175000"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "161249"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "25F858BD-A295-4AD0-9700-E7A9599B09FD",
+                    "label": "Absence Seizure"
+                  },
+                  {
+                    "concept": "150524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Absence Seizure with Atonic Components"
+                  },
+                  {
+                    "concept": "161226AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Absence seizure with automatisms"
+                  },
+                  {
+                    "concept": "161227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Absence seizure with autonomic components"
+                  },
+                  {
+                    "concept": "161225AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Absence seizure with impairment of consciousness only"
+                  },
+                  {
+                    "concept": "161224AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Absence seizure with mild clonic components"
+                  },
+                  {
+                    "concept": "161223AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Absence seizure with tonic components"
+                  },
+                  {
+                    "concept": "161036AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Affective seizure"
+                  },
+                  {
+                    "concept": "E076F16E-C624-446B-B79D-A0F0E8AF6217",
+                    "label": "Atonic Seizure"
+                  },
+                  {
+                    "concept": "161229AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Atypical absence seizure with abrupt onset and end"
+                  },
+                  {
+                    "concept": "161228AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Atypical absence seizure with change in muscular tone"
+                  },
+                  {
+                    "concept": "121315AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Atypical Absence Seizures"
+                  },
+                  {
+                    "concept": "148124AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Auditory Seizure"
+                  },
+                  {
+                    "concept": "20D47647-FDD5-4649-9170-BAB6346AD42F",
+                    "label": "Automatism"
+                  },
+                  {
+                    "concept": "145044AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Clonic Seizure"
+                  },
+                  {
+                    "concept": "160937AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Cognitive seizure"
+                  },
+                  {
+                    "concept": "161038AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Complex automatism"
+                  },
+                  {
+                    "concept": "110664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Complex febrile convulsions"
+                  },
+                  {
+                    "concept": "144471AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Complex Partial Seizure Evolving to Generalised Seizure"
+                  },
+                  {
+                    "concept": "120252AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Complex Partial Seizures with Consciousness Impaired"
+                  },
+                  {
+                    "concept": "161034AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Dysmnesic seizure"
+                  },
+                  {
+                    "concept": "161035AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Dysphasic seizure"
+                  },
+                  {
+                    "concept": "141120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Epileptic Vertigo"
+                  },
+                  {
+                    "concept": "118129AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Focal Motor Seizure"
+                  },
+                  {
+                    "concept": "110050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Generalized Seizure"
+                  },
+                  {
+                    "concept": "5d496e0c-d876-4cf7-94d4-de9ebca54d81",
+                    "label": "Gustatory Seizure"
+                  },
+                  {
+                    "concept": "342abb18-3273-4767-92cf-e67a0ca13774",
+                    "label": "Myoclonic Seizures"
+                  },
+                  {
+                    "concept": "132426AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Olfactory Seizure"
+                  },
+                  {
+                    "concept": "160930AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Phonatory seizure"
+                  },
+                  {
+                    "concept": "160935AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Postural seizure"
+                  },
+                  {
+                    "concept": "160936AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Seizure with structured hallucinations"
+                  },
+                  {
+                    "concept": "161037AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Simple automatism"
+                  },
+                  {
+                    "concept": "158818AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "simple febrile seizure"
+                  },
+                  {
+                    "concept": "126475AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Simple Partial Onset Seizure Followed by Impairm Consciousn"
+                  },
+                  {
+                    "concept": "126489AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Simple Partial Seizure Evolving to Complex Partial Seizure Evolving to Generalised Seizure"
+                  },
+                  {
+                    "concept": "126472AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Simple partial seizure with disturbance of higher cerebral function"
+                  },
+                  {
+                    "concept": "126471AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Simple Partial Seizure with Focal Motor Signs with March"
+                  },
+                  {
+                    "concept": "161222AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Simple partial seizure with focal motor signs without march"
+                  },
+                  {
+                    "concept": "126468AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Simple Partial Seizure with Special Sensory Symptoms"
+                  },
+                  {
+                    "concept": "126467AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Simple Partial Seizure, Consciousness Not Impaired"
+                  },
+                  {
+                    "concept": "112868AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Somatosensory Seizure"
+                  },
+                  {
+                    "concept": "112356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Tonic Seizures"
+                  },
+                  {
+                    "concept": "110200AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Tonic-Clonic Seizures"
+                  },
+                  {
+                    "concept": "123061AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Visual Seizure"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(convulsions) || convulsions !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Number of convulsions",
+              "type": "obs",
+              "required": true,
+              "id": "numberOfConvulsions",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "100",
+                "min": "0",
+                "concept": "165416AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(convulsions) || convulsions !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "How long does it last?",
+              "type": "obs",
+              "required": true,
+              "id": "howLongDoesItLast",
+              "questionOptions": {
+                "rendering": "number",
+                "max": "100",
+                "min": "0",
+                "concept": "2a77f918-3170-4982-978b-71869fcb95bf",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1733"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "258701004"
+                  }
+                ],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(convulsions) || convulsions !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Apnoea?",
+              "type": "obs",
+              "required": true,
+              "id": "apnoea",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3191b754-3e26-4497-858a-5218ee33d1ae",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "164441"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "386813002"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Cry?",
+              "type": "obs",
+              "required": true,
+              "id": "cry",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "159860AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "2298"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "159860"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "70955acb-eb66-4b14-ad20-dad1c0aefccb",
+                    "label": "Hoarse"
+                  },
+                  {
+                    "concept": "a8ad3a26-1350-11df-a1f1-0026b9348838",
+                    "label": "Weak"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Inability to suck /breastfeed?",
+              "type": "obs",
+              "required": true,
+              "id": "inabilityToBreastfeed",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "23bc3a90-d698-4af5-a1d1-77f584a44cd9",
+               
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Stiff neck?",
+              "type": "obs",
+              "required": true,
+              "id": "stiffNeck",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8a6b476-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "300962"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "134385"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "49487"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "437986008"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "70784009"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICD-10-WHO",
+                    "value": "R29.1"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Bulging fontanelle?",
+              "type": "obs",
+              "required": true,
+              "id": "bulgingFontanelle",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3e718b43-d616-49eb-820e-9f7ec0dd273b",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1836"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "103019006"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Irritable?",
+              "type": "obs",
+              "required": true,
+              "id": "irritable",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8ad49a8-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "6023"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "55929007"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "47333"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5263"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "6023"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Reduced movement/tone?",
+              "type": "obs",
+              "required": true,
+              "id": "reducedMovement",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "167092AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "CIEL",
+                    "value": "167092"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED CT",
+                    "value": "363791007"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "PIH",
+                    "value": "14126"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "General Examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Gestational size",
+              "type": "obs",
+              "required": true,
+              "id": "gestationalSize",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "52e8a934-d57c-4ef0-9fb7-7c15d816b723",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "258700003"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH Malawi",
+                    "value": "2286"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1732"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "113841AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Premature"
+                  },
+                  {
+                    "concept": "164125AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Small for Gastaional Age(SGA)/Wasted"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Skin findings",
+              "type": "obs",
+              "required": false,
+              "id": "skin",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "a899ec00-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "2e6f40bc-1124-44bd-a7b8-815fdd246fd6",
+                    "label": "Bruising"
+                  },
+                  {
+                    "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                    "label": "Rash"
+                  },
+                  {
+                    "concept": "128047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Pustules"
+                  },
+                  {
+                    "concept": "143050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Cyanosis"
+                  },
+                  {
+                    "concept": "118536AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Erythema"
+                  },
+                  {
+                    "concept": "136443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Jaundice"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Skin cold",
+              "type": "obs",
+              "required": false,
+              "id": "skinCold",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "1866AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "71200009"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1866"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "164385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Hand"
+                  },
+                  {
+                    "concept": "166231AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Elbow"
+                  },
+                  {
+                    "concept": "166306AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Shoulder"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Jaundice",
+              "type": "obs",
+              "required": false,
+              "id": "jaundice",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "115368AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "1362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "+"
+                  },
+                  {
+                    "concept": "1363AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "++"
+                  },
+                  {
+                    "concept": "1364AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "+++"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Pallor/Anaemia",
+              "type": "obs",
+              "required": false,
+              "id": "pallor",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "5245AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "1362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "+"
+                  },
+                  {
+                    "concept": "1363AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "++"
+                  },
+                  {
+                    "concept": "1364AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "+++"
+                  }
+                ]
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Respiratory findings",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Air entry bilateral",
+              "type": "obs",
+              "required": true,
+              "id": "airEntryBilateral",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "272016000"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "6336"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "3238"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "1123"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1123"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Stridor",
+              "type": "obs",
+              "required": true,
+              "id": "stridor",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "125782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "3BT",
+                    "value": "10094005"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "70407001"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "27435"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICD-10-WHO",
+                    "value": "R06.1"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICPC2",
+                    "value": "R04"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "125782"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Oxygen Saturation",
+              "type": "obs",
+              "required": false,
+              "id": "oxygenSaturation",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5092AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "5092"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProcedureIT",
+                    "value": "3771"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "431314004"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5092"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "LOINC",
+                    "value": "2710-2"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProcedureIT",
+                    "value": "26745610"
+                  }
+                ],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Central cyanosis",
+              "type": "obs",
+              "required": false,
+              "id": "centralCyanosis",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "157902AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "710055"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "ICD-10-WHO",
+                    "value": "P28.2"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "157902"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "95617006"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Chest indrawing",
+              "type": "obs",
+              "required": false,
+              "id": "chestIndrawing",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "136768AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "6442005"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "136768"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "736042"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "ICD-10-WHO",
+                    "value": "R06.8"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "1498AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Mild"
+                  },
+                  {
+                    "concept": "1500AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Severe"
+                  },
+                  {
+                    "concept": "166302AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Sternum"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Grunting",
+              "type": "obs",
+              "required": true,
+              "id": "grunting",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "113316AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "113316"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "301285005"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "128254003"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "53972003"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "567617"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "ICD-10-WHO",
+                    "value": "R06.8"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "703482"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Crackles",
+              "type": "obs",
+              "required": true,
+              "id": "crackles",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1284AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "439401001"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "1284"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "org.openmrs.module.emrapi",
+                    "value": "Coded Diagnosis"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED MVP",
+                    "value": "12841000105004"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1284"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Nasal flaring",
+              "type": "obs",
+              "required": true,
+              "id": "nasalFlaring",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1861AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "21558008"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1861"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Cardiovascular Findings",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Heart Murmur",
+              "type": "obs",
+              "required": true,
+              "id": "heartMurmur",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "139071AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "6237"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "ICD-10-WHO",
+                    "value": "I51.9"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "3305"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "56265001"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "139071"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "45639"
+                  }
+                ],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Femoral pulse",
+              "type": "obs",
+              "required": true,
+              "id": "femoralPulse",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c732910a-45f3-4989-8fdc-b8960aad9eac",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "163748AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Present"
+                  },
+                  {
+                    "concept": "150518AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Absent"
+                  },
+                  {
+                    "concept": "124823AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Weak"
+                  },
+                  {
+                    "concept": "147044AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Bounding"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Capillary Refill time",
+              "type": "obs",
+              "required": false,
+              "id": "capillaryRefillTime",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "165890AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "165891AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "<3 seconds"
+                  },
+                  {
+                    "concept": "162512AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": ">3 secends"
+                  }
+                ]
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Abnormalities",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Skull",
+              "type": "obs",
+              "required": false,
+              "id": "skull",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a894c266-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "93F16A33-9CA9-4BA2-99D0-5C5252A21A7D",
+                    "label": "Microcephaly"
+                  },
+                  {
+                    "concept": "1F031D97-A83D-4CE0-9D35-9E4DAB9232C5",
+                    "label": "Macrocephaly"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Caput succedaneum"
+                  },
+                  {
+                    "concept": "D97C6368-7AE7-4678-930C-5ACBDE930F44",
+                    "label": "Cephalhaematoma"
+                  },
+                  {
+                    "concept": "FD5F6643-FE16-4641-B725-A6D1735AA19F",
+                    "label": "Subgaleal haemorrhage"
+                  },
+                 
+                  {
+                    "concept": "AFA26BB1-2CAD-40B7-8A97-FDC2F9DB2FBF",
+                    "label": "Craniosynotosis"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Palate/face",
+              "type": "obs",
+              "required": false,
+              "id": "palate",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "1db594cd-a4fc-40d1-8d28-a7750801e032",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "568a495d-4c0e-40f9-9260-3fdb0e4c0379",
+                    "label": "Cleft lip"
+                  },
+                  {
+                    "concept": "568a495d-4c0e-40f9-9260-3fdb0e4c0379",
+                    "label": "Cleft palate"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Bilateral choanal atresia"
+                  },
+                  {
+                    "concept": "E6659062-5521-4331-B60C-0730192908BE",
+                    "label": "Coloboma"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Dysmorphic",
+              "type": "obs",
+              "required": false,
+              "id": "dysmorphic",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Flattened nasal bridge"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Epicanthic folds"
+                  },
+                  {
+                    "concept": "CC043F22-5503-4496-B820-232B51D2351A",
+                    "label": "Micrognathia"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Genitals/anus",
+              "type": "obs",
+              "required": false,
+              "id": "genitalAnus",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "3fa2a7ec-5eeb-47b7-8d8c-0e6e526ddf81",
+                    "label": "Ambiguous genitalia"
+                  },
+                  {
+                    "concept": "FFFD78F0-5727-436F-A80F-7621C7B0AEBE",
+                    "label": "Clitoromegaly"
+                  },
+                  {
+                    "concept": "a8ad3576-1350-11df-a1f1-0026b9348838",
+                    "label": "Scrotal swelling"
+                  },
+                  {
+                    "concept": "4092BC44-BAB5-473E-B124-4C9DB43FA5A7",
+                    "label": "Hypospadias"
+                  },
+                  {
+                    "concept": "AC4AF56F-4EDD-4AFB-85BF-8BC15B60D085",
+                    "label": "undescended testes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Imperforated anus"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Limbs",
+              "type": "obs",
+              "required": false,
+              "id": "limbs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a899f1e6-1350-11df-a1f1-0026b9348838",
+               
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Absent radii"
+                  },
+                  {
+                    "concept": "A6C9D707-330F-4C65-8C2D-B45DCE48DABB",
+                    "label": "Contractures"
+                  },
+                  {
+                    "concept": "05AB9E29-FC6D-414A-A9C5-312DB4B537E9",
+                    "label": "Polydactyl"
+                  },
+                  {
+                    "concept": "BC77C29C-AF20-499E-8EB0-78FE3CADA1FB",
+                    "label": "Syndactyl"
+                  },
+                  {
+                    "concept": "803F4CB1-9172-43E7-A42F-9860169DEEF3",
+                    "label": "Talpes equinovarus"
+                  },
+                  {
+                    "concept": "fcd59aeb-de7c-48c8-861a-8cd2a773b1ea",
+                    "label": "Single palmar crease"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Spine",
+              "type": "obs",
+              "required": false,
+              "id": "spine",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a894c5a4-1350-11df-a1f1-0026b9348838",
+            
+                "answers": [
+                  {
+                    "concept": "CDB327B9-B31A-4252-B8C7-0F80C6424E39",
+                    "label": "Scoliosis"
+                  },
+                  {
+                    "concept": "02359B56-CD93-4FC7-A4C9-F3AD41C26E9A",
+                    "label": "Spina bifida"
+                  },
+                  {
+                    "concept": "98FBB7D4-43A0-43DE-A30B-6D6F71AC006C",
+                    "label": "Encephalocele"
+                  },
+                  {
+                    "concept": "",
+                    "label": "midline naevus lipoma"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Deep sacral pit"
+                  }
+                ]
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Supportive Care",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Nutrition/Feeds",
+              "type": "obs",
+              "required": false,
+              "id": "nutritionFeeds",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89abee6-1350-11df-a1f1-0026b9348838",
+              
+                "answers": [
+                  {
+                    "concept": "a8a8d9b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Breast Milk"
+                  },
+                  {
+                    "concept": "a89abfc2-1350-11df-a1f1-0026b9348838",
+                    "label": "Formula"
+                  },
+                  {
+                    "concept": "a8ae86e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Mixed feeding"
+                  },
+                  {
+                    "concept": "60823ec8-c6d8-4bbf-b94c-c273edf8b8b8",
+                    "label": "Total Parenteral Nutrition"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Feeding Schedule",
+              "type": "obs",
+              "required": false,
+              "id": "feedingSchedule",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a898d16c-1350-11df-a1f1-0026b9348838",
+               
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Every 2 hours"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Every 3 hours"
+                  },
+                  {
+                    "concept": "",
+                    "label": "On Demand"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "IV. Fluids Administered",
+              "type": "obs",
+              "required": false,
+              "id": "fluidsAdministered",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0917834d-9fea-4ff7-b1b4-2b306ab1e7a3",
+               
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "88BA3D13-9D97-4A4A-B928-B719B1FF739C",
+                    "label": "Dextran"
+                  },
+                  {
+                    "concept": "6c5a33b1-31f8-48b3-8b19-39617ded6114",
+                    "label": "Dextrose 5% in normal saline"
+                  },
+                  {
+                    "concept": "35c234d0-9abc-43f6-8236-ff54dfa9d015",
+                    "label": "Dextrose 5% in water"
+                  },
+                  {
+                    "concept": "329246a2-977d-4f73-86eb-201253b1a282",
+                    "label": "Dextrose 10% in water"
+                  },
+                  {
+                    "concept": "1f9ce610-0d70-4ff1-8b85-c2a12af307b7",
+                    "label": "Glucose 50 MG/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Monopotassium phosphate 0.259% / sodium phosphate 2.9% injection solution"
+                  },
+                  {
+                    "concept": "de26899a-3960-4bc2-b5ae-79520a920db2",
+                    "label": "Normal saline"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Potassium chloride 20 mmol/L in normal saline"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Potassium chloride 40 mmol/sodium chloride 0.9% infusion solution"
+                  },
+                  {
+                    "concept": "536a4e9e-6aa8-4973-9165-b4634cc95db5",
+                    "label": "Ringer's lactate"
+                  },
+                  {
+                    "concept": "509d6f3f-f250-4942-99fc-468d3afc528b",
+                    "label": "Sodium bicarbonate 1.26% injection solution"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Incubator/Keep Warm",
+              "type": "obs",
+              "required": false,
+              "id": "incubatorKeepWarm",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Oxygen Therapy",
+              "type": "obs",
+              "required": false,
+              "id": "oxygenTherapy",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ec569e7b-1ad2-4c72-a7b5-d1b8064ce328",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Blood Transfusion",
+              "type": "obs",
+              "required": true,
+              "id": "bloodTransfusion",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "31de78a6-f7d7-4fc0-a05a-e57e34d79bf0",
+                
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Phototherapy ",
+              "type": "obs",
+              "required": false,
+              "id": "phototherapy",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "",
+                
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Clinician name:",
+              "type": "obs",
+              "required": true,
+              "id": "clinicianName",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
+                
+              },
+              "validators": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
+}

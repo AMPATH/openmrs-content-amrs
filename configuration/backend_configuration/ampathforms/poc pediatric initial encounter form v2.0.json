@@ -3221,7 +3221,7 @@
                     "label": "Isoniazid 300mg (6H)"
                   },
                   {
-                    "concept": "",
+                    "concept": "d2e0cc61-d0c5-4766-933e-c05bed7a888a",
                     "label": "Rifapentine 150mg"
                   },
                   {
@@ -3352,11 +3352,11 @@
                   },
                   {
                     "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg"
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
                   },
                   {
                     "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
-                    "label": "Fluconazole 12mg/kg"
+                    "label": "Fluconazole 12mg/kg (Induction)"
                   }
                 ],
                 "rendering": "select"
@@ -3379,24 +3379,21 @@
                   },
                   {
                     "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg"
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
                   },
                   {
                     "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
-                    "label": "Fluconazole 12mg/kg"
+                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
                   },
                   {
                     "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
-                    "label": "Flucytosine 100mg/kg"
+                    "label": "Flucytosine 100mg/kg (Induction)"
                   },
                   {
                     "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
-                    "label": "Liposomal amphotericin B 10mg/kg"
-                  },
-                  {
-                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
-                    "label": "Amphotericin B deoxycholate 1mg/kg"
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
                   }
+                  
                 ],
                 "rendering": "multiCheckbox"
               },
@@ -6477,7 +6474,6 @@
                 "alertWhenExpression": "!isEmpty(myValue) && arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a896f3a6-1350-11df-a1f1-0026b9348838'], myValue)",
                 "message": "Blood CrAg negative: provide fluconazole prophylaxis. Blood CrAg positive: order CSF CrAg."
               }
-              
             },
             {
               "label": "CSF CrAg:",
@@ -8274,7 +8270,7 @@
                   },
                   {
                     "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
-                    "label": "Change to maintanance"
+                    "label": "Change to maintenance"
                   },
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
@@ -8304,11 +8300,11 @@
                 "answers": [
                   {
                     "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg"
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
                   },
                   {
                     "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
-                    "label": "Fluconazole 12mg/kg"
+                    "label": "Fluconazole 12mg/kg (Induction)"
                   }
                 ],
                 "rendering": "select"
@@ -8350,7 +8346,7 @@
                   },
                   {
                     "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
-                    "label": "Change to maintanance"
+                    "label": "Change to maintenance"
                   },
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
@@ -8371,7 +8367,11 @@
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
                 }
               ],
-              "id": "cryptoPlan"
+              "id": "cryptoPlan",
+              "alert": {
+                "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg and CSF CrAg are positive. Start induction for cryptococcal meningitis treatment."
+              }
             },
             {
               "label": "If start/change, regimen:",
@@ -8381,24 +8381,21 @@
                 "answers": [
                   {
                     "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg"
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
                   },
                   {
                     "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
-                    "label": "Fluconazole 12mg/kg"
+                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
                   },
                   {
                     "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
-                    "label": "Flucytosine 100mg/kg"
+                    "label": "Flucytosine 100mg/kg (Induction)"
                   },
                   {
                     "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
-                    "label": "Liposomal amphotericin B 10mg/kg"
-                  },
-                  {
-                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
-                    "label": "Amphotericin B deoxycholate 1mg/kg"
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
                   }
+                  
                 ],
                 "rendering": "select"
               },
@@ -8414,35 +8411,7 @@
                 "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)"
               }
             },
-            {
-              "label": "Reason for stopping:",
-              "id": "stopCryptoReason",
-              "questionOptions": {
-                "concept": "a663409c-602b-466a-922b-326a5557ca81",
-                "answers": [
-                  {
-                    "concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
-                    "label": "Completed"
-                  },
-                  {
-                    "concept": "a890d1ba-1350-11df-a1f1-0026b9348838",
-                    "label": "Toxicity"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(cryptoPlan) && isEmpty(myValue) && arrayContains(['a89b7d36-1350-11df-a1f1-0026b9348838'], cryptoPlan)",
-                  "message": "You indicated patient is stopping crypto, reason for stopping."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "!arrayContains(['a89b7d36-1350-11df-a1f1-0026b9348838'], cryptoPlan)"
-              }
-            },
+           
             {
               "label": "Pneumocystic carinii pneumonia (PCP) treatment plan:",
               "type": "obs",

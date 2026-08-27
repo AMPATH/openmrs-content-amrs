@@ -2488,9 +2488,9 @@
                         "label": "Isoniazid 300mg (6H)"
                       },
                       {
-                        "concept": "",
-                        "label": "Rifapentine 150mg"
-                      },
+                    "concept": "d2e0cc61-d0c5-4766-933e-c05bed7a888a",
+                    "label": "Rifapentine 150mg"
+                  },
                       {
                         "concept": "aeaed1af-5b0d-401e-a32a-e96cf4072ab5",
                         "label": "Isoniazid 300mg and Rifapentine 300mg (3HP)"
@@ -2815,20 +2815,8 @@
                     "label": "None"
                   },
                   {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
-                  },
-                  {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg"
-                  },
-                  {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
-                  },
-                  {
-                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
                   }
                 ],
                 "rendering": "select"
@@ -2836,6 +2824,33 @@
               "type": "obs",
               "validators": []
             },
+            {
+              "label": "Cryptococcal pre-emptive therapy:",
+              "required": "true",
+              "id": "cryptPreemptive",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')) ? undefined : HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')",
+              "questionOptions": {
+                "concept": "63175ae7-835c-433c-ae56-77c2ab2433c2",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            },
+
             {
               "label": "Cryptococcal meningitis treatment:",
               "required": "true",
@@ -2849,20 +2864,12 @@
                     "label": "None"
                   },
                   {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
                   },
                   {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg"
-                  },
-                  {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
-                  },
-                  {
-                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg"
                   },
                   {
                     "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
@@ -4740,8 +4747,7 @@
         {
           "label": "CrAg",
           "questions": [
-            
-            {
+           {
               "label": "Blood CrAg:",
               "id": "cragTest",
               "questionOptions": {
@@ -4780,11 +4786,12 @@
               },
               "type": "obs",
               "validators": [],
-              "hide": {
-                "hideWhenExpression": "arrayContains(['380d79a7-6fb0-41bf-be3d-aa3d25da187c','41c54687-8596-4071-a235-96d80f3fd039'],visitTypeUuid)"
+              "alert": {
+                "alertWhenExpression": "!isEmpty(myValue) && arrayContains(['a896d2cc-1350-11df-a1f1-0026b9348838','a896f3a6-1350-11df-a1f1-0026b9348838'], myValue)",
+                "message": "Blood CrAg negative: provide fluconazole prophylaxis. Blood CrAg positive: order CSF CrAg."
               }
             },
-             {
+            {
               "label": "CSF CrAg:",
               "id": "csfTest",
               "questionOptions": {
@@ -4798,7 +4805,6 @@
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
                     "label": "Negative"
                   }
-                  
                 ],
                 "showDate": "true",
                 "rendering": "select",
@@ -4820,11 +4826,13 @@
               },
               "type": "obs",
               "validators": [],
+              "hide": {
+                "hideWhenExpression": "cragTest !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              },
               "alert": {
-                "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
-                "message": "Please initiate the patient on crypto menengitis treatment"
+                "alertWhenExpression": "!isEmpty(myValue)",
+                "message": "CSF CrAg negative: provide cryptococcal pre-emptive therapy. CSF CrAg positive: provide cryptococcal meningitis treatment."
               }
-              
             }
           ]
         },
@@ -6580,7 +6588,218 @@
           "label": "Advanced HIV Disease Treatment Plan",
           "isExpanded": "true",
           "questions": [
+           {
+              "label": "Fluconazole prophylaxis plan:",
+              "questionInfo": "For a negative Blood CrAg result, the guideline recommends primary fluconazole 6mg/kg/day prophylaxis for 12 weeks.",
+              "required": "true",
+              "id": "flucoProphyPlan",
+              "questionOptions": {
+                "concept": "88cd24fe-b031-4aad-9d87-1b39ef243b18",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(flucoProphy) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && (flucoProphy==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "message": "Patient marked as not on prophylaxis. Therefore plan can only be none or start."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
+                }
+              ],
+               "alert": {
+                "alertWhenExpression": "cragTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg is negative. Start fluconazole prophylaxis."
+              }
+            },
             {
+              "label": "Cryptococcal pre-emptive therapy plan:",
+              "id": "cryptoPreemptiveTherapyPlan",
+              "type": "obs",
+              "questionInfo": "For Blood CrAg positive and CSF CrAg negative: start fluconazole 12mg/kg daily for 2 weeks, then 6mg/kg daily for 8 weeks, then 6mg/kg daily for at least 1 year.",
+              "questionOptions": {
+                "concept": "ea30cd3d-88b1-4b8a-8171-ed18a2878ed9",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue current"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start induction"
+                  },
+                  {
+                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                    "label": "Change to consolidation"
+                  },
+                  {
+                    "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
+                    "label": "Change to maintenance"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                  "message": "Blood CrAg is positive and CSF CrAg is negative. Select Start for cryptococcal pre-emptive therapy."
+                }
+              ],
+              
+              "alert": {
+                "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg is positive and CSF CrAg is negative. Select Start for cryptococcal pre-emptive therapy."
+              }
+            },
+            {
+              "label": "If start/change, regimen:",
+              "id": "preemptiveMedication",
+              "questionOptions": {
+                "concept": "0d18fa68-6038-43d5-a5ce-f4ebeeab076b",
+                "answers": [
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Maintenance/Consolidation)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg(Induction)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptoPlan) && isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)",
+                  "message": "You indicated patient is starting/changing regimen. Please select regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)"
+              }
+            },
+            {
+              "label": "Cryptococcal meningitis treatment plan:",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a89c2790-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
+                    "label": "Continue current"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Start induction"
+                  },
+                  {
+                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                    "label": "Change to consolidation"
+                  },
+                  {
+                    "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
+                    "label": "Change to maintenance"
+                  },
+                  {
+                    "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
+                    "label": "Stop"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(cryptCurrent==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "message": "Patient marked as not on Cryptococcus Treatment. Therefore plan can only be none or start."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
+                }
+              ],
+              "id": "cryptoPlan",
+              "alert": {
+                "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                "message": "Blood CrAg and CSF CrAg are positive. Start induction for cryptococcal meningitis treatment."
+              }
+            },
+            {
+              "label": "If start/change, regimen:",
+              "id": "MeningitisMedication",
+              "questionOptions": {
+                "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Maintenance/Consolidation)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
+                  },
+                  {
+                    "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
+                    "label": "Flucytosine 100mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  }
+                  
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(cryptoPlan) && isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)",
+                  "message": "You indicated patient is starting/changing regimen. Please select regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)"
+              }
+            },  {
               "label": "Fluconazole prophylaxis plan:",
               "required": "true",
               "id": "flucoProphyPlan", 
@@ -6645,7 +6864,7 @@
                   },
                   {
                     "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
-                    "label": "Change to maintanance"
+                    "label": "Change to maintenance"
                   },
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
