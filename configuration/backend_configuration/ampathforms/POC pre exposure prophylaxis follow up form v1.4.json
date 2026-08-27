@@ -94,6 +94,71 @@
               },
               "type": "obs",
               "validators": []
+            },
+             {
+              "label": "Population type:",
+              "required": "true",
+              "id": "popType",
+              "questionOptions": {
+                "concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
+                "answers": [
+                  {
+                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Discordant couple"
+                  },
+                  {
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSM"
+                  },
+                  {
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSW"
+                  },
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "People who inject drugs (PWID)"
+                  },
+                  {
+                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                    "label": "Truck driver"
+                  },
+                  {
+                    "concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
+                    "label": "Transgender"
+                  },
+                  {
+                    "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                    "label": "Fisher folk"
+                  },
+                  {
+                    "concept": "95d14f8c-87dc-4f53-acbe-525086c65a1d",
+                    "label": "Adolescent girls and young women(15-24YRS)"
+                  },
+                  {
+                    "concept": "bbd42058-b40b-4583-a5ab-3178554a11f2",
+                    "label": "Men at high risk"
+                  },
+                  {
+                    "concept": "95845475-c298-4e86-9560-736634965427",
+                    "label": "Other Women"
+                  },
+                  {
+                    "concept": "501731a2-f8ca-4bfe-b86b-3bce455e2e52",
+                    "label": "Pregnant women"
+                  },
+                  {
+                    "concept": "9b58ed9a-e4a1-4de4-81d9-1b319fd15eca",
+                    "label": "Breastfeeding women"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
             }
           ]
         }

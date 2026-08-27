@@ -3,7 +3,7 @@
   "description": "Outpatient Adult Return Visit.",
   "version": "2.2",
   "published": true,
-  "uuid": "c21976ac-efae-4664-a21e-d2e89414d0dc",
+  "uuid": "89695ced-0cf4-4b63-887e-0b72dc1c3091",
   "retired": false,
   "encounter": "ADULTRETURN",
   "processor": "EncounterFormProcessor",
@@ -407,20 +407,16 @@
                     "label": "MSM"
                   },
                   {
-                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
-                    "label": "MSW"
-                  },
-                  {
                     "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
-                    "label": "FSW"
+                    "label": "FSW"  
                   },
                   {
                     "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
                     "label": "PWID"
                   },
                   {
-                    "concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
-                    "label": "PWUD"
+                    "concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
+                    "label": "Transgender persons"
                   }
                 ]
               },
@@ -3288,17 +3284,18 @@
                     "label": "None"
                   },
                   {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
-                  },
-                  {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg"
-                  },
-                  {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
+                    "label": "Fluconazole 800mg (Induction)"
+                  },
+                   {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
                   }
+                 
                 ],
                 "rendering": "select"
               },
@@ -3318,92 +3315,30 @@
                     "label": "None"
                   },
                   {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
-                  },
-                  {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
-                  },
-                  {
                     "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
+                    "label": "Fluconazole 1200mg (Induction)"
                   },
                   {
                     "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
-                    "label": "Flucytosine 100mg/kg"
+                    "label": "Flucytosine 100mg/kg (Induction)"
                   },
                   {
                     "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
-                    "label": "Liposomal amphotericin B 10mg/kg"
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  },
+                   {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Consolidation)"
                   },
                   {
-                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
-                    "label": "Amphotericin B deoxycholate 1mg/kg"
-                  }
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  } 
                 ],
                 "rendering": "multiCheckbox"
               },
               "type": "obs",
               "validators": []
-            },
-            {
-              "label": "Cryptococcal meningitis treatment phase:",
-              "id": "cryptxphase",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "27a4be5a-daf1-4ca8-ae00-5845f8dfb9b0",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "f29c05ea-4d44-42e1-ad89-97e6631f6f7e",
-                    "label": "Induction phase"
-                  },
-                  {
-                    "concept": "abecbb51-45e1-4150-914a-d0e33082672f",
-                    "label": "Consolidation phase"
-                  },
-                  {
-                    "concept": "09748d74-2f28-4c2d-a224-fa9314bea5e3",
-                    "label": "Maintenance phase"
-                  }
-                ]
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838'",
-                  "message": "Patient  marked as on Crypto treatment. Please indicate treatment phase."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "cryptCurrent !== 'a8971e12-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Cryptococcal meningitis treatment start date:",
-              "type": "obs",
-              "id": "cryptoDate",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('1221a7dd-19ff-4880-b61a-4fab60cbd5a8')) ? undefined : HD.getObject('prevEnc').getValue('1221a7dd-19ff-4880-b61a-4fab60cbd5a8')",
-              "questionOptions": {
-                "concept": "1221a7dd-19ff-4880-b61a-4fab60cbd5a8",
-                "rendering": "date"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
-                  "message": "Date should not be greater than the encounter date."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838'",
-                  "message": "Patient  marked as on Crypto treatment. Please indicate start date."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "cryptCurrent !== 'a8971e12-1350-11df-a1f1-0026b9348838'"
-              }
             },
             {
               "label": "PCP treatment:",
@@ -4311,7 +4246,7 @@
     {
       "label": "Current Symptoms",
       "sections": [
-        {
+       {
           "label": "TB Screening Questions",
           "isExpanded": "true",
           "questions": [
@@ -4467,6 +4402,48 @@
                         "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
                         "label": "Normal"
                       },
+                      
+                      {
+                        "concept": "54c176e0-aa5e-447a-9cc8-2b29ffe986ad",
+                        "label": "Abnormal"
+                      }
+                    ],
+                    "showDate": "true",
+                    "rendering": "select",
+                    "shownDateOptions": {
+                      "validators": [
+                        {
+                          "type": "date"
+                        },
+                        {
+                          "type": "js_expression",
+                          "failsWhenExpression": "!isEmpty(tbCxrResult) && isEmpty(myValue)",
+                          "message": "Date of result is required."
+                        }
+                      ],
+                      "hide": {
+                        "hideWhenExpression": "isEmpty(tbCxrResult)"
+                      }
+                    }
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(cxrResult)",
+                      "message": "CXR has already been entered in Test Results. Clear one of the two CXR result fields."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "CXR result:",
+                  "id": "tbCxrResult1",
+                  "questionOptions": {
+                    "concept": "a8908192-1350-11df-a1f1-0026b9348838",
+                    "answers": [
                       {
                         "concept": "a8a6aa3a-1350-11df-a1f1-0026b9348838",
                         "label": "Cardiomegaly"
@@ -4516,14 +4493,10 @@
                   },
                   "type": "obs",
                   "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(cxrResult)",
-                      "message": "CXR has already been entered in Test Results. Clear one of the two CXR result fields."
-                    }
+                    
                   ],
                   "hide": {
-                    "hideWhenExpression": "xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "tbCxrResult !== '54c176e0-aa5e-447a-9cc8-2b29ffe986ad'"
                   }
                 }
               ]
@@ -6487,23 +6460,25 @@
                   "questionOptions": {
                     "concept": "a89b7110-1350-11df-a1f1-0026b9348838",
                     "answers": [
-                     
                       {
                         "concept": "a8981934-1350-11df-a1f1-0026b9348838",
                         "label": "Clinical treatment failure"
                       },
-                     
-                    
                       {
                         "concept": "c6537e06-9fc2-47da-b679-e2a32824407f",
                         "label": "Immunologic failure"
                       },
-                      
-                    
-                     
+                      {
+                        "concept": "7a7c57c0-98fc-4bb3-bbbd-08f677c28db5",
+                        "label": "Drug drug interaction"
+                      },
                       {
                         "concept": "4ee08cb4-fc93-44a0-a330-4e3fb45ca625",
                         "label": "Optimization"
+                      },
+                      {
+                        "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+                        "label": "Adverse drug reaction"
                       },
                       {
                         "concept": "a890d1ba-1350-11df-a1f1-0026b9348838",
@@ -6513,8 +6488,6 @@
                         "concept": "93fe19e8-fec4-4e4b-85f1-239e1fabd761",
                         "label": "Virologic failure"
                       },
-                     
-                     
                       {
                         "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                         "label": "Other"
@@ -7823,7 +7796,7 @@
                   },
                   {
                     "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
-                    "label": "Change to maintanance"
+                    "label": "Change to maintenance"
                   },
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
@@ -7857,18 +7830,19 @@
               "questionOptions": {
                 "concept": "0d18fa68-6038-43d5-a5ce-f4ebeeab076b",
                 "answers": [
+                   {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Induction)"
+                  },
+                   {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
-                  },
-                  {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
-                  },
-                  {
-                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
+                    "label": "Fluconazole 200mg (Maintenance)"
                   }
+                 
                 ],
                 "rendering": "select"
               },
@@ -7910,7 +7884,7 @@
                   },
                   {
                     "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
-                    "label": "Change to maintanance"
+                    "label": "Change to maintenance"
                   },
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
@@ -7949,30 +7923,27 @@
               "questionOptions": {
                 "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
                 "answers": [
-                  {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg"
-                  },
-                  {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg"
-                  },
-                  {
+                 {
                     "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
-                    "label": "Fluconazole 1200mg"
+                    "label": "Fluconazole 1200mg (Induction)"
                   },
                   {
                     "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
-                    "label": "Flucytosine 100mg/kg"
+                    "label": "Flucytosine 100mg/kg (Induction)"
                   },
                   {
                     "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
-                    "label": "Liposomal amphotericin B 10mg/kg"
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  },
+                   {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Consolidation)"
                   },
                   {
-                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
-                    "label": "Amphotericin B deoxycholate 1mg/kg"
-                  }
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  } 
+                  
                 ],
                 "rendering": "select"
               },
