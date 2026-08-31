@@ -367,7 +367,7 @@
           "label": "Population Type",
           "isExpanded": "true",
           "questions": [
-              {
+            {
               "label": "Population type:",
               "id": "popType",
               "required": "true",
@@ -388,7 +388,6 @@
                     "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
                     "label": "Vulnerable population"
                   }
-                 
                 ]
               },
               "type": "obs",
@@ -408,7 +407,7 @@
                   },
                   {
                     "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
-                    "label": "FSW"  
+                    "label": "FSW"
                   },
                   {
                     "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
@@ -3088,7 +3087,9 @@
                   "type": "obs",
                   "hide": {
                     "field": "tb_current",
-                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                    "value": [
+                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
+                    ]
                   },
                   "id": "__xxr3vpnnK"
                 }
@@ -3287,7 +3288,7 @@
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
                     "label": "Fluconazole 800mg (Induction)"
                   },
-                   {
+                  {
                     "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
                     "label": "Fluconazole 400mg (Consolidation)"
                   },
@@ -3295,7 +3296,6 @@
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg (Maintenance)"
                   }
-                 
                 ],
                 "rendering": "select"
               },
@@ -3326,14 +3326,14 @@
                     "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
                     "label": "Liposomal amphotericin B 10mg/kg (Induction)"
                   },
-                   {
+                  {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
                     "label": "Fluconazole 800mg (Consolidation)"
                   },
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg (Maintenance)"
-                  } 
+                  }
                 ],
                 "rendering": "multiCheckbox"
               },
@@ -4246,7 +4246,7 @@
     {
       "label": "Current Symptoms",
       "sections": [
-       {
+        {
           "label": "TB Screening Questions",
           "isExpanded": "true",
           "questions": [
@@ -4402,7 +4402,6 @@
                         "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
                         "label": "Normal"
                       },
-                      
                       {
                         "concept": "54c176e0-aa5e-447a-9cc8-2b29ffe986ad",
                         "label": "Abnormal"
@@ -4439,10 +4438,12 @@
                   }
                 },
                 {
-                  "label": "CXR result:",
+                  "label": "If abnormal, indicate:",
+                  "type": "obs",
                   "id": "tbCxrResult1",
                   "questionOptions": {
                     "concept": "a8908192-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
                     "answers": [
                       {
                         "concept": "a8a6aa3a-1350-11df-a1f1-0026b9348838",
@@ -4472,29 +4473,9 @@
                         "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                         "label": "Other"
                       }
-                    ],
-                    "showDate": "true",
-                    "rendering": "select",
-                    "shownDateOptions": {
-                      "validators": [
-                        {
-                          "type": "date"
-                        },
-                        {
-                          "type": "js_expression",
-                          "failsWhenExpression": "!isEmpty(tbCxrResult) && isEmpty(myValue)",
-                          "message": "Date of result is required."
-                        }
-                      ],
-                      "hide": {
-                        "hideWhenExpression": "isEmpty(tbCxrResult)"
-                      }
-                    }
+                    ]
                   },
-                  "type": "obs",
-                  "validators": [
-                    
-                  ],
+                  "validators": [],
                   "hide": {
                     "hideWhenExpression": "tbCxrResult !== '54c176e0-aa5e-447a-9cc8-2b29ffe986ad'"
                   }
@@ -5545,7 +5526,7 @@
         },
         {
           "label": "CrAg",
-          "questions": [ 
+          "questions": [
             {
               "label": "Blood CrAg:",
               "id": "cragTest",
@@ -7714,7 +7695,6 @@
                     "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], tbTreatmentPlan)"
                   }
                 }
-                
               ],
               "id": "tbStartedSet"
             }
@@ -7763,7 +7743,6 @@
                   "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "alert": {
                 "alertWhenExpression": "cragTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
@@ -7816,13 +7795,11 @@
                   "failsWhenExpression": "!isEmpty(cryptPreemptive) && cryptPreemptive === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on pre-emptive therapy in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "alert": {
                 "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
                 "message": "Blood CrAg is positive and CSF CrAg is negative. Select Start for cryptococcal pre-emptive therapy."
               }
-              
             },
             {
               "label": "If Start/Change, regimen:",
@@ -7830,11 +7807,11 @@
               "questionOptions": {
                 "concept": "0d18fa68-6038-43d5-a5ce-f4ebeeab076b",
                 "answers": [
-                   {
+                  {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
                     "label": "Fluconazole 800mg (Induction)"
                   },
-                   {
+                  {
                     "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
                     "label": "Fluconazole 400mg (Consolidation)"
                   },
@@ -7842,7 +7819,6 @@
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg (Maintenance)"
                   }
-                 
                 ],
                 "rendering": "select"
               },
@@ -7904,7 +7880,6 @@
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "id": "cryptoPlan",
               "hide": {
@@ -7914,8 +7889,6 @@
                 "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
                 "message": "Blood CrAg and CSF CrAg are positive. Start induction for cryptococcal meningitis treatment."
               }
-
-
             },
             {
               "label": "If start/change, regimen:",
@@ -7923,7 +7896,7 @@
               "questionOptions": {
                 "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
                 "answers": [
-                 {
+                  {
                     "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
                     "label": "Fluconazole 1200mg (Induction)"
                   },
@@ -7935,15 +7908,14 @@
                     "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
                     "label": "Liposomal amphotericin B 10mg/kg (Induction)"
                   },
-                   {
+                  {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
                     "label": "Fluconazole 800mg (Consolidation)"
                   },
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg (Maintenance)"
-                  } 
-                  
+                  }
                 ],
                 "rendering": "select"
               },
@@ -9985,8 +9957,7 @@
                       }
                     ]
                   },
-                  "validators": [
-                  ]
+                  "validators": []
                 },
                 {
                   "label": "Test ordered: Other (specify):",
@@ -10939,7 +10910,16 @@
               "questionOptions": {
                 "concept": "318a5e8b-218c-4f66-9106-cd581dec1f95",
                 "rendering": "date",
-                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
+                "weeksList": [
+                  15,
+                  30,
+                  45,
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
+                ]
               },
               "validators": [
                 {
@@ -10978,7 +10958,16 @@
               "questionOptions": {
                 "concept": "318a5e8b-218c-4f66-9106-cd581dec1f95",
                 "rendering": "date",
-                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
+                "weeksList": [
+                  15,
+                  30,
+                  45,
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
+                ]
               },
               "validators": [
                 {
@@ -11014,7 +11003,19 @@
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
                 "rendering": "date",
                 "weeksList": [
-                  15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330,
+                  15,
+                  30,
+                  45,
+                  60,
+                  90,
+                  120,
+                  150,
+                  180,
+                  210,
+                  240,
+                  270,
+                  300,
+                  330,
                   360
                 ]
               },

@@ -7,8 +7,8 @@
   "version": "1.0",
   "published": true,
   "retired": false,
-  "encounterType": "",
-  "uuid": "",
+  "encounterType": "896f8022-56e8-45a9-bb40-32a3c9b1609f",
+  "uuid": "d235232e-6a7d-4e77-99e2-5541c8a23b69",
   "pages": [
     {
       "label": "Newborn unit admission Form",
@@ -63,9 +63,30 @@
               "id": "dateOfAdmission",
               "questionOptions": {
                 "rendering": "date",
-                "concept": "a8a01652-1350-11df-a1f1-0026b9348838"
-                
-                
+                "concept": "a8a01652-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "3290"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1640"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "1868"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "399423000"
+                  }
+                ],
+                "answers": []
               },
               "validators": [
                 {
@@ -82,8 +103,14 @@
               "datePickerFormat": "timer",
               "questionOptions": {
                 "rendering": "date",
-                "concept": "52ff51ce-3a95-4e32-b389-966c2a6b2a77"
-                
+                "concept": "52ff51ce-3a95-4e32-b389-966c2a6b2a77",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "161076"
+                  }
+                ]
               },
               "validators": []
             },
@@ -94,9 +121,25 @@
               "id": "gestationAge",
               "questionOptions": {
                 "rendering": "number",
-                "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa"
-                
-                
+                "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "LOINC",
+                    "value": "72147-2"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1409"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "412726003"
+                  }
+                ],
+                "answers": []
               },
               "validators": []
             },
@@ -107,8 +150,40 @@
               "id": "birthWeight",
               "questionOptions": {
                 "rendering": "number",
-                "concept": "a8ace206-1350-11df-a1f1-0026b9348838"
-                
+                "concept": "a8ace206-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5916"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "6433"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "LOINC",
+                    "value": "8339-4"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "5916"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH Malawi",
+                    "value": "5916"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "364589006"
+                  }
+                ],
+                "answers": []
               },
               "validators": []
             },
@@ -156,7 +231,43 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a492d6-1350-11df-a1f1-0026b9348838",
-                
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH Malawi",
+                    "value": "2997"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "2368"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1572"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "6441"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "169812000"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "366344009"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "2997"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
@@ -182,7 +293,33 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
-                
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5630"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "236973005"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH Malawi",
+                    "value": "5630"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED MVP",
+                    "value": "56301000105003"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "5630"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
@@ -225,9 +362,25 @@
               "id": "mothersName",
               "questionOptions": {
                 "rendering": "text",
-                "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea"
-               
-                
+                "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED MVP",
+                    "value": "15931000105005"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "302147001"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1593"
+                  }
+                ],
+                "answers": []
               },
               "validators": []
             },
@@ -240,8 +393,20 @@
                 "rendering": "number",
                 "min": "0",
                 "max": "60",
-                "concept": "a898d478-1350-11df-a1f1-0026b9348838"
-               
+                "concept": "a898d478-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "164168"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "424144002"
+                  }
+                ],
+                "answers": []
               },
               "validators": []
             },
@@ -252,8 +417,20 @@
               "id": "residenceSublocation",
               "questionOptions": {
                 "rendering": "text",
-                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00"
-                
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED CT",
+                    "value": "432407003"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "CIEL",
+                    "value": "167131"
+                  }
+                ],
+                "answers": []
               },
               "validators": []
             },
@@ -301,7 +478,23 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8afb80a-1350-11df-a1f1-0026b9348838",
-                
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "278977008"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED MVP",
+                    "value": "13961000105002"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1396"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
@@ -327,7 +520,43 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
-                
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH Malawi",
+                    "value": "7010"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "1432"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "1622"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "1149"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1149"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "2589"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "1577"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -352,7 +581,18 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8945754-1350-11df-a1f1-0026b9348838",
-                
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "163126"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "365636006"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a896ea6e-1350-11df-a1f1-0026b9348838",
@@ -398,7 +638,43 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a893436e-1350-11df-a1f1-0026b9348838",
-                
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "73211009"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "175"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "119481"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICD-10-WHO",
+                    "value": "E14.9"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "3720"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "29688"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH Malawi",
+                    "value": "3720"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -424,7 +700,58 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
-                
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "386661006"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "140238"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "3BT",
+                    "value": "10049305"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "5945"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "3722"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "27348"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "157"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICPC2",
+                    "value": "A03"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICD-10-WHO",
+                    "value": "R50.9"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5945"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -446,7 +773,18 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "3c0268e2-7ee6-4ae3-8f38-b1748f0bbd1b",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "394906002"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "162309"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -473,8 +811,20 @@
               "id": "labour1stStageInHours",
               "questionOptions": {
                 "rendering": "number",
-                "concept": "e612e85d-9e9a-4cea-ab6d-f7e14e259648"
-                
+                "concept": "e612e85d-9e9a-4cea-ab6d-f7e14e259648",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "163191"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "7389001"
+                  }
+                ],
+                "answers": []
               },
               "validators": [],
               "hide": {
@@ -488,8 +838,35 @@
               "id": "labour2ndStageInMinutes",
               "questionOptions": {
                 "rendering": "number",
-                "concept": "d0318d59-54e7-4e01-9d45-5894b424c204"
-               
+                "concept": "d0318d59-54e7-4e01-9d45-5894b424c204",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "159616"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "6225"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "LOINC",
+                    "value": "32396-4"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH Malawi",
+                    "value": "7997"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "289248003"
+                  }
+                ],
+                "answers": []
               },
               "validators": [],
               "hide": {
@@ -504,7 +881,18 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "0dea6e5e-7f7b-4805-afd6-f33f78186e9c",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "386412000"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "162131"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
@@ -529,19 +917,30 @@
               "id": "raptureOfMembrane",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "163445AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-               
+                "concept": "a8aace62-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "163445"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "408816000"
+                  }
+                ],
                 "answers": [
                   {
-                    "concept": "162251AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "68fd4306-13fb-4686-818f-9c50c02a8f1d",
                     "label": "<12hrs"
                   },
                   {
-                    "concept": "164449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a7dae972-c9b8-498f-9062-09d497440a8a",
                     "label": "12-18hrs"
                   },
                   {
-                    "concept": "163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "6ca0b1b4-b84f-4b7c-828e-f76986309b00",
                     "label": ">18hrs"
                   }
                 ]
@@ -556,7 +955,18 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "bb4d5cd5-0380-4252-8f3a-378e1acb416d",
-                
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "166665"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED CT",
+                    "value": "182991002"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -608,7 +1018,58 @@
                 "min": "0",
                 "max": "20",
                 "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "386661006"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "140238"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "3BT",
+                    "value": "10049305"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "5945"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "3722"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "27348"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "157"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICPC2",
+                    "value": "A03"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICD-10-WHO",
+                    "value": "R50.9"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5945"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -630,7 +1091,33 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "a8a0c408-1350-11df-a1f1-0026b9348838",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "162442009"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1731"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "2160"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "1294"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "2161"
+                  }
+                ],
                 "answers": []
               },
               "validators": [],
@@ -646,7 +1133,53 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "27828302"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "42466"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "271825005"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICD-10-WHO",
+                    "value": "R06.0"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5540"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "42469"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "122496"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "2296"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "267036007"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -667,8 +1200,39 @@
               "id": "diarrhoea",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "a890861a-1350-11df-a1f1-0026b9348838",
-                
+                "concept": "000eb88f-4968-4bee-91be-81c21117c094",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "16"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5983"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "142412"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "ICD-10-WHO",
+                    "value": "K52.9"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "42046"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "62315008"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -691,7 +1255,25 @@
                 "rendering": "number",
                 "max": "20",
                 "min": "0",
-                "concept": "a8ad270c-1350-11df-a1f1-0026b9348838" 
+                "concept": "a8a44876-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1553"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "162442009"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "2286"
+                  }
+                ],
+                "answers": []
               },
               "validators": [],
               "hide": {
@@ -731,7 +1313,43 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "ICD-10-WHO",
+                    "value": "R11"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5980"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICPC2",
+                    "value": "D10"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "88586"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "422400008"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "122983"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "3BT",
+                    "value": "10014706"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -753,7 +1371,38 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "23bc3a90-d698-4af5-a1d1-77f584a44cd9",
-              
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "515041"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "140475"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICPC2",
+                    "value": "T04"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "102609007"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "ICD-10-WHO",
+                    "value": "R63.3"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "3BT",
+                    "value": "10083590"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -775,7 +1424,28 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "91175000"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProblemIT",
+                    "value": "193829"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "ICD-10-WHO",
+                    "value": "R56.8"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "113054"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -796,7 +1466,7 @@
               "id": "typeOfConvulsions",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "161249AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
                 "conceptMappings": [
                   {
                     "relationship": "NARROWER-THAN",
@@ -815,31 +1485,31 @@
                     "label": "Absence Seizure"
                   },
                   {
-                    "concept": "150524AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "986bda94-f78f-4b24-9907-2b7d7c4571ce",
                     "label": "Absence Seizure with Atonic Components"
                   },
                   {
-                    "concept": "161226AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "C6EC84F2-E451-4919-97ED-DE930325B33",
                     "label": "Absence seizure with automatisms"
                   },
                   {
-                    "concept": "161227AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "FD853EFA-35FC-4B4B-9B34-B0616907D92A",
                     "label": "Absence seizure with autonomic components"
                   },
                   {
-                    "concept": "161225AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "7cb1da26-254f-4c57-aba4-6c4ddc5b6f65",
                     "label": "Absence seizure with impairment of consciousness only"
                   },
                   {
-                    "concept": "161224AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "693A060B-7028-4EF8-BCAD-D67D7E680F8E",
                     "label": "Absence seizure with mild clonic components"
                   },
                   {
-                    "concept": "161223AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "99182572-5510-42a7-ad39-3260d38dffa4",
                     "label": "Absence seizure with tonic components"
                   },
                   {
-                    "concept": "161036AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "1eec1a2c-185c-470f-84cc-1353c78fcab2",
                     "label": "Affective seizure"
                   },
                   {
@@ -847,19 +1517,19 @@
                     "label": "Atonic Seizure"
                   },
                   {
-                    "concept": "161229AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "652D0CD9-AF5F-490B-BD45-D2A72F54ED2D",
                     "label": "Atypical absence seizure with abrupt onset and end"
                   },
                   {
-                    "concept": "161228AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "652D0CD9-AF5F-490B-BD45-D2A72F54ED2D",
                     "label": "Atypical absence seizure with change in muscular tone"
                   },
                   {
-                    "concept": "121315AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8e36978-ef40-4b9e-ba42-c56cc3777c94",
                     "label": "Atypical Absence Seizures"
                   },
                   {
-                    "concept": "148124AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "9eb3fed8-66aa-44b8-b9db-3a12fbfefdac",
                     "label": "Auditory Seizure"
                   },
                   {
@@ -867,47 +1537,47 @@
                     "label": "Automatism"
                   },
                   {
-                    "concept": "145044AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "693A060B-7028-4EF8-BCAD-D67D7E680F8E",
                     "label": "Clonic Seizure"
                   },
                   {
-                    "concept": "160937AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
                     "label": "Cognitive seizure"
                   },
                   {
-                    "concept": "161038AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "d0275c60-fdda-401d-b2d5-8b7d6569b78e",
                     "label": "Complex automatism"
                   },
                   {
-                    "concept": "110664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "933129ba-3571-410e-b813-4d0db3d21dd5",
                     "label": "Complex febrile convulsions"
                   },
                   {
-                    "concept": "144471AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "D14C618C-F73A-454D-AA51-AE74377598DF",
                     "label": "Complex Partial Seizure Evolving to Generalised Seizure"
                   },
                   {
-                    "concept": "120252AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "933129ba-3571-410e-b813-4d0db3d21dd5",
                     "label": "Complex Partial Seizures with Consciousness Impaired"
                   },
                   {
-                    "concept": "161034AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "e469c0b8-3198-430c-90b1-8609bf8296ad",
                     "label": "Dysmnesic seizure"
                   },
                   {
-                    "concept": "161035AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "b80476a7-a315-485f-8f40-ce0a9446be02",
                     "label": "Dysphasic seizure"
                   },
                   {
-                    "concept": "141120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "4df93a2a-f1ff-41f0-82ef-cfddec72bcd0",
                     "label": "Epileptic Vertigo"
                   },
                   {
-                    "concept": "118129AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "22b2bfee-6aea-4ea9-9d72-3fbb945261be",
                     "label": "Focal Motor Seizure"
                   },
                   {
-                    "concept": "110050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "e30885fa-863e-411b-9fab-39da78905d2b",
                     "label": "Generalized Seizure"
                   },
                   {
@@ -919,71 +1589,71 @@
                     "label": "Myoclonic Seizures"
                   },
                   {
-                    "concept": "132426AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "2ffd3c47-f3cd-4cea-b18d-16638f34a219",
                     "label": "Olfactory Seizure"
                   },
                   {
-                    "concept": "160930AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "1b22b0d2-6c88-4037-aab6-8343d02e928f",
                     "label": "Phonatory seizure"
                   },
                   {
-                    "concept": "160935AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "afebed93-7703-4303-b40a-5a4279f63efd",
                     "label": "Postural seizure"
                   },
                   {
-                    "concept": "160936AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "61beb73f-fa5f-45f5-b5f0-0e04b1844820",
                     "label": "Seizure with structured hallucinations"
                   },
                   {
-                    "concept": "161037AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "d0275c60-fdda-401d-b2d5-8b7d6569b78e",
                     "label": "Simple automatism"
                   },
                   {
-                    "concept": "158818AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "dbd19ae2-758e-46b5-8397-7f575606d50d",
                     "label": "simple febrile seizure"
                   },
                   {
-                    "concept": "126475AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "83f58186-a93c-45fe-8e4e-34d80976952a",
                     "label": "Simple Partial Onset Seizure Followed by Impairm Consciousn"
                   },
                   {
-                    "concept": "126489AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "cca35dca-0f84-4afd-b118-23d75c124e17",
                     "label": "Simple Partial Seizure Evolving to Complex Partial Seizure Evolving to Generalised Seizure"
                   },
                   {
-                    "concept": "126472AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "c1b3510d-df60-4c8f-a241-4700de1d887a",
                     "label": "Simple partial seizure with disturbance of higher cerebral function"
                   },
                   {
-                    "concept": "126471AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a7c25132-1e0e-4196-bc1e-9192da7d5b90",
                     "label": "Simple Partial Seizure with Focal Motor Signs with March"
                   },
                   {
-                    "concept": "161222AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "4b84fa0e-b2b3-4676-a370-500cc03e82ef",
                     "label": "Simple partial seizure with focal motor signs without march"
                   },
                   {
-                    "concept": "126468AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "2e946e06-7399-4980-b74c-33fc0b192687",
                     "label": "Simple Partial Seizure with Special Sensory Symptoms"
                   },
                   {
-                    "concept": "126467AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "f40a08f8-ff7e-4c8c-9fff-c1538b204c7a",
                     "label": "Simple Partial Seizure, Consciousness Not Impaired"
                   },
                   {
-                    "concept": "112868AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "cf0ed9fe-3d2f-4729-af19-b671f6fd6ad6",
                     "label": "Somatosensory Seizure"
                   },
                   {
-                    "concept": "112356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "c631b03a-eccc-4f27-ab4e-2fa815e21e56",
                     "label": "Tonic Seizures"
                   },
                   {
-                    "concept": "110200AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "693A060B-7028-4EF8-BCAD-D67D7E680F8E",
                     "label": "Tonic-Clonic Seizures"
                   },
                   {
-                    "concept": "123061AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "f388e862-a361-499f-b13b-993726d5a4e2",
                     "label": "Visual Seizure"
                   }
                 ]
@@ -1002,7 +1672,7 @@
                 "rendering": "number",
                 "max": "100",
                 "min": "0",
-                "concept": "165416AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "cec9acff-6cc7-4d2a-912f-82b5aa1410a8",
                 "conceptMappings": [],
                 "answers": []
               },
@@ -1020,7 +1690,7 @@
                 "rendering": "number",
                 "max": "100",
                 "min": "0",
-                "concept": "2a77f918-3170-4982-978b-71869fcb95bf",
+                "concept": "8b6eb800-0930-400e-9d49-a4cefa21c88d",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1047,7 +1717,7 @@
               "id": "apnoea",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "3191b754-3e26-4497-858a-5218ee33d1ae",
+                "concept": "9c201a1f-1897-4c6f-9835-1a79e5d5a843",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1080,7 +1750,7 @@
               "id": "cry",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "159860AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "f43383c6-f81c-422a-82d5-560035bb53b9",
                 "conceptMappings": [
                   {
                     "relationship": "NARROWER-THAN",
@@ -1117,8 +1787,24 @@
               "id": "inabilityToBreastfeed",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "23bc3a90-d698-4af5-a1d1-77f584a44cd9",
-               
+                "concept": "a8a4528a-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "159861"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "288854000"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "AMPATH",
+                    "value": "2294"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1225,7 +1911,7 @@
               "id": "irritable",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "a8ad49a8-1350-11df-a1f1-0026b9348838",
+                "concept": "0ba59c06-e87a-48e7-b4fd-895cf0c22bd2",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1245,7 +1931,7 @@
                   {
                     "relationship": "SAME-AS",
                     "type": "AMPATH",
-                    "value": "5263"
+                    "value": "7819"
                   },
                   {
                     "relationship": "SAME-AS",
@@ -1273,7 +1959,7 @@
               "id": "reducedMovement",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "167092AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a899eb24-1350-11df-a1f1-0026b9348838",
                 "conceptMappings": [
                   {
                     "relationship": "NARROWER-THAN",
@@ -1341,11 +2027,11 @@
                     "label": "Normal"
                   },
                   {
-                    "concept": "113841AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "663bb967-0263-4020-a1ba-b177e2efa437",
                     "label": "Premature"
                   },
                   {
-                    "concept": "164125AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "8838674d-088c-42ba-a645-8623601a7235",
                     "label": "Small for Gastaional Age(SGA)/Wasted"
                   }
                 ]
@@ -1371,19 +2057,19 @@
                     "label": "Rash"
                   },
                   {
-                    "concept": "128047AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89cf224-1350-11df-a1f1-0026b9348838",
                     "label": "Pustules"
                   },
                   {
-                    "concept": "143050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8965298-1350-11df-a1f1-0026b9348838",
                     "label": "Cyanosis"
                   },
                   {
-                    "concept": "118536AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a898adcc-1350-11df-a1f1-0026b9348838",
                     "label": "Erythema"
                   },
                   {
-                    "concept": "136443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89366a0-1350-11df-a1f1-0026b9348838",
                     "label": "Jaundice"
                   }
                 ]
@@ -1397,7 +2083,7 @@
               "id": "skinCold",
               "questionOptions": {
                 "rendering": "multiCheckbox",
-                "concept": "1866AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "c8ab72d2-47f3-47ea-a568-0a061d4dba0e",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1412,15 +2098,15 @@
                 ],
                 "answers": [
                   {
-                    "concept": "164385AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "0808af8e-d086-482e-a321-822f04be1c91",
                     "label": "Hand"
                   },
                   {
-                    "concept": "166231AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "6d37fcfc-ac09-4bcb-bbc2-22223e42849b",
                     "label": "Elbow"
                   },
                   {
-                    "concept": "166306AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "776aec59-2055-4291-8db4-a1711084816e",
                     "label": "Shoulder"
                   }
                 ]
@@ -1434,18 +2120,18 @@
               "id": "jaundice",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "115368AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "7a37f288-03af-429a-9429-08da9f9887e3",
                 "answers": [
                   {
-                    "concept": "1362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
                     "label": "+"
                   },
                   {
-                    "concept": "1363AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89d2852-1350-11df-a1f1-0026b9348838",
                     "label": "++"
                   },
                   {
-                    "concept": "1364AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a1909a-1350-11df-a1f1-0026b9348838",
                     "label": "+++"
                   }
                 ]
@@ -1459,18 +2145,18 @@
               "id": "pallor",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "5245AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a6f9a4-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
-                    "concept": "1362AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
                     "label": "+"
                   },
                   {
-                    "concept": "1363AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89d2852-1350-11df-a1f1-0026b9348838",
                     "label": "++"
                   },
                   {
-                    "concept": "1364AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a1909a-1350-11df-a1f1-0026b9348838",
                     "label": "+++"
                   }
                 ]
@@ -1490,7 +2176,7 @@
               "id": "airEntryBilateral",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "1123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8b0f31e-1350-11df-a1f1-0026b9348838",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1520,11 +2206,11 @@
                 ],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -1538,7 +2224,7 @@
               "id": "stridor",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "125782AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "cc4f2c12-e373-4618-9e62-29473c2b14fa",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1573,11 +2259,11 @@
                 ],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -1591,7 +2277,7 @@
               "id": "oxygenSaturation",
               "questionOptions": {
                 "rendering": "number",
-                "concept": "5092AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1635,7 +2321,7 @@
               "id": "centralCyanosis",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "157902AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "b98db640-f74b-4d39-81c5-f82754245bc3",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1660,11 +2346,11 @@
                 ],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -1678,7 +2364,7 @@
               "id": "chestIndrawing",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "136768AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "8f54731e-89ee-4bd3-a139-8822de3c3d83",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1703,19 +2389,19 @@
                 ],
                 "answers": [
                   {
-                    "concept": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
                   },
                   {
-                    "concept": "1498AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89efccc-1350-11df-a1f1-0026b9348838",
                     "label": "Mild"
                   },
                   {
-                    "concept": "1500AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a89eff1a-1350-11df-a1f1-0026b9348838",
                     "label": "Severe"
                   },
                   {
-                    "concept": "166302AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "550f83e4-4824-4b96-b96a-7f600d90a070",
                     "label": "Sternum"
                   }
                 ]
@@ -1729,7 +2415,7 @@
               "id": "grunting",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "113316AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "ca180dbd-42e7-423d-b7e7-686a0d91c80b",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1769,11 +2455,11 @@
                 ],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -1787,7 +2473,7 @@
               "id": "crackles",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "1284AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "d425aaa0-5fa8-431f-8180-dfa88d63e161",
                 "conceptMappings": [
                   {
                     "relationship": "NARROWER-THAN",
@@ -1817,11 +2503,11 @@
                 ],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -1835,7 +2521,7 @@
               "id": "nasalFlaring",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "1861AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "91bbbc6f-52a6-4514-b66d-5a82c727dc22",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -1850,11 +2536,11 @@
                 ],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -1874,7 +2560,7 @@
               "id": "heartMurmur",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "139071AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a8b007b0-1350-11df-a1f1-0026b9348838",
                 "conceptMappings": [
                   {
                     "relationship": "NARROWER-THAN",
@@ -1909,11 +2595,11 @@
                 ],
                 "answers": [
                   {
-                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
                   {
-                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
                 ]
@@ -1927,23 +2613,23 @@
               "id": "femoralPulse",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "c732910a-45f3-4989-8fdc-b8960aad9eac",
+                "concept": "60a7ad99-b9eb-452b-ab20-68e374276a77",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "163748AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a4bd42-1350-11df-a1f1-0026b9348838",
                     "label": "Present"
                   },
                   {
-                    "concept": "150518AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "a8a4bc84-1350-11df-a1f1-0026b9348838",
                     "label": "Absent"
                   },
                   {
-                    "concept": "124823AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "f6385b7b-325e-4bfb-a84d-b063daa6f91c",
                     "label": "Weak"
                   },
                   {
-                    "concept": "147044AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "07a7f158-e01e-47b7-89c4-fece6559540b",
                     "label": "Bounding"
                   }
                 ]
@@ -1957,16 +2643,16 @@
               "id": "capillaryRefillTime",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "165890AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "concept": "a7fb4d9d-277a-449c-8bab-6f7156f29026",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "165891AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "concept": "95c355f8-e2e6-4475-86a5-ee5d67fa72d2",
                     "label": "<3 seconds"
                   },
                   {
-                    "concept": "162512AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": ">3 secends"
+                    "concept": "12cb62a5-59d7-487a-b119-89f6fcbb82ea",
+                    "label": ">3 seconds"
                   }
                 ]
               },
@@ -1996,7 +2682,7 @@
                     "label": "Macrocephaly"
                   },
                   {
-                    "concept": "",
+                    "concept": "bc67c275-cd37-4690-9fea-7fa56264f350",
                     "label": "Caput succedaneum"
                   },
                   {
@@ -2007,7 +2693,6 @@
                     "concept": "FD5F6643-FE16-4641-B725-A6D1735AA19F",
                     "label": "Subgaleal haemorrhage"
                   },
-                 
                   {
                     "concept": "AFA26BB1-2CAD-40B7-8A97-FDC2F9DB2FBF",
                     "label": "Craniosynotosis"
@@ -2035,7 +2720,7 @@
                     "label": "Cleft palate"
                   },
                   {
-                    "concept": "",
+                    "concept": "3b0de54b-ff8b-4a0e-9499-9c844ca8452a",
                     "label": "Bilateral choanal atresia"
                   },
                   {
@@ -2053,15 +2738,15 @@
               "id": "dysmorphic",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "",
+                "concept": "c2f3fe20-e209-4522-8eea-c9a6a7a19eb0",
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "",
+                    "concept": "4df64d4d-b01c-4abc-9573-876e539d8330",
                     "label": "Flattened nasal bridge"
                   },
                   {
-                    "concept": "",
+                    "concept": "8505ecd1-c51d-4188-b9a0-1c91eafde2aa",
                     "label": "Epicanthic folds"
                   },
                   {
@@ -2079,7 +2764,7 @@
               "id": "genitalAnus",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "",
+                "concept": "918546ce-51e1-4fbc-a7d2-ccb1c39dd94b",
                 "conceptMappings": [],
                 "answers": [
                   {
@@ -2103,7 +2788,7 @@
                     "label": "undescended testes"
                   },
                   {
-                    "concept": "",
+                    "concept": "b2f54ff4-3456-4065-939f-2f48fe668c1c",
                     "label": "Imperforated anus"
                   }
                 ]
@@ -2118,10 +2803,9 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a899f1e6-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
-                    "concept": "",
+                    "concept": "97d8715e-67aa-40ee-b65c-0f619c5a400f",
                     "label": "Absent radii"
                   },
                   {
@@ -2156,7 +2840,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a894c5a4-1350-11df-a1f1-0026b9348838",
-            
                 "answers": [
                   {
                     "concept": "CDB327B9-B31A-4252-B8C7-0F80C6424E39",
@@ -2171,11 +2854,11 @@
                     "label": "Encephalocele"
                   },
                   {
-                    "concept": "",
+                    "concept": "ce784d7f-8ba9-463e-a86b-8a4099104dc4",
                     "label": "midline naevus lipoma"
                   },
                   {
-                    "concept": "",
+                    "concept": "4c1d2515-e063-40b6-a23c-6add9e4873ae",
                     "label": "Deep sacral pit"
                   }
                 ]
@@ -2196,14 +2879,30 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a89abee6-1350-11df-a1f1-0026b9348838",
-              
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "182922004"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "985"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "1151"
+                  }
+                ],
                 "answers": [
                   {
-                    "concept": "a8a8d9b8-1350-11df-a1f1-0026b9348838",
+                    "concept": "0d88e098-1623-467c-bbf5-d3e8060352ee",
                     "label": "Breast Milk"
                   },
                   {
-                    "concept": "a89abfc2-1350-11df-a1f1-0026b9348838",
+                    "concept": "a8a70156-1350-11df-a1f1-0026b9348838",
                     "label": "Formula"
                   },
                   {
@@ -2211,7 +2910,7 @@
                     "label": "Mixed feeding"
                   },
                   {
-                    "concept": "60823ec8-c6d8-4bbf-b94c-c273edf8b8b8",
+                    "concept": "76008966-c3fd-4cd1-a649-7073e7b83aef",
                     "label": "Total Parenteral Nutrition"
                   }
                 ]
@@ -2226,18 +2925,29 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a898d16c-1350-11df-a1f1-0026b9348838",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "162525"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED NP",
+                    "value": "289156007"
+                  }
+                ],
                 "answers": [
                   {
-                    "concept": "",
+                    "concept": "1e7ecb94-1265-4c67-a1c5-ee0e17bd444b",
                     "label": "Every 2 hours"
                   },
                   {
-                    "concept": "",
+                    "concept": "955176e6-c854-419c-b683-68298ce7fa81",
                     "label": "Every 3 hours"
                   },
                   {
-                    "concept": "",
+                    "concept": "9c1dcb23-dc0c-46b2-a755-875ab6d78fc2",
                     "label": "On Demand"
                   }
                 ]
@@ -2252,34 +2962,45 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "0917834d-9fea-4ff7-b1b4-2b306ab1e7a3",
-               
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "161911"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "7895"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
                   },
                   {
-                    "concept": "88BA3D13-9D97-4A4A-B928-B719B1FF739C",
+                    "concept": "6f53e055-3ff4-4719-bcb6-2f03359d5f14",
                     "label": "Dextran"
                   },
                   {
-                    "concept": "6c5a33b1-31f8-48b3-8b19-39617ded6114",
+                    "concept": "de26899a-3960-4bc2-b5ae-79520a920db2",
                     "label": "Dextrose 5% in normal saline"
                   },
                   {
-                    "concept": "35c234d0-9abc-43f6-8236-ff54dfa9d015",
+                    "concept": "1ea431cc-2fb5-4d57-91bc-f060748c2ad6",
                     "label": "Dextrose 5% in water"
                   },
                   {
-                    "concept": "329246a2-977d-4f73-86eb-201253b1a282",
+                    "concept": "6868c00c-a1e3-4c31-8669-3caf611fc1c0",
                     "label": "Dextrose 10% in water"
                   },
                   {
-                    "concept": "1f9ce610-0d70-4ff1-8b85-c2a12af307b7",
+                    "concept": "dd2202b8-5642-4429-b23c-6dbc901799da",
                     "label": "Glucose 50 MG/ML / Sodium Chloride 0.0769 MEQ/ML Injectable Solution"
                   },
                   {
-                    "concept": "",
+                    "concept": "dfd97e99-4bce-4ae6-bcea-2d4cfad59d44",
                     "label": "Monopotassium phosphate 0.259% / sodium phosphate 2.9% injection solution"
                   },
                   {
@@ -2287,11 +3008,11 @@
                     "label": "Normal saline"
                   },
                   {
-                    "concept": "",
+                    "concept": "e4c813b8-2435-439b-8b8c-3942784f70a7",
                     "label": "Potassium chloride 20 mmol/L in normal saline"
                   },
                   {
-                    "concept": "",
+                    "concept": "6f33ebb1-7ce9-4b7b-9d61-8359e6737799",
                     "label": "Potassium chloride 40 mmol/sodium chloride 0.9% infusion solution"
                   },
                   {
@@ -2299,7 +3020,7 @@
                     "label": "Ringer's lactate"
                   },
                   {
-                    "concept": "509d6f3f-f250-4942-99fc-468d3afc528b",
+                    "concept": "0901591e-3429-414d-a25b-93ac59fac63c",
                     "label": "Sodium bicarbonate 1.26% injection solution"
                   }
                 ]
@@ -2313,7 +3034,7 @@
               "id": "incubatorKeepWarm",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "",
+                "concept": "37b8b8f1-6664-44f3-bb25-4da8623b63b5",
                 "conceptMappings": [],
                 "answers": [
                   {
@@ -2357,8 +3078,19 @@
               "id": "bloodTransfusion",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "31de78a6-f7d7-4fc0-a05a-e57e34d79bf0",
-                
+                "concept": "4ed91af2-a654-40db-9186-d9f71bc113cb",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "7864"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "161927"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2379,8 +3111,24 @@
               "id": "phototherapy",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "",
-                
+                "concept": "a8a36fc8-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "31394004"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "IMO ProcedureIT",
+                    "value": "671041"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "167422"
+                  }
+                ],
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2395,14 +3143,26 @@
               "validators": []
             },
             {
-              "label": "Clinician name:",
+              "label": "Clinician name",
               "type": "obs",
               "required": true,
               "id": "clinicianName",
               "questionOptions": {
                 "rendering": "text",
-                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
-                
+                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "1392"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "1473"
+                  }
+                ],
+                "answers": []
               },
               "validators": []
             }
@@ -2411,5 +3171,4 @@
       ]
     }
   ]
-  
 }
