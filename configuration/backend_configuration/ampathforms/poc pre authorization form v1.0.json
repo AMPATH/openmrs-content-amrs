@@ -181,7 +181,7 @@
                 "placeholder": "Please specify clinical indication"
               },
               "hide": {
-                "hideWhenExpression": "!arrayContains(['63c079d9-87fb-4bea-b860-863bff0e29c5','5771e408-a5e5-402b-9f29-b76106dfc71a','a8a06788-1350-11df-a1f1-0026b9348838','073ea366-834b-49bd-b4db-ce4e6c61bbc3','597896cd-2841-42e9-8fb0-4292f82ac7b6'],typeOfIntervention)"
+                "hideWhenExpression": "!arrayContains(['63c079d9-87fb-4bea-b860-863bff0e29c5','5771e408-a5e5-402b-9f29-b76106dfc71a','a8a06788-1350-11df-a1f1-0026b9348838','073ea366-834b-49bd-b4db-ce4e6c61bbc3','597896cd-2841-42e9-8fb0-4292f82ac7b6','a8a09ac8-1350-11df-a1f1-0026b9348838'],typeOfIntervention)"
               }
             }
           ]

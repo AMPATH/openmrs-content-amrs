@@ -298,29 +298,7 @@
                 "hideWhenExpression": "transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
-            {
-              "label": "Method:",
-              "id": "prepMethodMaleStudy",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
-                "answers": [
-                  {
-                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
-                    "label": "Daily oral prep"
-                  },
-                  {
-                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "CAB-LA"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50'"
-              }
-            },
+            
             {
               "label": "Method:",
               "id": "prepMethodMale",
@@ -349,7 +327,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838' || visitTypeUuid !== 'a0ee8015-3558-4ac8-9886-285f9b687c2f'"
+                "hideWhenExpression": "sex !== 'M' || transferInControl !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1407,6 +1385,24 @@
               },
               "hide": {
                 "hideWhenExpression": "hivRapid !== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Primary diagnosis:",
+              "required": "true",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
               }
             },
             {

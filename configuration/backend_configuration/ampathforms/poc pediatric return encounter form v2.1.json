@@ -5719,9 +5719,28 @@
                 "hideWhenExpression": "!arrayContains(['edb7c6aa-fc69-4470-936d-3d484d3708aa','824cf3e6-dd16-4767-ba41-2e04dede349e'], visitType.uuid)"
               },
               "id": "__oyFMC8EoK"
+            },
+            {
+              "label": "Primary diagnosis:",
+              "required": "true",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
             }
           ]
         },
+       
         {
           "label": "Clinical Notes",
           "isExpanded": "true",
