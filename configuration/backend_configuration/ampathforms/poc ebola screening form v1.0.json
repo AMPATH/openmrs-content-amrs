@@ -541,6 +541,9 @@
                     "label": "No"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "sex !== 'F'"
               }
             },
             {

@@ -1,7 +1,7 @@
 {
-  "name": "POC Clinical Encounter Form v10.0",
+  "name": "POC Clinical Encounter Form v1.3",
   "description": "Clinical Encounter",
-  "version": "10.0",
+  "version": "1.3",
   "uuid": "",
   "processor": "EncounterFormProcessor",
   "published": true,
@@ -104,29 +104,6 @@
               }
             },
             {
-              "label": "Visit to:",
-              "type": "obs",
-              "id": "visitTo",
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "a89eea66-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
-                    "label": "Outpatient department(OPD)"
-                  },
-                  {
-                    "concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Inpatient department(IPD)"
-                  }
-                ]
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
               "label": "HIV status:",
               "type": "obs",
               "id": "opdHivStatus",
@@ -141,6 +118,10 @@
                   {
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
                     "label": "Negative"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
                   }
                 ]
               },
@@ -154,14 +135,6 @@
                 "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
-                  {
-                    "concept": "01b957da-23bb-4862-819d-036364fe3faf",
-                    "label": "Treatment supporter"
-                  },
-                  {
-                    "concept": "97772927-7aa2-4c30-be98-85183e4b0efe",
-                    "label": "Transfer in"
-                  },
                   {
                     "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
                     "label": "Initial"
@@ -179,12 +152,89 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && (opdHivStatus === 'fa5a4dd8-60cd-4085-80b6-4aea76809926' || opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838')",
+                  "failsWhenExpression": "isEmpty(myValue) && opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838'",
                   "message": "Visit type is required for an HIV-positive patient."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Type of return Visit:",
+              "type": "obs",
+              "id": "returnVisitType",
+              "questionOptions": {
+                "concept": "244b67bf-da2d-4009-9bc9-91a52a92defe",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+                    "label": "Routine follow up"
+                  },
+                  {
+                    "concept": "7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2",
+                    "label": "OPD consultation"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hivVisitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Type of drug refill:",
+              "type": "obs",
+              "id": "refillVisitType",
+              "questionOptions": {
+                "concept": "2e1aedfc-0a61-4b03-bd48-9922668bf992",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "20838ff5-7a28-4877-889c-300155627a6f",
+                    "label": "Facility fast track"
+                  },
+                  {
+                    "concept": "01b957da-23bb-4862-819d-036364fe3faf",
+                    "label": "Treatment supporter"
+                  },
+                  {
+                    "concept": "912029d5-1b22-49d1-946b-110a902aca97",
+                    "label": "Transit"
+                  },
+                  {
+                    "concept": "09ef2d93-0797-4ea6-9fb9-8bff255b9901",
+                    "label": "Between care"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hivVisitType !== '20838ff5-7a28-4877-889c-300155627a6f'"
+              }
+            },
+            {
+              "label": "Is this visit a transfer in?",
+              "id": "transferInVisit",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "97772927-7aa2-4c30-be98-85183e4b0efe",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -195,25 +245,6 @@
                 "rendering": "group"
               },
               "questions": [
-                {
-                  "label": "Facility transferring in from:",
-                  "id": "transferIn",
-                  "questionOptions": {
-                    "rendering": "text",
-                    "concept": "35ed8aad-d6fa-429e-961a-c877e1ad4953"
-                  },
-                  "type": "obs",
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(myValue) && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'",
-                      "message": "Required!"
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "hivVisitType !== '97772927-7aa2-4c30-be98-85183e4b0efe'"
-                  }
-                },
                 {
                   "label": "County from which the patient is transfering:",
                   "id": "transferCounty",
@@ -230,13 +261,32 @@
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "hivVisitType !== '97772927-7aa2-4c30-be98-85183e4b0efe'"
+                    "hideWhenExpression": "transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Facility transferring in from:",
+                  "id": "transferIn",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "35ed8aad-d6fa-429e-961a-c877e1ad4953"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(myValue) && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                      "message": "Required!"
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
                 }
               ],
               "id": "__LDvEp2qGM",
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
@@ -658,7 +708,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'",
+                  "failsWhenExpression": "isEmpty(myValue) && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'",
                   "message": "Required!"
                 }
               ],
@@ -681,7 +731,7 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'",
+                  "failsWhenExpression": "isEmpty(myValue) && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'",
                   "message": "Required!"
                 }
               ],
@@ -718,7 +768,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'",
+                  "failsWhenExpression": "isEmpty(myValue) && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'",
                   "message": "Required!"
                 }
               ],
@@ -747,7 +797,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe')",
+                  "failsWhenExpression": "isEmpty(myValue) && opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838')",
                   "message": "Please indicate whether the patient has taken ARVs in the past."
                 }
               ],
@@ -891,21 +941,6 @@
                   ]
                 },
                 {
-                  "label": "Year used:",
-                  "type": "obs",
-                  "id": "transferPastArvYear",
-                  "questionOptions": {
-                    "concept": "a89d200a-1350-11df-a1f1-0026b9348838",
-                    "rendering": "date"
-                  },
-                  "validators": [
-                    {
-                      "type": "date",
-                      "allowFutureDates": "false"
-                    }
-                  ]
-                },
-                {
                   "label": "Is this the current regimen?",
                   "type": "obs",
                   "id": "transferPastArvCurrent",
@@ -930,10 +965,53 @@
                       "message": "Please indicate whether this is the current regimen."
                     }
                   ]
+                },
+                {
+                  "label": "Date started:",
+                  "type": "obs",
+                  "id": "transferPastArvDateStarted",
+                  "questionOptions": {
+                    "concept": "a89d200a-1350-11df-a1f1-0026b9348838",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(myValue)",
+                      "message": "Please indicate the regimen start date."
+                    }
+                  ]
+                },
+                {
+                  "label": "Date stopped:",
+                  "type": "obs",
+                  "id": "transferPastArvDateStopped",
+                  "questionOptions": {
+                    "concept": "a89ec270-1350-11df-a1f1-0026b9348838",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "transferPastArvCurrent === 'a899b42e-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                      "message": "Please indicate the regimen stop date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "transferPastArvCurrent === 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
                 }
               ],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || pastArtUse !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || pastArtUse !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -961,7 +1039,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -984,7 +1062,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1007,7 +1085,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1045,7 +1123,7 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe' || hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838' || pastArtUse !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838' || hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838' || pastArtUse !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1078,7 +1156,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1195,6 +1273,130 @@
                   {
                     "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
                     "label": "Etravirine 100mg"
+                  },
+                  {
+                    "concept": "b58a28d2-36de-11e0-93be-0026b9348838",
+                    "label": "ABC 60mg/3TC 30mg"
+                  },
+                  {
+                    "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+                    "label": "ABC 120mg/3TC 60mg"
+                  },
+                  {
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                  },
+                  {
+                    "concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+                    "label": "ZDV 60mg/3TC 30mg"
+                  },
+                  {
+                    "concept": "20185c04-9334-11df-8193-000d6014b64c",
+                    "label": "ZDV 60mg/3TC 30mg/NVP 50mg"
+                  },
+                  {
+                    "concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
+                    "label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
+                  },
+                  {
+                    "concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+                    "label": "3TC 150mg/ZDV 300mg >25kgs"
+                  },
+                  {
+                    "concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+                    "label": "3TC 300mg/TDF 300mg >25kgs"
+                  },
+                  {
+                    "concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
+                    "label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+                  },
+                  {
+                    "concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
+                    "label": "Lopinavir 80mg/Ritonavir 20mg"
+                  },
+                  {
+                    "concept": "ddefd319-fb5d-4c0e-a125-ff7bdb6fe44f",
+                    "label": "Lopinavir 40mg/Ritonavir 10mg"
+                  },
+                  {
+                    "concept": "fa8266f6-36df-11e0-93be-0026b9348838",
+                    "label": "Lopinavir 200mg/Ritonavir 50mg"
+                  },
+                  {
+                    "concept": "3115e231-1077-4488-a7d5-83167263b9a2",
+                    "label": "Lopinavir 100mg/Ritonavir 25mg"
+                  },
+                  {
+                    "concept": "3cbfb0b9-721e-4d42-92a3-7d37269aab24",
+                    "label": " Atazanavir 300mg/ritonavir 100mg"
+                  },
+                  {
+                    "concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
+                    "label": "Nevirapine 100mg"
+                  },
+                  {
+                    "concept": "0485075a-3111-11e0-8090-0026b9348838",
+                    "label": "Nevirapine 200mg"
+                  },
+                  {
+                    "concept": "ff9096b6-d86c-403a-9bda-eab02252dbf3",
+                    "label": "Efavirenz 250mg"
+                  },
+                  {
+                    "concept": "492de98c-86c6-4fd8-af89-325448f12ed9",
+                    "label": "Efavirenz 300mg"
+                  },
+                  {
+                    "concept": "55e0461f-b28f-42de-a3c6-328d7f17c44b",
+                    "label": "Efavirenz 350mg"
+                  },
+                  {
+                    "concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
+                    "label": "Efavirenz 400mg"
+                  },
+                  {
+                    "concept": "4677ad3e-3120-11e0-8090-0026b9348838",
+                    "label": "Efavirenz 600mg"
+                  },
+                  {
+                    "concept": "d6262526-3113-11e0-8090-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "52441ef8-3126-11e0-8090-0026b9348838",
+                    "label": " Abacavir 300mg"
+                  },
+                  {
+                    "concept": "21d417bc-3114-11e0-8090-0026b9348838",
+                    "label": " Zidovudine 300mg "
+                  },
+                  {
+                    "concept": "67f62fd8-d43e-4c62-a18a-e8bb5a46fc5c",
+                    "label": " Raltegravir 25mg"
+                  },
+                  {
+                    "concept": "c2c66e99-1345-4fdb-b101-89b2e43d40e5",
+                    "label": " Raltegravir 100mg"
+                  },
+                  {
+                    "concept": "da698164-870d-11e0-85d3-000d6014b64c",
+                    "label": " Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir"
+                  },
+                  {
+                    "concept": "687d2b97-3336-4843-946e-597a31380746",
+                    "label": "Darunavir 75mg"
+                  },
+                  {
+                    "concept": "9732900a-4b81-4522-af1c-7d25ae6aad0a",
+                    "label": "Darunavir 150mg"
+                  },
+                  {
+                    "concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+                    "label": "Dolutegravir 10mg"
                   }
                 ],
                 "rendering": "multiCheckbox"
@@ -1212,7 +1414,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1237,7 +1439,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe')"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1380,6 +1582,110 @@
                   {
                     "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
                     "label": "Etravirine 100mg"
+                  },
+                  {
+                    "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+                    "label": "ABC 120mg/3TC 60mg"
+                  },
+                  {
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                  },
+                  {
+                    "concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+                    "label": "ZDV 60mg/3TC 30mg"
+                  },
+                  {
+                    "concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
+                    "label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
+                  },
+                  {
+                    "concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+                    "label": "3TC 150mg/ZDV 300mg >25kgs"
+                  },
+                  {
+                    "concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+                    "label": "3TC 300mg/TDF 300mg >25kgs"
+                  },
+                  {
+                    "concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
+                    "label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+                  },
+                  {
+                    "concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
+                    "label": "Lopinavir 80mg/Ritonavir 20mg"
+                  },
+                  {
+                    "concept": "ddefd319-fb5d-4c0e-a125-ff7bdb6fe44f",
+                    "label": "Lopinavir 40mg/Ritonavir 10mg"
+                  },
+                  {
+                    "concept": "fa8266f6-36df-11e0-93be-0026b9348838",
+                    "label": "Lopinavir 200mg/Ritonavir 50mg"
+                  },
+                  {
+                    "concept": "3115e231-1077-4488-a7d5-83167263b9a2",
+                    "label": "Lopinavir 100mg/Ritonavir 25mg"
+                  },
+                  {
+                    "concept": "3cbfb0b9-721e-4d42-92a3-7d37269aab24",
+                    "label": " Atazanavir 300mg/ritonavir 100mg"
+                  },
+                  {
+                    "concept": "ff9096b6-d86c-403a-9bda-eab02252dbf3",
+                    "label": "Efavirenz 250mg"
+                  },
+                  {
+                    "concept": "492de98c-86c6-4fd8-af89-325448f12ed9",
+                    "label": "Efavirenz 300mg"
+                  },
+                  {
+                    "concept": "55e0461f-b28f-42de-a3c6-328d7f17c44b",
+                    "label": "Efavirenz 350mg"
+                  },
+                  {
+                    "concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
+                    "label": "Efavirenz 400mg"
+                  },
+                  {
+                    "concept": "d6262526-3113-11e0-8090-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "52441ef8-3126-11e0-8090-0026b9348838",
+                    "label": " Abacavir 300mg"
+                  },
+                  {
+                    "concept": "21d417bc-3114-11e0-8090-0026b9348838",
+                    "label": " Zidovudine 300mg "
+                  },
+                  {
+                    "concept": "67f62fd8-d43e-4c62-a18a-e8bb5a46fc5c",
+                    "label": " Raltegravir 25mg"
+                  },
+                  {
+                    "concept": "c2c66e99-1345-4fdb-b101-89b2e43d40e5",
+                    "label": " Raltegravir 100mg"
+                  },
+                  {
+                    "concept": "da698164-870d-11e0-85d3-000d6014b64c",
+                    "label": " Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir"
+                  },
+                  {
+                    "concept": "687d2b97-3336-4843-946e-597a31380746",
+                    "label": "Darunavir 75mg"
+                  },
+                  {
+                    "concept": "9732900a-4b81-4522-af1c-7d25ae6aad0a",
+                    "label": "Darunavir 150mg"
+                  },
+                  {
+                    "concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+                    "label": "Dolutegravir 10mg"
                   }
                 ],
                 "rendering": "multiCheckbox"
@@ -1448,7 +1754,7 @@
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                      "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
                       "message": "Patient on ARVs. Please provide adherence history."
                     }
                   ],
@@ -1459,7 +1765,7 @@
               ],
               "id": "__MwrypH7LD",
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1488,7 +1794,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))"
               }
             },
             {
@@ -1525,7 +1831,7 @@
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(pcpProphylaxisCurrent) && arrayContains(['a8989396-1350-11df-a1f1-0026b9348838', 'a890c9e0-1350-11df-a1f1-0026b9348838'], pcpProphylaxisCurrent) && isEmpty(myValue)",
+                      "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(pcpProphylaxisCurrent) && arrayContains(['a8989396-1350-11df-a1f1-0026b9348838', 'a890c9e0-1350-11df-a1f1-0026b9348838'], pcpProphylaxisCurrent) && isEmpty(myValue)",
                       "message": "Patient on Cotrimoxazole preventive therapy. Please provide adherence history"
                     }
                   ],
@@ -1536,7 +1842,7 @@
               ],
               "id": "__z0szr3usE",
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1559,7 +1865,13 @@
                 ],
                 "rendering": "select"
               },
-              "validators": [],
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "A patient cannot be on both TB prophylaxis and TB treatment."
+                }
+              ],
               "hide": {
                 "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
               }
@@ -1615,6 +1927,10 @@
                   {
                     "concept": "e5e24e6d-e6b0-4c81-8f7b-0e366df29426",
                     "label": "Rifampicin 70mg and Isonaizid 50mg (3RH)"
+                  },
+                  {
+                    "concept": "d2e0cc61-d0c5-4766-933e-c05bed7a888a",
+                    "label": "Rifapentine 150mg"
                   }
                 ],
                 "rendering": "select"
@@ -1627,7 +1943,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((onTbProphylaxis !== 'a899b35c-1350-11df-a1f1-0026b9348838' && pastTbProphylaxisDrug !== 'a899b35c-1350-11df-a1f1-0026b9348838' ))"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((onTbProphylaxis !== 'a899b35c-1350-11df-a1f1-0026b9348838' && pastTbProphylaxisDrug !== 'a899b35c-1350-11df-a1f1-0026b9348838' )))"
               }
             },
             {
@@ -1700,7 +2016,7 @@
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(onTbProphylaxis) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbProphylaxis) && isEmpty(myValue)",
+                      "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onTbProphylaxis) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbProphylaxis) && isEmpty(myValue)",
                       "message": "Patient on TB Prophylaxis. Please provide adherence history."
                     }
                   ],
@@ -1711,7 +2027,7 @@
               ],
               "id": "__zGGsFM8oG",
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1734,8 +2050,15 @@
                 "rendering": "select"
               },
               "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && onTbProphylaxis === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "A patient cannot be on both TB treatment and TB prophylaxis."
+                }
+              ],
               "hide": {
-                "hideWhenExpression": "opdHivStatus === 'a896d2cc-1350-11df-a1f1-0026b9348838' || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+                "hideWhenExpression": "opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -1863,7 +2186,7 @@
               },
               "id": "tb_current",
               "hide": {
-                "hideWhenExpression": "(opdHivStatus === 'a896d2cc-1350-11df-a1f1-0026b9348838' || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               },
               "validators": []
             },
@@ -1925,7 +2248,7 @@
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(onTbTreatment) && onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                      "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onTbTreatment) && onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
                       "message": "Patient on TB Treament. Please provide adherence history."
                     }
                   ],
@@ -1935,7 +2258,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -1951,8 +2274,20 @@
                     "label": "None"
                   },
                   {
-                    "concept": "0074b2e5-c138-487a-8446-fab65882572f",
-                    "label": "Fluconazole 100mg"
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
                   }
                 ],
                 "rendering": "select"
@@ -1960,7 +2295,73 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "age < 25 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
+              }
+            },
+            {
+              "label": "Fluconazole prophylaxis:",
+              "required": "true",
+              "id": "flucoProphyPediatricDose",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')) ? undefined : HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')",
+              "questionOptions": {
+                "concept": "212fdebe-4745-4f60-aaa0-35f4193abaf8",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
+              }
+            },
+            {
+              "label": "Fluconazole prophylaxis:",
+              "required": "true",
+              "id": "flucoProphyYouth",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')) ? undefined : HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')",
+              "questionOptions": {
+                "concept": "212fdebe-4745-4f60-aaa0-35f4193abaf8",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
               }
             },
             {
@@ -1993,7 +2394,77 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "age < 25 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
+              }
+            },
+            {
+              "label": "Cryptococcal pre-emptive therapy:",
+              "required": "true",
+              "id": "cryptPreemptivePediatricDose",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')) ? undefined : HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')",
+              "questionOptions": {
+                "concept": "63175ae7-835c-433c-ae56-77c2ab2433c2",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
+              }
+            },
+            {
+              "label": "Cryptococcal pre-emptive therapy:",
+              "required": "true",
+              "id": "cryptPreemptiveYouth",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')) ? undefined : HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')",
+              "questionOptions": {
+                "concept": "63175ae7-835c-433c-ae56-77c2ab2433c2",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Induction)"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
               }
             },
             {
@@ -2009,6 +2480,18 @@
                     "label": "None"
                   },
                   {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Consolidation)"
+                  },
+                  {
                     "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
                     "label": "Fluconazole 1200mg (Induction)"
                   },
@@ -2021,20 +2504,128 @@
                     "label": "Liposomal amphotericin B 10mg/kg (Induction)"
                   },
                   {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg (Consolidation)"
-                  },
-                  {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg (Maintenance)"
+                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
+                    "label": "Amphotericin B deoxycholate 1mg/kg (Induction)"
                   }
                 ],
                 "rendering": "multiCheckbox"
               },
               "type": "obs",
-              "validators": [],
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                  "message": "'None' cannot be selected together with other options."
+                }
+              ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "age < 25 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
+              }
+            },
+            {
+              "label": "Cryptococcal meningitis treatment:",
+              "required": "true",
+              "id": "cryptCurrentPediatricDose",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899e516-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
+                  },
+                  {
+                    "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
+                    "label": "Flucytosine 100mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                  "message": "'None' cannot be selected together with other options."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
+              }
+            },
+            {
+              "label": "Cryptococcal meningitis treatment:",
+              "required": "true",
+              "id": "cryptCurrentYouth",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899e516-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Consolidation)"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg (Induction)"
+                  },
+                  {
+                    "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
+                    "label": "Flucytosine 100mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
+                    "label": "Amphotericin B deoxycholate 1mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                  "message": "'None' cannot be selected together with other options."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))"
               }
             },
             {
@@ -2062,12 +2653,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838'",
+                  "failsWhenExpression": "isEmpty(myValue) && ((!isEmpty(cryptCurrent) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrent)) || (!isEmpty(cryptCurrentPediatricDose) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrentPediatricDose)) || (!isEmpty(cryptCurrentYouth) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrentYouth)))",
                   "message": "Patient  marked as on Crypto treatment. Please indicate treatment phase."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((cryptCurrent !== 'a8971e12-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || !((!isEmpty(cryptCurrent) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrent)) || (!isEmpty(cryptCurrentPediatricDose) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrentPediatricDose)) || (!isEmpty(cryptCurrentYouth) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrentYouth)))"
               }
             },
             {
@@ -2087,12 +2678,12 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838'",
+                  "failsWhenExpression": "isEmpty(myValue) && ((!isEmpty(cryptCurrent) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrent)) || (!isEmpty(cryptCurrentPediatricDose) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrentPediatricDose)) || (!isEmpty(cryptCurrentYouth) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrentYouth)))",
                   "message": "Patient  marked as on Crypto treatment. Please indicate start date."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((cryptCurrent !== 'a8971e12-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || !((!isEmpty(cryptCurrent) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrent)) || (!isEmpty(cryptCurrentPediatricDose) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrentPediatricDose)) || (!isEmpty(cryptCurrentYouth) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], cryptCurrentYouth)))"
               }
             },
             {
@@ -2120,7 +2711,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))"
               }
             },
             {
@@ -2158,9 +2749,15 @@
                 "rendering": "multiCheckbox"
               },
               "type": "obs",
-              "validators": [],
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                  "message": "'None' cannot be selected together with other options."
+                }
+              ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))"
               }
             },
             {
@@ -2684,7 +3281,7 @@
               "validators": [],
               "id": "adultImmun",
               "hide": {
-                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "(((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')) || (age < 15)"
               }
             },
             {
@@ -2709,6 +3306,172 @@
               "id": "__uKyEKyzLv",
               "hide": {
                 "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Have you been vaccinated for HPV?",
+              "required": "true",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9806572c-0225-4b17-b21b-a0f44f9d07f0",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "id": "hpvVaccine",
+              "hide": {
+                "hideWhenExpression": "(sex!== 'F' || age <9 || age >14) || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Dose received:",
+              "id": "dose",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "bb1e6b95-0d35-4065-80cc-d774d1c9b964",
+                "answers": [
+                  {
+                    "label": "First dose",
+                    "concept": 1
+                  },
+                  {
+                    "label": "Second dose",
+                    "concept": 2
+                  },
+                  {
+                    "concept": 3,
+                    "label": "Third dose"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && hpvVaccine === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Please indicate dose"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(hpvVaccine!== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Vaccination date:",
+              "id": "doseDate",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && hpvVaccine === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Please indicate date"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                  "message": "Vaccination date should be less than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(hpvVaccine!== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "If no, reason not vaccinated:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9841d34d-71fd-447d-a7f2-a8697318a288",
+                "answers": [
+                  {
+                    "concept": "5e33cea9-ee6a-47b4-bfe8-124c49bdb110",
+                    "label": "Lack of access"
+                  },
+                  {
+                    "concept": "84ff12bd-41b6-4ed0-9f82-6f421983f713",
+                    "label": "Lack of knowledge"
+                  },
+                  {
+                    "concept": "a89eba46-1350-11df-a1f1-0026b9348838",
+                    "label": "Stigma"
+                  },
+                  {
+                    "concept": "2ae62639-4703-41dc-be8e-afe50640238b",
+                    "label": "Fear of side effects"
+                  },
+                  {
+                    "concept": "a8a08ff6-1350-11df-a1f1-0026b9348838",
+                    "label": "Decline by caregiver"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "id": "reasonVaccine",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(hpvVaccine!== 'a899b42e-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Would you like to be vaccinated now?",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c365be70-33bb-4a3b-a56d-35eb6b3c6726",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "id": "readyVaccine",
+              "hide": {
+                "hideWhenExpression": "(hpvVaccine!== 'a899b42e-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "If yes, source of information:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8afc2aa-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "507d7df8-2da6-4ace-93b8-4271620f27c5",
+                    "label": "Immunization card"
+                  },
+                  {
+                    "concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Self reported"
+                  }
+                ]
+              },
+              "validators": [],
+              "id": "infoSource",
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838') || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
@@ -2945,6 +3708,384 @@
               "hide": {
                 "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
               }
+            },
+            {
+              "label": "Mother deceased:",
+              "required": "true",
+              "id": "motherDeceased",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a0b670-1350-11df-a1f1-0026b9348838')",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a0b670-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Father deceased:",
+              "required": "true",
+              "id": "fatherDeceased",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a0b788-1350-11df-a1f1-0026b9348838')",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a0b788-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Orphaned under age of 18 yrs?",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89ad2d2-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a89ad2d2-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a89ad2d2-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "id": "__LouFGw8MD",
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Mother's HIV status:",
+              "id": "mothersHivStatus",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8afb80a-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (motherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Father HIV status:",
+              "id": "fathersHivStatus",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8afb8c8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (fatherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Mother enrolled in HIV care program:",
+              "id": "motherEnrolled",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9411e7f2-018b-4d12-9b3c-5698a7e01559",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (motherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\" || mothersHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Father enrolled in HIV care program:",
+              "id": "fatherEnrolled",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "1b5f5d15-650c-4007-a938-8ac2892e7093",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (fatherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\" || fathersHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Mother on ARVs:",
+              "id": "motherOnArvs",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3636f793-57d2-44dd-a1a6-8cabc9331fb5",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (motherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\" || mothersHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Father on ARVs:",
+              "id": "fatherOnArvs",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "360f367a-2c5a-4725-84ba-956f437bb0db",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (fatherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\" || fathersHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Mother on TB Treatment:",
+              "id": "motherOnTbTreatment",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89cc59c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (motherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Father on TB treatment:",
+              "id": "fatherOnTbTreatment",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3d830e67-7b9a-42b4-bd58-d998caf2314e",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (fatherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Has the child been assessed for child protection services?",
+              "id": "ovcAssess",
+              "type": "obs",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0f1f43b2-2a81-4ebb-833f-7d2b71faf85b')) ? undefined : HD.getObject('prevEnc').getValue('0f1f43b2-2a81-4ebb-833f-7d2b71faf85b')",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0f1f43b2-2a81-4ebb-833f-7d2b71faf85b",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "If yes, outcome of assessment:",
+              "id": "ovcOutcome",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "927a7650-e7bf-421d-867d-9b25bcf758c1",
+                "answers": [
+                  {
+                    "concept": "795cff32-9697-4c10-a1c2-deed8143677d",
+                    "label": "Eligible"
+                  },
+                  {
+                    "concept": "69db9a47-21c5-4398-89f7-1c03a1392240",
+                    "label": "Not eligible"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && ovcAssess === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Child has been assessed for OVC. Please indicate assessment outcome."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838') || ovcAssess !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "If eligible, is the child enrolled for child protection services?",
+              "id": "ovcProgram",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "994dba64-b963-4fdd-89a8-ff2211a5f0ca",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && ovcOutcome === '795cff32-9697-4c10-a1c2-deed8143677d'",
+                  "message": "Child is elligible for OVC service. Please indicate if enrolled."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838') || ovcOutcome !== '795cff32-9697-4c10-a1c2-deed8143677d'"
+              }
             }
           ]
         },
@@ -3019,7 +4160,7 @@
                 "max": "100"
               },
               "hide": {
-                "hideWhenExpression": "!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+                "hideWhenExpression": "age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -3033,7 +4174,7 @@
                 "max": "100"
               },
               "hide": {
-                "hideWhenExpression": "!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+                "hideWhenExpression": "age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -3047,7 +4188,7 @@
                 "max": "5"
               },
               "hide": {
-                "hideWhenExpression": "!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+                "hideWhenExpression": "age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -3065,19 +4206,11 @@
                   {
                     "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
                     "label": "Cesarean section(CS)"
-                  },
-                  {
-                    "concept": "a89ad11a-1350-11df-a1f1-0026b9348838",
-                    "label": "Breech delivery"
-                  },
-                  {
-                    "concept": "a8a351aa-1350-11df-a1f1-0026b9348838",
-                    "label": "Assisted vaginal delivery(AVD)"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+                "hideWhenExpression": "age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -3091,7 +4224,7 @@
                 "max": "10"
               },
               "hide": {
-                "hideWhenExpression": "!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+                "hideWhenExpression": "age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -3147,15 +4280,15 @@
                 "answers": [
                   {
                     "concept": "a8ad48cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Delayed(D)"
+                    "label": "Delayed"
                   },
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Normal(N)"
+                    "label": "Normal"
                   },
                   {
                     "concept": "a8ad4b60-1350-11df-a1f1-0026b9348838",
-                    "label": "Regressed(R)"
+                    "label": "Regressed"
                   }
                 ]
               },
@@ -3216,6 +4349,462 @@
               "hide": {
                 "hideWhenExpression": "!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
+            },
+            {
+              "label": "Method of breastfeeding:",
+              "id": "childBreFeeding",
+              "questionOptions": {
+                "concept": "a8aafc70-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8a8d9b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Exclusive breastfeeding"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "modeFeeding !== \"a8aafc70-1350-11df-a1f1-0026b9348838\" || age > 5 || opdHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\" || (hivVisitType !== \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" && transferInVisit !== \"a899b35c-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Age in weeks:",
+              "id": "ageInWeeks",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a3345e-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (age > 2)"
+              }
+            },
+            {
+              "label": "Method of delivery:",
+              "type": "obs",
+              "id": "deliveryMethodPediatric",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
+                    "label": "SVD"
+                  },
+                  {
+                    "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
+                    "label": "CS"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (age > 2)"
+              }
+            },
+            {
+              "label": "Was the delivery preterm or term?",
+              "id": "ega36weeks",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a35006-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Preterm"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "Term"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (age > 2)"
+              }
+            },
+            {
+              "label": "Newborn prophylactic ARV use:",
+              "id": "NewbornProhpArv",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c8b7c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (age > 2)"
+              }
+            },
+            {
+              "label": "Newborn ARV use:",
+              "id": "NewbornArvUse",
+              "questionOptions": {
+                "concept": "a89addfe-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89673f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Lamivudine"
+                  },
+                  {
+                    "concept": "a8967656-1350-11df-a1f1-0026b9348838",
+                    "label": "Nevirapine"
+                  },
+                  {
+                    "concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
+                    "label": "Zidovudine"
+                  },
+                  {
+                    "concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+                    "label": "Lopinavir and ritonavir"
+                  },
+                  {
+                    "concept": "a8967980-1350-11df-a1f1-0026b9348838",
+                    "label": "Nelfinavir"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(NewbornProhpArv !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Number of days on treatment:",
+              "id": "ArvDays",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "numeric",
+                "concept": "a8a05e82-1350-11df-a1f1-0026b9348838",
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(NewbornProhpArv !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Antiretroviral Use During Pregnancy",
+              "id": "MothersArvUse",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89a9e48-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
+                    "label": "On ARVs"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Have you ever attended school?",
+              "id": "everAttendedSchool",
+              "required": "true",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8aae64a-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8aae64a-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a8aae64a-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Are you currently attending school?",
+              "id": "currInSchool",
+              "questionOptions": {
+                "concept": "a0f74d13-6465-41cf-b19c-21c3df15d51f",
+                "answers": [
+                  {
+                    "concept": "1627a701-0840-4e2e-8543-3bc4d0df1cbe",
+                    "label": "Nursery"
+                  },
+                  {
+                    "concept": "87fa889e-1dfd-4d47-a366-663708251a56",
+                    "label": "Primary day"
+                  },
+                  {
+                    "concept": "07ee184d-6750-4687-9dfb-3b5f54c05429",
+                    "label": "Primary boarding"
+                  },
+                  {
+                    "concept": "68d318fc-e305-4803-8b43-70c5932394e5",
+                    "label": "Secondary day"
+                  },
+                  {
+                    "concept": "1a13c814-b420-4e55-806b-248d8ddae2bb",
+                    "label": "Secondary boarding"
+                  },
+                  {
+                    "concept": "a8afea96-1350-11df-a1f1-0026b9348838",
+                    "label": "College"
+                  },
+                  {
+                    "concept": "a89e4728-1350-11df-a1f1-0026b9348838",
+                    "label": "University"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "Currently not in school"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "N/A(too young)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Adolescent sexually active:",
+              "id": "sexuallyActive",
+              "questionOptions": {
+                "concept": "053ec791-2371-4c87-88a1-86a1abeed90c",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || age < 12 || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "In the past three months has anyone insulted you, ignored you, yelled at you, or made you feel ashamed or bad about yourself?",
+              "questionInfo": "as with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
+              "id": "emotional",
+              "required": "true",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "374a34e2-71a0-4221-b59e-8d50721330ee",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || age < 12 || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Does caregiver have problems getting child to take the medicines? (Yes=1 , No= 0)",
+              "id": "caregiverProb",
+              "questionOptions": {
+                "concept": "286c7414-65d1-4f02-bb1b-7999defed9d1",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Did the child miss at least a dose in the last 7 days? (Yes=1 , No= 0)",
+              "type": "obs",
+              "id": "doseMissed",
+              "questionOptions": {
+                "concept": "acc9eb87-37c7-4d02-a134-fdda9c2de74c",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Did the child receive a dose more than 1 hr late in the last 7 days? (Yes=1 , No= 0)",
+              "type": "obs",
+              "id": "doseRecieve",
+              "questionOptions": {
+                "concept": "af01544e-9712-4a10-97ac-344058795a74",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Which of the following are true of the caregiver? (Forget to give drugs=1, Not around to give drugs=1, Not wanting to give drugs around others=1, None=0)",
+              "id": "caregiverBarrier",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "dd10a27d-6945-47c4-ab43-63ccbad93960",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "ART Total Adherence Score",
+              "id": "totalArtScore",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "1df71a8d-9eb6-40fd-9b94-317629b35ade",
+                "rendering": "number",
+                "max": "4",
+                "min": "0",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseInt(caregiverProb)+ parseInt(doseMissed)+ parseInt(doseRecieve)+ parseInt(caregiverBarrier)) ? undefined: (parseFloat(caregiverProb)+ parseFloat(doseMissed)+ parseFloat(doseRecieve)+ parseFloat(caregiverBarrier))"
+                }
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Adherence assessment:",
+              "id": "adhereAss",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "47c2e943-e6be-48ce-b0fb-3e0730957698",
+                "answers": [
+                  {
+                    "concept": "5b1bf823-da30-4e23-a777-0d8ef93a6211",
+                    "label": "Perfect"
+                  },
+                  {
+                    "concept": "a73d20b3-d721-4763-a362-14a0c41a6b5e",
+                    "label": "Fair"
+                  },
+                  {
+                    "concept": "fdaf8b47-ea14-4d28-80fa-e1da58a30e8b",
+                    "label": "Poor"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Adherence (ART) notes:",
+              "isExpanded": "true",
+              "id": "artAdherenotes",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "d9390b4c-11c5-4005-822e-d72dea27ba7f",
+                "rendering": "textarea",
+                "rows": 5
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              }
             }
           ]
         },
@@ -3246,7 +4835,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "sex !== 'F'"
+                "hideWhenExpression": "age <= 9 || (sex !== 'F')"
               },
               "required": "true",
               "historicalExpression": "HD.getObject('prevEnc').getValue('a8a185d2-1350-11df-a1f1-0026b9348838')",
@@ -3466,7 +5055,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((arrayContains(['02e3ce61-fa24-445e-a1f0-6e3299142966','53b856ad-21ef-4745-9acd-81aca01bba31','55c74fa8-c810-4b37-a918-14a851bba6f3','44032888-08e1-4900-b9dd-7d236d79276c'], visitTypeUuid)))"
+                "hideWhenExpression": "age <= 9 || ((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((arrayContains(['02e3ce61-fa24-445e-a1f0-6e3299142966','53b856ad-21ef-4745-9acd-81aca01bba31','55c74fa8-c810-4b37-a918-14a851bba6f3','44032888-08e1-4900-b9dd-7d236d79276c'], visitTypeUuid))))"
               }
             },
             {
@@ -3699,7 +5288,10 @@
                 "hideWhenExpression": "isEmpty(notOnFpMale) && notOnFpMale !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838' || age < 15 || sex !=='M'"
               }
             }
-          ]
+          ],
+          "hide": {
+            "hideWhenExpression": "age <= 9"
+          }
         }
       ]
     },
@@ -4051,28 +5643,6 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Finding(s) on systems review?",
-              "type": "obs",
-              "id": "syStemsRevieW",
-              "questionOptions": {
-                "concept": "974c87d1-8100-4c96-be2a-8d107c185f41",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                    "label": "All systems normal"
-                  },
-                  {
-                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
-                    "label": "Abnormal"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
               "label": "System reviews:",
               "type": "obs",
               "id": "allsystemReview",
@@ -4113,9 +5683,6 @@
                     "label": "Skin"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "syStemsRevieW !== 'a899e890-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4213,6 +5780,68 @@
               "hide": {
                 "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899ec00-1350-11df-a1f1-0026b9348838')"
               }
+            },
+            {
+              "label": "Obvious birth defects:",
+              "id": "obviousBirthDefects",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "d6a5ae01-3d7d-4883-89e6-897c60bfec82",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89e6ae6-1350-11df-a1f1-0026b9348838",
+                    "label": "Don't know"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Obvious birth defects, specify:",
+              "id": "birthDefectsSpec",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "9fd74584-ade5-4394-b4e3-0e6781f8c983"
+              },
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (obviousBirthDefects !== \"a899b35c-1350-11df-a1f1-0026b9348838\")"
+              }
+            },
+            {
+              "label": "Congenital abnormaly in newborn::",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8b010e8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8b00d6e-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "id": "__KrJvEpIHu",
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
             }
           ]
         },
@@ -4247,6 +5876,72 @@
           "label": "Investigations",
           "isExpanded": "true",
           "questions": [
+            {
+              "label": "Client consent for HIV testing:",
+              "type": "obs",
+              "id": "hivTestingConsent",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9d9ccb6b-73ae-48dd-83f9-12c782ce6685",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "opdHivStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "HIV test done:",
+              "type": "obs",
+              "id": "hivTestDone",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c6b9c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "opdHivStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Pre-test counselling done:",
+              "type": "obs",
+              "id": "preTestCounsellingDone",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c6ade-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "opdHivStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838'"
+              }
+            },
             {
               "label": "Lab Order",
               "id": "labsWorkspaceLauncher",
@@ -4362,7 +6057,65 @@
               }
             },
             {
-              "label": "If you are assigning a new WHO stage to patient today, select new WHO stage:",
+              "label": "WHO staging:",
+              "type": "obs",
+              "id": "pedWhoStage",
+              "questionOptions": {
+                "concept": "a89b3740-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "1",
+                    "concept": "a89b33d0-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "2",
+                    "concept": "a89b34ac-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "3",
+                    "concept": "a89b3588-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "4",
+                    "concept": "a89b3664-1350-11df-a1f1-0026b9348838"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && arrayContains (['18faa058-4eea-4339-a959-84b3e5cb30be', '03f5b165-c577-4e1e-b7ae-acfc3ba18ebf'], visitTypeUuid)",
+                  "message": "Required."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Select criteria for new WHO stage:",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a89b2976-1350-11df-a1f1-0026b9348838",
+                "rendering": "select-concept-answers"
+              },
+              "required": {
+                "type": "conditionalRequired",
+                "message": "Patient marked as receiving a new pediatric WHO stage. Please select criteria.",
+                "referenceQuestionId": "pedWhoStage",
+                "referenceQuestionAnswers": [
+                  "a89b33d0-1350-11df-a1f1-0026b9348838, a89b34ac-1350-11df-a1f1-0026b9348838, a89b3588-1350-11df-a1f1-0026b9348838, a89b3664-1350-11df-a1f1-0026b9348838"
+                ]
+              },
+              "validators": [],
+              "id": "pedWhoCriteria",
+              "hide": {
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\""
+              }
+            },
+            {
+              "label": "WHO staging:",
               "type": "obs",
               "id": "adultWhoStage",
               "questionOptions": {
@@ -4395,7 +6148,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "age < 15 || (opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -4416,7 +6169,7 @@
               "validators": [],
               "id": "__sq5ELJr7p",
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "age < 15 || ((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -4440,7 +6193,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe')"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -4464,7 +6217,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b'"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b'"
               }
             },
             {
@@ -4494,7 +6247,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b' || deliveryModel !== 'd5e8c52f-7a38-44ed-a76a-bc771cc9b2ee'"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b' || deliveryModel !== 'd5e8c52f-7a38-44ed-a76a-bc771cc9b2ee'"
               }
             },
             {
@@ -4535,7 +6288,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b' || deliveryModel !== 'f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e'"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b' || deliveryModel !== 'f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e'"
               }
             },
             {
@@ -4555,7 +6308,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || establishCategory !== 'dc8eb4d5-8e3c-4c48-bec9-340cf125ff55'"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || establishCategory !== 'dc8eb4d5-8e3c-4c48-bec9-340cf125ff55'"
               }
             },
             {
@@ -4575,7 +6328,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe') || notEstablishedDeliveryModel !== 'd5e8c52f-7a38-44ed-a76a-bc771cc9b2ee'"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || notEstablishedDeliveryModel !== 'd5e8c52f-7a38-44ed-a76a-bc771cc9b2ee'"
               }
             }
           ]
@@ -4604,7 +6357,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -4623,7 +6376,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe')) || knownAllergies !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "!(opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838')) || knownAllergies !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4663,12 +6416,12 @@
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe')"
+                    "hideWhenExpression": "opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838')"
                   }
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false)) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false)) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -4701,7 +6454,7 @@
               ],
               "id": "__ovK20spEs",
               "hide": {
-                "hideWhenExpression": "((false)) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false)) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -4838,7 +6591,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -4883,7 +6636,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -4912,7 +6665,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -4953,7 +6706,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (reactionSerious !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (reactionSerious !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -5014,7 +6767,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -5059,7 +6812,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -5104,7 +6857,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -5137,7 +6890,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -5161,7 +6914,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((false) || (reactionReported !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || hivVisitType === '97772927-7aa2-4c30-be98-85183e4b0efe'))"
+                "hideWhenExpression": "((false) || (reactionReported !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             }
           ]
@@ -5276,6 +7029,16 @@
               },
               "type": "obs",
               "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838' && [].concat(transferPastArvCurrent || []).indexOf('a899b35c-1350-11df-a1f1-0026b9348838') !== -1 && !arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "message": "The current regimen is recorded in Past ARV History. ART plan can only be Continue regimen, Stop all, or Restart."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838' && (pastArtUse === 'a899b42e-1350-11df-a1f1-0026b9348838' || (pastArtUse === 'a899b35c-1350-11df-a1f1-0026b9348838' && [].concat(transferPastArvCurrent || []).indexOf('a899b35c-1350-11df-a1f1-0026b9348838') === -1 && [].concat(transferPastArvCurrent || []).indexOf('a899b42e-1350-11df-a1f1-0026b9348838') !== -1)) && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
+                  "message": "No past ARV regimen is marked as current. ART plan can only be Start ARVs."
+                },
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
@@ -5686,7 +7449,137 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'],arvPlan)))"
+                "hideWhenExpression": "age < 15 || ((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'],arvPlan))))"
+              }
+            },
+            {
+              "label": "ART regimen started:",
+              "id": "artStartedPediatric",
+              "questionOptions": {
+                "concept": "a89b6a62-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+                    "label": "ABC 120mg/3TC 60mg"
+                  },
+                  {
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                  },
+                  {
+                    "concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+                    "label": "ZDV 60mg/3TC 30mg"
+                  },
+                  {
+                    "concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
+                    "label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
+                  },
+                  {
+                    "concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+                    "label": "3TC 150mg/ZDV 300mg >25kgs"
+                  },
+                  {
+                    "concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+                    "label": "3TC 300mg/TDF 300mg >25kgs"
+                  },
+                  {
+                    "concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
+                    "label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+                  },
+                  {
+                    "concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
+                    "label": "Lopinavir 80mg/Ritonavir 20mg"
+                  },
+                  {
+                    "concept": "ddefd319-fb5d-4c0e-a125-ff7bdb6fe44f",
+                    "label": "Lopinavir 40mg/Ritonavir 10mg"
+                  },
+                  {
+                    "concept": "fa8266f6-36df-11e0-93be-0026b9348838",
+                    "label": "Lopinavir 200mg/Ritonavir 50mg"
+                  },
+                  {
+                    "concept": "3115e231-1077-4488-a7d5-83167263b9a2",
+                    "label": "Lopinavir 100mg/Ritonavir 25mg"
+                  },
+                  {
+                    "concept": "3cbfb0b9-721e-4d42-92a3-7d37269aab24",
+                    "label": " Atazanavir 300mg/ritonavir 100mg"
+                  },
+                  {
+                    "concept": "ff9096b6-d86c-403a-9bda-eab02252dbf3",
+                    "label": "Efavirenz 250mg"
+                  },
+                  {
+                    "concept": "492de98c-86c6-4fd8-af89-325448f12ed9",
+                    "label": "Efavirenz 300mg"
+                  },
+                  {
+                    "concept": "55e0461f-b28f-42de-a3c6-328d7f17c44b",
+                    "label": "Efavirenz 350mg"
+                  },
+                  {
+                    "concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
+                    "label": "Efavirenz 400mg"
+                  },
+                  {
+                    "concept": "d6262526-3113-11e0-8090-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "52441ef8-3126-11e0-8090-0026b9348838",
+                    "label": " Abacavir 300mg"
+                  },
+                  {
+                    "concept": "21d417bc-3114-11e0-8090-0026b9348838",
+                    "label": " Zidovudine 300mg "
+                  },
+                  {
+                    "concept": "67f62fd8-d43e-4c62-a18a-e8bb5a46fc5c",
+                    "label": " Raltegravir 25mg"
+                  },
+                  {
+                    "concept": "c2c66e99-1345-4fdb-b101-89b2e43d40e5",
+                    "label": " Raltegravir 100mg"
+                  },
+                  {
+                    "concept": "da698164-870d-11e0-85d3-000d6014b64c",
+                    "label": " Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir"
+                  },
+                  {
+                    "concept": "687d2b97-3336-4843-946e-597a31380746",
+                    "label": "Darunavir 75mg"
+                  },
+                  {
+                    "concept": "9732900a-4b81-4522-af1c-7d25ae6aad0a",
+                    "label": "Darunavir 150mg"
+                  },
+                  {
+                    "concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+                    "label": "Dolutegravir 10mg"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(arvPlan) && isEmpty(myValue) && arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], arvPlan)",
+                  "message": "Based on the plan selected, you must choose a regimen."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], arvPlan)",
+                  "message": "Based on the plan selected, you may not choose a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age > 24 || ((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b7ae8-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'],arvPlan))))"
               }
             },
             {
@@ -5781,12 +7674,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(pcpProphylaxisCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(pcpProphylaxisCurrent==='a899e0ac-1350-11df-a1f1-0026b9348838')",
+                  "failsWhenExpression": "!isEmpty(pcpProphylaxisCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && pcpProphylaxisCurrent === 'a899e0ac-1350-11df-a1f1-0026b9348838'",
                   "message": "Patient marked as not on Cotrimoxazole preventive therapy. Therefore plan can only be none or start."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(pcpProphylaxisCurrent) && !isEmpty(myValue) && arrayContains(['a8989396-1350-11df-a1f1-0026b9348838','a890c9e0-1350-11df-a1f1-0026b9348838'],pcpProphylaxisCurrent)&&!(arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'], myValue))",
+                  "failsWhenExpression": "!isEmpty(pcpProphylaxisCurrent) && pcpProphylaxisCurrent !== 'a899e0ac-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838','a89b7d36-1350-11df-a1f1-0026b9348838','a89b7908-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on Cotrimoxazole preventive therapy. Therefore plan can only be change regimen,continue or stop."
                 }
               ],
@@ -5965,7 +7858,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838'], pcpProphylaxisPlan)))"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838'], pcpProphylaxisPlan))))"
               }
             },
             {
@@ -6185,7 +8078,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], tbpropplan)))"
+                "hideWhenExpression": "((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], tbpropplan))))"
               }
             },
             {
@@ -6492,7 +8385,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], tbTreatmentPlan)"
+                "hideWhenExpression": "(!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a89b7c50-1350-11df-a1f1-0026b9348838', 'a898c938-1350-11df-a1f1-0026b9348838','a8a00158-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], tbTreatmentPlan))"
               }
             },
             {
@@ -6526,13 +8419,13 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(flucoProphy) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && (flucoProphy==='a899e0ac-1350-11df-a1f1-0026b9348838')",
-                  "message": "Patient marked as not on prophylaxis. Therefore plan can only be none or start."
+                  "failsWhenExpression": "((isEmpty(flucoProphy) || flucoProphy === \"a899e0ac-1350-11df-a1f1-0026b9348838\") && (isEmpty(flucoProphyPediatricDose) || flucoProphyPediatricDose === \"a899e0ac-1350-11df-a1f1-0026b9348838\") && (isEmpty(flucoProphyYouth) || flucoProphyYouth === \"a899e0ac-1350-11df-a1f1-0026b9348838\")) && !isEmpty(myValue) && !arrayContains([\"a899e0ac-1350-11df-a1f1-0026b9348838\",\"a89b77aa-1350-11df-a1f1-0026b9348838\"], myValue)",
+                  "message": "History shows no current treatment. Plan can only be None/Not eligible or Start."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
-                  "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
+                  "failsWhenExpression": "((!isEmpty(flucoProphy) && flucoProphy !== \"a899e0ac-1350-11df-a1f1-0026b9348838\") || (!isEmpty(flucoProphyPediatricDose) && flucoProphyPediatricDose !== \"a899e0ac-1350-11df-a1f1-0026b9348838\") || (!isEmpty(flucoProphyYouth) && flucoProphyYouth !== \"a899e0ac-1350-11df-a1f1-0026b9348838\")) && !isEmpty(myValue) && !arrayContains([\"a89b7908-1350-11df-a1f1-0026b9348838\",\"a89b7d36-1350-11df-a1f1-0026b9348838\"], myValue)",
+                  "message": "History shows current treatment. Plan can only be Continue or Stop."
                 }
               ],
               "alert": {
@@ -6551,8 +8444,20 @@
                 "concept": "212fdebe-4745-4f60-aaa0-35f4193abaf8",
                 "answers": [
                   {
-                    "concept": "0074b2e5-c138-487a-8446-fab65882572f",
-                    "label": "Fluconazole 100mg"
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
                   }
                 ],
                 "rendering": "select"
@@ -6561,12 +8466,80 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "flucoProphyPlan === 'a89b77aa-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Please select the drug to start."
+                  "failsWhenExpression": "age >= 25 && (flucoProphyPlan === \"a89b77aa-1350-11df-a1f1-0026b9348838\") && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "flucoProphyPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "age < 25 || ((flucoProphyPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Fluconazole prophylaxis drug to start:",
+              "required": "true",
+              "id": "flucoProphyStartDrugPediatricDose",
+              "questionOptions": {
+                "concept": "212fdebe-4745-4f60-aaa0-35f4193abaf8",
+                "answers": [
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age < 15 && (flucoProphyPlan === \"a89b77aa-1350-11df-a1f1-0026b9348838\") && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || ((flucoProphyPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
+              "label": "Fluconazole prophylaxis drug to start:",
+              "required": "true",
+              "id": "flucoProphyStartDrugYouth",
+              "questionOptions": {
+                "concept": "212fdebe-4745-4f60-aaa0-35f4193abaf8",
+                "answers": [
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age >= 15 && age <= 24 && (flucoProphyPlan === \"a89b77aa-1350-11df-a1f1-0026b9348838\") && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || ((flucoProphyPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -6607,13 +8580,13 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(cryptPreemptive) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(cryptPreemptive==='a899e0ac-1350-11df-a1f1-0026b9348838')",
-                  "message": "Patient marked as not on pre-emptive therapy. Therefore plan can only be none or start."
+                  "failsWhenExpression": "((isEmpty(cryptPreemptive) || cryptPreemptive === \"a899e0ac-1350-11df-a1f1-0026b9348838\") && (isEmpty(cryptPreemptivePediatricDose) || cryptPreemptivePediatricDose === \"a899e0ac-1350-11df-a1f1-0026b9348838\") && (isEmpty(cryptPreemptiveYouth) || cryptPreemptiveYouth === \"a899e0ac-1350-11df-a1f1-0026b9348838\")) && !isEmpty(myValue) && !arrayContains([\"a899e0ac-1350-11df-a1f1-0026b9348838\",\"a89b77aa-1350-11df-a1f1-0026b9348838\"], myValue)",
+                  "message": "History shows no current treatment. Plan can only be None/Not eligible or Start."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(cryptPreemptive) && cryptPreemptive === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
-                  "message": "Patient marked as on pre-emptive therapy in history section. Therefore plan can only be continue regimen and stop."
+                  "failsWhenExpression": "((!isEmpty(cryptPreemptive) && cryptPreemptive !== \"a899e0ac-1350-11df-a1f1-0026b9348838\") || (!isEmpty(cryptPreemptivePediatricDose) && cryptPreemptivePediatricDose !== \"a899e0ac-1350-11df-a1f1-0026b9348838\") || (!isEmpty(cryptPreemptiveYouth) && cryptPreemptiveYouth !== \"a899e0ac-1350-11df-a1f1-0026b9348838\")) && !isEmpty(myValue) && !arrayContains([\"a89b7908-1350-11df-a1f1-0026b9348838\",\"a89b7d36-1350-11df-a1f1-0026b9348838\"], myValue)",
+                  "message": "History shows current treatment. Plan can only be Continue or Stop."
                 }
               ],
               "alert": {
@@ -6622,6 +8595,109 @@
               },
               "hide": {
                 "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "If start/change, regimen:",
+              "id": "preemptiveMedication",
+              "questionOptions": {
+                "concept": "0d18fa68-6038-43d5-a5ce-f4ebeeab076b",
+                "answers": [
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Induction)"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age >= 25 && arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPreemptiveTherapyPlan) && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 25 || (!arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPreemptiveTherapyPlan))"
+              }
+            },
+            {
+              "label": "If start/change, regimen:",
+              "id": "preemptiveMedicationPediatricDose",
+              "questionOptions": {
+                "concept": "0d18fa68-6038-43d5-a5ce-f4ebeeab076b",
+                "answers": [
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age < 15 && arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPreemptiveTherapyPlan) && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || (!arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPreemptiveTherapyPlan))"
+              }
+            },
+            {
+              "label": "If start/change, regimen:",
+              "id": "preemptiveMedicationYouth",
+              "questionOptions": {
+                "concept": "0d18fa68-6038-43d5-a5ce-f4ebeeab076b",
+                "answers": [
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Induction)"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age >= 15 && age <= 24 && arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPreemptiveTherapyPlan) && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || (!arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPreemptiveTherapyPlan))"
               }
             },
             {
@@ -6636,6 +8712,14 @@
                   {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
                     "label": "Fluconazole 800mg"
+                  },
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction)"
                   }
                 ]
               },
@@ -6647,7 +8731,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "cryptoPreemptiveTherapyPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "(cryptoPreemptiveTherapyPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -6740,13 +8824,13 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(cryptCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue)&&(cryptCurrent==='a899e0ac-1350-11df-a1f1-0026b9348838')",
-                  "message": "Patient marked as not on Cryptococcus treatment. Therefore plan can only be none or start."
+                  "failsWhenExpression": "((isEmpty(cryptCurrent) || arrayContainsAny([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], cryptCurrent)) && (isEmpty(cryptCurrentPediatricDose) || arrayContainsAny([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], cryptCurrentPediatricDose)) && (isEmpty(cryptCurrentYouth) || arrayContainsAny([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], cryptCurrentYouth))) && !isEmpty(myValue) && !arrayContains([\"a899e0ac-1350-11df-a1f1-0026b9348838\",\"a89b77aa-1350-11df-a1f1-0026b9348838\"], myValue)",
+                  "message": "History shows no current treatment. Plan can only be None/Not eligible or Start."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
-                  "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
+                  "failsWhenExpression": "((!isEmpty(cryptCurrent) && !arrayContainsAny([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], cryptCurrent)) || (!isEmpty(cryptCurrentPediatricDose) && !arrayContainsAny([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], cryptCurrentPediatricDose)) || (!isEmpty(cryptCurrentYouth) && !arrayContainsAny([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], cryptCurrentYouth))) && !isEmpty(myValue) && !arrayContains([\"a89b7908-1350-11df-a1f1-0026b9348838\",\"a89b7d36-1350-11df-a1f1-0026b9348838\"], myValue)",
+                  "message": "History shows current treatment. Plan can only be Continue or Stop."
                 }
               ],
               "id": "cryptoPlan",
@@ -6765,6 +8849,104 @@
                 "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Consolidation)"
+                  },
+                  {
+                    "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
+                    "label": "Fluconazole 1200mg (Induction)"
+                  },
+                  {
+                    "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
+                    "label": "Flucytosine 100mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
+                    "label": "Amphotericin B deoxycholate 1mg/kg (Induction)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age >= 25 && arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPlan) && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 25 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)))))"
+              }
+            },
+            {
+              "label": "If start/change, regimen:",
+              "id": "MeningitisMedicationPediatricDose",
+              "questionOptions": {
+                "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
+                  },
+                  {
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
+                  },
+                  {
+                    "concept": "59b33054-3056-4d4c-8843-f7051c01e990",
+                    "label": "Flucytosine 100mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
+                    "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age < 15 && arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPlan) && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age >= 15 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)))))"
+              }
+            },
+            {
+              "label": "If start/change, regimen:",
+              "id": "MeningitisMedicationYouth",
+              "questionOptions": {
+                "concept": "a89c286c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
+                    "label": "Fluconazole 200mg (Maintenance)"
+                  },
+                  {
+                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
+                    "label": "Fluconazole 400mg (Consolidation)"
+                  },
+                  {
+                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
+                    "label": "Fluconazole 800mg (Consolidation)"
+                  },
+                  {
                     "concept": "10cf8e1e-0428-4675-80cf-1df08f5eccee",
                     "label": "Fluconazole 1200mg (Induction)"
                   },
@@ -6781,12 +8963,12 @@
                     "label": "Amphotericin B deoxycholate 1mg/kg (Induction)"
                   },
                   {
-                    "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
-                    "label": "Fluconazole 800mg (Consolidation)"
+                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
+                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
                   },
                   {
-                    "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
-                    "label": "Fluconazole 200mg (Maintenance)"
+                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
+                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
                   }
                 ],
                 "rendering": "select"
@@ -6795,12 +8977,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(cryptoPlan) && isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)",
-                  "message": "You indicated patient is starting/changing regimen. Please select regimen."
+                  "failsWhenExpression": "age >= 15 && age <= 24 && arrayContains([\"a89b77aa-1350-11df-a1f1-0026b9348838\",\"a89b7c50-1350-11df-a1f1-0026b9348838\",\"c65f52d4-e37c-413e-98ea-33f969896b0f\"], cryptoPlan) && isEmpty(myValue)",
+                  "message": "The selected plan requires a regimen."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)))"
+                "hideWhenExpression": "age < 15 || age > 24 || (((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || ((!arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838','c65f52d4-e37c-413e-98ea-33f969896b0f'], cryptoPlan)))))"
               }
             },
             {
@@ -6860,6 +9042,10 @@
                   {
                     "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
                     "label": "Dapsone"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
                   }
                 ],
                 "rendering": "select"
@@ -6873,7 +9059,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "pcpPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "(pcpPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -6905,12 +9091,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(toxoCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'],myValue) && (arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838'],toxoCurrent))",
+                  "failsWhenExpression": "!isEmpty(toxoCurrent) && arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], toxoCurrent) && !isEmpty(myValue) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as not on treatment. Therefore plan can only be none or start."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(toxoCurrent) && !arrayContains(['a899e0ac-1350-11df-a1f1-0026b9348838'],toxoCurrent) && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
+                  "failsWhenExpression": "!isEmpty(toxoCurrent) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], toxoCurrent) && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on toxo in history section. Therefore plan can only be continue regimen and stop."
                 }
               ],
@@ -6945,6 +9131,10 @@
                   {
                     "concept": "43eefe0f-044e-407d-8cd4-40755f1e65f2",
                     "label": "Folinic acid"
+                  },
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
                   }
                 ],
                 "rendering": "multiCheckbox"
@@ -6955,10 +9145,15 @@
                   "type": "js_expression",
                   "failsWhenExpression": "toxoPlan === 'a89b77aa-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
                   "message": "Please select the drug to start."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                  "message": "'None' cannot be selected together with other options."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "toxoPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "(toxoPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838')"
               }
             }
           ]

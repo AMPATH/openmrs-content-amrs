@@ -1215,6 +1215,24 @@
               "id": "condomIssue"
             },
             {
+              "label": "Primary diagnosis:",
+              "required": "true",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            },
+            {
               "label": "PrEP plan:",
               "type": "obs",
               "required": "true",

@@ -1,0 +1,1923 @@
+{
+  "name": "POC Pre Exposure Encounter Form v1.0",
+  "uuid": "92aa1dad-df17-5327-b026-494b20c63420",
+  "processor": "EncounterFormProcessor",
+  "version": "1.0",
+  "published": true,
+  "retired": false,
+  "description": "Merged PrEP initial and follow-up encounter form, including transit and transfer in visits.",
+  "encounterType": "ddd96f1c-524f-4caa-81a6-1a6f9789a4bc",
+  "encounter": "PREPRETURN",
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "required": true,
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "required": true
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "required": true
+            },
+            {
+              "id": "prepVisitType",
+              "label": "Type of visit:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                    "label": "Initial"
+                  },
+                  {
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+                    "label": "Follow Up"
+                  },
+                  {
+                    "concept": "912029d5-1b22-49d1-946b-110a902aca97",
+                    "label": "Transit"
+                  },
+                  {
+                    "concept": "97772927-7aa2-4c30-be98-85183e4b0efe",
+                    "label": "Transfer In"
+                  }
+                ]
+              },
+              "required": true
+            },
+            {
+              "type": "obs",
+              "label": "Setting:",
+              "id": "sdp",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a17e48-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
+                    "label": "Facility"
+                  },
+                  {
+                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                    "label": "Community"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Population type:",
+              "id": "popType",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "General population"
+                  },
+                  {
+                    "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                    "label": "Key population"
+                  },
+                  {
+                    "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                    "label": "Vulnerable population"
+                  }
+                ]
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!isEmpty(prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ],
+              "questionInfo": "Indicate the population type."
+            },
+            {
+              "label": "Key population:",
+              "id": "keyPop",
+              "questionInfo": "Indicate the key population.",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
+                "answers": [
+                  {
+                    "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
+                    "label": "MSM"
+                  },
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "PWID"
+                  },
+                  {
+                    "concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
+                    "label": "Transgender persons"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!isEmpty(prepVisitType) && popType === '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType) && popType === '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6')"
+              }
+            },
+            {
+              "label": "Vulnerable population:",
+              "id": "vulPop",
+              "questionInfo": "Indicate the vulnerable population.",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
+                "answers": [
+                  {
+                    "concept": "390a0eda-e4a0-4c3b-893c-ceb0ab2387f5",
+                    "label": "People in prison settings"
+                  },
+                  {
+                    "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                    "label": "Fisher folk"
+                  },
+                  {
+                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                    "label": "HIV sero-discordant couples"
+                  },
+                  {
+                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                    "label": "Long-distance truckers and related mobile populations"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!isEmpty(prepVisitType) && popType === '729690d4-09dc-497e-a180-bfc2e9d7d21d') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType) && popType === '729690d4-09dc-497e-a180-bfc2e9d7d21d')"
+              }
+            },
+            {
+              "label": "Place of refill:",
+              "id": "refillPlace",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "244b67bf-da2d-4009-9bc9-91a52a92defe",
+                "answers": [
+                  {
+                    "concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
+                    "label": "Facility"
+                  },
+                  {
+                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                    "label": "Community"
+                  }
+                ]
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Was this visit scheduled?",
+              "id": "scheduledVisit",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b6440-1350-11df-a1f1-0026b9348838",
+                    "label": "Scheduled visit"
+                  },
+                  {
+                    "concept": "a89ff816-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit early"
+                  },
+                  {
+                    "concept": "a89ff8de-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit late"
+                  }
+                ]
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Transit / Transfer In",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "sourceFacility",
+              "label": "Name of facility (transit / transfer in):",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Date of PrEP initiation at source facility:",
+              "type": "obs",
+              "id": "prepStartDate",
+              "questionOptions": {
+                "concept": "a89ae092-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && !isEmpty(myValue) && !isEmpty(encDate) && moment(myValue).isAfter(moment(encDate), 'day')",
+                  "message": "Date cannot be after the visit date."
+                }
+              ]
+            },
+            {
+              "label": "PrEP type at source facility:",
+              "id": "prepMethodMaleStudy",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+                "answers": [
+                  {
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Daily oral prep"
+                  },
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "CABOTEGRAVIR (CAB-LA)"
+                  }
+                ]
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M') && visitTypeUuid === '9ea74334-1e1c-4071-81ef-70a919aafa50')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M') && visitTypeUuid === '9ea74334-1e1c-4071-81ef-70a919aafa50') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "PrEP type at source facility:",
+              "id": "prepMethodMale",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+                "answers": [
+                  {
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Daily oral prep"
+                  },
+                  {
+                    "concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
+                    "label": "Event driven oral prep"
+                  },
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "CABOTEGRAVIR (CAB-LA)"
+                  },
+                  {
+                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
+                    "label": "Lenacapavir"
+                  }
+                ]
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M') && visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M') && visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "PrEP type at source facility:",
+              "id": "prepMethodFem",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+                "answers": [
+                  {
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Daily oral prep"
+                  },
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "CABOTEGRAVIR (CAB-LA)"
+                  },
+                  {
+                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
+                    "label": "Lenacapavir"
+                  },
+                  {
+                    "concept": "bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd",
+                    "label": "Dapivirine ring"
+                  }
+                ]
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'F'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'F')) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Current oral regimen:",
+              "id": "currentPrepRegimen",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "b42438be-5010-4416-8869-4255f6ee7ae0",
+                "answers": [
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "TDF 300mg/FTC 200mg"
+                  },
+                  {
+                    "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+                    "label": "TDF 300mg/3TC 300mg"
+                  },
+                  {
+                    "concept": "8b4b0df3-7923-4371-b573-e7994002e3f9",
+                    "label": "TAF 25mg/FTC 200mg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && visitTypeUuid === '9ea74334-1e1c-4071-81ef-70a919aafa50' && prepMethodMaleStudy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'M') && visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && visitTypeUuid === '9ea74334-1e1c-4071-81ef-70a919aafa50' && prepMethodMaleStudy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'M') && visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Transfer in county:",
+              "id": "transfer",
+              "questionOptions": {
+                "concept": "10bca44a-930f-46ae-b686-63ddb36a713f",
+                "rendering": "text"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Baseline Assessment",
+      "sections": [
+        {
+          "label": "Baseline Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Behaviour Risk Assessment, Detailed",
+              "questionOptions": {
+                "concept": "faaa5ce4-c888-4d7d-9ee5-137f64f431cf",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Other behavioural risk assessment details:",
+                  "id": "otherSpecify",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+                  }
+                }
+              ],
+              "id": "__FpCFprLrp",
+              "hide": {
+                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
+            },
+            {
+              "label": "Signs/symptoms of acute HIV:",
+              "type": "obs",
+              "id": "acuteHiv",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "39220cda-f62a-4514-8d73-013585e59770",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!isEmpty(prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Contraindications for any drug used for PrEP:",
+              "id": "contraindications",
+              "questionOptions": {
+                "concept": "a3263d60-c35c-4a8f-b6a4-7ae68b9e5b19",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!isEmpty(prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Names of HTS provider that tested the patient? (Record at least 2 names, If the provider's name is unknown, indicate facility)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
+              },
+              "id": "htsname",
+              "hide": {
+                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Follow Up Assessment",
+      "sections": [
+        {
+          "label": "Medical Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Signs/symptoms of STI:",
+              "id": "stiSymptoms",
+              "questionOptions": {
+                "concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "If yes, indicate below:",
+              "questionOptions": {
+                "concept": "a8b00562-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8982b54-1350-11df-a1f1-0026b9348838",
+                    "label": "Genital ulcers disease (GUD)"
+                  },
+                  {
+                    "concept": "a892ea2c-1350-11df-a1f1-0026b9348838",
+                    "label": "Vaginitis"
+                  },
+                  {
+                    "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
+                    "label": "Vaginal discharge (VD)"
+                  },
+                  {
+                    "concept": "a8931cf4-1350-11df-a1f1-0026b9348838",
+                    "label": "Cervicitis"
+                  },
+                  {
+                    "concept": "d31e0260-cd5d-44ec-9341-1b837c8675aa",
+                    "label": "Cervical discharge (CD)"
+                  },
+                  {
+                    "concept": "a8986754-1350-11df-a1f1-0026b9348838",
+                    "label": "Pelvic inflammatory disease (PID)"
+                  },
+                  {
+                    "concept": "a8ad3062-1350-11df-a1f1-0026b9348838",
+                    "label": "Urethral discharge (UD)"
+                  },
+                  {
+                    "concept": "6201b563-716f-4c75-bb61-ec92864d2e53",
+                    "label": "Anal discharge (AD)"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "id": "signsSTI",
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && stiSymptoms === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && stiSymptoms === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Clinical notes:",
+              "type": "obs",
+              "id": "hpiText",
+              "questionOptions": {
+                "concept": "a89ffbf4-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+          }
+        },
+        {
+          "label": "Possible Adverse Drug Reaction",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Possible adverse drug reaction:",
+              "id": "currSideEffect",
+              "questionOptions": {
+                "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "type": "obsGroup",
+              "label": "Adverse drug reaction",
+              "id": "sideEff",
+              "questionOptions": {
+                "concept": "1a38715f-4b57-436e-99dd-b3c922654646",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Description:",
+                  "id": "sideEffectype",
+                  "questionOptions": {
+                    "concept": "c2ecd5f7-4b47-47ae-b706-3dc5ed98b4db",
+                    "answers": [
+                      {
+                        "concept": "a877c7f6-1350-11df-a1f1-0026b9348838",
+                        "label": "Anaemia"
+                      },
+                      {
+                        "concept": "a8909060-1350-11df-a1f1-0026b9348838",
+                        "label": "Hepatitis"
+                      },
+                      {
+                        "concept": "a89d0c0a-1350-11df-a1f1-0026b9348838",
+                        "label": "IRIS"
+                      },
+                      {
+                        "concept": "a8a01dfa-1350-11df-a1f1-0026b9348838",
+                        "label": "Lactic acidosis"
+                      },
+                      {
+                        "concept": "a89cee50-1350-11df-a1f1-0026b9348838",
+                        "label": "Lipo-dystrophy"
+                      },
+                      {
+                        "concept": "a897fe86-1350-11df-a1f1-0026b9348838",
+                        "label": "Neuropathy"
+                      },
+                      {
+                        "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                        "label": "Persistent vomiting"
+                      },
+                      {
+                        "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                        "label": "Rash"
+                      },
+                      {
+                        "concept": "a8a16d0e-1350-11df-a1f1-0026b9348838",
+                        "label": "Steven-Johnson syndrome"
+                      },
+                      {
+                        "concept": "a8ad21e4-1350-11df-a1f1-0026b9348838",
+                        "label": "Nausea"
+                      },
+                      {
+                        "concept": "a894b604-1350-11df-a1f1-0026b9348838",
+                        "label": "Burning sensation"
+                      },
+                      {
+                        "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                        "label": "Diarrhea"
+                      },
+                      {
+                        "concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+                        "label": "Headache"
+                      },
+                      {
+                        "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                        "label": "Fatigue"
+                      },
+                      {
+                        "concept": "a89366a0-1350-11df-a1f1-0026b9348838",
+                        "label": "Jaundice"
+                      },
+                      {
+                        "concept": "a89836ee-1350-11df-a1f1-0026b9348838",
+                        "label": "Dizzy"
+                      },
+                      {
+                        "concept": "a8932f00-1350-11df-a1f1-0026b9348838",
+                        "label": "Abdominal pain"
+                      },
+                      {
+                        "concept": "a89cec02-1350-11df-a1f1-0026b9348838",
+                        "label": "Anxiety"
+                      },
+                      {
+                        "concept": "c80dcaad-ea61-4b88-b1f7-c091d706c7de",
+                        "label": "Nightmare"
+                      },
+                      {
+                        "concept": "a8935fde-1350-11df-a1f1-0026b9348838",
+                        "label": "Depression"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "This field is required."
+                    }
+                  ]
+                },
+                {
+                  "id": "reaction",
+                  "label": "Severity of the reaction:",
+                  "questionOptions": {
+                    "concept": "6c1b293c-4d8c-470f-9991-93cdde1274ff",
+                    "answers": [
+                      {
+                        "concept": "a89efccc-1350-11df-a1f1-0026b9348838",
+                        "label": "Mild"
+                      },
+                      {
+                        "concept": "a89efdee-1350-11df-a1f1-0026b9348838",
+                        "label": "Moderate"
+                      },
+                      {
+                        "concept": "a89eff1a-1350-11df-a1f1-0026b9348838",
+                        "label": "Severe"
+                      },
+                      {
+                        "concept": "53864e20-4cca-4daf-8fb5-943514467033",
+                        "label": "Life threatening"
+                      },
+                      {
+                        "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                        "label": "Not graded"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "This field is required."
+                    }
+                  ]
+                },
+                {
+                  "id": "action",
+                  "label": "Action (Mark all that apply):",
+                  "questionOptions": {
+                    "concept": "01fb96f5-8dc5-4481-8a11-240994b3b795",
+                    "answers": [
+                      {
+                        "concept": "b5b9663c-9568-4f48-b70f-34c63b21bce4",
+                        "label": "Stop"
+                      },
+                      {
+                        "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+                        "label": "Changed PrEP method"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ],
+                    "rendering": "multiCheckbox"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "This field is required."
+                    }
+                  ]
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+          }
+        },
+        {
+          "label": "Chronic Illness and Comorbidities",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Liver Disease, Detailed",
+              "questionOptions": {
+                "concept": "032a3332-2795-4922-b51f-90bc54c0732c",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Liver disease:",
+                  "id": "liver",
+                  "questionOptions": {
+                    "concept": "a8ad516e-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                  }
+                },
+                {
+                  "label": "Treatment:",
+                  "id": "liverTreatment",
+                  "questionOptions": {
+                    "concept": "45198f3c-36a1-4dfe-9977-46bf1f75a1ca",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && liver === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && liver === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "This field is required."
+                    }
+                  ]
+                }
+              ],
+              "id": "liverDetailed",
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "label": "Kidney Disease, Detailed",
+              "questionOptions": {
+                "concept": "acf48483-cfa4-4ab9-b793-0079153b8778",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Kidney disease:",
+                  "id": "kidney",
+                  "questionOptions": {
+                    "concept": "a8ad5254-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                  }
+                },
+                {
+                  "label": "Treatment:",
+                  "id": "kidneyTreatment",
+                  "questionOptions": {
+                    "concept": "45198f3c-36a1-4dfe-9977-46bf1f75a1ca",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && kidney === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && kidney === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "This field is required."
+                    }
+                  ]
+                }
+              ],
+              "id": "kidneyDetailed",
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "label": "Other Illnesses",
+              "questionOptions": {
+                "concept": "e6aafb67-3e12-439a-9132-c62569e76ab0",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Other description:",
+                  "id": "probAdded",
+                  "questionOptions": {
+                    "concept": "a8ae835e-1350-11df-a1f1-0026b9348838",
+                    "rendering": "problem"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                  }
+                },
+                {
+                  "label": "Treatment:",
+                  "id": "probAddedTreatment",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "hide": {
+                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && !isEmpty(probAdded))"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && !isEmpty(probAdded)) && isEmpty(myValue)",
+                      "message": "This field is required."
+                    }
+                  ]
+                }
+              ],
+              "id": "otherIllness",
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+          }
+        }
+      ],
+      "hide": {
+        "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+      }
+    },
+    {
+      "label": "PrEP Plan",
+      "sections": [
+        {
+          "label": "PrEP Plan",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Primary diagnosis:",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+              }
+            },
+            {
+              "label": "PrEP plan:",
+              "type": "obs",
+              "id": "prepStatus",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e5a6d2fe-4b71-41cd-835b-53190353efe7",
+                "answers": [
+                  {
+                    "label": "Continue",
+                    "concept": "a89b7908-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Switch",
+                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Restart",
+                    "concept": "a8a00220-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Discontinue",
+                    "concept": "a8af50f4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Transfer out",
+                    "concept": "5520f234-258e-49f0-97ab-701b98fab608",
+                    "hide": {
+                      "hideWhenExpression": "prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+                    }
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "Select the PrEP plan."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && myValue === '5520f234-258e-49f0-97ab-701b98fab608'",
+                  "message": "For an initial visit, specify the transfer out facility in the text field instead."
+                }
+              ]
+            },
+            {
+              "label": "Reason for switching:",
+              "id": "switchReason",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "bef7833c-06f5-4509-acca-a8f8519175ce",
+                "answers": [
+                  {
+                    "concept": "7e7d4555-362a-498a-b5ed-abcddcfce2a7",
+                    "label": "Client preference"
+                  },
+                  {
+                    "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+                    "label": "Adverse drug reactions"
+                  },
+                  {
+                    "concept": "01eedbcc-ea21-40cc-b150-fcaca5eef501",
+                    "label": "Drug interactions"
+                  },
+                  {
+                    "concept": "c0c9eab3-46f6-453c-b29d-dc1c242317c5",
+                    "label": "Stock out"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "hide": {
+                "hideWhenExpression": "!((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "If discontinued, reasons:",
+              "id": "discontinuedReasons",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a89e3f94-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89ace7c-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive HIV test result during follow-up"
+                  },
+                  {
+                    "concept": "d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb",
+                    "label": "Client reports no ongoing HIV risk"
+                  },
+                  {
+                    "concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
+                    "label": "Creatinine clearance below 50 mL/min"
+                  },
+                  {
+                    "concept": "5be50fc2-9e50-4d64-8a0c-f08ed7a34bb9",
+                    "label": "Client requests to stop"
+                  },
+                  {
+                    "concept": "a89ce50e-1350-11df-a1f1-0026b9348838",
+                    "label": "Sustained non-adherence to medication or visits"
+                  },
+                  {
+                    "concept": "a89e39f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Died"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "hide": {
+                "hideWhenExpression": "!((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "id": "transferOutFacility",
+              "label": "Transfer out facility (specify):",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e8876675-76e1-4e15-a7c5-d4046ff97e3a"
+              },
+              "hide": {
+                "hideWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608' && isEmpty(myValue)",
+                  "message": "Specify the transfer out facility."
+                }
+              ]
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Prescription",
+      "sections": [
+        {
+          "label": "PrEP Prescription",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "PrEP prescribed today:",
+              "type": "obs",
+              "id": "prepPrescribed",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "8a9dd5c3-e731-434b-9759-c3047173046d",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "PrEP method:",
+              "id": "prepTypeM",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "25345dff-45f6-481b-87ca-08bebe1d6bc6",
+                "answers": [
+                  {
+                    "concept": "db0c5937-3874-4eae-9566-9a645ad7ac65",
+                    "label": "Oral"
+                  },
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "Cabotegravir (CAB-LA)"
+                  },
+                  {
+                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
+                    "label": "Lenacapavir"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'M'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'M')) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "PrEP method:",
+              "id": "prepTypeF",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "25345dff-45f6-481b-87ca-08bebe1d6bc6",
+                "answers": [
+                  {
+                    "concept": "db0c5937-3874-4eae-9566-9a645ad7ac65",
+                    "label": "Oral"
+                  },
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "Cabotegravir (CAB-LA)"
+                  },
+                  {
+                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
+                    "label": "Lenacapavir"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'F'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'F')) && isEmpty(myValue)",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!(!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'F'))) && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')",
+                  "message": "Do not initiate CABOTEGRAVIR during pregnancy or breastfeeding. Only continuation of existing uninterrupted treatment is allowed."
+                }
+              ]
+            },
+            {
+              "label": "Dosing strategy:",
+              "id": "doseStrategy",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "dc254d4b-b6ab-44a3-93a7-98e6faa9cec7",
+                "answers": [
+                  {
+                    "concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
+                    "label": "Event driven"
+                  },
+                  {
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Daily oral prep"
+                  },
+                  {
+                    "concept": "64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2",
+                    "label": "Long acting prep"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M')) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Dosing strategy:",
+              "id": "doseStrategyF",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "dc254d4b-b6ab-44a3-93a7-98e6faa9cec7",
+                "answers": [
+                  {
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Daily oral prep"
+                  },
+                  {
+                    "concept": "64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2",
+                    "label": "Long acting prep"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F')) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Oral regimen:",
+              "id": "PrepDrugsPlanOral",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "980b94ab-f64d-4730-b602-c127375014b9",
+                "answers": [
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "TDF 300mg/FTC 200mg"
+                  },
+                  {
+                    "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+                    "label": "TDF 300mg/3TC 300mg"
+                  },
+                  {
+                    "concept": "8b4b0df3-7923-4371-b573-e7994002e3f9",
+                    "label": "TAF 25mg/FTC 200mg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Regimen / type:",
+              "id": "PrepDrugsPlanLongM",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "980b94ab-f64d-4730-b602-c127375014b9",
+                "answers": [
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "CABOTEGRAVIR (CAB-LA)"
+                  },
+                  {
+                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
+                    "label": "Lenacapavir"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Regimen / type:",
+              "id": "PrepDrugsPlanLong",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "980b94ab-f64d-4730-b602-c127375014b9",
+                "answers": [
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "Cabotegravir(CAB-LA)"
+                  },
+                  {
+                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
+                    "label": "Lenacapavir"
+                  },
+                  {
+                    "concept": "bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd",
+                    "label": "Dapivirine ring"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2') && isEmpty(myValue)",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')) && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')",
+                  "message": "Do not initiate Cabotegravir (CAB-LA) during pregnancy or breastfeeding. Only continuation of existing uninterrupted treatment is allowed."
+                }
+              ]
+            },
+            {
+              "id": "pregnancyStatus",
+              "label": "Pregnancy status:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
+                "answers": [
+                  {
+                    "concept": "a89d109c-1350-11df-a1f1-0026b9348838",
+                    "label": "Pregnant"
+                  },
+                  {
+                    "concept": "aa9895bc-1971-4926-b7a3-67b5fba1b2d5",
+                    "label": "Not pregnant"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue)",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && myValue === 'a899b50a-1350-11df-a1f1-0026b9348838'",
+                  "message": "Confirm pregnancy status before prescribing CABOTEGRAVIR."
+                }
+              ]
+            },
+            {
+              "id": "breastfeeding",
+              "label": "Currently breastfeeding:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a18208-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "id": "continuingCab",
+              "label": "Already on CABOTEGRAVIR and continuing without interruption:",
+              "type": "control",
+              "questionOptions": {
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "isTransient": true
+              },
+              "hide": {
+                "hideWhenExpression": "!(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))) && isEmpty(myValue)",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (myValue !== 'a899b35c-1350-11df-a1f1-0026b9348838' || prepStatus !== 'a89b7908-1350-11df-a1f1-0026b9348838')",
+                  "message": "Cabotegravir (CAB-LA) may only be continued without interruption during pregnancy or breastfeeding; it must not be initiated, restarted, or switched to."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && prepMethodFem !== '05188221-3e4e-43b2-b9ec-afb924d95da1'",
+                  "message": "Existing PrEP type at the source facility must be Cabotegravir to record uninterrupted continuation."
+                }
+              ],
+              "questionInfo": "Used for validation during this form session. This answer is not saved as an observation; confirm it again when editing the form."
+            },
+            {
+              "label": "Date of initiation:",
+              "id": "initDate",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "90ee880d-4aba-4f43-8b8e-88bfade1dbf0"
+              },
+              "hide": {
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)))))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && isEmpty(myValue)",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && !isEmpty(myValue) && !isEmpty(encDate) && moment(myValue).isAfter(moment(encDate), 'day')",
+                  "message": "Date cannot be after the visit date."
+                }
+              ]
+            },
+            {
+              "label": "Number of months:",
+              "id": "months",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "3560e1f8-f3c1-4468-969c-25f7467c41e2",
+                "min": "1",
+                "disallowDecimals": true
+              },
+              "hide": {
+                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0)",
+                  "message": "Enter a positive whole number."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && isEmpty(myValue) && (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) || isEmpty(noDays))",
+                  "message": "Enter the duration in months or days."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && !isEmpty(myValue) && !isEmpty(noDays)",
+                  "message": "Use either months or days, not both."
+                }
+              ]
+            },
+            {
+              "label": "Number of days:",
+              "id": "noDays",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a89fca44-1350-11df-a1f1-0026b9348838",
+                "min": "1",
+                "disallowDecimals": true
+              },
+              "hide": {
+                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0)",
+                  "message": "Enter a positive whole number."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && isEmpty(myValue) && (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) || isEmpty(months))",
+                  "message": "Enter the duration in months or days."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && !isEmpty(myValue) && !isEmpty(months)",
+                  "message": "Use either months or days, not both."
+                }
+              ]
+            },
+            {
+              "label": "Next medication pick up location:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "62c90e60-ced5-4183-a1b0-092339384d02",
+                "answers": [
+                  {
+                    "concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
+                    "label": "Facility"
+                  },
+                  {
+                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                    "label": "Community"
+                  }
+                ]
+              },
+              "id": "pickupLoc",
+              "hide": {
+                "hideWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "id": "drugsWorkspaceLauncher",
+              "label": "PrEP prescription:",
+              "type": "control",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe drugs",
+                "workspaceName": "order-basket"
+              },
+              "hide": {
+                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && (!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) || (true && ((true)))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) || (pregnancyStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838' && !isEmpty(pregnancyStatus) && !isEmpty(breastfeeding) && (!(pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838')) || prepMethodFem === '05188221-3e4e-43b2-b9ec-afb924d95da1') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && (((sex === 'M') && !isEmpty(prepTypeM)) || ((sex === 'F') && !isEmpty(prepTypeF)))) || ((((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && !isEmpty(PrepDrugsPlanOral)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2' && !isEmpty(PrepDrugsPlanLongM)) || ((sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2' && !isEmpty(PrepDrugsPlanLong)))))))"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Referrals and Clinical Notes",
+      "sections": [
+        {
+          "label": "Referrals and Clinical Notes",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "referralFacility",
+              "label": "Patient referred to facility:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "encounter-location",
+                "concept": "2722deae-f4e6-42f4-8259-f7e47d425d61",
+                "datasource": {
+                  "name": "location",
+                  "config": {}
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
+            },
+            {
+              "label": "Please enter the clinical notes below:",
+              "type": "obs",
+              "id": "assNote",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 5
+              },
+              "hide": {
+                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Next Appointment",
+      "sections": [
+        {
+          "label": "Next Appointment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Return to clinic date:",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [
+                  15,
+                  30,
+                  45,
+                  60,
+                  90,
+                  120,
+                  180
+                ]
+              },
+              "id": "tca",
+              "hide": {
+                "hideWhenExpression": "!((!isEmpty(prepVisitType)) && !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)) && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || isEmpty(transferOutFacility)))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)) && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || isEmpty(transferOutFacility))) && isEmpty(myValue)",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)) && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || isEmpty(transferOutFacility))) && !isEmpty(myValue) && !isEmpty(encDate) && !moment(myValue).isAfter(moment(encDate), 'day')",
+                  "message": "Return to clinic date must be after the visit date."
+                }
+              ]
+            },
+            {
+              "id": "appointmentWorkspaceLauncher",
+              "label": "Appointments:",
+              "type": "control",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add appointment",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "!(((!isEmpty(prepVisitType)) && !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)) && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || isEmpty(transferOutFacility))) && !isEmpty(tca) && !isEmpty(encDate) && moment(tca).isAfter(moment(encDate), 'day'))"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+          }
+        }
+      ]
+    }
+  ]
+}
