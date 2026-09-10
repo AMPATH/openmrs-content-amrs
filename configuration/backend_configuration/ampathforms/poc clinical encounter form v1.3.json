@@ -42,7 +42,7 @@
               "readOnly": true
             },
             {
-              "label": "Location:",
+              "label": "Facility:",
               "type": "encounterLocation",
               "required": "true",
               "questionOptions": {
