@@ -5869,6 +5869,177 @@
               "hide": {
                 "hideWhenExpression": "visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
+            },
+             {
+              "label": "Existing complications?",
+              "required": "true",
+              "type": "obs",
+              "id": "existpecifyComplications",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "a8b010e8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "acb3f446-541a-4d53-a1f6-dcafb2cc84b1",
+                    "label": "Visual impairment",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89cf602-1350-11df-a1f1-0026b9348838",
+                    "label": "Heart failure",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
+                    "label": "Kidney failure(CKD)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "fa077a35-635e-464e-9caf-9187911d1570",
+                    "label": "Diabetic foot ulcer",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "48365a67-f0f9-4d31-9c6e-73d62c152776",
+                    "label": "Erectile dysfunction",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
+                    "label": "Stroke",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "e7516737-706a-4a32-8727-c5add875925f",
+                    "label": "Peripheral vascular disease",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(clinicalDiagnosisId) || !arrayContainsAny(['7DBFC8EB-4E9E-45C1-8706-3D2F74FDC7C9','3BB32455-4A73-4CA1-83D4-55FC12340DD6','B23EB926-3985-41C9-B0F7-E058E581343A','CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],clinicalDiagnosisId)"
+              }
+            },
+             {
+              "label": "Foot risk assessment:",
+              "required": "true",
+              "type": "obs",
+              "id": "footDiabeticRisk",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "95eac840-0e18-45f3-8650-08a8356bb45a",
+                "answers": [
+                  {
+                    "concept": "4fae298d-c3c2-4483-ad31-bea9b637ae2b",
+                    "label": "High risk"
+                  },
+                  {
+                    "concept": "d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb",
+                    "label": "Low risk"
+                  }
+                ]
+              },
+              "validators": [],
+             
+              "hide": {
+                "hideWhenExpression": "isEmpty(clinicalDiagnosisId) || !arrayContainsAny(['CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],clinicalDiagnosisId)"
+              }
+            },
+            {
+              "label": "Diabetic foot?",
+              "required": "true",
+              "type": "obs",
+              "id": "footDiabeticExisting",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a2b6018d-c8a1-4d1d-ada2-80c1466dc2f5",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(clinicalDiagnosisId) || !arrayContainsAny(['CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],clinicalDiagnosisId)"
+              }
+            },
+            {
+              "label": "New onset complications:",
+              "required": "true",
+              "type": "obs",
+              "id": "newComplications",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "a8ae835e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "acb3f446-541a-4d53-a1f6-dcafb2cc84b1",
+                    "label": "Visual impairment",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89cf602-1350-11df-a1f1-0026b9348838",
+                    "label": "Heart failure",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
+                    "label": "Kidney failure(CKD)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "fa077a35-635e-464e-9caf-9187911d1570",
+                    "label": "Diabetic foot ulcer",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "48365a67-f0f9-4d31-9c6e-73d62c152776",
+                    "label": "Erectile dysfunction",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
+                    "label": "Stroke",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "e7516737-706a-4a32-8727-c5add875925f",
+                    "label": "Peripheral vascular disease",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(clinicalDiagnosisId) || !arrayContainsAny(['7DBFC8EB-4E9E-45C1-8706-3D2F74FDC7C9','3BB32455-4A73-4CA1-83D4-55FC12340DD6','B23EB926-3985-41C9-B0F7-E058E581343A','CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],clinicalDiagnosisId)"
+              }
             }
           ]
         },
@@ -6037,6 +6208,97 @@
               }
             },
             {
+              "label": "Hypertension stage:",
+              "type": "obs",
+              "id": "htnStage",
+              "questionOptions": {
+                "concept": "3604da2d-9e2f-4644-9af1-7d7936e26374",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "07872e34-30f6-4a12-b2e4-b86e4e8246bd",
+                    "label": "Stage 1"
+                  },
+                  {
+                    "concept": "0c1aec06-6259-48c9-ba84-a227ca1900d8",
+                    "label": "Stage 2"
+                  },
+                  {
+                    "concept": "c59f2776-0244-4df0-982e-6f6e94362582",
+                    "label": "Stage 3"
+                  },
+                  {
+                    "concept": "6dcbadea-ef99-4712-af1f-ceb7982e24da",
+                    "label": "Stage 4"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(finalDiagnosisId) || !arrayContainsAny(['7DBFC8EB-4E9E-45C1-8706-3D2F74FDC7C9','3BB32455-4A73-4CA1-83D4-55FC12340DD6','B23EB926-3985-41C9-B0F7-E058E581343A'],finalDiagnosisId)"
+              }
+            },
+            {
+              "label": "New onset complications:",
+              "required": "true",
+              "type": "obs",
+              "id": "newComplications",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "a8ae835e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "acb3f446-541a-4d53-a1f6-dcafb2cc84b1",
+                    "label": "Visual impairment",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89cf602-1350-11df-a1f1-0026b9348838",
+                    "label": "Heart failure",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
+                    "label": "Kidney failure(CKD)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "fa077a35-635e-464e-9caf-9187911d1570",
+                    "label": "Diabetic foot ulcer",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "48365a67-f0f9-4d31-9c6e-73d62c152776",
+                    "label": "Erectile dysfunction",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
+                    "label": "Stroke",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "e7516737-706a-4a32-8727-c5add875925f",
+                    "label": "Peripheral vascular disease",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(finalDiagnosisId) || !arrayContainsAny(['7DBFC8EB-4E9E-45C1-8706-3D2F74FDC7C9','3BB32455-4A73-4CA1-83D4-55FC12340DD6','B23EB926-3985-41C9-B0F7-E058E581343A','CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],finalDiagnosisId)"
+              }
+            },
+            {
               "label": "Diferrential diagnosis:",
               "type": "obs",
               "id": "diferrentialDiagnosis",
@@ -6172,6 +6434,58 @@
                 "hideWhenExpression": "age < 15 || ((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'))"
               }
             },
+             {
+              "label": "Lifestyle advice:",
+              "required": "true",
+              "type": "obs",
+              "id": "lifeAdvice",
+              "questionOptions": {
+                "concept": "a8b0ec2a-1350-11df-a1f1-0026b9348838",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "d7f24e71-36ce-4766-9348-239a7838ed52",
+                    "label": "Physical activities"
+                  },
+                  {
+                    "concept": "a89e2df6-1350-11df-a1f1-0026b9348838",
+                    "label": "Support group"
+                  },
+                  {
+                    "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+                    "label": "Nutrition"
+                  },
+                  {
+                    "concept": "a8a8b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "Mental wellbeing"
+                  },
+                  {
+                    "concept": "a89c30f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Alcohol"
+                  },
+                  {
+                    "concept": "8d5ca135-1b7f-4853-99b2-9146d00b2171",
+                    "label": "Alcohol cessation"
+                  },
+                  {
+                    "concept": "b54aef95-1eaa-463b-8d8f-d99308c8b975",
+                    "label": "Tobacco cessation"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other substances"
+                  },
+                  {
+                    "concept": "fca74b3e-5eeb-43f7-b50a-6fbaff934ef3",
+                    "label": "Herbal use or alternative therapies advise remarks"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(finalDiagnosisId) || !arrayContainsAny(['7DBFC8EB-4E9E-45C1-8706-3D2F74FDC7C9','3BB32455-4A73-4CA1-83D4-55FC12340DD6','B23EB926-3985-41C9-B0F7-E058E581343A','CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],finalDiagnosisId)"
+              }
+            },
+            
             {
               "label": "Patient categorization:",
               "type": "obs",
