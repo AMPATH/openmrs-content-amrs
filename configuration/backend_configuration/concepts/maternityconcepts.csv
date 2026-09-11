@@ -10,3 +10,5 @@ f012dc73-7ecd-4ef5-bfc8-5d8f6b672c8e,,,OCCIPUT POSTERIOR POSITION,,,,,,Fetal pos
 59057fbe-375f-4b4c-ad6f-1dc02625a094,,MCL/CIEL:164899,INTACT FETAL MEMBRANES,,,,,,,,,Finding,N/A,,
 45f87cb9-3c41-47b0-b219-8abaaa913a91,,,"LABOR DURATION IN MINUTES, ACTIVE STAGE",,,,,,Question to answer the length of time in minutes that labor took in the active stage.,,,Question ,Numeric,,
 89b44f2a-81a3-4eb5-9649-06bb7ccbcbcd,,,"LABOR DURATION IN HOURS, SECOND STAGE",,,,,,Question to answer the length of time in hours that labor took in the second stage.,,,Question ,Numeric,,
+a4a4f118-b4f6-48cf-ad91-271d375b6230,,,THREE TO 14 DAYS,,,3-14 days,,,Time range which is three and fourteen days,,,Misc,N/A,,
+2f8f4fda-4d58-427a-939a-0180f1346146,,,FOUR TO SIX MONTHS,,,4-6 months,,,Time range which is between four to six months,,,Misc,N/A,,

@@ -2,13 +2,13 @@
   "name": "POC Newborn Unit Admission Form v1.0",
   "processor": "EncounterFormProcessor",
   "referencedForms": [],
-  "encounter": "New born admission",
+  "encounter": "NEWBORNADMISSION",
   "description": "A form for collecting newborn admission details",
   "version": "1.0",
   "published": true,
   "retired": false,
-  "encounterType": "896f8022-56e8-45a9-bb40-32a3c9b1609f",
-  "uuid": "d235232e-6a7d-4e77-99e2-5541c8a23b69",
+  "encounterType": "6c47621b-e1b4-402a-83c6-aba566510114",
+  "uuid": "",
   "pages": [
     {
       "label": "Newborn unit admission Form",
@@ -64,28 +64,7 @@
               "questionOptions": {
                 "rendering": "date",
                 "concept": "a8a01652-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "3290"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1640"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "1868"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "399423000"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": [
@@ -96,7 +75,7 @@
               ]
             },
             {
-              "label": "Time of birth",
+              "label": "Time of birth:",
               "type": "obs",
               "required": true,
               "id": "timeOfBirth",
@@ -122,67 +101,20 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "LOINC",
-                    "value": "72147-2"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1409"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "412726003"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": []
             },
             {
-              "label": "Birth weight",
+              "label": "Birth weight (grams):",
               "type": "obs",
               "required": true,
               "id": "birthWeight",
               "questionOptions": {
                 "rendering": "number",
-                "concept": "a8ace206-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "5916"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "6433"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "LOINC",
-                    "value": "8339-4"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "5916"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH Malawi",
-                    "value": "5916"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "364589006"
-                  }
-                ],
+                "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
+               
                 "answers": []
               },
               "validators": []
@@ -231,43 +163,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a492d6-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH Malawi",
-                    "value": "2997"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "2368"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1572"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "6441"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "169812000"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "366344009"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "2997"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
@@ -293,33 +189,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "5630"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "236973005"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH Malawi",
-                    "value": "5630"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED MVP",
-                    "value": "56301000105003"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "5630"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
@@ -363,23 +233,7 @@
               "questionOptions": {
                 "rendering": "text",
                 "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED MVP",
-                    "value": "15931000105005"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "302147001"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1593"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": []
@@ -394,18 +248,7 @@
                 "min": "0",
                 "max": "60",
                 "concept": "a898d478-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "164168"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "424144002"
-                  }
-                ],
+               
                 "answers": []
               },
               "validators": []
@@ -418,18 +261,7 @@
               "questionOptions": {
                 "rendering": "text",
                 "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED CT",
-                    "value": "432407003"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "CIEL",
-                    "value": "167131"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": []
@@ -478,23 +310,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8afb80a-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "278977008"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED MVP",
-                    "value": "13961000105002"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1396"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
@@ -520,43 +336,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH Malawi",
-                    "value": "7010"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "1432"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "1622"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "1149"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1149"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "2589"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "1577"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -581,18 +361,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8945754-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "163126"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "365636006"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a896ea6e-1350-11df-a1f1-0026b9348838",
@@ -638,43 +407,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a893436e-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "73211009"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "175"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "119481"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICD-10-WHO",
-                    "value": "E14.9"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "3720"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "29688"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH Malawi",
-                    "value": "3720"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -700,58 +433,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "386661006"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "140238"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "3BT",
-                    "value": "10049305"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "5945"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "3722"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "27348"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "157"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICPC2",
-                    "value": "A03"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICD-10-WHO",
-                    "value": "R50.9"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "5945"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -766,25 +448,14 @@
               "validators": []
             },
             {
-              "label": "On TB Treatment",
+              "label": "On TB treatment:",
               "type": "obs",
               "required": true,
               "id": "onTbTreatment",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "3c0268e2-7ee6-4ae3-8f38-b1748f0bbd1b",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "394906002"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "162309"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -805,25 +476,14 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Labour 1st stage in hours",
+              "label": "Labour 1st stage in hours:",
               "type": "obs",
               "required": false,
               "id": "labour1stStageInHours",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "e612e85d-9e9a-4cea-ab6d-f7e14e259648",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "163191"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "7389001"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": [],
@@ -832,40 +492,14 @@
               }
             },
             {
-              "label": "Labour 2nd stage in minutes",
+              "label": "Labour 2nd stage in minutes:",
               "type": "obs",
               "required": false,
               "id": "labour2ndStageInMinutes",
               "questionOptions": {
                 "rendering": "number",
                 "concept": "d0318d59-54e7-4e01-9d45-5894b424c204",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "159616"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "6225"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "LOINC",
-                    "value": "32396-4"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH Malawi",
-                    "value": "7997"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "289248003"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": [],
@@ -874,25 +508,14 @@
               }
             },
             {
-              "label": "Resuscitation",
+              "label": "Resuscitation:",
               "type": "obs",
               "required": false,
               "id": "resuscitation",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "0dea6e5e-7f7b-4805-afd6-f33f78186e9c",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "386412000"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "162131"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
@@ -911,25 +534,14 @@
               "validators": []
             },
             {
-              "label": "Rapture of Membrane(ROM)",
+              "label": "Rapture of membrane(ROM):",
               "type": "obs",
               "required": true,
               "id": "raptureOfMembrane",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a8aace62-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "163445"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "408816000"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "68fd4306-13fb-4686-818f-9c50c02a8f1d",
@@ -1018,58 +630,7 @@
                 "min": "0",
                 "max": "20",
                 "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "386661006"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "140238"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "3BT",
-                    "value": "10049305"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "5945"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "3722"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "27348"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "157"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICPC2",
-                    "value": "A03"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICD-10-WHO",
-                    "value": "R50.9"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "5945"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1091,34 +652,22 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "a8a0c408-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
+               
+                "answers": [
                   {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "162442009"
+                    "concept": "a899b9c4-1350-11df-a1f1-0026b9348838",
+                    "label": "Days"
                   },
                   {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1731"
+                    "concept": "a899baaa-1350-11df-a1f1-0026b9348838",
+                    "label": "Weeks"
                   },
                   {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "2160"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "1294"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "2161"
+                    "concept": "a899bb90-1350-11df-a1f1-0026b9348838",
+                    "label": "Months"
                   }
-                ],
-                "answers": []
+                  
+                ]
               },
               "validators": [],
               "hide": {
@@ -1133,53 +682,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "27828302"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "42466"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "271825005"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICD-10-WHO",
-                    "value": "R06.0"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "5540"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "42469"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "122496"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "2296"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "267036007"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1201,38 +704,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "000eb88f-4968-4bee-91be-81c21117c094",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "16"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "5983"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "142412"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "ICD-10-WHO",
-                    "value": "K52.9"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "42046"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "62315008"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1256,23 +728,7 @@
                 "max": "20",
                 "min": "0",
                 "concept": "a8a44876-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1553"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "162442009"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "2286"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": [],
@@ -1313,43 +769,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "ICD-10-WHO",
-                    "value": "R11"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "5980"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICPC2",
-                    "value": "D10"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "88586"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "422400008"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "122983"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "3BT",
-                    "value": "10014706"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1371,38 +791,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "23bc3a90-d698-4af5-a1d1-77f584a44cd9",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "515041"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "140475"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICPC2",
-                    "value": "T04"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "102609007"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "ICD-10-WHO",
-                    "value": "R63.3"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "3BT",
-                    "value": "10083590"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1424,28 +813,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "91175000"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "193829"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICD-10-WHO",
-                    "value": "R56.8"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "113054"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1691,18 +1059,7 @@
                 "max": "100",
                 "min": "0",
                 "concept": "8b6eb800-0930-400e-9d49-a4cefa21c88d",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1733"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "258701004"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": [],
@@ -1718,18 +1075,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "9c201a1f-1897-4c6f-9835-1a79e5d5a843",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "164441"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "386813002"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1751,18 +1097,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "f43383c6-f81c-422a-82d5-560035bb53b9",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "2298"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "159860"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
@@ -1788,23 +1123,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a4528a-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "159861"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "288854000"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "2294"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1826,38 +1145,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a6b476-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "300962"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "134385"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "49487"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "437986008"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "70784009"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICD-10-WHO",
-                    "value": "R29.1"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1879,18 +1167,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "3e718b43-d616-49eb-820e-9f7ec0dd273b",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1836"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "103019006"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1912,33 +1189,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "0ba59c06-e87a-48e7-b4fd-895cf0c22bd2",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "6023"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "55929007"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "47333"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "7819"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "6023"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1960,23 +1211,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a899eb24-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "CIEL",
-                    "value": "167092"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED CT",
-                    "value": "363791007"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "PIH",
-                    "value": "14126"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2004,23 +1239,7 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "52e8a934-d57c-4ef0-9fb7-7c15d816b723",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "258700003"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH Malawi",
-                    "value": "2286"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1732"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
@@ -2084,18 +1303,7 @@
               "questionOptions": {
                 "rendering": "multiCheckbox",
                 "concept": "c8ab72d2-47f3-47ea-a568-0a061d4dba0e",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "71200009"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1866"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "0808af8e-d086-482e-a321-822f04be1c91",
@@ -2177,33 +1385,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8b0f31e-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "272016000"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "6336"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "3238"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "1123"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1123"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2225,38 +1407,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "cc4f2c12-e373-4618-9e62-29473c2b14fa",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "3BT",
-                    "value": "10094005"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "70407001"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "27435"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICD-10-WHO",
-                    "value": "R06.1"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "ICPC2",
-                    "value": "R04"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "125782"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2278,38 +1429,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "5092"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProcedureIT",
-                    "value": "3771"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "431314004"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "5092"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "LOINC",
-                    "value": "2710-2"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProcedureIT",
-                    "value": "26745610"
-                  }
-                ],
+                
                 "answers": []
               },
               "validators": []
@@ -2322,28 +1442,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "b98db640-f74b-4d39-81c5-f82754245bc3",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "710055"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "ICD-10-WHO",
-                    "value": "P28.2"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "157902"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "95617006"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2365,28 +1464,7 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "8f54731e-89ee-4bd3-a139-8822de3c3d83",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "6442005"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "136768"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "736042"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "ICD-10-WHO",
-                    "value": "R06.8"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
@@ -2416,43 +1494,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "ca180dbd-42e7-423d-b7e7-686a0d91c80b",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "113316"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "301285005"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "128254003"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "53972003"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "567617"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "ICD-10-WHO",
-                    "value": "R06.8"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "703482"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2474,33 +1516,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "d425aaa0-5fa8-431f-8180-dfa88d63e161",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "SNOMED NP",
-                    "value": "439401001"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "1284"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "org.openmrs.module.emrapi",
-                    "value": "Coded Diagnosis"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED MVP",
-                    "value": "12841000105004"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1284"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2522,18 +1538,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "91bbbc6f-52a6-4514-b66d-5a82c727dc22",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "21558008"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1861"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2561,38 +1566,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8b007b0-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "AMPATH",
-                    "value": "6237"
-                  },
-                  {
-                    "relationship": "NARROWER-THAN",
-                    "type": "ICD-10-WHO",
-                    "value": "I51.9"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "3305"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "56265001"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "139071"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProblemIT",
-                    "value": "45639"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -2879,23 +1853,7 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a89abee6-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "182922004"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "985"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "AMPATH",
-                    "value": "1151"
-                  }
-                ],
+               
                 "answers": [
                   {
                     "concept": "0d88e098-1623-467c-bbf5-d3e8060352ee",
@@ -3112,23 +2070,7 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a36fc8-1350-11df-a1f1-0026b9348838",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "SNOMED CT",
-                    "value": "31394004"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "IMO ProcedureIT",
-                    "value": "671041"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "167422"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -3143,28 +2085,21 @@
               "validators": []
             },
             {
-              "label": "Clinician name",
+              "label": "Doctor:",
+              "id": "doctor",
               "type": "obs",
-              "required": true,
-              "id": "clinicianName",
               "questionOptions": {
-                "rendering": "text",
-                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21",
-                "conceptMappings": [
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "PIH",
-                    "value": "1392"
-                  },
-                  {
-                    "relationship": "SAME-AS",
-                    "type": "CIEL",
-                    "value": "1473"
+                "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+                "rendering": "remote-select",
+                "datasource": {
+                  "name": "endpoint",
+                  "config": {
+                    "endpointUrl": "https://kibana.ampath.or.ke/openmrs/etl/providers/licensed",
+                    "labelKey": "display",
+                    "valueKey": "provider_national_id"
                   }
-                ],
-                "answers": []
-              },
-              "validators": []
+                }
+              }
             }
           ]
         }
