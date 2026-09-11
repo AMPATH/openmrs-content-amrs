@@ -189,57 +189,82 @@
               }
             },
             {
-              "label": "Sex of the baby:",
-              "id": "gender",
-              "required": "true",
-              "type": "obs",
+              "type": "obsGroup",
+              "label": "Baby details",
+              "id": "babyDetails",
               "questionOptions": {
-                "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
-                    "label": "Male"
-                  },
-                  {
-                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
-                    "label": "Female"
-                  }
-                ]
-              }
-            },
-            {
-              "label": "Birth weight in grams:",
-              "id": "birthWeight",
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
-                "max": "6000",
-                "min": "0"
+                "rendering": "repeating",
+                "concept": "e2fed582-5107-4080-8488-b1618a7b26d7"
               },
-              "type": "obs",
-              "validators": []
-            },
-            {
-              "label": "Fate:",
-              "id": "statusBaby",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "9c96d26c-d8ec-49f2-b1de-0571dd08080d",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
-                    "label": "Dead"
+              "questions": [
+                
+                {
+                  "label": "Birth weight in grams:",
+                  "id": "birthWeight",
+                  "required": "true",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
+                    "max": "6000",
+                    "min": "100"
                   },
-                  {
-                    "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
-                    "label": "Alive"
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Child name:",
+                  "id": "childName",
+                  "required": "true",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea"
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Sex:",
+                  "id": "gender",
+                  "required": "true",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
+                        "label": "Male"
+                      },
+                      {
+                        "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
+                        "label": "Female"
+                      }
+                    ]
                   }
-                ]
-              },
-              "validators": []
+                },
+                {
+                  "label": "Fate:",
+                  "id": "statusBaby",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "9c96d26c-d8ec-49f2-b1de-0571dd08080d",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                        "label": "Dead"
+                      },
+                      {
+                        "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
+                        "label": "Alive"
+                      }
+                    ]
+                  },
+                  "validators": []
+                }
+              ]
             },
+           
             {
               "label": "Counselled on:",
               "id": "infantFeeding",
