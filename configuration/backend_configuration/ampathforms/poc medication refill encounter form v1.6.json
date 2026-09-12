@@ -353,29 +353,7 @@
                 "hideWhenExpression": "!arrayContains(['0d608b80-1cb5-4c85-835a-29072683ca27'], visitTypeUuid)"
               }
             },
-            {
-              "label": "Patient current care program:",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a8afbb16-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a89c301e-1350-11df-a1f1-0026b9348838",
-                    "label": "Non AMPATH plus"
-                  },
-                  {
-                    "concept": "b823cbd4-1b30-4cdb-aebe-ba1192ae1c24",
-                    "label": "Newly diagnosed, not enrolled in care"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "visitTypeUuid !== '52e67f49-4ec3-41b2-bfe2-93144ea03eb2'"
-              },
-              "id": "__J2DxKFKMJ"
-            },
+            
             {
               "label": "Mother deceased:",
               "questionOptions": {
@@ -1200,78 +1178,8 @@
                   "hide": {
                     "hideWhenExpression": "onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
                   }
-                },
-                {
-                  "label": "tabs/day",
-                  "questionOptions": {
-                    "concept": "a8a07386-1350-11df-a1f1-0026b9348838",
-                    "max": "30",
-                    "min": "0",
-                    "rendering": "number"
-                  },
-                  "type": "obs",
-                  "hide": {
-                    "field": "tb_current",
-                    "value": [
-                      "a899f51a-1350-11df-a1f1-0026b9348838",
-                      "a897d1a4-1350-11df-a1f1-0026b9348838",
-                      "a8a382ba-1350-11df-a1f1-0026b9348838"
-                    ]
-                  },
-                  "id": "__wE7nrJtuz"
-                },
-                {
-                  "label": "mg",
-                  "questionOptions": {
-                    "concept": "a8a063c8-1350-11df-a1f1-0026b9348838",
-                    "max": "1000",
-                    "min": "0",
-                    "rendering": "number"
-                  },
-                  "type": "obs",
-                  "hide": {
-                    "field": "tb_current",
-                    "value": [
-                      "a899e19c-1350-11df-a1f1-0026b9348838",
-                      "a8ac5f2a-1350-11df-a1f1-0026b9348838",
-                      "a8952e4a-1350-11df-a1f1-0026b9348838"
-                    ]
-                  },
-                  "id": "__KyHwGr6ou"
-                },
-                {
-                  "label": "mg/day",
-                  "questionOptions": {
-                    "concept": "a8a0744e-1350-11df-a1f1-0026b9348838",
-                    "max": "2000",
-                    "min": "0",
-                    "rendering": "number"
-                  },
-                  "type": "obs",
-                  "hide": {
-                    "field": "tb_current",
-                    "value": [
-                      "a896cc00-1350-11df-a1f1-0026b9348838",
-                      "a8971c64-1350-11df-a1f1-0026b9348838"
-                    ]
-                  },
-                  "id": "__wtnsEHnqH"
-                },
-                {
-                  "label": "tabs",
-                  "questionOptions": {
-                    "concept": "a8a0630a-1350-11df-a1f1-0026b9348838",
-                    "max": "180",
-                    "min": "0",
-                    "rendering": "number"
-                  },
-                  "type": "obs",
-                  "hide": {
-                    "field": "tb_current",
-                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
-                  },
-                  "id": "__nKrowIxKq"
                 }
+                
               ],
               "id": "__E4u71wvqr"
             }
@@ -1346,6 +1254,23 @@
           "label": "Assessment",
           "isExpanded": "true",
           "questions": [
+            {
+              "label": "Primary diagnosis:",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            },
             {
               "label": "Dispense condom today?",
               "id": "disCondom",
@@ -1547,6 +1472,7 @@
                 "hideWhenExpression": "arrayContains (['fcc9a836-0200-45f2-81b4-b4a687a10247','5e304e47-b912-47c5-8cfb-0e795490dbe6','18f59064-961e-4d51-9ccf-e950f04b4c66','a2a265dc-508d-4f31-94ee-0bf8a58049d7','0bcccab0-59ce-4a25-a158-cc722427ff3f','52fddd42-f9ea-4946-8733-f0e584360780','52e67f49-4ec3-41b2-bfe2-93144ea03eb2', '43ec2bb7-ec8e-4a66-a29d-db6281399ea5','cac0c7d2-8f2e-440a-a88e-feeb8d49bd88','dddea595-9814-430d-bed6-cee9ac59b579','343740b3-495a-4035-9992-5393414ca201','693559d3-4e44-4d33-83f9-bc70ca56fe34'], visitTypeUuid)"
               }
             },
+
             {
               "label": "Medication refills picked up?",
               "id": "medPick",

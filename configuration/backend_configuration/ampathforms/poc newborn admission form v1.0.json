@@ -7,7 +7,7 @@
   "version": "1.0",
   "published": true,
   "retired": false,
-  "encounterType": "6c47621b-e1b4-402a-83c6-aba566510114",
+  "encounterType": "896f8022-56e8-45a9-bb40-32a3c9b1609f",
   "uuid": "",
   "pages": [
     {
@@ -64,7 +64,6 @@
               "questionOptions": {
                 "rendering": "date",
                 "concept": "a8a01652-1350-11df-a1f1-0026b9348838",
-                
                 "answers": []
               },
               "validators": [
@@ -101,7 +100,6 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa",
-                
                 "answers": []
               },
               "validators": []
@@ -114,7 +112,6 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce",
-               
                 "answers": []
               },
               "validators": []
@@ -163,7 +160,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a492d6-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
@@ -189,7 +185,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
@@ -233,7 +228,6 @@
               "questionOptions": {
                 "rendering": "text",
                 "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea",
-                
                 "answers": []
               },
               "validators": []
@@ -248,7 +242,6 @@
                 "min": "0",
                 "max": "60",
                 "concept": "a898d478-1350-11df-a1f1-0026b9348838",
-               
                 "answers": []
               },
               "validators": []
@@ -261,7 +254,6 @@
               "questionOptions": {
                 "rendering": "text",
                 "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
-                
                 "answers": []
               },
               "validators": []
@@ -310,7 +302,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8afb80a-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
@@ -336,7 +327,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -361,7 +351,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8945754-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a896ea6e-1350-11df-a1f1-0026b9348838",
@@ -407,7 +396,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a893436e-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -433,7 +421,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -455,7 +442,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "3c0268e2-7ee6-4ae3-8f38-b1748f0bbd1b",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -483,7 +469,6 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "e612e85d-9e9a-4cea-ab6d-f7e14e259648",
-                
                 "answers": []
               },
               "validators": [],
@@ -499,7 +484,6 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "d0318d59-54e7-4e01-9d45-5894b424c204",
-                
                 "answers": []
               },
               "validators": [],
@@ -515,7 +499,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "0dea6e5e-7f7b-4805-afd6-f33f78186e9c",
-               
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
@@ -541,7 +524,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a8aace62-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "68fd4306-13fb-4686-818f-9c50c02a8f1d",
@@ -630,7 +612,6 @@
                 "min": "0",
                 "max": "20",
                 "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -652,7 +633,6 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "a8a0c408-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b9c4-1350-11df-a1f1-0026b9348838",
@@ -666,7 +646,6 @@
                     "concept": "a899bb90-1350-11df-a1f1-0026b9348838",
                     "label": "Months"
                   }
-                  
                 ]
               },
               "validators": [],
@@ -682,7 +661,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -704,7 +682,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "000eb88f-4968-4bee-91be-81c21117c094",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -728,7 +705,6 @@
                 "max": "20",
                 "min": "0",
                 "concept": "a8a44876-1350-11df-a1f1-0026b9348838",
-                
                 "answers": []
               },
               "validators": [],
@@ -769,7 +745,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -791,7 +766,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "23bc3a90-d698-4af5-a1d1-77f584a44cd9",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -813,7 +787,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1059,7 +1032,6 @@
                 "max": "100",
                 "min": "0",
                 "concept": "8b6eb800-0930-400e-9d49-a4cefa21c88d",
-                
                 "answers": []
               },
               "validators": [],
@@ -1075,7 +1047,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "9c201a1f-1897-4c6f-9835-1a79e5d5a843",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1097,7 +1068,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "f43383c6-f81c-422a-82d5-560035bb53b9",
-               
                 "answers": [
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
@@ -1123,7 +1093,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a4528a-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1145,7 +1114,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a6b476-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1167,7 +1135,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "3e718b43-d616-49eb-820e-9f7ec0dd273b",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1189,7 +1156,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "0ba59c06-e87a-48e7-b4fd-895cf0c22bd2",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1211,7 +1177,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a899eb24-1350-11df-a1f1-0026b9348838",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1239,7 +1204,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "52e8a934-d57c-4ef0-9fb7-7c15d816b723",
-               
                 "answers": [
                   {
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
@@ -1303,7 +1267,6 @@
               "questionOptions": {
                 "rendering": "multiCheckbox",
                 "concept": "c8ab72d2-47f3-47ea-a568-0a061d4dba0e",
-               
                 "answers": [
                   {
                     "concept": "0808af8e-d086-482e-a321-822f04be1c91",
@@ -1385,7 +1348,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8b0f31e-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1407,7 +1369,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "cc4f2c12-e373-4618-9e62-29473c2b14fa",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1429,7 +1390,6 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
-                
                 "answers": []
               },
               "validators": []
@@ -1442,7 +1402,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "b98db640-f74b-4d39-81c5-f82754245bc3",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1464,7 +1423,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "8f54731e-89ee-4bd3-a139-8822de3c3d83",
-               
                 "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
@@ -1494,7 +1452,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "ca180dbd-42e7-423d-b7e7-686a0d91c80b",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1516,7 +1473,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "d425aaa0-5fa8-431f-8180-dfa88d63e161",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1538,7 +1494,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "91bbbc6f-52a6-4514-b66d-5a82c727dc22",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1566,7 +1521,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8b007b0-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -1853,7 +1807,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a89abee6-1350-11df-a1f1-0026b9348838",
-               
                 "answers": [
                   {
                     "concept": "0d88e098-1623-467c-bbf5-d3e8060352ee",
@@ -1946,11 +1899,11 @@
                     "label": "Dextrose 5% in normal saline"
                   },
                   {
-                    "concept": "1ea431cc-2fb5-4d57-91bc-f060748c2ad6",
+                    "concept": "35c234d0-9abc-43f6-8236-ff54dfa9d015",
                     "label": "Dextrose 5% in water"
                   },
                   {
-                    "concept": "6868c00c-a1e3-4c31-8669-3caf611fc1c0",
+                    "concept": "542fe91a-16db-4998-ae61-401bd2a7256b",
                     "label": "Dextrose 10% in water"
                   },
                   {
@@ -2070,7 +2023,6 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "a8a36fc8-1350-11df-a1f1-0026b9348838",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",

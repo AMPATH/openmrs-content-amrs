@@ -58,6 +58,56 @@
           "isExpanded": "true",
           "questions": [
             {
+              "label": "Was this visit scheduled?",
+              "id": "youthScheduledVisit",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b6440-1350-11df-a1f1-0026b9348838",
+                    "label": "Scheduled visit"
+                  },
+                  {
+                    "concept": "a89ff816-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit early"
+                  },
+                  {
+                    "concept": "a89ff8de-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit late"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "If unscheduled, actual scheduled date:",
+              "id": "youthActualScheduledDate",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "dc1942b2-5e50-4adc-949d-ad6c905f054e"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(youthScheduledVisit) && arrayContains(['a89ff816-1350-11df-a1f1-0026b9348838','a89ff8de-1350-11df-a1f1-0026b9348838'], youthScheduledVisit) && isEmpty(myValue)",
+                  "message": "Patient visit marked as unscheduled. Please provide the scheduled date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || !arrayContains(['a89ff816-1350-11df-a1f1-0026b9348838','a89ff8de-1350-11df-a1f1-0026b9348838'], youthScheduledVisit)"
+              }
+            },
+            {
               "label": "Is this visit a referral?",
               "type": "obs",
               "id": "visitReferral",
@@ -3161,6 +3211,251 @@
           ]
         },
         {
+          "label": "Morisky Adherence",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Do you ever forget to take your medicines? (0=No, 1=Yes)",
+              "id": "forget",
+              "questionOptions": {
+                "concept": "99a99956-90b0-431e-a453-bf8efffeb7d3",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide morisky adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Are you sometimes not keen about taking your medications? (0=No, 1=Yes)",
+              "id": "notKeen",
+              "questionOptions": {
+                "concept": "26b3c8c9-20be-4585-98f7-c8b8bf2c9207",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide morisky adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Do you stop taking medicine at times when you feel worse? (0=No, 1=Yes)",
+              "id": "feelWorse",
+              "questionOptions": {
+                "concept": "ccffa130-12c6-45e8-a24a-b16c0395abd5",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide morisky adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "If you feel better, do you sometimes stop taking your medicine? (0=No, 1=Yes)",
+              "id": "feelBetter",
+              "questionOptions": {
+                "concept": "f9eb1023-4cd7-47a7-87cd-b3353824c2c7",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide morisky adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Morisky 4 total score:",
+              "id": "moriskyScore4",
+              "questionOptions": {
+                "concept": "315472dc-2b5e-4add-b3b7-bbcf21a8959b",
+                "rendering": "number",
+                "max": "4",
+                "min": "0",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseFloat(feelBetter)+ parseFloat(feelWorse)+ parseFloat(notKeen)+ parseFloat(forget)) ? undefined: (parseFloat(feelBetter)+ parseFloat(feelWorse)+ parseFloat(notKeen)+ parseFloat(forget))"
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Morisky score rating:",
+              "id": "scoreMo4",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(moriskyScore4) === 0 && parseInt(moriskyScore4) < 1 ? 'Good' : parseInt(moriskyScore4) >=1 && parseInt(moriskyScore4) <= 2 ? 'Inadequate' : parseInt(moriskyScore4) >= 3 && parseInt(moriskyScore4) <= 4 ? 'Poor' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Did you forget to take your medicine yesterday? (0=No, 1=Yes)",
+              "id": "medicineYesterday",
+              "questionOptions": {
+                "concept": "2860acd4-2391-4467-9e69-e848d1672f96",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(moriskyScore4) && moriskyScore4 >=3 && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide morisky adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(moriskyScore4) || moriskyScore4 <3"
+              }
+            },
+            {
+              "label": "Do you sometimes stop taking medicine if you feel like your symptoms are under control? (0=No, 1=Yes)",
+              "id": "symptomControl",
+              "questionOptions": {
+                "concept": "8fcb3ada-2188-4e0a-8c68-18c26fd123b2",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(moriskyScore4) && moriskyScore4 >=3 && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide morisky adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(moriskyScore4) || moriskyScore4 <3"
+              }
+            },
+            {
+              "label": "Do you ever feel under pressure about sticking to your treatment plan? (0=No, 1=Yes)",
+              "id": "underPressure",
+              "questionOptions": {
+                "concept": "87ba16a0-6f57-4b0b-a76e-753977f1ef7f",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(moriskyScore4) && moriskyScore4 >=3 && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide morisky adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(moriskyScore4) || moriskyScore4 <3"
+              }
+            },
+            {
+              "label": "How often do you have difficulty remembering to take all your medication? (0=Never/Rarely, 1/4=Once in a while, 1/2=Sometimes, 3/4=Usually,1=All the time)",
+              "id": "difficultyRemembering",
+              "questionOptions": {
+                "concept": "658523c7-77d2-4419-9633-eba789a7d64d",
+                "rendering": "number",
+                "max": "1",
+                "min": "0"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(moriskyScore4) && moriskyScore4 >=3 && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide morisky adherence history."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(moriskyScore4) || moriskyScore4 <3"
+              }
+            },
+            {
+              "label": "Morisky 8 total score:",
+              "id": "moriskyScore",
+              "questionOptions": {
+                "concept": "857caa4e-b566-4a43-ab78-f911c1a8a727",
+                "rendering": "number",
+                "max": "8",
+                "min": "0",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseFloat(difficultyRemembering) + parseFloat(underPressure) + parseFloat(symptomControl)+ parseFloat(medicineYesterday)+ parseFloat(feelBetter)+ parseFloat(feelWorse)+ parseFloat(notKeen)+ parseFloat(forget)) ? undefined: (parseFloat(difficultyRemembering) + parseFloat(underPressure) + parseFloat(symptomControl)+ parseFloat(medicineYesterday)+ parseFloat(feelBetter)+ parseFloat(feelWorse)+ parseFloat(notKeen)+ parseFloat(forget))"
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(moriskyScore4) || moriskyScore4 <3"
+              }
+            },
+            {
+              "label": "Morisky score rating:",
+              "id": "scoreMo",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text",
+                "calculate": {
+                  "calculateExpression": "parseInt(moriskyScore) === 0 && parseFloat(moriskyScore) <= 0.25 ? 'Good' : parseFloat(moriskyScore) >=0.5 && parseInt(moriskyScore) <= 2 ? 'Inadequate' : parseInt(moriskyScore) >= 3 && parseInt(moriskyScore) <= 8 ? 'Poor' : 'Unknown'"
+                }
+              },
+              "type": "control",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(moriskyScore4) || moriskyScore4 <3"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "age < 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
+          }
+        },
+        {
           "label": "Review of Systems",
           "isExpanded": "true",
           "questions": [
@@ -3329,7 +3624,7 @@
               "validators": [],
               "id": "hpvVaccine",
               "hide": {
-                "hideWhenExpression": "(sex!== 'F' || age <9 || age >14) || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "sex !== 'F' || age < 9 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -3362,7 +3657,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(hpvVaccine!== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "sex !== 'F' || age < 9 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -3386,7 +3681,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(hpvVaccine!== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "sex !== 'F' || age < 9 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -3425,7 +3720,7 @@
               "id": "reasonVaccine",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(hpvVaccine!== 'a899b42e-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "age >= 15 || sex !== 'F' || age < 9 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -3448,7 +3743,7 @@
               "validators": [],
               "id": "readyVaccine",
               "hide": {
-                "hideWhenExpression": "(hpvVaccine!== 'a899b42e-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "age >= 15 || sex !== 'F' || age < 9 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -3471,7 +3766,7 @@
               "validators": [],
               "id": "infoSource",
               "hide": {
-                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838') || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "sex !== 'F' || age < 9 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
@@ -3480,6 +3775,180 @@
           "label": "Family Social history",
           "isExpanded": "true",
           "questions": [
+            {
+              "label": "Person bringing patient:",
+              "id": "youthBringingPatient",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a898c01e-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a898c0dc-1350-11df-a1f1-0026b9348838",
+                    "label": "Mother"
+                  },
+                  {
+                    "concept": "a898c1a4-1350-11df-a1f1-0026b9348838",
+                    "label": "Father"
+                  },
+                  {
+                    "concept": "a898c262-1350-11df-a1f1-0026b9348838",
+                    "label": "Sibling"
+                  },
+                  {
+                    "concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+                    "label": "Caregiver"
+                  },
+                  {
+                    "concept": "a898c32a-1350-11df-a1f1-0026b9348838",
+                    "label": "Grandparent"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Are you currently attending school?",
+              "id": "youthSchoolAttendance",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "67301b7e-6c84-4455-8de6-b8f6dfdc5f56",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
+                    "label": "Completed"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Has the child been assessed for child protection services?",
+              "id": "youthChildProtectionAssessed",
+              "type": "obs",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0f1f43b2-2a81-4ebb-833f-7d2b71faf85b')) ? undefined : HD.getObject('prevEnc').getValue('0f1f43b2-2a81-4ebb-833f-7d2b71faf85b')",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0f1f43b2-2a81-4ebb-833f-7d2b71faf85b",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "If yes, outcome of assessment:",
+              "id": "youthChildProtectionOutcome",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "927a7650-e7bf-421d-867d-9b25bcf758c1",
+                "answers": [
+                  {
+                    "concept": "795cff32-9697-4c10-a1c2-deed8143677d",
+                    "label": "Eligible"
+                  },
+                  {
+                    "concept": "69db9a47-21c5-4398-89f7-1c03a1392240",
+                    "label": "Not eligible"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && youthChildProtectionAssessed === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Child has been assessed for child protection services. Please indicate the assessment outcome."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || youthChildProtectionAssessed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "If eligible, is the child enrolled for child protection services?",
+              "id": "youthChildProtectionEnrolled",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "994dba64-b963-4fdd-89a8-ff2211a5f0ca",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && youthChildProtectionOutcome === '795cff32-9697-4c10-a1c2-deed8143677d'",
+                  "message": "Child is eligible for child protection services. Please indicate if enrolled."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || youthChildProtectionOutcome !== '795cff32-9697-4c10-a1c2-deed8143677d'"
+              }
+            },
+            {
+              "label": "Little interest or pleasure in doing things: (0=Not at all, 1=Several days, 2=More than half the days, 3=Nearly every day)",
+              "id": "youthLittleInterest",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "0975c82b-7905-446f-bd16-2f5e373543db",
+                "rendering": "number",
+                "min": "0",
+                "max": "3"
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Feeling down, depressed, or hopeless: (0=Not at all, 1=Several days, 2=More than half the days, 3=Nearly every day)",
+              "id": "youthFeelingDown",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "fa7f8ebd-449d-4f09-a5ed-fd9c05302c67",
+                "rendering": "number",
+                "min": "0",
+                "max": "3"
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
             {
               "label": "Family and Social history",
               "type": "obs",
@@ -3512,6 +3981,10 @@
                   {
                     "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
                     "label": "Vulnerable population"
+                  },
+                  {
+                    "concept": "8b0fa615-39c7-40ba-ad06-579ae540c6a5",
+                    "label": "Priority population"
                   }
                 ]
               },
@@ -4669,12 +5142,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide adherence history."
+                  "failsWhenExpression": "age < 15 && opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4690,12 +5163,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide adherence history."
+                  "failsWhenExpression": "age < 15 && opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4711,12 +5184,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide adherence history."
+                  "failsWhenExpression": "age < 15 && opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4732,12 +5205,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide adherence history."
+                  "failsWhenExpression": "age < 15 && opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4755,7 +5228,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4783,12 +5256,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide adherence history."
+                  "failsWhenExpression": "age < 15 && opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "age >= 15 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4809,9 +5282,209 @@
           ]
         },
         {
+          "label": "STI Screening",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "STI screening done?",
+              "id": "stiScreeningDone",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
           "label": "Sexual and Reproductive History",
           "isExpanded": "true",
           "questions": [
+            {
+              "label": "Have you ever had sex?",
+              "id": "youthSexEver",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "be4f1b07-8e83-436b-9b95-322ce23fd788",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Have you been sexually active in the last 3 months?",
+              "id": "youthSexActive",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "15ac2a33-7f3e-4ae3-89ab-183708a65abc",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "youthSexEver === 'a899b42e-1350-11df-a1f1-0026b9348838' && myValue === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "The client was marked as never having had sex, so this response cannot be Yes."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "If yes to either question above, how many sexual partners have you ever had?",
+              "id": "youthSexPartners",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8aac700-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (youthSexActive !== 'a899b35c-1350-11df-a1f1-0026b9348838' && youthSexEver !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Gender of sexual partners:",
+              "id": "youthPartnerGender",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "63b23597-a76d-4d69-bfda-9315fc9ef7e9",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
+                    "label": "Male"
+                  },
+                  {
+                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
+                    "label": "Female"
+                  },
+                  {
+                    "concept": "93686f62-af91-40de-aaa2-64394a8bb419",
+                    "label": "Both"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "youthSexEver === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Please provide the gender of the client’s sexual partner(s)."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (youthSexActive !== 'a899b35c-1350-11df-a1f1-0026b9348838' && youthSexEver !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Sexual partner details",
+              "id": "youthSexualPartnerDetails",
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "8767734c-0f98-4084-b960-6453f8679600",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "HIV status disclosed?",
+                  "id": "youthStatusDisclosed",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a89ecaa4-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "HIV status:",
+                  "id": "youthPartnerHivStatus",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a46428-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "label": "Positive"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Negative"
+                      },
+                      {
+                        "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                        "label": "Unknown"
+                      }
+                    ]
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "On PrEP?",
+                  "id": "youthPartnerOnPrep",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "3bb25a51-6d87-4e91-81a9-90075f5d22f6",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ]
+                  },
+                  "validators": []
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age < 15 || age > 24 || opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (youthSexActive !== 'a899b35c-1350-11df-a1f1-0026b9348838' && youthSexEver !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
             {
               "label": "Reproductive status:",
               "type": "obs",
@@ -5870,7 +6543,7 @@
                 "hideWhenExpression": "visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
               }
             },
-             {
+            {
               "label": "Existing complications?",
               "required": "true",
               "type": "obs",
@@ -5908,7 +6581,6 @@
                     "label": "Erectile dysfunction",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
                     "label": "Stroke",
@@ -5919,7 +6591,6 @@
                     "label": "Peripheral vascular disease",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other",
@@ -5931,7 +6602,7 @@
                 "hideWhenExpression": "isEmpty(clinicalDiagnosisId) || !arrayContainsAny(['7DBFC8EB-4E9E-45C1-8706-3D2F74FDC7C9','3BB32455-4A73-4CA1-83D4-55FC12340DD6','B23EB926-3985-41C9-B0F7-E058E581343A','CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],clinicalDiagnosisId)"
               }
             },
-             {
+            {
               "label": "Foot risk assessment:",
               "required": "true",
               "type": "obs",
@@ -5951,7 +6622,6 @@
                 ]
               },
               "validators": [],
-             
               "hide": {
                 "hideWhenExpression": "isEmpty(clinicalDiagnosisId) || !arrayContainsAny(['CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],clinicalDiagnosisId)"
               }
@@ -6018,7 +6688,6 @@
                     "label": "Erectile dysfunction",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
                     "label": "Stroke",
@@ -6029,7 +6698,6 @@
                     "label": "Peripheral vascular disease",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other",
@@ -6275,7 +6943,6 @@
                     "label": "Erectile dysfunction",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
                     "label": "Stroke",
@@ -6286,7 +6953,6 @@
                     "label": "Peripheral vascular disease",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other",
@@ -6434,7 +7100,7 @@
                 "hideWhenExpression": "age < 15 || ((opdHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'))"
               }
             },
-             {
+            {
               "label": "Lifestyle advice:",
               "required": "true",
               "type": "obs",
@@ -6485,7 +7151,6 @@
                 "hideWhenExpression": "isEmpty(finalDiagnosisId) || !arrayContainsAny(['7DBFC8EB-4E9E-45C1-8706-3D2F74FDC7C9','3BB32455-4A73-4CA1-83D4-55FC12340DD6','B23EB926-3985-41C9-B0F7-E058E581343A','CE6DD8A8-D68C-4B3E-832B-C55D925DCBD8','5D9A51E5-A3FA-42BB-ACC3-3D896BAEF9FD','5B985509-BCB9-4EFF-A887-8E56578EF77E','A7612EDC-9265-403B-8F30-27BE875A9155',''],finalDiagnosisId)"
               }
             },
-            
             {
               "label": "Patient categorization:",
               "type": "obs",
