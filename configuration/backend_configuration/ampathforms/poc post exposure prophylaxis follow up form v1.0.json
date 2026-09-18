@@ -1,0 +1,1008 @@
+{
+	"name": "AMPATH POC Post Exposure Prophylaxis Follow Up Form v1.0",
+	"uuid": "xxxx",
+	"processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required)",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Follow Up Details",
+			"sections": [
+				{
+					"label": "Exposure details",
+					"questions": [
+						{
+							"label": "Date of exposure:",
+							"type": "obs",
+							"id": "expDate",
+							"questionOptions": {
+								"concept": "9e46df49-d4b1-4a61-9fd8-36385175705c",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"label": "General comments notes:",
+							"isExpanded": "true",
+							"questions": [
+								{
+									"label": "Clinical comments, general:",
+									"type": "obs",
+									"id": "assNote",
+									"questionOptions": {
+										"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+										"rendering": "text"
+									}
+								}
+							]
+						},
+						{
+							"label": "ARVs recommended:",
+							"type": "obs",
+							"id": "arvsRecommended",
+							"questionOptions": {
+								"concept": "a89ed74c-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "None"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"label": "If yes, ARVs taken:",
+							"type": "obs",
+							"id": "arvsTaken",
+							"questionOptions": {
+								"concept": "a899cf5e-1350-11df-a1f1-0026b9348838",
+								"rendering": "multiCheckbox",
+								"answers": [
+									{
+										"concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+										"label": "DTG and 3TC and TDF"
+									},
+									{
+										"concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+										"label": "TDF and 3TC"
+									},
+									{
+										"concept": "920ca4a8-b864-4200-8d68-85a54fe787fd",
+										"label": "ABC and 3TC and LPV/r"
+									},
+									{
+										"concept": "a896758e-1350-11df-a1f1-0026b9348838",
+										"label": "3TC and ZDV"
+									},
+									{
+										"concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+										"label": "LPV and RIT"
+									},
+									{
+										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
+										"label": "Atazanavir and Ritonavir"
+									},
+									{
+										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+										"label": "ABC 600mg/3TC 300mg"
+									},
+									{
+										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+										"label": "ABC 120mg/3TC 60mg"
+									},
+									{
+										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+										"label": "Dolutegravir 50mg"
+									},
+									{
+										"concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+										"label": "Dolutegravir 10mg"
+									},
+									{
+										"concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+										"label": "Atazanavir"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "arvsRecommended !== 'a89aadc0-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "ARVS status:",
+							"type": "obs",
+							"id": "arvsStatus",
+							"questionOptions": {
+								"concept": "a89ee52a-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
+										"label": "Currently taking"
+									},
+									{
+										"concept": "a89ee46c-1350-11df-a1f1-0026b9348838",
+										"label": "Not on ARVs "
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"label": "ARVs taken, day number:",
+							"type": "obs",
+							"id": "dayNumber",
+							"questionOptions": {
+								"concept": "b693e5f5-d6aa-4b94-8e54-92fa8a152a80",
+								"rendering": "number",
+								"answers": []
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "arvsStatus!=='a89aadc0-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obsGroup",
+							"label": "ART change reason",
+							"questionOptions": {
+								"concept": "a8a07688-1350-11df-a1f1-0026b9348838",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"id": "arvChangeReason",
+									"label": "Reason ARVs stopped/changed:",
+									"questionOptions": {
+										"concept": "a89b7110-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+												"label": "Refused"
+											},
+											{
+												"concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
+												"label": "Completed course"
+											},
+											{
+												"concept": "a89ce50e-1350-11df-a1f1-0026b9348838",
+												"label": "Patient non compliant with regimen"
+											},
+											{
+												"concept": "a890d1ba-1350-11df-a1f1-0026b9348838",
+												"label": "Patient stopped due to side effects"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "arvsStatus !== 'a89aadc0-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"id": "arvToxicityCause",
+									"label": "If side effects, please provide cause:",
+									"questionOptions": {
+										"concept": "a8a032fe-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a895776a-1350-11df-a1f1-0026b9348838",
+												"label": "Rash"
+											},
+											{
+												"concept": "a8a16d0e-1350-11df-a1f1-0026b9348838",
+												"label": "Steven-Johnson syndrome"
+											},
+											{
+												"concept": "a8a01dfa-1350-11df-a1f1-0026b9348838",
+												"label": "Lactic Acidosis"
+											},
+											{
+												"concept": "a890861a-1350-11df-a1f1-0026b9348838",
+												"label": "Diarrhea"
+											},
+											{
+												"concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+												"label": "Persistent Vomiting"
+											},
+											{
+												"concept": "a8909060-1350-11df-a1f1-0026b9348838",
+												"label": "Hepatitis"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(arvChangeReason)&&isEmpty(myValue) && (arvChangeReason==='a890d1ba-1350-11df-a1f1-0026b9348838')",
+											"message": "You indicated patient is stopping/changing arvs due to toxicity, cause should be selected."
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(arvChangeReason) && !isEmpty(myValue) && (arvChangeReason!=='a890d1ba-1350-11df-a1f1-0026b9348838')",
+											"message": "You indicated patient is not changing /stopping arvs due to toxicity, cause is not required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "arvChangeReason!=='a890d1ba-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "If side effects: other (specify):",
+									"id": "ToxOther",
+									"type": "obs",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(arvToxicityCause) && isEmpty(myValue) && (arvToxicityCause==='a8aaf3e2-1350-11df-a1f1-0026b9348838')",
+											"message": "You indicated patient is stopping/changing due to other toxicity, indicate the other cause."
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(arvToxicityCause) && !isEmpty(myValue) && (arvToxicityCause!=='a8aaf3e2-1350-11df-a1f1-0026b9348838')",
+											"message": "You indicated patient is not changing /stopping arvs due to other toxicity, other cause is not required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "arvToxicityCause!=='a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "__FC0tMn0Do"
+						},
+						{
+							"label": "If non compliant, days taken:",
+							"type": "obs",
+							"id": "nonCompliantDaysTaken",
+							"questionOptions": {
+								"concept": "e1efbf18-cfb5-4124-ab67-32d689926757",
+								"rendering": "number",
+								"answers": []
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "arvChangeReason!=='a89ce50e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If stopped due to side effects, days taken before stopping:",
+							"type": "obs",
+							"id": "sideEffectsDaysTaken",
+							"questionOptions": {
+								"concept": "7f6fbb06-2284-424a-967b-04253cda05d4",
+								"rendering": "number",
+								"answers": []
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "arvChangeReason!=='a890d1ba-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Hepatitis B recommended:",
+							"type": "obs",
+							"id": "hepBRecommended",
+							"questionOptions": {
+								"concept": "a89ed74c-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a897dd84-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"type": "obsGroup",
+							"label": "Hepatitis B immunization",
+							"questionOptions": {
+								"concept": "ca85c708-fb04-40f1-a77b-15cc4dc483ec",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"id": "hepBImmStatus",
+									"label": "Hepatitis B immunization status:",
+									"questionOptions": {
+										"concept": "4bfa03d0-4d36-4f29-9fba-45f5fddf9c95",
+										"answers": [
+											{
+												"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+												"label": "Refused"
+											},
+											{
+												"concept": "30f09797-96f0-43bc-b522-1630a9a70257",
+												"label": "In progress"
+											},
+											{
+												"concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
+												"label": "Completed"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "hepBRecommended !== 'a897dd84-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "If in progress, number received:",
+									"type": "obs",
+									"id": "hepBNumReceived",
+									"questionOptions": {
+										"concept": "a89ef54c-1350-11df-a1f1-0026b9348838",
+										"rendering": "number",
+										"answers": []
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "hepBImmStatus!=='30f09797-96f0-43bc-b522-1630a9a70257'"
+									}
+								}
+							],
+							"id": "__vwC4KLyKM"
+						}
+					]
+				},
+				{
+					"label": "GBV Screening",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Within the past 3 months, have you been hit, slapped, kicked or physically hurt by someone in any way?",
+							"id": "physical",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "8fca5b8a-0674-49e5-8111-003db067ee22",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Are you in a relationship with a person who physically hit you?",
+							"id": "domestic",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "4045cb6c-793c-4784-bea5-6e2b7bfd8467",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Are you in a relationship with a person who threatens, frightens or insults you or treats you badly?",
+							"id": "emotional",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "374a34e2-71a0-4221-b59e-8d50721330ee",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Are you in relationship with a person who forces you to participate in sexual activities that make you feel uncomfortable?",
+							"id": "sexual",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "920709bc-dde6-4d21-863e-851e63c084e4",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Have you ever experienced any of the above with someone you do not have a relationship with?",
+							"id": "nonfamily",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "588b29de-2200-4dc5-ba38-9992771aa535",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Lab Results",
+			"sections": [
+				{
+					"label": "Lab Tests",
+					"questions": [
+						{
+							"label": "Hgb g/dL:",
+							"id": "hgbgdl_test",
+							"questionOptions": {
+								"concept": "a8908a16-1350-11df-a1f1-0026b9348838",
+								"max": "50",
+								"min": "0",
+								"showDate": "true",
+								"rendering": "number",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(hgbgdl_test) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(hgbgdl_test)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "WBC/mm3:",
+							"id": "testWBCmm",
+							"questionOptions": {
+								"concept": "a896dea2-1350-11df-a1f1-0026b9348838",
+								"max": "500",
+								"min": "0",
+								"showDate": "true",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(testWBCmm) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(testWBCmm)"
+									}
+								},
+								"rendering": "number"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "MCV:",
+							"id": "mcv_test",
+							"questionOptions": {
+								"concept": "a898201e-1350-11df-a1f1-0026b9348838",
+								"max": "500",
+								"min": "0",
+								"showDate": "true",
+								"rendering": "number",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(mcv_test) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(mcv_test)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"type": "obs",
+							"label": "SGPT(ALT):",
+							"id": "sgptalt_test",
+							"questionOptions": {
+								"concept": "a896ca48-1350-11df-a1f1-0026b9348838",
+								"rendering": "number",
+								"max": "3500",
+								"min": "0",
+								"showDate": "true",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(sgptalt_test) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(sgptalt_test)"
+									}
+								}
+							},
+							"validators": []
+						},
+						{
+							"type": "obs",
+							"label": "Creatinine mmol/L:",
+							"id": "creatinine_test",
+							"questionOptions": {
+								"concept": "a897e450-1350-11df-a1f1-0026b9348838",
+								"rendering": "number",
+								"showDate": "true",
+								"max": "11050",
+								"min": "0",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(creatinine_test) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hde": {
+										"hideWhenExpression": "isEmpty(creatinine_test)"
+									}
+								}
+							},
+							"validators": []
+						},
+						{
+							"label": "VDRL:",
+							"id": "vdrl_test",
+							"questionOptions": {
+								"concept": "a8945678-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+										"label": "Indeterminate"
+									},
+									{
+										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+										"label": "Poor sample quality"
+									},
+									{
+										"concept": "a89b3ab0-1350-11df-a1f1-0026b9348838",
+										"label": "Reactive"
+									},
+									{
+										"concept": "a89b3b8c-1350-11df-a1f1-0026b9348838",
+										"label": "Non Reactive"
+									},
+									{
+										"concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+										"label": "Not done"
+									}
+								],
+								"showDate": "true",
+								"rendering": "select",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(vdrl_test) && isEmpty(myValue)",
+											"message": "Date result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(vdrl_test)"
+									}
+								}
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Rapid HIV:",
+							"type": "obs",
+							"id": "hivRapid",
+							"questionOptions": {
+								"concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+										"label": "Indeterminate"
+									},
+									{
+										"concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+										"label": "Poor sample quality"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									},
+									{
+										"concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+										"label": "Not done"
+									}
+								],
+								"showDate": "true",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(hivRapid) && isEmpty(myValue)",
+											"message": "Date result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(hivRapid)"
+									}
+								}
+							},
+							"validators": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Plan",
+			"sections": [
+				{
+					"label": "Positive Health Diginity & Prevention Services",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "PHDP:",
+							"required": "true",
+							"questionOptions": {
+								"concept": "e7819751-a5b0-485d-a2bc-9d4aa69aa1e4",
+								"answers": [
+									{
+										"concept": "a8a8b352-1350-11df-a1f1-0026b9348838",
+										"label": "Adherence counselling"
+									},
+									{
+										"concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
+										"label": "STI screening"
+									},
+									{
+										"concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+										"label": "Substance use"
+									},
+									{
+										"concept": "a89accc4-1350-11df-a1f1-0026b9348838",
+										"label": "Disclosure to sex partner"
+									},
+									{
+										"concept": "a8a4636a-1350-11df-a1f1-0026b9348838",
+										"label": "Partner testing"
+									},
+									{
+										"concept": "f0a280e8-eb88-41a8-837a-f9949ed1b9cd",
+										"label": "Condom distribution"
+									},
+									{
+										"concept": "91f43249-73c7-427c-8300-2038fc0d6be8",
+										"label": "Needle exchange"
+									},
+									{
+										"concept": "05656545-86be-4605-9527-34fb580534b1",
+										"label": "Targeted risk reduction"
+									},
+									{
+										"concept": "a89adc46-1350-11df-a1f1-0026b9348838",
+										"label": "Treatment of GBV injuries"
+									},
+									{
+										"concept": "717c50e1-48da-4148-aeee-c49fdd957b64",
+										"label": "First line support (LIVES)"
+									},
+									{
+										"concept": "b75702a6-908d-491b-9399-6495712c81cc",
+										"label": "Emergency contraceptives"
+									},
+									{
+										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+										"label": "N/A"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": " !arrayContains(['d164c76c-cc91-4ac2-89e9-ab7c29152ee0','824cf3e6-dd16-4767-ba41-2e04dede349e'], visitType.uuid)"
+							},
+							"id": "phdpPos"
+						}
+					]
+				},
+				{
+					"label": "Referrals/Diagnosis",
+					"questions": [
+						{
+							"type": "obsGroup",
+							"label": "Referrals",
+							"questionOptions": {
+								"concept": "a8a07c8c-1350-11df-a1f1-0026b9348838",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Patient referred to:",
+									"id": "patientReferrals",
+									"questionOptions": {
+										"concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+												"label": "None"
+											},
+											{
+												"concept": "a8a8b26c-1350-11df-a1f1-0026b9348838",
+												"label": "TB/DOT program"
+											},
+											{
+												"concept": "355b199f-c9c7-4e91-831f-2be17d2c67bd",
+												"label": "Legal counsel"
+											},
+											{
+												"concept": "5fc2555b-cae1-4bb8-9cd8-e19c2c04fc37",
+												"label": "Police department"
+											},
+											{
+												"concept": "5a089407-22df-4242-99d8-0b4d4da56b75",
+												"label": "Child protection services"
+											},
+											{
+												"concept": "a8b02e16-1350-11df-a1f1-0026b9348838",
+												"label": "Emergency shelter"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Patient referred to other, (specify):",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "patientReferrals!== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									},
+									"id": "referOther"
+								}
+							],
+							"id": "__rJnJGnGJE"
+						}
+					]
+				},
+				{
+					"label": "Assessment Notes",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Please enter the assessment below:",
+							"type": "obs",
+							"id": "assNote",
+							"required": "false",
+							"default": "",
+							"questionOptions": {
+								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+								"rendering": "textarea",
+								"rows": 18
+							}
+						}
+					]
+				},
+				{
+					"label": "Next appointment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Return to clinic Date:",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+								"rendering": "date",
+								"weeksList": [
+									2,
+									4,
+									8,
+									12,
+									16
+								]
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Return to clinic date should be greater than the encounter date."
+								}
+							],
+							"id": "returnClinic"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Follow Up Status",
+			"sections": [
+				{
+					"label": "Discharged",
+					"questions": [
+						{
+							"label": "Discharged:",
+							"type": "obs",
+							"id": "discharged",
+							"questionOptions": {
+								"concept": "678bff8f-694d-42cc-9f70-b10e15daca9f",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"validators": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

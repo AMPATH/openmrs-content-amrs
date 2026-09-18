@@ -1,0 +1,1401 @@
+{
+	"name": "Post exposure prophylaxis initial encounter form v1.0",
+	"uuid": "xxxx",
+	"processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				},
+				{
+					"label": "Occupation",
+					"questions": [
+						{
+							"label": "Occupation:",
+							"id": "occupation",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a8a0a00e-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+										"label": "Not applicable"
+									},
+									{
+										"concept": "a8a09e92-1350-11df-a1f1-0026b9348838",
+										"label": "Police officer"
+									},
+									{
+										"concept": "a8a09d0c-1350-11df-a1f1-0026b9348838",
+										"label": "Teacher"
+									},
+									{
+										"concept": "a8a09b90-1350-11df-a1f1-0026b9348838",
+										"label": "Casual worker"
+									},
+									{
+										"concept": "a8a09dca-1350-11df-a1f1-0026b9348838",
+										"label": "Housewife"
+									},
+									{
+										"concept": "a8a09c4e-1350-11df-a1f1-0026b9348838",
+										"label": "Farmer"
+									},
+									{
+										"concept": "a8a09f50-1350-11df-a1f1-0026b9348838",
+										"label": "Unemployed"
+									},
+									{
+										"concept": "a89ff438-1350-11df-a1f1-0026b9348838",
+										"label": "Commercial sex worker"
+									},
+									{
+										"concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+										"label": "Health care provider"
+									},
+									{
+										"concept": "a8b03294-1350-11df-a1f1-0026b9348838",
+										"label": "Self employed"
+									},
+									{
+										"concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+										"label": "Truck driver"
+									},
+									{
+										"concept": "0ac89086-4751-4db8-96c5-cd62152d66ad",
+										"label": "Fishing"
+									},
+									{
+										"concept": "49c8583d-baa0-4b80-a719-8c5609129c15",
+										"label": "Formal employment"
+									},
+									{
+										"concept": "529a8c73-617d-4aee-ac0c-5c22f38f4265",
+										"label": "Civil servant"
+									},
+									{
+										"concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+										"label": "Consultant"
+									},
+									{
+										"concept": "a89d1c68-1350-11df-a1f1-0026b9348838",
+										"label": "Clinician"
+									},
+									{
+										"concept": "a8b02f92-1350-11df-a1f1-0026b9348838",
+										"label": "Nurse"
+									},
+									{
+										"concept": "05b4c838-a185-4bb0-8c33-71f80ea7c4cf",
+										"label": "Student"
+									},
+									{
+										"concept": "e77a5de0-22d7-424e-978d-d3464d4170aa",
+										"label": "Laboratory technologist"
+									},
+									{
+										"concept": "3164799f-637a-45e7-82cf-19954710d0e8",
+										"label": "Cleaner"
+									},
+									{
+										"concept": "45de16c7-9f55-42c0-86ce-36ed6192842b",
+										"label": "VCT  center counsellor"
+									},
+									{
+										"concept": "7764a54b-3e5d-4c8a-b64b-4ed21ba217b0",
+										"label": "Other health worker"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": []
+						}
+					]
+				},
+				{
+					"label": "Exposure details",
+					"questions": [
+						{
+							"label": "Date and time of exposure:",
+							"type": "obs",
+							"id": "expoDate",
+							"questionOptions": {
+								"concept": "9e46df49-d4b1-4a61-9fd8-36385175705c",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"label": "Date and time of reporting:",
+							"type": "obs",
+							"id": "repDate",
+							"questionOptions": {
+								"concept": "b5e7a5c6-9ff3-4856-acd1-280a4c058516",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"label": "Time since exposure:",
+							"type": "obs",
+							"id": "repTime",
+							"questionOptions": {
+								"concept": "c3d77cf4-0c41-42e5-8a85-0ac5f313f43e",
+								"rendering": "number"
+							},
+							"validators": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Type of Exposure",
+			"sections": [
+				{
+					"type": "obsGroup",
+					"label": "Type of Exposure",
+					"questionOptions": {
+						"concept": "a8a1808c-1350-11df-a1f1-0026b9348838",
+						"rendering": "group"
+					},
+					"questions": [
+						{
+							"label": "Method of exposure:",
+							"id": "methodExposure",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a899afec-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a8933af4-1350-11df-a1f1-0026b9348838",
+										"label": "Sexual assault/rape"
+									},
+									{
+										"concept": "a8aa96b8-1350-11df-a1f1-0026b9348838",
+										"label": "Sexual intercourse with partner"
+									},
+									{
+										"concept": "a89fc8be-1350-11df-a1f1-0026b9348838",
+										"label": "Physical assault"
+									},
+									{
+										"concept": "803b8da3-b200-4a6c-a682-979fd6478611",
+										"label": "Occupational(work related)"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other exposure"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Other(specify):",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+								"rendering": "text"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "methodExposure !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+							},
+							"id": "__MLxrItpFz"
+						},
+						{
+							"label": "Sexual Contact:",
+							"id": "sexContact",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "c1b54d4e-5af4-4a41-8421-f815fedb898b",
+								"answers": [
+									{
+										"concept": "1c394690-a1ff-49af-b77a-42321746b9b6",
+										"label": "With condom"
+									},
+									{
+										"concept": "c07a5032-a218-4ae8-bcb4-4788b753262e",
+										"label": "Without condom"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"type": "obsGroup",
+							"label": "Percutaneous",
+							"questionOptions": {
+								"concept": "037d8329-5580-4b91-be2d-d0546d61f762",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Percutaneous:",
+									"id": "typePercutaneous",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "315195e6-e9b9-4c34-91b3-77a96f2b9394",
+										"answers": [
+											{
+												"concept": "a4e2f776-5fc9-449a-b239-b7095eea7ff3",
+												"label": "Needle stick hollow bore"
+											},
+											{
+												"concept": "f0b04dbb-e297-49bb-b728-0d92167a0ef0",
+												"label": "Needle stick solid bore"
+											},
+											{
+												"concept": "a890d9bc-1350-11df-a1f1-0026b9348838",
+												"label": "Laceration"
+											},
+											{
+												"concept": "a8933d7e-1350-11df-a1f1-0026b9348838",
+												"label": "Human bite with broken skin"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										]
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Other(specify):",
+									"type": "obs",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "typePercutaneous !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									},
+									"id": "__FIrn5yEHx"
+								}
+							],
+							"id": "__ozrE7LyHv"
+						},
+						{
+							"type": "obsGroup",
+							"label": "Mucus Membrane",
+							"questionOptions": {
+								"concept": "188196fc-bd6b-4d1d-8ce1-e03525868c67",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Type of mucus membrane exposure:",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "c0cbcbe6-2756-4134-b71a-d5763a2f0a4b",
+										"answers": [
+											{
+												"concept": "c7be8a4a-0ad3-442e-9355-eb481a23c0a6",
+												"label": "Blood"
+											}
+										]
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "__2pp8IyorL"
+								},
+								{
+									"label": "Other body fluids with visible blood:",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "f10e249e-2061-43e8-ba9c-fa1eb64528e7",
+										"answers": [
+											{
+												"concept": "91940950-8a78-405c-9fcb-8f417b84c856",
+												"label": "Amniotic  fluid"
+											},
+											{
+												"concept": "a89a76fc-1350-11df-a1f1-0026b9348838",
+												"label": "Pleural fluid"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										]
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "__2sqJrpIII"
+								},
+								{
+									"label": "Other body fluids without visible blood:",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "6e22e3c2-7541-48e3-9b1a-b00185dfd6a5",
+										"answers": [
+											{
+												"concept": "aef51bd0-9c85-4ca0-b0f3-55759e0622e5",
+												"label": "Urine"
+											},
+											{
+												"concept": "b788f6e0-f99f-45d9-8004-844609aacaae",
+												"label": "Saliva"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										]
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "__DpJEEuzJq"
+								}
+							],
+							"id": "__s8nuoKoyG"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Violence Screening",
+			"sections": [
+				{
+					"label": "Violence Screening",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Within the past 3 months, have you been hit, slapped, kicked or physically hurt by someone in any way?",
+							"id": "physical",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "8fca5b8a-0674-49e5-8111-003db067ee22",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Are you in a relationship with a person who physically hit you?",
+							"id": "domestic",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "4045cb6c-793c-4784-bea5-6e2b7bfd8467",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Are you in a relationship with a person who threatens, frightens or insults you or treats you badly?",
+							"id": "emotional",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "374a34e2-71a0-4221-b59e-8d50721330ee",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Are you in relationship with a person who forces you to participate in sexual activities that make you feel uncomfortable?",
+							"id": "sexual",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "920709bc-dde6-4d21-863e-851e63c084e4",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Have you ever experienced any of the above with someone you do not have a relationship with?",
+							"id": "nonfamily",
+							"type": "obs",
+							"questionOptions": {
+								"concept": "588b29de-2200-4dc5-ba38-9992771aa535",
+								"rendering": "select",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Status",
+			"sections": [
+				{
+					"label": "HIV status of source contact",
+					"questions": [
+						{
+							"label": "HIV status of source contact:",
+							"id": "statusSource",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "b9f8175d-5edf-4e68-bebd-7520da5ae0c2",
+								"answers": [
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "ARV status of source contact:",
+							"id": "arvContactSource",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "8f9e00f5-042f-4b97-a30d-bed0801e0cdd",
+								"answers": [
+									{
+										"concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
+										"label": "On ARVs"
+									},
+									{
+										"concept": "a89ee46c-1350-11df-a1f1-0026b9348838",
+										"label": "Not on ARVs"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "ARVs status unknown "
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "statusSource !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "CD4 count of source contact:",
+							"type": "obs",
+							"id": "cd4",
+							"questionOptions": {
+								"concept": "0984e836-0b88-4e8c-b5db-65f05ea0b6f3",
+								"rendering": "number",
+								"max": "2000",
+								"min": "0"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "statusSource !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "ARV regimen of the source contact:",
+							"id": "source_art_regimen_adult",
+							"questionOptions": {
+								"concept": "b76ea3ea-3a02-4a8c-8354-68cb05fa05fb",
+								"answers": [
+									{
+										"concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+										"label": "DTG50mg/3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "1c4a75d0-cc91-4752-b0a5-4b833326ff7a",
+										"label": "TDF300mg/3TC300mg/EFV600mg"
+									},
+									{
+										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+										"label": "TDF300mg/3TC300mg/EFV400mg"
+									},
+									{
+										"concept": "6a73f32d-1870-4527-af6e-74443251ded2",
+										"label": "NVP200mg/ZDV300mg/3TC150mg"
+									},
+									{
+										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+										"label": "ABC600mg/3TC300mg"
+									},
+									{
+										"concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+										"label": "3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "a896758e-1350-11df-a1f1-0026b9348838",
+										"label": "3TC150mg/ZDV300mg"
+									},
+									{
+										"concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+										"label": "Emtri200mg/TDF300(Truvada)"
+									},
+									{
+										"concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+										"label": "Aluvia (Kaletra)200mg/LPV50mg"
+									},
+									{
+										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
+										"label": "Atazanavir300/Ritonavir100"
+									},
+									{
+										"concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
+										"label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
+									},
+									{
+										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+										"label": "Dolutegravir 50mg"
+									},
+									{
+										"concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
+										"label": "Abacavir 300mg"
+									},
+									{
+										"concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+										"label": "Efavirenz 200mg"
+									},
+									{
+										"concept": "a89677e6-1350-11df-a1f1-0026b9348838",
+										"label": "Efavirenz 600mg"
+									},
+									{
+										"concept": "a89673f4-1350-11df-a1f1-0026b9348838",
+										"label": "Lamivudine 150mg"
+									},
+									{
+										"concept": "a8967656-1350-11df-a1f1-0026b9348838",
+										"label": "Nevirapine 200mg"
+									},
+									{
+										"concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
+										"label": "Raltegravir 400mg"
+									},
+									{
+										"concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
+										"label": "Zidovudine 300mg"
+									},
+									{
+										"concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+										"label": "Darunavir 600mg"
+									},
+									{
+										"concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+										"label": "Ritonavir 100mg"
+									},
+									{
+										"concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+										"label": "Ritonavir 80mg"
+									},
+									{
+										"concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+										"label": "Etravirine 100mg"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "statusSource !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Hepatitis C status of the source contact:",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "0653e90a-3f73-4e72-be20-722378fd0681",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__swJ8txGLD"
+						},
+						{
+							"label": "Hepatitis B status of the source contact:",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "18939d10-74f7-4881-9d5c-974d200527f1",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__xuxxyF7qD"
+						}
+					]
+				},
+				{
+					"label": "HIV status of exposed individual",
+					"questions": [
+						{
+							"label": "HIV status of exposed individual:",
+							"id": "statusExposed",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+								"answers": [
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Names of HTS provider that tested the patient? (Record at least 2 names, If the provider's name is unknown, indicate facility)",
+							"required": "true",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
+							},
+							"id": "htsname",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "isEmpty(hivRapid)"
+							}
+						},
+						{
+							"label": "ARV status of exposed individual:",
+							"id": "arvStatus",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89ee52a-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
+										"label": "On ARVs"
+									},
+									{
+										"concept": "a89ee46c-1350-11df-a1f1-0026b9348838",
+										"label": "Not on ARVs "
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "ARVs status unknown "
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "statusExposed !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If on ARVs, patient's current regimen:",
+							"id": "current_art_regimen",
+							"questionOptions": {
+								"concept": "a899cf5e-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+										"label": "DTG50mg/3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "1c4a75d0-cc91-4752-b0a5-4b833326ff7a",
+										"label": "TDF300mg/3TC300mg/EFV600mg"
+									},
+									{
+										"concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+										"label": "TDF300mg/3TC300mg/EFV400mg"
+									},
+									{
+										"concept": "6a73f32d-1870-4527-af6e-74443251ded2",
+										"label": "NVP200mg/ZDV300mg/3TC150mg"
+									},
+									{
+										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+										"label": "ABC600mg/3TC300mg"
+									},
+									{
+										"concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+										"label": "3TC300mg/TDF300mg"
+									},
+									{
+										"concept": "a896758e-1350-11df-a1f1-0026b9348838",
+										"label": "3TC150mg/ZDV300mg"
+									},
+									{
+										"concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+										"label": "Emtri200mg/TDF300(Truvada)"
+									},
+									{
+										"concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+										"label": "Aluvia (Kaletra)200mg/LPV50mg"
+									},
+									{
+										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
+										"label": "Atazanavir300/Ritonavir100"
+									},
+									{
+										"concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
+										"label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
+									},
+									{
+										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+										"label": "Dolutegravir 50mg"
+									},
+									{
+										"concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
+										"label": "Abacavir 300mg"
+									},
+									{
+										"concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+										"label": "Efavirenz 200mg"
+									},
+									{
+										"concept": "a89677e6-1350-11df-a1f1-0026b9348838",
+										"label": "Efavirenz 600mg"
+									},
+									{
+										"concept": "a89673f4-1350-11df-a1f1-0026b9348838",
+										"label": "Lamivudine 150mg"
+									},
+									{
+										"concept": "a8967656-1350-11df-a1f1-0026b9348838",
+										"label": "Nevirapine 200mg"
+									},
+									{
+										"concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
+										"label": "Raltegravir 400mg"
+									},
+									{
+										"concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
+										"label": "Zidovudine 300mg"
+									},
+									{
+										"concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+										"label": "Darunavir 600mg"
+									},
+									{
+										"concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+										"label": "Ritonavir 100mg"
+									},
+									{
+										"concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+										"label": "Ritonavir 80mg"
+									},
+									{
+										"concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+										"label": "Etravirine 100mg"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(arvStatus) && arvStatus === 'a89aadc0-1350-11df-a1f1-0026b9348838'",
+									"message": "Patient marked as on ART. Please provide the Regimen."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "arvStatus !== 'a89aadc0-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "CD4 count of exposed indidual:",
+							"type": "obs",
+							"id": "cd4",
+							"questionOptions": {
+								"concept": "a8a8bb18-1350-11df-a1f1-0026b9348838",
+								"rendering": "number",
+								"max": "2000",
+								"min": "0"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "statusExposed !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Hepatitis C status of the exposed individual:",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89c4e46-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+										"label": "Indeterminate"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__JI4nEG6ty"
+						},
+						{
+							"label": "Hepatitis B status of the exposed individual:",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89c4bee-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									},
+									{
+										"concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+										"label": "Indeterminate"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__zGyyxIyqv"
+						},
+						{
+							"label": "Immunization for hepatitis B:",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "4bfa03d0-4d36-4f29-9fba-45f5fddf9c95",
+								"answers": [
+									{
+										"concept": "a89c1ef8-1350-11df-a1f1-0026b9348838",
+										"label": "Completed"
+									},
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "None"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__upE6Fnr5n"
+						},
+						{
+							"label": "Counselling received:",
+							"questionOptions": {
+								"concept": "a89c6ade-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__Gr3IKFp8s"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Recommendations",
+			"sections": [
+				{
+					"label": "Recommendations made",
+					"questions": [
+						{
+							"label": "Recommendations made:",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89ed74c-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
+										"label": "ARV"
+									},
+									{
+										"concept": "a897dd84-1350-11df-a1f1-0026b9348838",
+										"label": "Hepatitis B"
+									},
+									{
+										"concept": "14d88980-54b5-470d-b9b9-78f5c6dd6e56",
+										"label": "Empiric treatment for STI"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__xqHJztDII"
+						},
+						{
+							"label": "ARV recommended:",
+							"questionOptions": {
+								"rendering": "multiCheckbox",
+								"concept": "9c9a779e-613a-4ddf-be41-0f2a25ab9a49",
+								"answers": [
+									{
+										"concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+										"label": "DTG and 3TC and TDF"
+									},
+									{
+										"concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+										"label": "TDF and 3TC"
+									},
+									{
+										"concept": "920ca4a8-b864-4200-8d68-85a54fe787fd",
+										"label": "ABC and 3TC and LPV/r"
+									},
+									{
+										"concept": "a896758e-1350-11df-a1f1-0026b9348838",
+										"label": "3TC and ZDV"
+									},
+									{
+										"concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+										"label": "LPV and RIT"
+									},
+									{
+										"concept": "a8afc066-1350-11df-a1f1-0026b9348838",
+										"label": "Atazanavir and Ritonavir"
+									},
+									{
+										"concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+										"label": "ABC 600mg/3TC 300mg"
+									},
+									{
+										"concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+										"label": "ABC 120mg/3TC 60mg"
+									},
+									{
+										"concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+										"label": "Dolutegravir 50mg"
+									},
+									{
+										"concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+										"label": "Dolutegravir 10mg"
+									},
+									{
+										"concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+										"label": "Atazanavir"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__1GoKrLGMG"
+						},
+						{
+							"type": "obsGroup",
+							"label": "Empiric Treatment for STIs, medications given",
+							"questionOptions": {
+								"rendering": "repeating",
+								"concept": "a8a0654e-1350-11df-a1f1-0026b9348838"
+							},
+							"questions": [
+								{
+									"label": "Drug",
+									"questionOptions": {
+										"concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
+										"rendering": "drug"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "__zrzFEJMsC"
+								}
+							],
+							"id": "__uFKowKJqu"
+						},
+						{
+							"label": "Dosage form:",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a8a081c8-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a8a07f8e-1350-11df-a1f1-0026b9348838",
+										"label": "Tablets"
+									},
+									{
+										"concept": "a8a0810a-1350-11df-a1f1-0026b9348838",
+										"label": "capsules"
+									},
+									{
+										"concept": "a8a07ed0-1350-11df-a1f1-0026b9348838",
+										"label": "Syrup"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__qxJtptHJu"
+						},
+						{
+							"label": "Counselled on safe sex and pregnancy:",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "5b68f24c-7443-4d94-982b-658bddd7dbb5",
+								"answers": [
+									{
+										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+										"label": "Not Applicable"
+									},
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [],
+							"id": "__oqHrDHvws"
+						}
+					]
+				},
+				{
+					"label": "Positive Health Diginity & Prevention Services",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "PHDP:",
+							"required": "true",
+							"questionOptions": {
+								"concept": "e7819751-a5b0-485d-a2bc-9d4aa69aa1e4",
+								"answers": [
+									{
+										"concept": "a8a8b352-1350-11df-a1f1-0026b9348838",
+										"label": "Adherence counselling"
+									},
+									{
+										"concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
+										"label": "STI screening"
+									},
+									{
+										"concept": "a2c49302-edb4-4baa-8440-2448eafd0ec1",
+										"label": "Substance use"
+									},
+									{
+										"concept": "a89accc4-1350-11df-a1f1-0026b9348838",
+										"label": "Disclosure to sex partner"
+									},
+									{
+										"concept": "a8a4636a-1350-11df-a1f1-0026b9348838",
+										"label": "Partner testing"
+									},
+									{
+										"concept": "f0a280e8-eb88-41a8-837a-f9949ed1b9cd",
+										"label": "Condom distribution"
+									},
+									{
+										"concept": "91f43249-73c7-427c-8300-2038fc0d6be8",
+										"label": "Needle exchange"
+									},
+									{
+										"concept": "05656545-86be-4605-9527-34fb580534b1",
+										"label": "Targeted risk reduction"
+									},
+									{
+										"concept": "a89adc46-1350-11df-a1f1-0026b9348838",
+										"label": "Treatment of GBV injuries"
+									},
+									{
+										"concept": "717c50e1-48da-4148-aeee-c49fdd957b64",
+										"label": "First line support (LIVES)"
+									},
+									{
+										"concept": "b75702a6-908d-491b-9399-6495712c81cc",
+										"label": "Emergency contraceptives"
+									},
+									{
+										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+										"label": "N/A"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": " !arrayContains(['d164c76c-cc91-4ac2-89e9-ab7c29152ee0','824cf3e6-dd16-4767-ba41-2e04dede349e'], visitType.uuid)"
+							},
+							"id": "__DIxovrsqK"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Plan",
+			"sections": [
+				{
+					"label": "Referrals/Diagnosis",
+					"questions": [
+						{
+							"type": "obsGroup",
+							"label": "Referrals",
+							"questionOptions": {
+								"concept": "a8a07c8c-1350-11df-a1f1-0026b9348838",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Patient referred to:",
+									"id": "patientReferrals",
+									"questionOptions": {
+										"concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+												"label": "None"
+											},
+											{
+												"concept": "a8a8b26c-1350-11df-a1f1-0026b9348838",
+												"label": "TB/DOT program"
+											},
+											{
+												"concept": "355b199f-c9c7-4e91-831f-2be17d2c67bd",
+												"label": "Legal counsel"
+											},
+											{
+												"concept": "5fc2555b-cae1-4bb8-9cd8-e19c2c04fc37",
+												"label": "Police department"
+											},
+											{
+												"concept": "5a089407-22df-4242-99d8-0b4d4da56b75",
+												"label": "Child protection services"
+											},
+											{
+												"concept": "a8b02e16-1350-11df-a1f1-0026b9348838",
+												"label": "Emergency shelter"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Patient referred to other, (specify):",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"rendering": "text"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "patientReferrals!== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									},
+									"id": "__vIuxLFGnw"
+								}
+							],
+							"id": "__xsLKpGxvz"
+						}
+					]
+				},
+				{
+					"label": "Assessment Notes",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Please enter the assessment below:",
+							"type": "obs",
+							"id": "assNote",
+							"required": "false",
+							"default": "",
+							"questionOptions": {
+								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+								"rendering": "textarea",
+								"rows": 18
+							}
+						}
+					]
+				},
+				{
+					"label": "Next appointment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Return to clinic Date:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+								"rendering": "date",
+								"weeksList": [
+									2,
+									4,
+									8,
+									12,
+									16
+								]
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Return to clinic date should be greater than the encounter date."
+								}
+							],
+							"id": "__spKz3K4Dp"
+						}
+					]
+				}
+			]
+		}
+	]
+}

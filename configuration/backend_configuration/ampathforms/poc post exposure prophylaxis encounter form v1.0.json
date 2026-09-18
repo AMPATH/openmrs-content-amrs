@@ -1,0 +1,571 @@
+{
+  "name": "POC Post Exposure Prophylaxis Encounter Form v1.0",
+  "description": "PEP encounter form v1.0",
+  "version": "1.0",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "PEPRETURN",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "f091b833-9e1a-4eef-8364-fc289095a832",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "label": "Occupation:",
+              "id": "occupation",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a0a00e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "Not applicable"
+                  },
+                  {
+                    "concept": "a8a09e92-1350-11df-a1f1-0026b9348838",
+                    "label": "Police officer"
+                  },
+                  {
+                    "concept": "a8a09d0c-1350-11df-a1f1-0026b9348838",
+                    "label": "Teacher"
+                  },
+                  {
+                    "concept": "a8a09b90-1350-11df-a1f1-0026b9348838",
+                    "label": "Casual worker"
+                  },
+                  {
+                    "concept": "a8a09dca-1350-11df-a1f1-0026b9348838",
+                    "label": "Housewife"
+                  },
+                  {
+                    "concept": "a8a09c4e-1350-11df-a1f1-0026b9348838",
+                    "label": "Farmer"
+                  },
+                  {
+                    "concept": "a8a09f50-1350-11df-a1f1-0026b9348838",
+                    "label": "Unemployed"
+                  },
+                  {
+                    "concept": "a89ff438-1350-11df-a1f1-0026b9348838",
+                    "label": "Commercial sex worker"
+                  },
+                  {
+                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                    "label": "Health care provider"
+                  },
+                  {
+                    "concept": "a8b03294-1350-11df-a1f1-0026b9348838",
+                    "label": "Self employed"
+                  },
+                  {
+                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                    "label": "Truck driver"
+                  },
+                  {
+                    "concept": "0ac89086-4751-4db8-96c5-cd62152d66ad",
+                    "label": "Fishing"
+                  },
+                  {
+                    "concept": "49c8583d-baa0-4b80-a719-8c5609129c15",
+                    "label": "Formal employment"
+                  },
+                  {
+                    "concept": "529a8c73-617d-4aee-ac0c-5c22f38f4265",
+                    "label": "Civil servant"
+                  },
+                  {
+                    "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+                    "label": "Consultant"
+                  },
+                  {
+                    "concept": "a89d1c68-1350-11df-a1f1-0026b9348838",
+                    "label": "Clinician"
+                  },
+                  {
+                    "concept": "a8b02f92-1350-11df-a1f1-0026b9348838",
+                    "label": "Nurse"
+                  },
+                  {
+                    "concept": "05b4c838-a185-4bb0-8c33-71f80ea7c4cf",
+                    "label": "Student"
+                  },
+                  {
+                    "concept": "e77a5de0-22d7-424e-978d-d3464d4170aa",
+                    "label": "Laboratory technologist"
+                  },
+                  {
+                    "concept": "3164799f-637a-45e7-82cf-19954710d0e8",
+                    "label": "Cleaner"
+                  },
+                  {
+                    "concept": "45de16c7-9f55-42c0-86ce-36ed6192842b",
+                    "label": "VCT  center counsellor"
+                  },
+                  {
+                    "concept": "7764a54b-3e5d-4c8a-b64b-4ed21ba217b0",
+                    "label": "Other health worker"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Exposure details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date and time of exposure:",
+              "type": "obs",
+              "id": "expoDate",
+              "questionOptions": {
+                "concept": "9e46df49-d4b1-4a61-9fd8-36385175705c",
+                "rendering": "datetime"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "label": "Date and time of reporting:",
+              "type": "obs",
+              "id": "repDate",
+              "questionOptions": {
+                "concept": "b5e7a5c6-9ff3-4856-acd1-280a4c058516",
+                "rendering": "datetime"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "label": "Time since exposure:",
+              "type": "obs",
+              "id": "repTime",
+              "questionOptions": {
+                "concept": "c3d77cf4-0c41-42e5-8a85-0ac5f313f43e",
+                "rendering": "number"
+              },
+              "validators": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Type of Exposure",
+      "sections": [
+        {
+          "label": "Type of Exposure",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Method of exposure:",
+              "id": "methodExposure",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a899afec-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8933af4-1350-11df-a1f1-0026b9348838",
+                    "label": "Sexual assault/rape"
+                  },
+                  {
+                    "concept": "a8aa96b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Sexual intercourse with partner"
+                  },
+                  {
+                    "concept": "a89fc8be-1350-11df-a1f1-0026b9348838",
+                    "label": "Physical assault"
+                  },
+                  {
+                    "concept": "803b8da3-b200-4a6c-a682-979fd6478611",
+                    "label": "Occupational(work related)"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other exposure"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Sexual exposure:",
+              "id": "sexContact",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c1b54d4e-5af4-4a41-8421-f815fedb898b",
+                "answers": [
+                  {
+                    "concept": "c07a5032-a218-4ae8-bcb4-4788b753262e",
+                    "label": "Unprotected sex"
+                  },
+                  {
+                    "concept": "a8933af4-1350-11df-a1f1-0026b9348838",
+                    "label": "Sexual assault"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a8933af4-1350-11df-a1f1-0026b9348838', 'a8aa96b8-1350-11df-a1f1-0026b9348838'], methodExposure)"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "label": "Percutaneous",
+              "questionOptions": {
+                "concept": "037d8329-5580-4b91-be2d-d0546d61f762",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Percutaneous:",
+                  "id": "typePercutaneous",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "315195e6-e9b9-4c34-91b3-77a96f2b9394",
+                    "answers": [
+                      {
+                        "concept": "a4e2f776-5fc9-449a-b239-b7095eea7ff3",
+                        "label": "Needle stick hollow bore"
+                      },
+                      {
+                        "concept": "f0b04dbb-e297-49bb-b728-0d92167a0ef0",
+                        "label": "Needle stick solid bore"
+                      },
+                      {
+                        "concept": "a890d9bc-1350-11df-a1f1-0026b9348838",
+                        "label": "Laceration"
+                      },
+                      {
+                        "concept": "a8933d7e-1350-11df-a1f1-0026b9348838",
+                        "label": "Human bite with broken skin"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Other(specify):",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "typePercutaneous !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "id": "__FIrn5yEHx"
+                }
+              ],
+              "id": "__ozrE7LyHv"
+            }
+          ],
+          "type": "obsGroup",
+          "questionOptions": {
+            "concept": "a8a1808c-1350-11df-a1f1-0026b9348838",
+            "rendering": "group"
+          }
+        }
+      ]
+    },
+    {
+      "label": "HIV Status",
+      "sections": [
+        {
+          "label": "HIV status of source contact",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "HIV status of source contact:",
+              "id": "statusSource",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b9f8175d-5edf-4e68-bebd-7520da5ae0c2",
+                "answers": [
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Lab results",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Rapid HIV:",
+              "type": "obs",
+              "id": "hivRapid",
+              "questionOptions": {
+                "concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                    "label": "Indeterminate"
+                  },
+                  {
+                    "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+                    "label": "Poor sample quality"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not done"
+                  }
+                ],
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(hivRapid) && isEmpty(myValue)",
+                      "message": "Date result is required."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(hivRapid)"
+                  }
+                }
+              },
+              "validators": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Plan",
+      "sections": [
+        {
+          "label": "Recommendations",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Recommendations made:",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ed74c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89aadc0-1350-11df-a1f1-0026b9348838",
+                    "label": "ARV"
+                  },
+                  {
+                    "concept": "a897dd84-1350-11df-a1f1-0026b9348838",
+                    "label": "Hepatitis B"
+                  },
+                  {
+                    "concept": "14d88980-54b5-470d-b9b9-78f5c6dd6e56",
+                    "label": "Empiric treatment for STI"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "id": "__xqHJztDII"
+            },
+            {
+              "id": "pepPrescription",
+              "label": "PEP prescription:",
+              "type": "control",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe drugs",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Referrals",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Referrals",
+              "questionOptions": {
+                "concept": "a8a07c8c-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Patient referred to:",
+                  "id": "patientReferrals",
+                  "questionOptions": {
+                    "concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
+                      },
+                      {
+                        "concept": "355b199f-c9c7-4e91-831f-2be17d2c67bd",
+                        "label": "Legal counsel"
+                      },
+                      {
+                        "concept": "5fc2555b-cae1-4bb8-9cd8-e19c2c04fc37",
+                        "label": "Police department"
+                      },
+                      {
+                        "concept": "5a089407-22df-4242-99d8-0b4d4da56b75",
+                        "label": "Child protection services"
+                      },
+                      {
+                        "concept": "a8b02e16-1350-11df-a1f1-0026b9348838",
+                        "label": "Emergency shelter"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ],
+                    "rendering": "multiCheckbox"
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Patient referred to other, (specify):",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(patientReferrals, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+                  },
+                  "id": "referOther"
+                }
+              ],
+              "id": "__rJnJGnGJE"
+            }
+          ]
+        },
+        {
+          "label": "Next appointment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Return to clinic Date:",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date",
+                "weeksList": [
+                  2,
+                  4,
+                  8,
+                  12,
+                  16
+                ]
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "message": "Return to clinic date should be greater than the encounter date."
+                }
+              ],
+              "id": "returnClinic"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

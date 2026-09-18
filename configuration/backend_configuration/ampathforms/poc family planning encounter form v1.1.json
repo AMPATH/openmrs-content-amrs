@@ -843,7 +843,7 @@
               "hide": {
                 "hideWhenExpression": "isEmpty(cervicalCancerScreeningDone) || cervicalCancerScreeningDone !== 'a899b35c-1350-11df-a1f1-0026b9348838' || sex !== 'F'"
               }
-            },
+            },          
            {
               "label": "Referred from:",
               "id": "rfBy",

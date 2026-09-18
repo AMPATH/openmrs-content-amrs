@@ -244,7 +244,7 @@
                   "id": "muac"
                 }
               ],
-              "id": "muac"
+              "id": "vitalSignsGroup"
             }
           ]
         },
@@ -4578,7 +4578,7 @@
                       "hide": {
                         "hideWhenExpression": "isEmpty(antiHypertensive)"
                       },
-                      "id": "medFreq"
+                      "id": "hypertensionMedFreq"
                     },
                     {
                       "label": "Number of mg:",
@@ -4588,7 +4588,7 @@
                         "rendering": "number"
                       },
                       "type": "obs",
-                      "id": "numberMg",
+                      "id": "hypertensionNumberMg",
                       "validators": [],
                       "hide": {
                         "hideWhenExpression": "isEmpty(antiHypertensive)"
@@ -4695,7 +4695,7 @@
                       "hide": {
                         "hideWhenExpression": "isEmpty(antiDiabetics)"
                       },
-                      "id": "medFreq"
+                      "id": "diabetesMedFreq"
                     },
                     {
                       "label": "Number of mg:",
@@ -4705,7 +4705,7 @@
                         "rendering": "number"
                       },
                       "type": "obs",
-                      "id": "numberMg",
+                      "id": "diabetesNumberMg",
                       "validators": [],
                       "hide": {
                         "hideWhenExpression": "isEmpty(antiDiabetics)"
@@ -4788,7 +4788,7 @@
                       "hide": {
                         "hideWhenExpression": "isEmpty(mhealth)"
                       },
-                      "id": "medFreq"
+                      "id": "mentalHealthMedFreq"
                     },
                     {
                       "label": "Number of mg:",
@@ -4798,7 +4798,7 @@
                         "rendering": "number"
                       },
                       "type": "obs",
-                      "id": "numberMg",
+                      "id": "mentalHealthNumberMg",
                       "validators": [],
                       "hide": {
                         "hideWhenExpression": "isEmpty(mhealth)"
@@ -6574,6 +6574,10 @@
       "label": "Assessment",
       "sections": [
         {
+          "label": "Diagnosis",
+          "isExpanded": "true",
+          "questions": [
+            {
               "label": "Primary diagnosis:",
               "required": "true",
               "id": "finalDiagnosisId",
@@ -6590,7 +6594,9 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
         {
           "label": "Clinical Notes",
           "isExpanded": "true",
@@ -9611,10 +9617,10 @@
                   "hide": {
                     "hideWhenExpression": "isEmpty(referrals) || !arrayContains(referrals, '057dae68-3d6f-4d79-926c-ed75a0ce7fd5')"
                   },
-                  "id": "reasonHosp"
+                  "id": "referralHospitalizationReason"
                 }
               ],
-              "id": "hospDetailed"
+              "id": "referralHospitalizationDetails"
             }
           ]
         },

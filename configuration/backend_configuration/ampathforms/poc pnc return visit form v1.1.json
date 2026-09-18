@@ -6475,6 +6475,10 @@
       "label": "Assessment",
       "sections": [
         {
+          "label": "Diagnosis",
+          "isExpanded": "true",
+          "questions": [
+            {
               "label": "Primary diagnosis:",
               "required": "true",
               "id": "finalDiagnosisId",
@@ -6491,7 +6495,9 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
         {
           "label": "Clinical Notes",
           "isExpanded": "true",
