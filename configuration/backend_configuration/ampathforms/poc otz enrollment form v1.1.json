@@ -1,0 +1,649 @@
+{
+     "name": "POC OTZ Enrollment Form v1.1",
+  "description": "POC OTZ Enrollment Form v1.1",
+  "version": "1.1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "OTZENROLLMENT",
+  "encounterType": "7041cd44-3ae6-4ce8-97ae-eabf934187ed",
+  "processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Encounter Details:",
+			"sections": [
+				{
+					"label": "Encounter Details:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Encounter Date:",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended",
+								"concept": ""
+							},
+							"id": "encDate"
+						},
+						{
+							"label": "Encounter Provider:",
+							"type": "encounterProvider",
+							"questionOptions": {
+								"rendering": "ui-select-extended",
+								"concept": ""
+							},
+							"id": "encProvider"
+						},
+						{
+							"label": "Encounter Location:",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLocation"
+						},
+						{
+							"label": "Client previously enrolled in OTZ?:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "97772927-7aa2-4c30-be98-85183e4b0efe",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160563"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No",
+										"conceptMappings": [
+											{
+												"type": "MCL/CIEL",
+												"value": "1066"
+											},
+											{
+												"type": "local",
+												"value": "1066"
+											}
+										]
+									}
+								]
+							},
+							"id": "clientTransfer"
+						},
+						{
+							"label": "If Yes,date initially enrolled to OTZ:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateEnrolled",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				},
+				{
+					"label": "Modules previously covered:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "OTZ Orientation:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "32604406-3b57-44cf-a886-f1dc150c850e",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165359"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzOrientation",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If Yes, date of OTZ Orientation completion:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateofotztorientation",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "otzOrientation !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "OTZ Treatment literacy:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "ee8527cc-add1-4c86-b150-a703d1867da1",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165364"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otztreatLiteracy",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If Yes, date of OTZ Treatment Literacy completion:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateofOtzttreatLiteracy",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "otztreatLiteracy !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "OTZ Participation:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "61007b09-9655-4714-8c25-52c34f373aca",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165360"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzparticipation",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If Yes, date of OTZ Participation completion:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateofOtzparticipation",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "otzparticipation !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "OTZ Peer to Peer Mentorship:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "f4afaca3-92c1-402e-a68a-a1912c8f37e0",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "EMR: 12300"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzpeertopeer",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If Yes, date of OTZ Peer to Peer Mentorship completion:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateOfpertopeer",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "otzpeertopeer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "OTZ Leadership:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "5e4fe5fb-31ae-4aff-9e48-a75c5d2e1def",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165361"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzleadership",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If Yes, date of OTZ Leadership completion:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateofLeadership",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "otzleadership !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "OTZ Positive Health Dignity Prevention (PHDP):",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "4810f81f-5005-4c17-a769-e8efa1cec775",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "12272"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzphdp",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If Yes, date of Positive Health Dignity Prevention completion:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateofotzphdp",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "otzphdp !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "OTZ Making decision and planning for the future:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "b00ef644-1b29-4d67-983e-82a80d8de03b",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165362"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzmakingDecision",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If Yes, date of OTZ Making decision for the future completion:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateofmakingDecision",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "otzmakingDecision !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "OTZ Transition to Adult care:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "6d795cdf-4481-4252-85ec-2175d76d230c",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165363"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzTransition",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientTransfer !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If Yes, date Transition to Adult care completion :",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+								"weeksList": "",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "160534"
+									}
+								]
+							},
+							"id": "dateofTransition",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment()).isBefore((new moment(myValue)), 'day')",
+									"message": "Date enrolled should not be greater than encounter date"
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "otzTransition !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+	
+}

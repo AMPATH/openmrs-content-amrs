@@ -1,0 +1,404 @@
+{
+     "name": "POC OTZ Activity Form v1.1",
+  "description": "POC OTZ ActivityForm v1.1",
+  "version": "1.1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "OTZACTIVITY",
+  "encounterType": "76680613-2974-4d89-9b85-6b0a4bf56267",
+  "processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Encounter Details:",
+			"sections": [
+				{
+					"label": "Encounter Details:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Encounter Date:",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended",
+								"concept": ""
+							},
+							"id": "encDate"
+						},
+						{
+							"label": "encounter Provider:",
+							"type": "encounterProvider",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encProvider"
+						},
+						{
+							"label": "Encounter Location:",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLocation"
+						}
+					]
+				},
+				{
+					"label": " OTZ Modules (Completed today) :",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "OTZ Orientation:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('32604406-3b57-44cf-a886-f1dc150c850e')) ? undefined : HD.getObject('prevEnc').getValue('32604406-3b57-44cf-a886-f1dc150c850e')",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "32604406-3b57-44cf-a886-f1dc150c850e",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165359"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzOrientation"
+						},
+						{
+							"label": "OTZ Treatment literacy:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ee8527cc-add1-4c86-b150-a703d1867da1')) ? undefined : HD.getObject('prevEnc').getValue('ee8527cc-add1-4c86-b150-a703d1867da1')",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "ee8527cc-add1-4c86-b150-a703d1867da1",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165364"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otztreatLiteracy"
+						},
+						{
+							"label": "OTZ Participation:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('61007b09-9655-4714-8c25-52c34f373aca')) ? undefined : HD.getObject('prevEnc').getValue('61007b09-9655-4714-8c25-52c34f373aca')",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "61007b09-9655-4714-8c25-52c34f373aca",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165360"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzparticipation"
+						},
+						{
+							"label": "OTZ Peer to Peer Mentorship:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5e4fe5fb-31ae-4aff-9e48-a75c5d2e1def')) ? undefined : HD.getObject('prevEnc').getValue('5e4fe5fb-31ae-4aff-9e48-a75c5d2e1def')",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "f4afaca3-92c1-402e-a68a-a1912c8f37e0",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "12300"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzpeertopeer"
+						},
+						{
+							"label": "OTZ Leadership:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5e4fe5fb-31ae-4aff-9e48-a75c5d2e1def')) ? undefined : HD.getObject('prevEnc').getValue('5e4fe5fb-31ae-4aff-9e48-a75c5d2e1def')",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "5e4fe5fb-31ae-4aff-9e48-a75c5d2e1def",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165361"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzleadership"
+						},
+						{
+							"label": "Positive Health Dignity Prevention (PHDP):",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5e4fe5fb-31ae-4aff-9e48-a75c5d2e1def')) ? undefined : HD.getObject('prevEnc').getValue('5e4fe5fb-31ae-4aff-9e48-a75c5d2e1def')",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "4810f81f-5005-4c17-a769-e8efa1cec775",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "12272"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzphdp"
+						},
+						{
+							"label": "OTZ Making decisions and planning for the future:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('b00ef644-1b29-4d67-983e-82a80d8de03b')) ? undefined : HD.getObject('prevEnc').getValue('b00ef644-1b29-4d67-983e-82a80d8de03b')",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "b00ef644-1b29-4d67-983e-82a80d8de03b",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165362"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzmakingDecision"
+						},
+						{
+							"label": "OTZ Transition to Adult care:",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('3abf3ee4-72a6-4f1d-bda2-7cd82c24d6ce')) ? undefined : HD.getObject('prevEnc').getValue('3abf3ee4-72a6-4f1d-bda2-7cd82c24d6ce')",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "6d795cdf-4481-4252-85ec-2175d76d230c",
+								"conceptMappings": [
+									{
+										"type": "KENYA EMR",
+										"value": "EMR: 165363"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "otzTransition"
+						}
+					]
+				},
+				{
+					"label": "Support group Involvement:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Attended support group?:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "26ffef87-72ba-45f4-bdcf-77f2d82b18c5",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "165302"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1065"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1065"
+											}
+										]
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1066"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "1066"
+											}
+										]
+									}
+								]
+							},
+							"id": "supportGroup"
+						},
+						{
+							"label": "Remarks:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "163042"
+									},
+									{
+										"type": "MCL/CIEL",
+										"value": "161011"
+									}
+								]
+							},
+							"id": "remarks"
+						}
+					]
+				}
+			]
+		}
+	]
+}

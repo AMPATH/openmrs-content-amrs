@@ -1,0 +1,779 @@
+{
+    "name": "POC Telecare Form v1.4",
+  "description": "POC telecare form",
+  "version": "1.4",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "TELECARE",
+  "encounterType": "cac3b8e5-d8f8-4d4f-b791-8c43b4cc674b",
+  "processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Encounter Details:",
+			"sections": [
+				{
+					"label": "Encounter Details:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Encounter Date:",
+							"required": "true",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encDate"
+						},
+						{
+							"label": "Encounter Provider:",
+							"required": "true",
+							"type": "encounterProvider",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encProvider"
+						},
+						{
+							"label": "Encounter Location:",
+							"required": "true",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLoc"
+						},
+						{
+							"label": "Does patient consent to be called by phone for purpose of care?:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9d9ccb6b-73ae-48dd-83f9-12c782ce6685",
+								
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+										
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+										
+									}
+								]
+							},
+							"id": "patientConsent",
+							"hide": {
+								"hideWhenExpression": "hasCallConsent === true"
+							}
+						},
+						{
+							"label": "Consent comments:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "textarea",
+								"rows": "18",
+								"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+								
+							},
+							"id": "conComments",
+							"hide": {
+								"hideWhenExpression": "hasCallConsent === true"
+							}
+						},
+						{
+							"label": "Who was contacted:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "38794cd0-2514-454b-9b7e-8c43eb0909c3",
+								"answers": [
+									{
+										"concept": "a89ebec4-1350-11df-a1f1-0026b9348838",
+										"label": "Parent"
+									},
+									{
+										"concept": "a8a089fc-1350-11df-a1f1-0026b9348838",
+										"label": "Client (self)"
+									},
+									{
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+										"label": "Caregiver"
+									}
+								]
+							},
+							"id": "phoneContact",
+							"validators": []
+						},
+						{
+							"label": "Is the client staying with them now?",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "005487f6-a8c8-4c67-80fc-cf69f49a1f6b",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"id": "homeStay",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "phoneContact === 'a8a089fc-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Patient History",
+			"sections": [
+				{
+					"label": "Medication History",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "obsGroup",
+							"label": "Reason for calling patient:",
+							"questionOptions": {
+								"concept": "1dbee549-6283-48a8-b40e-d7d11b6b62d5",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Reason for calling patient:",
+									"id": "callReason",
+									"questionOptions": {
+										"concept": "9e903280-385f-473d-9dfb-01bdb6b661a5",
+										
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent))"
+									}
+								},
+								{
+									"type": "obsGroup",
+									"label": "Chronic illness, detailed",
+									"questionOptions": {
+										"concept": "ebf02efb-b28c-49e8-9caf-65e96dbfa0a9",
+										"rendering": "group"
+									},
+									"questions": [
+										{
+											"id": "onChronicMed",
+											"required": "true",
+											"label": "Are you on medication for any other chronic illness?",
+											"historicalExpression": "HD.getObject('prevEnc').getValue('ebf02efb-b28c-49e8-9caf-65e96dbfa0a9.204bbb03-adec-43ec-a9ff-67767c73f947')",
+											"questionOptions": {
+												"concept": "204bbb03-adec-43ec-a9ff-67767c73f947",
+												"answers": [
+													{
+														"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+														"label": "Yes"
+													},
+													{
+														"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+														"label": "No"
+													}
+												],
+												"rendering": "select"
+											},
+											"type": "obs",
+											"validators": [],
+											"hide": {
+												"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent))"
+											}
+										},
+										{
+											"label": "Chronic illness",
+											"id": "chronicIllness",
+											"historicalExpression": "HD.getObject('prevEnc').getValue('ebf02efb-b28c-49e8-9caf-65e96dbfa0a9.0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
+											"questionOptions": {
+												"concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
+												"rendering": "multiCheckbox",
+												"answers": [
+													{
+														"concept": "a893436e-1350-11df-a1f1-0026b9348838",
+														"label": "Diabetes"
+													},
+													{
+														"concept": "a8986880-1350-11df-a1f1-0026b9348838",
+														"label": "HTN"
+													},
+													{
+														"concept": "291e1dc4-203a-4a09-aa0c-2d0a1962a719",
+														"label": "Mental health"
+													},
+													{
+														"concept": "acdceb9b-4b84-4e9c-bba4-eaf486b3b4b5",
+														"label": "Cancer"
+													},
+													{
+														"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+														"label": "other"
+													}
+												]
+											},
+											"type": "obs",
+											"validators": [],
+											"hide": {
+												"hideWhenExpression": "onChronicMed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+											}
+										},
+										{
+											"type": "obs",
+											"label": "Chronic Illness: Other (specify)",
+											"questionInfo": "",
+											"id": "otherChronicIllness",
+											"questionOptions": {
+												"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+												"rendering": "text"
+											},
+											"validators": [],
+											"hide": {
+												"hideWhenExpression": "!arrayContains(chronicIllness,['a8aaf3e2-1350-11df-a1f1-0026b9348838'])"
+											}
+										}
+									],
+									"id": "__towzspFKE"
+								},
+								{
+									"type": "obsGroup",
+									"label": "Problem taking medication detailed:",
+									"questionInfo": "",
+									"questionOptions": {
+										"concept": "b43653a1-bd68-4d94-88ee-2c6d1f05c85e",
+										"rendering": "group"
+									},
+									"questions": [
+										{
+											"label": "Do you have a problem taking any of your medication?",
+											"id": "problemMedicating",
+											"questionOptions": {
+												"concept": "79fbb3de-98aa-462e-bb5a-8d530dad4410",
+												"rendering": "select",
+												"answers": [
+													{
+														"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+														"label": "Yes"
+													},
+													{
+														"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+														"label": "No"
+													},
+                                                    {
+														"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+														"label": "N/A"
+													}
+												]
+											},
+											"type": "obs",
+											"validators": [],
+											"hide": {
+												"hideWhenExpression": "(onArt === 'a899b42e-1350-11df-a1f1-0026b9348838' && onTbProphylaxis === 'a899b42e-1350-11df-a1f1-0026b9348838' && onTbTreatment === 'a899b42e-1350-11df-a1f1-0026b9348838' && onChronicMed === 'a899b42e-1350-11df-a1f1-0026b9348838' ) || ( isEmpty(onArt) && isEmpty(onTbProphylaxis) && isEmpty(onTbTreatment) && isEmpty(onChronicMed)) || ( onArt === 'a899b42e-1350-11df-a1f1-0026b9348838' && isEmpty(onTbProphylaxis) && isEmpty(onTbTreatment) && isEmpty(onChronicMed)) || (onArt === 'a899b42e-1350-11df-a1f1-0026b9348838' && onTbProphylaxis === 'a899b42e-1350-11df-a1f1-0026b9348838' && isEmpty(onTbTreatment) && isEmpty(onChronicMed)) || (isEmpty(onArt) && onTbProphylaxis === 'a899b42e-1350-11df-a1f1-0026b9348838' && isEmpty(onTbTreatment) && isEmpty(onChronicMed)) || (isEmpty(onArt) && isEmpty(onTbProphylaxis) && onTbTreatment === 'a899b42e-1350-11df-a1f1-0026b9348838' && isEmpty(onChronicMed))"
+											}
+										},
+										{
+											"label": "What are the problems in taking medication?",
+											"id": "medicationProblems",
+											"questionOptions": {
+												"concept": "a89ebbc2-1350-11df-a1f1-0026b9348838",
+												"rendering": "multiCheckbox",
+												"answers": [
+													{
+														"concept": "a89eba46-1350-11df-a1f1-0026b9348838",
+														"label": "Stigma"
+													},
+													{
+														"concept": "ecafa614-49c5-4eba-84c7-b85b0d9e2c46",
+														"label": "Pill Burden"
+													},
+													{
+														"concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+														"label": "Side effects"
+													},
+													{
+														"concept": "a89eacc2-1350-11df-a1f1-0026b9348838",
+														"label": "Forgot to take medication"
+													},
+													{
+														"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+														"label": "Other"
+													}
+												]
+											},
+											"type": "obs",
+											"validators": [],
+											"hide": {
+												"hideWhenExpression": "problemMedicating !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+											}
+										},
+										{
+											"label": "Problem taking medication: Other (specify):",
+											"questionInfo": "",
+											"questionOptions": {
+												"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+												"rendering": "text"
+											},
+											"type": "obs",
+											"id": "otherProblemTakingMedication",
+											"validators": [],
+											"hide": {
+												"hideWhenExpression": "!arrayContains(medicationProblems,['a8aaf3e2-1350-11df-a1f1-0026b9348838'])"
+											}
+										}
+									],
+									"id": "__9CEqoEGoH"
+								}
+							],
+							"id": "__xwooqz8sr"
+						},
+						{
+							"label": "Reproductive and Breastfeeding History",
+							"isExpanded": "true",
+							"questions": [
+								{
+									"label": "Is the patient pregnant?",
+									"id": "pregnant",
+									"required": "true",
+									"questionOptions": {
+										"concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
+										"rendering": "select",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											}
+										]
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent)) || sex == 'M' || (sex == 'F'  && age < 10)"
+									}
+								},
+								{
+									"label": "Is the patient on family planning?:",
+									"questionInfo": "",
+									"required": "true",
+									"id": "onFamilyPlanning",
+									"questionOptions": {
+										"concept": "774961c6-232f-4332-8a9f-f5c55ebe86d0",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "pregnant !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"type": "obsGroup",
+									"label": "Family planning, detailed",
+									"questionOptions": {
+										"concept": "767e8060-5272-4927-ab78-97534a4499ef",
+										"rendering": "group"
+									},
+									"questions": [
+										{
+											"label": "Family planning method:",
+											"questionInfo": "",
+											"required": "true",
+											"id": "fpMethod",
+											"questionOptions": {
+												"concept": "a894b1cc-1350-11df-a1f1-0026b9348838",
+												"answers": [
+													{
+														"concept": "a893516a-1350-11df-a1f1-0026b9348838",
+														"label": "Condoms"
+													},
+													{
+														"concept": "a123d949-31f3-4abf-98e3-8504e17ebc00",
+														"label": "3-year implant"
+													},
+													{
+														"concept": "feb48308-a56f-4754-8e8f-8c1698e570cb",
+														"label": "5-year implant"
+													},
+													{
+														"concept": "eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc",
+														"label": "Vasectomy"
+													},
+													{
+														"concept": "a8a71330-1350-11df-a1f1-0026b9348838",
+														"label": "Injectables (Depo)"
+													},
+													{
+														"concept": "a8a71650-1350-11df-a1f1-0026b9348838",
+														"label": "IUD"
+													},
+													{
+														"concept": "4a740e33-fee5-4a2b-b679-1904722e3d9e",
+														"label": "Lactation method"
+													},
+													{
+														"concept": "a897dbd6-1350-11df-a1f1-0026b9348838",
+														"label": "OCP"
+													},
+													{
+														"concept": "a8a714c0-1350-11df-a1f1-0026b9348838",
+														"label": "Rhythm method"
+													},
+													{
+														"concept": "a8a713f8-1350-11df-a1f1-0026b9348838",
+														"label": "Bilateral tubal ligation"
+													},
+													{
+														"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+														"label": "Other"
+													}
+												],
+												"rendering": "multiCheckbox"
+											},
+											"type": "obs",
+											"validators": [
+												{
+													"type": "js_expression",
+													"failsWhenExpression": "isEmpty(myValue) && onFamilyPlanning === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+													"message": "Patient on family planning. Please provide a method."
+												}
+											],
+											"hide": {
+												"hideWhenExpression": "onFamilyPlanning !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+											}
+										},
+										{
+											"type": "obs",
+											"label": "Family planning: Other (specify)",
+											"questionInfo": "",
+											"id": "otherfp",
+											"questionOptions": {
+												"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+												"rendering": "text"
+											},
+											"validators": [],
+											"hide": {
+												"hideWhenExpression": "isEmpty(fpMethod) || !arrayContains(fpMethod, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+											}
+										}
+									],
+									"id": "__EH2roJLsL"
+								},
+								{
+									"label": "Have they started ANC visit?",
+									"id": "startedAnc",
+									"required": "true",
+									"questionOptions": {
+										"concept": "a8a18140-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "pregnant !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Is the patient breastfeeding?",
+									"id": "motherBreastFeeding",
+									"required": "true",
+									"questionOptions": {
+										"concept": "a8a18208-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent)) || sex === 'M' || (sex === 'F'  && age < 10)"
+									}
+								}
+							]
+						},
+						{
+							"label": "Child Breastfeeding History",
+							"isExpanded": "true",
+							"questions": [
+								{
+									"label": "Child breastfeeding?",
+									"id": "childBreastFeeding",
+									"required": "true",
+									"questionOptions": {
+										"concept": "a8aafc70-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											}
+										],
+										"rendering": "select"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent)) || age > 3"
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Complaints",
+			"sections": [
+				{
+					"label": "Complaints:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "What complaints do you have today? ",
+							"type": "obsGroup",
+							"questionOptions": {
+								"rendering": "group",
+								"concept": "9014962e-3efe-46b0-a393-c8c8bddadaa7"
+							},
+							"id": "ComplainToday",
+							"questions": [
+								{
+									"label": "Please tick current complaints:",
+									"questionOptions": {
+										"concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a8ad270c-1350-11df-a1f1-0026b9348838",
+												"label": "Diarrhea"
+											},
+											{
+												"concept": "a8a0c1b0-1350-11df-a1f1-0026b9348838",
+												"label": "Sore throat"
+											},
+											{
+												"concept": "a8a0bf58-1350-11df-a1f1-0026b9348838",
+												"label": "Abdominal pain"
+											},
+											{
+												"concept": "245edfef-d05b-48c1-9a72-e4de5d586a33",
+												"label": "Mouth sores"
+											},
+											{
+												"concept": "a8a0c408-1350-11df-a1f1-0026b9348838",
+												"label": "Hotness of the body"
+											},
+											{
+												"concept": "a8a0c2dc-1350-11df-a1f1-0026b9348838",
+												"label": "Skin rash"
+											},
+											{
+												"concept": "24a2b364-aaf7-4c2d-9ecf-edf65f21c107",
+												"label": "Palpitations"
+											},
+											{
+												"concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+												"label": "Headache"
+											},
+											{
+												"concept": "a8ad4714-1350-11df-a1f1-0026b9348838",
+												"label": "Dysuria"
+											},
+											{
+												"concept": "068615a4-7fd2-40ea-b928-240cdec097ed",
+												"label": "Polyuria"
+											},
+											{
+												"concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+												"label": "Dysphagia"
+											},
+											{
+												"concept": "a8ad3576-1350-11df-a1f1-0026b9348838",
+												"label": "Swelling"
+											},
+											{
+												"concept": "a8ad5330-1350-11df-a1f1-0026b9348838",
+												"label": "Muscle pains"
+											},
+											{
+												"concept": "a89d0d90-1350-11df-a1f1-0026b9348838",
+												"label": "Numbness"
+											},
+											{
+												"concept": "a8ad2478-1350-11df-a1f1-0026b9348838",
+												"label": "Vomiting"
+											},
+											{
+												"concept": "a8a0c534-1350-11df-a1f1-0026b9348838",
+												"label": "Ear discharge"
+											},
+											{
+												"concept": "a8a0c656-1350-11df-a1f1-0026b9348838",
+												"label": "Swelling"
+											},
+											{
+												"concept": "a89d109c-1350-11df-a1f1-0026b9348838",
+												"label": "Pregnant"
+											},
+											{
+												"concept": "a8a0c9da-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "multiCheckbox"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent))"
+									},
+									"id": "__xqv6xwJ5s"
+								},
+								{
+									"label": "Free text complaint:",
+									"id": "freeText",
+									"questionOptions": {
+										"rendering": "textarea",
+										"rows": "18",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"hide": {
+										"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent))"
+									}
+								}
+							]
+						}
+					]
+				}
+				
+			]
+		},
+		{
+			"label": "Plan",
+			"sections": [
+				{
+					"label": "Referrals",
+					"isExpanded": "true",
+					"questions": []
+				},
+				{
+					"label": "Remarks",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Remarks:",
+							"questionInfo": "",
+							"type": "obs",
+							"id": "assNote",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+								"rendering": "textarea",
+								"rows": 18
+							},
+							"hide": {
+								"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent))"
+							}
+						}
+					]
+				},
+				{
+					"label": "Next Appointment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Next appointment",
+							"isExpanded": "true",
+							"questions": [
+								{
+									"label": "Planned phone follow up date:",
+									"questionInfo": "",
+									"type": "obs",
+									"id": "plannedFollowUp",
+									"questionOptions": {
+										"concept": "a92421fd-adab-4f20-aa27-bf99996d7863",
+										"rendering": "date",
+										"showWeeks": true,
+										"weeksList": [
+											2,
+											4,
+											6,
+											8,
+											12,
+											16,
+											24
+										]
+									},
+									"validators": [
+										{
+											"type": "date",
+											"allowFutureDates": "true"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+											"message": "Return to clinic date should be greater than the encounter date."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "patientConsent === 'a899b42e-1350-11df-a1f1-0026b9348838' || (hasCallConsent === false && isEmpty(patientConsent))"
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

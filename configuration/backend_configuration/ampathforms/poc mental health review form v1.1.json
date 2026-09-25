@@ -1,0 +1,152 @@
+{
+  "name": "POC Mental Health Review Form v1.1",
+  "description": "POC mental health screening",
+  "version": "1.1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "MENTALHEALTHREVIEW",
+  "encounterType": "f70286a5-1eb4-4724-bd8f-34c392c5067d",
+  "processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Mental Health Review",
+			"sections": [
+				{
+					"label": "Mental Health Review",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Encounter date:",
+							"required": "true",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encDate"
+						},
+						{
+							"label": "Encounter provider:",
+							"type": "encounterProvider",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encProvider"
+						},
+						{
+							"label": "Encounter location:",
+							"required": "true",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLocation"
+						},
+						{
+							"label": "Type of visit:",
+							"type": "obs",
+							"id": "visitType",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "244b67bf-da2d-4009-9bc9-91a52a92defe",
+								"answers": [
+									{
+										"label": "Mental health review",
+										"concept": "a8a8b42e-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Therapy sessions",
+										"concept": "0b069c6d-ba1f-4509-a138-5b39bf979390"
+									}
+								]
+							}
+						},
+						{
+							"label": "Are you on mental health treatment:",
+							"type": "obs",
+							"id": "mhTreatment",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "6ef9b8e3-ba2d-4d24-82e4-3afd4ecc3c34",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "Session number:",
+							"type": "obs",
+							"id": "sessionNumber",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "dbc267c9-5f02-426b-9b74-3fce4054aed7"
+							}
+						},
+						{
+							"label": "Assessment notes:",
+							"type": "obs",
+							"id": "assNotes",
+							"questionOptions": {
+								"rendering": "textarea",
+								"rows": "5",
+								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c"
+							}
+						},
+						{
+							"label": "Referrals:",
+							"type": "obs",
+							"id": "referral",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "Social worker",
+										"concept": "a89e2d1a-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Psychiatry services",
+										"concept": "a8a06f08-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Physician review",
+										"concept": "a8a8c96e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "TCA:",
+							"type": "obs",
+							"default": "",
+							"id": "tca",
+							"questionOptions": {
+								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Return to clinic date should be greater than the encounter date."
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

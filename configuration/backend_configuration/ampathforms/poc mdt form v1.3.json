@@ -1,0 +1,1019 @@
+{
+    "name": "POC MDT Form v1.3",
+  "description": "POC Multidisciplinary Team (MDT) Form v1.3",
+  "version": "1.3",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "HIVMULTIDISCIPLINARYMEETING",
+  "encounterType": "282033e8-67f1-4edd-8bff-74829e8ee2b0",
+  "processor": "EncounterFormProcessor",
+	"referencedForms": [
+		{
+			"ref": {
+				"uuid": "a472864e-ddb4-4741-be6f-20d1b2a9be2b",
+				"display": "Morisky Adherence Score Component"
+			},
+			"formName": "component_morisky-adherence-score-v1.0",
+			"alias": "mas"
+		},
+		{
+			"ref": {
+				"uuid": "83e56b6d-2b50-46ff-9a7c-325cf4ac716e",
+				"display": "Mental Health v1.0 Component"
+			},
+			"formName": "component_mental-health-v1.0",
+			"alias": "mh1"
+		},
+		{
+			"ref": {
+				"uuid": "c297210f-a151-49a5-bf51-d2d726fe459d",
+				"display": "component_enhanced-adherence-v1.0"
+			},
+			"formName": "component_enhanced-adherence-v1.0",
+			"alias": "ea1"
+		}
+	],
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit date:",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider:",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Please enter MDT members who participated in the case discussion:",
+							"required": "true",
+							"type": "obs",
+							"id": "mdtMembers",
+							"default": "",
+							"questionOptions": {
+								"concept": "b19ebc14-b759-4d1b-a0fc-98afe1c7e868",
+								"rendering": "textarea",
+								"rows": 7
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "History",
+			"sections": [
+				{
+					"label": "History",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Please provide an update on the patient's clinical, social and past medical history:(include all previous treatment for opportunistic infections)",
+							"type": "obs",
+							"id": "hpi",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"concept": "a89ffbf4-1350-11df-a1f1-0026b9348838",
+								"rendering": "textarea",
+								"rows": 7
+							}
+						},
+						{
+							"label": "Please provide an update on the patient's adherence history:",
+							"type": "obs",
+							"id": "adherenceNotes",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"concept": "d9390b4c-11c5-4005-822e-d72dea27ba7f",
+								"rendering": "textarea",
+								"rows": 7
+							}
+						},
+						{
+							"label": "Please provide an update on the patient's physical examination history:",
+							"type": "obs",
+							"id": "physExamNotes",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+								"rendering": "textarea",
+								"rows": 7
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Enhanced Adherence",
+			"sections": [
+				{
+					"label": "Enhanced Adherence",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Has a home visit been done?",
+							"required": "true",
+							"id": "homeVisit",
+							"questionOptions": {
+								"concept": "fe6800a2-76f1-42a4-a1c8-553e1fec18e9",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "If yes, number of visits:",
+							"id": "noVisits",
+							"questionOptions": {
+								"concept": "7458141a-2cb6-4425-8e51-1d4f0a858683",
+								"answers": [],
+								"rendering": "number",
+								"min": "0"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(homeVisit) && homeVisit === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Home visit was done. Please indicate number of visits."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "homeVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If yes, what were the findings:",
+							"id": "homeVisitFinindgs",
+							"questionOptions": {
+								"concept": "743bee17-bb4d-4bf5-bbfe-a58a7cca5a3f",
+								"answers": [],
+								"rendering": "text"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(homeVisit) && homeVisit === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Home visit was done. Please indicate findings."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "homeVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If no, wish to refer to the social worker:",
+							"id": "socialworkRef",
+							"questionOptions": {
+								"concept": "6ada1724-aab2-4b78-af41-91498d211ca2",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(homeVisit) && homeVisit === 'a899b42e-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Home visit was not done. Please refer client to social work."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "homeVisit !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "What are the support structures in place?",
+							"required": "true",
+							"id": "supportStructures",
+							"questionOptions": {
+								"concept": "a7958e13-c78c-4085-9fdf-b475d602b2b8",
+								"answers": [
+									{
+										"concept": "01b957da-23bb-4862-819d-036364fe3faf",
+										"label": "Treatment supporter"
+									},
+									{
+										"concept": "a89e2df6-1350-11df-a1f1-0026b9348838",
+										"label": "Support group"
+									},
+									{
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+										"label": "Caregiver"
+									},
+									{
+										"concept": "a8b03bb8-1350-11df-a1f1-0026b9348838",
+										"label": "Family"
+									},
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "None"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Has directly observed treatment (DOT) been done?",
+							"required": "true",
+							"id": "priorDotDone",
+							"questionOptions": {
+								"concept": "4b3c4263-9f86-4f3c-985b-1a71e2a57495",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Number of directly observed treatment (DOT) done (days):",
+							"id": "dotDone",
+							"questionOptions": {
+								"concept": "438c22e0-fcb9-4737-b3a6-55cc1f391e0c",
+								"answers": [],
+								"rendering": "number",
+								"min": "0"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(priorDotDone) && priorDotDone === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "DOT was done. Please indicate number of DOTs done."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "priorDotDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Likely causes of poor adherence: (Choose all that apply)",
+							"required": "true",
+							"id": "poorAdherence",
+							"questionOptions": {
+								"concept": "a89ebbc2-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a89eba46-1350-11df-a1f1-0026b9348838",
+										"label": "Stigma"
+									},
+									{
+										"concept": "945f0a33-dd89-4ca4-9eb3-d74128a2adc8",
+										"label": "School related stigma"
+									},
+									{
+										"concept": "b858568f-c722-411d-85ca-97d46bc98b3c",
+										"label": "Home related stigma"
+									},
+									{
+										"concept": "24ff3f30-b7ff-4464-b1b3-fda5ed5714a3",
+										"label": "Improper disclosure to child"
+									},
+									{
+										"concept": "e91a0b75-133d-4aae-81c9-2b4423e48379",
+										"label": "Inadequate supervision"
+									},
+									{
+										"concept": "a89d25fa-1350-11df-a1f1-0026b9348838",
+										"label": "Child refusing to take drugs"
+									},
+									{
+										"concept": "6a377e01-fa40-4ac2-98a9-0cb09cfbea36",
+										"label": "Pill related size"
+									},
+									{
+										"concept": "1c811199-3cc1-4495-8e05-980bebb045ab",
+										"label": "Pill taste"
+									},
+									{
+										"concept": "53956fb4-d7d9-438c-addf-c5f67b2a3866",
+										"label": "Pill color"
+									},
+									{
+										"concept": "ecafa614-49c5-4eba-84c7-b85b0d9e2c46",
+										"label": "Pill burden"
+									},
+									{
+										"concept": "a89ecaa4-1350-11df-a1f1-0026b9348838",
+										"label": "Disclosure"
+									},
+									{
+										"concept": "a89eb8c0-1350-11df-a1f1-0026b9348838",
+										"label": "Side effects"
+									},
+									{
+										"concept": "a89ced88-1350-11df-a1f1-0026b9348838",
+										"label": "Alcohol"
+									},
+									{
+										"concept": "a89ebb04-1350-11df-a1f1-0026b9348838",
+										"label": "Other drugs"
+									},
+									{
+										"concept": "a890b810-1350-11df-a1f1-0026b9348838",
+										"label": "Mental health issues"
+									},
+									{
+										"concept": "a8935fde-1350-11df-a1f1-0026b9348838",
+										"label": "Depression"
+									},
+									{
+										"concept": "abf95bf2-c481-490f-9e9f-84fa2d7b2f8c",
+										"label": "Caregiver changes"
+									},
+									{
+										"concept": "a89e3396-1350-11df-a1f1-0026b9348838",
+										"label": "Religious beliefs"
+									},
+									{
+										"concept": "b5c3006f-97fd-466f-b4ab-596e23ddc4d9",
+										"label": "Inadequate treatment preparation"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"type": "obsGroup",
+							"label": "Poor adherence",
+							"questionOptions": {
+								"concept": "04edb08f-d1fd-43ac-98b1-adc5e7d73ba1",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "If other causes of poor adherence, explain:",
+									"id": "otherCausesSpecify",
+									"questionOptions": {
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+										"answers": [],
+										"rendering": "text"
+									},
+									"type": "obs",
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(poorAdherence) && arrayContainsAny(['a8aaf3e2-1350-11df-a1f1-0026b9348838'], poorAdherence) && isEmpty(myValue)",
+											"message": "Other selected as cause of poor adherence. Please indicate the cause."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(poorAdherence) || !arrayContainsAny(['a8aaf3e2-1350-11df-a1f1-0026b9348838'], poorAdherence)"
+									}
+								}
+							],
+							"id": "__vGDIxqIqI"
+						},
+						{
+							"label": "Is patient enrolled in support group?",
+							"required": "true",
+							"id": "supportGroupEnroll",
+							"questionOptions": {
+								"concept": "ed1e7a5d-a9f4-4adf-a033-4e895409fafe",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "If no, wishes to enroll?",
+							"id": "wishesToEnroll",
+							"questionOptions": {
+								"concept": "c796c49d-2e33-40c4-aadd-c5508e733c30",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(supportGroupEnroll) && supportGroupEnroll === 'a899b42e-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Patient is not enrolled in any group. Please indicate if they wish to enroll in any group."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "supportGroupEnroll !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If yes, name of support group:",
+							"id": "supportGroupName",
+							"questionOptions": {
+								"concept": "aab3dcc5-f984-45d2-b0c4-7a3ba746951b",
+								"answers": [],
+								"rendering": "text"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(supportGroupEnroll) && supportGroupEnroll === 'a8aaf3e2-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Patient is enrolled in a group. Please indicate name of the group."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "supportGroupEnroll !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838' || onArt!== 'a899b35c-1350-11df-a1f1-0026b9348838'||visitTypeUuid !== '6c5d74f4-943f-489a-b1c4-b2accfae92fb'"
+							}
+						},
+						{
+							"label": "Has age appropriate disclosure been completed?",
+							"required": "true",
+							"id": "childDisclosure",
+							"questionOptions": {
+								"concept": "6a40a88b-555e-4d7e-b7ce-db677a02609f",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "age>=18"
+							}
+						},
+						{
+							"label": "Has a pill count been done?",
+							"required": "true",
+							"id": "pillCountDone",
+							"questionOptions": {
+								"concept": "067e6d30-4962-46eb-9090-be55478d4afd",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "If yes, what are the findings:",
+							"id": "pillCountFindings",
+							"questionOptions": {
+								"concept": "9bf98c27-1821-407f-9c06-5609357f3698",
+								"answers": [
+									{
+										"concept": "5b1bf823-da30-4e23-a777-0d8ef93a6211",
+										"label": "Accurate"
+									},
+									{
+										"concept": "64433aeb-81fb-43a5-be42-3efce1692063",
+										"label": "Missed doses"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(pillCountDone) && pillCountDone === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "Pill count done. Indicate the findings."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "pillCountDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Other possible causes of treatment failure:",
+							"required": "true",
+							"id": "treatmentFailure",
+							"questionOptions": {
+								"concept": "bc764345-2e57-42f5-aee9-c7d5bd012c97",
+								"answers": [
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "None"
+									},
+									{
+										"concept": "4a98eaa4-e5df-4e76-9b58-5191d61666eb",
+										"label": "Inadequate dosing/dose adjustments"
+									},
+									{
+										"concept": "01eedbcc-ea21-40cc-b150-fcaca5eef501",
+										"label": "Drug-drug interaction"
+									},
+									{
+										"concept": "c6f38251-5b52-489c-854e-ec2d3994a6cd",
+										"label": "Drug-food interaction"
+									},
+									{
+										"concept": "cfef32f6-2807-427e-9607-1397e8d7e347",
+										"label": "Impaired absorption (such as chronic severe diarrhea)"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "If drug causes treatment failure, indicate drug:",
+							"id": "drugCausingFailure",
+							"questionOptions": {
+								"concept": "1682a920-c93d-4aad-b9cb-4a2b2c41ff1a",
+								"rendering": "drug"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(treatmentFailure) && treatmentFailure === '01eedbcc-ea21-40cc-b150-fcaca5eef501' && isEmpty(myValue)",
+									"message": "Indicate drug causing treatment failure."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(treatmentFailure) || treatmentFailure !== '01eedbcc-ea21-40cc-b150-fcaca5eef501'"
+							}
+						},
+						{
+							"label": "Does this patient have other co morbidities?",
+							"required": "true",
+							"id": "coMorbidities",
+							"questionOptions": {
+								"concept": "a8b010e8-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
+										"label": "Convulsive disease"
+									},
+									{
+										"concept": "a890b810-1350-11df-a1f1-0026b9348838",
+										"label": "Mental health disorders"
+									},
+									{
+										"concept": "a893436e-1350-11df-a1f1-0026b9348838",
+										"label": "Diabetes"
+									},
+									{
+										"concept": "a8ad5254-1350-11df-a1f1-0026b9348838",
+										"label": "Renal disease"
+									},
+									{
+										"concept": "a8ad516e-1350-11df-a1f1-0026b9348838",
+										"label": "Liver disease"
+									},
+									{
+										"concept": "a8986880-1350-11df-a1f1-0026b9348838",
+										"label": "Hypertention"
+									},
+									{
+										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"label": "None"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Has drug resistance test (DRT) been done?",
+							"required": "true",
+							"id": "dstDone",
+							"questionOptions": {
+								"concept": "2ae99396-0e12-463f-8968-1cba7cf24bc0",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "If DRT result available, upload image:",
+							"type": "obs",
+							"default": "",
+							"id": "dstImage",
+							"questionOptions": {
+								"concept": "8ec7c519-502e-46ea-8a98-181ed5a088be",
+								"rendering": "file"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(dstDone) && dstDone === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+									"message": "DST was done.Please upload the image for the results."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "dstDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "MMAS",
+			"sections": [
+				{
+					"label": "Morisky Adherence",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Do you ever forget to take your medicines? (0=No, 1=Yes)",
+							"required": "true",
+							"id": "forget",
+							"questionOptions": {
+								"concept": "99a99956-90b0-431e-a453-bf8efffeb7d3",
+								"rendering": "number",
+								"max": "1",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Are you sometimes not keen about taking your medications? (0=No, 1=Yes)",
+							"required": "true",
+							"id": "notKeen",
+							"questionOptions": {
+								"concept": "26b3c8c9-20be-4585-98f7-c8b8bf2c9207",
+								"rendering": "number",
+								"max": "1",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Do you stop taking medicine at times when you feel worse? (0=No, 1=Yes)",
+							"required": "true",
+							"id": "feelWorse",
+							"questionOptions": {
+								"concept": "ccffa130-12c6-45e8-a24a-b16c0395abd5",
+								"rendering": "number",
+								"max": "1",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "If you feel better, do you sometimes stop taking your medicine? (0=No, 1=Yes)",
+							"required": "true",
+							"id": "feelBetter",
+							"questionOptions": {
+								"concept": "f9eb1023-4cd7-47a7-87cd-b3353824c2c7",
+								"rendering": "number",
+								"max": "1",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Did you forget to take your medicine yesterday? (0=No, 1=Yes)",
+							"required": "true",
+							"id": "medicineYesterday",
+							"questionOptions": {
+								"concept": "2860acd4-2391-4467-9e69-e848d1672f96",
+								"rendering": "number",
+								"max": "1",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Do you sometimes stop taking medicine if you feel like your symptoms are under control? (0=No, 1=Yes)",
+							"required": "true",
+							"id": "symptomControl",
+							"questionOptions": {
+								"concept": "8fcb3ada-2188-4e0a-8c68-18c26fd123b2",
+								"rendering": "number",
+								"max": "1",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Do you ever feel under pressure about sticking to your treatment plan? (0=No, 1=Yes)",
+							"required": "true",
+							"id": "underPressure",
+							"questionOptions": {
+								"concept": "87ba16a0-6f57-4b0b-a76e-753977f1ef7f",
+								"rendering": "number",
+								"max": "1",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "How often do you have difficulty remembering to take all your medication? (0=Never/Rarely, 1/4=Once in a while, 1/2=Sometimes, 3/4=Usually,1=All the time)",
+							"required": "true",
+							"id": "difficultyRemembering",
+							"questionOptions": {
+								"concept": "658523c7-77d2-4419-9633-eba789a7d64d",
+								"rendering": "number",
+								"max": "1",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Morisky total score:",
+							"required": "true",
+							"id": "moriskyScore",
+							"questionOptions": {
+								"concept": "857caa4e-b566-4a43-ab78-f911c1a8a727",
+								"rendering": "number",
+								"max": "8",
+								"min": "0",
+								"calculate": {
+									"calculateExpression": "isNaN(parseFloat(difficultyRemembering) + parseFloat(underPressure) + parseFloat(symptomControl)+ parseFloat(medicineYesterday)+ parseFloat(feelBetter)+ parseFloat(feelWorse)+ parseFloat(notKeen)+ parseFloat(forget)) ? undefined: (parseFloat(difficultyRemembering) + parseFloat(underPressure) + parseFloat(symptomControl)+ parseFloat(medicineYesterday)+ parseFloat(feelBetter)+ parseFloat(feelWorse)+ parseFloat(notKeen)+ parseFloat(forget))"
+								}
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Morisky score rating:",
+							"required": "true",
+							"id": "scoreMo",
+							"questionOptions": {
+								"concept": "",
+								"rendering": "text",
+								"calculate": {
+									"calculateExpression": "parseInt(moriskyScore) === 0 && parseFloat(moriskyScore) <= 0.25 ? 'Good' : parseFloat(moriskyScore) >=0.5 && parseInt(moriskyScore) <= 2 ? 'Inadequate' : parseInt(moriskyScore) >= 3 && parseInt(moriskyScore) <= 8 ? 'Poor' : 'Unknown'"
+								}
+							},
+							"type": "control"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "PHQ-9",
+			"sections": [
+				{
+					"label": "Mental Health",
+					"questions": [
+						{
+							"label": "Little interest or pleasure in doing things: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "interest",
+							"questionOptions": {
+								"concept": "0975c82b-7905-446f-bd16-2f5e373543db",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Feels down or depressed or hopeless: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "down",
+							"questionOptions": {
+								"concept": "fa7f8ebd-449d-4f09-a5ed-fd9c05302c67",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Trouble falling or staying asleep or sleeping too much: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "sleep",
+							"questionOptions": {
+								"concept": "dfc873d9-e7ad-4481-abce-c836fcb0a3d5",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Feeling tired or having little energy: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "tired",
+							"questionOptions": {
+								"concept": "99dbc9ed-82df-4a95-99ca-145e61ee15d6",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Poor appetite or overeating: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "appetite",
+							"questionOptions": {
+								"concept": "bc0bfec9-72b9-4cd1-85e5-289629443e09",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Feeling bad about yourself, or that you are a failure or that you have let yourself or your family down: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "failure",
+							"questionOptions": {
+								"concept": "1e8ab77f-8c42-4a79-98a2-77795bd08b96",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Trouble concentrating on things: (linked with patient's usual activities such as reading the newspapers or listening to a radio programme) (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "concentrate",
+							"questionOptions": {
+								"concept": "c3b17b63-9f68-4265-8c5c-ac159360348b",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Moving or speaking so slowly that other people could have noticed. Or the opposite, being so fidgety or restless that you have been moving a lot more than usual: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "speak",
+							"questionOptions": {
+								"concept": "f3c67cdc-7a42-413b-8f52-dabba34d0bd9",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Thoughts that you would be better off dead or of hurting yourself in some ways: (0=Not at all, 1=Several days, 2=More than half days, 3=Nearly everyday)",
+							"id": "dead",
+							"questionOptions": {
+								"concept": "68c39c36-9956-49a6-bfbb-4e3cbef3c8ff",
+								"rendering": "number",
+								"max": "3",
+								"min": "0"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "PHQ-9 total score:",
+							"id": "phqscore",
+							"questionOptions": {
+								"concept": "00bde79f-a625-4d9f-96d4-908cbb693fe0",
+								"rendering": "number",
+								"max": "27",
+								"min": "0",
+								"calculate": {
+									"calculateExpression": "isNaN(parseInt(interest) + parseInt(down) + parseInt(tired)+ parseInt(sleep)+ parseInt(failure)+ parseInt(appetite)+ parseInt(concentrate)+ parseInt(speak)+ parseInt(dead)) ? undefined: (parseInt(interest) + parseInt(down) + parseInt(tired)+ parseInt(sleep)+ parseInt(failure)+ parseInt(appetite)+ parseInt(concentrate)+ parseInt(speak)+ parseInt(dead))"
+								}
+							},
+							"type": "obs"
+						},
+						{
+							"label": "PHQ-9 score rating:",
+							"id": "scorePh",
+							"questionOptions": {
+								"concept": "",
+								"rendering": "text",
+								"calculate": {
+									"calculateExpression": "parseInt(phqscore) >= 0 && parseInt(phqscore) <= 4 ? 'Depression unlikely' : parseInt(phqscore) >= 5 && parseInt(phqscore) <= 9 ? 'Mild depression': parseInt(phqscore) >= 10 && parseInt(phqscore) <= 14 ? 'Moderate depression': parseInt(phqscore) >= 15 && parseInt(phqscore) <= 19 ? 'Moderate severe depression' : parseInt(phqscore) >= 20 && parseInt(phqscore) <= 27 ? 'Severe depression' : 'Unknown'"
+								},
+								"type": "control"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Assessment And Plan",
+			"sections": [
+				{
+					"label": "Assessment And Plan",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Please enter your assessment of the patient and the plan moving foward:",
+							"type": "obs",
+							"id": "assessment",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+								"rendering": "textarea",
+								"rows": 7
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

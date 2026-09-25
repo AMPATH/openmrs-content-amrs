@@ -1,0 +1,300 @@
+{
+	 "name": "POC Counseling Visit Form v1.1",
+  "description": "POC Counseling Visit Form",
+  "version": "1.1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "YOUTHCOUNSELING",
+  "encounterType": "c4efb6ba-e286-4933-8854-cd3af8e1ebef",
+  "processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Counseling Visit",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				},
+				{
+					"label": "patient Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Reason for referral to counseling:",
+							"type": "obs",
+							"id": "refReason",
+							"questionOptions": {
+								"concept": "2c8bb721-b642-428a-b956-7902242776ab",
+								"rendering": "textarea",
+								"rows": "3"
+							}
+						},
+						{
+							"label": "Are your parents alive?",
+							"type": "obs",
+							"id": "parentsAlive",
+							"questionOptions": {
+								"concept": "0128e6ce-4a1b-4267-a56b-c53f81944d8e",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							}
+						},
+						{
+							"label": "Which birth order are you?",
+							"type": "obs",
+							"id": "birthOrder",
+							"questionOptions": {
+								"concept": "a8a353bc-1350-11df-a1f1-0026b9348838",
+								"rendering": "number"
+							}
+						},
+						{
+							"label": "Whom do you live with?",
+							"type": "obs",
+							"id": "liveWho",
+							"questionOptions": {
+								"concept": "a8a35bf0-1350-11df-a1f1-0026b9348838",
+								"rendering": "multiCheckbox",
+								"answers": [
+									{
+										"concept": "a898c0dc-1350-11df-a1f1-0026b9348838",
+										"label": "Mother"
+									},
+									{
+										"concept": "a898c1a4-1350-11df-a1f1-0026b9348838",
+										"label": "Father"
+									},
+									{
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+										"label": "Guardian"
+									},
+									{
+										"concept": "a8a17772-1350-11df-a1f1-0026b9348838",
+										"label": "Aunt"
+									},
+									{
+										"concept": "a898c32a-1350-11df-a1f1-0026b9348838",
+										"label": "Grandparent"
+									},
+									{
+										"concept": "a89cd352-1350-11df-a1f1-0026b9348838",
+										"label": "Neighbor"
+									},
+									{
+										"concept": "a8aaf07c-1350-11df-a1f1-0026b9348838",
+										"label": "Friend"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							}
+						},
+						{
+							"label": "Whom do you live with, other:",
+							"type": "obs",
+							"id": "otherhm",
+							"questionOptions": {
+								"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+								"rendering": "text"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!arrayContains (liveWho,'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+							}
+						},
+						{
+							"label": "Are you in a sexual relationship?",
+							"type": "obs",
+							"id": "sexRelation",
+							"questionOptions": {
+								"concept": "053ec791-2371-4c87-88a1-86a1abeed90c",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							}
+						},
+						{
+							"label": "If yes, what type of sexual relationship?",
+							"type": "obs",
+							"id": "relationType",
+							"questionOptions": {
+								"concept": "1d36f18d-bdbb-450a-b28f-816b1476a1bf",
+								"rendering": "textarea",
+								"rows": "5"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "sexRelation !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Cognitive: (What do parent/child know about HIV disease or treatment? Where in the disclosure process are they? What questions is the child asking?)",
+							"type": "obs",
+							"id": "cognitive",
+							"questionOptions": {
+								"concept": "28026dea-3b8d-4d70-9d16-cf40a7f0692c",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Emotional:(What are the concerns or worries? How is the child? How are the parents?)",
+							"type": "obs",
+							"id": "emotional",
+							"questionOptions": {
+								"concept": "276f872a-34b4-4bf0-b57c-3d912c4720a4",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Social/Behavioral:(What are the family and social enviroment like? Adherence issues?)",
+							"type": "obs",
+							"id": "social",
+							"questionOptions": {
+								"concept": "ed60ef1e-663e-4034-91ff-8d2e601e0fdc",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Assessment:(What issues were addressed today? What were the main issues discussed? What did your counselling focus on?):",
+							"type": "obs",
+							"id": "ass",
+							"questionOptions": {
+								"concept": "bf48af84-e16a-4757-81da-582511e88b35",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Plan:(What are the next steps for the family? What will the caregiver do? What do you plan to address at your next session?)",
+							"type": "obs",
+							"id": "plan",
+							"questionOptions": {
+								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Further referral suggestions:",
+							"type": "obs",
+							"id": "refSug",
+							"questionOptions": {
+								"concept": "947f71b4-87fd-4b52-a585-e45196811020",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Counseling session number:",
+							"type": "obs",
+							"id": "sessionNo",
+							"questionOptions": {
+								"concept": "dbc267c9-5f02-426b-9b74-3fce4054aed7",
+								"rendering": "number"
+							}
+						},
+						{
+							"label": "Minutes counseled:",
+							"type": "obs",
+							"id": "mins",
+							"questionOptions": {
+								"concept": "d8ff0032-ffea-4d43-89ed-39b66359478d",
+								"rendering": "number"
+							}
+						},
+						{
+							"label": "Date of next session:",
+							"type": "obs",
+							"id": "rtc",
+							"questionOptions": {
+								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+								"rendering": "date",
+								"weeksList": [
+									2,
+									4,
+									6,
+									8,
+									12,
+									16,
+									20,
+									24,
+									36
+								]
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Date of next session should be greater than the encounter date."
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

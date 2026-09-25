@@ -1,0 +1,166 @@
+{
+  "name": "POC Consent Form v1.2",
+  "description": "POC Consent Form",
+  "version": "1.2",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "5a58f6f5-f5a6-47eb-a644-626abd83f83b",
+  "encounter": "CALLCONSENT",
+	"pages": [
+		{
+			"label": "Encounter Details:",
+			"sections": [
+				{
+					"label": "Encounter Details:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Consent date:",
+							"required": "true",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encDate"
+						},
+						{
+							"label": "Encounter provider:",
+							"type": "encounterProvider",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encProvider"
+						},
+						{
+							"label": "Encounter location:",
+							"required": "true",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLocation"
+						},
+                        {
+							"label": "Does patient consent to be called by phone?",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "8873d881-6ad3-46e6-a558-b97d51d15e01",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+										
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+										
+									}
+								]
+							},
+							"id": "phonecallConsent"
+						},
+						{
+							"label": "Does patient consent to be visited at home for purpose of care?",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "9d9ccb6b-73ae-48dd-83f9-12c782ce6685",
+								
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+										
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+										
+									}
+								]
+							},
+							"id": "patientConsent"
+						},
+						{
+							"label": "Does the patient consent to recieve appointment SMS?",
+							"type": "obs",
+							"required": "true",
+							"id": "smsConsent",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "8873d881-6ad3-46e6-a558-b97d51d15e01",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							}
+						},
+						{
+							"label": "What time does the patient prefer to receive the SMS?",
+							"type": "obs",
+							"required": "true",
+							"id": "smsTime",
+							"questionOptions": {
+								"rendering": "time",
+								"concept": "4e1a9d59-3d06-47eb-82a7-30410db249e4"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "smsConsent !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Which language does the patient prefer?",
+							"type": "obs",
+							"required": "true",
+							"id": "language",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89e54e8-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"label": "English",
+										"concept": "a89e414c-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Kiswahili",
+										"concept": "a89e4084-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "smsConsent !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Consent comments:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "textarea",
+								"rows": "18",
+								"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+								
+							},
+							"id": "conComments"
+						}
+					]
+				}
+			]
+		}
+	]
+}

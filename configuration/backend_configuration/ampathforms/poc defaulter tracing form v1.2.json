@@ -1,0 +1,1096 @@
+{
+    "name": "POC Defaulter Tracing Form v1.2",
+  "description": "POC Defaulter Tracing Form",
+  "version": "1.2",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "df5547bc-1350-11df-a1f1-0026b9348838",
+  "encounter": "OUTREACHFIELDFU",
+	"pages": [
+		{
+			"label": "Follow Up",
+			"sections": [
+				{
+					"label": "Follow Up Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "encounterProvider",
+							"label": "Provider:",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Visit date:",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Date of missed appointment:",
+							"id": "date_missed_appointment",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "a89e3896-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "false"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Missed appointment date should be less than the encounter date."
+								}
+							]
+						},
+						
+						{
+							"label": "Type of follow up:",
+							"required": "true",
+							"id": "followUp",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a89de832-1350-11df-a1f1-0026b9348838",
+										"label": "Phone follow up"
+									},
+									{
+										"concept": "554f2668-f64e-4497-abff-af6079089a80",
+										"label": "Home visit"
+									}
+								],
+								"concept": "a89dea80-1350-11df-a1f1-0026b9348838",
+								"rendering": "select"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Who did you attempt to reach?",
+							"required": "true",
+							"id": "whoReached",
+							"type": "obs",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a8a089fc-1350-11df-a1f1-0026b9348838",
+										"label": "Client"
+									},
+									{
+										"concept": "01b957da-23bb-4862-819d-036364fe3faf",
+										"label": "Treatment supporter"
+									},
+									{
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+										"label": "Caregiver"
+									}
+								],
+								"rendering": "select",
+								"concept": "38794cd0-2514-454b-9b7e-8c43eb0909c3"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "followUp!== 'a89de832-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Was the phone attempt successful?",
+							"id": "phoneAttempts",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "f95ddcd7-d4c5-4396-b341-82239185acc4",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!arrayContains(['a8a089fc-1350-11df-a1f1-0026b9348838', '01b957da-23bb-4862-819d-036364fe3faf', 'a89cd280-1350-11df-a1f1-0026b9348838'], whoReached)"
+							}
+						},
+						{
+							"label": "If no, what were the reasons?",
+							"id": "noAttemptReason",
+							"type": "obs",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "1965eb6f-fc86-4f44-b3b8-59772b1daa20",
+										"label": "Wrong phone number"
+									},
+									{
+										"concept": "fdd18cec-11ba-4512-ab3c-b66066847f58",
+										"label": "No one answers"
+									},
+									{
+										"concept": "a89dec06-1350-11df-a1f1-0026b9348838",
+										"label": "Phone inactive"
+									}
+									
+								],
+								"rendering": "select",
+								"concept": "aa4fe031-9528-42d2-a716-4207094d4a17"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "phoneAttempts!== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Was home visit attempt made?",
+							"required": "true",
+							"id": "homeVisitAttempt",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select",
+								"concept": "fe6800a2-76f1-42a4-a1c8-553e1fec18e9"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "followUp!== '554f2668-f64e-4497-abff-af6079089a80'"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "If yes, was the client found?",
+							"id": "clientFound",
+							"required": "true",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select",
+								"concept": "a89deb3e-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "homeVisitAttempt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "If no, what are the reasons?",
+							"id": "reasonNotFound",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a89decc4-1350-11df-a1f1-0026b9348838",
+										"label": "Locator information inadequate"
+									},
+									{
+										"concept": "a89ded8c-1350-11df-a1f1-0026b9348838",
+										"label": "Patient relocated"
+									},
+									{
+										"concept": "ec9227a3-d078-4ed0-bdc3-e8328a9e549e",
+										"label": "Family conflicts"
+									},
+									{
+										"concept": "a89dee54-1350-11df-a1f1-0026b9348838",
+										"label": "Patient not at home"
+									},
+									{
+										"concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+										"label": "Patient deceased"
+									}
+								],
+								"rendering": "select",
+								"concept": "a89de5e4-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "clientFound !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Reason field follow-up was not attempted:",
+							"id": "notAttempt",
+							"questionOptions": {
+								"answers": [
+									{
+										"label": "Road impassable",
+										"concept": "a89ef826-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Out of catchment",
+										"concept": "83df5f26-f97a-4cda-9c05-d0bdc6e4ebee"
+									},
+									{
+										"label": "Locator information inadequate",
+										"concept": "a89decc4-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Insecurity",
+										"concept": "a8a08cfe-1350-11df-a1f1-0026b9348838"
+									}
+								],
+								"rendering": "select",
+								"concept": "4377ab37-f513-4426-af67-07016d1a64ef"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "homeVisitAttempt!== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Who made the home visit?",
+							"id": "homeVisit",
+							"questionOptions": {
+								"answers": [
+									{
+										"label": "Retention worker",
+										"concept": "a8afd286-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Social worker",
+										"concept": "a89e2d1a-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Community health promoter",
+										"concept": "a8a00b4e-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Peer group",
+										"concept": "d1eb251b-3c97-4406-b292-2c6e7a7ff968"
+									},
+									{
+										"label": "Mentor mother",
+										"concept": "9d9e5335-38d2-4f61-ba9b-a67edd97f52e"
+									},
+									{
+										"label": "Health care worker",
+										"concept": "a8aaf158-1350-11df-a1f1-0026b9348838"
+									}
+									
+								],
+								"rendering": "select",
+								"concept": "a8afd40c-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "homeVisitAttempt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				},
+				{
+					"label": "Reason For Missed Visit",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Patient related issues:",
+							"id": "patientIssues",
+							"type": "obs",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a89e27f2-1350-11df-a1f1-0026b9348838",
+										"label": "Forgot appointment"
+									},
+									{
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+										"label": "Self transferred"
+									},
+									{
+										"concept": "a89e291e-1350-11df-a1f1-0026b9348838",
+										"label": "Family committment"
+									},
+									{
+										"concept": "a89e2a54-1350-11df-a1f1-0026b9348838",
+										"label": "Work commitments"
+									},
+									{
+										"concept": "a8a08e7a-1350-11df-a1f1-0026b9348838",
+										"label": "School commitments"
+									},
+									{
+										"concept": "a89de2d8-1350-11df-a1f1-0026b9348838",
+										"label": "Too ill to come"
+									},
+									{
+										"concept": "a89ded8c-1350-11df-a1f1-0026b9348838",
+										"label": "Relocated"
+									},
+									{
+										"concept": "a89de152-1350-11df-a1f1-0026b9348838",
+										"label": "Travelled/Migrated"
+									},
+									{
+										"concept": "6daff4ce-bce7-41f5-9141-17e694155180",
+										"label": "Self disengaged"
+									},
+									{
+										"concept": "a89e2b30-1350-11df-a1f1-0026b9348838",
+										"label": "Lack fare"
+									},
+									{
+										"concept": "a89ecaa4-1350-11df-a1f1-0026b9348838",
+										"label": "Stigma/disclosure issues"
+									},
+									{
+										"concept": "a89ffa64-1350-11df-a1f1-0026b9348838",
+										"label": "Disability"
+									},
+									{
+										"concept": "28b3d2dc-32c9-4773-b588-4781b13885f5",
+										"label": "Has extra drugs"
+									},
+									{
+										"concept": "116977f1-aeaa-4a4e-91db-d63a1be9d3f5",
+										"label": "Got a refil in another facility"
+									},
+									{
+										"concept": "ec9227a3-d078-4ed0-bdc3-e8328a9e549e",
+										"label": "Family conflict"
+									},
+									{
+										"concept": "a8a08cfe-1350-11df-a1f1-0026b9348838",
+										"label": "Insecurity"
+									},
+									{
+										"concept": "a89ced88-1350-11df-a1f1-0026b9348838",
+										"label": "Alcoholism"
+									},
+									{
+										"concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+										"label": "Deceased"
+									}
+								],
+								"rendering": "multiCheckbox",
+								"concept": "bb4ddfad-1769-4f04-a5b1-b278670adf40"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(myValue) && whoReached === 'a8a089fc-1350-11df-a1f1-0026b9348838' && arrayContains ('a89335d6-1350-11df-a1f1-0026b9348838', myValue)",
+									"message": "The person contacted was the client. Therefore response cannot be deceased."
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "!isEmpty(myValue) && clientFound === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains (['a89335d6-1350-11df-a1f1-0026b9348838'], myValue)",
+									"message": "The person found was the client. Therefore response cannot be deceased."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "reasonNotFound === 'a89335d6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Which facility did the patient pick drugs from:",
+							"type": "obs",
+							"id": "facilityDrugs",
+							"required": "true",
+							"questionOptions": {
+								"concept": "99f8ac81-cea1-43eb-88fb-29a9ea2d77cf",
+								"rendering": "select"
+								
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!arrayContainsAny (['116977f1-aeaa-4a4e-91db-d63a1be9d3f5'], patientIssues)"
+							}
+						},
+						{
+							"label": "Facility MFL code:",
+							"type": "obs",
+							"id": "mfl",
+							"questionOptions": {
+								"concept": "e8ec983c-3d04-48e0-bb86-c4bf03866212",
+								"rendering": "number"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(myValue).length > 5",
+									"message": "MFL code should not have more than 5 digits"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(facilityDrugs) && facilityDrugs === '7e381b07-81d5-4425-be84-f188b61b4bd1'",
+									"message": "Please provide MFL code."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "!arrayContainsAny (['116977f1-aeaa-4a4e-91db-d63a1be9d3f5'], patientIssues)"
+							}
+						},
+						{
+							"label": "Sub County:",
+							"type": "obs",
+							"id": "subcounty",
+							"default": "",
+							"questionOptions": {
+								"concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00",
+								"rendering": "text"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!arrayContainsAny (['116977f1-aeaa-4a4e-91db-d63a1be9d3f5'], patientIssues)"
+							}
+						},
+						{
+							"label": "Facility contact person:",
+							"type": "obs",
+							"id": "facContactPerson",
+							"default": "",
+							"questionOptions": {
+								"concept": "703736b5-0f17-4b96-89fd-76f0093d8d78",
+								"rendering": "text"
+							},
+							"hide": {
+								"hideWhenExpression": "!arrayContainsAny (['116977f1-aeaa-4a4e-91db-d63a1be9d3f5'], patientIssues)"
+							}
+						},
+						{
+							"label": "Facility contact number:",
+							"type": "obs",
+							"id": "facContactNumber",
+							"default": "",
+							"questionOptions": {
+								"concept": "bcb3220f-57b5-467e-ad8a-282df45a3642",
+								"rendering": "number"
+							},
+							"hide": {
+								"hideWhenExpression": "!arrayContainsAny (['116977f1-aeaa-4a4e-91db-d63a1be9d3f5'], patientIssues)"
+							}
+						},
+						{
+							"label": "Days of refill:",
+							"type": "obs",
+							"id": "RefillDays",
+							"default": "",
+							"questionOptions": {
+								"concept": "f57913d6-4452-4b58-9cd8-d264a908d44d",
+								"rendering": "number"
+							},
+							"hide": {
+								"hideWhenExpression": "!arrayContainsAny (['116977f1-aeaa-4a4e-91db-d63a1be9d3f5'], patientIssues)"
+							}
+						},
+						{
+							"label": "Reason for refill:",
+							"type": "obs",
+							"id": "refillReason",
+							"questionOptions": {
+								"concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+										"label": "Follow up"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							},
+							"hide": {
+								"hideWhenExpression": "!arrayContainsAny (['116977f1-aeaa-4a4e-91db-d63a1be9d3f5'], patientIssues)"
+							}
+						},
+						{
+							"label": "Self disengaged due to:",
+							"id": "reasonSelfDis",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89e3468-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a8aca1ce-1350-11df-a1f1-0026b9348838",
+										"label": "Herbal medication"
+									},
+									{
+										"concept": "a89e3396-1350-11df-a1f1-0026b9348838",
+										"label": "Healed by faith"
+									},
+									{
+										"concept": "a89e3274-1350-11df-a1f1-0026b9348838",
+										"label": "Denial"
+									},
+									{
+										"concept": "a89ecaa4-1350-11df-a1f1-0026b9348838",
+										"label": "Stigma/disclosure issues"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && (patientIssues === '6daff4ce-bce7-41f5-9141-17e694155180' || arrayContains(['6daff4ce-bce7-41f5-9141-17e694155180'],patientIssues))",
+									"message": "Please indicate the reason for disangaging."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "isEmpty(patientIssues) || !arrayContains(patientIssues, ['6daff4ce-bce7-41f5-9141-17e694155180'])"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Health provider related issues:",
+							"id": "providerIssues",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a89e26d0-1350-11df-a1f1-0026b9348838",
+										"label": "Did not actually miss appointment"
+									},
+									{
+										"concept": "9467fd26-aee2-4bd1-b1be-0e64c429e5c7",
+										"label": "Poor provider attitude and communication"
+									},
+									{
+										"concept": "35111cac-290a-492a-81e4-d00ef46913c5",
+										"label": "Not comfortable with age and sex of provider"
+									},
+									{
+										"concept": "03c9f4c1-21a3-4638-b6cb-48b388158f2c",
+										"label": "Lack of involvement in their treatment plan"
+									},
+									{
+										"concept": "2a4245cd-6ddd-4966-8b00-9da969601a4d",
+										"label": "Language barrier"
+									},
+									{
+										"concept": "1fcb2037-ddf6-474b-8ec2-c019bb9d516a",
+										"label": "Breach of confidentiality"
+									},
+									{
+										"concept": "e5c75c26-b894-4741-bfd8-caeafc357c77",
+										"label": "Lateness or no staff"
+									},
+									{
+										"concept": "6de7b478-32db-46fa-8646-166e27bff723",
+										"label": "Incomplete documentation"
+									}
+								],
+								"rendering": "multiCheckbox",
+								"concept": "c08c49bf-a735-49d1-9b08-a77580bd76ec"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!isEmpty(patientIssues) && arrayContains(patientIssues, 'a89335d6-1350-11df-a1f1-0026b9348838') || reasonNotFound === 'a89335d6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Facility related issues:",
+							"id": "facilityIssues",
+							"questionOptions": {
+								"concept": "837171da-c385-4c4e-8a2b-2022300210f8",
+								"answers": [
+									{
+										"concept": "6fcf3c0a-e872-4f64-b1a4-54ee15160aa8",
+										"label": "Long waiting time"
+									},
+									{
+										"concept": "9cdfa30f-ff58-43df-ba1b-f4b9a652b6b9",
+										"label": "Lack of privacy"
+									},
+									{
+										"concept": "c06fd21a-c8cc-43c2-bd05-06864eab9aea",
+										"label": "Uncomfortable waiting bay"
+									},
+									{
+										"concept": "d19ebf73-5467-4d0d-bd31-f047098891e8",
+										"label": "Inadequate social amenities"
+									}
+								],
+								"rendering": "multiCheckbox"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "!isEmpty(patientIssues) && arrayContains(patientIssues, 'a89335d6-1350-11df-a1f1-0026b9348838') || reasonNotFound === 'a89335d6-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				},
+				{
+					"label": "Tracing Numbering",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Please specify the attempt number since last missed appointment (i.e. 1, 2, 3):",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('fef5711d-e22f-428c-a7f7-2fd7e2cf5e85')) ? undefined : HD.getObject('prevEnc').getValue('fef5711d-e22f-428c-a7f7-2fd7e2cf5e85')",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "fef5711d-e22f-428c-a7f7-2fd7e2cf5e85"
+							},
+							"id": "attemptNumber"
+						}
+					]
+				},
+				{
+					"label": "Patient Status/Final Outcome",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Was the final outcome reached?:",
+							"required": "true",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "c09446b4-a7a0-41bf-b499-5bbd67970925",
+								"answers": [
+									{
+										"label": "Yes",
+										"concept": "a89c1ef8-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "No",
+										"concept": "0ff6c442-9610-4017-8435-e05676825632"
+									}
+								]
+							},
+							"id": "outcomeReached"
+						},
+						{
+							"label": "Please indicate tracing outcome:",
+							"id": "careStatus",
+							"required": "true",
+							"questionOptions": {
+								"concept": "7c579743-5ef7-4e2c-839f-5b95597cb01c",
+								"answers": [
+									{
+										"concept": "3099544f-80d9-4ad1-a276-70d5b3698f4f",
+										"label": "Self returned"
+									},
+									{
+										"concept": "72443cac-4822-4dce-8460-794af7af8167",
+										"label": "Brought back to care"
+									},
+									{
+										"concept": "a89c2e5c-1350-11df-a1f1-0026b9348838",
+										"label": "Transfer care to other facility"
+									},
+									
+									{
+										"concept": "1f09e809-8ea3-45e6-a71f-16e6a0d72390",
+										"label": "Transfer to MNCH for PMTCT care"
+									},
+									{
+										"concept": "6daff4ce-bce7-41f5-9141-17e694155180",
+										"label": "Patient self disengaged from care"
+									},
+									{
+										"concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+										"label": "Dead"
+									},
+									{
+										"concept": "a8a6f56c-1350-11df-a1f1-0026b9348838",
+										"label": "IIT/Lost to follow up"
+									},
+									{
+										"concept": "116977f1-aeaa-4a4e-91db-d63a1be9d3f5",
+										"label": "Refilled elsewhere"
+									},
+									{
+										"concept": "636b7246-51f7-4985-9430-431b09d39bea",
+										"label": "Patient HIV negative"
+									},
+									{
+										"concept": "bea9c288-0650-4b42-a324-1d6d51591c72",
+										"label": "Untraceable"
+									},
+									{
+										"concept": "",
+										"label": "Bedridden."
+									},
+									{
+										"concept": "",
+										"label": "Relocated"
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && (outcomeReached === 'a89c1ef8-1350-11df-a1f1-0026b9348838')",
+									"message": "Please indicate final status."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "outcomeReached !== 'a89c1ef8-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+					
+						{
+							"label": "Specify name of clinic to which patient is being referred:",
+							"type": "obs",
+							"id": "nonAmp",
+							"required": "false",
+							"default": "",
+							"questionOptions": {
+								"concept": "5a1a5ae4-e0ee-47fd-9b16-e54f55c3f000",
+								"rendering": "text"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "careStatus !== '67cd2f9f-228e-417d-94c4-d77e1a6c3453' "
+							}
+						}
+					]
+				},
+				{
+					"label": "Death Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Date of death:",
+							"id": "deathDate",
+							"questionOptions": {
+								"concept": "a89df3d6-1350-11df-a1f1-0026b9348838",
+								"rendering": "date"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Date of death should be less than encounter date."
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && (reasonNotFound === 'a89335d6-1350-11df-a1f1-0026b9348838' || arrayContains(['a89335d6-1350-11df-a1f1-0026b9348838'],patientIssues))",
+									"message": "Date of death is required."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "(!arrayContains(['a89335d6-1350-11df-a1f1-0026b9348838'],patientIssues) || isEmpty(patientIssues)) && reasonNotFound !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Cause of death",
+							"id": "deathCause",
+							"questionOptions": {
+								"concept": "a89df750-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a890a96a-1350-11df-a1f1-0026b9348838",
+										"label": "HIV disease resulting in TB "
+									},
+									{
+										"concept": "acdceb9b-4b84-4e9c-bba4-eaf486b3b4b5",
+										"label": "HIV disease resulting in cancer "
+									},
+									{
+										"concept": "a890e4b6-1350-11df-a1f1-0026b9348838",
+										"label": "HIV disease resulting in other infectious and parasitic disease (malaria, typhoid, cholera)"
+									},
+									{
+										"concept": "e0b25daf-c3da-4ba9-b786-a37b2f05ef31",
+										"label": "Other non-infectious HIV related disease "
+									},
+									{
+										"concept": "a8986880-1350-11df-a1f1-0026b9348838",
+										"label": "Other natural causes (heart disease, diabetes, hypertension)"
+									},
+									{
+										"concept": "a89df67e-1350-11df-a1f1-0026b9348838",
+										"label": "Non-natural causes (accident, murder, suicide, war, trauma)"
+									},
+									{
+										"concept": "316d5e0e-a66d-422e-98a4-ea3403f9169e",
+										"label": "Coronavirus disease"
+									},
+									{
+										"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+										"label": "Unknown cause "
+									}
+								],
+								"rendering": "select"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && (reasonNotFound === 'a89335d6-1350-11df-a1f1-0026b9348838' || arrayContains(['a89335d6-1350-11df-a1f1-0026b9348838'],patientIssues))",
+									"message": "Cause of death is required."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "(!arrayContains(['a89335d6-1350-11df-a1f1-0026b9348838'],patientIssues) || isEmpty(patientIssues)) && reasonNotFound !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obsGroup",
+							"label": "Death reported by detailed",
+							"questionOptions": {
+								"concept": "5109ebdd-f1c6-4a7a-8491-31b0ac98d4c4",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Death reported by:",
+									"id": "deathReport",
+									"type": "obs",
+									"questionOptions": {
+										"concept": "a89ef1f0-1350-11df-a1f1-0026b9348838",
+										"rendering": "select",
+										"answers": [
+											{
+												"label": "Spouse",
+												"concept": "a89ebc80-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Sibling",
+												"concept": "a898c262-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Mother",
+												"concept": "a898c0dc-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Friend",
+												"concept": "a8aaf07c-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Grandparent",
+												"concept": "a898c32a-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Father",
+												"concept": "a898c1a4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Neighbour",
+												"concept": "a89cd352-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Clinician/Health worker",
+												"concept": "a8aaf158-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Community contact",
+												"concept": "a8af6404-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Other family members",
+												"concept": "a8aaf234-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Caretaker/Caregiver/Guardian",
+												"concept": "a89cd280-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && (reasonNotFound === 'a89335d6-1350-11df-a1f1-0026b9348838' || arrayContains(['a89335d6-1350-11df-a1f1-0026b9348838'],patientIssues))",
+											"message": "Death reported by is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "(!arrayContains(['a89335d6-1350-11df-a1f1-0026b9348838'],patientIssues) || isEmpty(patientIssues)) && reasonNotFound !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Death reported by freetext:",
+									"id": "deathText",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": " isEmpty(deathReport) || deathReport !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "__ursFszpsI"
+						}
+					]
+				},
+				{
+					"label": "Referrals",
+					"questions": [
+						{
+							"type": "obs",
+							"label": "Patient referred for?",
+							"id": "patientRefer",
+							"questionOptions": {
+								"answers": [
+									{
+										"label": "Enhanced adherence counselling",
+										"concept": "a8a8b352-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Disclosure counselling",
+										"concept": "a89accc4-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Refer to social work",
+										"concept": "a89e2d1a-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Refer for psychiatric review",
+										"concept": "a8a06f08-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Refer to nutrition",
+										"concept": "a8a8afd8-1350-11df-a1f1-0026b9348838"
+									}
+								],
+								"rendering": "select",
+								"concept": "a89c2344-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "isEmpty(patientIssues) || arrayContains(patientIssues, 'a89335d6-1350-11df-a1f1-0026b9348838')"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Refer to outreach to update locator information?",
+							"id": "locatorInfo",
+							"questionOptions": {
+								"concept": "a89e3008-1350-11df-a1f1-0026b9348838",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "isEmpty(patientIssues) || arrayContains(patientIssues, ['a89335d6-1350-11df-a1f1-0026b9348838'])"
+							}
+						}
+					]
+				},
+				{
+					"label": "Assessment Notes",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Clinical comments, general:",
+							"type": "obs",
+							"required": "true",
+							"id": "assNote",
+							"questionOptions": {
+								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+								"rendering": "text"
+							}
+						}
+					]
+				},
+				{
+					"label": "Next Promised Appointment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Promised to return clinic date:",
+							"type": "obs",
+							"id": "rtc",
+							"questionOptions": {
+								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+								"rendering": "date",
+								"weeksList": [
+									2,
+									4,
+									6,
+									8,
+									12,
+									16,
+									24,
+									36
+								]
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+									"message": "Return to clinic date should be greater than encounter date."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "arrayContains (patientIssues, 'a89335d6-1350-11df-a1f1-0026b9348838')"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

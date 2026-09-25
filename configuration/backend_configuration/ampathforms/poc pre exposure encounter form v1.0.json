@@ -114,16 +114,56 @@
                 "concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
                 "answers": [
                   {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "General population"
+                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Discordant couple"
                   },
                   {
-                    "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
-                    "label": "Key population"
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSM"
                   },
                   {
-                    "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
-                    "label": "Vulnerable population"
+                    "concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+                    "label": "MSW"
+                  },
+                  {
+                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+                    "label": "FSW"
+                  },
+                  {
+                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+                    "label": "People who inject drugs (PWID)"
+                  },
+                  {
+                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+                    "label": "Truck driver"
+                  },
+                  {
+                    "concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
+                    "label": "Transgender"
+                  },
+                  {
+                    "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
+                    "label": "Fisher folk"
+                  },
+                  {
+                    "concept": "95d14f8c-87dc-4f53-acbe-525086c65a1d",
+                    "label": "Adolescent girls and young women(15-24YRS)"
+                  },
+                  {
+                    "concept": "bbd42058-b40b-4583-a5ab-3178554a11f2",
+                    "label": "Men at high risk"
+                  },
+                  {
+                    "concept": "95845475-c298-4e86-9560-736634965427",
+                    "label": "Other Women"
+                  },
+                  {
+                    "concept": "501731a2-f8ca-4bfe-b86b-3bce455e2e52",
+                    "label": "Pregnant women"
+                  },
+                  {
+                    "concept": "9b58ed9a-e4a1-4de4-81d9-1b319fd15eca",
+                    "label": "Breastfeeding women"
                   }
                 ]
               },
@@ -139,82 +179,6 @@
                 }
               ],
               "questionInfo": "Indicate the population type."
-            },
-            {
-              "label": "Key population:",
-              "id": "keyPop",
-              "questionInfo": "Indicate the key population.",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
-                "answers": [
-                  {
-                    "concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
-                    "label": "MSM"
-                  },
-                  {
-                    "concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
-                    "label": "FSW"
-                  },
-                  {
-                    "concept": "a890d57a-1350-11df-a1f1-0026b9348838",
-                    "label": "PWID"
-                  },
-                  {
-                    "concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
-                    "label": "Transgender persons"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(!isEmpty(prepVisitType) && popType === '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6') && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "!(!isEmpty(prepVisitType) && popType === '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6')"
-              }
-            },
-            {
-              "label": "Vulnerable population:",
-              "id": "vulPop",
-              "questionInfo": "Indicate the vulnerable population.",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
-                "answers": [
-                  {
-                    "concept": "390a0eda-e4a0-4c3b-893c-ceb0ab2387f5",
-                    "label": "People in prison settings"
-                  },
-                  {
-                    "concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
-                    "label": "Fisher folk"
-                  },
-                  {
-                    "concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
-                    "label": "HIV sero-discordant couples"
-                  },
-                  {
-                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
-                    "label": "Long-distance truckers and related mobile populations"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(!isEmpty(prepVisitType) && popType === '729690d4-09dc-497e-a180-bfc2e9d7d21d') && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "!(!isEmpty(prepVisitType) && popType === '729690d4-09dc-497e-a180-bfc2e9d7d21d')"
-              }
             },
             {
               "label": "Place of refill:",
@@ -1137,7 +1101,7 @@
                 }
               },
               "hide": {
-                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!(!isEmpty(prepVisitType)))"
               }
             },
             {
@@ -1163,29 +1127,17 @@
                   {
                     "label": "Discontinue",
                     "concept": "a8af50f4-1350-11df-a1f1-0026b9348838"
-                  },
-                  {
-                    "label": "Transfer out",
-                    "concept": "5520f234-258e-49f0-97ab-701b98fab608",
-                    "hide": {
-                      "hideWhenExpression": "prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
-                    }
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "failsWhenExpression": "(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
                   "message": "Select the PrEP plan."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && myValue === '5520f234-258e-49f0-97ab-701b98fab608'",
-                  "message": "For an initial visit, specify the transfer out facility in the text field instead."
                 }
               ]
             },
@@ -1216,12 +1168,12 @@
                 "rendering": "multiCheckbox"
               },
               "hide": {
-                "hideWhenExpression": "!((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "failsWhenExpression": "(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
                   "message": "This field is required."
                 }
               ]
@@ -1261,12 +1213,12 @@
                 "rendering": "multiCheckbox"
               },
               "hide": {
-                "hideWhenExpression": "!((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "failsWhenExpression": "(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
                   "message": "This field is required."
                 }
               ]
@@ -1280,22 +1232,25 @@
                 "concept": "e8876675-76e1-4e15-a7c5-d4046ff97e3a"
               },
               "hide": {
-                "hideWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608'))"
+                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608')))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608' && isEmpty(myValue)",
+                  "failsWhenExpression": "(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608' && isEmpty(myValue))",
                   "message": "Specify the transfer out facility."
                 }
               ]
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+            "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
           }
         }
-      ]
+      ],
+      "hide": {
+        "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+      }
     },
     {
       "label": "Prescription",
@@ -1323,18 +1278,18 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))"
+                "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && isEmpty(myValue)",
+                  "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && isEmpty(myValue)",
                   "message": "This field is required."
                 }
               ]
             },
             {
-              "label": "PrEP method:",
+              "label": "Types:",
               "id": "prepTypeM",
               "type": "obs",
               "questionOptions": {
@@ -1346,7 +1301,7 @@
                   },
                   {
                     "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "Cabotegravir (CAB-LA)"
+                    "label": "CAB-LA"
                   },
                   {
                     "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
@@ -1356,18 +1311,18 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'M'))"
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'M'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'M')) && isEmpty(myValue)",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'M')) && isEmpty(myValue)",
                   "message": "This field is required."
                 }
               ]
             },
             {
-              "label": "PrEP method:",
+              "label": "Types:",
               "id": "prepTypeF",
               "type": "obs",
               "questionOptions": {
@@ -1379,27 +1334,31 @@
                   },
                   {
                     "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "Cabotegravir (CAB-LA)"
+                    "label": "CAB-LA"
                   },
                   {
                     "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
                     "label": "Lenacapavir"
+                  },
+                  {
+                    "concept": "bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd",
+                    "label": "Dapivirine ring"
                   }
                 ],
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'F'))"
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'F'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'F')) && isEmpty(myValue)",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'F')) && isEmpty(myValue)",
                   "message": "This field is required."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!(!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (sex === 'F'))) && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')",
+                  "failsWhenExpression": "!(!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'F'))) && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')",
                   "message": "Do not initiate CABOTEGRAVIR during pregnancy or breastfeeding. Only continuation of existing uninterrupted treatment is allowed."
                 }
               ]
@@ -1427,13 +1386,23 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M'))"
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'M') || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M'))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M')) && isEmpty(myValue)",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'M') || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M')))) && isEmpty(myValue)",
                   "message": "This field is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'M') && (!isEmpty(prepTypeM) && prepTypeM === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && !isEmpty(myValue) && arrayContains(['64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2'], myValue))",
+                  "message": "Patient marked as on oral prep. Therefore the strategy can only be event driven or daily oral prep."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'M') && (!isEmpty(prepTypeM) && arrayContains(['05188221-3e4e-43b2-b9ec-afb924d95da1','5b4b4a6c-7975-4544-af7f-7f60dacd933f'],prepTypeM) && !isEmpty(myValue) && arrayContains(['97600bd1-cd35-4b77-a4c6-6d3dd842ebc6','fa8e484e-3f90-4a35-b64f-c60f256c3faf'], myValue))",
+                  "message": "Patient not on oral prep. Therefore the strategy can only be long acting."
                 }
               ]
             },
@@ -1456,13 +1425,23 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F'))"
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'F') || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F'))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F')) && isEmpty(myValue)",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'F') || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F')))) && isEmpty(myValue)",
                   "message": "This field is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'F') && (!isEmpty(prepTypeF) && prepTypeF === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && !isEmpty(myValue) && arrayContains(['64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2'], myValue))",
+                  "message": "Patient marked as on oral prep. Therefore the strategy can only be daily oral prep."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'F') && (!isEmpty(prepTypeF) && arrayContains(['05188221-3e4e-43b2-b9ec-afb924d95da1','5b4b4a6c-7975-4544-af7f-7f60dacd933f','bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd'],prepTypeF) && !isEmpty(myValue) && arrayContains(['97600bd1-cd35-4b77-a4c6-6d3dd842ebc6','fa8e484e-3f90-4a35-b64f-c60f256c3faf'], myValue))",
+                  "message": "Patient not on oral prep. Therefore the strategy can only be long acting."
                 }
               ]
             },
@@ -1489,12 +1468,12 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))"
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && ((sex === 'M' && prepTypeM === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf','97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || (sex === 'F' && prepTypeF === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && isEmpty(myValue)",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && ((sex === 'M' && prepTypeM === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf','97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || (sex === 'F' && prepTypeF === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))))) && isEmpty(myValue)",
                   "message": "This field is required."
                 }
               ]
@@ -1518,12 +1497,12 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')"
+                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2') && isEmpty(myValue)",
+                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2') && isEmpty(myValue)",
                   "message": "This field is required."
                 }
               ]
@@ -1551,17 +1530,17 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')"
+                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2') && isEmpty(myValue)",
+                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2') && isEmpty(myValue)",
                   "message": "This field is required."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')) && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')",
+                  "failsWhenExpression": "!(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')) && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')",
                   "message": "Do not initiate Cabotegravir (CAB-LA) during pregnancy or breastfeeding. Only continuation of existing uninterrupted treatment is allowed."
                 }
               ]
@@ -1589,17 +1568,17 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))))"
+                "hideWhenExpression": "!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue)",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue)",
                   "message": "This field is required."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && myValue === 'a899b50a-1350-11df-a1f1-0026b9348838'",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && myValue === 'a899b50a-1350-11df-a1f1-0026b9348838'",
                   "message": "Confirm pregnancy status before prescribing CABOTEGRAVIR."
                 }
               ]
@@ -1623,12 +1602,12 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))))"
+                "hideWhenExpression": "!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue)",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue)",
                   "message": "This field is required."
                 }
               ]
@@ -1652,22 +1631,22 @@
                 "isTransient": true
               },
               "hide": {
-                "hideWhenExpression": "!(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
+                "hideWhenExpression": "!(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))) && isEmpty(myValue)",
+                  "failsWhenExpression": "(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))) && isEmpty(myValue)",
                   "message": "This field is required."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (myValue !== 'a899b35c-1350-11df-a1f1-0026b9348838' || prepStatus !== 'a89b7908-1350-11df-a1f1-0026b9348838')",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (myValue !== 'a899b35c-1350-11df-a1f1-0026b9348838' || prepStatus !== 'a89b7908-1350-11df-a1f1-0026b9348838')",
                   "message": "Cabotegravir (CAB-LA) may only be continued without interruption during pregnancy or breastfeeding; it must not be initiated, restarted, or switched to."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && prepMethodFem !== '05188221-3e4e-43b2-b9ec-afb924d95da1'",
+                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && prepMethodFem !== '05188221-3e4e-43b2-b9ec-afb924d95da1'",
                   "message": "Existing PrEP type at the source facility must be Cabotegravir to record uninterrupted continuation."
                 }
               ],
@@ -1682,12 +1661,12 @@
                 "concept": "90ee880d-4aba-4f43-8b8e-88bfade1dbf0"
               },
               "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)))))"
+                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && isEmpty(myValue)",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && isEmpty(myValue)",
                   "message": "This field is required."
                 },
                 {
@@ -1696,7 +1675,7 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && !isEmpty(myValue) && !isEmpty(encDate) && moment(myValue).isAfter(moment(encDate), 'day')",
+                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && !isEmpty(myValue) && !isEmpty(encDate) && moment(myValue).isAfter(moment(encDate), 'day')",
                   "message": "Date cannot be after the visit date."
                 }
               ]
@@ -1712,22 +1691,22 @@
                 "disallowDecimals": true
               },
               "hide": {
-                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'))"
+                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0)",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0)",
                   "message": "Enter a positive whole number."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && isEmpty(myValue) && (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) || isEmpty(noDays))",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && isEmpty(myValue) && (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) || isEmpty(noDays))",
                   "message": "Enter the duration in months or days."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && !isEmpty(myValue) && !isEmpty(noDays)",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && !isEmpty(myValue) && !isEmpty(noDays)",
                   "message": "Use either months or days, not both."
                 }
               ]
@@ -1743,22 +1722,22 @@
                 "disallowDecimals": true
               },
               "hide": {
-                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))))"
+                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0)",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0)",
                   "message": "Enter a positive whole number."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && isEmpty(myValue) && (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) || isEmpty(months))",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && isEmpty(myValue) && (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) || isEmpty(months))",
                   "message": "Enter the duration in months or days."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && !isEmpty(myValue) && !isEmpty(months)",
+                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && !isEmpty(myValue) && !isEmpty(months)",
                   "message": "Use either months or days, not both."
                 }
               ]
@@ -1782,12 +1761,12 @@
               },
               "id": "pickupLoc",
               "hide": {
-                "hideWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility))"
+                "hideWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && isEmpty(myValue)",
+                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && isEmpty(myValue)",
                   "message": "This field is required."
                 }
               ]
@@ -1802,7 +1781,7 @@
                 "workspaceName": "order-basket"
               },
               "hide": {
-                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && (!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) || (true && ((true)))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) || (pregnancyStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838' && !isEmpty(pregnancyStatus) && !isEmpty(breastfeeding) && (!(pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus) && isEmpty(transferOutFacility)) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838')) || prepMethodFem === '05188221-3e4e-43b2-b9ec-afb924d95da1') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && (((sex === 'M') && !isEmpty(prepTypeM)) || ((sex === 'F') && !isEmpty(prepTypeF)))) || ((((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && !isEmpty(PrepDrugsPlanOral)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2' && !isEmpty(PrepDrugsPlanLongM)) || ((sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2' && !isEmpty(PrepDrugsPlanLong)))))))"
+                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && (!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) || (true && ((true)))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) || (pregnancyStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838' && !isEmpty(pregnancyStatus) && !isEmpty(breastfeeding) && (!(pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838')) || prepMethodFem === '05188221-3e4e-43b2-b9ec-afb924d95da1') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && (((sex === 'M') && !isEmpty(prepTypeM)) || ((sex === 'F') && !isEmpty(prepTypeF)))) || ((((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && !isEmpty(PrepDrugsPlanOral)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2' && !isEmpty(PrepDrugsPlanLongM)) || ((sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2' && !isEmpty(PrepDrugsPlanLong)))))))"
               }
             }
           ],
@@ -1880,12 +1859,12 @@
               },
               "id": "tca",
               "hide": {
-                "hideWhenExpression": "!((!isEmpty(prepVisitType)) && !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)) && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || isEmpty(transferOutFacility)))"
+                "hideWhenExpression": "!((!isEmpty(prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)) && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || isEmpty(transferOutFacility))) && isEmpty(myValue)",
+                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)))) && isEmpty(myValue)",
                   "message": "This field is required."
                 },
                 {
@@ -1894,7 +1873,7 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)) && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || isEmpty(transferOutFacility))) && !isEmpty(myValue) && !isEmpty(encDate) && !moment(myValue).isAfter(moment(encDate), 'day')",
+                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)))) && !isEmpty(myValue) && !isEmpty(encDate) && !moment(myValue).isAfter(moment(encDate), 'day')",
                   "message": "Return to clinic date must be after the visit date."
                 }
               ]
@@ -1909,7 +1888,7 @@
                 "workspaceName": "appointments-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "!(((!isEmpty(prepVisitType)) && !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)) && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || isEmpty(transferOutFacility))) && !isEmpty(tca) && !isEmpty(encDate) && moment(tca).isAfter(moment(encDate), 'day'))"
+                "hideWhenExpression": "!(((!isEmpty(prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)))) && !isEmpty(tca) && !isEmpty(encDate) && moment(tca).isAfter(moment(encDate), 'day'))"
               }
             }
           ],

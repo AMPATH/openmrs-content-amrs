@@ -11609,6 +11609,7 @@
           "label": "Assessment Notes",
           "isExpanded": "true",
           "questions": [
+            
             {
               "label": "Primary diagnosis:",
               "required": "true",
@@ -11627,6 +11628,7 @@
                 }
               }
             },
+         
             {
               "label": "Please enter the assessment below:",
               "type": "obs",

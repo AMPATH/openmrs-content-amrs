@@ -1,0 +1,255 @@
+{
+  "name": "POC Death Reporting Form v1.0",
+  "description": "Death Reporting",
+  "version": "1.0",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "9ff78ba9-1338-446c-917a-c49368a102e8",
+  "encounter": "OPDDEATHREPORTING",
+  "pages": [
+    {
+      "label": "Visit Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        },
+        {
+          "label": "Death Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date of Death",
+              "type": "obs",
+              "id": "dateOfDeath",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a89df3d6-1350-11df-a1f1-0026b9348838"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Marital status",
+              "type": "obs",
+              "id": "maritalStatus",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a899a9f2-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8aa76b0-1350-11df-a1f1-0026b9348838",
+                    "label": "Married"
+                  },
+                  {
+                    "concept": "a899ad58-1350-11df-a1f1-0026b9348838",
+                    "label": "Divorced"
+                  },
+                  {
+                    "concept": "a899ac7c-1350-11df-a1f1-0026b9348838",
+                    "label": "Single"
+                  },
+                  {
+                    "concept": "a899ae34-1350-11df-a1f1-0026b9348838",
+                    "label": "Widowed"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Place of death",
+              "type": "obs",
+              "id": "placeOfDeath",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8afd100-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8afd042-1350-11df-a1f1-0026b9348838",
+                    "label": "Inpatient ward"
+                  },
+                  {
+                    "concept": "9f696a25-3a42-41af-bbad-e73241d7ad98",
+                    "label": "Emergency department"
+                  },
+                  {
+                    "concept": "db35d3e3-1a81-44c8-b144-53b06c059a4e",
+                    "label": "ICU/HDU"
+                  },
+                  {
+                    "concept": "89897659-b4af-413f-bc14-73fccf8aa2b0",
+                    "label": "Labour Ward"
+                  },
+                  {
+                    "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+                    "label": "Home"
+                  },
+                  {
+                    "concept": "3d6d1ee8-ea5a-4b36-9a24-b05122a0e0c6",
+                    "label": "On Arrival (DOA)"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Other (Specify)",
+              "type": "obs",
+              "id": "placeOfDeathOther",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(placeOfDeath) || placeOfDeath !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Level of education",
+              "type": "obs",
+              "id": "levelOfEducation",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89e48ae-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8afe910-1350-11df-a1f1-0026b9348838",
+                    "label": "Primary school"
+                  },
+                  {
+                    "concept": "a8afe9d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Secondary school"
+                  },
+                  {
+                    "concept": "a8afea96-1350-11df-a1f1-0026b9348838",
+                    "label": "College"
+                  },
+                  {
+                    "concept": "a89e4728-1350-11df-a1f1-0026b9348838",
+                    "label": "University"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Cause of Death",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "(a) Immediate cause, disease or condition directly leading to death",
+              "type": "obs",
+              "id": "immediateCauseOfDeath",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ff372de5-538f-4760-8eb6-4ead5d9bc732"
+              }
+            },
+            {
+              "label": "(b) Antecedent causes, morbid conditions, if any, which gave rise to immediate cause  of death (a)",
+              "type": "obs",
+              "id": "antecedentCausesOfDeath",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "54ee7553-cd18-4c89-baa2-6f4dc5475e42"
+              }
+            },
+            {
+              "label": "(c) Underlying cause of death",
+              "type": "obs",
+              "id": "underlyingCauseOfDeath",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "bc98f744-a867-423f-b31f-978ef26cbcdd"
+              }
+            },
+            {
+              "label": "Other significant conditions contributing to death but not related to (a)",
+              "type": "obs",
+              "id": "otherSignificantConditions",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ce0c53b5-f503-4038-9056-c30f802a7ecf"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Certificate",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Basis of death certification",
+              "type": "obs",
+              "id": "basisOfDeathCertification",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "8febb099-7a39-479e-8201-6dabb9f032b0",
+                "answers": [
+                  {
+                    "concept": "686eeb6b-ea4d-4758-8f3a-1dbc70696461",
+                    "label": "(a) I attended to the deceased before death"
+                  },
+                  {
+                    "concept": "226b15a0-ceb0-43f5-8132-932b869990e5",
+                    "label": "(b) I examined the body after death"
+                  },
+                  {
+                    "concept": "fa3bcb0e-d49b-43bc-be6a-e22fa09cefec",
+                    "label": "(c) I conducted a post-mortem examination of the body, and that the above information is correct to the best of my knowledge."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
