@@ -1,0 +1,138 @@
+{
+	"name": "POC OTZ Discontinuation form v1.1",
+  "description": "POC OTZ Discontinuation form.",
+  "version": "1.1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "OTZDISCONTINUATION",
+  "encounterType": "7f9341c3-f84c-4899-8b36-c079f78567ee",
+  "processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Encounter Details:",
+			"sections": [
+				{
+					"label": "Encounter Details:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Encounter Date:",
+							"type": "encounterDatetime",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encDate"
+						},
+						{
+							"label": "Encounter  Provider:",
+							"type": "encounterProvider",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encProvider"
+						},
+						{
+							"label": "Encounter Location:",
+							"type": "encounterLocation",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							},
+							"id": "encLocation"
+						}
+					]
+				},
+				{
+					"label": "Discontinue OTZ:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Reason for discontinuation:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "a89e3f94-1350-11df-a1f1-0026b9348838",
+								"conceptMappings": [
+									{
+										"type": "MCL/CIEL",
+										"value": "161555"
+									}
+								],
+								"answers": [
+									{
+										"concept": "a8a6f56c-1350-11df-a1f1-0026b9348838",
+										"label": "Lost to followup",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "5240"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "5240"
+											}
+										]
+									},
+									{
+										"concept": "a8af50f4-1350-11df-a1f1-0026b9348838",
+										"label": "Opt out of OTZ",
+										"conceptMappings": [
+											{
+												"type": "MCL/CIEL",
+												"value": "159836"
+											}
+										]
+									},
+									{
+										"concept": "a89e39f4-1350-11df-a1f1-0026b9348838",
+										"label": "Died",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1593"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "160034"
+											}
+										]
+									},
+									{
+										"concept": "a89e3ad0-1350-11df-a1f1-0026b9348838",
+										"label": "Transferred Out",
+										"conceptMappings": [
+											{
+												"type": "local",
+												"value": "1594"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "159492"
+											},
+											{
+												"type": "MCL/CIEL",
+												"value": "160036"
+											}
+										]
+									},
+									{
+										"concept": "6d795cdf-4481-4252-85ec-2175d76d230c",
+										"label": "Transition",
+										"conceptMappings": [
+											{
+												"type": "MCL/CIEL",
+												"value": "165363"
+											}
+										]
+									}
+								]
+							},
+							"id": "discoReason"
+						}
+					]
+				}
+			]
+		}
+	]
+}

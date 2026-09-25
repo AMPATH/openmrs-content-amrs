@@ -1,0 +1,466 @@
+{
+  "name": "POC Enhanced Adherence Encounter Form v1.1",
+  "description": "POC EAC Encounter Form",
+  "version": "1.1",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "2226e81f-38fc-4672-a615-1d37e1c8e637",
+  "encounter": "ENHANCEDADHERENCE",
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "EAC Sessions",
+			"sections": [
+				{
+					"label": "Session 1 (Start immediately or within 2 weeks of receiving VL results)",
+					"questions": [
+						{
+							"label": "Assess for cognitive barriers (HIV and ART knowledge/treatment literacy):",
+							"questionInfo": "What is HIV/AIDS, CD4, ARVs, VL. How ARVs work. Importance of adherence, clinic appointments and carrying all your medications. Discuss drug-drug interactions and drug food interactions that may affect action of ARVs.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('28026dea-3b8d-4d70-9d16-cf40a7f0692c')) ? undefined : HD.getObject('prevEnc').getValue('28026dea-3b8d-4d70-9d16-cf40a7f0692c')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('28026dea-3b8d-4d70-9d16-cf40a7f0692c')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "cogBar",
+							"default": "",
+							"questionOptions": {
+								"concept": "28026dea-3b8d-4d70-9d16-cf40a7f0692c",
+								"rendering": "textarea",
+								"placeholder": "What is HIV/AIDS, CD4, ARVs, VL. How ARVs work. Importance of adherence, clinic appointments and carrying all your medications. Discuss drug-drug interactions and drug food interactions that may affect action of ARVs.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Assess for behavioral barriers:",
+							"questionInfo": "Review how patients take drugs(dosage,timing). How treatment fits their daily routine. What reminder tools are in place. What to do incase of travel or visit. What to do incase of missed doses and side effects. The most difficult situations for the patient to take drugs. Check for alcohol use(CAGE/CRAFT tool)",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ed60ef1e-663e-4034-91ff-8d2e601e0fdc')) ? undefined : HD.getObject('prevEnc').getValue('ed60ef1e-663e-4034-91ff-8d2e601e0fdc')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('ed60ef1e-663e-4034-91ff-8d2e601e0fdc')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "behavBar",
+							"default": "",
+							"questionOptions": {
+								"concept": "ed60ef1e-663e-4034-91ff-8d2e601e0fdc",
+								"rendering": "textarea",
+								"placeholder": "Review how patients take drugs (dosage,timing). How treatment fits their daily routine. What reminder tools are in place. What to do incase of travel or visit. What to do incase of missed doses and side effects. The most difficult situations for the patient to take drugs. Check for alcohol use (CAGE/CRAFT tool)",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Assess for emotional barriers:",
+							"questionInfo": "Review patient's motivation: How they feel about taking drugs every day and their ambition in life. Their goal/dreams for the future and what they want to achieve in life. Do mental screening and assess for depression. Assess for stages of grief: denial, bargaining, depression and acceptance.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('276f872a-34b4-4bf0-b57c-3d912c4720a4')) ? undefined : HD.getObject('prevEnc').getValue('276f872a-34b4-4bf0-b57c-3d912c4720a4')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('276f872a-34b4-4bf0-b57c-3d912c4720a4')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "emotionBar",
+							"default": "",
+							"questionOptions": {
+								"concept": "276f872a-34b4-4bf0-b57c-3d912c4720a4",
+								"rendering": "textarea",
+								"placeholder": "Review patient's motivation: How they feel about taking drugs every day and their ambition in life. Their goal/dreams for the future and what they want to achieve in life. Do mental screening and assess for depression. Assess for stages of grief: denial, bargaining, depression and acceptance.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Assess for socio economic barriers:",
+							"questionInfo": "Elicit for and assess recent relationship status change and or whether the patient has disclosed to his/her partner's. Support from tx buddy, explore family support, profession and income generating resources. Barriers to clinic on regular basis, assess for stigma and discrimination, religious beliefs and use of herbal medication.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('5c941db9-4a23-411d-8517-f60e8b7e459d')) ? undefined : HD.getObject('prevEnc').getValue('5c941db9-4a23-411d-8517-f60e8b7e459d')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('5c941db9-4a23-411d-8517-f60e8b7e459d')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "soceconBar",
+							"default": "",
+							"questionOptions": {
+								"concept": "5c941db9-4a23-411d-8517-f60e8b7e459d",
+								"rendering": "textarea",
+								"placeholder": "Elicit for and assess recent relationship status change and or whether the patient has disclosed to his/her partner's. Support from tx buddy, explore family support, profession and income generating resources. Barriers to clinic on regular basis, assess for stigma and discrimination, religious beliefs and use of herbal medication.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Do referral and networking as guided by the session:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89c2344-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a89c2344-1350-11df-a1f1-0026b9348838')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('a89c2344-1350-11df-a1f1-0026b9348838')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "refnet",
+							"questionOptions": {
+								"concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+								"rendering": "checkbox",
+								"answers": [
+									{
+										"label": "Social work",
+										"concept": "a89e2d1a-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Nutrition",
+										"concept": "a8a8afd8-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Support group",
+										"concept": "a89e2df6-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Psychological counseling",
+										"concept": "a8a8b42e-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "Medical clinics",
+										"concept": "a89526f2-1350-11df-a1f1-0026b9348838"
+									},
+									{
+										"label": "LACE",
+										"concept": "355b199f-c9c7-4e91-831f-2be17d2c67bd"
+									},
+									{
+										"label": "Other",
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+									}
+								]
+							},
+							"validators": []
+						},
+						{
+							"label": "Develop an adherence plan:",
+							"questionInfo": "Go through each of the adherence challenges identified during the session and assist the patient to develop a plan that addresses each of the issues. Patients should come up with their own solutions so that they own them. Agree on follow up for the next sessions 2-4 weeks.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('b951337b-21c0-4b6f-81a4-24f10e9c5819')) ? undefined : HD.getObject('prevEnc').getValue('b951337b-21c0-4b6f-81a4-24f10e9c5819')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('b951337b-21c0-4b6f-81a4-24f10e9c5819')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac1adhplan",
+							"default": "",
+							"questionOptions": {
+								"concept": "b951337b-21c0-4b6f-81a4-24f10e9c5819",
+								"rendering": "textarea",
+								"placeholder": "Go through each of the adherence challenges identified during the session and assist the patient to develop a plan that addresses each of the issues. Patients should come up with their own solutions so that they own them. Agree on follow up for the next sessions 2-4 weeks.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Session one date:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('073a195d-14fd-4a67-9d1f-b4fb48e9c46a')) ? undefined : HD.getObject('prevEnc').getValue('073a195d-14fd-4a67-9d1f-b4fb48e9c46a')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('073a195d-14fd-4a67-9d1f-b4fb48e9c46a')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "sessionOneDate",
+							"default": "",
+							"questionOptions": {
+								"concept": "073a195d-14fd-4a67-9d1f-b4fb48e9c46a",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Session date should not be greater than the encounter date."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Session 2 (Shoud be done 2-4 weeks after the first session.)",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Review adherence plan:",
+							"questionInfo": "Ask the patient if he/she thinks adherence has improved in the last month. Conduct a pill count. Review the patients barriers to adherence documented during the first session and if strategies identified have been taken up, if not discuss why not.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('b6741855-f9e0-456c-ac50-e864638cccd1')) ? undefined : HD.getObject('prevEnc').getValue('b6741855-f9e0-456c-ac50-e864638cccd1')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('b6741855-f9e0-456c-ac50-e864638cccd1')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac2adhrev",
+							"default": "",
+							"questionOptions": {
+								"concept": "b6741855-f9e0-456c-ac50-e864638cccd1",
+								"rendering": "textarea",
+								"placeholder": "Ask the patient if he/she thinks adherence has improved in the last month. Conduct a pill count. Review the patients barriers to adherence documented during the first session and if strategies identified have been taken up, if not discuss why not.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Identify any new barriers:",
+							"questionInfo": "Discuss specific reasons why the patient may have missed their pills or a clinic appointment in the last counselling session and determine if it is a new issue that wasnt addressed during the first session. Discuss other issues that have come up because of implementating the adherence plan (e.g perharps the dosclosure process had unintended result)",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('e3162a57-0ad3-4d9d-9aca-dfbf74762075')) ? undefined : HD.getObject('prevEnc').getValue('e3162a57-0ad3-4d9d-9aca-dfbf74762075')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('e3162a57-0ad3-4d9d-9aca-dfbf74762075')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac2newissue",
+							"default": "",
+							"questionOptions": {
+								"concept": "e3162a57-0ad3-4d9d-9aca-dfbf74762075",
+								"rendering": "textarea",
+								"placeholder": "Discuss specific reasons why the patient may have missed their pills or a clinic appointment in the last counselling session and determine if it is a new issue that wasnt addressed during the first session. Discuss other issues that have come up because of implementating the adherence plan (e.g perharps the dosclosure process had unintended result)",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Referral and networking:",
+							"questionInfo": "Follow up on any referrals made during the previous session. Determine if the patient could benefit from a home visit.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('f0949b84-f742-4364-a5fc-ecdd9d3c0a07')) ? undefined : HD.getObject('prevEnc').getValue('f0949b84-f742-4364-a5fc-ecdd9d3c0a07')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('f0949b84-f742-4364-a5fc-ecdd9d3c0a07')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac2refnet",
+							"default": "",
+							"questionOptions": {
+								"concept": "f0949b84-f742-4364-a5fc-ecdd9d3c0a07",
+								"rendering": "textarea",
+								"placeholder": "Follow up on any referrals made during the previous session. Determine if the patient could benefit from a home visit.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Develop an adherence plan:",
+							"questionInfo": "Go through each of the adherence challenges identified during the session and assist the patient to modify their original adherence plan to address each of the issues. It is important to let the patient come up with the solutions so that they own them. ",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('984b1200-c5ec-41f9-8e76-1d894312eb41')) ? undefined : HD.getObject('prevEnc').getValue('984b1200-c5ec-41f9-8e76-1d894312eb41')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('984b1200-c5ec-41f9-8e76-1d894312eb41')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac2adhplan",
+							"default": "",
+							"questionOptions": {
+								"concept": "984b1200-c5ec-41f9-8e76-1d894312eb41",
+								"rendering": "textarea",
+								"placeholder": "Go through each of the adherence challenges identified during the session and assist the patient to modify their original adherence plan to address each of the issues. It is important to let the patient come up with the solutions so that they own them. ",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Session two date:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('3d3e8faa-6bb3-43b4-959b-9765a40732f6')) ? undefined : HD.getObject('prevEnc').getValue('3d3e8faa-6bb3-43b4-959b-9765a40732f6')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('3d3e8faa-6bb3-43b4-959b-9765a40732f6')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "sessionTwoDate",
+							"default": "",
+							"questionOptions": {
+								"concept": "3d3e8faa-6bb3-43b4-959b-9765a40732f6",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Session date should not be greater than the encounter date."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Session 3 (Should be done 2-4 weeks after the second session)",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Review adherence plan:",
+							"questionInfo": "Ask the patient if he/she thinks adherence has improved in the last month. Conduct a pill count. Review the patient's barriers to adherence documented during the first session and if strategies identified have been taken up. If not, discuss why not.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a486c342-fa15-4965-bbad-ff5c312deeae')) ? undefined : HD.getObject('prevEnc').getValue('a486c342-fa15-4965-bbad-ff5c312deeae')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('a486c342-fa15-4965-bbad-ff5c312deeae')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac3adhrev",
+							"default": "",
+							"questionOptions": {
+								"concept": "a486c342-fa15-4965-bbad-ff5c312deeae",
+								"rendering": "textarea",
+								"placeholder": "Ask the patient if he/she thinks adherence has improved in the last month. Conduct a pill count. Review the patient's barriers to adherence documented during the first session and if strategies identified have been taken up. If not, discuss why not. ",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Identify new barries:",
+							"questionInfo": "Discuss specific reasons why the patient may have missed their pills or a clinic appointments in the last counselling session and determine if it is new issue that was not addressed during the first session. Discuss other issues that have come up.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('2ea6f19b-ba12-4d98-8b96-0b3977093899')) ? undefined : HD.getObject('prevEnc').getValue('2ea6f19b-ba12-4d98-8b96-0b3977093899')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('2ea6f19b-ba12-4d98-8b96-0b3977093899')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac3newissue",
+							"default": "",
+							"questionOptions": {
+								"concept": "2ea6f19b-ba12-4d98-8b96-0b3977093899",
+								"rendering": "textarea",
+								"placeholder": "Discuss specific reasons why the patient may have missed their pills or a clinic appointments in the last counselling session and determine if it is new issue that was not addressed during the first session. Discuss other issues that have come up.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Referrals and networking:",
+							"questionInfo": "Follow up on any referrals made during the previous session. Determine if the patient could benefit from a home visit.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('e7517430-55a4-4673-9d17-736fc1445aaa')) ? undefined : HD.getObject('prevEnc').getValue('e7517430-55a4-4673-9d17-736fc1445aaa')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('e7517430-55a4-4673-9d17-736fc1445aaa')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac3refnet",
+							"default": "",
+							"questionOptions": {
+								"concept": "e7517430-55a4-4673-9d17-736fc1445aaa",
+								"rendering": "textarea",
+								"placeholder": "Follow up on any referrals made during the previous session. Determine if the patient could benefit from a home visit.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Develop an adherence plan:",
+							"questionInfo": "Go through each of the adherence challenges identified during the session and asist the patient to modify their original adherence plan to address each of the issues. Agree on follow up date for the next session 3-4 weeks.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('cb7eaa9d-a3b1-4f68-8d29-fd2be936be33')) ? undefined : HD.getObject('prevEnc').getValue('cb7eaa9d-a3b1-4f68-8d29-fd2be936be33')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('cb7eaa9d-a3b1-4f68-8d29-fd2be936be33')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac3adhplan",
+							"default": "",
+							"questionOptions": {
+								"concept": "cb7eaa9d-a3b1-4f68-8d29-fd2be936be33",
+								"rendering": "textarea",
+								"placeholder": "Go through each of the adherence challenges identified during the session and asist the patient to modify their original adherence plan to address each of the issues. Agree on follow up date for the next session 3-4 weeks.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Repeat viral load?",
+							"questionInfo": "If the adherence is excellent: plan for the next VL testing after 3 months and explain possible ways forward emphasizing the role of the patient, the support system and the health facility.Explain to the client the expected outcome of the repeat VL. If the client is not ready depending on the counselors assessment or if adherence is not adequate, plan for one more EAC session before repeating VL.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('08d99781-41c2-42a1-b8bc-d50b3c84e5d5')) ? undefined : HD.getObject('prevEnc').getValue('08d99781-41c2-42a1-b8bc-d50b3c84e5d5')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('08d99781-41c2-42a1-b8bc-d50b3c84e5d5')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "eac3viralload",
+							"default": "",
+							"questionOptions": {
+								"concept": "08d99781-41c2-42a1-b8bc-d50b3c84e5d5",
+								"rendering": "textarea",
+								"placeholder": "If the adherence is excellent: plan for the next VL testing after 3 months and explain possible ways forward emphasizing the role of the patient, the support system and the health facility.Explain to the client the expected outcome of the repeat VL. If the client is not ready depending on the counselors assessment, plan for one more EAC session before repeating VL.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Session three date:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('bfbe9e12-8a44-4b30-9029-d3d1104e013a')) ? undefined : HD.getObject('prevEnc').getValue('bfbe9e12-8a44-4b30-9029-d3d1104e013a')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('bfbe9e12-8a44-4b30-9029-d3d1104e013a')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "sessionThreeDate",
+							"default": "",
+							"questionOptions": {
+								"concept": "bfbe9e12-8a44-4b30-9029-d3d1104e013a",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Session date should not be greater than the encounter date."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Session 4",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Discuss viral load results:",
+							"questionInfo": "If suppressed <1000, congratulate the client. Explain way forward, will continue the same ART regimen and repeat the VL again in 12 months. If not suppressed >1000: Explain the way forward: will probably need to switch to 2nd line ART as per the clinicians decision and case manager to present the case to the MDT or consult the Regional or National TWG.",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) ? undefined : HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')",
+							"id": "eac3viralloadres",
+							"default": "",
+							"questionOptions": {
+								"concept": "abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2",
+								"rendering": "textarea",
+								"placeholder": "If suppressed <1000, congratulate the client. Explain way forward, will continue the same ART regimen and repeat the VL again in 12 months. If not suppressed >1000: Explain the way forward: will probably need to switch to 2nd line ART as per the clinicians decision and case manager to present the case to the MDT or consult the Regional or National TWG.",
+								"rows": 10
+							},
+							"validators": []
+						},
+						{
+							"label": "Session four date:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('b3eb34ab-2b67-4a2d-969a-ec8696180b54')) ? undefined : HD.getObject('prevEnc').getValue('b3eb34ab-2b67-4a2d-969a-ec8696180b54')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('b3eb34ab-2b67-4a2d-969a-ec8696180b54')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "sessionFourDate",
+							"default": "",
+							"questionOptions": {
+								"concept": "b3eb34ab-2b67-4a2d-969a-ec8696180b54",
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+									"message": "Session date should not be greater than the encounter date."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		
+		{
+			"label": "Assessment",
+			"sections": [
+				{
+					"label": "Assessment Notes",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Please enter the assessment below:",
+							"type": "obs",
+							"id": "assNote",
+							"default": "",
+							"questionOptions": {
+								"concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+								"rendering": "textarea",
+								"rows": 10
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

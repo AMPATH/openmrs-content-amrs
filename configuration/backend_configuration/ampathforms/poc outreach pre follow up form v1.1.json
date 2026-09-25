@@ -1,0 +1,648 @@
+{
+    "name": "POC outreach pre follow up form v1.1",
+  "description": "POC outreach pre follow up form",
+  "version": "1.1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "OUTREACHPREFOLLOWUP",
+  "encounterType": "d5e2d3b3-2061-4721-86f1-5852cde6475a",
+  "processor": "EncounterFormProcessor",
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				},
+				{
+					"label": "Follow Up",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "obs",
+							"label": "Appointment date:",
+							"id": "dateAppointment",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "144a9449-e947-4d53-9c04-9e11d1e2a120"
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+									"message": "Appointment date should be greater than the encounter date."
+								}
+							]
+						},
+						{
+							"type": "obsGroup",
+							"label": "Reason for follow up",
+							"questionOptions": {
+								"concept": "a8af629c-1350-11df-a1f1-0026b9348838",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "Reason for follow up:",
+									"required": "true",
+									"id": "reasonFollowUp",
+									"questionOptions": {
+										"answers": [
+											{
+												"concept": "58321451-0ab1-4f29-a830-df59f8c27397",
+												"label": "At risk for missed appointment"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"concept": "a89e3788-1350-11df-a1f1-0026b9348838",
+										"rendering": "select"
+									},
+									"type": "obs"
+								},
+								{
+									"label": "Other specify, freetext:",
+									"id": "cliniText",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "reasonFollowUp !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "detailedReason"
+						},
+						{
+							"label": "Type of follow up:",
+							"required": "true",
+							"id": "followUp",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a89de832-1350-11df-a1f1-0026b9348838",
+										"label": "Phone follow up"
+									},
+									{
+										"concept": "554f2668-f64e-4497-abff-af6079089a80",
+										"label": "Home visit"
+									}
+								],
+								"concept": "a89dea80-1350-11df-a1f1-0026b9348838",
+								"rendering": "select"
+							},
+							"type": "obs"
+						},
+						{
+							"label": "Was the phone attempt successful?",
+							"required": "true",
+							"id": "phoneAttempts",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "f95ddcd7-d4c5-4396-b341-82239185acc4",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "followUp!== 'a89de832-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obsGroup",
+							"label": "Reason phone attempt not successful",
+							"questionOptions": {
+								"concept": "4ddca92e-1524-4f33-b8d5-d53adbf424f3",
+								"id": "reasonPhoneDet",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "If no, what were the reasons?",
+									"id": "noAttemptReason",
+									"type": "obs",
+									"questionOptions": {
+										"answers": [
+											{
+												"concept": "1965eb6f-fc86-4f44-b3b8-59772b1daa20",
+												"label": "Wrong phone number"
+											},
+											{
+												"concept": "fdd18cec-11ba-4512-ab3c-b66066847f58",
+												"label": "No one answers"
+											},
+											{
+												"concept": "a89dec06-1350-11df-a1f1-0026b9348838",
+												"label": "Phone inactive"
+											},
+											{
+												"concept": "a69cdbf7-edf0-4e4d-a4dc-1ff3bc771d5c",
+												"label": "No phone number"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "select",
+										"concept": "aa4fe031-9528-42d2-a716-4207094d4a17"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "phoneAttempts!== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Other specify, freetext:",
+									"id": "phoneText",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "noAttemptReason !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "__3v7toCopK"
+						},
+						{
+							"label": "If yes, who was reached",
+							"required": "true",
+							"id": "whoReached",
+							"type": "obs",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a8a089fc-1350-11df-a1f1-0026b9348838",
+										"label": "Client"
+									},
+									{
+										"concept": "01b957da-23bb-4862-819d-036364fe3faf",
+										"label": "Treatment supporter"
+									},
+									{
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+										"label": "Caregiver"
+									}
+								],
+								"rendering": "select",
+								"concept": "38794cd0-2514-454b-9b7e-8c43eb0909c3"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "phoneAttempts!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obs",
+							"label": "Was home visit attempt made?",
+							"id": "homeVisitAttempt",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select",
+								"concept": "fe6800a2-76f1-42a4-a1c8-553e1fec18e9"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "followUp!== '554f2668-f64e-4497-abff-af6079089a80'"
+							}
+						},
+						{
+							"type": "obsGroup",
+							"label": "Reason field follow-up was not attempted,detailed",
+							"questionOptions": {
+								"concept": "6530861a-c32b-4a82-a730-3d740b09a33d",
+								"id": "reasonHomeDet",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"type": "obs",
+									"label": "Reason field follow-up was not attempted:",
+									"id": "notAttempt",
+									"questionOptions": {
+										"answers": [
+											{
+												"label": "Road impassable",
+												"concept": "a89ef826-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Out of catchment",
+												"concept": "83df5f26-f97a-4cda-9c05-d0bdc6e4ebee"
+											},
+											{
+												"label": "Locator information inadequate",
+												"concept": "a89decc4-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Insecurity",
+												"concept": "a8a08cfe-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Wrong address",
+												"concept": "1b8a986a-858e-4258-9b77-2e42e9e4d0f7"
+											},
+											{
+												"label": "Declined to give direction",
+												"concept": "fcf840f3-5e78-4afd-89a9-e20645aa06ba"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "select",
+										"concept": "4377ab37-f513-4426-af67-07016d1a64ef"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "homeVisitAttempt !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Other specify, freetext:",
+									"id": "fieldText",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "notAttempt !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "__6GCGspsLG"
+						},
+						{
+							"type": "obs",
+							"label": "If yes, was the client found?",
+							"id": "clientFound",
+							"questionOptions": {
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								],
+								"rendering": "select",
+								"concept": "a89deb3e-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "homeVisitAttempt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obsGroup",
+							"label": "Reason not found at home",
+							"questionOptions": {
+								"concept": "a8af541e-1350-11df-a1f1-0026b9348838",
+								"id": "reasonHomeDet",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"type": "obs",
+									"label": "If no, what are the reasons?",
+									"id": "reasonNotFound",
+									"questionOptions": {
+										"answers": [
+											{
+												"concept": "a89decc4-1350-11df-a1f1-0026b9348838",
+												"label": "Locator information inadequate"
+											},
+											{
+												"concept": "a89ded8c-1350-11df-a1f1-0026b9348838",
+												"label": "Patient relocated"
+											},
+											{
+												"concept": "ec9227a3-d078-4ed0-bdc3-e8328a9e549e",
+												"label": "Family conflicts"
+											},
+											{
+												"concept": "a89dee54-1350-11df-a1f1-0026b9348838",
+												"label": "Patient not at home"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "select",
+										"concept": "a89de5e4-1350-11df-a1f1-0026b9348838"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "clientFound !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Other specify, freetext:",
+									"id": "homenotText",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "reasonNotFound !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "__EHo0uE4nH"
+						},
+						{
+							"type": "obsGroup",
+							"label": "Who made the home visit, detailed",
+							"questionOptions": {
+								"concept": "b15ca2f7-3cda-4070-a2e5-32c5d8d246fe",
+								"id": "homevisitDet",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"type": "obs",
+									"label": "Who made the home visit?",
+									"id": "homeVisit",
+									"questionOptions": {
+										"answers": [
+											{
+												"label": "Retention worker",
+												"concept": "a8afd286-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Social worker",
+												"concept": "a89e2d1a-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Community health worker",
+												"concept": "a8a00b4e-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Peer group",
+												"concept": "d1eb251b-3c97-4406-b292-2c6e7a7ff968"
+											},
+											{
+												"label": "Mentor mother",
+												"concept": "9d9e5335-38d2-4f61-ba9b-a67edd97f52e"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										],
+										"rendering": "select",
+										"concept": "a8afd40c-1350-11df-a1f1-0026b9348838"
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "homeVisitAttempt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Other specify, freetext:",
+									"id": "homevisitText",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "homeVisit !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "__KDrLrEnKI"
+						},
+						{
+							"label": "Does the client have difficulty in keeping the scheduled appointment?",
+							"id": "scheduledAppt",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "013f76f2-31b1-4a12-9978-54cafc1c3dc5",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "phoneAttempts!== 'a899b35c-1350-11df-a1f1-0026b9348838' && homeVisitAttempt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "If yes, is there need to reschedule?",
+							"id": "rescheduledAppt",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "5a56e83c-b640-4254-bc27-b35de2961a76",
+								"answers": [
+									{
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+										"label": "Yes"
+									},
+									{
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+										"label": "No"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "scheduledAppt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"type": "obsGroup",
+							"label": "Reasons for rescheduling appointment, detailed",
+							"questionOptions": {
+								"concept": "2dfc9fe0-e4c3-4289-bc71-3bc164ed6a9b",
+								"id": "rescheduleDet",
+								"rendering": "group"
+							},
+							"questions": [
+								{
+									"label": "If yes, reasons for rescheduling appointment",
+									"id": "rescheduledReason",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "661cc495-626a-4aaf-ba62-a757e9667d87",
+										"answers": [
+											{
+												"concept": "a89de2d8-1350-11df-a1f1-0026b9348838",
+												"label": "Sick"
+											},
+											{
+												"concept": "a89de152-1350-11df-a1f1-0026b9348838",
+												"label": "Travelled"
+											},
+											{
+												"concept": "a8a08e7a-1350-11df-a1f1-0026b9348838",
+												"label": "School commitment"
+											},
+											{
+												"concept": "cb85dc6f-86ff-4668-87ea-a1980f91f8cf",
+												"label": "Has enough drugs"
+											},
+											{
+												"concept": "a89e2b30-1350-11df-a1f1-0026b9348838",
+												"label": "Lack of fare"
+											},
+											{
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+												"label": "Other"
+											}
+										]
+									},
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "rescheduledAppt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+									}
+								},
+								{
+									"label": "Other specify, freetext:",
+									"id": "rescheduleText",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "rescheduledReason !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+									}
+								}
+							],
+							"id": "__o0MpEuDto"
+						},
+						{
+							"type": "obs",
+							"label": "Rescheduled date:",
+							"id": "dateResheduled",
+							"questionOptions": {
+								"rendering": "date",
+								"concept": "9f3a9586-62db-4780-a3ed-6ca636a0b674"
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+									"message": "Date should be greater than the encounter date."
+								}
+							],
+							"hide": {
+								"hideWhenExpression": "rescheduledAppt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							}
+						}
+					]
+				},
+				{
+					"label": "Comments",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Comments (please add any info about the patient encounter here):",
+							"type": "obs",
+							"id": "comments",
+							"questionOptions": {
+								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

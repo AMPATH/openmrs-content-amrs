@@ -1,0 +1,251 @@
+{
+ "name": "POC Home Visit Form v1.2",
+  "description": "POC home visit form",
+  "version": "1.2",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "cb5c0abd-0817-40e3-9413-8669561fadb9",
+  "encounter": "HIVHOMEVISIT",
+	"pages": [
+		{
+			"label": "Home Visit",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"label": "Physical landmark:",
+							"type": "obs",
+							"id": "landmark",
+							"questionOptions": {
+								"concept": "4be4f349-1361-4bc9-80f3-e4558beee124",
+								"rendering": "textarea",
+								"rows": "3"
+							}
+						},
+						{
+							"label": "Person found at home?",
+							"type": "obs",
+							"id": "findHome",
+							"questionOptions": {
+								"concept": "aa70ace6-8386-4bd0-a137-3e36b7db62a3",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
+										"label": "Self"
+									},
+									{
+										"concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+										"label": "Caretaker"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							}
+						},
+						{
+							"label": "Purpose of the visit:",
+							"type": "obs",
+							"id": "visitReason",
+							"questionOptions": {
+								"concept": "9e903280-385f-473d-9dfb-01bdb6b661a5",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "General home assessment (e.g Assess hygiene, occupation of the client,house ventilation, client/caregiver education level,client independent in daily activities eg feeding, grooming, toileting):",
+							"type": "obs",
+							"id": "independent",
+							"questionOptions": {
+								"concept": "f7126a14-b8d2-4030-8a75-e4a6c3f31732",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Are the patient's basic needs being met (e.g. clothing, shelter, food security/nutrition, school):",
+							"type": "obs",
+							"id": "basicNeeds",
+							"questionOptions": {
+								"concept": "0cc4cdf0-caf5-47b3-a1ca-32ac65759884",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Does the patient/caregiver have psychosocial issues (For adolescent explore about education, social support and interaction):",
+							"type": "obs",
+							"id": "supportHousehold",
+							"questionOptions": {
+								"concept": "e194e1cc-3975-4bb2-85e1-c71597ebcd64",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Is the patient/caregiver suffering from a stressful situation or significant loss/grief (psychological assessment):",
+							"type": "obs",
+							"id": "stress",
+							"questionOptions": {
+								"concept": "5cae5400-dbea-4de8-ac74-83076ee405b5",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Does the patient have any experience of gender based violence or IPV?",
+							"type": "obs",
+							"id": "gbv",
+							"questionOptions": {
+								"concept": "2aa6a758-f9c1-4823-9314-02e7f552869d",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Does the patient/caregiver use alcohol and drugs?",
+							"type": "obs",
+							"id": "drugAbuse",
+							"questionOptions": {
+								"concept": "93066de5-ec70-4bdb-932c-ef55e8137152",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Has the patient disclosed their HIV status to other household members:",
+							"type": "obs",
+							"id": "disclosure",
+							"questionOptions": {
+								"concept": "7e6be6a3-d7eb-4347-9f3d-620b8126ad31",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "How are the patient's ARVs stored:",
+							"type": "obs",
+							"id": "storage",
+							"questionOptions": {
+								"concept": "f67beccd-de56-4a52-be43-1a9bdf4fe09a",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "What is the pill count:",
+							"type": "obs",
+							"id": "pillcount",
+							"questionOptions": {
+								"concept": "6e71ce5a-0108-4fd2-8826-14abc012700a",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "How are the patient's ARV taken (time, frequency, DOT):",
+							"type": "obs",
+							"id": "arvTaken",
+							"questionOptions": {
+								"concept": "f9a3b1c2-dd2c-41d6-85cd-16f8d52b35ea",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Is the patient having any side effects from the medications given?",
+							"type": "obs",
+							"id": "sideeffects",
+							"questionOptions": {
+								"concept": "99f2ff24-10fa-4a01-bb0f-28987a5a6049",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Does the patient have drug/drug interaction (Assess for any other drugs the client is using other than the prescribed medications including herbal concoctions)",
+							"type": "obs",
+							"id": "drugInteraction",
+							"questionOptions": {
+								"concept": "35e6d12b-8653-43d8-ab04-4e64a01d9b18",
+								"rendering": "textarea",
+								"rows": "5"
+							}
+						},
+						{
+							"label": "Previous interventions recieved:",
+							"type": "obs",
+							"id": "previousInter",
+							"questionOptions": {
+								"concept": "b8faad87-bfa9-40e5-b842-3411acb5e5c4",
+								"rendering": "textarea",
+								"rows": "10"
+							}
+						},
+						{
+							"label": "Summary of the findings:",
+							"type": "obs",
+							"id": "summary",
+							"questionOptions": {
+								"concept": "743bee17-bb4d-4bf5-bbfe-a58a7cca5a3f",
+								"rendering": "textarea",
+								"rows": "10"
+							}
+						},
+						{
+							"label": "Intervention plan:",
+							"type": "obs",
+							"id": "interventionPlan",
+							"questionOptions": {
+								"concept": "e194e1cc-3975-4bb2-85e1-c71597ebcd64",
+								"rendering": "textarea",
+								"rows": "10"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

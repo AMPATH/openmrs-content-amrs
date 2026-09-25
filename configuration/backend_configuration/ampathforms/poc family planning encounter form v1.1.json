@@ -181,7 +181,27 @@
           "label": "Family Planning",
           "isExpanded": "true",
           "questions": [
-             
+             {
+              "label": "Primary diagnosis:",
+              "required": "true",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
             {
               "label": "First ever user of contraceptive:",
               "type": "obs",

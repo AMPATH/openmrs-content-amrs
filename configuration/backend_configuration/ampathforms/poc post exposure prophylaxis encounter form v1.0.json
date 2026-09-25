@@ -52,6 +52,26 @@
               }
             },
             {
+              "id": "pepVisitType",
+              "label": "Visit type:",
+              "type": "obs",
+              "required": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                    "label": "Initial"
+                  },
+                  {
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+                    "label": "Follow up"
+                  }
+                ]
+              }
+            },
+            {
               "label": "Occupation:",
               "id": "occupation",
               "questionOptions": {
@@ -153,7 +173,16 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && methodExposure === '803b8da3-b200-4a6c-a682-979fd6478611' && !isEmpty(typePercutaneous) && isEmpty(myValue)",
+                  "message": "Record the occupation for an occupational percutaneous exposure."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
             }
           ]
         },
@@ -167,13 +196,16 @@
               "id": "expoDate",
               "questionOptions": {
                 "concept": "9e46df49-d4b1-4a61-9fd8-36385175705c",
-                "rendering": "datetime"
+                "rendering": "date"
               },
               "validators": [
                 {
                   "type": "date"
                 }
-              ]
+              ],
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
             },
             {
               "label": "Date and time of reporting:",
@@ -187,7 +219,10 @@
                 {
                   "type": "date"
                 }
-              ]
+              ],
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
             },
             {
               "label": "Time since exposure:",
@@ -197,9 +232,15 @@
                 "concept": "c3d77cf4-0c41-42e5-8a85-0ac5f313f43e",
                 "rendering": "number"
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
             }
-          ]
+          ],
+          "hide": {
+            "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+          }
         }
       ]
     },
@@ -240,7 +281,10 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
             },
             {
               "label": "Sexual exposure:",
@@ -262,7 +306,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "!arrayContains(['a8933af4-1350-11df-a1f1-0026b9348838', 'a8aa96b8-1350-11df-a1f1-0026b9348838'], methodExposure)"
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (!arrayContains(['a8933af4-1350-11df-a1f1-0026b9348838', 'a8aa96b8-1350-11df-a1f1-0026b9348838'], methodExposure))"
               }
             },
             {
@@ -303,7 +347,10 @@
                     ]
                   },
                   "type": "obs",
-                  "validators": []
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+                  }
                 },
                 {
                   "label": "Other(specify):",
@@ -314,21 +361,30 @@
                   },
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "typePercutaneous !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                    "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (typePercutaneous !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
                   },
                   "id": "__FIrn5yEHx"
                 }
               ],
-              "id": "__ozrE7LyHv"
+              "id": "__ozrE7LyHv",
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
             }
           ],
           "type": "obsGroup",
           "questionOptions": {
             "concept": "a8a1808c-1350-11df-a1f1-0026b9348838",
             "rendering": "group"
+          },
+          "hide": {
+            "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
           }
         }
-      ]
+      ],
+      "hide": {
+        "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+      }
     },
     {
       "label": "HIV Status",
@@ -359,9 +415,15 @@
                 ]
               },
               "type": "obs",
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
             }
-          ]
+          ],
+          "hide": {
+            "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+          }
         },
         {
           "label": "Lab results",
@@ -408,18 +470,24 @@
                     },
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(hivRapid) && isEmpty(myValue)",
+                      "failsWhenExpression": "(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && !isEmpty(hivRapid) && isEmpty(myValue)",
                       "message": "Date result is required."
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "isEmpty(hivRapid)"
+                    "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (isEmpty(hivRapid))"
                   }
                 }
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+              }
             }
-          ]
+          ],
+          "hide": {
+            "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+          }
         }
       ]
     },
@@ -452,7 +520,10 @@
               },
               "type": "obs",
               "validators": [],
-              "id": "__xqHJztDII"
+              "id": "__xqHJztDII",
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
             },
             {
               "id": "pepPrescription",
@@ -462,9 +533,15 @@
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Prescribe drugs",
                 "workspaceName": "order-basket"
+              },
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
               }
             }
-          ]
+          ],
+          "hide": {
+            "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+          }
         },
         {
           "label": "Referrals",
@@ -512,7 +589,10 @@
                     "rendering": "multiCheckbox"
                   },
                   "type": "obs",
-                  "validators": []
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                  }
                 },
                 {
                   "label": "Patient referred to other, (specify):",
@@ -523,14 +603,20 @@
                   "type": "obs",
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "!arrayContains(patientReferrals, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+                    "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!arrayContains(patientReferrals, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))"
                   },
                   "id": "referOther"
                 }
               ],
-              "id": "__rJnJGnGJE"
+              "id": "__rJnJGnGJE",
+              "hide": {
+                "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+              }
             }
-          ]
+          ],
+          "hide": {
+            "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+          }
         },
         {
           "label": "Next appointment",
@@ -557,8 +643,13 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+                  "failsWhenExpression": "!isEmpty(encDate) && !isEmpty(myValue) && ((new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day'))",
                   "message": "Return to clinic date should be greater than the encounter date."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
+                  "message": "Return to clinic date is required for an initial visit."
                 }
               ],
               "id": "returnClinic"

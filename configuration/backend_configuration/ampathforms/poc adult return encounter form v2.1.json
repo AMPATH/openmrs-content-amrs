@@ -3057,7 +3057,9 @@
                   "type": "obs",
                   "hide": {
                     "field": "tb_current",
-                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                    "value": [
+                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
+                    ]
                   },
                   "id": "__xxr3vpnnK"
                 }
@@ -4686,7 +4688,6 @@
               "questionOptions": {
                 "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
                 "rendering": "decimal",
-
                 "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
@@ -4777,7 +4778,6 @@
                 }
               ]
             },
-
             {
               "label": "RBS mmol/L:",
               "id": "rbs_test",
@@ -5261,7 +5261,6 @@
               "id": "apri_score",
               "questionOptions": {
                 "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
-
                 "min": "0.00",
                 "showDate": "true",
                 "rendering": "decimal",
@@ -5414,7 +5413,6 @@
             }
           ]
         },
-
         {
           "label": "Urinalysis",
           "questions": [
@@ -6045,6 +6043,10 @@
       "label": "Assessment",
       "sections": [
         {
+          "label": "Diagnosis",
+          "isExpanded": "true",
+          "questions": [
+            {
               "label": "Primary diagnosis:",
               "required": "true",
               "id": "finalDiagnosisId",
@@ -6061,7 +6063,9 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
         {
           "label": "Clinical Notes",
           "isExpanded": "true",
@@ -6244,10 +6248,7 @@
                         "concept": "c6537e06-9fc2-47da-b679-e2a32824407f",
                         "label": "Immunologic failure"
                       },
-                      {
-                        "concept": "a8a6f56c-1350-11df-a1f1-0026b9348838",
-                        "label": "Lost to follow-up"
-                      },
+                      
                       {
                         "concept": "a8a07b10-1350-11df-a1f1-0026b9348838",
                         "label": "New drug available"
@@ -7601,7 +7602,9 @@
                   "type": "obs",
                   "hide": {
                     "field": "q26f",
-                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                    "value": [
+                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
+                    ]
                   },
                   "id": "__yqHnx8oJx"
                 }
@@ -7988,7 +7991,6 @@
               ],
               "id": "__qxL9JJy92"
             },
-
             {
               "type": "obsGroup",
               "label": "Mental health drugs started, detailed",
@@ -8271,7 +8273,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-
             {
               "label": "Type of diabetes:",
               "type": "obs",
@@ -8302,7 +8303,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-
             {
               "label": "Date of diagnosis:",
               "type": "obs",
@@ -8447,7 +8447,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-
             {
               "label": "Physical activity (At least 30 minutes 5 days a week):",
               "type": "obs",
@@ -8538,7 +8537,6 @@
                     "label": "Erectile dysfunction",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838",
                     "label": "Stroke",
@@ -8549,7 +8547,6 @@
                     "label": "Peripheral vascular disease",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other",
@@ -8585,25 +8582,21 @@
                     "label": "Cyanosis",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a89366a0-1350-11df-a1f1-0026b9348838",
                     "label": "Jaundice",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a89540f6-1350-11df-a1f1-0026b9348838",
                     "label": "Oedema",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8a6f9a4-1350-11df-a1f1-0026b9348838",
                     "label": "Pallor",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other",
@@ -8611,7 +8604,6 @@
                   }
                 ]
               },
-
               "validators": [],
               "hide": {
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
@@ -8629,7 +8621,6 @@
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
                     "label": "Normal"
                   },
-
                   {
                     "concept": "1dbb0b77-81e9-4c56-bdf5-c597222dac84",
                     "label": "Gum disease",
@@ -8686,7 +8677,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-
             {
               "label": "Respiratory:",
               "type": "obs",
@@ -8721,7 +8711,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-
             {
               "label": "Abdominal exam:",
               "type": "obs",
@@ -8751,7 +8740,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-
             {
               "label": "Neurological examination:",
               "type": "obs",
@@ -8786,7 +8774,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-
             {
               "label": "Foot risk assessment:",
               "required": "true",
@@ -8930,7 +8917,6 @@
                 "hideWhenExpression": "isEmpty(comorbidIllness) || !arrayContainsAny (['a8986880-1350-11df-a1f1-0026b9348838','a893436e-1350-11df-a1f1-0026b9348838'],comorbidIllness)"
               }
             },
-
             {
               "label": "Lifestyle advice:",
               "required": "true",
@@ -9308,7 +9294,6 @@
         }
       ]
     },
-
     {
       "label": "Plan",
       "sections": [
@@ -10779,7 +10764,16 @@
               "questionOptions": {
                 "concept": "318a5e8b-218c-4f66-9106-cd581dec1f95",
                 "rendering": "date",
-                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
+                "weeksList": [
+                  15,
+                  30,
+                  45,
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
+                ]
               },
               "validators": [
                 {
@@ -10818,7 +10812,16 @@
               "questionOptions": {
                 "concept": "318a5e8b-218c-4f66-9106-cd581dec1f95",
                 "rendering": "date",
-                "weeksList": [15, 30, 45, 60, 90, 120, 150, 180]
+                "weeksList": [
+                  15,
+                  30,
+                  45,
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
+                ]
               },
               "validators": [
                 {
@@ -10854,7 +10857,19 @@
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
                 "rendering": "date",
                 "weeksList": [
-                  15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330,
+                  15,
+                  30,
+                  45,
+                  60,
+                  90,
+                  120,
+                  150,
+                  180,
+                  210,
+                  240,
+                  270,
+                  300,
+                  330,
                   360
                 ]
               },

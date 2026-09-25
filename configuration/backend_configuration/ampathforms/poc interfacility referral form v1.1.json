@@ -1,0 +1,274 @@
+{
+    "name": "POC Clinical Interfacility Referral Form v1.1",
+  "description": "POC Clinical Interfacility Referral Form",
+  "version": "1.1",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "5b1ef308-ed8f-4a86-88a0-c29a30246740",
+  "encounter": "HIVCLINICALREFERRAL",
+	"pages": [
+		{
+			"label": "Clinical Referral Form",
+			"sections": [
+				{
+					"label": "Clinical Referral Form",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				},
+				{
+					"label": "Client Personal Identification:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Nationality:",
+							"type": "obs",
+							"id": "nationality",
+							"questionOptions": {
+								"concept": "eeaea1a6-d5f8-4881-b088-cdd71bbe49b0",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "5458962a-e93e-4c93-b452-06b33a6e3a5f",
+										"label": "Kenyan"
+									},
+									{
+										"concept": "f019da20-d1ca-48f7-8813-a3e16b410fe2",
+										"label": "Ugandan"
+									},
+									{
+										"concept": "8b1f5872-72d6-40af-a99a-c8b38920b98d",
+										"label": "Tanzanian"
+									},
+									{
+										"concept": "731208c9-7d96-43a4-9246-47630fb54a7b",
+										"label": "Rwandese"
+									},
+									{
+										"concept": "03489b54-458d-46ed-b8b9-af05c0bfe249",
+										"label": "South sudanese"
+									},
+									{
+										"concept": "2bc2941b-d51a-4351-8395-302bd75293e1",
+										"label": "Burundian"
+									}
+								]
+							}
+						},
+						{
+							"label": "Referred facility name:",
+							"type": "obs",
+							"id": "referedFacility",
+							"questionOptions": {
+								"concept": "6574e401-3b04-498f-828b-9fd9aaebf12b",
+								"rendering": "text"
+							}
+						},
+						{
+							"label": "Type of care:",
+							"type": "obs",
+							"id": "careType",
+							"questionOptions": {
+								"concept": "45389fad-ecb2-4346-aaad-053215081f5e",
+								"rendering": "multiCheckbox",
+								"answers": [
+									{
+										"concept": "b412ae76-4ab4-4d00-800e-bd8d167769e1",
+										"label": "HIV"
+									},
+									{
+										"concept": "6b15e4fa-6897-4d69-adcf-5908abade719",
+										"label": "TB"
+									},
+									{
+										"concept": "a8a8aefc-1350-11df-a1f1-0026b9348838",
+										"label": "FP/RH"
+									},
+									{
+										"concept": "a8a17d80-1350-11df-a1f1-0026b9348838",
+										"label": "MNCH/ANC"
+									},
+									{
+										"concept": "cf19a3ea-33ec-41a3-8151-bdbc66c3d80b",
+										"label": "GBV"
+									},
+									{
+										"concept": "a8a09a0a-1350-11df-a1f1-0026b9348838",
+										"label": "STI"
+									},
+									{
+										"concept": "12550258-d797-43d9-a282-e35908c33fe4",
+										"label": "ART"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							}
+						},
+						{
+							"label": "Date of referral:",
+							"type": "obs",
+							"id": "referralDate",
+							"questionOptions": {
+								"concept": "dfad6f65-aa22-49ff-9d30-21bb5eeee3bf",
+								"rendering": "date"
+							}
+						},
+						{
+							"label": "Target population:",
+							"type": "obs",
+							"id": "targetPop",
+							"questionOptions": {
+								"concept": "fc0185d3-6072-45d3-8454-bd8c0b9c9565",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+										"label": "Female sex worker"
+									},
+									{
+										"concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
+										"label": "Truckers"
+									},
+									{
+										"concept": "e8cf2d5a-1a9e-4bb2-a2cc-ea30191dcc3a",
+										"label": "Clearing and forwading agent"
+									},
+									{
+										"concept": "0ac89086-4751-4db8-96c5-cd62152d66ad",
+										"label": "Fisher folk"
+									},
+									{
+										"concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+										"label": "MSM"
+									},
+									{
+										"concept": "dc57a074-a2f2-4901-9438-c54453fcd1ff",
+										"label": "Vulnerable women and girls"
+									},
+									{
+										"concept": "a890d57a-1350-11df-a1f1-0026b9348838",
+										"label": "PWID"
+									},
+									{
+										"concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+										"label": "PLHIV"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"label": "Reason For Referral:",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Reason for referral:",
+							"type": "obs",
+							"id": "referralReason",
+							"questionOptions": {
+								"concept": "a8a47396-1350-11df-a1f1-0026b9348838",
+								"rendering": "multiCheckbox",
+								"answers": [
+									{
+										"concept": "b412ae76-4ab4-4d00-800e-bd8d167769e1",
+										"label": "HIV"
+									},
+									{
+										"concept": "6b15e4fa-6897-4d69-adcf-5908abade719",
+										"label": "TB"
+									},
+									{
+										"concept": "a8a8aefc-1350-11df-a1f1-0026b9348838",
+										"label": "FP/RH"
+									},
+									{
+										"concept": "a8a17d80-1350-11df-a1f1-0026b9348838",
+										"label": "MNCH/ANC"
+									},
+									{
+										"concept": "cf19a3ea-33ec-41a3-8151-bdbc66c3d80b",
+										"label": "GBV"
+									},
+									{
+										"concept": "a8a09a0a-1350-11df-a1f1-0026b9348838",
+										"label": "STI"
+									},
+									{
+										"concept": "12550258-d797-43d9-a282-e35908c33fe4",
+										"label": "ART"
+									},
+									{
+										"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+										"label": "Other"
+									}
+								]
+							}
+						},
+						{
+							"label": "General comments if referred for ART:",
+							"type": "obs",
+							"id": "comments",
+							"questionOptions": {
+								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+								"rendering": "text"
+							}
+						},
+						{
+							"label": "Referral recommendations:",
+							"type": "obs",
+							"id": "refReco",
+							"questionOptions": {
+								"concept": "2c8bb721-b642-428a-b956-7902242776ab",
+								"rendering": "text"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

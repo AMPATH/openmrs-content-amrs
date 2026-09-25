@@ -1,0 +1,163 @@
+
+{
+ "name": "POC Facility Internal Movement Form v1.1",
+  "description": "POC Internal movement form",
+  "version": "1.1",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "encounterType": "c8aea16d-710b-4036-adcc-3ebf60f48f0e",
+  "encounter": "INTERNALMOVEMENT",
+  "pages": [
+		{
+			"label": "Facility Movement Form",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				},
+				{
+					"label": "Care Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Clinic referred to:",
+							"type": "siblingLocations",
+							"id": "referedFacility",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended",
+								"attributeType": "8d87236c-c2cc-11de-8d13-0010c6dffd0f"
+							}
+						},
+						{
+							"label": "Reason for movement:",
+							"type": "obs",
+							"id": "careType",
+							"required": "true",
+							"questionOptions": {
+								"concept": "a8a47396-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "6d795cdf-4481-4252-85ec-2175d76d230c",
+										"label": "Transition"
+									},
+									{
+										"concept": "6b15e4fa-6897-4d69-adcf-5908abade719",
+										"label": "TB treatment"
+									},
+									{
+										"concept": "a8a17d80-1350-11df-a1f1-0026b9348838",
+										"label": "MNCH"
+									},
+									{
+										"concept": "a89fbedc-1350-11df-a1f1-0026b9348838",
+										"label": "VTP"
+									},
+									{
+										"concept": "f6095b96-c9a3-428f-a200-b466e917796c",
+										"label": "ACTG/Research Study"
+									},
+									{
+										"concept": "b412ae76-4ab4-4d00-800e-bd8d167769e1",
+										"label": "Back to CCC"
+									},
+									{
+										"concept": "4e6d1c61-624c-4350-a604-374f835aa481",
+										"label": "PPP"
+									},
+									{
+										"concept": "7e7d4555-362a-498a-b5ed-abcddcfce2a7",
+										"label": "Patient preference"
+									},
+									{
+										"concept": "bbc8f7f3-bf4b-4ed1-b2c0-4ee8245e1021",
+										"label": "Provider advice"
+									}
+								]
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "sex === 'M' && myValue === 'a8a17d80-1350-11df-a1f1-0026b9348838'",
+									"message": "Male patients cannot be referred to VTP."
+								}
+							]
+						},
+						{
+							"label": "VTP patient type:",
+							"type": "obs",
+							"id": "pmtctType",
+							"questionOptions": {
+								"concept": "a89eea66-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "375e6d4a-ba94-41ac-8ac3-5a56015c4d92",
+										"label": "Antenatal"
+									},
+									{
+										"concept": "c5789e91-2c76-450a-94f7-94fce32335d3",
+										"label": "Postnatal"
+									}
+								]
+							},
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "careType !== 'a8a17d80-1350-11df-a1f1-0026b9348838'"
+							}
+						},
+						{
+							"label": "Referral recommendations:",
+							"type": "obs",
+							"id": "refReco",
+							"questionOptions": {
+								"concept": "2c8bb721-b642-428a-b956-7902242776ab",
+								"rendering": "textarea",
+								"rows": "10"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
