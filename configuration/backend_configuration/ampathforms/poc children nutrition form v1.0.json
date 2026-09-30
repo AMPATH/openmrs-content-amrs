@@ -1,0 +1,332 @@
+{
+    "name": "POC Pediatric Nutrition Form v1.0",
+    "uuid": "",
+    "published": true,
+    "retired": false,
+    "encounterType": "9ab77035-e1ac-4251-b55d-fdb5fa391272",
+    "description": "Peds nutrition information",
+    "version": "1.0",
+    "encounter": "PEDSNUTRITION",
+    "processor": "EncounterFormProcessor",
+    "pages": [
+        {
+            "label": "Nutrition",
+            "sections": [
+                {
+                    "label": "Visit Details",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Date:",
+                            "type": "encounterDatetime",
+                            "required": "true",
+                            "questionOptions": {
+                                "rendering": "date"
+                            },
+                            "id": "encDate",
+                            "validators": [
+                                {
+                                    "type": "date",
+                                    "allowFutureDates": "false"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Provider:",
+                            "type": "encounterProvider",
+                            "required": "true",
+                            "questionOptions": {
+                                "rendering": "ui-select-extended"
+                            },
+                            "id": "encProvider"
+                        },
+                        {
+                            "label": "Location:",
+                            "type": "encounterLocation",
+                            "required": "true",
+                            "questionOptions": {
+                                "rendering": "ui-select-extended"
+                            },
+                            "id": "encLocation"
+                        }
+                    ]
+                },
+                {
+                    "label": "Anthropometrics",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Weight(kg):",
+                            "type": "obs",
+                            "id": "weight",
+                            "required": "true",
+                            "questionOptions": {
+                                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "max": "250",
+                                "min": "0"
+                            },
+                            "hide": {
+                                "hideWhenExpression": "!(age >= 0 && age <=5)"
+                            }
+                        },
+                        {
+                            "label": "Weight(kg):",
+                            "type": "obs",
+                            "id": "weightForBMI",
+                            "questionOptions": {
+                                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "max": "250",
+                                "min": "0"
+                            },
+                            "hide": {
+                                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
+                            }
+                        },
+                        {
+                            "label": "Height(cm):",
+                            "type": "obs",
+                            "id": "height",
+                            "questionOptions": {
+                                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "max": "272",
+                                "min": "10"
+                            },
+                            "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
+                            "hide": {
+                                "hideWhenExpression": "!(age >= 0 && age <=5)"
+                            }
+                        },
+                        {
+                            "label": "Height(cm):",
+                            "type": "obs",
+                            "id": "heightForBMI",
+                            "questionOptions": {
+                                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "max": "272",
+                                "min": "10"
+                            },
+                            "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
+                            "hide": {
+                                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
+                            }
+                        },
+                        {
+                            "label": "MUAC:",
+                            "type": "obs",
+                            "id": "muac",
+                            "questionOptions": {
+                                "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
+                                "rendering": "number",
+                                "max": "250",
+                                "min": "0"
+                            },
+                            "hide": {
+                                "hideWhenExpression": "(age > 5 && sex !== 'F') || (sex === 'F' &&  age > 49)"
+                            }
+                        },
+                        {
+                            "label": " Weight for height Z-score:",
+                            "id": "WeightheightScore",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c",
+                                "max": "4",
+                                "min": "-4",
+                                "calculate": {
+                                    "calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
+                                }
+                            },
+                            "type": "obs",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "age>5"
+                            }
+                        },
+                        {
+                            "label": "Weight for height Z score diagnosis:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "9cf8b8c5-a9fb-4662-9585-97dfbfd9d245",
+                                "calculate": {
+                                    "calculateExpression": " weight && height && parseInt(WeightheightScore) >=0 && parseInt(WeightheightScore) <= 4? 'a899e7b4-1350-11df-a1f1-0026b9348838' :weight && height && parseInt(WeightheightScore) === -1 ? '492da2d3-5137-4261-ba07-f961e8c27efb' :weight && height && parseInt(WeightheightScore) === -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' :weight && height && parseInt(WeightheightScore) === -3 || parseInt(WeightheightScore) === -4 ? '0306539c-f24f-49f5-b059-b646adbec47c' :''"
+                                },
+                                "answers": [
+                                    {
+                                        "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Normal"
+                                    },
+                                    {
+                                        "concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
+                                        "label": "Mild acute malnutrition"
+                                    },
+                                    {
+                                        "concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
+                                        "label": "Moderate acute malnutrition"
+                                    },
+                                    {
+                                        "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+                                        "label": "Severe acute malnutrition"
+                                    }
+                                ]
+                            },
+                            "id": "weightHeightDiagnosis",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "age>5 || isEmpty(WeightheightScore)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "label": "Vitamin A And Other Vaccines",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Vitamin A capsules:",
+                            "type": "obsGroup",
+                            "questionOptions": {
+                                "rendering": "repeating",
+                                "concept": "a8a0654e-1350-11df-a1f1-0026b9348838"
+                            },
+                            "questions": [
+                                {
+                                    "label": "Drug:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "drug",
+                                        "concept": "a8a060c6-1350-11df-a1f1-0026b9348838"
+                                    },
+                                    "id": "drug"
+                                },
+                                {
+                                    "label": "Sequence no:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "number",
+                                        "concept": "bb1e6b95-0d35-4065-80cc-d774d1c9b964",
+                                        "max": "",
+                                        "min": ""
+                                    },
+                                    "validators": [],
+                                    "hide": {
+                                        "hideWhenExpression": "arrayContainsAny(['a89840bc-1350-11df-a1f1-0026b9348838','a897de60-1350-11df-a1f1-0026b9348838','79c722a0-17cf-4aca-bdec-fee0810bc5ba','a8acb5f6-1350-11df-a1f1-0026b9348838','a8909844-1350-11df-a1f1-0026b9348838'], previousimmAdministered)"
+                                    },
+                                    "id": "sequenceNumber"
+                                },
+                                {
+                                    "label": "Vitamin A given:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "7f4915e0-87c0-4f9f-8c81-0ad45fd42b23",
+                                        "answers": [
+                                            {
+                                                "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                                "label": "Yes"
+                                            },
+                                            {
+                                                "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                                "label": "No"
+                                            }
+                                        ]
+                                    },
+                                    "id": "vitA"
+                                },
+                                {
+                                    "label": "Date given:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "date",
+                                        "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4"
+                                    },
+                                    "validators": [
+                                        {
+                                            "type": "date",
+                                            "allowFutureDate": "false"
+                                        },
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
+                                            "message": "Date should not be greater than the encounter date."
+                                        }
+                                    ],
+                                    "id": "dateGiven"
+                                },
+                                {
+                                    "label": "Date of next visit:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "date",
+                                        "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                                        "weeksList": ""
+                                    },
+                                    "id": "nextVisit",
+                                    "validators": [
+                                        {
+                                            "type": "js_expression",
+                                            "failsWhenExpression": "(new moment()).isAfter((new moment(myValue)), 'day')",
+                                            "message": "Next visit date should be a future date"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "Deworming given:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "select",
+                                        "concept": "1ffee2bc-2bcd-4394-a3ac-abfd1916f775",
+                                        "answers": [
+                                            {
+                                                "concept": "a8967656-1350-11df-a1f1-0026b9348838",
+                                                "label": "Yes"
+                                            },
+                                            {
+                                                "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                                "label": "No"
+                                            }
+                                        ]
+                                    },
+                                    "id": "deworm"
+                                },
+                                {
+                                    "label": "Deworming date:",
+                                    "type": "obs",
+                                    "questionOptions": {
+                                        "rendering": "date",
+                                        "concept": "eb22f892-21fe-4c2a-8047-f016fd2162c1"
+                                    },
+                                    "id": "dewormDate",
+                                    "hide": {
+                                        "hideWhenExpression": "deworm !== 'a8967656-1350-11df-a1f1-0026b9348838'"
+                                    }
+                                }
+                            ],
+                            "id": "__Ez6LMCquH"
+                        }
+                    ]
+                },
+                {
+                    "label": "Notes",
+                    "isExpanded": "true",
+                    "questions": [
+                        {
+                            "label": "Triage notes:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "textarea",
+                                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                                "rows": "5"
+                            },
+                            "id": "triageNotes"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
