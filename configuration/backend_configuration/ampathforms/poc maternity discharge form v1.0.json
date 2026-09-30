@@ -425,6 +425,7 @@
             },
             {
               "label": "Doctor:",
+              "required":"true",
               "id": "doctor",
               "type": "obs",
               "questionOptions": {

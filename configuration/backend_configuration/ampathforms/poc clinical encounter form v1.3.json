@@ -111,6 +111,9 @@
               "type": "obs",
               "id": "opdHivStatus",
               "questionOptions": {
+                "calculate": {
+                  "calculateExpression": "identifiers.some((id)=>{ return id.identifierType?.uuid === 'f2d6ff1a-8440-4d35-a150-1d4b5a930c5e'}) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838'"
+                },
                 "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
                 "rendering": "select",
                 "answers": [
@@ -229,25 +232,6 @@
                 "rendering": "group"
               },
               "questions": [
-                {
-                  "label": "County from which the patient is transfering:",
-                  "id": "transferCounty",
-                  "questionOptions": {
-                    "concept": "489403cb-9d25-4d12-826b-1017b7da73e0",
-                    "rendering": "text"
-                  },
-                  "type": "obs",
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(transferIn) && transferIn === 'a89c301e-1350-11df-a1f1-0026b9348838'",
-                      "message": "Required."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "(transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-                  }
-                },
                 {
                   "label": "Facility transferring in from:",
                   "id": "transferIn",
@@ -511,6 +495,10 @@
                         "label": "Night sweats"
                       },
                       {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
+                      },
+                      {
                         "concept": "4ef1a2d0-132d-4a02-b0e0-00890b916343",
                         "label": "Numbness"
                       },
@@ -616,6 +604,13 @@
                       }
                     ]
                   },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                      "message": "'None' cannot be selected together with other complaints."
+                    }
+                  ],
                   "hide": {
                     "hideWhenExpression": "hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
                   }
@@ -917,7 +912,7 @@
                         "label": "Etravirine 100mg"
                       }
                     ],
-                    "rendering": "select"
+                    "rendering": "multiCheckbox"
                   },
                   "validators": [
                     {
@@ -1410,7 +1405,196 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || ((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || ((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age < 15 || (((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || ((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || ((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
+              }
+            },
+            {
+              "label": "Past ARV regimen:",
+              "id": "pastArvDrugsPed",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a318e8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+                    "label": "DTG50mg/3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+                    "label": "TAF25mg/3TC300mg/DTG50mg"
+                  },
+                  {
+                    "concept": "b58a28d2-36de-11e0-93be-0026b9348838",
+                    "label": "ABC 60mg/3TC 30mg"
+                  },
+                  {
+                    "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+                    "label": "ABC 120mg/3TC 60mg"
+                  },
+                  {
+                    "concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+                    "label": "ABC 600mg/3TC 300mg"
+                  },
+                  {
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                  },
+                  {
+                    "concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+                    "label": "TDF300mg/3TC300mg/EFV400mg"
+                  },
+                  {
+                    "concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+                    "label": "ZDV 60mg/3TC 30mg"
+                  },
+                  {
+                    "concept": "20185c04-9334-11df-8193-000d6014b64c",
+                    "label": "ZDV 60mg/3TC 30mg/NVP 50mg"
+                  },
+                  {
+                    "concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
+                    "label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
+                  },
+                  {
+                    "concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+                    "label": "3TC 150mg/ZDV 300mg >25kgs"
+                  },
+                  {
+                    "concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+                    "label": "3TC 300mg/TDF 300mg >25kgs"
+                  },
+                  {
+                    "concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
+                    "label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+                  },
+                  {
+                    "concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
+                    "label": "Lopinavir 80mg/Ritonavir 20mg"
+                  },
+                  {
+                    "concept": "ddefd319-fb5d-4c0e-a125-ff7bdb6fe44f",
+                    "label": "Lopinavir 40mg/Ritonavir 10mg"
+                  },
+                  {
+                    "concept": "fa8266f6-36df-11e0-93be-0026b9348838",
+                    "label": "Lopinavir 200mg/Ritonavir 50mg"
+                  },
+                  {
+                    "concept": "3115e231-1077-4488-a7d5-83167263b9a2",
+                    "label": "Lopinavir 100mg/Ritonavir 25mg"
+                  },
+                  {
+                    "concept": "3cbfb0b9-721e-4d42-92a3-7d37269aab24",
+                    "label": " Atazanavir 300mg/ritonavir 100mg"
+                  },
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "Emtri200mg/TDF300(Truvada)"
+                  },
+                  {
+                    "concept": "2fc1f68c-9939-44d4-b5f4-e064ed4073ca",
+                    "label": "Nevirapine 100mg"
+                  },
+                  {
+                    "concept": "0485075a-3111-11e0-8090-0026b9348838",
+                    "label": "Nevirapine 200mg"
+                  },
+                  {
+                    "concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+                    "label": "Efavirenz 200mg"
+                  },
+                  {
+                    "concept": "ff9096b6-d86c-403a-9bda-eab02252dbf3",
+                    "label": "Efavirenz 250mg"
+                  },
+                  {
+                    "concept": "492de98c-86c6-4fd8-af89-325448f12ed9",
+                    "label": "Efavirenz 300mg"
+                  },
+                  {
+                    "concept": "55e0461f-b28f-42de-a3c6-328d7f17c44b",
+                    "label": "Efavirenz 350mg"
+                  },
+                  {
+                    "concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
+                    "label": "Efavirenz 400mg"
+                  },
+                  {
+                    "concept": "4677ad3e-3120-11e0-8090-0026b9348838",
+                    "label": "Efavirenz 600mg"
+                  },
+                  {
+                    "concept": "d6262526-3113-11e0-8090-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "52441ef8-3126-11e0-8090-0026b9348838",
+                    "label": " Abacavir 300mg"
+                  },
+                  {
+                    "concept": "21d417bc-3114-11e0-8090-0026b9348838",
+                    "label": " Zidovudine 300mg "
+                  },
+                  {
+                    "concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+                    "label": " Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+                    "label": " Ritonavir 80mg"
+                  },
+                  {
+                    "concept": "67f62fd8-d43e-4c62-a18a-e8bb5a46fc5c",
+                    "label": " Raltegravir 25mg"
+                  },
+                  {
+                    "concept": "c2c66e99-1345-4fdb-b101-89b2e43d40e5",
+                    "label": " Raltegravir 100mg"
+                  },
+                  {
+                    "concept": "da698164-870d-11e0-85d3-000d6014b64c",
+                    "label": " Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir"
+                  },
+                  {
+                    "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+                    "label": "Etravirine 100mg"
+                  },
+                  {
+                    "concept": "687d2b97-3336-4843-946e-597a31380746",
+                    "label": "Darunavir 75mg"
+                  },
+                  {
+                    "concept": "9732900a-4b81-4522-af1c-7d25ae6aad0a",
+                    "label": "Darunavir 150mg"
+                  },
+                  {
+                    "concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+                    "label": "Darunavir 600mg"
+                  },
+                  {
+                    "concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+                    "label": "Dolutegravir 50mg"
+                  },
+                  {
+                    "concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+                    "label": "Dolutegravir 10mg"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(pastArtUse) && pastArtUse === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Patient marked as on Past ART. Please provide the Regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age > 24 || (((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((pastArtUse!== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || ((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || ((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -1695,7 +1879,177 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")"
+                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false) || ((onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\"))"
+              }
+            },
+            {
+              "label": "Patient's ART regimen, peds:",
+              "id": "current_art_regimen_ped",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')) ? (_.isEmpty(HD.getObject('prevEnc').getValue('a8a08344-1350-11df-a1f1-0026b9348838'))? HD.getObject('prevEnc').getValue('a899cf5e-1350-11df-a1f1-0026b9348838') : HD.getObject('prevEnc').getValue('a899cf5e-1350-11df-a1f1-0026b9348838')) : HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')",
+              "questionOptions": {
+                "concept": "a899cf5e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+                    "label": "DTG50mg/3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+                    "label": "TAF25mg/3TC300mg/DTG50mg"
+                  },
+                  {
+                    "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+                    "label": "ABC 120mg/3TC 60mg"
+                  },
+                  {
+                    "concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+                    "label": "ABC 600mg/3TC 300mg"
+                  },
+                  {
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                  },
+                  {
+                    "concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+                    "label": "TDF300mg/3TC300mg/EFV400mg"
+                  },
+                  {
+                    "concept": "25c753d8-870f-11e0-85d3-000d6014b64c",
+                    "label": "ZDV 60mg/3TC 30mg"
+                  },
+                  {
+                    "concept": "8ddf2f66-9333-11df-8193-000d6014b64c",
+                    "label": "ZDV 300mg/3TC 150mg/NVP 200mg >25kgs"
+                  },
+                  {
+                    "concept": "fd4cd670-3115-11e0-8090-0026b9348838",
+                    "label": "3TC 150mg/ZDV 300mg >25kgs"
+                  },
+                  {
+                    "concept": "b9da84e8-3127-11e0-8090-0026b9348838",
+                    "label": "3TC 300mg/TDF 300mg >25kgs"
+                  },
+                  {
+                    "concept": "e0037172-87ce-11e0-85d3-000d6014b64c",
+                    "label": "TDF 300mg/3TC 300mg/EFV 600mg >35kgs"
+                  },
+                  {
+                    "concept": "f8b6299e-6bbf-446a-b3f1-a88f5d6b9da2",
+                    "label": "Lopinavir 80mg/Ritonavir 20mg"
+                  },
+                  {
+                    "concept": "ddefd319-fb5d-4c0e-a125-ff7bdb6fe44f",
+                    "label": "Lopinavir 40mg/Ritonavir 10mg"
+                  },
+                  {
+                    "concept": "fa8266f6-36df-11e0-93be-0026b9348838",
+                    "label": "Lopinavir 200mg/Ritonavir 50mg"
+                  },
+                  {
+                    "concept": "3115e231-1077-4488-a7d5-83167263b9a2",
+                    "label": "Lopinavir 100mg/Ritonavir 25mg"
+                  },
+                  {
+                    "concept": "3cbfb0b9-721e-4d42-92a3-7d37269aab24",
+                    "label": " Atazanavir 300mg/ritonavir 100mg"
+                  },
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "Emtri200mg/TDF300(Truvada)"
+                  },
+                  {
+                    "concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+                    "label": "Efavirenz 200mg"
+                  },
+                  {
+                    "concept": "ff9096b6-d86c-403a-9bda-eab02252dbf3",
+                    "label": "Efavirenz 250mg"
+                  },
+                  {
+                    "concept": "492de98c-86c6-4fd8-af89-325448f12ed9",
+                    "label": "Efavirenz 300mg"
+                  },
+                  {
+                    "concept": "55e0461f-b28f-42de-a3c6-328d7f17c44b",
+                    "label": "Efavirenz 350mg"
+                  },
+                  {
+                    "concept": "81a41a82-fd72-4da4-8d47-edd5672549ce",
+                    "label": "Efavirenz 400mg"
+                  },
+                  {
+                    "concept": "d6262526-3113-11e0-8090-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "52441ef8-3126-11e0-8090-0026b9348838",
+                    "label": " Abacavir 300mg"
+                  },
+                  {
+                    "concept": "21d417bc-3114-11e0-8090-0026b9348838",
+                    "label": " Zidovudine 300mg "
+                  },
+                  {
+                    "concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+                    "label": " Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+                    "label": " Ritonavir 80mg"
+                  },
+                  {
+                    "concept": "67f62fd8-d43e-4c62-a18a-e8bb5a46fc5c",
+                    "label": " Raltegravir 25mg"
+                  },
+                  {
+                    "concept": "c2c66e99-1345-4fdb-b101-89b2e43d40e5",
+                    "label": " Raltegravir 100mg"
+                  },
+                  {
+                    "concept": "da698164-870d-11e0-85d3-000d6014b64c",
+                    "label": " Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a8afbf9e-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir"
+                  },
+                  {
+                    "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+                    "label": "Etravirine 100mg"
+                  },
+                  {
+                    "concept": "687d2b97-3336-4843-946e-597a31380746",
+                    "label": "Darunavir 75mg"
+                  },
+                  {
+                    "concept": "9732900a-4b81-4522-af1c-7d25ae6aad0a",
+                    "label": "Darunavir 150mg"
+                  },
+                  {
+                    "concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+                    "label": "Darunavir 600mg"
+                  },
+                  {
+                    "concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+                    "label": "Dolutegravir 50mg"
+                  },
+                  {
+                    "concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+                    "label": "Dolutegravir 10mg"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(onArt) && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Patient  marked as on ART. Please provide the Regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "age > 24 || (((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -1966,10 +2320,6 @@
                   {
                     "concept": "a8989396-1350-11df-a1f1-0026b9348838",
                     "label": "Cotrimoxazole 960mg"
-                  },
-                  {
-                    "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
-                    "label": "Dapsone 100mg"
                   }
                 ],
                 "rendering": "select"
@@ -2117,7 +2467,7 @@
                     "label": "Rifapentine 150mg"
                   }
                 ],
-                "rendering": "select"
+                "rendering": "multiCheckbox"
               },
               "validators": [
                 {
@@ -2246,68 +2596,6 @@
               }
             },
             {
-              "label": "Start date of TB treatment:",
-              "id": "startDateOfTbTreatment",
-              "historicalExpression": "HD.getObject('prevEnc').getValue('a899e5f2-1350-11df-a1f1-0026b9348838')",
-              "questionOptions": {
-                "concept": "a899e5f2-1350-11df-a1f1-0026b9348838",
-                "rendering": "date"
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "date"
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(onTbTreatment) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbTreatment) && isEmpty(myValue)",
-                  "message": "You indicated patient on tb treatment, indicate start date."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(isEmpty(onTbTreatment) || !arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbTreatment)) && !isEmpty(myValue)",
-                  "message": "You indicated patient is not on tb treatment, therefore start date should not be indicated."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "(((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
-              }
-            },
-            {
-              "label": "Tuberculosis treatment phase:",
-              "type": "obs",
-              "id": "tbPhase",
-              "questionOptions": {
-                "concept": "a8afdf4c-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a8afdd08-1350-11df-a1f1-0026b9348838",
-                    "label": "Continuation phase"
-                  },
-                  {
-                    "concept": "a8afddc6-1350-11df-a1f1-0026b9348838",
-                    "label": "Retreatment phase"
-                  },
-                  {
-                    "concept": "a8afdc4a-1350-11df-a1f1-0026b9348838",
-                    "label": "Induction phase"
-                  },
-                  {
-                    "concept": "a8afde8e-1350-11df-a1f1-0026b9348838",
-                    "label": "Retreated phase"
-                  },
-                  {
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                    "label": "Other"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "hide": {
-                "hideWhenExpression": "((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
-              }
-            },
-            {
               "type": "obs",
               "label": "Current TB regimen:",
               "questionOptions": {
@@ -2375,12 +2663,62 @@
               "validators": []
             },
             {
-              "label": "TB treatment completion date:",
-              "type": "obs",
-              "id": "tbComplDate",
+              "label": "Start date of TB treatment:",
+              "id": "startDateOfTbTreatment",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a899e5f2-1350-11df-a1f1-0026b9348838')",
               "questionOptions": {
-                "concept": "a8a176b4-1350-11df-a1f1-0026b9348838",
+                "concept": "a899e5f2-1350-11df-a1f1-0026b9348838",
                 "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(onTbTreatment) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbTreatment) && isEmpty(myValue)",
+                  "message": "You indicated patient on tb treatment, indicate start date."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(isEmpty(onTbTreatment) || !arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbTreatment)) && !isEmpty(myValue)",
+                  "message": "You indicated patient is not on tb treatment, therefore start date should not be indicated."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+              }
+            },
+            {
+              "label": "Tuberculosis treatment phase:",
+              "type": "obs",
+              "id": "tbPhase",
+              "questionOptions": {
+                "concept": "a8afdf4c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8afdd08-1350-11df-a1f1-0026b9348838",
+                    "label": "Continuation phase"
+                  },
+                  {
+                    "concept": "a8afddc6-1350-11df-a1f1-0026b9348838",
+                    "label": "Retreatment phase"
+                  },
+                  {
+                    "concept": "a8afdc4a-1350-11df-a1f1-0026b9348838",
+                    "label": "Induction phase"
+                  },
+                  {
+                    "concept": "a8afde8e-1350-11df-a1f1-0026b9348838",
+                    "label": "Retreated phase"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "select"
               },
               "hide": {
                 "hideWhenExpression": "((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
@@ -2393,6 +2731,18 @@
               "questionOptions": {
                 "concept": "a8a18758-1350-11df-a1f1-0026b9348838",
                 "rendering": "number"
+              },
+              "hide": {
+                "hideWhenExpression": "((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+              }
+            },
+            {
+              "label": "TB treatment completion date:",
+              "type": "obs",
+              "id": "tbComplDate",
+              "questionOptions": {
+                "concept": "a8a176b4-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
               },
               "hide": {
                 "hideWhenExpression": "((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
@@ -2709,6 +3059,10 @@
                   {
                     "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
                     "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
+                    "label": "Amphotericin B deoxycholate 1mg/kg (Induction)"
                   }
                 ],
                 "rendering": "multiCheckbox"
@@ -2831,6 +3185,10 @@
                   {
                     "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
                     "label": "Dapsone"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ],
                 "rendering": "select"
@@ -2871,6 +3229,10 @@
                   {
                     "concept": "43eefe0f-044e-407d-8cd4-40755f1e65f2",
                     "label": "Folinic acid"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ],
                 "rendering": "multiCheckbox"
@@ -2912,6 +3274,82 @@
               "id": "__9LIF7xMpv",
               "hide": {
                 "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "TB signs and symptoms:",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8afc8b8-1350-11df-a1f1-0026b9348838",
+                    "label": "Cough of any duration",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "d7adae14-c386-49cc-8f7c-765d8ceec566",
+                    "label": "Persistent fever (Temperature > 37.5°C)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "e1862fef-68ed-4df4-90dd-a00152f719aa",
+                    "label": "Drenching night sweats",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                    "label": "Unexplained weight loss",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Chest pain",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "9e7baa95-f4a4-45f1-b5d9-8cccfb2bd5f6",
+                    "label": "Difficulty in breathing",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "3f57aafc-7162-41da-a51b-6a804cb6f5e8",
+                    "label": "History of contact with a person with TB or chronic cough",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89cb0d4-1350-11df-a1f1-0026b9348838",
+                    "label": "Poor weight gain or faltering of the growth curve",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8a5a5fe-1350-11df-a1f1-0026b9348838",
+                    "label": "Z-score <-2 (for weight-for-age or height-for-age)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Reduced playfulness/less active (lethargy)",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                  "message": "'None' cannot be selected together with other symptoms."
+                }
+              ],
+              "id": "pediatricTbSymptoms",
+              "hide": {
+                "hideWhenExpression": "age >= 15 || onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
               }
             },
             {
@@ -2982,7 +3420,7 @@
               ],
               "id": "tbSymptoms",
               "hide": {
-                "hideWhenExpression": "(onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age < 15 || (onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -3006,12 +3444,12 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(tbSymptoms) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms) && isEmpty(myValue)",
+                  "failsWhenExpression": "!isEmpty(age < 15 ? pediatricTbSymptoms : tbSymptoms) && !arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], age < 15 ? pediatricTbSymptoms : tbSymptoms) && isEmpty(myValue)",
                   "message": "Patient has been marked as having TB symptoms. This question is required."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || isEmpty(tbSymptoms) || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms)) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || isEmpty(age < 15 ? pediatricTbSymptoms : tbSymptoms) || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], age < 15 ? pediatricTbSymptoms : tbSymptoms)) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               },
               "alert": {
                 "alertWhenExpression": "myValue === 'a899b35c-1350-11df-a1f1-0026b9348838'",
@@ -3027,7 +3465,7 @@
                 "rendering": "group"
               },
               "hide": {
-                "hideWhenExpression": "(onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || isEmpty(tbSymptoms) || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms) || xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || isEmpty(age < 15 ? pediatricTbSymptoms : tbSymptoms) || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], age < 15 ? pediatricTbSymptoms : tbSymptoms) || xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               },
               "questions": [
                 {
@@ -3184,7 +3622,7 @@
                 "rendering": "group"
               },
               "hide": {
-                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || isEmpty(tbSymptoms) || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms) || xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838' || (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838' || crpTestAvailable !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' || isEmpty(age < 15 ? pediatricTbSymptoms : tbSymptoms) || arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], age < 15 ? pediatricTbSymptoms : tbSymptoms) || xrayService !== 'a899b35c-1350-11df-a1f1-0026b9348838' || (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838' || crpTestAvailable !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               },
               "questions": [
                 {
@@ -3262,7 +3700,7 @@
               "readonly": true,
               "questionOptions": {
                 "calculate": {
-                  "calculateExpression": "((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896d2cc-1350-11df-a1f1-0026b9348838' && xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838') ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : ((onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838' : (arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], tbSymptoms)) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : (xrayService === 'a899b42e-1350-11df-a1f1-0026b9348838') ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult)) && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838') ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && crpTestAvailable === 'a899b42e-1350-11df-a1f1-0026b9348838') ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCrpResult) ? tbCrpResult : crpResult)) && (!isEmpty(tbCrpResult) ? tbCrpResult : crpResult) > 5) ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCrpResult) ? tbCrpResult : crpResult)) && (!isEmpty(tbCrpResult) ? tbCrpResult : crpResult) <= 5) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : '')"
+                  "calculateExpression": "((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896d2cc-1350-11df-a1f1-0026b9348838' && xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838') ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : ((onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838' : (arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], age < 15 ? pediatricTbSymptoms : tbSymptoms)) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : (xrayService === 'a899b42e-1350-11df-a1f1-0026b9348838') ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult)) && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) !== 'a899e7b4-1350-11df-a1f1-0026b9348838') ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && crpTestAvailable === 'a899b42e-1350-11df-a1f1-0026b9348838') ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCrpResult) ? tbCrpResult : crpResult)) && (!isEmpty(tbCrpResult) ? tbCrpResult : crpResult) > 5) ? '260e6d24-1634-4467-a070-e8359f6827f7' : (xrayService === 'a899b35c-1350-11df-a1f1-0026b9348838' && (!isEmpty(tbCxrResult) ? tbCxrResult : cxrResult) === 'a899e7b4-1350-11df-a1f1-0026b9348838' && !isEmpty((!isEmpty(tbCrpResult) ? tbCrpResult : crpResult)) && (!isEmpty(tbCrpResult) ? tbCrpResult : crpResult) <= 5) ? 'a899e0ac-1350-11df-a1f1-0026b9348838' : '')"
                 },
                 "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
                 "answers": [
@@ -3305,6 +3743,10 @@
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
+                  },
+                  {
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
                   }
                 ]
               },
@@ -4142,6 +4584,78 @@
               }
             },
             {
+              "label": "In the past three months has anyone punched, slapped, kicked, bite you or caused you any type of physical harm?",
+              "questionInfo": "Anyone can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
+              "id": "pediatricPhysicalViolence",
+              "required": "true",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "8fca5b8a-0674-49e5-8111-003db067ee22",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+              }
+            },
+            {
+              "label": "In the past three months has anyone insulted you, ignored you, yelled at you, or made you feel ashamed or bad about yourself?",
+              "questionInfo": "as with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague, police officer or other persons.",
+              "id": "pediatricEmotionalViolence",
+              "required": "true",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "374a34e2-71a0-4221-b59e-8d50721330ee",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+              }
+            },
+            {
+              "label": "In the past three months has anyone forced you to have sex or perform any sexual act, touched you sexually in any way that you did not want?",
+              "questionInfo": "As with the previous question, 'anyone' can include your partner, a family member, friend, neighbor, client, stranger, supervisor, colleague",
+              "id": "pediatricSexualViolence",
+              "required": "true",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "920709bc-dde6-4d21-863e-851e63c084e4",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+              }
+            },
+            {
               "label": "In the last 3 months, has your partner(s) hit, kicked, slapped, or otherwise physically hurt you?",
               "id": "physical",
               "required": "true",
@@ -4161,7 +4675,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4184,7 +4698,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4207,7 +4721,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4230,7 +4744,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4245,7 +4759,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
+                  "failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838' || pediatricPhysicalViolence === 'a899b35c-1350-11df-a1f1-0026b9348838' || pediatricEmotionalViolence === 'a899b35c-1350-11df-a1f1-0026b9348838' || pediatricSexualViolence === 'a899b35c-1350-11df-a1f1-0026b9348838')",
                   "message": "Patient screened positive for violence. Please provide notes."
                 }
               ],
@@ -4412,7 +4926,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (motherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\" || mothersHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (motherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\" || mothersHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || motherEnrolled === 'a899b42e-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4439,7 +4953,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (fatherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\" || fathersHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (fatherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\" || fathersHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || fatherEnrolled === 'a899b42e-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -5134,12 +5648,10 @@
               }
             },
             {
-              "label": "Have you ever attended school?",
-              "id": "everAttendedSchool",
-              "required": "true",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8aae64a-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8aae64a-1350-11df-a1f1-0026b9348838')",
+              "label": "Are you currently attending school?",
+              "id": "currInSchool",
               "questionOptions": {
-                "concept": "a8aae64a-1350-11df-a1f1-0026b9348838",
+                "concept": "a0f74d13-6465-41cf-b19c-21c3df15d51f",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -5148,57 +5660,10 @@
                   {
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Are you currently attending school?",
-              "id": "currInSchool",
-              "questionOptions": {
-                "concept": "a0f74d13-6465-41cf-b19c-21c3df15d51f",
-                "answers": [
-                  {
-                    "concept": "1627a701-0840-4e2e-8543-3bc4d0df1cbe",
-                    "label": "Nursery"
                   },
                   {
-                    "concept": "87fa889e-1dfd-4d47-a366-663708251a56",
-                    "label": "Primary day"
-                  },
-                  {
-                    "concept": "07ee184d-6750-4687-9dfb-3b5f54c05429",
-                    "label": "Primary boarding"
-                  },
-                  {
-                    "concept": "68d318fc-e305-4803-8b43-70c5932394e5",
-                    "label": "Secondary day"
-                  },
-                  {
-                    "concept": "1a13c814-b420-4e55-806b-248d8ddae2bb",
-                    "label": "Secondary boarding"
-                  },
-                  {
-                    "concept": "a8afea96-1350-11df-a1f1-0026b9348838",
-                    "label": "College"
-                  },
-                  {
-                    "concept": "a89e4728-1350-11df-a1f1-0026b9348838",
-                    "label": "University"
-                  },
-                  {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "Currently not in school"
-                  },
-                  {
-                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
-                    "label": "N/A(too young)"
+                    "concept": "a899d120-1350-11df-a1f1-0026b9348838",
+                    "label": "Never"
                   }
                 ],
                 "rendering": "select"
@@ -8886,10 +9351,6 @@
                   {
                     "concept": "a8989396-1350-11df-a1f1-0026b9348838",
                     "label": "Cotrimoxazole 960mg"
-                  },
-                  {
-                    "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
-                    "label": "Dapsone 100mg"
                   }
                 ],
                 "rendering": "select"
@@ -9117,7 +9578,7 @@
                     "label": "Rifampicin 70mg and Isonaizid 50mg (3RH)"
                   }
                 ],
-                "rendering": "select"
+                "rendering": "multiCheckbox"
               },
               "id": "prophyReg",
               "type": "obs",
@@ -9936,6 +10397,10 @@
                   {
                     "concept": "250bb216-a1c6-4f6c-b2d2-b0bfa1df4526",
                     "label": "Liposomal amphotericin B 10mg/kg (Induction)"
+                  },
+                  {
+                    "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
+                    "label": "Amphotericin B deoxycholate 1mg/kg (Induction)"
                   }
                 ],
                 "rendering": "select"
@@ -10068,8 +10533,8 @@
                     "label": "Dapsone"
                   },
                   {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "None"
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ],
                 "rendering": "select"
@@ -10157,8 +10622,8 @@
                     "label": "Folinic acid"
                   },
                   {
-                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-                    "label": "None"
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
                   }
                 ],
                 "rendering": "multiCheckbox"
