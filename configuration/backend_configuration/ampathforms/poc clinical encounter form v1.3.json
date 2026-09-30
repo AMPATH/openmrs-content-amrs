@@ -232,7 +232,6 @@
                 "rendering": "group"
               },
               "questions": [
-                
                 {
                   "label": "Facility transferring in from:",
                   "id": "transferIn",
@@ -605,17 +604,16 @@
                       }
                     ]
                   },
-                   "validators": [
+                  "validators": [
                     {
-                  "type": "js_expression",
-                  "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
-                  "message": "'None' cannot be selected together with other complaints."  
-                }
-                   ],
+                      "type": "js_expression",
+                      "failsWhenExpression": "arrayContainsAny(['a899e0ac-1350-11df-a1f1-0026b9348838'], myValue) && myValue.length > 1",
+                      "message": "'None' cannot be selected together with other complaints."
+                    }
+                  ],
                   "hide": {
                     "hideWhenExpression": "hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
                   }
-                  
                 },
                 {
                   "label": "Specify other complaints:",
@@ -2323,7 +2321,6 @@
                     "concept": "a8989396-1350-11df-a1f1-0026b9348838",
                     "label": "Cotrimoxazole 960mg"
                   }
-                  
                 ],
                 "rendering": "select"
               },
@@ -2751,7 +2748,6 @@
                 "hideWhenExpression": "((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
               }
             },
-            
             {
               "type": "obsGroup",
               "id": "tbadhere",
@@ -9356,7 +9352,6 @@
                     "concept": "a8989396-1350-11df-a1f1-0026b9348838",
                     "label": "Cotrimoxazole 960mg"
                   }
-                  
                 ],
                 "rendering": "select"
               },
@@ -10541,7 +10536,6 @@
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other"
                   }
-                  
                 ],
                 "rendering": "select"
               },
@@ -10631,7 +10625,6 @@
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other"
                   }
-                  
                 ],
                 "rendering": "multiCheckbox"
               },
