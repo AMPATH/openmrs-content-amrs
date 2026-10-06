@@ -95,10 +95,6 @@
                   {
                     "concept": "1d54b745-0afc-4568-a9ba-17ba3fc1dda0",
                     "label": "Referred from CHU"
-                  },
-                  {
-                    "concept": "a8afd40c-1350-11df-a1f1-0026b9348838",
-                    "label": "Internal(Department)"
                   }
                 ]
               },
@@ -109,10 +105,11 @@
             {
               "label": "HIV status:",
               "type": "obs",
+              "readonly": "true",
               "id": "opdHivStatus",
               "questionOptions": {
                 "calculate": {
-                  "calculateExpression": "identifiers.some((id)=>{ return id.identifierType?.uuid === 'f2d6ff1a-8440-4d35-a150-1d4b5a930c5e'}) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838'"
+                  "calculateExpression": "encDate ? identifiers.some((id)=> id.identifierType?.uuid === 'f2d6ff1a-8440-4d35-a150-1d4b5a930c5e') ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838': 'a899b50a-1350-11df-a1f1-0026b9348838'"
                 },
                 "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
                 "rendering": "select",
@@ -759,7 +756,7 @@
               }
             },
             {
-              "label": "Has the patient ever taken ARV in the past?",
+              "label": "Has the patient ever taken ARVs in the past?",
               "type": "obs",
               "id": "pastArtUse",
               "questionOptions": {
@@ -2053,6 +2050,177 @@
               }
             },
             {
+              "label": "Does caregiver have problems getting child to take the medicines? (Yes=1 , No= 0)",
+              "id": "caregiverProb",
+              "questionOptions": {
+                "concept": "286c7414-65d1-4f02-bb1b-7999defed9d1",
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "step": "1"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && parseFloat(myValue) !== 0 && parseFloat(myValue) !== 1",
+                  "message": "Enter only 0 or 1."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "Did the child miss at least a dose in the last 7 days? (Yes=1 , No= 0)",
+              "type": "obs",
+              "id": "doseMissed",
+              "questionOptions": {
+                "concept": "acc9eb87-37c7-4d02-a134-fdda9c2de74c",
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "step": "1"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && parseFloat(myValue) !== 0 && parseFloat(myValue) !== 1",
+                  "message": "Enter only 0 or 1."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "Did the child receive a dose more than 1 hr late in the last 7 days? (Yes=1 , No= 0)",
+              "type": "obs",
+              "id": "doseRecieve",
+              "questionOptions": {
+                "concept": "af01544e-9712-4a10-97ac-344058795a74",
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "step": "1"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && parseFloat(myValue) !== 0 && parseFloat(myValue) !== 1",
+                  "message": "Enter only 0 or 1."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "Which of the following are true of the caregiver? (Forget to give drugs=1, Not around to give drugs=1, Not wanting to give drugs around others=1, None=0)",
+              "id": "caregiverBarrier",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "dd10a27d-6945-47c4-ab43-63ccbad93960",
+                "rendering": "number",
+                "max": "1",
+                "min": "0",
+                "step": "1"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Patient on ARVs. Please provide pediatric adherence history."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && parseFloat(myValue) !== 0 && parseFloat(myValue) !== 1",
+                  "message": "Enter only 0 or 1."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "ART Total Adherence Score",
+              "id": "totalArtScore",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "1df71a8d-9eb6-40fd-9b94-317629b35ade",
+                "rendering": "number",
+                "max": "4",
+                "min": "0",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseInt(caregiverProb)+ parseInt(doseMissed)+ parseInt(doseRecieve)+ parseInt(caregiverBarrier)) ? undefined: (parseFloat(caregiverProb)+ parseFloat(doseMissed)+ parseFloat(doseRecieve)+ parseFloat(caregiverBarrier))"
+                }
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "Adherence assessment:",
+              "id": "adhereAss",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "47c2e943-e6be-48ce-b0fb-3e0730957698",
+                "answers": [
+                  {
+                    "concept": "5b1bf823-da30-4e23-a777-0d8ef93a6211",
+                    "label": "Perfect"
+                  },
+                  {
+                    "concept": "a73d20b3-d721-4763-a362-14a0c41a6b5e",
+                    "label": "Fair"
+                  },
+                  {
+                    "concept": "fdaf8b47-ea14-4d28-80fa-e1da58a30e8b",
+                    "label": "Poor"
+                  }
+                ],
+                "rendering": "select",
+                "calculate": {
+                  "calculateExpression": "isNaN(parseFloat(totalArtScore)) ? undefined : parseFloat(totalArtScore) === 0 ? \"5b1bf823-da30-4e23-a777-0d8ef93a6211\" : parseFloat(totalArtScore) === 1 ? \"a73d20b3-d721-4763-a362-14a0c41a6b5e\" : \"fdaf8b47-ea14-4d28-80fa-e1da58a30e8b\""
+                }
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "Adherence (ART) notes:",
+              "isExpanded": "true",
+              "id": "artAdherenotes",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "d9390b4c-11c5-4005-822e-d72dea27ba7f",
+                "rendering": "textarea",
+                "rows": 5
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
               "label": "Current regimen start date:",
               "id": "regimenDate",
               "questionOptions": {
@@ -2067,7 +2235,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "true"
               }
             },
             {
@@ -2328,7 +2496,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "((((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+                "hideWhenExpression": "((((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f' || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -2407,7 +2575,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+                "hideWhenExpression": "(((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f' || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -2817,7 +2985,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -2842,7 +3010,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(age >= 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age >= 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -2871,7 +3039,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(age < 15 || age > 24 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age < 15 || age > 24 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -2904,7 +3072,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -2933,7 +3101,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(age >= 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age >= 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -2974,7 +3142,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(age < 15 || age > 24 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age < 15 || age > 24 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -3029,7 +3197,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "((age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -3076,7 +3244,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((age >= 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "((age >= 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -3139,7 +3307,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((age < 15 || age > 24 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "((age < 15 || age > 24 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)))) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -3196,7 +3364,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -3246,34 +3414,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Please add any other medications the patient is taking",
-              "type": "obsGroup",
-              "questionOptions": {
-                "concept": "a8a072c8-1350-11df-a1f1-0026b9348838",
-                "rendering": "repeating"
-              },
-              "questions": [
-                {
-                  "label": "Other drugs:",
-                  "questionOptions": {
-                    "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
-                    "rendering": "drug"
-                  },
-                  "type": "obs",
-                  "validators": [],
-                  "id": "__Hr8tGxvpo",
-                  "hide": {
-                    "hideWhenExpression": "(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-                  }
-                }
-              ],
-              "id": "__9LIF7xMpv",
-              "hide": {
-                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\") || (hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -3730,6 +3871,33 @@
               }
             },
             {
+              "label": "Please add any other medications the patient is taking",
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "a8a072c8-1350-11df-a1f1-0026b9348838",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Other drugs:",
+                  "questionOptions": {
+                    "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "drug"
+                  },
+                  "type": "obs",
+                  "validators": [],
+                  "id": "otherMedsCurr",
+                  "hide": {
+                    "hideWhenExpression": "(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                  }
+                }
+              ],
+              "id": "otherMedsGroup",
+              "hide": {
+                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
               "label": "Dispense condom today?",
               "id": "disCondom",
               "questionOptions": {
@@ -4085,34 +4253,8 @@
               "id": "adultImmun",
               "hide": {
                 "hideWhenExpression": "(((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || ((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')) || (age < 15)) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "type": "obsGroup",
-              "label": "Additional medication orders",
-              "questionOptions": {
-                "rendering": "repeating",
-                "concept": "a8a0654e-1350-11df-a1f1-0026b9348838"
               },
-              "questions": [
-                {
-                  "label": "Drug",
-                  "questionOptions": {
-                    "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
-                    "rendering": "drug"
-                  },
-                  "type": "obs",
-                  "validators": [],
-                  "id": "__9uCnvzyoI",
-                  "hide": {
-                    "hideWhenExpression": "(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-                  }
-                }
-              ],
-              "id": "__uKyEKyzLv",
-              "hide": {
-                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
+              "required": "true"
             },
             {
               "label": "Have you been vaccinated for HPV?",
@@ -4135,7 +4277,7 @@
               "validators": [],
               "id": "hpvVaccine",
               "hide": {
-                "hideWhenExpression": "(sex !== 'F' || age < 9 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "sex !== \"F\" || age < 15 || age > 24 || !((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === \"a896f3a6-1350-11df-a1f1-0026b9348838\") || !arrayContains([\"a89b2dcc-1350-11df-a1f1-0026b9348838\"], adultImmun) || hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\""
               }
             },
             {
@@ -4168,7 +4310,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(sex !== 'F' || age < 9 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!arrayContains([\"a89b2dcc-1350-11df-a1f1-0026b9348838\"], adultImmun) || ((sex !== 'F' || age < 9 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4192,7 +4334,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(sex !== 'F' || age < 9 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!arrayContains([\"a89b2dcc-1350-11df-a1f1-0026b9348838\"], adultImmun) || ((sex !== 'F' || age < 9 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4231,7 +4373,7 @@
               "id": "reasonVaccine",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(age >= 15 || sex !== 'F' || age < 9 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b42e-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "sex !== \"F\" || age < 15 || age > 24 || !((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === \"a896f3a6-1350-11df-a1f1-0026b9348838\") || !arrayContains([\"a89b2dcc-1350-11df-a1f1-0026b9348838\"], adultImmun) || hpvVaccine !== \"a899b42e-1350-11df-a1f1-0026b9348838\" || hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\""
               }
             },
             {
@@ -4254,7 +4396,7 @@
               "validators": [],
               "id": "readyVaccine",
               "hide": {
-                "hideWhenExpression": "(age >= 15 || sex !== 'F' || age < 9 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b42e-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "sex !== \"F\" || age < 15 || age > 24 || !((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === \"a896f3a6-1350-11df-a1f1-0026b9348838\") || !arrayContains([\"a89b2dcc-1350-11df-a1f1-0026b9348838\"], adultImmun) || hpvVaccine !== \"a899b42e-1350-11df-a1f1-0026b9348838\" || hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\""
               }
             },
             {
@@ -4277,7 +4419,7 @@
               "validators": [],
               "id": "infoSource",
               "hide": {
-                "hideWhenExpression": "(sex !== 'F' || age < 9 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!arrayContains([\"a89b2dcc-1350-11df-a1f1-0026b9348838\"], adultImmun) || ((sex !== 'F' || age < 9 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hpvVaccine !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             }
           ],
@@ -4324,31 +4466,9 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(age < 15 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Are you currently attending school?",
-              "id": "youthSchoolAttendance",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "67301b7e-6c84-4455-8de6-b8f6dfdc5f56",
-                "rendering": "select",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
+                "hideWhenExpression": "age > 24 || !((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === \"a896f3a6-1350-11df-a1f1-0026b9348838\") || hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" || (age < 15 && hivVisitType !== \"a8a4812e-1350-11df-a1f1-0026b9348838\")"
               },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "(age < 15 || age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
+              "historicalExpression": "_.isEmpty(HD.getObject(\"prevEnc\").getValue(\"a898c01e-1350-11df-a1f1-0026b9348838\")) ? undefined : HD.getObject(\"prevEnc\").getValue(\"a898c01e-1350-11df-a1f1-0026b9348838\")"
             },
             {
               "label": "Has the child been assessed for child protection services?",
@@ -4494,10 +4614,6 @@
                   {
                     "concept": "729690d4-09dc-497e-a180-bfc2e9d7d21d",
                     "label": "Vulnerable population"
-                  },
-                  {
-                    "concept": "8b0fa615-39c7-40ba-ad06-579ae540c6a5",
-                    "label": "Priority population"
                   }
                 ]
               },
@@ -4604,7 +4720,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+                "hideWhenExpression": "age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
               }
             },
             {
@@ -4628,7 +4744,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+                "hideWhenExpression": "age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
               }
             },
             {
@@ -4652,7 +4768,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
+                "hideWhenExpression": "age > 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
               }
             },
             {
@@ -4675,7 +4791,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
+                "hideWhenExpression": "age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4698,7 +4814,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
+                "hideWhenExpression": "age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4721,7 +4837,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
+                "hideWhenExpression": "age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4744,7 +4860,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age < 15 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
+                "hideWhenExpression": "age < 25 || ((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))"
               }
             },
             {
@@ -4771,7 +4887,7 @@
               "label": "Mother deceased:",
               "required": "true",
               "id": "motherDeceased",
-              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a0b670-1350-11df-a1f1-0026b9348838')",
+              "historicalExpression": "_.isEmpty(HD.getObject(\"prevEnc\").getValue(\"a8a0b670-1350-11df-a1f1-0026b9348838\")) ? undefined : HD.getObject(\"prevEnc\").getValue(\"a8a0b670-1350-11df-a1f1-0026b9348838\")",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -4793,14 +4909,14 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age >= 18 || !((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === \"a896f3a6-1350-11df-a1f1-0026b9348838\") || (hivVisitType !== \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" && hivVisitType !== \"a8a4812e-1350-11df-a1f1-0026b9348838\" && transferInVisit !== \"a899b35c-1350-11df-a1f1-0026b9348838\") || hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\""
               }
             },
             {
               "label": "Father deceased:",
               "required": "true",
               "id": "fatherDeceased",
-              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a0b788-1350-11df-a1f1-0026b9348838')",
+              "historicalExpression": "_.isEmpty(HD.getObject(\"prevEnc\").getValue(\"a8a0b788-1350-11df-a1f1-0026b9348838\")) ? undefined : HD.getObject(\"prevEnc\").getValue(\"a8a0b788-1350-11df-a1f1-0026b9348838\")",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -4822,7 +4938,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age >= 18 || !((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === \"a896f3a6-1350-11df-a1f1-0026b9348838\") || (hivVisitType !== \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" && hivVisitType !== \"a8a4812e-1350-11df-a1f1-0026b9348838\" && transferInVisit !== \"a899b35c-1350-11df-a1f1-0026b9348838\") || hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\""
               }
             },
             {
@@ -4845,7 +4961,7 @@
               "type": "obs",
               "id": "__LouFGw8MD",
               "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age >= 18 || (motherDeceased !== 'a899b35c-1350-11df-a1f1-0026b9348838' && fatherDeceased !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838') || hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
               }
             },
             {
@@ -5226,7 +5342,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age > 5 || hivVisitType !== \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" || motherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\""
               }
             },
             {
@@ -5260,7 +5376,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "age > 5 || hivVisitType !== \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" || motherDeceased === \"a899b35c-1350-11df-a1f1-0026b9348838\""
               }
             },
             {
@@ -5274,7 +5390,7 @@
                 "max": "100"
               },
               "hide": {
-                "hideWhenExpression": "(age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age > 2 || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -5288,7 +5404,7 @@
                 "max": "100"
               },
               "hide": {
-                "hideWhenExpression": "(age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age > 2 || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -5302,7 +5418,7 @@
                 "max": "5"
               },
               "hide": {
-                "hideWhenExpression": "(age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age > 2 || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -5324,21 +5440,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Apgar Score:",
-              "type": "obs",
-              "id": "babyApgarScore1Min",
-              "questionOptions": {
-                "concept": "4b98ce38-77d9-488b-8b59-251811e244a4",
-                "rendering": "number",
-                "min": "0",
-                "max": "10"
-              },
-              "hide": {
-                "hideWhenExpression": "(age > 2 || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age > 2 || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -5377,11 +5479,28 @@
                     "concept": "23bc3a90-d698-4af5-a1d1-77f584a44cd9",
                     "label": "Feeding problems",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838' || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(!(age <=5) || visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "Other (Specify)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "otherNeonatal",
+              "hide": {
+                "hideWhenExpression": "(isEmpty(specifyNeonatal) || !arrayContainsAny(specifyNeonatal, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))"
               }
             },
             {
@@ -5407,7 +5526,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!(age <=5) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -5461,7 +5580,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!(age <=5) || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!(age <=5) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -5480,7 +5599,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(modeFeeding !== \"a8aafc70-1350-11df-a1f1-0026b9348838\" || age > 5 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== \"a896f3a6-1350-11df-a1f1-0026b9348838\" || (hivVisitType !== \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" && transferInVisit !== \"a899b35c-1350-11df-a1f1-0026b9348838\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "modeFeeding !== \"a8aafc70-1350-11df-a1f1-0026b9348838\" || age > 5 || hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\""
               }
             },
             {
@@ -5491,28 +5610,6 @@
                 "concept": "a8a3345e-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
                 "answers": []
-              },
-              "hide": {
-                "hideWhenExpression": "((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (age > 2)) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Method of delivery:",
-              "type": "obs",
-              "id": "deliveryMethodPediatric",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
-                    "label": "SVD"
-                  },
-                  {
-                    "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
-                    "label": "CS"
-                  }
-                ]
               },
               "hide": {
                 "hideWhenExpression": "((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (age > 2)) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
@@ -5579,24 +5676,28 @@
                 "concept": "a89addfe-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
-                    "concept": "a89673f4-1350-11df-a1f1-0026b9348838",
-                    "label": "Lamivudine"
+                    "concept": "25dc9ae0-02ad-41f5-a458-c592f5d0f584",
+                    "label": "AZT"
                   },
                   {
-                    "concept": "a8967656-1350-11df-a1f1-0026b9348838",
-                    "label": "Nevirapine"
+                    "concept": "b8ebbdaf-986f-4c14-a5e7-ad3d3ba2bba2",
+                    "label": "NVP"
                   },
                   {
-                    "concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
-                    "label": "Zidovudine"
+                    "concept": "644f1d3a-1c22-433a-a437-0fb4110721ce",
+                    "label": "pDTG 10mg"
                   },
                   {
-                    "concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
-                    "label": "Lopinavir and ritonavir"
+                    "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
+                    "label": "ABC120mg/3TC60mg"
                   },
                   {
-                    "concept": "a8967980-1350-11df-a1f1-0026b9348838",
-                    "label": "Nelfinavir"
+                    "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
+                    "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
+                  },
+                  {
+                    "concept": "20185c04-9334-11df-8193-000d6014b64c",
+                    "label": "3TC30mg/NVP50mg/ZDV60mg"
                   }
                 ],
                 "rendering": "multiCheckbox"
@@ -5671,7 +5772,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "(age >= 24 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -5719,156 +5820,6 @@
               },
               "hide": {
                 "hideWhenExpression": "((age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || age < 12 || (age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Does caregiver have problems getting child to take the medicines? (Yes=1 , No= 0)",
-              "id": "caregiverProb",
-              "questionOptions": {
-                "concept": "286c7414-65d1-4f02-bb1b-7999defed9d1",
-                "rendering": "number",
-                "max": "1",
-                "min": "0"
-              },
-              "type": "obs",
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide pediatric adherence history."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Did the child miss at least a dose in the last 7 days? (Yes=1 , No= 0)",
-              "type": "obs",
-              "id": "doseMissed",
-              "questionOptions": {
-                "concept": "acc9eb87-37c7-4d02-a134-fdda9c2de74c",
-                "rendering": "number",
-                "max": "1",
-                "min": "0"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide pediatric adherence history."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Did the child receive a dose more than 1 hr late in the last 7 days? (Yes=1 , No= 0)",
-              "type": "obs",
-              "id": "doseRecieve",
-              "questionOptions": {
-                "concept": "af01544e-9712-4a10-97ac-344058795a74",
-                "rendering": "number",
-                "max": "1",
-                "min": "0"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide pediatric adherence history."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Which of the following are true of the caregiver? (Forget to give drugs=1, Not around to give drugs=1, Not wanting to give drugs around others=1, None=0)",
-              "id": "caregiverBarrier",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "dd10a27d-6945-47c4-ab43-63ccbad93960",
-                "rendering": "number",
-                "max": "1",
-                "min": "0"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide pediatric adherence history."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "ART Total Adherence Score",
-              "id": "totalArtScore",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "1df71a8d-9eb6-40fd-9b94-317629b35ade",
-                "rendering": "number",
-                "max": "4",
-                "min": "0",
-                "calculate": {
-                  "calculateExpression": "isNaN(parseInt(caregiverProb)+ parseInt(doseMissed)+ parseInt(doseRecieve)+ parseInt(caregiverBarrier)) ? undefined: (parseFloat(caregiverProb)+ parseFloat(doseMissed)+ parseFloat(doseRecieve)+ parseFloat(caregiverBarrier))"
-                }
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Adherence assessment:",
-              "id": "adhereAss",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "47c2e943-e6be-48ce-b0fb-3e0730957698",
-                "answers": [
-                  {
-                    "concept": "5b1bf823-da30-4e23-a777-0d8ef93a6211",
-                    "label": "Perfect"
-                  },
-                  {
-                    "concept": "a73d20b3-d721-4763-a362-14a0c41a6b5e",
-                    "label": "Fair"
-                  },
-                  {
-                    "concept": "fdaf8b47-ea14-4d28-80fa-e1da58a30e8b",
-                    "label": "Poor"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "age < 15 && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
-                  "message": "Patient on ARVs. Please provide pediatric adherence history."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "(age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Adherence (ART) notes:",
-              "isExpanded": "true",
-              "id": "artAdherenotes",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "d9390b4c-11c5-4005-822e-d72dea27ba7f",
-                "rendering": "textarea",
-                "rows": 5
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "(hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || (onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838') || (age >= 15 || (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (hivVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             }
           ],
@@ -6480,7 +6431,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "((age < 15 || sex !=='M' || visitTo === 'a8a8b0b4-1350-11df-a1f1-0026b9348838') || isEmpty(hasLMP) || hasLMP !== \"a8ad2b4e-1350-11df-a1f1-0026b9348838\") || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "((age < 15 || sex !=='M') || isEmpty(hasLMP) || hasLMP !== \"a8ad2b4e-1350-11df-a1f1-0026b9348838\") || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
             },
             {
@@ -7623,6 +7574,76 @@
               }
             },
             {
+              "label": "Nutrition diagnosis:",
+              "id": "nutritionStatus",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "label": "Overweight"
+                  },
+                  {
+                    "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
+                    "label": "Obese"
+                  },
+                  {
+                    "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+                    "label": "Severe acute malnutrition"
+                  },
+                  {
+                    "concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
+                    "label": "Moderate  acute malnutrition"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "Nutrition intervention:",
+              "id": "nutritionIntervention",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "42c0032e-e404-4e64-9564-06cc1473d5d0",
+                    "label": "Nutrition counselling"
+                  },
+                  {
+                    "concept": "a8a488d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Supplememntary feeding program"
+                  },
+                  {
+                    "concept": "55f41f90-5650-4292-8fb2-8c1eadd95cb1",
+                    "label": "Outpatient therapeutic program"
+                  },
+                  {
+                    "concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Inpatient management"
+                  },
+                  {
+                    "concept": "c6b6915a-8bc0-4420-8d3b-ae6282b4be68",
+                    "label": "Weight management"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
               "label": "WHO staging:",
               "type": "obs",
               "id": "pedWhoStage",
@@ -7806,11 +7827,14 @@
                     "concept": "dc8eb4d5-8e3c-4c48-bec9-340cf125ff55",
                     "label": "Not Established"
                   }
-                ]
+                ],
+                "calculate": {
+                  "calculateExpression": "(opdHivStatus === \"a896f3a6-1350-11df-a1f1-0026b9348838\" && hivVisitType === \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" && transferInVisit === \"a899b42e-1350-11df-a1f1-0026b9348838\") ? \"dc8eb4d5-8e3c-4c48-bec9-340cf125ff55\" : undefined"
+                }
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(!((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === \"a896f3a6-1350-11df-a1f1-0026b9348838\" && (hivVisitType === \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" || hivVisitType === \"a8a4812e-1350-11df-a1f1-0026b9348838\"))"
               }
             },
             {
@@ -7834,7 +7858,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(!((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!(opdHivStatus === \"a896f3a6-1350-11df-a1f1-0026b9348838\" && establishCategory === \"8f2d9ee8-ad95-4f37-b81d-7eff531ad80b\" && (hivVisitType === \"a8a4812e-1350-11df-a1f1-0026b9348838\" || (hivVisitType === \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" && transferInVisit === \"a899b35c-1350-11df-a1f1-0026b9348838\")))"
               }
             },
             {
@@ -7864,7 +7888,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(!((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b' || deliveryModel !== 'd5e8c52f-7a38-44ed-a76a-bc771cc9b2ee') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!(opdHivStatus === \"a896f3a6-1350-11df-a1f1-0026b9348838\" && establishCategory === \"8f2d9ee8-ad95-4f37-b81d-7eff531ad80b\" && (hivVisitType === \"a8a4812e-1350-11df-a1f1-0026b9348838\" || (hivVisitType === \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" && transferInVisit === \"a899b35c-1350-11df-a1f1-0026b9348838\")) && deliveryModel === \"d5e8c52f-7a38-44ed-a76a-bc771cc9b2ee\")"
               }
             },
             {
@@ -7905,7 +7929,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "(!((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || establishCategory !== '8f2d9ee8-ad95-4f37-b81d-7eff531ad80b' || deliveryModel !== 'f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "!(opdHivStatus === \"a896f3a6-1350-11df-a1f1-0026b9348838\" && establishCategory === \"8f2d9ee8-ad95-4f37-b81d-7eff531ad80b\" && (hivVisitType === \"a8a4812e-1350-11df-a1f1-0026b9348838\" || (hivVisitType === \"ab202fa8-ad2b-487d-83f8-991f8fa109a1\" && transferInVisit === \"a899b35c-1350-11df-a1f1-0026b9348838\")) && deliveryModel === \"f930b22e-8b8e-4b8c-8d19-4c34a5d34a5e\")"
               }
             },
             {
@@ -7925,7 +7949,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(!((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || establishCategory !== 'dc8eb4d5-8e3c-4c48-bec9-340cf125ff55') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "true"
               }
             },
             {
@@ -7945,7 +7969,7 @@
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "(!((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838') || notEstablishedDeliveryModel !== 'd5e8c52f-7a38-44ed-a76a-bc771cc9b2ee') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                "hideWhenExpression": "true"
               }
             }
           ],
@@ -8547,76 +8571,6 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Nutrition diagnosis:",
-              "id": "nutritionStatus",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
-                "answers": [
-                  {
-                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Normal"
-                  },
-                  {
-                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
-                    "label": "Overweight"
-                  },
-                  {
-                    "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
-                    "label": "Obese"
-                  },
-                  {
-                    "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
-                    "label": "Severe acute malnutrition"
-                  },
-                  {
-                    "concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
-                    "label": "Moderate  acute malnutrition"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
-              "label": "Nutrition intervention:",
-              "id": "nutritionIntervention",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "42c0032e-e404-4e64-9564-06cc1473d5d0",
-                    "label": "Nutrition counselling"
-                  },
-                  {
-                    "concept": "a8a488d6-1350-11df-a1f1-0026b9348838",
-                    "label": "Supplememntary feeding program"
-                  },
-                  {
-                    "concept": "55f41f90-5650-4292-8fb2-8c1eadd95cb1",
-                    "label": "Outpatient therapeutic program"
-                  },
-                  {
-                    "concept": "a8a8b0b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Inpatient management"
-                  },
-                  {
-                    "concept": "c6b6915a-8bc0-4420-8d3b-ae6282b4be68",
-                    "label": "Weight management"
-                  }
-                ]
-              },
-              "type": "obs",
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "(((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
-              }
-            },
-            {
               "required": "true",
               "id": "arvPlan",
               "label": "ART plan:",
@@ -8685,19 +8639,15 @@
                 "answers": [
                   {
                     "concept": "a8981934-1350-11df-a1f1-0026b9348838",
-                    "label": "Clinical treatment failure"
+                    "label": "confirmed treatment failure"
                   },
                   {
-                    "concept": "c6537e06-9fc2-47da-b679-e2a32824407f",
-                    "label": "Immunologic failure"
+                    "concept": "7a7c57c0-98fc-4bb3-bbbd-08f677c28db5",
+                    "label": "Drug drug interaction"
                   },
                   {
                     "concept": "a890d1ba-1350-11df-a1f1-0026b9348838",
                     "label": "Adverse drug reactions"
-                  },
-                  {
-                    "concept": "93fe19e8-fec4-4e4b-85f1-239e1fabd761",
-                    "label": "Virologic failure"
                   }
                 ],
                 "rendering": "select"
@@ -8706,7 +8656,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(arvPlan) && isEmpty(myValue) && arrayContains([''a89b7d36-1350-11df-a1f1-0026b9348838'], arvPlan)",
+                  "failsWhenExpression": "!isEmpty(arvPlan) && isEmpty(myValue) && arrayContains(['a89b7d36-1350-11df-a1f1-0026b9348838'], arvPlan)",
                   "message": "You indicated patient is stopping arvs, reason for stopping should be selected."
                 }
               ],
@@ -9607,14 +9557,6 @@
                     "label": "Start induction"
                   },
                   {
-                    "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
-                    "label": "Change to continuation"
-                  },
-                  {
-                    "concept": "a898c938-1350-11df-a1f1-0026b9348838",
-                    "label": "Re-dose"
-                  },
-                  {
                     "concept": "a8a00158-1350-11df-a1f1-0026b9348838",
                     "label": "Change regimen"
                   },
@@ -10049,11 +9991,7 @@
                   },
                   {
                     "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
-                    "label": "Change to consolidation"
-                  },
-                  {
-                    "concept": "c65f52d4-e37c-413e-98ea-33f969896b0f",
-                    "label": "Change to maintenance"
+                    "label": "Change regimen"
                   },
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
@@ -10552,6 +10490,18 @@
               }
             },
             {
+              "label": "Other (Specify)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "otherPjpPlan",
+              "hide": {
+                "hideWhenExpression": "(isEmpty(pjpStartDrug) || !arrayContainsAny(pjpStartDrug, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))"
+              }
+            },
+            {
               "label": "Toxoplasmosis treatment plan:",
               "type": "obs",
               "required": "true",
@@ -10643,6 +10593,18 @@
               ],
               "hide": {
                 "hideWhenExpression": "((toxoPlan !== 'a89b77aa-1350-11df-a1f1-0026b9348838')) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "label": "Other (Specify)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "otherToxo",
+              "hide": {
+                "hideWhenExpression": "(isEmpty(toxoStartDrug) || !arrayContainsAny(toxoStartDrug, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))"
               }
             }
           ],

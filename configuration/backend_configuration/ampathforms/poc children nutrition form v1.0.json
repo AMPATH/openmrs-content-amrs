@@ -1,6 +1,6 @@
 {
     "name": "POC Pediatric Nutrition Form v1.0",
-    "uuid": "",
+    "uuid": "98e7bf40-b788-45b2-abfe-fb274e696833",
     "published": true,
     "retired": false,
     "encounterType": "9ab77035-e1ac-4251-b55d-fdb5fa391272",
@@ -69,21 +69,7 @@
                             "hide": {
                                 "hideWhenExpression": "!(age >= 0 && age <=5)"
                             }
-                        },
-                        {
-                            "label": "Weight(kg):",
-                            "type": "obs",
-                            "id": "weightForBMI",
-                            "questionOptions": {
-                                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
-                                "rendering": "number",
-                                "max": "250",
-                                "min": "0"
-                            },
-                            "hide": {
-                                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
-                            }
-                        },
+                        }, 
                         {
                             "label": "Height(cm):",
                             "type": "obs",
@@ -99,21 +85,7 @@
                                 "hideWhenExpression": "!(age >= 0 && age <=5)"
                             }
                         },
-                        {
-                            "label": "Height(cm):",
-                            "type": "obs",
-                            "id": "heightForBMI",
-                            "questionOptions": {
-                                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
-                                "rendering": "number",
-                                "max": "272",
-                                "min": "10"
-                            },
-                            "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
-                            "hide": {
-                                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
-                            }
-                        },
+                      
                         {
                             "label": "MUAC:",
                             "type": "obs",
@@ -135,10 +107,8 @@
                                 "rendering": "number",
                                 "concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c",
                                 "max": "4",
-                                "min": "-4",
-                                "calculate": {
-                                    "calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
-                                }
+                                "min": "-4"
+                                
                             },
                             "type": "obs",
                             "validators": [],

@@ -221,7 +221,6 @@
                     "concept": "20185c04-9334-11df-8193-000d6014b64c",
                     "label": "3TC30mg/NVP50mg/ZDV60mg"
                   },
-
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
@@ -254,7 +253,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "arvProphy !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(arvProphy) || !arrayContains(arvProphy, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
               },
               "id": "__rFtzx20yt"
             },
@@ -272,10 +271,10 @@
                     "label": "No"
                   }
                 ],
-                "rendering": "select",
-                "type": "obs"
+                "rendering": "select"
               },
-              "id": "__MFzzrMDHG"
+              "id": "__MFzzrMDHG",
+              "type": "obs"
             },
             {
               "label": "History of TB contact in household:",
@@ -291,8 +290,7 @@
                     "label": "No"
                   }
                 ],
-                "rendering": "select",
-                "type": "obs"
+                "rendering": "select"
               },
               "validators": [
                 {
@@ -304,7 +302,8 @@
               "hide": {
                 "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               },
-              "id": "__qu2G7MnML"
+              "id": "__qu2G7MnML",
+              "type": "obs"
             }
           ]
         }
@@ -770,7 +769,6 @@
                         "concept": "22b92c90-026c-469c-9e63-786ecc1cd2fc",
                         "label": "Rotavirus"
                       },
-                      
                       {
                         "concept": "8ce0c11b-26d8-4341-b381-5ec8ce1c4719",
                         "label": "Measles/Rubella"
@@ -791,7 +789,6 @@
                         "concept": "a8a48430-1350-11df-a1f1-0026b9348838",
                         "label": "Vitamin A"
                       },
-                      
                       {
                         "concept": "ac915c6a-aae9-4fda-b189-e3297e64ba90",
                         "label": "Hepatitis B Immunoglobulins"
@@ -1111,7 +1108,6 @@
                     "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
                     "label": "On TB treatment"
                   }
-                  
                 ],
                 "rendering": "select"
               },
@@ -1177,7 +1173,6 @@
                     "concept": "20185c04-9334-11df-8193-000d6014b64c",
                     "label": "3TC30mg/NVP50mg/ZDV60mg"
                   },
-
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
@@ -1219,13 +1214,13 @@
               "label": "Other drugs:",
               "questionOptions": {
                 "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
-                "answer": [
+                "rendering": "drug",
+                "answers": [
                   {
                     "concept": "97e96449-ff7d-44eb-993e-c79911fe1c78",
                     "label": "Multivitamin syrup"
                   }
-                ],
-                "rendering": "drug"
+                ]
               },
               "type": "obs",
               "validators": [],
@@ -1243,20 +1238,14 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "History Presenting Illness, Notes",
-              "isExpanded": "true",
-              "questions": [
-                {
-                  "label": "History of presenting illness:",
-                  "type": "obs",
-                  "id": "hpiText",
-                  "questionOptions": {
-                    "concept": "48645b9f-b8d2-4441-a36c-f56464dac39d",
-                    "rendering": "textarea",
-                    "rows": 10
-                  }
-                }
-              ]
+              "label": "History of presenting illness:",
+              "type": "obs",
+              "id": "hpiText",
+              "questionOptions": {
+                "concept": "48645b9f-b8d2-4441-a36c-f56464dac39d",
+                "rendering": "textarea",
+                "rows": 10
+              }
             }
           ]
         },
@@ -1631,6 +1620,9 @@
       "label": "HEI Outcomes",
       "sections": [
         {
+          "label": "Diagnosis",
+          "questions": [
+            {
               "label": "Primary diagnosis:",
               "required": "true",
               "id": "finalDiagnosisId",
@@ -1647,7 +1639,9 @@
                   }
                 }
               }
-            },
+            }
+          ]
+        },
         {
           "label": "HEI Outcomes",
           "isExpanded": "true",
@@ -1803,7 +1797,15 @@
               "questionOptions": {
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
                 "rendering": "date",
-                "weeksList": [15, 30, 45, 60, 90, 120, 180]
+                "weeksList": [
+                  15,
+                  30,
+                  45,
+                  60,
+                  90,
+                  120,
+                  180
+                ]
               },
               "validators": [
                 {
