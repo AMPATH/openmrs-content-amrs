@@ -83,28 +83,8 @@
                     "label": "Not applicable"
                   },
                   {
-                    "concept": "a8a09e92-1350-11df-a1f1-0026b9348838",
-                    "label": "Police officer"
-                  },
-                  {
-                    "concept": "a8a09d0c-1350-11df-a1f1-0026b9348838",
-                    "label": "Teacher"
-                  },
-                  {
                     "concept": "a8a09b90-1350-11df-a1f1-0026b9348838",
                     "label": "Casual worker"
-                  },
-                  {
-                    "concept": "a8a09dca-1350-11df-a1f1-0026b9348838",
-                    "label": "Housewife"
-                  },
-                  {
-                    "concept": "a8a09c4e-1350-11df-a1f1-0026b9348838",
-                    "label": "Farmer"
-                  },
-                  {
-                    "concept": "a8a09f50-1350-11df-a1f1-0026b9348838",
-                    "label": "Unemployed"
                   },
                   {
                     "concept": "a89ff438-1350-11df-a1f1-0026b9348838",
@@ -115,56 +95,16 @@
                     "label": "Health care provider"
                   },
                   {
-                    "concept": "a8b03294-1350-11df-a1f1-0026b9348838",
-                    "label": "Self employed"
-                  },
-                  {
-                    "concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
-                    "label": "Truck driver"
-                  },
-                  {
-                    "concept": "0ac89086-4751-4db8-96c5-cd62152d66ad",
-                    "label": "Fishing"
-                  },
-                  {
-                    "concept": "49c8583d-baa0-4b80-a719-8c5609129c15",
-                    "label": "Formal employment"
-                  },
-                  {
                     "concept": "529a8c73-617d-4aee-ac0c-5c22f38f4265",
                     "label": "Civil servant"
-                  },
-                  {
-                    "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
-                    "label": "Consultant"
-                  },
-                  {
-                    "concept": "a89d1c68-1350-11df-a1f1-0026b9348838",
-                    "label": "Clinician"
-                  },
-                  {
-                    "concept": "a8b02f92-1350-11df-a1f1-0026b9348838",
-                    "label": "Nurse"
                   },
                   {
                     "concept": "05b4c838-a185-4bb0-8c33-71f80ea7c4cf",
                     "label": "Student"
                   },
                   {
-                    "concept": "e77a5de0-22d7-424e-978d-d3464d4170aa",
-                    "label": "Laboratory technologist"
-                  },
-                  {
                     "concept": "3164799f-637a-45e7-82cf-19954710d0e8",
                     "label": "Cleaner"
-                  },
-                  {
-                    "concept": "45de16c7-9f55-42c0-86ce-36ed6192842b",
-                    "label": "VCT  center counsellor"
-                  },
-                  {
-                    "concept": "7764a54b-3e5d-4c8a-b64b-4ed21ba217b0",
-                    "label": "Other health worker"
                   },
                   {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
@@ -213,7 +153,7 @@
               "id": "repDate",
               "questionOptions": {
                 "concept": "b5e7a5c6-9ff3-4856-acd1-280a4c058516",
-                "rendering": "datetime"
+                "rendering": "date"
               },
               "validators": [
                 {
@@ -260,23 +200,16 @@
                 "answers": [
                   {
                     "concept": "a8933af4-1350-11df-a1f1-0026b9348838",
-                    "label": "Sexual assault/rape"
-                  },
-                  {
-                    "concept": "a8aa96b8-1350-11df-a1f1-0026b9348838",
-                    "label": "Sexual intercourse with partner"
-                  },
-                  {
-                    "concept": "a89fc8be-1350-11df-a1f1-0026b9348838",
-                    "label": "Physical assault"
+                    "label": "Sexual exposure"
                   },
                   {
                     "concept": "803b8da3-b200-4a6c-a682-979fd6478611",
                     "label": "Occupational(work related)"
                   },
                   {
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                    "label": "Other exposure"
+                    
+                    "concept": "fb028d19-4e92-476f-ab69-4af293669ed4",
+                    "label": "Non occupational exposure"
                   }
                 ]
               },
@@ -311,64 +244,138 @@
             },
             {
               "type": "obsGroup",
-              "label": "Percutaneous",
+              "label": "Occupational exposure",
               "questionOptions": {
                 "concept": "037d8329-5580-4b91-be2d-d0546d61f762",
                 "rendering": "group"
               },
               "questions": [
                 {
-                  "label": "Percutaneous:",
+                  "label": "Occupational exposure:",
                   "id": "typePercutaneous",
                   "questionOptions": {
                     "rendering": "select",
+                    
                     "concept": "315195e6-e9b9-4c34-91b3-77a96f2b9394",
                     "answers": [
                       {
-                        "concept": "a4e2f776-5fc9-449a-b239-b7095eea7ff3",
-                        "label": "Needle stick hollow bore"
-                      },
-                      {
+                     
                         "concept": "f0b04dbb-e297-49bb-b728-0d92167a0ef0",
-                        "label": "Needle stick solid bore"
+                        "label": "Needle Stick"
                       },
                       {
-                        "concept": "a890d9bc-1350-11df-a1f1-0026b9348838",
-                        "label": "Laceration"
-                      },
-                      {
-                        "concept": "a8933d7e-1350-11df-a1f1-0026b9348838",
-                        "label": "Human bite with broken skin"
-                      },
-                      {
-                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                        "label": "Other"
+                       
+                        "concept": "02bf8702-4b2c-4833-a92a-6d5226e88230",
+                        "label": "Body Fluids"
                       }
                     ]
                   },
                   "type": "obs",
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+                    "hideWhenExpression": "pepVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || methodExposure !== '803b8da3-b200-4a6c-a682-979fd6478611'"
                   }
                 },
                 {
-                  "label": "Other(specify):",
+                  "label": "Type of Body fluids:",
+                  "id": "typeBodyFluids",
                   "type": "obs",
                   "questionOptions": {
-                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-                    "rendering": "text"
+                    "rendering": "select",
+                   
+                    "concept": "f10e249e-2061-43e8-ba9c-fa1eb64528e7",
+                    "answers": [
+                      {
+                        "concept": "c7be8a4a-0ad3-442e-9355-eb481a23c0a6",
+                        "label": "Blood"
+                      },
+                      {
+                        "concept": "b788f6e0-f99f-45d9-8004-844609aacaae",
+                        "label": "Saliva"
+                      },
+                      {
+                        "concept": "91940950-8a78-405c-9fcb-8f417b84c856",
+                        "label": "Amniotic Fluid"
+                      },
+                      {
+                      
+                        "concept": "a8af80d8-1350-11df-a1f1-0026b9348838",
+                        "label": "CSF"
+                      },
+                      {
+                        "concept": "aef51bd0-9c85-4ca0-b0f3-55759e0622e5",
+                        "label": "Urine"
+                      },
+                      {
+                       
+                        "concept": "443B0843-C9BE-449E-A3CD-F857D7CFAE88",
+                        "label": "Semen"
+                      },
+                      {
+                        
+                        "concept": "37223098-533C-4228-85F7-6A4A15A954FA",
+                        "label": "Synovial fluids"
+                      },
+                      {
+                      
+                        "concept": "2d32b444-0c88-4452-b16c-4fe8079189f1",
+                        "label": "Blood culture"
+                      },
+                      {
+                        
+                        "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
+                        "label": "Vaginal secretions"
+                      },
+                      {
+                        
+                        "concept": "76a773cb-271e-41a4-9ada-6942eeef9d92",
+                        "label": "Blood stained fluids"
+                      },
+                      {
+                        
+                        "concept": "a89ddbf8-1350-11df-a1f1-0026b9348838",
+                        "label": "Pericardial/pleural membrane fluid"
+                      },
+                      {
+                        
+                        "concept": "a8b0281c-1350-11df-a1f1-0026b9348838",
+                        "label": "HIV cultures"
+                      }
+                    ]
                   },
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (typePercutaneous !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
-                  },
-                  "id": "__FIrn5yEHx"
+                    "hideWhenExpression": "pepVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || methodExposure !== '803b8da3-b200-4a6c-a682-979fd6478611' || typePercutaneous !== '315195e6-e9b9-4c34-91b3-77a96f2b9394'"
+                  }
                 }
               ],
               "id": "__ozrE7LyHv",
               "hide": {
-                "hideWhenExpression": "!(pepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+                "hideWhenExpression": "pepVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || methodExposure !== '803b8da3-b200-4a6c-a682-979fd6478611'"
+              }
+            },
+            {
+              "label": "Non-occupational exposure:",
+              "id": "nonOccupationalExposure",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+              
+                "concept": "315195e6-e9b9-4c34-91b3-77a96f2b9394",
+                "answers": [
+                  {
+                    "concept": "a89fc8be-1350-11df-a1f1-0026b9348838",
+                    "label": "Physical Assault"
+                  },
+                  {
+                    "concept": "a89349cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Sharing contaminated injection equipment"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "pepVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || methodExposure !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
               }
             }
           ],
@@ -495,6 +502,29 @@
       "label": "Plan",
       "sections": [
         {
+          "label": "Diagnosis",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Primary diagnosis:",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
           "label": "Recommendations",
           "isExpanded": "true",
           "questions": [
@@ -544,6 +574,22 @@
           }
         },
         {
+          "label": "Lab Orders",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "pepLabOrders",
+              "label": "Lab Order",
+              "type": "control",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Lab order",
+                "workspaceName": "add-lab-order"
+              }
+            }
+          ]
+        },
+        {
           "label": "Referrals",
           "isExpanded": "true",
           "questions": [
@@ -564,6 +610,10 @@
                       {
                         "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                         "label": "None"
+                      },
+                      {
+                        "concept": "a8a8b26c-1350-11df-a1f1-0026b9348838",
+                        "label": "TB/DOT program"
                       },
                       {
                         "concept": "355b199f-c9c7-4e91-831f-2be17d2c67bd",
@@ -589,10 +639,7 @@
                     "rendering": "multiCheckbox"
                   },
                   "type": "obs",
-                  "validators": [],
-                  "hide": {
-                    "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
-                  }
+                  "validators": []
                 },
                 {
                   "label": "Patient referred to other, (specify):",
@@ -602,20 +649,75 @@
                   },
                   "type": "obs",
                   "validators": [],
+                  "id": "referOther",
                   "hide": {
-                    "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!arrayContains(patientReferrals, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))"
-                  },
-                  "id": "referOther"
+                    "hideWhenExpression": "!arrayContains(patientReferrals, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+                  }
                 }
               ],
-              "id": "__rJnJGnGJE",
+              "id": "__rJnJGnGJE"
+            }
+          ]
+        },
+        {
+          "label": "PEP Outcome",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "PEP Outcome:",
+              "id": "pepOutcome",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "342b69d7-a0d5-4341-9ed6-bad88eb50b7a",
+                "answers": [
+                  {
+                    "label": "Completed",
+                    "concept": "a89c1ef8-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Not Completed",
+                    "concept": "Ta899ea48-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
               "hide": {
-                "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "pepVisitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Reasons for not completing PEP:",
+              "id": "pepNonCompletionReasons",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "53240859-e84f-417d-867a-7b40b45a9624",
+                "answers": [
+                  {
+                    "label": "Side effects",
+                    "concept": "a89eb8c0-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Lost Pills",
+                    "concept": "a8af4cee-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Forgot",
+                    "concept": "a89eacc2-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Self-discontinuation",
+                    "concept": "6daff4ce-bce7-41f5-9141-17e694155180"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "pepVisitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838' || pepOutcome !== 'a899ea48-1350-11df-a1f1-0026b9348838'"
               }
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(pepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+            "hideWhenExpression": "pepVisitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838'"
           }
         },
         {

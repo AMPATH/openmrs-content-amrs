@@ -155,7 +155,7 @@
                   },
                   {
                     "concept": "95845475-c298-4e86-9560-736634965427",
-                    "label": "Other Women"
+                    "label": "Other women"
                   },
                   {
                     "concept": "501731a2-f8ca-4bfe-b86b-3bce455e2e52",
@@ -295,35 +295,7 @@
                 }
               ]
             },
-            {
-              "label": "PrEP type at source facility:",
-              "id": "prepMethodMaleStudy",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
-                "answers": [
-                  {
-                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
-                    "label": "Daily oral prep"
-                  },
-                  {
-                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "CABOTEGRAVIR (CAB-LA)"
-                  }
-                ]
-              },
-              "type": "obs",
-              "hide": {
-                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M') && visitTypeUuid === '9ea74334-1e1c-4071-81ef-70a919aafa50')"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M') && visitTypeUuid === '9ea74334-1e1c-4071-81ef-70a919aafa50') && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
+           
             {
               "label": "PrEP type at source facility:",
               "id": "prepMethodMale",
@@ -341,7 +313,7 @@
                   },
                   {
                     "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "CABOTEGRAVIR (CAB-LA)"
+                    "label": "Cabotegravir (CAB-LA)"
                   },
                   {
                     "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
@@ -351,12 +323,12 @@
               },
               "type": "obs",
               "hide": {
-                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M') && visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50')"
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M') && visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50') && isEmpty(myValue)",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M')) && isEmpty(myValue)",
                   "message": "This field is required."
                 }
               ]
@@ -374,7 +346,7 @@
                   },
                   {
                     "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "CABOTEGRAVIR (CAB-LA)"
+                    "label": "Cabotegravir (CAB-LA)"
                   },
                   {
                     "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
@@ -421,12 +393,12 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && visitTypeUuid === '9ea74334-1e1c-4071-81ef-70a919aafa50' && prepMethodMaleStudy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'M') && visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))"
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && visitTypeUuid === '9ea74334-1e1c-4071-81ef-70a919aafa50' && prepMethodMaleStudy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'M') && visitTypeUuid !== '9ea74334-1e1c-4071-81ef-70a919aafa50' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && isEmpty(myValue)",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && isEmpty(myValue)",
                   "message": "This field is required."
                 }
               ]
@@ -1487,7 +1459,7 @@
                 "answers": [
                   {
                     "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "CABOTEGRAVIR (CAB-LA)"
+                    "label": "Cabotegravir (CAB-LA)"
                   },
                   {
                     "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
