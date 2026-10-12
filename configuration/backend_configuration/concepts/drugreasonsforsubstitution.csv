@@ -1,0 +1,6 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units
+89d1a103-a154-4f73-b6bf-6a2822f55946,,CIEL:167862,SubstanceAdminSubstitutionReason,,,,,,REF: http://terminology.hl7.org/ValueSet/v3-SubstanceAdminSubstitutionReason,,,ConvSet,N/A,,
+6f73cd30-cf73-4609-ba03-6886f2b9589f,,CIEL:163057;SNOMED CT:266714009;HL7-SubstanceAdminSubstitutionReason:CT,Continue previous treatment,,,,,,,,,Misc,N/A,,
+5e68cc12-b8bd-4ce8-8b46-5b865122bc74,,CIEL:167860;HL7-SubstanceAdminSubstitutionReason:FP,Formulary policy,,,,,,"Reason for decision. For substitution, indicates that the decision to substitute or to not substitute was driven by a policy expressed within the formulary.",,,Misc,N/A,,
+2186c6e3-d454-4dfa-9f53-bb776ce9b968,,CIEL:165183;SNOMED CT:419182006;HL7-SubstanceAdminSubstitutionReason:OS,Supplies not available,,,Out of stock,,,,,,Misc,N/A,,
+a32df6f6-22ee-4e6f-bfde-0a968d455362,,"CIEL:167861;HL7-SubstanceAdminSubstitutionReason:RR",Regulatory requirement,,,,,,"Reason for decision. For substitution, indicates that the decision to substitute or to not substitute was driven by a jurisdictional regulatory requirement mandating or prohibiting substitution.",,,Misc,N/A,,
