@@ -1,0 +1,13 @@
+Uuid,Void/Retire,Name,Description,_order:1000
+52d3506d-d0ad-41f5-9ba1-73e664539948,,Dental,Procedures related to oral health teeth and dental care.,
+092d7750-ed76-4020-a323-82849f7fffdd,,Diagnostic,Procedures performed to identify evaluate or monitor a medical condition.,
+e9e5883e-2778-4094-9121-d68327172117,,Emergency,Urgent or life-saving procedures performed in emergency situations.,
+40636093-c0fb-4bad-82b2-14245523f9f4,,Imaging,Procedures that generate medical images for diagnosis or monitoring.,
+9a1ddf67-312b-4c2f-ba69-1896f5c436bf,,Laboratory,Procedures involving specimen collection testing or laboratory analysis.,
+3e25e389-4ae4-4b1c-b195-f83d5a89775f,,Nursing,Routine clinical care procedures commonly performed by nursing or bedside staff.,
+f1e746d5-715a-4ba3-be43-d62fc5646acc,,Obstetric,Procedures related to pregnancy childbirth and reproductive health.,
+4dd68e3c-55a4-4d0e-978f-490188ca80d7,,Other,Procedures that do not fit into the available categories.,
+0e2ad33e-65e6-42c2-aff9-9ac714428c76,,Referral,Procedures or services performed outside the current facility or by external providers.,
+b9df1518-1a29-4e68-ae1f-3a81bd2f495e,,Surgical,Invasive or operative procedures performed to treat or correct a condition.,
+a6475dec-7435-4345-b3df-fe3fab9dc76c,,Therapeutic,Procedures performed to treat manage or improve a patient's condition.,
+ce42cea2-7d09-4c67-a055-4102d755abe4,,Vaccination,Procedures involving the administration of vaccines or immunizations.,
