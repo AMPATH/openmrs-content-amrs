@@ -1,0 +1,1484 @@
+{
+  "name": "POC Maternal and Perinatal Death Notification Form v1.0",
+  "processor": "EncounterFormProcessor",
+  "uuid": "c1f64da6-7664-47ea-9981-131aea856f92",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Visit Details",
+      "sections": [
+        {
+          "label": "Encounter Details:",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Encounter Date:",
+              "required": "true",
+              "type": "encounterDatetime",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encDate"
+            },
+            {
+              "label": "Encounter Provider:",
+              "required": "true",
+              "type": "encounterProvider",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Encounter Location:",
+              "required": "true",
+              "type": "encounterLocation",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLoc"
+            }
+          ]
+        },
+        {
+          "label": "Death(s) Being Reported",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "This form is reporting the death of:",
+              "required": "true",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "2805fed8-5d7e-4fce-b146-c45bd36a664a",
+                "answers": [
+                  {
+                    "concept": "af43c1e5-20c2-4bd9-b32c-4de8a810de21",
+                    "label": "Mother (maternal death)"
+                  },
+                  {
+                    "concept": "6cb87d80-595f-48ca-826b-e7f17c5e68a9",
+                    "label": "Baby (perinatal death)"
+                  }
+                ]
+              },
+              "id": "deathType",
+              "validators": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Maternal Death Notification",
+      "sections": [
+        {
+          "label": "Details Of Deceased (Mother)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Nationality:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "eeaea1a6-d5f8-4881-b088-cdd71bbe49b0",
+                "answers": [
+                  {
+                    "concept": "5458962a-e93e-4c93-b452-06b33a6e3a5f",
+                    "label": "Kenyan"
+                  },
+                  {
+                    "concept": "0a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "id": "nationality",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Parity term:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "7a24a298-ba16-478a-a389-f1faf792e4fc"
+              },
+              "id": "parityTerm",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Parity abortion:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "cedb167d-34a4-4027-8a5c-b7fa9fe4190e"
+              },
+              "id": "parityAbortion",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Gravida:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "gravida",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Gestation in weeks :",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa"
+              },
+              "id": "gestationWeeksMother",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Days since delivery/Abortion :",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1893ec38-1414-47c5-835e-4997069579c7"
+              },
+              "id": "deliveryDays",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Details Of Admission",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date and time of admission:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a8a01652-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "admDate",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') ",
+                  "message": "Date of admission should not be greater than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Date and time of death:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a89df3d6-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "deathDateMother",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(admDate)).isBefore((new moment(myValue)), 'day') ",
+                  "message": "Date of death should not be greater than the admission date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Diagnosis on admission:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "problem",
+                "concept": "a8a07a48-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "admDiag",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Referral from another facility:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a095f6aa-9d15-442e-8b21-d9306b82983f",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "referFacility",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "If yes, specify form where:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e8876675-76e1-4e15-a7c5-d4046ff97e3a"
+              },
+              "id": "referWhere",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')) || (referFacility !== 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Level of referring facility:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "51a07866-287e-48a1-a4a2-ec7822df30bd",
+                "answers": [
+                  {
+                    "concept": "f3537f40-193c-4091-b969-88597588b909",
+                    "label": "2"
+                  },
+                  {
+                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                    "label": "3"
+                  },
+                  {
+                    "concept": "35d25c3e-27e6-4fb2-b70d-fb9c69ce7cea",
+                    "label": "4"
+                  },
+                  {
+                    "concept": "8e458679-0337-4aa7-ad89-93f4506e7c4c",
+                    "label": "5"
+                  },
+                  {
+                    "concept": "0243bc07-5727-4ce3-b8fa-a1aaddf3f284",
+                    "label": "6"
+                  }
+                ]
+              },
+              "id": "levelReferring",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Cause Of Death (Mother)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Direct cause of death:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "4b65a64a-5907-4e2e-91bd-b4e34a07fbf3",
+                "answers": [
+                  {
+                    "concept": "a890a028-1350-11df-a1f1-0026b9348838",
+                    "label": "Ectopic pregnancy "
+                  },
+                  {
+                    "concept": "67a2bcd1-f18b-449e-8da3-677807a1a0b1",
+                    "label": "Abortion "
+                  },
+                  {
+                    "concept": "a8937762-1350-11df-a1f1-0026b9348838",
+                    "label": "APH (Antipartum hemorrhage)"
+                  },
+                  {
+                    "concept": "a8a495e2-1350-11df-a1f1-0026b9348838",
+                    "label": "PPH (Post-partum hemorrhage)"
+                  },
+                  {
+                    "concept": "cd26e944-7a35-457f-bfd2-e855d0ee406f",
+                    "label": "Eclampsia "
+                  },
+                  {
+                    "concept": "b99106f0-8680-40cc-8de6-994d36e63670",
+                    "label": "Raptured uterus "
+                  },
+                  {
+                    "concept": "62376546-e8aa-4a36-b67a-76f560c438b4",
+                    "label": "Obstructed labour "
+                  },
+                  {
+                    "concept": "a89d030e-1350-11df-a1f1-0026b9348838",
+                    "label": "Sepsis"
+                  },
+                  {
+                    "concept": "3a60fe6f-a116-41ce-9daf-1340085bc02d",
+                    "label": "Unanticipated complications of management "
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others, specify"
+                  }
+                ]
+              },
+              "id": "directCause",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            },
+            {
+              "label": "Indirect cause of death:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "04a7310c-c09a-4957-9ff9-5e6947fb938b",
+                "answers": [
+                  {
+                    "concept": "4973ae46-a052-4f91-acfe-74ac1d70e221",
+                    "label": "HIV disease"
+                  },
+                  {
+                    "concept": "a877c7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Anemia"
+                  },
+                  {
+                    "concept": "a890e4b6-1350-11df-a1f1-0026b9348838",
+                    "label": "Malaria"
+                  },
+                  {
+                    "concept": "386e82a9-8b47-4afc-8f4d-fedfb8315e1d",
+                    "label": "Cardiovascular  disorders "
+                  },
+                  {
+                    "concept": "a890a96a-1350-11df-a1f1-0026b9348838",
+                    "label": "Tuberculosis "
+                  },
+                  {
+                    "concept": "a898dc02-1350-11df-a1f1-0026b9348838",
+                    "label": "Other disease of respiratory system"
+                  },
+                  {
+                    "concept": "b388d873-4fbf-4423-a17b-113009ca5fc5",
+                    "label": "Other diseases of the blood & blood forming organs and disorders involving immune mechanism"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "id": "indirectCause",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, 'af43c1e5-20c2-4bd9-b32c-4de8a810de21')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Perinatal Death Notification",
+      "sections": [
+        {
+          "label": "Details Of Deceased Baby",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date and time of death:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a89df3d6-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "deathDateBaby",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') ",
+                  "message": "Date of death should not be greater than the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Date of delivery:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a8aae050-1350-11df-a1f1-0026b9348838",
+                "allowFutureDates": "false"
+              },
+              "id": "deliveryDate",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(myValue)).isAfter((new moment()), 'day')",
+                  "message": "Date of delivery cannot be a future date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Place of delivery:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a492d6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "Home",
+                    "concept": "a89df17e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Hospital",
+                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "id": "placeOfDelivery",
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Mode of delivery:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "SVD",
+                    "concept": "a89acf58-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "C-Section",
+                    "concept": "a89ad034-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "id": "modeOfDelivery",
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Gestation at birth in weeks :",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "0670d3d9-950c-4836-b147-0dc8e6b013aa"
+              },
+              "id": "gestationWeeksBaby",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Baby outcome:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8aff7e8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89ffcb2-1350-11df-a1f1-0026b9348838",
+                    "label": "Alive"
+                  },
+                  {
+                    "concept": "dcfda2f8-d466-43d7-bcdf-a37f19ef6436",
+                    "label": "Fresh still birth "
+                  },
+                  {
+                    "concept": "1d5986e2-f858-4f0f-9887-2b19c5a76d32",
+                    "label": "Macerated still birth "
+                  }
+                ]
+              },
+              "id": "babyOutcome",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "If alive, APGAR score at 1 min:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "4b98ce38-77d9-488b-8b59-251811e244a4"
+              },
+              "id": "apgarOne",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')) || (babyOutcome !== 'a89ffcb2-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "If alive, APGAR score at 5 mins:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a752b53e-bb83-4c76-9237-d2d85919101c"
+              },
+              "id": "apgarFive",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')) || (babyOutcome !== 'a89ffcb2-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "If alive, APGAR score at 10 mins:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "3349c58b-8938-4162-ae6c-e64b67f392c4"
+              },
+              "id": "apgarTen",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')) || (babyOutcome !== 'a89ffcb2-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "If alive, age (In days at the time of death):",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "4020dc0f-8fb9-44d8-ac72-241d0c60a566"
+              },
+              "id": "ageDays",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "(!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')) || (babyOutcome !== 'a89ffcb2-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Birth weight in grams :",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "750f15ba-a202-4d7e-8da7-917bc4e24fce"
+              },
+              "id": "birthWeight",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Sex of baby:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838",
+                    "label": "Male"
+                  },
+                  {
+                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838",
+                    "label": "Female"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "id": "sexBaby",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Mother Deatils",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Age of mother in years:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a898d478-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "ageYears",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Married:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "750284c6-87e5-477f-9b4f-fe8ec6e6276f",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "id": "married",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Parity:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a899a920-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "parity",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Mother's outcome:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "47032e8f-6e2f-41d8-8afc-01cb87a9342a",
+                "answers": [
+                  {
+                    "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
+                    "label": "Alive"
+                  },
+                  {
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Dead"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Not known"
+                  }
+                ]
+              },
+              "id": "motherOutcome",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Obstetric History And Care During Pregnancy",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Type of pregnancy:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "654c50da-d82a-4932-91a5-9b54e4bc7799",
+                "answers": [
+                  {
+                    "concept": "cb07a7b3-1808-4086-b7d7-d80734181c32",
+                    "label": "Singleton"
+                  },
+                  {
+                    "concept": "ce9595cc-8b1a-480b-8ffd-a885e41317e6",
+                    "label": "Multiple"
+                  }
+                ]
+              },
+              "id": "pregnancyType",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Attendance of Antenatal care:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a18140-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "id": "ancare",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Obstetric/medical conditions or infections in present pregnancy:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8b00562-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8937762-1350-11df-a1f1-0026b9348838",
+                    "label": "Antepartum Hemorrhage"
+                  },
+                  {
+                    "concept": "a877c7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Anemia"
+                  },
+                  {
+                    "concept": "a8986880-1350-11df-a1f1-0026b9348838",
+                    "label": "Hypertensive disease"
+                  },
+                  {
+                    "concept": "a893436e-1350-11df-a1f1-0026b9348838",
+                    "label": "Diabetes"
+                  },
+                  {
+                    "concept": "a8b02998-1350-11df-a1f1-0026b9348838",
+                    "label": "Pre-labor rupture of membranes"
+                  },
+                  {
+                    "concept": "a890e4b6-1350-11df-a1f1-0026b9348838",
+                    "label": "Malaria"
+                  },
+                  {
+                    "concept": "ab427eb7-af74-44bc-b358-0fc783abc711",
+                    "label": "History of trauma"
+                  },
+                  {
+                    "concept": "a890a71c-1350-11df-a1f1-0026b9348838",
+                    "label": "UTI "
+                  },
+                  {
+                    "concept": "e8074110-b989-45e3-b89c-d6092d1a2fd7",
+                    "label": "Preterm delivery"
+                  },
+                  {
+                    "concept": "a89ace7c-1350-11df-a1f1-0026b9348838",
+                    "label": "HIV"
+                  },
+                  {
+                    "concept": "5be59809-b0ba-409d-a16d-a5db73ad62cf",
+                    "label": "Post term delivery"
+                  },
+                  {
+                    "concept": "62376546-e8aa-4a36-b67a-76f560c438b4",
+                    "label": "Prolonged/ obstructed labour"
+                  },
+                  {
+                    "concept": "555934d4-b3d2-4b73-b545-8f60b24eb2f9",
+                    "label": "Chorioamnionitis"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others"
+                  }
+                ]
+              },
+              "id": "obsCare",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Care During Delivery",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Care During Delivery",
+              "id": "pns",
+              "questionOptions": {
+                "concept": "7043ec1c-9eb4-4775-b813-e5db08720b30",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Care during delivery:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a8a492d6-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "a89df17e-1350-11df-a1f1-0026b9348838",
+                        "label": "Home"
+                      },
+                      {
+                        "concept": "748d3e8c-b641-4ba0-af22-732142a1be28",
+                        "label": "Facility"
+                      }
+                    ]
+                  },
+                  "id": "ancareFacility",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+                  }
+                },
+                {
+                  "label": "If yes, health facility level:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "6335d36f-0d9e-4936-a3ce-7181af1bcc50",
+                    "answers": [
+                      {
+                        "concept": "f3537f40-193c-4091-b969-88597588b909",
+                        "label": "2"
+                      },
+                      {
+                        "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                        "label": "3"
+                      },
+                      {
+                        "concept": "35d25c3e-27e6-4fb2-b70d-fb9c69ce7cea",
+                        "label": "4"
+                      },
+                      {
+                        "concept": "8e458679-0337-4aa7-ad89-93f4506e7c4c",
+                        "label": "5"
+                      },
+                      {
+                        "concept": "0243bc07-5727-4ce3-b8fa-a1aaddf3f284",
+                        "label": "6"
+                      }
+                    ]
+                  },
+                  "id": "levelFacility",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "(!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')) || (ancareFacility !== '748d3e8c-b641-4ba0-af22-732142a1be28')"
+                  }
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "Type of delivery:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8aafab8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89acf58-1350-11df-a1f1-0026b9348838",
+                    "label": "SVD- Skilled"
+                  },
+                  {
+                    "concept": "a8a351aa-1350-11df-a1f1-0026b9348838",
+                    "label": "Assisted VD "
+                  },
+                  {
+                    "concept": "a89ad034-1350-11df-a1f1-0026b9348838",
+                    "label": "Ceaserian Section "
+                  },
+                  {
+                    "concept": "a89ad11a-1350-11df-a1f1-0026b9348838",
+                    "label": "Breech Delivery "
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "id": "deliveryType",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Cause Of Death (Baby)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Cause of death:",
+              "type": "obs",
+              "required": false,
+              "id": "causeOfDeath",
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              },
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "6b2dbca1-a138-40dd-bcad-339424093d32",
+                "answers": [
+                  {
+                    "label": "Cholera",
+                    "concept": "a8935836-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Typhoid and paratyphoid",
+                    "concept": "a892f562-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other and unspecified diarrhoeal diseases",
+                    "concept": "a890861a-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Tuberculosis",
+                    "concept": "a890a96a-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Leprosy",
+                    "concept": "a89843fa-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "a8a06b48-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "dc6085fe-1674-497c-8fe0-075edc2c0d1e"
+                  },
+                  {
+                    "label": "Whooping cough",
+                    "concept": "a8984b3e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Meningococcal infection",
+                    "concept": "c6d55b09-4e3b-40d0-8442-5ecda0c88714"
+                  },
+                  {
+                    "label": "Septicaemia",
+                    "concept": "a89d030e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Acute poliomyelitis",
+                    "concept": "a8a704b2-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "60a92413-9dce-4f42-b87c-b0757a3f99e8"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "a890a8ac-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Measles",
+                    "concept": "a890ad48-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Viral hepatitis",
+                    "concept": "a8909060-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Malaria",
+                    "concept": "a890e4b6-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Leishmaniasis",
+                    "concept": "177d024c-0164-4939-88d1-9394d264ac4f"
+                  },
+                  {
+                    "label": "Schistosomiasis",
+                    "concept": "a894a84e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other and unspecified infectious diseases",
+                    "concept": "a8a49830-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Malignant neoplasm of lip, oral cavity and pharynx",
+                    "concept": "eb1597ef-0cd4-4936-8de3-e860d0fa1443"
+                  },
+                  {
+                    "label": "Malignant neoplasm of Oesophagus",
+                    "concept": "bc6d394a-714c-420e-bb51-8fde690f4023"
+                  },
+                  {
+                    "label": "Malignant neoplasm of stomach",
+                    "concept": "497a4d9b-c602-4f4e-bed2-b54ee991886f"
+                  },
+                  {
+                    "label": "Malignant neoplasm of colon, rectum and anus",
+                    "concept": "8A78BD80-B9D2-4205-B818-97F6D54F966D"
+                  },
+                  {
+                    "label": "Malignant neoplasm of liver and intrahepatic bile ducts",
+                    "concept": "cdd4661f-4d81-42bd-8501-e860c9b693c4"
+                  },
+                  {
+                    "label": "Malignant neoplasm of pancreas",
+                    "concept": "77e203e2-5397-4dfe-b78f-93de7607e5f7"
+                  },
+                  {
+                    "label": "Malignant neoplasm of larynx",
+                    "concept": "3bf432d5-c2db-432b-8a13-f70aec1fd800"
+                  },
+                  {
+                    "label": "Malignant neoplasm of trachea, bronchus and lung",
+                    "concept": "4323afaa-a46d-40c8-aa5b-009f215fe1ec"
+                  },
+                  {
+                    "label": "Malignant melanoma of skin",
+                    "concept": "3bc4dd16-48a6-4a16-b0e0-5d984138f4dc"
+                  },
+                  {
+                    "label": "Malignant neoplasm of meninges",
+                    "concept": "02391d9d-65ad-4dfc-b340-a804c55a5dee"
+                  },
+                  {
+                    "label": "Non-Hodgkin lymphoma",
+                    "concept": "260c083d-fd2e-46ce-b839-031fce5cda6f"
+                  },
+                  {
+                    "label": "Leukaemia",
+                    "concept": "a8936772-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Anaemias",
+                    "concept": "a877c7f6-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other diseases of the blood and blood-forming organs",
+                    "concept": "fad5f994-7581-4f9c-96f3-84ba98703e08"
+                  },
+                  {
+                    "label": "Diabetes mellitus",
+                    "concept": "a893436e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Protein-energy malnutrition",
+                    "concept": "a890b126-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other and unspecified endocrine, nutritional and metabolic diseases",
+                    "concept": "A2546F08-3B7E-4660-BFA1-3AAB7005CBB8"
+                  },
+                  {
+                    "label": "Alcohol use disorders",
+                    "concept": "aaf0e1e3-dc69-4bcd-a021-23bcbf3ecff3"
+                  },
+                  {
+                    "label": "Drug use disorders",
+                    "concept": "2d199eef-db45-481e-9736-a462c9031687"
+                  },
+                  {
+                    "label": "Other mental and behavioural disorders",
+                    "concept": "291e1dc4-203a-4a09-aa0c-2d0a1962a719"
+                  },
+                  {
+                    "label": "Meningitis",
+                    "concept": "a890aafa-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Alzheimer's disease, dementias",
+                    "concept": "6cf6b0ca-d1d8-412c-9ae9-96f542b7e0e0"
+                  },
+                  {
+                    "label": "Other diseases of the nervous system",
+                    "concept": "86fc37da-b226-4869-a16b-b23e57c6c730"
+                  },
+                  {
+                    "label": "Acute rheumatic fever and chronic rheumatic heart diseases",
+                    "concept": "a8936bb4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Hypertensive heart diseases",
+                    "concept": "CDEFB9DD-9BF4-40EA-8CB0-3F27048C888A"
+                  },
+                  {
+                    "label": "Ischaemic heart diseases",
+                    "concept": "e5c8ed8b-a8e5-4eb6-849a-48fb2dd7b82d"
+                  },
+                  {
+                    "label": "Other heart diseases",
+                    "concept": "a8b007b0-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Cerebrovascular diseases",
+                    "concept": "a8a02b2e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other and unspecified diseases of the circulatory system",
+                    "concept": "388B13F6-4512-4934-889C-B59E0151D254"
+                  },
+                  {
+                    "label": "Influenza",
+                    "concept": "ce76917d-0101-4d92-a230-ba587bbf5be1"
+                  },
+                  {
+                    "label": "Pneumonia",
+                    "concept": "a8909dc6-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other acute lower respiratory infections",
+                    "concept": "a8930cd2-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Chronic lower respiratory diseases",
+                    "concept": "a89c36a4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other and unspecified diseases of the respiratory system",
+                    "concept": "a898dc02-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Gastric and duodenal ulcer",
+                    "concept": "a893625e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Appendicitis",
+                    "concept": "a8935aca-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Liver cirrhosis",
+                    "concept": "87e1a979-ab65-4e9f-b15c-98d244787d4e"
+                  },
+                  {
+                    "label": "Other diseases of the digestive system",
+                    "concept": "1efdaeab-332b-4a49-b58f-c450e1a4ee9c"
+                  },
+                  {
+                    "label": "Glomerular and renal tubulointerstitial diseases",
+                    "concept": "d5434459-fafc-42ba-84e6-f97b7afe6f00"
+                  },
+                  {
+                    "label": "Other and unspecified diseases of the genitourinary system",
+                    "concept": "698EEA42-61C0-4A73-A9BA-A3A4605FA3E8"
+                  },
+                  {
+                    "label": "Congenital hydrocephalus and spina bifida",
+                    "concept": "c3e72f0d-ab42-421b-82d8-0aa4adb4cedf"
+                  },
+                  {
+                    "label": "Congenital malformations of the heart",
+                    "concept": "7439dc77-9931-4703-9d3c-d8b4bf87faab"
+                  },
+                  {
+                    "label": "Down syndrome and other chromosomal abnormalities",
+                    "concept": "4b8c4f04-7c12-476c-a6e2-1e0620f11679"
+                  },
+                  {
+                    "label": "Other and unspecified congenital malformations",
+                    "concept": "a8b00d6e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Road traffic accidents",
+                    "concept": "a890c15c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other transport accidents",
+                    "concept": "a890bfcc-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Falls",
+                    "concept": "599d8621-04d6-4fde-9232-4e5fb5ce7cfe"
+                  },
+                  {
+                    "label": "Accidental drowning and submersion",
+                    "concept": "2ecb134a-13ef-4b80-8f74-e0b89ca2bd81"
+                  },
+                  {
+                    "label": "Exposure to smoke, fire and flames",
+                    "concept": "7b570859-f8cb-43a9-a019-d36565445071"
+                  },
+                  {
+                    "label": "Exposure to forces of nature",
+                    "concept": "14dcff88-79a3-4cf7-9d12-80af80c40418"
+                  },
+                  {
+                    "label": "Accidental poisoning by and exposure to noxious substances",
+                    "concept": "a890bf04-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Intentional self-harm",
+                    "concept": "D52B6FE4-23B6-4072-9876-6479C6D589D2"
+                  },
+                  {
+                    "label": "Assault",
+                    "concept": "a8934440-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Conflict and war",
+                    "concept": "77038044-60be-4b9f-aa98-53f67680ed33"
+                  },
+                  {
+                    "label": "Other and unspecified external causes",
+                    "concept": "5203cc1c-2e22-472a-b054-86946af3da4d"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Locality of death",
+      "sections": [
+        {
+          "label": "Locality where death occured",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Location of death:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "349aa0bf-9f63-4290-a06b-f1822b1e7448"
+              },
+              "id": "locationOfDeath",
+              "hide": {
+                "hideWhenExpression": "!arrayContains(deathType, '6cb87d80-595f-48ca-826b-e7f17c5e68a9')"
+              }
+            },
+            {
+              "label": "County:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9d20dbba-4947-412d-8b62-2bff766132d7",
+                "answers": [
+                  {
+                    "concept": "4532910a-b76b-4846-b905-006aee061bfb",
+                    "label": "Uasin Gishu"
+                  },
+                  {
+                    "concept": "27fb861a-8e25-4de9-bd49-48dc762d6cbf",
+                    "label": "Trans Nzoia"
+                  },
+                  {
+                    "concept": "160ced0e-3173-46c7-9300-515adeeaa77e",
+                    "label": "Elgeyo Marakwet"
+                  },
+                  {
+                    "concept": "a325268f-33f5-4a60-946d-ff4b69494b3f",
+                    "label": "West Pokot"
+                  },
+                  {
+                    "concept": "7d7a869c-979b-4105-983c-e6f610f4dc1e",
+                    "label": "Bungoma"
+                  },
+                  {
+                    "concept": "efde545c-aa53-49f7-9304-b7337e1b5c64",
+                    "label": "Busia"
+                  }
+                ]
+              },
+              "id": "county",
+              "validators": []
+            },
+            {
+              "label": "Sub county:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "68844b19-5f8f-4a41-9796-64a5da4d6c00"
+              },
+              "id": "subCounty",
+              "validators": []
+            },
+            {
+              "label": "Level of care:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "6335d36f-0d9e-4936-a3ce-7181af1bcc50",
+                "answers": [
+                  {
+                    "concept": "f3537f40-193c-4091-b969-88597588b909",
+                    "label": "2"
+                  },
+                  {
+                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                    "label": "3"
+                  },
+                  {
+                    "concept": "35d25c3e-27e6-4fb2-b70d-fb9c69ce7cea",
+                    "label": "4"
+                  },
+                  {
+                    "concept": "8e458679-0337-4aa7-ad89-93f4506e7c4c",
+                    "label": "5"
+                  },
+                  {
+                    "concept": "0243bc07-5727-4ce3-b8fa-a1aaddf3f284",
+                    "label": "6"
+                  }
+                ]
+              },
+              "id": "levelCare",
+              "validators": []
+            },
+            {
+              "label": "Managing authority:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "05896df8-80cc-4b08-903c-44773662d592",
+                "answers": [
+                  {
+                    "concept": "957a20ac-991f-4216-971e-dc57ff1904f6",
+                    "label": "NGO"
+                  },
+                  {
+                    "concept": "8f2ee386-36bd-472f-a870-9f86ef698b2b",
+                    "label": "FBO"
+                  },
+                  {
+                    "concept": "35d25c3e-27e6-4fb2-b70d-fb9c69ce7cea",
+                    "label": "Public"
+                  },
+                  {
+                    "concept": "8e458679-0337-4aa7-ad89-93f4506e7c4c",
+                    "label": "Private"
+                  },
+                  {
+                    "concept": "0243bc07-5727-4ce3-b8fa-a1aaddf3f284",
+                    "label": "other"
+                  }
+                ]
+              },
+              "id": "manageAuthority",
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Completed By",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Name:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
+              },
+              "id": "nameCompleted",
+              "validators": []
+            },
+            {
+              "label": "Designation:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "14d088b0-1107-4bff-92de-770d99434c3f",
+                "answers": [
+                  {
+                    "concept": "a8a8c96e-1350-11df-a1f1-0026b9348838",
+                    "label": "Consultant"
+                  },
+                  {
+                    "concept": "e5d0a5a5-392b-4522-a811-ffb6fa3aba54",
+                    "label": "Medical Officer"
+                  },
+                  {
+                    "concept": "a8b02f92-1350-11df-a1f1-0026b9348838",
+                    "label": "Nurse"
+                  },
+                  {
+                    "concept": "bc640b5f-43a7-4a9d-afac-1a5cdfd5ba45",
+                    "label": "Clinical officer"
+                  },
+                  {
+                    "concept": "a8a00b4e-1350-11df-a1f1-0026b9348838",
+                    "label": "Community health worker"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "id": "designation",
+              "validators": []
+            },
+            {
+              "label": "Date:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "bb85532e-8f7e-476f-81d7-5580e0385852"
+              },
+              "id": "DateDone",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') ",
+                  "message": "Date should be greater than the encounter date."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "hide": {
+        "hideWhenExpression": "isEmpty(deathType)"
+      }
+    }
+  ],
+  "version": "1.0",
+  "description": "Combined form for reporting maternal death, perinatal (baby) death, or both, with shared encounter/locality/sign-off fields and person-specific sections shown conditionally based on which death(s) are being reported.",
+  "encounterType": "9be049bc-0e74-41c9-830d-9930c06ab35d"
+}

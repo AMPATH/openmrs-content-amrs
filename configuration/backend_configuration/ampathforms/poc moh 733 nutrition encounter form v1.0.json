@@ -1,0 +1,573 @@
+{
+  "name": "POC MOH 733 Nutrition Encounter Form v1.0",
+  "description": "Draft nutrition encounter based on MOH 733 (August 2026). Unmapped questions and answers retain blank concepts for mapping before publication. Uses the existing nutrition encounter type.",
+  "version": "1.0",
+  "uuid": "d80b9361-3285-5b91-b016-f3e72e109660",
+  "published": false,
+  "retired": false,
+  "encounter": "NUTRITIONENCOUNTER",
+  "encounterType": "3cd9dd0a-a5d1-4482-9f45-a0fea4f5e556",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Visit details",
+      "sections": [
+        {
+          "label": "Visit details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Client category",
+      "sections": [
+        {
+          "label": "Client category",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "nutritionVisitCategory",
+              "label": "Nutrition service visit category",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                    "label": "New visit"
+                  },
+                  {
+                    "concept": "244b67bf-da2d-4009-9bc9-91a52a92defe",
+                    "label": "Revisit"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionEntry",
+              "label": "Entry to nutrition service",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Routine"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Transfer in"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Referred in"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionHivStatus",
+              "label": "HIV status",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionTbStatus",
+              "label": "Current TB status",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "TB present"
+                  },
+                  {
+                    "concept": "",
+                    "label": "TB absent"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionPbfw",
+              "label": "Pregnant or breastfeeding",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Pregnant"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Breastfeeding"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Pregnant and breastfeeding"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Neither"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Not applicable"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Nutrition assessment",
+      "sections": [
+        {
+          "label": "Nutrition assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "nutritionWeight",
+              "label": "Weight (kg)",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && myValue <= 0",
+                  "message": "Enter a value greater than zero."
+                }
+              ]
+            },
+            {
+              "id": "nutritionHeight",
+              "label": "Height / length (cm)",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && myValue <= 0",
+                  "message": "Enter a value greater than zero."
+                }
+              ]
+            },
+            {
+              "id": "nutritionWhz",
+              "label": "Weight for height Z-score",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c"
+              }
+            },
+            {
+              "id": "nutritionMuacCm",
+              "label": "Mid-upper arm circumference (cm)",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "number"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && myValue <= 0",
+                  "message": "Enter a value greater than zero."
+                }
+              ]
+            },
+            {
+              "id": "nutritionOedema",
+              "label": "Bilateral pitting oedema",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Present"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Absent"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Not assessed"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionDiagnosis",
+              "label": "Nutrition diagnosis",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Severe acute malnutrition (SAM)"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Moderate acute malnutrition (MAM)"
+                  },
+                  {
+                    "concept": "",
+                    "label": "At risk of undernutrition"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Overweight / obese"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No listed nutrition diagnosis"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Not assessed"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Nutrition interventions",
+      "sections": [
+        {
+          "label": "Nutrition interventions",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "nutritionTherapeuticFood",
+              "label": "Receiving therapeutic food",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionSupplementaryFood",
+              "label": "Receiving supplementary food",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionVitaminA",
+              "label": "Receiving vitamin A for therapeutic use",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionVitaminB6",
+              "label": "Receiving vitamin B6 for therapeutic use",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionIron",
+              "label": "Receiving iron",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionInterventionNotes",
+              "label": "Intervention details",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment outcome and follow-up",
+      "sections": [
+        {
+          "label": "Treatment outcome and follow-up",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "nutritionOutcome",
+              "label": "Nutrition treatment outcome",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Continuing treatment"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Cured"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Defaulted"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Died"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Non-recovered"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Transferred out"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Not enrolled in nutrition treatment"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionReferral",
+              "label": "Referral made",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nutritionReferralDestination",
+              "label": "Referral / transfer destination",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text"
+              }
+            },
+            {
+              "id": "nutritionNotes",
+              "label": "Nutrition care notes",
+              "type": "obs",
+              "required": "false",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea"
+              }
+            },
+            {
+              "id": "nutritionNextVisit",
+              "label": "Next appointment date",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && (new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+                  "message": "Appointment date must be on or after the encounter date."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

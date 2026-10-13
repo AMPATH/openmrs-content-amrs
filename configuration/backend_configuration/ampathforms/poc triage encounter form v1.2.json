@@ -653,6 +653,9 @@
                     "label": "No"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "age <=15"
               }
             }
           ]
@@ -885,7 +888,7 @@
               "questionOptions": {
                 "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
-                "max": "20",
+                "max": "200",
                 "min": "0"
               },
               "validators": [
@@ -1032,21 +1035,21 @@
                 }
               },
               "hide": {
-                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
+                "hideWhenExpression": "(age <=18 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
               }
             },
             {
-              "label": "MUAC:",
+              "label": "MUAC (cm):",
               "type": "obs",
               "id": "muac",
               "questionOptions": {
                 "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
-                "max": "250",
+                "max": "80",
                 "min": "0"
               },
               "hide": {
-                "hideWhenExpression": "(age > 5 && sex !== 'F') || (sex === 'F' &&  age > 49)"
+                "hideWhenExpression": "(age >= 18 && sex !== 'F') || (sex === 'F' && age > 49)"
               }
             },
             {
@@ -1148,13 +1151,13 @@
                 "max": "4",
                 "min": "-4",
                 "calculate": {
-                  "calculateExpression": "calcWeightForHeightZscore(height, weight)"
+                  "calculateExpression": "calcWeightForHeightZscore(weightForHeightRef, height, weight)"
                 }
               },
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "age>5"
+                "hideWhenExpression": "age>=5"
               }
             },
             {
@@ -1201,7 +1204,72 @@
               "readOnly": true
             },
             {
-              "label": "BMI for age (+18) categorization:",
+              "label": "BMI for Age Z-Score:",
+              "id": "bmiScore",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9061e5d5-8478-4d16-be44-bfec05b6705a",
+                "max": "4",
+                "min": "-4",
+                "calculate": {
+                  "calculateExpression": "age < 5 || age >= 18 ? null : age <= 5 ? (isEmpty(height) || isEmpty(weight) || Number(height) <= 0 || Number(weight) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,height,weight)) : (isEmpty(heightForBMI) || isEmpty(weightForBMI) || Number(heightForBMI) <= 0 || Number(weightForBMI) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,heightForBMI,weightForBMI))"
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 5 || age >= 18"
+              }
+            },
+            {
+              "label": "BMI for age Z score diagnosis:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "837eb9e6-28cd-486c-bb9a-d040d0878b84",
+                "calculate": {
+                  "calculateExpression": "age < 5 || age >= 18 ? '' : !isEmpty(bmiScore) ? (isNaN(Number(bmiScore)) ? '' : Number(bmiScore) < -3 ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : Number(bmiScore) < -2 ? 'a89efdee-1350-11df-a1f1-0026b9348838' : Number(bmiScore) < -1 ? 'a89efccc-1350-11df-a1f1-0026b9348838' : Number(bmiScore) <= 1 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(bmiScore) <= 2 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(bmiScore) <= 3 ? '1505faef-c8aa-422c-b356-da065b88ec9c' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15') : isEmpty(muac) || isNaN(Number(muac)) || Number(muac) <= 0 ? '' : Number(muac) < (age < 10 ? 13.5 : 14.5) ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : Number(muac) < (age < 10 ? 14.5 : 18.5) ? 'a89efdee-1350-11df-a1f1-0026b9348838' : 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a89efccc-1350-11df-a1f1-0026b9348838",
+                    "label": "Mild acute malnutrition"
+                  },
+                  {
+                    "concept": "a89efdee-1350-11df-a1f1-0026b9348838",
+                    "label": "Moderate acute malnutrition"
+                  },
+                  {
+                    "concept": "a89eff1a-1350-11df-a1f1-0026b9348838",
+                    "label": "Severe acute malnutrition"
+                  },
+                  {
+                    "concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
+                    "label": "At risk"
+                  },
+                  {
+                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "label": "Overweight"
+                  },
+                  {
+                    "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
+                    "label": "Obese"
+                  }
+                ]
+              },
+              "id": "bmiZScoreDiagnosis",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 5 || age >= 18 || (isEmpty(bmiScore) && isEmpty(muac))"
+              },
+              "readOnly": true
+            },
+            {
+              "label": "BMI (+18) categorization:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
