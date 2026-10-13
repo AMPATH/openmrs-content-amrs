@@ -10083,10 +10083,7 @@
                     "concept": "a8a00158-1350-11df-a1f1-0026b9348838",
                     "label": "Single drug substitution"
                   },
-                  {
-                    "concept": "92a2818f-662c-4dbc-aa20-d9f4edec2654",
-                    "label": "Recency"
-                  },
+                  
                   {
                     "concept": "535f6faa-14bc-4989-a189-7f15de3f65d5",
                     "label": "Repeat viral load after 3rd EAC"
@@ -10098,15 +10095,8 @@
                   {
                     "concept": "e883376e-80cb-4ec7-a958-f0fbc0a0bad3",
                     "label": "VTP known positives"
-                  },
-                  {
-                    "concept": "0998e404-d0ea-4271-abe0-a8a69c08c2cf",
-                    "label": "VTP NP <=6 weeks in PNC"
-                  },
-                  {
-                    "concept": "4d74eab9-4cad-4efb-8d58-82b53d23fcb9",
-                    "label": "VTP NP >6 weeks in PNC"
                   }
+                  
                 ]
               },
               "validators": [

@@ -165,7 +165,7 @@
               }
             },
             {
-              "label": "Time since exposure:",
+              "label": "Time since exposure (hours):",
               "type": "obs",
               "id": "repTime",
               "questionOptions": {
@@ -207,7 +207,6 @@
                     "label": "Occupational(work related)"
                   },
                   {
-                    
                     "concept": "fb028d19-4e92-476f-ab69-4af293669ed4",
                     "label": "Non occupational exposure"
                   }
@@ -255,18 +254,15 @@
                   "id": "typePercutaneous",
                   "questionOptions": {
                     "rendering": "select",
-                    
                     "concept": "315195e6-e9b9-4c34-91b3-77a96f2b9394",
                     "answers": [
                       {
-                     
                         "concept": "f0b04dbb-e297-49bb-b728-0d92167a0ef0",
                         "label": "Needle Stick"
                       },
                       {
-                       
                         "concept": "02bf8702-4b2c-4833-a92a-6d5226e88230",
-                        "label": "Body Fluids"
+                        "label": "Body fluids"
                       }
                     ]
                   },
@@ -277,12 +273,34 @@
                   }
                 },
                 {
-                  "label": "Type of Body fluids:",
+                  "label": "Non-occupational exposure:",
+                  "id": "nonOccupationalExposure",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "315195e6-e9b9-4c34-91b3-77a96f2b9394",
+                    "answers": [
+                      {
+                        "concept": "f0b04dbb-e297-49bb-b728-0d92167a0ef0",
+                        "label": "Needle Stick"
+                      },
+                      {
+                        "concept": "02bf8702-4b2c-4833-a92a-6d5226e88230",
+                        "label": "Body fluids"
+                      }
+                    ]
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "methodExposure !== 'fb028d19-4e92-476f-ab69-4af293669ed4'"
+                  }
+                },
+                {
+                  "label": "Type of body fluids:",
                   "id": "typeBodyFluids",
                   "type": "obs",
                   "questionOptions": {
                     "rendering": "select",
-                   
                     "concept": "f10e249e-2061-43e8-ba9c-fa1eb64528e7",
                     "answers": [
                       {
@@ -298,7 +316,6 @@
                         "label": "Amniotic Fluid"
                       },
                       {
-                      
                         "concept": "a8af80d8-1350-11df-a1f1-0026b9348838",
                         "label": "CSF"
                       },
@@ -307,37 +324,30 @@
                         "label": "Urine"
                       },
                       {
-                       
                         "concept": "443B0843-C9BE-449E-A3CD-F857D7CFAE88",
                         "label": "Semen"
                       },
                       {
-                        
                         "concept": "37223098-533C-4228-85F7-6A4A15A954FA",
                         "label": "Synovial fluids"
                       },
                       {
-                      
                         "concept": "2d32b444-0c88-4452-b16c-4fe8079189f1",
                         "label": "Blood culture"
                       },
                       {
-                        
                         "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
                         "label": "Vaginal secretions"
                       },
                       {
-                        
                         "concept": "76a773cb-271e-41a4-9ada-6942eeef9d92",
                         "label": "Blood stained fluids"
                       },
                       {
-                        
                         "concept": "a89ddbf8-1350-11df-a1f1-0026b9348838",
                         "label": "Pericardial/pleural membrane fluid"
                       },
                       {
-                        
                         "concept": "a8b0281c-1350-11df-a1f1-0026b9348838",
                         "label": "HIV cultures"
                       }
@@ -345,37 +355,13 @@
                   },
                   "validators": [],
                   "hide": {
-                    "hideWhenExpression": "pepVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || methodExposure !== '803b8da3-b200-4a6c-a682-979fd6478611' || typePercutaneous !== '315195e6-e9b9-4c34-91b3-77a96f2b9394'"
+                    "hideWhenExpression": "typePercutaneous !== '02bf8702-4b2c-4833-a92a-6d5226e88230' && nonOccupationalExposure !== '02bf8702-4b2c-4833-a92a-6d5226e88230'"
                   }
                 }
               ],
               "id": "__ozrE7LyHv",
               "hide": {
                 "hideWhenExpression": "pepVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || methodExposure !== '803b8da3-b200-4a6c-a682-979fd6478611'"
-              }
-            },
-            {
-              "label": "Non-occupational exposure:",
-              "id": "nonOccupationalExposure",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "select",
-              
-                "concept": "315195e6-e9b9-4c34-91b3-77a96f2b9394",
-                "answers": [
-                  {
-                    "concept": "a89fc8be-1350-11df-a1f1-0026b9348838",
-                    "label": "Physical Assault"
-                  },
-                  {
-                    "concept": "a89349cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Sharing contaminated injection equipment"
-                  }
-                ]
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "pepVisitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || methodExposure !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
               }
             }
           ],
@@ -590,7 +576,7 @@
           ]
         },
         {
-          "label": "Referrals",
+          "label": "Referrals/Transfers",
           "isExpanded": "true",
           "questions": [
             {
@@ -610,10 +596,6 @@
                       {
                         "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                         "label": "None"
-                      },
-                      {
-                        "concept": "a8a8b26c-1350-11df-a1f1-0026b9348838",
-                        "label": "TB/DOT program"
                       },
                       {
                         "concept": "355b199f-c9c7-4e91-831f-2be17d2c67bd",
@@ -656,6 +638,82 @@
                 }
               ],
               "id": "__rJnJGnGJE"
+            },
+            {
+              "label": "Department transferred to:",
+              "type": "obs",
+              "id": "departmentSpecify",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a8a06788-1350-11df-a1f1-0026b9348838",
+                    "label": "Ophthalmology (Eye)Clinic"
+                  },
+                  {
+                    "concept": "a8a066ca-1350-11df-a1f1-0026b9348838",
+                    "label": "Ear, Nose, and Throat(ENT)Clinic"
+                  },
+                  {
+                    "concept": "a8a06846-1350-11df-a1f1-0026b9348838",
+                    "label": "Physiotherapy clinic"
+                  },
+                  {
+                    "concept": "3cfb070d-70ac-4d20-bb60-88ea08e36178",
+                    "label": "Surgical Outpatient Clinic"
+                  },
+                  {
+                    "concept": "a89ee9a8-1350-11df-a1f1-0026b9348838",
+                    "label": "Paediatrics clinics"
+                  },
+                  {
+                    "concept": "1d7d7c76-d807-4f33-8c7e-2531e28126ed",
+                    "label": "Maxillofacial Clinic"
+                  },
+                  {
+                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
+                    "label": "Medical Outpatient clinic"
+                  },
+                  {
+                    "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
+                    "label": "Oncology Clinic"
+                  },
+                  {
+                    "concept": "a8a0660c-1350-11df-a1f1-0026b9348838",
+                    "label": "Dental clinic"
+                  },
+                  {
+                    "concept": "597896cd-2841-42e9-8fb0-4292f82ac7b6",
+                    "label": "Renal Clinic"
+                  },
+                  {
+                    "concept": "a8a8b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "Mental Health"
+                  },
+                  {
+                    "concept": "0d516ea7-218f-43d4-b5c0-58d126529271",
+                    "label": "Dermatology Clinic"
+                  },
+                  {
+                    "concept": "832081a7-80b4-49d7-a649-7a30dc10c6fb",
+                    "label": "Diabetic Clinic"
+                  },
+                  {
+                    "concept": "a8a0690e-1350-11df-a1f1-0026b9348838",
+                    "label": "Occupational Therapy Clinic"
+                  },
+                  {
+                    "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
+                    "label": "Orthopaedic Clinic"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others specify"
+                  }
+                ]
+              }
             }
           ]
         },
@@ -677,7 +735,7 @@
                   },
                   {
                     "label": "Not Completed",
-                    "concept": "Ta899ea48-1350-11df-a1f1-0026b9348838"
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838"
                   }
                 ]
               },

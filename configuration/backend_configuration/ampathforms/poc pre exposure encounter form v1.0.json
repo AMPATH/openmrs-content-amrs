@@ -76,7 +76,181 @@
                 ]
               },
               "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Patient History",
+      "sections": [
+        {
+          "label": "Transit / Transfer In",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "sourceFacility",
+              "label": "Name of facility (transit / transfer in):",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
             },
+            {
+              "label": "Date of PrEP initiation at source facility:",
+              "type": "obs",
+              "id": "prepStartDate",
+              "questionOptions": {
+                "concept": "a89ae092-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && !isEmpty(myValue) && !isEmpty(encDate) && moment(myValue).isAfter(moment(encDate), 'day')",
+                  "message": "Date cannot be after the visit date."
+                }
+              ]
+            },
+            {
+              "label": "PrEP type at source facility:",
+              "id": "prepMethodMale",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+                "answers": [
+                  {
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Daily oral prep"
+                  },
+                  {
+                    "concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
+                    "label": "Event driven oral prep"
+                  },
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "Cabotegravir (CAB-LA)"
+                  },
+                  {
+                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
+                    "label": "Lenacapavir"
+                  }
+                ]
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M')) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "PrEP type at source facility:",
+              "id": "prepMethodFem",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
+                "answers": [
+                  {
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Daily oral prep"
+                  },
+                  {
+                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
+                    "label": "Cabotegravir (CAB-LA)"
+                  },
+                  {
+                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
+                    "label": "Lenacapavir"
+                  },
+                  {
+                    "concept": "bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd",
+                    "label": "Dapivirine ring"
+                  }
+                ]
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'F'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'F')) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Current oral regimen:",
+              "id": "currentPrepRegimen",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "b42438be-5010-4416-8869-4255f6ee7ae0",
+                "answers": [
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "TDF 300mg/FTC 200mg"
+                  },
+                  {
+                    "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+                    "label": "TDF 300mg/3TC 300mg"
+                  },
+                  {
+                    "concept": "8b4b0df3-7923-4371-b573-e7994002e3f9",
+                    "label": "TAF 25mg/FTC 200mg"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+          }
+        },
+        {
+          "label": "Baseline Assessment",
+          "isExpanded": "true",
+          "questions": [
             {
               "type": "obs",
               "label": "Setting:",
@@ -210,226 +384,6 @@
               ]
             },
             {
-              "label": "Was this visit scheduled?",
-              "id": "scheduledVisit",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a89b6440-1350-11df-a1f1-0026b9348838",
-                    "label": "Scheduled visit"
-                  },
-                  {
-                    "concept": "a89ff816-1350-11df-a1f1-0026b9348838",
-                    "label": "Unscheduled visit early"
-                  },
-                  {
-                    "concept": "a89ff8de-1350-11df-a1f1-0026b9348838",
-                    "label": "Unscheduled visit late"
-                  }
-                ]
-              },
-              "type": "obs",
-              "hide": {
-                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Transit / Transfer In",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "id": "sourceFacility",
-              "label": "Name of facility (transit / transfer in):",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
-              },
-              "hide": {
-                "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "Date of PrEP initiation at source facility:",
-              "type": "obs",
-              "id": "prepStartDate",
-              "questionOptions": {
-                "concept": "a89ae092-1350-11df-a1f1-0026b9348838",
-                "rendering": "date"
-              },
-              "hide": {
-                "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
-                  "message": "This field is required."
-                },
-                {
-                  "type": "date",
-                  "allowFutureDates": "false"
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && !isEmpty(myValue) && !isEmpty(encDate) && moment(myValue).isAfter(moment(encDate), 'day')",
-                  "message": "Date cannot be after the visit date."
-                }
-              ]
-            },
-           
-            {
-              "label": "PrEP type at source facility:",
-              "id": "prepMethodMale",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
-                "answers": [
-                  {
-                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
-                    "label": "Daily oral prep"
-                  },
-                  {
-                    "concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
-                    "label": "Event driven oral prep"
-                  },
-                  {
-                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "Cabotegravir (CAB-LA)"
-                  },
-                  {
-                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
-                    "label": "Lenacapavir"
-                  }
-                ]
-              },
-              "type": "obs",
-              "hide": {
-                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M'))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'M')) && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "PrEP type at source facility:",
-              "id": "prepMethodFem",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "9e8732ce-fcd3-404b-bbb7-01f78cc1135e",
-                "answers": [
-                  {
-                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
-                    "label": "Daily oral prep"
-                  },
-                  {
-                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "Cabotegravir (CAB-LA)"
-                  },
-                  {
-                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
-                    "label": "Lenacapavir"
-                  },
-                  {
-                    "concept": "bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd",
-                    "label": "Dapivirine ring"
-                  }
-                ]
-              },
-              "type": "obs",
-              "hide": {
-                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'F'))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (sex === 'F')) && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "Current oral regimen:",
-              "id": "currentPrepRegimen",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "b42438be-5010-4416-8869-4255f6ee7ae0",
-                "answers": [
-                  {
-                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
-                    "label": "TDF 300mg/FTC 200mg"
-                  },
-                  {
-                    "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
-                    "label": "TDF 300mg/3TC 300mg"
-                  },
-                  {
-                    "concept": "8b4b0df3-7923-4371-b573-e7994002e3f9",
-                    "label": "TAF 25mg/FTC 200mg"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "hide": {
-                "hideWhenExpression": "!((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepMethodMale)) || ((sex === 'F') && prepMethodFem === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "Transfer in county:",
-              "id": "transfer",
-              "questionOptions": {
-                "concept": "10bca44a-930f-46ae-b686-63ddb36a713f",
-                "rendering": "text"
-              },
-              "type": "obs",
-              "hide": {
-                "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
-              }
-            }
-          ],
-          "hide": {
-            "hideWhenExpression": "!(arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
-          }
-        }
-      ]
-    },
-    {
-      "label": "Baseline Assessment",
-      "sections": [
-        {
-          "label": "Baseline Assessment",
-          "isExpanded": "true",
-          "questions": [
-            {
               "type": "obsGroup",
               "label": "Behaviour Risk Assessment, Detailed",
               "questionOptions": {
@@ -454,199 +408,10 @@
               "hide": {
                 "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
               }
-            },
-            {
-              "label": "Signs/symptoms of acute HIV:",
-              "type": "obs",
-              "id": "acuteHiv",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "39220cda-f62a-4514-8d73-013585e59770",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(!isEmpty(prepVisitType)) && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "Contraindications for any drug used for PrEP:",
-              "id": "contraindications",
-              "questionOptions": {
-                "concept": "a3263d60-c35c-4a8f-b6a4-7ae68b9e5b19",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "hide": {
-                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(!isEmpty(prepVisitType)) && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "Names of HTS provider that tested the patient? (Record at least 2 names, If the provider's name is unknown, indicate facility)",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
-              },
-              "id": "htsname",
-              "hide": {
-                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
             }
           ],
           "hide": {
             "hideWhenExpression": "!(!isEmpty(prepVisitType))"
-          }
-        }
-      ]
-    },
-    {
-      "label": "Follow Up Assessment",
-      "sections": [
-        {
-          "label": "Medical Assessment",
-          "isExpanded": "true",
-          "questions": [
-            {
-              "label": "Signs/symptoms of STI:",
-              "id": "stiSymptoms",
-              "questionOptions": {
-                "concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "type": "obs",
-              "hide": {
-                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "If yes, indicate below:",
-              "questionOptions": {
-                "concept": "a8b00562-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "a8982b54-1350-11df-a1f1-0026b9348838",
-                    "label": "Genital ulcers disease (GUD)"
-                  },
-                  {
-                    "concept": "a892ea2c-1350-11df-a1f1-0026b9348838",
-                    "label": "Vaginitis"
-                  },
-                  {
-                    "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
-                    "label": "Vaginal discharge (VD)"
-                  },
-                  {
-                    "concept": "a8931cf4-1350-11df-a1f1-0026b9348838",
-                    "label": "Cervicitis"
-                  },
-                  {
-                    "concept": "d31e0260-cd5d-44ec-9341-1b837c8675aa",
-                    "label": "Cervical discharge (CD)"
-                  },
-                  {
-                    "concept": "a8986754-1350-11df-a1f1-0026b9348838",
-                    "label": "Pelvic inflammatory disease (PID)"
-                  },
-                  {
-                    "concept": "a8ad3062-1350-11df-a1f1-0026b9348838",
-                    "label": "Urethral discharge (UD)"
-                  },
-                  {
-                    "concept": "6201b563-716f-4c75-bb61-ec92864d2e53",
-                    "label": "Anal discharge (AD)"
-                  },
-                  {
-                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-                    "label": "Other"
-                  }
-                ],
-                "rendering": "multiCheckbox"
-              },
-              "type": "obs",
-              "id": "signsSTI",
-              "hide": {
-                "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && stiSymptoms === 'a899b35c-1350-11df-a1f1-0026b9348838')"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && stiSymptoms === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "Clinical notes:",
-              "type": "obs",
-              "id": "hpiText",
-              "questionOptions": {
-                "concept": "a89ffbf4-1350-11df-a1f1-0026b9348838",
-                "rendering": "textarea"
-              },
-              "hide": {
-                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
-              }
-            }
-          ],
-          "hide": {
-            "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
           }
         },
         {
@@ -672,12 +437,12 @@
               },
               "type": "obs",
               "hide": {
-                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue))",
                   "message": "This field is required."
                 }
               ]
@@ -786,12 +551,12 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
                   },
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
                       "message": "This field is required."
                     }
                   ]
@@ -827,12 +592,12 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
                   },
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
                       "message": "This field is required."
                     }
                   ]
@@ -860,24 +625,24 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
                   },
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
                       "message": "This field is required."
                     }
                   ]
                 }
               ],
               "hide": {
-                "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
               }
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+            "hideWhenExpression": "(!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))) || (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))))"
           }
         },
         {
@@ -911,7 +676,7 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
                   }
                 },
                 {
@@ -923,12 +688,12 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && liver === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && liver === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
                   },
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && liver === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && liver === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
                       "message": "This field is required."
                     }
                   ]
@@ -936,7 +701,7 @@
               ],
               "id": "liverDetailed",
               "hide": {
-                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
               }
             },
             {
@@ -966,7 +731,7 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
                   }
                 },
                 {
@@ -978,12 +743,12 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && kidney === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && kidney === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
                   },
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && kidney === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && kidney === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
                       "message": "This field is required."
                     }
                   ]
@@ -991,7 +756,7 @@
               ],
               "id": "kidneyDetailed",
               "hide": {
-                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
               }
             },
             {
@@ -1011,7 +776,7 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
                   }
                 },
                 {
@@ -1023,12 +788,12 @@
                   },
                   "type": "obs",
                   "hide": {
-                    "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && !isEmpty(probAdded))"
+                    "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && !isEmpty(probAdded)))"
                   },
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && !isEmpty(probAdded)) && isEmpty(myValue)",
+                      "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType) && !isEmpty(probAdded)) && isEmpty(myValue))",
                       "message": "This field is required."
                     }
                   ]
@@ -1036,46 +801,222 @@
               ],
               "id": "otherIllness",
               "hide": {
-                "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
               }
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
+            "hideWhenExpression": "(!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))) || (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))))"
           }
         }
-      ],
-      "hide": {
-        "hideWhenExpression": "!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))"
-      }
+      ]
     },
     {
-      "label": "PrEP Plan",
+      "label": "Patient Examination",
+      "sections": [
+        {
+          "label": "Medical Assessment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Signs/symptoms of acute HIV:",
+              "type": "obs",
+              "id": "acuteHiv",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "39220cda-f62a-4514-8d73-013585e59770",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!isEmpty(prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Contraindications for any drug used for PrEP:",
+              "id": "contraindications",
+              "questionOptions": {
+                "concept": "a3263d60-c35c-4a8f-b6a4-7ae68b9e5b19",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!isEmpty(prepVisitType)) && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Is patient eligible for PrEP?",
+              "id": "medicalEligible",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "70d8f5b1-8a10-453a-a1e2-1de96a87f31f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Signs/symptoms of STI:",
+              "id": "stiSymptomsManagement",
+              "questionOptions": {
+                "concept": "b76021d2-38c7-42ff-b2eb-0bd558396ef7",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "hide": {
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && isEmpty(myValue))",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "If yes, indicate below:",
+              "questionOptions": {
+                "concept": "a8b00562-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8982b54-1350-11df-a1f1-0026b9348838",
+                    "label": "Genital ulcers disease (GUD)"
+                  },
+                  {
+                    "concept": "a892ea2c-1350-11df-a1f1-0026b9348838",
+                    "label": "Vaginitis"
+                  },
+                  {
+                    "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
+                    "label": "Vaginal discharge (VD)"
+                  },
+                  {
+                    "concept": "a8931cf4-1350-11df-a1f1-0026b9348838",
+                    "label": "Cervicitis"
+                  },
+                  {
+                    "concept": "d31e0260-cd5d-44ec-9341-1b837c8675aa",
+                    "label": "Cervical discharge (CD)"
+                  },
+                  {
+                    "concept": "a8986754-1350-11df-a1f1-0026b9348838",
+                    "label": "Pelvic inflammatory disease (PID)"
+                  },
+                  {
+                    "concept": "a8ad3062-1350-11df-a1f1-0026b9348838",
+                    "label": "Urethral discharge (UD)"
+                  },
+                  {
+                    "concept": "6201b563-716f-4c75-bb61-ec92864d2e53",
+                    "label": "Anal discharge (AD)"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "id": "signsSTIManagement",
+              "hide": {
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && stiSymptomsManagement === 'a899b35c-1350-11df-a1f1-0026b9348838'))"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && stiSymptomsManagement === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
+                  "message": "This field is required."
+                }
+              ]
+            },
+            {
+              "label": "Clinical notes:",
+              "type": "obs",
+              "id": "hpiTextManagement",
+              "questionOptions": {
+                "concept": "a89ffbf4-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "(!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')) || (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))))"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Patient Management",
       "sections": [
         {
           "label": "PrEP Plan",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Primary diagnosis:",
-              "id": "finalDiagnosisId",
-              "type": "diagnosis",
-              "questionOptions": {
-                "rendering": "repeating",
-                "min": "1",
-                "dataSource": "diagnoses",
-                "rank": 2,
-                "datasource": {
-                  "name": "diagnoses",
-                  "config": {
-                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
-                  }
-                }
-              },
-              "hide": {
-                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!(!isEmpty(prepVisitType)))"
-              }
-            },
             {
               "label": "PrEP plan:",
               "type": "obs",
@@ -1103,12 +1044,12 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
                   "message": "Select the PrEP plan."
                 }
               ]
@@ -1140,12 +1081,12 @@
                 "rendering": "multiCheckbox"
               },
               "hide": {
-                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838')))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (((!isEmpty(prepVisitType)) && prepStatus === 'a89b7c50-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)))",
                   "message": "This field is required."
                 }
               ]
@@ -1185,12 +1126,12 @@
                 "rendering": "multiCheckbox"
               },
               "hide": {
-                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838')))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838') && isEmpty(myValue))",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (((!isEmpty(prepVisitType)) && prepStatus === 'a8af50f4-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)))",
                   "message": "This field is required."
                 }
               ]
@@ -1204,33 +1145,45 @@
                 "concept": "e8876675-76e1-4e15-a7c5-d4046ff97e3a"
               },
               "hide": {
-                "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608')))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || (!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608'))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608' && isEmpty(myValue))",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === '5520f234-258e-49f0-97ab-701b98fab608' && isEmpty(myValue)))",
                   "message": "Specify the transfer out facility."
                 }
               ]
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+            "hideWhenExpression": "(!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')) || (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')))"
           }
-        }
-      ],
-      "hide": {
-        "hideWhenExpression": "!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
-      }
-    },
-    {
-      "label": "Prescription",
-      "sections": [
+        },
         {
           "label": "PrEP Prescription",
           "isExpanded": "true",
           "questions": [
+            {
+              "label": "Primary diagnosis:",
+              "id": "finalDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(!isEmpty(prepVisitType)))"
+              }
+            },
             {
               "label": "PrEP prescribed today:",
               "type": "obs",
@@ -1250,30 +1203,34 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && isEmpty(myValue))",
                   "message": "This field is required."
                 }
               ]
             },
             {
-              "label": "Types:",
+              "label": "PrEP type:",
               "id": "prepTypeM",
               "type": "obs",
               "questionOptions": {
                 "concept": "25345dff-45f6-481b-87ca-08bebe1d6bc6",
                 "answers": [
                   {
-                    "concept": "db0c5937-3874-4eae-9566-9a645ad7ac65",
-                    "label": "Oral"
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Oral daily"
+                  },
+                  {
+                    "concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
+                    "label": "Oral event driven"
                   },
                   {
                     "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "CAB-LA"
+                    "label": "Cabotegravir (CAB-LA)"
                   },
                   {
                     "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
@@ -1283,30 +1240,30 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'M'))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && sex === 'M'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'M')) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && sex === 'M') && isEmpty(myValue))",
                   "message": "This field is required."
                 }
               ]
             },
             {
-              "label": "Types:",
+              "label": "PrEP Type:",
               "id": "prepTypeF",
               "type": "obs",
               "questionOptions": {
                 "concept": "25345dff-45f6-481b-87ca-08bebe1d6bc6",
                 "answers": [
                   {
-                    "concept": "db0c5937-3874-4eae-9566-9a645ad7ac65",
-                    "label": "Oral"
+                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
+                    "label": "Oral daily"
                   },
                   {
                     "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "CAB-LA"
+                    "label": "Cabotegravir (CAB-LA)"
                   },
                   {
                     "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
@@ -1314,106 +1271,24 @@
                   },
                   {
                     "concept": "bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd",
-                    "label": "Dapivirine ring"
+                    "label": "Dapivirine Ring"
                   }
                 ],
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'F'))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && sex === 'F'))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'F')) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && sex === 'F') && isEmpty(myValue))",
                   "message": "This field is required."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "!(!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (sex === 'F'))) && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-                  "message": "Do not initiate CABOTEGRAVIR during pregnancy or breastfeeding. Only continuation of existing uninterrupted treatment is allowed."
-                }
-              ]
-            },
-            {
-              "label": "Dosing strategy:",
-              "id": "doseStrategy",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "dc254d4b-b6ab-44a3-93a7-98e6faa9cec7",
-                "answers": [
-                  {
-                    "concept": "97600bd1-cd35-4b77-a4c6-6d3dd842ebc6",
-                    "label": "Event driven"
-                  },
-                  {
-                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
-                    "label": "Daily oral prep"
-                  },
-                  {
-                    "concept": "64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2",
-                    "label": "Long acting prep"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'M') || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M'))))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'M') || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M')))) && isEmpty(myValue)",
-                  "message": "This field is required."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'M') && (!isEmpty(prepTypeM) && prepTypeM === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && !isEmpty(myValue) && arrayContains(['64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2'], myValue))",
-                  "message": "Patient marked as on oral prep. Therefore the strategy can only be event driven or daily oral prep."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'M') && (!isEmpty(prepTypeM) && arrayContains(['05188221-3e4e-43b2-b9ec-afb924d95da1','5b4b4a6c-7975-4544-af7f-7f60dacd933f'],prepTypeM) && !isEmpty(myValue) && arrayContains(['97600bd1-cd35-4b77-a4c6-6d3dd842ebc6','fa8e484e-3f90-4a35-b64f-c60f256c3faf'], myValue))",
-                  "message": "Patient not on oral prep. Therefore the strategy can only be long acting."
-                }
-              ]
-            },
-            {
-              "label": "Dosing strategy:",
-              "id": "doseStrategyF",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "dc254d4b-b6ab-44a3-93a7-98e6faa9cec7",
-                "answers": [
-                  {
-                    "concept": "fa8e484e-3f90-4a35-b64f-c60f256c3faf",
-                    "label": "Daily oral prep"
-                  },
-                  {
-                    "concept": "64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2",
-                    "label": "Long acting prep"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'F') || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F'))))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'F') || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F')))) && isEmpty(myValue)",
-                  "message": "This field is required."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'F') && (!isEmpty(prepTypeF) && prepTypeF === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && !isEmpty(myValue) && arrayContains(['64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2'], myValue))",
-                  "message": "Patient marked as on oral prep. Therefore the strategy can only be daily oral prep."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && sex === 'F') && (!isEmpty(prepTypeF) && arrayContains(['05188221-3e4e-43b2-b9ec-afb924d95da1','5b4b4a6c-7975-4544-af7f-7f60dacd933f','bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd'],prepTypeF) && !isEmpty(myValue) && arrayContains(['97600bd1-cd35-4b77-a4c6-6d3dd842ebc6','fa8e484e-3f90-4a35-b64f-c60f256c3faf'], myValue))",
-                  "message": "Patient not on oral prep. Therefore the strategy can only be long acting."
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && sex === 'F') && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !(!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838'))",
+                  "message": "Do not initiate Cabotegravir during pregnancy or breastfeeding. Only continuation of existing uninterrupted treatment is allowed."
                 }
               ]
             },
@@ -1440,80 +1315,13 @@
                 "rendering": "select"
               },
               "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && ((sex === 'M' && prepTypeM === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf','97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || (sex === 'F' && prepTypeF === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && ((sex === 'M' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepTypeM)) || (sex === 'F' && prepTypeF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && ((sex === 'M' && prepTypeM === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf','97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || (sex === 'F' && prepTypeF === 'db0c5937-3874-4eae-9566-9a645ad7ac65' && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) || !(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))))) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && ((sex === 'M' && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepTypeM)) || (sex === 'F' && prepTypeF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && isEmpty(myValue))",
                   "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "Regimen / type:",
-              "id": "PrepDrugsPlanLongM",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "980b94ab-f64d-4730-b602-c127375014b9",
-                "answers": [
-                  {
-                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "Cabotegravir (CAB-LA)"
-                  },
-                  {
-                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
-                    "label": "Lenacapavir"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "hide": {
-                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2') && isEmpty(myValue)",
-                  "message": "This field is required."
-                }
-              ]
-            },
-            {
-              "label": "Regimen / type:",
-              "id": "PrepDrugsPlanLong",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "980b94ab-f64d-4730-b602-c127375014b9",
-                "answers": [
-                  {
-                    "concept": "05188221-3e4e-43b2-b9ec-afb924d95da1",
-                    "label": "Cabotegravir(CAB-LA)"
-                  },
-                  {
-                    "concept": "5b4b4a6c-7975-4544-af7f-7f60dacd933f",
-                    "label": "Lenacapavir"
-                  },
-                  {
-                    "concept": "bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd",
-                    "label": "Dapivirine ring"
-                  }
-                ],
-                "rendering": "select"
-              },
-              "hide": {
-                "hideWhenExpression": "!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2') && isEmpty(myValue)",
-                  "message": "This field is required."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!(!((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2')) && myValue === '05188221-3e4e-43b2-b9ec-afb924d95da1' && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && !((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')",
-                  "message": "Do not initiate Cabotegravir (CAB-LA) during pregnancy or breastfeeding. Only continuation of existing uninterrupted treatment is allowed."
                 }
               ]
             },
@@ -1540,18 +1348,18 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue))",
                   "message": "This field is required."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && myValue === 'a899b50a-1350-11df-a1f1-0026b9348838'",
-                  "message": "Confirm pregnancy status before prescribing CABOTEGRAVIR."
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && myValue === 'a899b50a-1350-11df-a1f1-0026b9348838')",
+                  "message": "Confirm pregnancy status before prescribing Cabotegravir."
                 }
               ]
             },
@@ -1574,19 +1382,19 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && isEmpty(myValue))",
                   "message": "This field is required."
                 }
               ]
             },
             {
               "id": "continuingCab",
-              "label": "Already on CABOTEGRAVIR and continuing without interruption:",
+              "label": "Already on Cabotegravir and continuing without interruption:",
               "type": "control",
               "questionOptions": {
                 "rendering": "select",
@@ -1603,26 +1411,41 @@
                 "isTransient": true
               },
               "hide": {
-                "hideWhenExpression": "!(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType))) && isEmpty(myValue))",
                   "message": "This field is required."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (myValue !== 'a899b35c-1350-11df-a1f1-0026b9348838' || prepStatus !== 'a89b7908-1350-11df-a1f1-0026b9348838')",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') && (arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (myValue !== 'a899b35c-1350-11df-a1f1-0026b9348838' || prepStatus !== 'a89b7908-1350-11df-a1f1-0026b9348838'))",
                   "message": "Cabotegravir (CAB-LA) may only be continued without interruption during pregnancy or breastfeeding; it must not be initiated, restarted, or switched to."
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && prepMethodFem !== '05188221-3e4e-43b2-b9ec-afb924d95da1'",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && prepMethodFem !== '05188221-3e4e-43b2-b9ec-afb924d95da1')",
                   "message": "Existing PrEP type at the source facility must be Cabotegravir to record uninterrupted continuation."
                 }
               ],
               "questionInfo": "Used for validation during this form session. This answer is not saved as an observation; confirm it again when editing the form."
+            },
+            {
+              "label": "Date of initiation:",
+              "id": "initialInitDate",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "fixed-value",
+                "concept": "90ee880d-4aba-4f43-8b8e-88bfade1dbf0",
+                "calculate": {
+                  "calculateExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') ? ((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && !isEmpty(encDate) ? moment(encDate).format('YYYY-MM-DD') : undefined) : undefined"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838'))"
+              }
             },
             {
               "label": "Date of initiation:",
@@ -1633,12 +1456,12 @@
                 "concept": "90ee880d-4aba-4f43-8b8e-88bfade1dbf0"
               },
               "hide": {
-                "hideWhenExpression": "!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus)))))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && !(!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && isEmpty(myValue)))",
                   "message": "This field is required."
                 },
                 {
@@ -1647,70 +1470,34 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && !isEmpty(myValue) && !isEmpty(encDate) && moment(myValue).isAfter(moment(encDate), 'day')",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))))) && !isEmpty(myValue) && !isEmpty(encDate) && moment(myValue).isAfter(moment(encDate), 'day')))",
                   "message": "Date cannot be after the visit date."
                 }
               ]
             },
             {
-              "label": "Number of months:",
-              "id": "months",
+              "label": "Number of weeks:",
+              "id": "prescriptionWeeks",
               "type": "obs",
               "questionOptions": {
                 "rendering": "number",
-                "concept": "3560e1f8-f3c1-4468-969c-25f7467c41e2",
+                "concept": "a89add22-1350-11df-a1f1-0026b9348838",
                 "min": "1",
                 "disallowDecimals": true
               },
               "hide": {
-                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && isEmpty(myValue))",
+                  "message": "This field is required."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || ((!isEmpty(prepVisitType) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0))",
                   "message": "Enter a positive whole number."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && isEmpty(myValue) && (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) || isEmpty(noDays))",
-                  "message": "Enter the duration in months or days."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && !isEmpty(myValue) && !isEmpty(noDays)",
-                  "message": "Use either months or days, not both."
-                }
-              ]
-            },
-            {
-              "label": "Number of days:",
-              "id": "noDays",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "a89fca44-1350-11df-a1f1-0026b9348838",
-                "min": "1",
-                "disallowDecimals": true
-              },
-              "hide": {
-                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))))"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0)",
-                  "message": "Enter a positive whole number."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && isEmpty(myValue) && (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) || isEmpty(months))",
-                  "message": "Enter the duration in months or days."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf') || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf')))) && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (sex === 'M') && doseStrategy === '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6')) && !isEmpty(myValue) && !isEmpty(months)",
-                  "message": "Use either months or days, not both."
                 }
               ]
             },
@@ -1733,12 +1520,12 @@
               },
               "id": "pickupLoc",
               "hide": {
-                "hideWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && isEmpty(myValue))",
                   "message": "This field is required."
                 }
               ]
@@ -1753,37 +1540,204 @@
                 "workspaceName": "order-basket"
               },
               "hide": {
-                "hideWhenExpression": "!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && (!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) || (true && ((true)))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) || (pregnancyStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838' && !isEmpty(pregnancyStatus) && !isEmpty(breastfeeding) && (!(pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (PrepDrugsPlanLong === '05188221-3e4e-43b2-b9ec-afb924d95da1' || PrepDrugsPlanLongM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838')) || prepMethodFem === '05188221-3e4e-43b2-b9ec-afb924d95da1') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && (((sex === 'M') && !isEmpty(prepTypeM)) || ((sex === 'F') && !isEmpty(prepTypeF)))) || ((((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], doseStrategy)) || ((sex === 'F') && doseStrategyF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && !isEmpty(PrepDrugsPlanOral)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && doseStrategy === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2' && !isEmpty(PrepDrugsPlanLongM)) || ((sex === 'F') && doseStrategyF === '64d28f8e-ccd7-4ada-97ff-9e6820ba4fe2' && !isEmpty(PrepDrugsPlanLong)))))))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || (((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838')) && (!(((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && arrayContains(['a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) || (true && ((true)))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')))) || (pregnancyStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838' && !isEmpty(pregnancyStatus) && !isEmpty(breastfeeding) && (!(pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838') || ((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && prepStatus === 'a89b7908-1350-11df-a1f1-0026b9348838' && continuingCab === 'a899b35c-1350-11df-a1f1-0026b9348838')))) && (!((sex === 'F') && ((((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')) && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1')) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (prepTypeF === '05188221-3e4e-43b2-b9ec-afb924d95da1' || prepTypeM === '05188221-3e4e-43b2-b9ec-afb924d95da1'))) && (arrayContains(['912029d5-1b22-49d1-946b-110a902aca97', '97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (pregnancyStatus === 'a89d109c-1350-11df-a1f1-0026b9348838' || breastfeeding === 'a899b35c-1350-11df-a1f1-0026b9348838')) || prepMethodFem === '05188221-3e4e-43b2-b9ec-afb924d95da1') && (((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && (((sex === 'M') && !isEmpty(prepTypeM)) || ((sex === 'F') && !isEmpty(prepTypeF)))) || ((((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['fa8e484e-3f90-4a35-b64f-c60f256c3faf', '97600bd1-cd35-4b77-a4c6-6d3dd842ebc6'], prepTypeM)) || ((sex === 'F') && prepTypeF === 'fa8e484e-3f90-4a35-b64f-c60f256c3faf'))) && !isEmpty(PrepDrugsPlanOral)) || ((((arrayContains(['a8a4812e-1350-11df-a1f1-0026b9348838','912029d5-1b22-49d1-946b-110a902aca97','97772927-7aa2-4c30-be98-85183e4b0efe'], prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || arrayContains(['a89b7908-1350-11df-a1f1-0026b9348838', 'a89b7c50-1350-11df-a1f1-0026b9348838', 'a8a00220-1350-11df-a1f1-0026b9348838'], prepStatus))) && prepPrescribed === 'a899b35c-1350-11df-a1f1-0026b9348838') && (((sex === 'M') && arrayContains(['05188221-3e4e-43b2-b9ec-afb924d95da1', '5b4b4a6c-7975-4544-af7f-7f60dacd933f', 'bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd'], prepTypeM) && !isEmpty(prepTypeM)) || ((sex === 'F') && arrayContains(['05188221-3e4e-43b2-b9ec-afb924d95da1', '5b4b4a6c-7975-4544-af7f-7f60dacd933f', 'bfc3cecf-9959-4c93-8cbe-7d6a4870a6cd'], prepTypeF) && !isEmpty(prepTypeF))))))))"
               }
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+            "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(!isEmpty(prepVisitType)))"
           }
-        }
-      ]
-    },
-    {
-      "label": "Referrals and Clinical Notes",
-      "sections": [
+        },
         {
-          "label": "Referrals and Clinical Notes",
+          "label": "Patient Outcome",
           "isExpanded": "true",
           "questions": [
             {
-              "id": "referralFacility",
-              "label": "Patient referred to facility:",
+              "label": "Patient outcome:",
               "type": "obs",
+              "id": "outcomePatient",
               "questionOptions": {
-                "rendering": "encounter-location",
-                "concept": "2722deae-f4e6-42f4-8259-f7e47d425d61",
-                "datasource": {
-                  "name": "location",
-                  "config": {}
-                }
+                "concept": "7c579743-5ef7-4e2c-839f-5b95597cb01c",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "5d38b72e-eee9-43ef-8256-483f8c5df4a6",
+                    "label": "Discharge home"
+                  },
+                  {
+                    "concept": "48155468-0e21-401a-87f5-d037ae0e8db0",
+                    "label": "Transfer"
+                  },
+                  {
+                    "concept": "057dae68-3d6f-4d79-926c-ed75a0ce7fd5",
+                    "label": "Admit"
+                  },
+                  {
+                    "concept": "e609e8e7-12e0-45d0-a92b-ed044de21a3d",
+                    "label": "Refer"
+                  },
+                  {
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Deceased"
+                  }
+                ]
               },
               "hide": {
-                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+                "hideWhenExpression": "(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              }
+            },
+            {
+              "type": "obsGroup",
+              "id": "inpatientDispositionConstruct",
+              "questionOptions": {
+                "concept": "9ceedfb7-60e4-42ce-a11e-f2dbabc82112",
+                "rendering": "group"
+              },
+              "hide": {
+                "hideWhenExpression": "(outcomePatient !=='057dae68-3d6f-4d79-926c-ed75a0ce7fd5') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+              },
+              "questions": [
+                {
+                  "id": "disposition",
+                  "type": "obs",
+                  "required": true,
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "required": true,
+                    "concept": "ce085d74-323c-4c9a-9fdf-051de81dd020",
+                    "answers": [
+                      {
+                        "concept": "77eafb3f-58d3-4397-a6dc-d2c06e9062f3"
+                      }
+                    ]
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "outcomePatient !=='057dae68-3d6f-4d79-926c-ed75a0ce7fd5'"
+                  }
+                },
+                {
+                  "id": "admitToLocation",
+                  "label": "Admit to location:",
+                  "type": "obs",
+                  "required": true,
+                  "questionOptions": {
+                    "rendering": "remote-select",
+                    "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
+                    "datasource": {
+                      "name": "location",
+                      "config": {
+                        "tag": "Admission Location"
+                      }
+                    }
+                  },
+                  "hide": {
+                    "hideWhenExpression": "(outcomePatient !=='057dae68-3d6f-4d79-926c-ed75a0ce7fd5') || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Reason for referral?",
+              "type": "obs",
+              "id": "refferalsOrderd",
+              "questionOptions": {
+                "concept": "2c8bb721-b642-428a-b956-7902242776ab",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "outcomePatient !=='e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
+              }
+            },
+            {
+              "label": "Facility referred to:",
+              "type": "obs",
+              "id": "transferToFacility",
+              "questionOptions": {
+                "concept": "2722deae-f4e6-42f4-8259-f7e47d425d61",
+                "rendering": "encounterLocation"
+              },
+              "hide": {
+                "hideWhenExpression": "outcomePatient !=='e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
+              }
+            },
+            {
+              "label": "Department transferred to:",
+              "type": "obs",
+              "id": "departmentSpecify",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a8a06788-1350-11df-a1f1-0026b9348838",
+                    "label": "Ophthalmology (Eye)Clinic"
+                  },
+                  {
+                    "concept": "a8a066ca-1350-11df-a1f1-0026b9348838",
+                    "label": "Ear, Nose, and Throat(ENT)Clinic"
+                  },
+                  {
+                    "concept": "a8a06846-1350-11df-a1f1-0026b9348838",
+                    "label": "Physiotherapy clinic"
+                  },
+                  {
+                    "concept": "3cfb070d-70ac-4d20-bb60-88ea08e36178",
+                    "label": "Surgical Outpatient Clinic"
+                  },
+                  {
+                    "concept": "a89ee9a8-1350-11df-a1f1-0026b9348838",
+                    "label": "Paediatrics clinics"
+                  },
+                  {
+                    "concept": "1d7d7c76-d807-4f33-8c7e-2531e28126ed",
+                    "label": "Maxillofacial Clinic"
+                  },
+                  {
+                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
+                    "label": "Medical Outpatient clinic"
+                  },
+                  {
+                    "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
+                    "label": "Oncology Clinic"
+                  },
+                  {
+                    "concept": "a8a0660c-1350-11df-a1f1-0026b9348838",
+                    "label": "Dental clinic"
+                  },
+                  {
+                    "concept": "597896cd-2841-42e9-8fb0-4292f82ac7b6",
+                    "label": "Renal Clinic"
+                  },
+                  {
+                    "concept": "a8a8b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "Mental Health"
+                  },
+                  {
+                    "concept": "0d516ea7-218f-43d4-b5c0-58d126529271",
+                    "label": "Dermatology Clinic"
+                  },
+                  {
+                    "concept": "832081a7-80b4-49d7-a649-7a30dc10c6fb",
+                    "label": "Diabetic Clinic"
+                  },
+                  {
+                    "concept": "a8a0690e-1350-11df-a1f1-0026b9348838",
+                    "label": "Occupational Therapy Clinic"
+                  },
+                  {
+                    "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
+                    "label": "Orthopaedic Clinic"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others specify"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "outcomePatient !=='48155468-0e21-401a-87f5-d037ae0e8db0'"
               }
             },
             {
@@ -1796,47 +1750,57 @@
                 "rows": 5
               },
               "hide": {
-                "hideWhenExpression": "!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'))"
               }
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+            "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(!isEmpty(prepVisitType)))"
           }
-        }
-      ]
-    },
-    {
-      "label": "Next Appointment",
-      "sections": [
+        },
         {
           "label": "Next Appointment",
           "isExpanded": "true",
           "questions": [
+            {
+              "id": "rtcWeeks",
+              "label": "Return in weeks:",
+              "type": "control",
+              "questionOptions": {
+                "rendering": "number",
+                "isTransient": true,
+                "min": "1",
+                "disallowDecimals": true
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((!isEmpty(prepVisitType) && prepVisitType !== '912029d5-1b22-49d1-946b-110a902aca97' && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))) && !isEmpty(myValue) && (!Number.isInteger(Number(myValue)) || Number(myValue) <= 0))",
+                  "message": "Enter a positive whole number."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(!isEmpty(prepVisitType) && prepVisitType !== '912029d5-1b22-49d1-946b-110a902aca97' && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))))"
+              }
+            },
             {
               "label": "Return to clinic date:",
               "type": "obs",
               "questionOptions": {
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
                 "rendering": "date",
-                "weeksList": [
-                  15,
-                  30,
-                  45,
-                  60,
-                  90,
-                  120,
-                  180
-                ]
+                "calculate": {
+                  "calculateExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') ? ((!isEmpty(prepVisitType) && prepVisitType !== '912029d5-1b22-49d1-946b-110a902aca97' && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))) && !isEmpty(rtcWeeks) && Number.isInteger(Number(rtcWeeks)) && Number(rtcWeeks) > 0 && !isEmpty(encDate) ? moment(encDate).add(Number(rtcWeeks), 'weeks').toDate() : undefined) : undefined"
+                }
               },
               "id": "tca",
               "hide": {
-                "hideWhenExpression": "!((!isEmpty(prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(!isEmpty(prepVisitType) && prepVisitType !== '912029d5-1b22-49d1-946b-110a902aca97' && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))))"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)))) && isEmpty(myValue)",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((!isEmpty(prepVisitType) && prepVisitType !== '912029d5-1b22-49d1-946b-110a902aca97' && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))) && isEmpty(myValue))",
                   "message": "This field is required."
                 },
                 {
@@ -1845,7 +1809,7 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "((!isEmpty(prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)))) && !isEmpty(myValue) && !isEmpty(encDate) && !moment(myValue).isAfter(moment(encDate), 'day')",
+                  "failsWhenExpression": "!((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') && ((!isEmpty(prepVisitType) && prepVisitType !== '912029d5-1b22-49d1-946b-110a902aca97' && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))) && !isEmpty(myValue) && !isEmpty(encDate) && !moment(myValue).isAfter(moment(encDate), 'day'))",
                   "message": "Return to clinic date must be after the visit date."
                 }
               ]
@@ -1860,12 +1824,12 @@
                 "workspaceName": "appointments-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "!(((!isEmpty(prepVisitType)) && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !(arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus)))) && !isEmpty(tca) && !isEmpty(encDate) && moment(tca).isAfter(moment(encDate), 'day'))"
+                "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!((!isEmpty(prepVisitType) && prepVisitType !== '912029d5-1b22-49d1-946b-110a902aca97' && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))) && !isEmpty(tca) && !isEmpty(encDate) && moment(tca).isAfter(moment(encDate), 'day')))"
               }
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(!isEmpty(prepVisitType))"
+            "hideWhenExpression": "((prepVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && medicalEligible === 'a899b42e-1350-11df-a1f1-0026b9348838') || (!(!isEmpty(prepVisitType) && prepVisitType !== '912029d5-1b22-49d1-946b-110a902aca97' && (!(prepVisitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') || !arrayContains(['a8af50f4-1350-11df-a1f1-0026b9348838', '5520f234-258e-49f0-97ab-701b98fab608'], prepStatus))))"
           }
         }
       ]
