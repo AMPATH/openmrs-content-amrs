@@ -63,7 +63,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Not being able to enjoy activities you used to enjoy? (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
+              "label": "Little interest or pleasure in doing things? (Not at all (0), 7 or less days of the last 2 weeks (1), More than 7 days of the 2 weeks (2) Nearly everyday(3)",
               "id": "pleasure",
               "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('0975c82b-7905-446f-bd16-2f5e373543db')) ? undefined : HD.getObject('prevEnc').getValue('0975c82b-7905-446f-bd16-2f5e373543db')",
               "questionInfo": "Kwa wiki mbili iliyopita, umekuwa na hamu au raha ndogo katika kufanya mambo (0=Hapana kabisa, 1=Siku kadhaa, 2=Zaidi ya nusu ya masiku 3=Karibu kila siku)",

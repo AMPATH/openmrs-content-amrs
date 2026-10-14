@@ -6586,7 +6586,6 @@
                     "label": "Cyanosis",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
-                  
                   {
                     "concept": "a898d5fe-1350-11df-a1f1-0026b9348838",
                     "label": "Dehydration",
@@ -8622,12 +8621,10 @@
                     "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
                     "label": "Change regimen"
                   },
-                  
                   {
                     "concept": "a8a00220-1350-11df-a1f1-0026b9348838",
                     "label": "Restart"
                   },
-                  
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
                     "label": "Stop all"
@@ -9138,7 +9135,7 @@
               "questionOptions": {
                 "concept": "a89b7e12-1350-11df-a1f1-0026b9348838",
                 "answers": [
-                   {
+                  {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "Not eligible"
                   },
@@ -9154,8 +9151,6 @@
                     "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
                     "label": "Change regimen"
                   },
-                 
-                  
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
                     "label": "Stop"
@@ -9361,7 +9356,7 @@
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "Not eligible"
                   },
-                   {
+                  {
                     "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
                     "label": "Start"
                   },
@@ -9369,7 +9364,6 @@
                     "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
                     "label": "Continue"
                   },
-                 
                   {
                     "concept": "a8a00220-1350-11df-a1f1-0026b9348838",
                     "label": "Restart"
@@ -9462,7 +9456,6 @@
                     "hideWhenExpression": "((tbpropplan !== 'a89b7d36-1350-11df-a1f1-0026b9348838') && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")"
                   }
                 }
-                
               ],
               "id": "__JoJHtGqyK",
               "hide": {
@@ -9523,7 +9516,6 @@
                     "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
                     "label": "Continue regimen"
                   },
-                  
                   {
                     "concept": "a8a00158-1350-11df-a1f1-0026b9348838",
                     "label": "Change regimen"
@@ -9827,8 +9819,6 @@
                     "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
                     "label": "Continue"
                   },
-                  
-                  
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
                     "label": "Stop"
@@ -9959,8 +9949,6 @@
                     "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
                     "label": "Continue current"
                   },
-                  
-                  
                   {
                     "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
                     "label": "Change regimen"
@@ -10189,7 +10177,7 @@
               "questionOptions": {
                 "concept": "a89c2790-1350-11df-a1f1-0026b9348838",
                 "answers": [
-                   {
+                  {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
                   },
@@ -10201,8 +10189,6 @@
                     "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
                     "label": "Continue current"
                   },
-                 
-                  
                   {
                     "concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
                     "label": "Change to consolidation"
@@ -10393,7 +10379,7 @@
               "questionOptions": {
                 "concept": "51fff29b-7c60-4c23-96a3-d8535c45c54e",
                 "answers": [
-                   {
+                  {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
                   },
@@ -10405,8 +10391,6 @@
                     "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
                     "label": "Continue"
                   },
-                 
-                  
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
                     "label": "Stop"
@@ -10484,11 +10468,11 @@
               "questionOptions": {
                 "concept": "4ae39f1e-a41e-488b-bdaf-1bd28aa944c2",
                 "answers": [
-                   {
+                  {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
                   },
-                   {
+                  {
                     "concept": "a89b77aa-1350-11df-a1f1-0026b9348838",
                     "label": "Start"
                   },
@@ -10496,8 +10480,6 @@
                     "concept": "a89b7908-1350-11df-a1f1-0026b9348838",
                     "label": "Continue"
                   },
-                 
-                 
                   {
                     "concept": "a89b7d36-1350-11df-a1f1-0026b9348838",
                     "label": "Stop"
@@ -10779,6 +10761,14 @@
                   {
                     "concept": "a8a06846-1350-11df-a1f1-0026b9348838",
                     "label": "Physiotherapy clinic"
+                  },
+                  {
+                    "concept": "27ac429d-8a42-476e-b2f6-65bde0b8c935",
+                    "label": "Pre Exposure prophylaxis"
+                  },
+                  {
+                    "concept": "a8a19c20-1350-11df-a1f1-0026b9348838",
+                    "label": "Post exposure prophylaxis"
                   },
                   {
                     "concept": "3cfb070d-70ac-4d20-bb60-88ea08e36178",
