@@ -39,7 +39,8 @@
                 "rendering": "ui-select-extended"
               },
               "id": "encProvider ",
-              "readOnly": true
+              "disable": "true",
+              "resetValueOnDisable": false
             },
             {
               "label": "Location:",
@@ -49,7 +50,8 @@
                 "rendering": "ui-select-extended"
               },
               "id": "encLocation",
-              "readOnly": true
+              "disable": "true",
+              "resetValueOnDisable": false
             }
           ]
         },
@@ -9500,7 +9502,7 @@
             {
               "label": "TB Treatment plan:",
               "id": "tbTreatmentPlan",
-              "required": "true",
+              "required": false,
               "questionOptions": {
                 "concept": "a89c1fd4-1350-11df-a1f1-0026b9348838",
                 "answers": [
@@ -9535,6 +9537,11 @@
               "validators": [
                 {
                   "type": "js_expression",
+                  "failsWhenExpression": "opdHivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && hivVisitType !== '7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2' && !(hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f' && refillVisitType === '01b957da-23bb-4862-819d-036364fe3faf') && isEmpty(myValue)",
+                  "message": "TB Treatment plan is required for this visit."
+                },
+                {
+                  "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(onTbTreatment) && onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on TB in TB History section. Therefore plan can only be drug substitution, continue regimen, change dose, change regimen"
                 },
@@ -9550,7 +9557,7 @@
                 }
               ],
               "hide": {
-                "hideWhenExpression": "((hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) && !(hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f' && refillVisitType === '01b957da-23bb-4862-819d-036364fe3faf')"
+                "hideWhenExpression": "opdHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (((hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) && !(hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f' && refillVisitType === '01b957da-23bb-4862-819d-036364fe3faf'))"
               }
             },
             {
@@ -10858,7 +10865,7 @@
               ],
               "id": "tca",
               "hide": {
-                "hideWhenExpression": "((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896d2cc-1350-11df-a1f1-0026b9348838') && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) && !(hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f' && refillVisitType === '01b957da-23bb-4862-819d-036364fe3faf')"
+                "hideWhenExpression": "opdHivStatus !== \"a896f3a6-1350-11df-a1f1-0026b9348838\" || (((((hivVisitType === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : opdHivStatus) === 'a896d2cc-1350-11df-a1f1-0026b9348838') && !(hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\")) || (hivVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\")) && !(hivVisitType === '20838ff5-7a28-4877-889c-300155627a6f' && refillVisitType === '01b957da-23bb-4862-819d-036364fe3faf'))"
               }
             }
           ],

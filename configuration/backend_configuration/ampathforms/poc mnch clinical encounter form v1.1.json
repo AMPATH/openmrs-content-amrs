@@ -1,8 +1,8 @@
 {
-  "name": "POC MNCH Clinical Encounter Form v1.0",
+  "name": "POC MNCH Clinical Encounter Form v1.1",
   "description": "Revised MNCH clinical encounter form that merges the HIV care, ANC and PNC workflows.",
-  "version": "1.0",
-  "uuid": "88011c94-8e27-4ec8-84c3-02073c396d6e",
+  "version": "1.1",
+  "uuid": "",
   "processor": "EncounterFormProcessor",
   "published": true,
   "retired": false,
