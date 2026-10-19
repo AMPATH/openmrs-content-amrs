@@ -43,7 +43,7 @@
               "resetValueOnDisable": false
             },
             {
-              "label": "Location:",
+              "label": "facility:",
               "type": "encounterLocation",
               "required": "true",
               "questionOptions": {
