@@ -90,11 +90,8 @@
                   {
                     "concept": "1d54b745-0afc-4568-a9ba-17ba3fc1dda0",
                     "label": "Referred from CHU"
-                  },
-                  {
-                    "concept": "a8afd40c-1350-11df-a1f1-0026b9348838",
-                    "label": "Internal(Department)"
                   }
+                  
                 ]
               },
               "hide": {
@@ -2419,18 +2416,7 @@
                 "hideWhenExpression": "isEmpty(outcomePatient) || outcomePatient !== 'a89335d6-1350-11df-a1f1-0026b9348838'"
               }
             },
-            {
-              "label": "Referred for?",
-              "type": "obs",
-              "id": "refferalsOrderd",
-              "questionOptions": {
-                "concept": "2c8bb721-b642-428a-b956-7902242776ab",
-                "rendering": "textarea"
-              },
-              "hide": {
-                "hideWhenExpression": "outcomePatient !=='e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
-              }
-            },
+           
             {
               "label": "Referred to?",
               "type": "obs",
@@ -2444,8 +2430,8 @@
                     "label": "Other health facility"
                   },
                   {
-                    "concept": "59312903-dde9-4f7a-b6cf-7b41863b7e81",
-                    "label": "This health facility"
+                    "concept": "1d54b745-0afc-4568-a9ba-17ba3fc1dda0",
+                    "label": "Community health unit (CHU)"
                   }
                 ]
               },
@@ -2454,7 +2440,19 @@
               }
             },
             {
-              "label": "Transfer to facility:",
+              "label": "Reason for referral?",
+              "type": "obs",
+              "id": "refferalsOrderd",
+              "questionOptions": {
+                "concept": "2c8bb721-b642-428a-b956-7902242776ab",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "outcomePatient !=='e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
+              }
+            },
+            {
+              "label": "Facility referred to:",
               "type": "obs",
               "id": "transferToFacility",
               "questionOptions": {
@@ -2465,31 +2463,92 @@
                 "hideWhenExpression": "referralTo !=='ab396b67-273c-4c97-9f90-f858d79b13b1'"
               }
             },
+            
             {
-              "label": "This facility:",
+              "label": "Department transferred to:",
               "type": "obs",
-              "id": "thisfacility",
+              "id": "departmentSpecify",
               "questionOptions": {
-                "concept": "6574e401-3b04-498f-828b-9fd9aaebf12b",
-                "rendering": "text",
-                "calculate": {
-                  "calculateExpression": "referralTo === '59312903-dde9-4f7a-b6cf-7b41863b7e81' && userLocation.display"
-                }
+                "rendering": "select",
+                "concept": "a89c2344-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "a8a06788-1350-11df-a1f1-0026b9348838",
+                    "label": "Ophthalmology (Eye)Clinic"
+                  },
+                  {
+                    "concept": "a8a066ca-1350-11df-a1f1-0026b9348838",
+                    "label": "Ear, Nose, and Throat(ENT)Clinic"
+                  },
+                  {
+                    "concept": "a8a06846-1350-11df-a1f1-0026b9348838",
+                    "label": "Physiotherapy clinic"
+                  },
+                  {
+                    "concept": "27ac429d-8a42-476e-b2f6-65bde0b8c935",
+                    "label": "Pre Exposure prophylaxis"
+                  },
+                  {
+                    "concept": "a8a19c20-1350-11df-a1f1-0026b9348838",
+                    "label": "Post exposure prophylaxis"
+                  },
+                  {
+                    "concept": "3cfb070d-70ac-4d20-bb60-88ea08e36178",
+                    "label": "Surgical Outpatient Clinic"
+                  },
+                  {
+                    "concept": "a89ee9a8-1350-11df-a1f1-0026b9348838",
+                    "label": "Paediatrics clinics"
+                  },
+                  {
+                    "concept": "1d7d7c76-d807-4f33-8c7e-2531e28126ed",
+                    "label": "Maxillofacial Clinic"
+                  },
+                  {
+                    "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
+                    "label": "Medical Outpatient clinic"
+                  },
+                  {
+                    "concept": "073ea366-834b-49bd-b4db-ce4e6c61bbc3",
+                    "label": "Oncology Clinic"
+                  },
+                  {
+                    "concept": "a8a0660c-1350-11df-a1f1-0026b9348838",
+                    "label": "Dental clinic"
+                  },
+                  {
+                    "concept": "597896cd-2841-42e9-8fb0-4292f82ac7b6",
+                    "label": "Renal Clinic"
+                  },
+                  {
+                    "concept": "a8a8b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "Mental Health"
+                  },
+                  {
+                    "concept": "0d516ea7-218f-43d4-b5c0-58d126529271",
+                    "label": "Dermatology Clinic"
+                  },
+                  {
+                    "concept": "832081a7-80b4-49d7-a649-7a30dc10c6fb",
+                    "label": "Diabetic Clinic"
+                  },
+                  {
+                    "concept": "a8a0690e-1350-11df-a1f1-0026b9348838",
+                    "label": "Occupational Therapy Clinic"
+                  },
+                  {
+                    "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
+                    "label": "Orthopaedic Clinic"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Others specify"
+                  }
+                ]
               },
               "hide": {
-                "hideWhenExpression": "referralTo !=='59312903-dde9-4f7a-b6cf-7b41863b7e81'"
-              }
-            },
-            {
-              "label": "Department referred to:",
-              "type": "obs",
-              "id": "depRefer",
-              "questionOptions": {
-                "concept": "c4d83fcb-c4db-4317-b8e7-0470f02e185a",
-                "rendering": "textarea"
-              },
-              "hide": {
-                "hideWhenExpression": "referralTo !=='59312903-dde9-4f7a-b6cf-7b41863b7e81'"
+                "hideWhenExpression": "outcomePatient !=='48155468-0e21-401a-87f5-d037ae0e8db0'"
               }
             }
           ]
