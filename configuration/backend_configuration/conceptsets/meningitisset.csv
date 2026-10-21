@@ -1,10 +1,10 @@
 Concept	Member	Member Type	Sort Weight
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	d6f8c3a1-4e2b-47d9-9a15-8c3f1b2e6a70	concept-set	1
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	2b9e4f17-8a3c-4d6e-b5f2-1e7a9c4d3b86	concept-set	2
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	7f3a2d95-1c6b-4e08-a9d4-5b2e8f1c7a63	concept-set	3
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	a4c7e2b9-6d1f-4a83-9e05-3f8b1c6d2a47	concept-set	4
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	e1b5f8c3-9a2d-4e67-b4f1-7c6d3a2e8b95	concept-set	5
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	3c9a7e14-5b8f-4d26-a1c7-9e4f2b6d8a30	concept-set	6
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	8d2f6b41-7a3e-4c95-b8d1-2f5c9a7e4d16	concept-set	7
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	5a1c9e73-4f6d-4b28-8a95-3d7e2c1b6f40	concept-set	8
-a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d	7243bed9-0bc7-4702-af28-a06ab1981e19	concept-set	9
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,d6f8c3a1-4e2b-47d9-9a15-8c3f1b2e6a70,concept-set,1
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,2b9e4f17-8a3c-4d6e-b5f2-1e7a9c4d3b86,concept-set,2
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,7f3a2d95-1c6b-4e08-a9d4-5b2e8f1c7a63,concept-set,3
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,a4c7e2b9-6d1f-4a83-9e05-3f8b1c6d2a47,concept-set,4
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,e1b5f8c3-9a2d-4e67-b4f1-7c6d3a2e8b95,concept-set,5
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,3c9a7e14-5b8f-4d26-a1c7-9e4f2b6d8a30,concept-set,6
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,8d2f6b41-7a3e-4c95-b8d1-2f5c9a7e4d16,concept-set,7
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,5a1c9e73-4f6d-4b28-8a95-3d7e2c1b6f40,concept-set,8
+a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,7243bed9-0bc7-4702-af28-a06ab1981e19,concept-set,9

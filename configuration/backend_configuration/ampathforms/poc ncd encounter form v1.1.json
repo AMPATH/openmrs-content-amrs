@@ -142,6 +142,35 @@
               }
             },
             {
+              "label": "Date of Enrollment:",
+              "type": "obs",
+              "id": "ncdEnrollmentDate",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "c7ce04e7-34cf-451c-9a34-2ab024f932ee"
+              },
+              "hide": {
+                "hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && visitType !== '97772927-7aa2-4c30-be98-85183e4b0efe'"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && isEmpty(myValue)",
+                  "message": "Date of enrollment is required for a new patient."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || visitType === '97772927-7aa2-4c30-be98-85183e4b0efe') && !isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter(new moment(encDate), 'day')",
+                  "message": "Date of enrollment cannot be after the encounter date."
+                }
+              ]
+            },
+            {
               "label": "Type of return visit:",
               "type": "obs",
               "required": false,
@@ -1333,7 +1362,9 @@
                 "hideWhenExpression": "isEmpty(diseaseType) || (diseaseType !== 'a893436e-1350-11df-a1f1-0026b9348838' && diseaseType !== '0ac4af8a-1b8e-4404-b445-c0471d6f7576')"
               },
               "required": false,
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('52ff51ce-3a95-4e32-b389-966c2a6b2a77')) ? undefined : HD.getObject('prevEnc').getValue('52ff51ce-3a95-4e32-b389-966c2a6b2a77')"
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('52ff51ce-3a95-4e32-b389-966c2a6b2a77')) ? undefined : HD.getObject('prevEnc').getValue('52ff51ce-3a95-4e32-b389-966c2a6b2a77')",
+              "historicalPrepopulate": "true"
+
             },
             {
               "label": "Hypertension:",
@@ -1461,7 +1492,8 @@
                 "hideWhenExpression": "isEmpty(diseaseType) || (diseaseType !== 'a8986880-1350-11df-a1f1-0026b9348838' && diseaseType !== '0ac4af8a-1b8e-4404-b445-c0471d6f7576')"
               },
               "required": false,
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9ff2aae1-c03e-405e-bd11-39e06228a1a7')) ? undefined : HD.getObject('prevEnc').getValue('9ff2aae1-c03e-405e-bd11-39e06228a1a7')"
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9ff2aae1-c03e-405e-bd11-39e06228a1a7')) ? undefined : HD.getObject('prevEnc').getValue('9ff2aae1-c03e-405e-bd11-39e06228a1a7')",
+              "historicalPrepopulate": "true"
             },
             {
               "label": "HIV status:",
@@ -1487,36 +1519,7 @@
                 ]
               }
             },
-            {
-              "label": "If HIV positive on HAART?",
-              "type": "obs",
-              "required": false,
-              "id": "haartStats",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "9a3f7c18-57b2-48ce-9c6e-d70076b4d535",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(hivStatus) || hivStatus != 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!(isEmpty(hivStatus) || hivStatus != 'a896f3a6-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
-                  "message": "Please complete if hiv positive on haart."
-                }
-              ]
-            },
+           
             {
               "label": "TB screening:",
               "required": false,

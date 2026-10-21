@@ -53,6 +53,8 @@
               "label": "Parity:",
               "type": "obs",
               "id": "par",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a899a920-1350-11df-a1f1-0026b9348838')",
+              "historicalPrepopulate": "true",
               "questionOptions": {
                 "concept": "a899a920-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
@@ -65,6 +67,8 @@
               "label": "Plus (Miscarriage):",
               "type": "obs",
               "id": "parityAbortion",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('cedb167d-34a4-4027-8a5c-b7fa9fe4190e')",
+              "historicalPrepopulate": "true",
               "required": "true",
               "questionOptions": {
                 "concept": "cedb167d-34a4-4027-8a5c-b7fa9fe4190e",
@@ -77,6 +81,8 @@
               "label": "Gravidae:",
               "type": "obs",
               "id": "grav",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a8aaf59a-1350-11df-a1f1-0026b9348838')",
+              "historicalPrepopulate": "true",
               "questionOptions": {
                 "concept": "a8aaf59a-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
@@ -90,6 +96,8 @@
               "label": "Labour onset:",
               "type": "obs",
               "id": "labourOnset",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('f0d1dda9-e09e-4bb8-b4fe-1d2f2144ac71')",
+              "historicalPrepopulate": "true",
               "questionOptions": {
                 "concept": "f0d1dda9-e09e-4bb8-b4fe-1d2f2144ac71",
                 "rendering": "select",
@@ -112,6 +120,8 @@
             {
               "label": "Active labour diagnosis date:",
               "id": "activeLabour",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('3b85d576-ddf8-4c6a-9128-d5f265ba3cbb')",
+              "historicalPrepopulate": "true",
               "questionOptions": {
                 "concept": "3b85d576-ddf8-4c6a-9128-d5f265ba3cbb",
                 "rendering": "date"
@@ -127,6 +137,8 @@
             {
               "label": "Ruptured membranes date and time:",
               "id": "rupturedMembrane",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('e2ddba74-73b0-4840-a3cf-7d61a9d8853a')",
+              "historicalPrepopulate": "true",
               "questionOptions": {
                 "concept": "e2ddba74-73b0-4840-a3cf-7d61a9d8853a",
                 "rendering": "date"
@@ -142,6 +154,8 @@
             {
               "label": "Risk factors:",
               "id": "riskFactors",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('bf48af84-e16a-4757-81da-582511e88b35')",
+              "historicalPrepopulate": "true",
               "questionOptions": {
                 "concept": "bf48af84-e16a-4757-81da-582511e88b35",
                 "rendering": "text"
