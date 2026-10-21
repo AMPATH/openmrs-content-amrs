@@ -8,7 +8,7 @@ Hypertension diagnosis with blood pressure >=160/100 and < 180/110",,,Diagnosis 
 07872e34-30f6-4a12-b2e4-b86e4e8246bd,,MCL/CIEL:165206,PRE HYPERTENSION,,,"HYPERTENSION, STAGE 1",,,Elevated blood pressure above 140/90 without a diagnosis of hypertension.,,,Diagnosis ,N/A,,,
 6dcbadea-ef99-4712-af1f-ceb7982e24da,,MCL/CIEL:165205,SEVERE HYPERTENSION,,,"HYPERTENSION, STAGE 4",,,Diagnosis of hypertension with blood pressure >180/110,,,Diagnosis ,N/A,,,
 3dd7033a-2141-4b7d-bca3-e079ae772f24,,,KNOWN COMORBID ILLNESS,,,,,,Known comordid illness,,,Misc,N/A,,,
-9deaa3dd-1381-4b2d-b16e-1b7097530d28,,,TYPE OF HYPERTENSION TEXT,,,,,,Type of hypertension in freetext,,,Question ,Text,,,
+9deaa3dd-1381-4b2d-b16e-1b7097530d28,,,TYPE OF HYPERTENSION TEXT,,,,,,Type of hypertension in free text,,,Question ,Text,,,
 6f8ef247-a73f-421c-9fcb-ed5c3260b8aa,,,TYPE OF DIABETES TEXT,,,,,,Type of diabetes in freetext,,,Question ,Text,,,
 95eac840-0e18-45f3-8650-08a8356bb45a,,"MCL/CIEL:168057
 ",DIABETIC FOOT ULCER RISK LEVEL,,,,,,Diabetic foot ulcer risk level,,,Question,Coded,d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb;4fae298d-c3c2-4483-ad31-bea9b637ae2b;a899b50a-1350-11df-a1f1-0026b9348838,,
@@ -40,3 +40,4 @@ e0636302-39ad-449b-8c19-2551447d641d,,MCL/CIEL:160218,PROBABLE CAUSE OF DEATH TE
 5afc3f60-c48e-4522-a959-20d2892ca288,,,CAVITY EMBALMING,,,,,,Internal organs (chest and abdomen) are treated by removing gases and fluids,,,Misc,N/A,,,
 3eeac352-2f83-4419-87de-73aea7532b9e,,,TOPICAL EMBALMING,,,,,,"Used for damaged areas, wounds, burns, or unembalmed parts.",,,Misc,N/A,,,
 eef060d3-d503-4695-a9ba-47f5af44135b,,,"PROCEDURES ORDERED, SET",,,,,,A convenient set used to store precedures as set members. Used in 3x. ,,,Convset,N/A,,,
+73b71861-b4de-44a3-a9e8-a5bf71a2696c,,,TYPE OF HYPERTENSION,,,TYPE OF HTN,,,Type of hypertension,,,Question ,Coded,a8986880-1350-11df-a1f1-0026b9348838;2AF816F9-F26C-4CD4-8B92-C9A05060F822,,

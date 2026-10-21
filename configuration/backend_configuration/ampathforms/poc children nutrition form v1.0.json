@@ -65,12 +65,8 @@
                                 "rendering": "number",
                                 "max": "250",
                                 "min": "0"
-                            },
-                            "hide": {
-                                "hideWhenExpression": "!(age >= 0 && age <=5)"
                             }
                         },
-                        
                         {
                             "label": "Height(cm):",
                             "type": "obs",
@@ -81,13 +77,8 @@
                                 "max": "272",
                                 "min": "10"
                             },
-                            "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
-                            "hide": {
-                                "hideWhenExpression": "!(age >= 0 && age <=5)"
-                            }
+                            "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')"
                         },
-                        
-                        
                         {
                             "label": "MUAC (cm):",
                             "type": "obs",
@@ -97,9 +88,6 @@
                                 "rendering": "number",
                                 "max": "80",
                                 "min": "0"
-                            },
-                            "hide": {
-                                "hideWhenExpression": "(age >= 18 && sex !== 'F') || (sex === 'F' && age > 49)"
                             }
                         },
                         {
@@ -114,82 +102,6 @@
                             },
                             "hide": {
                                 "hideWhenExpression": "age > 2"
-                            }
-                        },
-                        {
-                            "label": "Waist circumference(cm):",
-                            "type": "obs",
-                            "id": "waistCircumference",
-                            "questionOptions": {
-                                "concept": "9ed84785-76c5-4520-ad0e-5c6446c9df2c",
-                                "rendering": "number",
-                                "max": "150",
-                                "min": "0"
-                            },
-                            "hide": {
-                                "hideWhenExpression": "age < 18"
-                            }
-                        },
-                        {
-                            "label": "Waist circumference interpretation:",
-                            "type": "obs",
-                            "readOnly": true,
-                            "questionOptions": {
-                                "rendering": "select",
-                                "concept": "80f3d898-e9ac-4ecb-b0f0-dcf268972e07",
-                                "calculate": {
-                                    "calculateExpression": "age < 18 || sex !== 'F' || isEmpty(waistCircumference) ? '' : Number(waistCircumference) < 80 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(waistCircumference) <= 88 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
-                                },
-                                "answers": [
-                                    {
-                                        "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                                        "label": "Normal"
-                                    },
-                                    {
-                                        "concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
-                                        "label": "Increased risk"
-                                    },
-                                    {
-                                        "concept": "4fae298d-c3c2-4483-ad31-bea9b637ae2b",
-                                        "label": "High risk"
-                                    }
-                                ]
-                            },
-                            "id": "waistCicumDiagnosisFemale",
-                            "validators": [],
-                            "hide": {
-                                "hideWhenExpression": "age < 18 || isEmpty(waistCircumference) || sex !== 'F'"
-                            }
-                        },
-                        {
-                            "label": "Waist circumference interpretation:",
-                            "type": "obs",
-                            "readOnly": true,
-                            "questionOptions": {
-                                "rendering": "select",
-                                "concept": "80f3d898-e9ac-4ecb-b0f0-dcf268972e07",
-                                "calculate": {
-                                    "calculateExpression": "age < 18 || sex !== 'M' || isEmpty(waistCircumference) ? '' : Number(waistCircumference) < 90 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(waistCircumference) <= 102 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
-                                },
-                                "answers": [
-                                    {
-                                        "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                                        "label": "Normal"
-                                    },
-                                    {
-                                        "concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
-                                        "label": "Increased risk"
-                                    },
-                                    {
-                                        "concept": "4fae298d-c3c2-4483-ad31-bea9b637ae2b",
-                                        "label": "High risk"
-                                    }
-                                ]
-                            },
-                            "id": "waistCicumDiagnosisMale",
-                            "validators": [],
-                            "hide": {
-                                "hideWhenExpression": "age < 18 || isEmpty(waistCircumference) || sex !== 'M'"
                             }
                         },
                         {
@@ -254,6 +166,85 @@
                             "readOnly": true
                         },
                         {
+                            "label": "SAM classification:",
+                            "id": "samClassification",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "3a6d13ec-0765-4de3-a538-2ffad63ab082",
+                                "answers": [
+                                    {
+                                        "concept": "77943986-8d86-4dc9-96c6-dda6cdf89c3d",
+                                        "label": "Marasmus"
+                                    },
+                                    {
+                                        "concept": "50c8c4d1-72c9-431b-8d61-de5624bf3dd2",
+                                        "label": "Kwashiorkor"
+                                    },
+                                    {
+                                        "concept": "a890b126-1350-11df-a1f1-0026b9348838",
+                                        "label": "Malnutrition"
+                                    }
+                                ]
+                            },
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "age>5 || isEmpty(weightHeightDiagnosis) || weightHeightDiagnosis !== '0306539c-f24f-49f5-b059-b646adbec47c'"
+                            }
+                        },
+                        {
+                            "label": " Height/length for age Z-score:",
+                            "id": "heightLengthScore",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "507f48e7-26fc-490b-a521-35d7c5aa8e9f",
+                                "max": "4",
+                                "min": "-4",
+                                "calculate": {
+                                    "calculateExpression": "calcHeightForAgeZscore(heightForAgeRef,height,weight)"
+                                }
+                            },
+                            "type": "obs",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "age >17"
+                            }
+                        },
+                        {
+                            "label": "Height/Length for age Z score diagnosis:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "21c0a36a-0841-4268-a79b-140b85c6ff53",
+                                "calculate": {
+                                    "calculateExpression": "weight && height && parseInt(heightLengthScore) >= 0 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' :weight && height && parseInt(heightLengthScore) === -1 ? '2fc2c915-9d20-4753-b226-730a8a0ffdb2' :weight && height && parseInt(heightLengthScore) === -2 ? 'f8b800a7-1888-4159-80b1-6c45c223a3d2' : weight && height && (parseInt(heightLengthScore) === -3 || parseInt(heightLengthScore) === -4)? '46255b12-efe6-458a-b178-0af440fec2e1' :''"
+                                },
+                                "answers": [
+                                    {
+                                        "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Normal"
+                                    },
+                                    {
+                                        "concept": "2fc2c915-9d20-4753-b226-730a8a0ffdb2",
+                                        "label": "Mild stunting"
+                                    },
+                                    {
+                                        "concept": "f8b800a7-1888-4159-80b1-6c45c223a3d2",
+                                        "label": "Moderate stunting"
+                                    },
+                                    {
+                                        "concept": "46255b12-efe6-458a-b178-0af440fec2e1",
+                                        "label": "Severe stunting"
+                                    }
+                                ]
+                            },
+                            "id": "HeightLengthDiagnosis",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "age >17 || isEmpty(heightLengthScore)"
+                            }
+                        },
+                        {
                             "label": "BMI for Age Z-Score:",
                             "id": "bmiScore",
                             "questionOptions": {
@@ -262,7 +253,7 @@
                                 "max": "4",
                                 "min": "-4",
                                 "calculate": {
-                                    "calculateExpression": "age < 5 || age >= 18 ? null : age <= 5 ? (isEmpty(height) || isEmpty(weight) || Number(height) <= 0 || Number(weight) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,height,weight)) : (isEmpty(heightForBMI) || isEmpty(weightForBMI) || Number(heightForBMI) <= 0 || Number(weightForBMI) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,heightForBMI,weightForBMI))"
+                                    "calculateExpression": "calcBMIForAgeZscore(bmiForAgeRef,height,weight)"
                                 }
                             },
                             "type": "obs",
@@ -317,121 +308,6 @@
                                 "hideWhenExpression": "age < 5 || age >= 18 || (isEmpty(bmiScore) && isEmpty(muac))"
                             },
                             "readOnly": true
-                        },
-                        {
-                            "label": "BMI (+18) categorization:",
-                            "type": "obs",
-                            "questionOptions": {
-                                "rendering": "select",
-                                "concept": "ac5f7974-3a71-4867-af59-0c30d68ce9d8",
-                                "calculate": {
-                                    "calculateExpression": "bmi && (bmi > 30 ? '2a60e784-1314-4454-91ba-7ea4cc2c3b15' : bmi > 25 ? '1505faef-c8aa-422c-b356-da065b88ec9c' : bmi > 18.5 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : bmi > 16 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' : '0306539c-f24f-49f5-b059-b646adbec47c')"
-                                },
-                                "answers": [
-                                    {
-                                        "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                                        "label": "Normal"
-                                    },
-                                    {
-                                        "concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
-                                        "label": "Mild acute malnutrition"
-                                    },
-                                    {
-                                        "concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
-                                        "label": "Moderate acute malnutrition"
-                                    },
-                                    {
-                                        "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
-                                        "label": "Severe acute malnutrition"
-                                    },
-                                    {
-                                        "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
-                                        "label": "Overweight"
-                                    },
-                                    {
-                                        "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
-                                        "label": "Obesity"
-                                    }
-                                ]
-                            },
-                            "id": "bmiCategorization",
-                            "validators": [],
-                            "hide": {
-                                "hideWhenExpression": "age<18 || isEmpty(bmi)"
-                            }
-                        },
-                        {
-                            "label": "LMP:",
-                            "type": "obs",
-                            "id": "lmpDate",
-                            "questionOptions": {
-                                "concept": "a89ff758-1350-11df-a1f1-0026b9348838",
-                                "rendering": "date"
-                            },
-                            "validators": [
-                                {
-                                    "type": "date",
-                                    "allowFutureDates": "false"
-                                }
-                            ],
-                            "hide": {
-                                "hideWhenExpression": "sex !== 'F'  ||  (sex ==='F' && (age < 10 || age > 49))"
-                            }
-                        },
-                        {
-                            "label": "Client vaccinated against HPV?",
-                            "type": "obs",
-                            "questionOptions": {
-                                "rendering": "select",
-                                "concept": "9806572c-0225-4b17-b21b-a0f44f9d07f0",
-                                "answers": [
-                                    {
-                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                                        "label": "Yes"
-                                    },
-                                    {
-                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                                        "label": "No"
-                                    }
-                                ]
-                            },
-                            "id": "clientHpvVaccinated",
-                            "validators": [],
-                            "hide": {
-                                "hideWhenExpression": "sex !== 'F' || sex === 'F' && (age < 10 || age > 15)"
-                            }
-                        },
-                        {
-                            "label": "Number of doses given:",
-                            "type": "obs",
-                            "id": "doseGiven",
-                            "questionOptions": {
-                                "concept": "a89ef54c-1350-11df-a1f1-0026b9348838",
-                                "rendering": "number",
-                                "max": "10",
-                                "min": "0"
-                            },
-                            "hide": {
-                                "hideWhenExpression": "clientHpvVaccinated !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-                            }
-                        },
-                        {
-                            "label": "Date given:",
-                            "type": "obs",
-                            "id": "vaccineDate",
-                            "questionOptions": {
-                                "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4",
-                                "rendering": "date"
-                            },
-                            "hide": {
-                                "hideWhenExpression": "clientHpvVaccinated !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-                            },
-                            "validators": [
-                                {
-                                    "type": "date",
-                                    "allowFutureDates": "false"
-                                }
-                            ]
                         }
                     ]
                 },
@@ -448,15 +324,6 @@
                             },
                             "questions": [
                                 {
-                                    "label": "Drug:",
-                                    "type": "obs",
-                                    "questionOptions": {
-                                        "rendering": "drug",
-                                        "concept": "a8a060c6-1350-11df-a1f1-0026b9348838"
-                                    },
-                                    "id": "drug"
-                                },
-                                {
                                     "label": "Sequence no:",
                                     "type": "obs",
                                     "questionOptions": {
@@ -470,25 +337,6 @@
                                         "hideWhenExpression": "arrayContainsAny(['a89840bc-1350-11df-a1f1-0026b9348838','a897de60-1350-11df-a1f1-0026b9348838','79c722a0-17cf-4aca-bdec-fee0810bc5ba','a8acb5f6-1350-11df-a1f1-0026b9348838','a8909844-1350-11df-a1f1-0026b9348838'], previousimmAdministered)"
                                     },
                                     "id": "sequenceNumber"
-                                },
-                                {
-                                    "label": "Vitamin A given:",
-                                    "type": "obs",
-                                    "questionOptions": {
-                                        "rendering": "select",
-                                        "concept": "7f4915e0-87c0-4f9f-8c81-0ad45fd42b23",
-                                        "answers": [
-                                            {
-                                                "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                                                "label": "Yes"
-                                            },
-                                            {
-                                                "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                                                "label": "No"
-                                            }
-                                        ]
-                                    },
-                                    "id": "vitA"
                                 },
                                 {
                                     "label": "Date given:",
@@ -526,41 +374,120 @@
                                             "message": "Next visit date should be a future date"
                                         }
                                     ]
-                                },
-                                {
-                                    "label": "Deworming given:",
-                                    "type": "obs",
-                                    "questionOptions": {
-                                        "rendering": "select",
-                                        "concept": "1ffee2bc-2bcd-4394-a3ac-abfd1916f775",
-                                        "answers": [
-                                            {
-                                                "concept": "a8967656-1350-11df-a1f1-0026b9348838",
-                                                "label": "Yes"
-                                            },
-                                            {
-                                                "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                                                "label": "No"
-                                            }
-                                        ]
-                                    },
-                                    "id": "deworm"
-                                },
-                                {
-                                    "label": "Deworming date:",
-                                    "type": "obs",
-                                    "questionOptions": {
-                                        "rendering": "date",
-                                        "concept": "eb22f892-21fe-4c2a-8047-f016fd2162c1"
-                                    },
-                                    "id": "dewormDate",
-                                    "hide": {
-                                        "hideWhenExpression": "deworm !== 'a8967656-1350-11df-a1f1-0026b9348838'"
-                                    }
                                 }
                             ],
                             "id": "__Ez6LMCquH"
+                        },
+                        {
+                            "label": "Deworming given:",
+                            "required": "true",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "1ffee2bc-2bcd-4394-a3ac-abfd1916f775",
+                                "answers": [
+                                    {
+                                        "concept": "a8967656-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "deworm"
+                        },
+                        {
+                            "label": "Deworming date:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "date",
+                                "concept": "eb22f892-21fe-4c2a-8047-f016fd2162c1"
+                            },
+                            "id": "dewormDate",
+                            "hide": {
+                                "hideWhenExpression": "deworm !== 'a8967656-1350-11df-a1f1-0026b9348838'"
+                            }
+                        },
+                        {
+                            "label": "Exclusive breastfeeding:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a8a8d9b8-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                                        "label": "Yes"
+                                    },
+                                    {
+                                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                                        "label": "No"
+                                    }
+                                ]
+                            },
+                            "id": "exclusiveBreastfeeding"
+                        },
+                        {
+                            "label": "Developmental milestones:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "ffd9cd0a-95ee-49ee-a5d6-2bfeb8b73679",
+                                "answers": [
+                                    {
+                                        "concept": "5940589b-8d0a-4753-88e4-0b87d22c33a0",
+                                        "label": "Head control"
+                                    },
+                                    {
+                                        "concept": "8c6c1eaa-469c-499d-9a8a-425772c23ce8",
+                                        "label": "Sitting"
+                                    },
+                                    {
+                                        "concept": "415b2968-a82f-44fd-9930-bf4c2207fbd8",
+                                        "label": "Talking"
+                                    }
+                                ]
+                            },
+                            "id": "developmentalMilestones"
+                        },
+                        {
+                            "label": "Danger signs:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "a8a45730-1350-11df-a1f1-0026b9348838",
+                                "answers": [
+                                    {
+                                        "concept": "a8a4528a-1350-11df-a1f1-0026b9348838",
+                                        "label": "Unable to breastfeed"
+                                    },
+                                    {
+                                        "concept": "ccbba3c9-78cc-4cb8-b8c5-4d237a8ecd70",
+                                        "label": "Unable to drink"
+                                    },
+                                    {
+                                        "concept": "51b966c9-8bc7-41c1-822c-bbeac0554e69",
+                                        "label": "Vomits everything"
+                                    },
+                                    {
+                                        "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                                        "label": "Bloody diarrhea"
+                                    },
+                                    {
+                                        "concept": "a89540f6-1350-11df-a1f1-0026b9348838",
+                                        "label": "Has oedema"
+                                    },
+                                    {
+                                        "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
+                                        "label": "Has convulsions"
+                                    }
+                                ]
+                            },
+                            "id": "dangerSigns"
                         }
+
                     ]
                 },
                 {

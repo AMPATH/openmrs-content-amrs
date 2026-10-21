@@ -138,11 +138,67 @@
                     "rendering": "number",
                     "concept": "bb1e6b95-0d35-4065-80cc-d774d1c9b964",
                     "max": "",
-                    "min": ""
+                    "min": "0"
                   },
-                  "validators": [],
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(previousimmAdministered) && isEmpty(myValue)",
+                      "message": "Sequence number is required when a vaccine is selected."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && (myValue < 1 || myValue % 1 !== 0)",
+                      "message": "Sequence must be a whole number. Use 0 for the OPV birth dose; other doses start at 1."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === 'a89840bc-1350-11df-a1f1-0026b9348838' && (myValue < 1 || myValue > 1)",
+                      "message": "BCG: sequence must be 1."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === 'a897de60-1350-11df-a1f1-0026b9348838' && (myValue < 0 || myValue > 4)",
+                      "message": "OPV (at birth = 0): sequence must be between 0 and 4."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === '79c722a0-17cf-4aca-bdec-fee0810bc5ba' && (myValue < 1 || myValue > 2)",
+                      "message": "IPV: sequence must be between 1 and 2."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === '96ecae74-0704-475e-ade3-17cd6b080926' && (myValue < 1 || myValue > 3)",
+                      "message": "DPT/Hep B/Hib (Penta): sequence must be between 1 and 3."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === 'f60456b4-2797-4f98-8fb5-41830f205427' && (myValue < 1 || myValue > 3)",
+                      "message": "Pneumococcal: sequence must be between 1 and 3."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === 'b3a3a3da-48bb-48f9-b9d5-154f08c4fad3' && (myValue < 1 || myValue > 3)",
+                      "message": "Rotavirus: sequence must be between 1 and 3."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === '8ce0c11b-26d8-4341-b381-5ec8ce1c4719' && (myValue < 1 || myValue > 2)",
+                      "message": "Measles/Rubella: sequence must be between 1 and 2."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === 'a8909844-1350-11df-a1f1-0026b9348838' && (myValue < 1 || myValue > 1)",
+                      "message": "Measles at 6 months: sequence must be 1."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && previousimmAdministered === '48e6cfb0-e122-4eb6-a08e-989f0a028ff2' && (myValue < 1 || myValue > 1)",
+                      "message": "Typhoid: sequence must be 1."
+                    }
+                  ],
                   "hide": {
-                    "hideWhenExpression": "arrayContainsAny(['a89840bc-1350-11df-a1f1-0026b9348838','a897de60-1350-11df-a1f1-0026b9348838','79c722a0-17cf-4aca-bdec-fee0810bc5ba','a8acb5f6-1350-11df-a1f1-0026b9348838','a8909844-1350-11df-a1f1-0026b9348838'], previousimmAdministered)"
+                    "hideWhenExpression": "isEmpty(previousimmAdministered)"
                   },
                   "id": "sequenceNumber"
                 },
@@ -155,7 +211,14 @@
                     "max": "",
                     "min": ""
                   },
-                  "id": "lotNumber"
+                  "id": "lotNumber",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(previousimmAdministered) && isEmpty(myValue)",
+                      "message": "Batch number is required when a vaccine is selected."
+                    }
+                  ]
                 },
                 {
                   "label": "Expiry date:",
@@ -165,7 +228,14 @@
                     "concept": "2550a5ec-d404-49a0-ae75-e2f82ee277a8",
                     "weeksList": ""
                   },
-                  "id": "expiryDate"
+                  "id": "expiryDate",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(previousimmAdministered) && isEmpty(myValue)",
+                      "message": "Expiry date is required when a vaccine is selected."
+                    }
+                  ]
                 },
                 {
                   "label": "Dose:",
@@ -192,6 +262,9 @@
                   "type": "obs",
                   "questionOptions": {
                     "rendering": "date",
+                    "calculate": {
+                      "calculateExpression": "isEmpty(myValue) ? moment().format('YYYY-MM-DD') : myValue"
+                    },
                     "concept": "0a35a6e4-eb93-448e-a3b0-cae66a57beb4",
                     "weeksList": "",
                     "conceptMappings": [
@@ -235,12 +308,7 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "52b124ab-e402-47cc-992b-890d4303f0c0",
-                "conceptMappings": [
-                  {
-                    "type": "MCL/CIEL",
-                    "value": "160265"
-                  }
-                ],
+                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -252,28 +320,12 @@
                   }
                 ]
               },
-              "id": "bcgScar"
-            },
-            {
-              "label": "Date BCG repeated:",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "date",
-                "concept": "bb85532e-8f7e-476f-81d7-5580e0385852"
-              },
-              "validators": [
-                {
-                  "type": "date",
-                  "allowFutureDate": "false"
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day')",
-                  "message": "Date should not be greater than the encounter date."
-                }
-              ],
-              "id": "dateRepeated"
+              "id": "bcgScar",
+              "hide": {
+                "hideWhenExpression": "age <1"
+              }
             }
+            
           ]
         },
         {
@@ -288,25 +340,7 @@
                 "concept": "a8a0654e-1350-11df-a1f1-0026b9348838"
               },
               "questions": [
-                {
-                  "label": "Drug:",
-                  "type": "obs",
-                  "questionOptions": {
-                    "rendering": "drug",
-                    "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
-                    "conceptMappings": [
-                      {
-                        "type": "MCL/CIEL",
-                        "value": "1282"
-                      },
-                      {
-                        "type": "local",
-                        "value": "1895"
-                      }
-                    ]
-                  },
-                  "id": "drug"
-                },
+                
                 {
                   "label": "Sequence no:",
                   "type": "obs",
@@ -320,7 +354,7 @@
                   "hide": {
                     "hideWhenExpression": "arrayContainsAny(['a89840bc-1350-11df-a1f1-0026b9348838','a897de60-1350-11df-a1f1-0026b9348838','79c722a0-17cf-4aca-bdec-fee0810bc5ba','a8acb5f6-1350-11df-a1f1-0026b9348838','a8909844-1350-11df-a1f1-0026b9348838'], previousimmAdministered)"
                   },
-                  "id": "sequenceNumber"
+                  "id": "vitaminASequenceNumber"
                 },
                 {
                   "label": "Vitamin A given:",
@@ -608,7 +642,7 @@
               "id": "__ovK20spEs"
             },
             {
-              "label": "Squint/White eye reflection (Under one year)",
+              "label": "Squint/White eye reflection (Under one year):",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
