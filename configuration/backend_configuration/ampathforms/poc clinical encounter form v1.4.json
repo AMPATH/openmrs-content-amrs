@@ -110,7 +110,7 @@
               "id": "hasChronicIllness",
               "required": "true",
               "questionOptions": {
-                "concept": "",
+                "concept": "e2f4ae5b-94db-458a-843a-de97928d0f85",
                 "rendering": "radio",
                 "answers": [
                   {
@@ -2539,7 +2539,7 @@
                   },
                   {
                     "concept": "a8989396-1350-11df-a1f1-0026b9348838",
-                    "label": "Cotrimoxazole 960mg"
+                    "label": "Cotrimoxazole"
                   }
                 ],
                 "rendering": "select"
@@ -2600,7 +2600,7 @@
               }
             },
             {
-              "label": "Is the patient on TB prophylaxis?",
+              "label": "Is the patient on TB preventive therapy?",
               "type": "obs",
               "required": "true",
               "id": "onTbProphylaxis",
@@ -2623,7 +2623,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && onTbTreatment === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-                  "message": "A patient cannot be on both TB prophylaxis and TB treatment."
+                  "message": "A patient cannot be on both TB preventive therapy and TB treatment."
                 }
               ],
               "hide": {
@@ -2693,7 +2693,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(myValue) && !isEmpty(onTbProphylaxis) && onTbProphylaxis === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-                  "message": "Patient  marked as on TB Prophylaxis. Please provide the drug."
+                  "message": "Patient  marked as on TB preventive therapy. Please provide the drug."
                 }
               ],
               "hide": {
@@ -2701,7 +2701,7 @@
               }
             },
             {
-              "label": "Start date of past TB prophylaxis treatment:",
+              "label": "Start date of past TB preventive therapy:",
               "id": "pastStartTbProphTreatment",
               "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('67785e82-c2f7-4417-8ada-cc8e85abbfc1')) ? undefined : HD.getObject('prevEnc').getValue('67785e82-c2f7-4417-8ada-cc8e85abbfc1')",
               "questionOptions": {
@@ -2719,7 +2719,7 @@
               }
             },
             {
-              "label": "End date of past TB prophylaxis treatment:",
+              "label": "End date of past TB preventive therapy:",
               "id": "pastEndTbProphTreatment",
               "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('d4f18a59-9bb4-4089-8cd6-1410491569a0')) ? undefined : HD.getObject('prevEnc').getValue('d4f18a59-9bb4-4089-8cd6-1410491569a0')",
               "questionOptions": {
@@ -2737,7 +2737,7 @@
               }
             },
             {
-              "label": "TB prophylaxis adherence",
+              "label": "TB preventive therapy adherence",
               "type": "obsGroup",
               "questionOptions": {
                 "concept": "3a69cfcf-f129-4702-a8dd-d061d2a16b9d",
@@ -2745,7 +2745,7 @@
               },
               "questions": [
                 {
-                  "label": "Patient's adherence on TB prophylaxis:",
+                  "label": "Patient's adherence on TB preventive therapy:",
                   "id": "adherenceOnTbProphy",
                   "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('3a69cfcf-f129-4702-a8dd-d061d2a16b9d','ebfdb93a-9292-4245-9a27-0faf49545720')) ? undefined : HD.getObject('prevEnc').getValue('3a69cfcf-f129-4702-a8dd-d061d2a16b9d','ebfdb93a-9292-4245-9a27-0faf49545720')",
                   "questionOptions": {
@@ -2771,7 +2771,7 @@
                     {
                       "type": "js_expression",
                       "failsWhenExpression": "((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && !isEmpty(onTbProphylaxis) && arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onTbProphylaxis) && isEmpty(myValue)",
-                      "message": "Patient on TB Prophylaxis. Please provide adherence history."
+                      "message": "Patient on TB Preventive Therapy. Please provide adherence history."
                     }
                   ],
                   "hide": {
@@ -2808,7 +2808,7 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "myValue === 'a899b35c-1350-11df-a1f1-0026b9348838' && onTbProphylaxis === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-                  "message": "A patient cannot be on both TB treatment and TB prophylaxis."
+                  "message": "A patient cannot be on both TB treatment and TB preventive therapy."
                 }
               ],
               "hide": {
@@ -2945,30 +2945,6 @@
               }
             },
             {
-              "label": "TB treatment defaulted year:",
-              "type": "obs",
-              "id": "tbDefaultDate",
-              "questionOptions": {
-                "concept": "a8a18758-1350-11df-a1f1-0026b9348838",
-                "rendering": "number"
-              },
-              "hide": {
-                "hideWhenExpression": "((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
-              }
-            },
-            {
-              "label": "TB treatment completion date:",
-              "type": "obs",
-              "id": "tbComplDate",
-              "questionOptions": {
-                "concept": "a8a176b4-1350-11df-a1f1-0026b9348838",
-                "rendering": "date"
-              },
-              "hide": {
-                "hideWhenExpression": "((((onTbTreatment !== 'a899b35c-1350-11df-a1f1-0026b9348838'))) || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"20838ff5-7a28-4877-889c-300155627a6f\")) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f'"
-              }
-            },
-            {
               "type": "obsGroup",
               "id": "tbadhere",
               "label": "Patient adherence to TB medications",
@@ -3069,7 +3045,7 @@
               "label": "Fluconazole prophylaxis:",
               "required": "true",
               "id": "flucoProphyYouth",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')) ? undefined : HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')",
+              "historicalExpression": "[\"a899e0ac-1350-11df-a1f1-0026b9348838\", \"0074b2e5-c138-487a-8446-fab65882572f\"].indexOf(HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')) !== -1 ? HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8') : undefined",
               "questionOptions": {
                 "concept": "212fdebe-4745-4f60-aaa0-35f4193abaf8",
                 "answers": [
@@ -3080,10 +3056,6 @@
                   {
                     "concept": "0074b2e5-c138-487a-8446-fab65882572f",
                     "label": "Fluconazole 100mg"
-                  },
-                  {
-                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg"
                   }
                 ],
                 "rendering": "select"
@@ -3160,7 +3132,7 @@
               "label": "Cryptococcal pre-emptive therapy:",
               "required": "true",
               "id": "cryptPreemptiveYouth",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')) ? undefined : HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')",
+              "historicalExpression": "[\"a899e0ac-1350-11df-a1f1-0026b9348838\", \"dc0418d1-b50a-4b72-925f-df0508e071e4\", \"25bdc3a8-b099-4421-b6fb-c36c1a8b348e\", \"5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3\"].indexOf(HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2')) !== -1 ? HD.getObject('prevEnc').getValue('63175ae7-835c-433c-ae56-77c2ab2433c2') : undefined",
               "questionOptions": {
                 "concept": "63175ae7-835c-433c-ae56-77c2ab2433c2",
                 "answers": [
@@ -3179,14 +3151,6 @@
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg (Maintenance)"
-                  },
-                  {
-                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
-                  },
-                  {
-                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
-                    "label": "Fluconazole 12mg/kg (Induction)"
                   }
                 ],
                 "rendering": "select"
@@ -3201,7 +3165,7 @@
               "label": "Cryptococcal meningitis treatment:",
               "required": "true",
               "id": "cryptCurrent",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')) ? undefined : (Array.isArray(HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')) ? HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838') : [HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')]).filter(value => [\"a899e0ac-1350-11df-a1f1-0026b9348838\", \"5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3\", \"dc0418d1-b50a-4b72-925f-df0508e071e4\", \"10cf8e1e-0428-4675-80cf-1df08f5eccee\", \"59b33054-3056-4d4c-8843-f7051c01e990\", \"250bb216-a1c6-4f6c-b2d2-b0bfa1df4526\", \"7f4e9382-da76-4dfc-94d4-30a1fee3ea0e\"].indexOf(value) !== -1)",
               "questionOptions": {
                 "concept": "a899e516-1350-11df-a1f1-0026b9348838",
                 "answers": [
@@ -3212,10 +3176,6 @@
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg (Maintenance)"
-                  },
-                  {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg (Consolidation)"
                   },
                   {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
@@ -3303,7 +3263,7 @@
               "label": "Cryptococcal meningitis treatment:",
               "required": "true",
               "id": "cryptCurrentYouth",
-              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')) ? undefined : (Array.isArray(HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')) ? HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838') : [HD.getObject('prevEnc').getValue('a899e516-1350-11df-a1f1-0026b9348838')]).filter(value => [\"a899e0ac-1350-11df-a1f1-0026b9348838\", \"5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3\", \"dc0418d1-b50a-4b72-925f-df0508e071e4\", \"10cf8e1e-0428-4675-80cf-1df08f5eccee\", \"59b33054-3056-4d4c-8843-f7051c01e990\", \"250bb216-a1c6-4f6c-b2d2-b0bfa1df4526\", \"7f4e9382-da76-4dfc-94d4-30a1fee3ea0e\"].indexOf(value) !== -1)",
               "questionOptions": {
                 "concept": "a899e516-1350-11df-a1f1-0026b9348838",
                 "answers": [
@@ -3314,10 +3274,6 @@
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg (Maintenance)"
-                  },
-                  {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg (Consolidation)"
                   },
                   {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
@@ -3338,14 +3294,6 @@
                   {
                     "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
                     "label": "Amphotericin B deoxycholate 1mg/kg (Induction)"
-                  },
-                  {
-                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
-                  },
-                  {
-                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
-                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
                   }
                 ],
                 "rendering": "multiCheckbox"
@@ -3400,7 +3348,7 @@
                   },
                   {
                     "concept": "a8989396-1350-11df-a1f1-0026b9348838",
-                    "label": "Cotrimoxazole 960mg"
+                    "label": "Cotrimoxazole"
                   },
                   {
                     "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
@@ -3432,7 +3380,7 @@
                   },
                   {
                     "concept": "87f971b1-1537-417e-99bc-e18ab7f480ce",
-                    "label": "Cotrimoxazole 960mg"
+                    "label": "Cotrimoxazole"
                   },
                   {
                     "concept": "010c530d-5433-4c1a-8b08-174c0224a2c5",
@@ -4306,7 +4254,8 @@
               "hide": {
                 "hideWhenExpression": "(((((((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'a896f3a6-1350-11df-a1f1-0026b9348838')) || ((((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === 'a8a4812e-1350-11df-a1f1-0026b9348838')) || (age < 15)) || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               },
-              "required": "true"
+              "required": "true",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('b29b512f-cd46-41ee-a568-bdaafa0bb874')) ? undefined : HD.getObject('prevEnc').getValue('b29b512f-cd46-41ee-a568-bdaafa0bb874')"
             },
             {
               "label": "Dose received:",
@@ -4333,13 +4282,14 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "isEmpty(myValue) && adultImmun === 'a89b2dcc-1350-11df-a1f1-0026b9348838'",
+                  "failsWhenExpression": "isEmpty(myValue) && arrayContains(adultImmun, ['a89b2dcc-1350-11df-a1f1-0026b9348838'])",
                   "message": "Please indicate dose"
                 }
               ],
               "hide": {
                 "hideWhenExpression": "!arrayContains(['a89b2dcc-1350-11df-a1f1-0026b9348838'], adultImmun)"
-              }
+              },
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('bb1e6b95-0d35-4065-80cc-d774d1c9b964')) ? undefined : HD.getObject('prevEnc').getValue('bb1e6b95-0d35-4065-80cc-d774d1c9b964')"
             },
             {
               "label": "Vaccination date:",
@@ -5800,6 +5750,51 @@
               "hide": {
                 "hideWhenExpression": "(age >= 24 || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"20838ff5-7a28-4877-889c-300155627a6f\")"
               }
+            },
+            {
+              "label": "Education level:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89e48ae-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "None",
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Pre primary",
+                    "concept": "a2caaf9c-2224-42a4-80b1-1482bc159680"
+                  },
+                  {
+                    "label": "Primary",
+                    "concept": "a8afe910-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Secondary or post primary, vocational",
+                    "concept": "a8afe9d8-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "College level or higher",
+                    "concept": "a8afea96-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "id": "schoolEducationLevel",
+              "hide": {
+                "hideWhenExpression": "((age >= 24 || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"20838ff5-7a28-4877-889c-300155627a6f\")) || !(currInSchool === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!((age >= 24 || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'a896f3a6-1350-11df-a1f1-0026b9348838' || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit !== 'a899b35c-1350-11df-a1f1-0026b9348838')) || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"20838ff5-7a28-4877-889c-300155627a6f\")) && currInSchool === 'a899b35c-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
+                  "message": "Please select the level of education."
+                }
+              ]
             },
             {
               "label": "Adolescent sexually active:",
@@ -9346,7 +9341,7 @@
                 "answers": [
                   {
                     "concept": "a8989396-1350-11df-a1f1-0026b9348838",
-                    "label": "Cotrimoxazole 960mg"
+                    "label": "Cotrimoxazole"
                   }
                 ],
                 "rendering": "select"
@@ -9364,7 +9359,7 @@
               }
             },
             {
-              "label": "TB prophylaxis plan:",
+              "label": "TB preventive therapy plan:",
               "required": "true",
               "id": "tbpropplan",
               "questionOptions": {
@@ -9398,12 +9393,12 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(onTbProphylaxis) && onTbProphylaxis === 'a899b35c-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
-                  "message": "Patient marked as on TB prophylaxis in History section. Therefore plan can only be continue ,stop"
+                  "message": "Patient marked as on TB preventive therapy in History section. Therefore plan can only be continue ,stop"
                 },
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "!isEmpty(onTbProphylaxis) && onTbProphylaxis === 'a899b42e-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838'], myValue)",
-                  "message": "Patient marked as not on TB prophylaxis in History section. Therefore plan can only be None,Start,Restart"
+                  "message": "Patient marked as not on TB preventive therapy in History section. Therefore plan can only be None,Start,Restart"
                 }
               ],
               "hide": {
@@ -9481,7 +9476,7 @@
               }
             },
             {
-              "label": "TB prophylaxis regimen started:",
+              "label": "TB preventive therapy regimen started:",
               "questionOptions": {
                 "concept": "a89b83bc-1350-11df-a1f1-0026b9348838",
                 "answers": [
@@ -9932,10 +9927,6 @@
                   {
                     "concept": "0074b2e5-c138-487a-8446-fab65882572f",
                     "label": "Fluconazole 100mg"
-                  },
-                  {
-                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg"
                   }
                 ],
                 "rendering": "select"
@@ -10082,14 +10073,6 @@
                   {
                     "concept": "5d54bf19-2c65-4ad3-ab8c-3ab01eea21e3",
                     "label": "Fluconazole 200mg (Maintenance)"
-                  },
-                  {
-                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
-                  },
-                  {
-                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
-                    "label": "Fluconazole 12mg/kg (Induction)"
                   }
                 ],
                 "rendering": "select"
@@ -10259,10 +10242,6 @@
                     "label": "Fluconazole 200mg (Maintenance)"
                   },
                   {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg (Consolidation)"
-                  },
-                  {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
                     "label": "Fluconazole 800mg (Consolidation)"
                   },
@@ -10349,10 +10328,6 @@
                     "label": "Fluconazole 200mg (Maintenance)"
                   },
                   {
-                    "concept": "25bdc3a8-b099-4421-b6fb-c36c1a8b348e",
-                    "label": "Fluconazole 400mg (Consolidation)"
-                  },
-                  {
                     "concept": "dc0418d1-b50a-4b72-925f-df0508e071e4",
                     "label": "Fluconazole 800mg (Consolidation)"
                   },
@@ -10371,14 +10346,6 @@
                   {
                     "concept": "7f4e9382-da76-4dfc-94d4-30a1fee3ea0e",
                     "label": "Amphotericin B deoxycholate 1mg/kg (Induction)"
-                  },
-                  {
-                    "concept": "a77580d4-107d-4a66-807c-9347c54ec845",
-                    "label": "Fluconazole 6mg/kg (Consolidation/Maintenance)"
-                  },
-                  {
-                    "concept": "db9261f6-bc11-4adf-aee1-90c708f8e728",
-                    "label": "Fluconazole 12mg/kg (Induction/Consolidation)"
                   }
                 ],
                 "rendering": "select"
@@ -10447,7 +10414,7 @@
                 "answers": [
                   {
                     "concept": "a8989396-1350-11df-a1f1-0026b9348838",
-                    "label": "Cotrimoxazole 960mg"
+                    "label": "Cotrimoxazole"
                   },
                   {
                     "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
@@ -10536,7 +10503,7 @@
                 "answers": [
                   {
                     "concept": "87f971b1-1537-417e-99bc-e18ab7f480ce",
-                    "label": "Cotrimoxazole 960mg"
+                    "label": "Cotrimoxazole"
                   },
                   {
                     "concept": "010c530d-5433-4c1a-8b08-174c0224a2c5",
