@@ -105,6 +105,63 @@
                             }
                         },
                         {
+                            "label": "Weight for age Z-score:",
+                            "id": "WeightforAgeScore",
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "f15e19b3-6522-4dbe-92ed-552012e050a9",
+                                "max": "3",
+                                "min": "-3",
+                                "calculate": {
+                                    "calculateExpression": "isEmpty(weight) || isEmpty(age) || isNaN(Number(weight)) || isNaN(Number(age)) || Number(weight) <= 0 || Number(age) < 0 || Number(age) >= 5 ? null : calcWeightForAgeZscore(weightForAgeRef, age, weight)"
+                                }
+                            },
+                            "type": "obs",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "age>=5"
+                            }
+                        },
+                        {
+                            "label": "Weight for age Z score diagnosis:",
+                            "type": "obs",
+                            "questionOptions": {
+                                "rendering": "select",
+                                "concept": "6fb9f39e-5a56-4dd7-815e-c5f71827338b",
+                                "calculate": {
+                                    "calculateExpression": "isEmpty(weight) || isEmpty(age) || isNaN(Number(weight)) || isNaN(Number(age)) || Number(weight) <= 0 || Number(age) < 0 || Number(age) >= 5 || isEmpty(WeightforAgeScore) || isNaN(Number(WeightforAgeScore)) ? '' : Number(WeightforAgeScore) <= -3 ? '570cfc37-fb8b-4d4b-96e8-062eb8de89aa' : Number(WeightforAgeScore) <= -2 ? 'a89cfdaa-1350-11df-a1f1-0026b9348838' : Number(WeightforAgeScore) >= 3 ? '2a60e784-1314-4454-91ba-7ea4cc2c3b15' : Number(WeightforAgeScore) >= 2 ? '1505faef-c8aa-422c-b356-da065b88ec9c' : 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                                },
+                                "answers": [
+                                    {
+                                        "concept": "570cfc37-fb8b-4d4b-96e8-062eb8de89aa",
+                                        "label": "Severely underweight"
+                                    },
+                                    {
+                                        "concept": "a89cfdaa-1350-11df-a1f1-0026b9348838",
+                                        "label": "Underweight"
+                                    },
+                                    {
+                                        "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                                        "label": "Normal"
+                                    },
+                                    {
+                                        "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                                        "label": "Overweight"
+                                    },
+                                    {
+                                        "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
+                                        "label": "Obese"
+                                    }
+                                ]
+                            },
+                            "id": "weightAgeDiagnosis",
+                            "validators": [],
+                            "hide": {
+                                "hideWhenExpression": "age>=5 || isEmpty(WeightforAgeScore)"
+                            },
+                            "readOnly": true
+                        },
+                        {
                             "label": "Weight for height Z-score:",
                             "id": "WeightheightScore",
                             "questionOptions": {
@@ -253,7 +310,7 @@
                                 "max": "4",
                                 "min": "-4",
                                 "calculate": {
-                                    "calculateExpression": "calcBMIForAgeZscore(bmiForAgeRef,height,weight)"
+                                    "calculateExpression": "isEmpty(height) || isEmpty(weight) || isNaN(Number(height)) || isNaN(Number(weight)) || Number(height) <= 0 || Number(weight) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,height,weight)"
                                 }
                             },
                             "type": "obs",
@@ -486,8 +543,29 @@
                                 ]
                             },
                             "id": "dangerSigns"
+                        },
+                        {
+                            "label": "Referred to?",
+                            "type": "obs",
+                            "id": "referralTo",
+                            "questionOptions": {
+                                "concept": "6434322f-d050-4764-8c00-741e20c4c9e1",
+                                "rendering": "radio",
+                                "answers": [
+                                    {
+                                        "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
+                                        "label": "Other health facility"
+                                    },
+                                    {
+                                        "concept": "1d54b745-0afc-4568-a9ba-17ba3fc1dda0",
+                                        "label": "Community health unit (CHU)"
+                                    }
+                                ]
+                            },
+                            "hide": {
+                                "hideWhenExpression": "outcomePatient !=='e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
+                            }
                         }
-
                     ]
                 },
                 {

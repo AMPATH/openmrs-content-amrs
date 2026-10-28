@@ -201,6 +201,17 @@
                   "validators": []
                 },
                 {
+                  "label": "Minutes:",
+                  "required": "true",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "d8ff0032-ffea-4d43-89ed-39b66359478d"
+                  },
+                  "id": "laborDurationMins",
+                  "validators": []
+                },
+                {
                   "label": "Labour stage:",
                   "type": "obs",
                   "id": "labourStage",
@@ -219,7 +230,6 @@
                     ]
                   }
                 },
-
                 {
                   "label": "Companion:",
                   "type": "obs",

@@ -979,6 +979,7 @@
             },
             {
               "label": "Weight(kg):",
+              "required": "true",
               "type": "obs",
               "id": "weightForBMI",
               "questionOptions": {
@@ -993,6 +994,7 @@
             },
             {
               "label": "Height(cm):",
+              "required": "true",
               "type": "obs",
               "id": "height",
               "questionOptions": {
@@ -1008,6 +1010,7 @@
             },
             {
               "label": "Height(cm):",
+              "required": "true",
               "type": "obs",
               "id": "heightForBMI",
               "questionOptions": {
@@ -1047,9 +1050,6 @@
                 "rendering": "number",
                 "max": "80",
                 "min": "0"
-              },
-              "hide": {
-                "hideWhenExpression": "(age >= 18 && sex !== 'F') || (sex === 'F' && age > 49)"
               }
             },
             {
@@ -1168,7 +1168,7 @@
                 "rendering": "select",
                 "concept": "9cf8b8c5-a9fb-4662-9585-97dfbfd9d245",
                 "calculate": {
-                  "calculateExpression": "isEmpty(weight) || isEmpty(height) || Number(weight) <= 0 || Number(height) <= 0 || isEmpty(WeightheightScore) || isNaN(Number(WeightheightScore)) ? '' : Number(WeightheightScore) < -3 ? '0306539c-f24f-49f5-b059-b646adbec47c' : Number(WeightheightScore) < -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' : Number(WeightheightScore) < -1 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(WeightheightScore) < 2 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(WeightheightScore) < 3 ? '1505faef-c8aa-422c-b356-da065b88ec9c' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15'"
+                  "calculateExpression": "isEmpty(weight) || isEmpty(height) || Number(weight) <= 0 || Number(height) <= 0 || isEmpty(WeightheightScore) || isNaN(Number(WeightheightScore)) ? '' : Number(WeightheightScore) < -3 ? '0306539c-f24f-49f5-b059-b646adbec47c' : Number(WeightheightScore) < -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' : Number(WeightheightScore) < -1 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(WeightheightScore) <= 1 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(WeightheightScore) < 2 ? '' : Number(WeightheightScore) < 3 ? '5308B985-7100-4239-8F7D-A2CFB764F203' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15'"
                 },
                 "answers": [
                   {
@@ -1188,7 +1188,7 @@
                     "label": "Normal"
                   },
                   {
-                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
                     "label": "Overweight"
                   },
                   {
@@ -1253,7 +1253,7 @@
                     "label": "At risk"
                   },
                   {
-                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
                     "label": "Overweight"
                   },
                   {
@@ -1268,6 +1268,60 @@
                 "hideWhenExpression": "age < 5 || age >= 18 || (isEmpty(bmiScore) && isEmpty(muac))"
               },
               "readOnly": true
+            },
+            {
+              "label": " Height/length for age Z-score:",
+              "id": "heightLengthScore",
+              "readOnly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "507f48e7-26fc-490b-a521-35d7c5aa8e9f",
+                "max": "4",
+                "min": "-4",
+                "calculate": {
+                  "calculateExpression": "age < 0 || age >= 18 ? null : age <= 5 ? (isEmpty(height) || isNaN(Number(height)) || Number(height) <= 0 ? null : calcHeightForAgeZscore(heightForAgeRef,height,weight)) : (isEmpty(heightForBMI) || isNaN(Number(heightForBMI)) || Number(heightForBMI) <= 0 ? null : calcHeightForAgeZscore(heightForAgeRef,heightForBMI,weightForBMI))"
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >=18"
+              }
+            },
+            {
+              "label": "Height/Length for age Z score diagnosis:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "21c0a36a-0841-4268-a79b-140b85c6ff53",
+                "calculate": {
+                  "calculateExpression": "age < 0 || age >= 18 || isEmpty(heightLengthScore) || isNaN(Number(heightLengthScore)) ? '' : Number(heightLengthScore) <= -3 ? '46255b12-efe6-458a-b178-0af440fec2e1' : Number(heightLengthScore) <= -2 ? 'f8b800a7-1888-4159-80b1-6c45c223a3d2' : Number(heightLengthScore) <= -1 ? '2fc2c915-9d20-4753-b226-730a8a0ffdb2' : 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "2fc2c915-9d20-4753-b226-730a8a0ffdb2",
+                    "label": "Mild stunting"
+                  },
+                  {
+                    "concept": "f8b800a7-1888-4159-80b1-6c45c223a3d2",
+                    "label": "Moderate stunting"
+                  },
+                  {
+                    "concept": "46255b12-efe6-458a-b178-0af440fec2e1",
+                    "label": "Severe stunting"
+                  }
+                ]
+              },
+              "id": "HeightLengthDiagnosis",
+              "readOnly": true,
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 18 || isEmpty(heightLengthScore)"
+              }
             },
             {
               "label": "BMI (+18) categorization:",
@@ -1296,7 +1350,7 @@
                     "label": "Severe acute malnutrition"
                   },
                   {
-                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
                     "label": "Overweight"
                   },
                   {

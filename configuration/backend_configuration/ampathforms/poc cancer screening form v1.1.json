@@ -82,6 +82,30 @@
               },
               "type": "obs",
               "validators": []
+            },
+            {
+              "label": "HIV status:",
+              "required": "true",
+              "type": "obs",
+              "id": "hivStatus",
+              "questionOptions": {
+                "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ]
+              }
             }
           ]
         }
@@ -149,7 +173,7 @@
               }
             },
             {
-              "label": "Breast screening result:",
+              "label": "Clinical breast exam result:",
               "type": "obs",
               "id": "breastScreeningResult",
               "questionOptions": {
@@ -161,7 +185,7 @@
                     "label": "Normal"
                   },
                   {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838",
                     "label": "Abnormal"
                   }
                   
@@ -171,13 +195,55 @@
                 {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(myValue) && !isEmpty(breastScreeningMode)",
-                  "message": "Please indicate the breast screening result"
+                  "message": "Please indicate the clinical breast exam result"
                 }
               ],
               "hide": {
-                "hideWhenExpression": "isEmpty(breastScreeningMode)"
-              }
-            }
+                    "hideWhenExpression": "isEmpty(breastScreeningMode) || !arrayContains(breastScreeningMode, '0d7a3b97-11bd-4155-829c-2a552808b450')"
+                  }
+            },
+            {
+                  "label": "Breast Ultrasound/Mammography findings:",
+                  "type": "obs",
+                  "id": "ultraSoundFindings",
+                  "questionOptions": {
+                    "concept": "531c0c00-d7cc-411a-a916-7ae491085ade",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "e799649c-6508-4660-9d9d-4df3449df20e",
+                        "label": "BIRADS 0(Incomplete Need additional imaging evaluation)"
+                      },
+                      {
+                        "concept": "935ed682-1f42-405b-9f88-e0c47dcd519e",
+                        "label": "BIRADS 1(Negative)"
+                      },
+                      {
+                        "concept": "8cc5d428-0bfd-41f0-a7fb-a239aadadb0d",
+                        "label": "BIRADS 2(Benign)"
+                      },
+                      {
+                        "concept": "2ab46b88-b87a-4321-839f-b1351410335d",
+                        "label": "BIRADS 3(Probably Benign)"
+                      },
+                      {
+                        "concept": "deec6439-884f-4921-b9d3-cfa77666d6e6",
+                        "label": "BIRADS 4(Suspicious)"
+                      },
+                      {
+                        "concept": "fbfd99cf-2be1-403d-b8c3-15b686d5cc78",
+                        "label": "BIRADS 5(Highly Suggestive of Malignancy)"
+                      },
+                      {
+                        "concept": "89683205-f2c6-45e7-824d-9db0a29ca6c8",
+                        "label": "BIRADS 6(Known Biopsy-Proven Malignancy)"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "isEmpty(breastScreeningMode) || !arrayAnyContains(['9e2171e2-e4fa-43b9-bc98-380babcc0635','c254c2d2-81e1-4507-b69b-cf0713942f2d'],breastScreeningMode)"
+                  }
+                }
           ]
         }
       ]
@@ -408,7 +474,7 @@
               "id": "screeningMethod",
               "required": "true",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "6750ddf9-bd32-4d8f-bee0-b5fc192a20a3",
                 "answers": [
                   {

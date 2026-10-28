@@ -1,0 +1,6 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Fully specified name:es,Short name:en,Short name:fr,Short name:es,Description:en,Description:fr,Description:es,Data class,Data type,Answers,Units
+5501befa-66cd-4e99-b8c4-7ce7a6ddb24e,,ICD-11-WHO:MB24.C,IRRITABILITY,,,,,,"A state of heightened sensitivity to stimuli, shown as being easily annoyed, agitated or upset, or as excessive fussiness and crying in infants, out of proportion to the circumstances.",,,Question,Coded,a899b35c-1350-11df-a1f1-0026b9348838;a899b42e-1350-11df-a1f1-0026b9348838,
+f1279995-2787-42c0-9cb0-132a2f6a5d87,,,BASELINE TB,,,,,,TB test ordered as a baseline investigation at the start of the TB episode or before starting treatment,,,Misc,N/A,,
+915c9da7-dd18-4e2d-8835-3cbc4f7eeee6,,,FOLLOW-UP 2 MONTHS,,,,,,Monitor treatment response at 2 months of treatment,,,Misc,N/A,,
+b4448744-ff0a-454d-b8b7-8392bcf1360b,,,FOLLOW-UP 3 MONTHS,,,,,,Monitor treatment response at 3 months of treatment,,,Misc,N/A,,
+ab1b67ad-9015-47b8-8c96-45943d63ec28,,,FOLLOW-UP 5 MONTHS,,,,,,Monitor treatment response at 5 months of treatment,,,Misc,N/A,,
