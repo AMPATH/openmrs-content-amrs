@@ -48,14 +48,14 @@
               },
               "id": "encLocation"
             },
-             {
+            {
               "label": "Visit type:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
                 "answers": [
-                   {
+                  {
                     "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
                     "label": "New visit"
                   },
@@ -92,7 +92,7 @@
     {
       "label": "Nutritional Assessment",
       "sections": [
-         {
+        {
           "label": "Anthropometrics",
           "isExpanded": "true",
           "questions": [
@@ -106,28 +106,12 @@
                 "rendering": "number",
                 "max": "250",
                 "min": "0"
-              },
-              "hide": {
-                "hideWhenExpression": "!(age >= 0 && age <=5)"
-              }
-            },
-            {
-              "label": "Weight(kg):",
-              "type": "obs",
-              "id": "weightForBMI",
-              "questionOptions": {
-                "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "max": "250",
-                "min": "0"
-              },
-              "hide": {
-                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
               }
             },
             {
               "label": "Height(cm):",
               "type": "obs",
+              "required": "true",
               "id": "height",
               "questionOptions": {
                 "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
@@ -135,25 +119,7 @@
                 "max": "272",
                 "min": "10"
               },
-              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
-              "hide": {
-                "hideWhenExpression": "!(age >= 0 && age <=5)"
-              }
-            },
-            {
-              "label": "Height(cm):",
-              "type": "obs",
-              "id": "heightForBMI",
-              "questionOptions": {
-                "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
-                "rendering": "number",
-                "max": "272",
-                "min": "10"
-              },
-              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
-              "hide": {
-                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
-              }
+              "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')"
             },
             {
               "label": "BMI: (Kg/m2)",
@@ -165,11 +131,11 @@
                 "max": "100",
                 "min": "0",
                 "calculate": {
-                  "calculateExpression": "calcBMI(heightForBMI,weightForBMI)"
+                  "calculateExpression": "calcBMI(height,weight)"
                 }
               },
               "hide": {
-                "hideWhenExpression": "(age <=18 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
+                "hideWhenExpression": "age <= 17"
               }
             },
             {
@@ -181,9 +147,6 @@
                 "rendering": "number",
                 "max": "80",
                 "min": "0"
-              },
-              "hide": {
-                "hideWhenExpression": "(age >= 18 && sex !== 'F') || (sex === 'F' && age > 49)"
               }
             },
             {
@@ -279,13 +242,14 @@
             {
               "label": "Weight for height Z-score:",
               "id": "WeightheightScore",
+              "readOnly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c",
                 "max": "4",
                 "min": "-4",
                 "calculate": {
-                  "calculateExpression": "calcWeightForHeightZscore(weightForHeightRef, height, weight)"
+                  "calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
                 }
               },
               "type": "obs",
@@ -301,7 +265,7 @@
                 "rendering": "select",
                 "concept": "9cf8b8c5-a9fb-4662-9585-97dfbfd9d245",
                 "calculate": {
-                  "calculateExpression": "isEmpty(weight) || isEmpty(height) || Number(weight) <= 0 || Number(height) <= 0 || isEmpty(WeightheightScore) || isNaN(Number(WeightheightScore)) ? '' : Number(WeightheightScore) < -3 ? '0306539c-f24f-49f5-b059-b646adbec47c' : Number(WeightheightScore) < -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' : Number(WeightheightScore) < -1 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(WeightheightScore) < 2 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(WeightheightScore) < 3 ? '1505faef-c8aa-422c-b356-da065b88ec9c' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15'"
+                  "calculateExpression": "isEmpty(weight) || isEmpty(height) || Number(weight) <= 0 || Number(height) <= 0 || isEmpty(WeightheightScore) || isNaN(Number(WeightheightScore)) ? '' : Number(WeightheightScore) < -3 ? '0306539c-f24f-49f5-b059-b646adbec47c' : Number(WeightheightScore) < -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' : Number(WeightheightScore) < -1 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(WeightheightScore) < 2 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(WeightheightScore) < 3 ? '5308B985-7100-4239-8F7D-A2CFB764F203' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15'"
                 },
                 "answers": [
                   {
@@ -321,7 +285,7 @@
                     "label": "Normal"
                   },
                   {
-                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
                     "label": "Overweight"
                   },
                   {
@@ -333,20 +297,21 @@
               "id": "weightHeightDiagnosis",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "age>5 || isEmpty(WeightheightScore)"
+                "hideWhenExpression": "age >= 5 || isEmpty(WeightheightScore)"
               },
               "readOnly": true
             },
             {
               "label": "BMI for Age Z-Score:",
               "id": "bmiScore",
+              "readOnly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "9061e5d5-8478-4d16-be44-bfec05b6705a",
                 "max": "4",
                 "min": "-4",
                 "calculate": {
-                  "calculateExpression": "age < 5 || age >= 18 ? null : age <= 5 ? (isEmpty(height) || isEmpty(weight) || Number(height) <= 0 || Number(weight) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,height,weight)) : (isEmpty(heightForBMI) || isEmpty(weightForBMI) || Number(heightForBMI) <= 0 || Number(weightForBMI) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,heightForBMI,weightForBMI))"
+                  "calculateExpression": "calcBMIForAgeZscore(bmiForAgeRef,height,weight)"
                 }
               },
               "type": "obs",
@@ -362,7 +327,7 @@
                 "rendering": "select",
                 "concept": "837eb9e6-28cd-486c-bb9a-d040d0878b84",
                 "calculate": {
-                  "calculateExpression": "age < 5 || age >= 18 ? '' : !isEmpty(bmiScore) ? (isNaN(Number(bmiScore)) ? '' : Number(bmiScore) < -3 ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : Number(bmiScore) < -2 ? 'a89efdee-1350-11df-a1f1-0026b9348838' : Number(bmiScore) < -1 ? 'a89efccc-1350-11df-a1f1-0026b9348838' : Number(bmiScore) <= 1 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(bmiScore) <= 2 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(bmiScore) <= 3 ? '1505faef-c8aa-422c-b356-da065b88ec9c' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15') : isEmpty(muac) || isNaN(Number(muac)) || Number(muac) <= 0 ? '' : Number(muac) < (age < 10 ? 13.5 : 14.5) ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : Number(muac) < (age < 10 ? 14.5 : 18.5) ? 'a89efdee-1350-11df-a1f1-0026b9348838' : 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                  "calculateExpression": "age < 5 || age >= 18 ? '' : !isEmpty(bmiScore) ? (isNaN(Number(bmiScore)) ? '' : Number(bmiScore) < -3 ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : Number(bmiScore) < -2 ? 'a89efdee-1350-11df-a1f1-0026b9348838' : Number(bmiScore) < -1 ? 'a89efccc-1350-11df-a1f1-0026b9348838' : Number(bmiScore) <= 1 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(bmiScore) <= 2 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(bmiScore) <= 3 ? '5308B985-7100-4239-8F7D-A2CFB764F203' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15') : isEmpty(muac) || isNaN(Number(muac)) || Number(muac) <= 0 ? '' : Number(muac) < (age < 10 ? 13.5 : 14.5) ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : Number(muac) < (age < 10 ? 14.5 : 18.5) ? 'a89efdee-1350-11df-a1f1-0026b9348838' : 'a899e7b4-1350-11df-a1f1-0026b9348838'"
                 },
                 "answers": [
                   {
@@ -386,7 +351,7 @@
                     "label": "At risk"
                   },
                   {
-                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
                     "label": "Overweight"
                   },
                   {
@@ -401,6 +366,60 @@
                 "hideWhenExpression": "age < 5 || age >= 18 || (isEmpty(bmiScore) && isEmpty(muac))"
               },
               "readOnly": true
+            },
+            {
+              "label": " Height/length for age Z-score:",
+              "id": "heightLengthScore",
+              "readOnly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "507f48e7-26fc-490b-a521-35d7c5aa8e9f",
+                "max": "4",
+                "min": "-4",
+                "calculate": {
+                  "calculateExpression": "calcHeightForAgeZscore(heightForAgeRef,height,weight)"
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >=18"
+              }
+            },
+            {
+              "label": "Height/Length for age Z score diagnosis:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "21c0a36a-0841-4268-a79b-140b85c6ff53",
+                "calculate": {
+                  "calculateExpression": "age >= 18 || isEmpty(height) || Number(height) <= 0 || isEmpty(heightLengthScore) || isNaN(Number(heightLengthScore)) ? '' : Number(heightLengthScore) <= -3 ? '46255b12-efe6-458a-b178-0af440fec2e1' : Number(heightLengthScore) <= -2 ? 'f8b800a7-1888-4159-80b1-6c45c223a3d2' : Number(heightLengthScore) <= -1 ? '2fc2c915-9d20-4753-b226-730a8a0ffdb2' : 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "2fc2c915-9d20-4753-b226-730a8a0ffdb2",
+                    "label": "Mild stunting"
+                  },
+                  {
+                    "concept": "f8b800a7-1888-4159-80b1-6c45c223a3d2",
+                    "label": "Moderate stunting"
+                  },
+                  {
+                    "concept": "46255b12-efe6-458a-b178-0af440fec2e1",
+                    "label": "Severe stunting"
+                  }
+                ]
+              },
+              "id": "HeightLengthDiagnosis",
+              "readOnly": true,
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 18 || isEmpty(heightLengthScore)"
+              }
             },
             {
               "label": "BMI (+18) categorization:",
@@ -429,7 +448,7 @@
                     "label": "Severe acute malnutrition"
                   },
                   {
-                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
                     "label": "Overweight"
                   },
                   {
@@ -444,14 +463,12 @@
                 "hideWhenExpression": "age<18 || isEmpty(bmi)"
               }
             }
-     
           ]
         },
         {
           "label": "Nutrition Health Assessment",
           "isExpanded": "true",
           "questions": [
-           
             {
               "label": "Patient Pregnant/Lactating:",
               "type": "obs",
@@ -526,10 +543,10 @@
                 "hideWhenExpression": "isEmpty(sErOsTaTus) || sErOsTaTus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             },
-
             {
               "label": "Coexisiting medical condition:",
               "type": "obs",
+              "required": "true",
               "id": "exMedsCond",
               "questionOptions": {
                 "concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
@@ -946,6 +963,7 @@
             },
             {
               "label": "Supplemental foods:",
+              "required": "true",
               "type": "obs",
               "id": "suppFooDs",
               "questionOptions": {
@@ -1002,6 +1020,7 @@
             },
             {
               "label": "Micronutrients:",
+              "required": "true",
               "type": "obs",
               "id": "micRoFooDs",
               "questionOptions": {
@@ -1134,7 +1153,7 @@
                   },
                   {
                     "concept": "5520f234-258e-49f0-97ab-701b98fab608",
-                    "label": "Transferred Out"
+                    "label": "Transferred out"
                   }
                 ]
               }
@@ -1162,6 +1181,10 @@
                   {
                     "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
                     "label": "MUAC"
+                  },
+                  {
+                    "concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
+                    "label": "BMI (+18)"
                   },
                   {
                     "concept": "f15e19b3-6522-4dbe-92ed-552012e050a9",
@@ -1200,11 +1223,59 @@
                   {
                     "concept": "a89e3bf2-1350-11df-a1f1-0026b9348838",
                     "label": "Returned Defaulter"
+                  },
+                  {
+                    "concept": "97772927-7aa2-4c30-be98-85183e4b0efe",
+                    "label": "Transfer in"
                   }
                 ]
               },
               "hide": {
                 "hideWhenExpression": "referStatUs !== 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Length of stay:",
+              "type": "obs",
+              "id": "lenghtOfStay",
+              "questionOptions": {
+                "concept": "0d1435f6-ddbd-49b0-a95a-4edf334a75e3",
+                "rendering": "number"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "referStatUs !== 'a8a8b0b4-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Exit outcome:",
+              "type": "obs",
+              "id": "exitOutcome",
+              "questionOptions": {
+                "concept": "7c579743-5ef7-4e2c-839f-5b95597cb01c",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8afe014-1350-11df-a1f1-0026b9348838",
+                    "label": "Cured"
+                  },
+                  {
+                    "concept": "a89e3bf2-1350-11df-a1f1-0026b9348838",
+                    "label": "Defaulter"
+                  },
+                  {
+                    "concept": "e59a1ea1-79ed-4d2e-9420-3cbcb83a03c3",
+                    "label": "Non recovered"
+                  },
+                  {
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Death"
+                  },
+                  {
+                    "concept": "5520f234-258e-49f0-97ab-701b98fab608",
+                    "label": "Transfer out"
+                  }
+                ]
               }
             },
             {
@@ -1280,5 +1351,4 @@
       ]
     }
   ]
-  
 }

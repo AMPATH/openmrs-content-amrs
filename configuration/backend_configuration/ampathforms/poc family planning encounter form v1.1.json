@@ -73,7 +73,7 @@
                 "hideWhenExpression": "age < 15"
               }
             },
-             {
+            {
               "label": "Has special needs/disability?",
               "type": "obs",
               "questionOptions": {
@@ -135,7 +135,6 @@
                 "rendering": "select",
                 "concept": "6b4f1d00-0a27-41dd-a299-fb7dc730819c",
                 "answers": [
-                 
                   {
                     "concept": "a8a18208-1350-11df-a1f1-0026b9348838",
                     "label": "Breastfeeding"
@@ -158,7 +157,6 @@
             {
               "label": "LMP:",
               "type": "obs",
-              
               "id": "lmp",
               "questionOptions": {
                 "rendering": "date",
@@ -176,12 +174,11 @@
             }
           ]
         },
-
         {
           "label": "Family Planning",
           "isExpanded": "true",
           "questions": [
-             {
+            {
               "label": "Primary diagnosis:",
               "required": "true",
               "id": "finalDiagnosisId",
@@ -210,7 +207,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "774961c6-232f-4332-8a9f-f5c55ebe86d0",
-
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -227,7 +223,6 @@
                 "hideWhenExpression": "age < 15"
               }
             },
-           
             {
               "label": "Counselled on family planning?",
               "type": "obs",
@@ -236,7 +231,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "5b68f24c-7443-4d94-982b-658bddd7dbb5",
-
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -259,7 +253,7 @@
               "required": "true",
               "id": "contraceptiveDispensedF",
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "multiCheckbox",
                 "concept": "a894b1cc-1350-11df-a1f1-0026b9348838",
                 "answers": [
                   {
@@ -272,9 +266,8 @@
                   },
                   {
                     "concept": "a8988b44-1350-11df-a1f1-0026b9348838",
-                    "label": "Injectables (Depo)"
+                    "label": "Depo (DMPA-IM)"
                   },
-
                   {
                     "concept": "4a740e33-fee5-4a2b-b679-1904722e3d9e",
                     "label": "Lactation method"
@@ -298,10 +291,18 @@
                   {
                     "concept": "a8a713f8-1350-11df-a1f1-0026b9348838",
                     "label": "Bilateral tubal ligation"
-                  },   
+                  },
                   {
-                    "concept": "a893516a-1350-11df-a1f1-0026b9348838",
-                    "label": "Condom"
+                    "concept": "81aad3d5-0535-416a-a833-9079af068e3f",
+                    "label": "BTL"
+                  },
+                  {
+                    "concept": "1934d7dd-7a59-43f0-8b6b-29e736498f15",
+                    "label": "Female Condom"
+                  },
+                  {
+                    "concept": "99573ebc-b11b-4f5d-866d-94c5feb28924",
+                    "label": "Male Condom"
                   },
                   {
                     "concept": "236dba53-1062-46b4-8067-ec8711897dbf",
@@ -324,6 +325,30 @@
               "validators": [],
               "hide": {
                 "hideWhenExpression": "age < 15 || sex !== 'F'"
+              }
+            },
+            {
+              "label": "Number of rods:",
+              "id": "numberOfRods",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "cde07652-a157-4ee9-bb34-75ca8252cfb3",
+                "answers": [
+                  {
+                    "label": "1 rod",
+                    "concept": "a89c7bbe-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "2 rods",
+                    "concept": "a8a481ec-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(contraceptiveDispensedF) || (!arrayContains(contraceptiveDispensedF, 'a123d949-31f3-4abf-98e3-8504e17ebc00') && !arrayContains(contraceptiveDispensedF, 'feb48308-a56f-4754-8e8f-8c1698e570cb'))"
               }
             },
             {
@@ -365,29 +390,6 @@
               },
               "hide": {
                 "hideWhenExpression": "isEmpty(contraceptiveDispensedM) || contraceptiveDispensedM !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
-              }
-            },
-            {
-              "label": "Type of condom:",
-              "type": "obs",
-              "id": "typeOfCondom",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "0cb6c639-16b6-49c0-8f82-243e578ca80a",
-                "answers": [
-                  {
-                    "concept": "1934d7dd-7a59-43f0-8b6b-29e736498f15",
-                    "label": "Female condom"
-                  },
-                  {
-                    "concept": "99573ebc-b11b-4f5d-866d-94c5feb28924",
-                    "label": "Male condom"
-                  }
-                ]
-              },
-              "validators": [],
-              "hide": {
-                "hideWhenExpression": "age < 15 || contraceptiveDispensedF !== 'a893516a-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedM !== 'a893516a-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -439,7 +441,7 @@
                     "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
                     "label": "Check-up"
                   },
-                   {
+                  {
                     "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
                     "label": "Other"
                   }
@@ -458,8 +460,6 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "a89f0dde-1350-11df-a1f1-0026b9348838"
-                
-                
               },
               "validators": [],
               "hide": {
@@ -514,7 +514,6 @@
               "questionOptions": {
                 "rendering": "text",
                 "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
-               
                 "answers": []
               },
               "validators": [],
@@ -552,7 +551,6 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "9cd914b4-40e3-4c07-9d83-800ae212ac3c",
-                
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -714,7 +712,7 @@
                 "concept": "2bf2a177-da8a-4033-8b7c-62577d0dc00c",
                 "conceptMappings": [],
                 "answers": [
-                   {
+                  {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
                     "label": "Yes"
                   },
@@ -863,8 +861,8 @@
               "hide": {
                 "hideWhenExpression": "isEmpty(cervicalCancerScreeningDone) || cervicalCancerScreeningDone !== 'a899b35c-1350-11df-a1f1-0026b9348838' || sex !== 'F'"
               }
-            },          
-           {
+            },
+            {
               "label": "Referred from:",
               "id": "rfBy",
               "type": "obs",
@@ -922,8 +920,6 @@
               "type": "obs",
               "validators": []
             },
-           
-           
             {
               "label": "Referral to facility:",
               "type": "obs",
@@ -936,7 +932,6 @@
                 "hideWhenExpression": "referralTo !=='a89c25d8-1350-11df-a1f1-0026b9348838'"
               }
             },
-           
             {
               "label": "Remarks:",
               "type": "obs",

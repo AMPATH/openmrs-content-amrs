@@ -57,7 +57,6 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "5eca73ec-0cae-4e56-8032-a377ea2d483a",
-
                 "min": "0",
                 "showDate": ""
               },
@@ -162,12 +161,20 @@
                     "label": "0-48 hours"
                   },
                   {
-                    "concept": "d94aa153-b9e5-4118-a182-6e00beeefba8",
-                    "label": "3 days - 6 weeks"
+                    "concept": "a4a4f118-b4f6-48cf-ad91-271d375b6230",
+                    "label": "3-14 days"
                   },
                   {
-                    "concept": "7723095c-825f-4c71-ab66-4bdc0a463ee5",
-                    "label": "More than 6 weeks"
+                    "concept": "fbb01e3b-7e6b-4569-ad36-c0602e818228",
+                    "label": "4-6 weeks"
+                  },
+                  {
+                    "concept": "2f8f4fda-4d58-427a-939a-0180f1346146",
+                    "label": "4-6 months"
+                  },
+                  {
+                    "concept": "3caa23d0-13ab-40c1-ba24-b8c137c07ec3",
+                    "label": "> 6 months"
                   }
                 ]
               },
@@ -188,12 +195,20 @@
                     "label": "0-48 hours"
                   },
                   {
-                    "concept": "d94aa153-b9e5-4118-a182-6e00beeefba8",
-                    "label": "3 days - 6 weeks"
+                    "concept": "a4a4f118-b4f6-48cf-ad91-271d375b6230",
+                    "label": "3-14 days"
                   },
                   {
-                    "concept": "7723095c-825f-4c71-ab66-4bdc0a463ee5",
-                    "label": "More than 6 weeks"
+                    "concept": "fbb01e3b-7e6b-4569-ad36-c0602e818228",
+                    "label": "4-6 weeks"
+                  },
+                  {
+                    "concept": "2f8f4fda-4d58-427a-939a-0180f1346146",
+                    "label": "4-6 months"
+                  },
+                  {
+                    "concept": "3caa23d0-13ab-40c1-ba24-b8c137c07ec3",
+                    "label": "> 6 months"
                   }
                 ]
               },
@@ -3347,7 +3362,7 @@
           "label": "Advanced HIV Disease Treatment History",
           "isExpanded": "true",
           "questions": [
-             {
+            {
               "label": "Fluconazole prophylaxis:",
               "required": "true",
               "id": "flucoProphy",
@@ -4494,6 +4509,242 @@
           ]
         },
         {
+          "label": "Baby Examination (Postnatal Care - Baby)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "General condition of baby",
+              "id": "babyGeneralCondition",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "382b6906-92eb-485e-a843-809df257a249",
+                "answers": [
+                  {
+                    "label": "Well",
+                    "concept": "81033c9e-80d4-445a-9899-3a6a9c9520ee"
+                  },
+                  {
+                    "label": "Unwell",
+                    "concept": "a89de2d8-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Exclusive breastfeeding",
+              "id": "babyExclusiveBreastfeeding",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0d88e098-1623-467c-bbf5-d3e8060352ee",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Breastfeeding positioning",
+              "id": "babyBfPositioning",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "cf05e9b1-3073-4768-b5e9-43ccb3edadc1",
+                "answers": [
+                  {
+                    "label": "Correct",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Not correct",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(babyExclusiveBreastfeeding) || babyExclusiveBreastfeeding !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Breastfeeding attachment",
+              "id": "babyBfAttachment",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "011f3a06-ad69-4e7a-82b0-4c2456f7fd5f",
+                "answers": [
+                  {
+                    "label": "Good",
+                    "concept": "a8b0f882-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Poor",
+                    "concept": "fdaf8b47-ea14-4d28-80fa-e1da58a30e8b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(babyExclusiveBreastfeeding) || babyExclusiveBreastfeeding !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Umbilical cord status",
+              "id": "babyCordStatus",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c95f075d-34eb-407a-be23-066ed5996cee",
+                "answers": [
+                  {
+                    "label": "Clean",
+                    "concept": "25136dd1-625e-458a-9574-c5c82bdf5f62"
+                  },
+                  {
+                    "label": "Dry",
+                    "concept": "ac1df7e6-cc78-4cb6-b3c6-aeef7cfb8182"
+                  },
+                  {
+                    "label": "Infected",
+                    "concept": "a8a49830-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other (specify)",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Cord status - other (specify)",
+              "id": "babyCordStatusOther",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c"
+              },
+              "rows": 3,
+              "hide": {
+                "hideWhenExpression": "isEmpty(babyCordStatus) || babyCordStatus !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Baby Irritable",
+              "id": "babyIrritable",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "5501befa-66cd-4e99-b8c4-7ce7a6ddb24e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Any other problem",
+              "id": "babyOtherProblem",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c"
+              },
+              "rows": 3
+            },
+            {
+              "label": "Immunization started",
+              "id": "babyImmunizationStarted",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9bdf8249-35f4-4320-93f4-e464645ff633",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "HEI given ART prophylaxis",
+              "id": "heiArtProphylaxis",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a49466-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "priorHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Baby cotrimoxazole prophylaxis initiated",
+              "id": "babyCtxStarted",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "df6564cd-2920-4cf1-b41c-d2d69711f3bd",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "priorHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
           "label": "Cancer Screening",
           "isExpanded": "true",
           "questions": [
@@ -4524,6 +4775,42 @@
               "validators": [],
               "hide": {
                 "hideWhenExpression": "sex !== 'F'"
+              }
+            },
+            {
+              "label": "Screening method",
+              "id": "cervicalScreeningMethod",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "6750ddf9-bd32-4d8f-bee0-b5fc192a20a3",
+                "answers": [
+                  {
+                    "label": "VIA",
+                    "concept": "b6d3b6cf-030e-4e35-8a91-7e3efe7ecd65"
+                  },
+                  {
+                    "label": "VILI",
+                    "concept": "7fa8f5d2-d080-4d8e-8b9a-0b5eede2419f"
+                  },
+                  {
+                    "label": "Pap smear",
+                    "concept": "a8983ff4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "HPV PCR",
+                    "concept": "a8a46fd6-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Colposcopy",
+                    "concept": "44ffeaba-ffeb-4aa5-a141-3f144b75d3cb"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "sex !== 'F' || cervCanScreen !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
@@ -4857,7 +5144,6 @@
                 ],
                 "rendering": "select"
               },
-
               "type": "obs"
             },
             {
@@ -5064,7 +5350,9 @@
                   "type": "obs",
                   "hide": {
                     "field": "tb_current",
-                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                    "value": [
+                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
+                    ]
                   },
                   "id": "__osHJKqsMK"
                 }
@@ -5310,7 +5598,6 @@
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "Not TB presumptive"
                   },
-
                   {
                     "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
                     "label": "Presumed TB"
@@ -5327,7 +5614,6 @@
             }
           ]
         },
-
         {
           "label": "Other Conditions:",
           "isExpanded": "true",
@@ -6408,7 +6694,6 @@
               "questionOptions": {
                 "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
                 "rendering": "decimal",
-
                 "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
@@ -6981,7 +7266,6 @@
               "id": "apri_score",
               "questionOptions": {
                 "concept": "b0addf8e-7eb8-4664-839f-ad62638a05e0",
-
                 "min": "0.00",
                 "showDate": "true",
                 "rendering": "decimal",
@@ -7017,7 +7301,7 @@
         {
           "label": "CrAg",
           "questions": [
-             {
+            {
               "label": "Blood CrAg:",
               "id": "cragTest",
               "questionOptions": {
@@ -7983,7 +8267,7 @@
     {
       "label": "Assessment",
       "sections": [
-         {
+        {
           "label": "Diagnosis",
           "isExpanded": "true",
           "questions": [
@@ -9147,7 +9431,7 @@
           "label": "Advanced HIV Disease Treatment Plan",
           "isExpanded": "true",
           "questions": [
-           {
+            {
               "label": "Fluconazole prophylaxis plan:",
               "required": "true",
               "id": "flucoProphyPlan",
@@ -9186,7 +9470,6 @@
                   "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "alert": {
                 "alertWhenExpression": "cragTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
@@ -9242,7 +9525,6 @@
                   "failsWhenExpression": "!isEmpty(cryptPreemptive) && cryptPreemptive === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on pre-emptive therapy in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "alert": {
                 "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
@@ -9251,7 +9533,6 @@
               "hide": {
                 "hideWhenExpression": "priorHivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838' && currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResults !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
-              
             },
             {
               "label": "If Start/Change, regimen:",
@@ -9332,7 +9613,6 @@
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "id": "cryptoPlan",
               "hide": {
@@ -9342,8 +9622,6 @@
                 "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
                 "message": "Blood CrAg and CSF CrAg are positive. Start induction for cryptococcal meningitis treatment."
               }
-
-
             },
             {
               "label": "If start/change, regimen:",
@@ -9968,7 +10246,9 @@
                   "type": "obs",
                   "hide": {
                     "field": "q26f",
-                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                    "value": [
+                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
+                    ]
                   },
                   "id": "__J4CIztyHK"
                 }
@@ -10425,12 +10705,8 @@
                     "label": "Emergency contraceptive pills"
                   },
                   {
-                    "concept": "a8aff284-1350-11df-a1f1-0026b9348838",
-                    "label": "Periodic abstinence"
-                  },
-                  {
-                    "concept": "856a7f0d-8359-4316-97c1-2d37813414f0",
-                    "label": "Undecided"
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
                   }
                 ],
                 "rendering": "select"
@@ -10591,6 +10867,19 @@
               },
               "type": "obs",
               "validators": []
+            },
+            {
+              "label": "Reason for referral:",
+              "id": "reasonForReferral",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "2c8bb721-b642-428a-b956-7902242776ab",
+                "rendering": "textarea"
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(referrals) || arrayContains(referrals, 'a899e0ac-1350-11df-a1f1-0026b9348838')"
+              }
             },
             {
               "type": "obsGroup",
@@ -10908,7 +11197,13 @@
               "questionOptions": {
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
                 "rendering": "date",
-                "weeksList": [2, 4, 8, 12, 16]
+                "weeksList": [
+                  2,
+                  4,
+                  8,
+                  12,
+                  16
+                ]
               },
               "validators": [
                 {

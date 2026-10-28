@@ -142,7 +142,7 @@
               }
             },
             {
-              "label": "Date of Enrollment:",
+              "label": "Date of enrollment:",
               "type": "obs",
               "id": "ncdEnrollmentDate",
               "required": false,

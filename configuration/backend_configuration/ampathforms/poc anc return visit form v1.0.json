@@ -53,6 +53,7 @@
             },
             {
               "label": "ANC visit number:",
+              "required": "true",
               "id": "visitNumber",
               "questionOptions": {
                 "answers": [],
@@ -593,6 +594,7 @@
             {
               "label": "Breast examination done:",
               "id": "examDone",
+              "required": "true",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "b33dd937-9ad5-435b-b86b-9469b533d122",
@@ -632,6 +634,7 @@
             },
             {
               "label": "Maturity in weeks:",
+              "required": "true",
               "id": "maturityWeeks",
               "questionOptions": {
                 "rendering": "number",
@@ -1201,6 +1204,33 @@
               }
             },
             {
+              "label": "Maternal HAART?",
+              "id": "maternalHaart",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8aadb32-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "label": "New on ART",
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "On ART",
+                    "concept": "a89aadc0-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(currHivStatus) || currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926'"
+              }
+            },
+            {
               "label": "Results given to client:",
               "type": "obs",
               "questionOptions": {
@@ -1281,7 +1311,7 @@
             },
             {
               "label": "Risk assessement outcome:",
-              "required":"true",
+              "required": "true",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -1295,7 +1325,6 @@
                     "concept": "d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb",
                     "label": "Low risk"
                   }
-                  
                 ]
               },
               "validators": [],
@@ -1305,19 +1334,19 @@
                 "message": "Please provide triple therapy prophylaxis for the baby."
               }
             },
-             {
+            {
               "label": "Indicate high risk findings:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "bf48af84-e16a-4757-81da-582511e88b35",
-                "rows":5
+                "rows": 5
               },
               "validators": [],
               "id": "highRiskAssessment",
               "hide": {
                 "hideWhenExpression": "riskAssessment !== '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
-              }  
+              }
             },
             {
               "label": "Eligible for Pre Exposure prophylaxis?",
@@ -1334,11 +1363,10 @@
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
-                  
                 ]
               },
               "validators": [
-                 {
+                {
                   "type": "js_expression",
                   "failsWhenExpression": "isEmpty(myValue) && (finalResult === 'a896d2cc-1350-11df-a1f1-0026b9348838' && riskAssessment === '4fae298d-c3c2-4483-ad31-bea9b637ae2b')",
                   "message": "Required!"
@@ -1352,7 +1380,6 @@
                 "alertWhenExpression": "!isEmpty(myValue) && elligiblePrep === 'a899b35c-1350-11df-a1f1-0026b9348838'",
                 "message": "Please refer for PrEP services."
               }
-
             }
           ]
         }
@@ -1712,7 +1739,6 @@
                 }
               ]
             },
-
             {
               "label": "Gestation in weeks:",
               "id": "gestationWeeks",
@@ -1800,7 +1826,6 @@
               },
               "type": "obs",
               "validators": [],
-
               "hide": {
                 "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
@@ -2989,7 +3014,7 @@
           "label": "Advanced HIV Disease Treatment History",
           "isExpanded": "true",
           "questions": [
-             {
+            {
               "label": "Fluconazole prophylaxis:",
               "required": "true",
               "id": "flucoProphy",
@@ -3604,7 +3629,7 @@
     {
       "label": "Current Symptoms",
       "sections": [
-         {
+        {
           "label": "Tuberculosis History",
           "isExpanded": "true",
           "questions": [
@@ -3839,7 +3864,9 @@
                   "type": "obs",
                   "hide": {
                     "field": "tb_current",
-                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                    "value": [
+                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
+                    ]
                   },
                   "id": "__xxr3vpnnK"
                 }
@@ -3996,7 +4023,7 @@
             }
           ]
         },
-       {
+        {
           "label": "TB Screening Questions",
           "isExpanded": "true",
           "questions": [
@@ -4005,7 +4032,7 @@
               "required": "true",
               "questionOptions": {
                 "concept": "a8afcafc-1350-11df-a1f1-0026b9348838",
-                 "answers": [
+                "answers": [
                   {
                     "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
                     "label": "None"
@@ -4110,7 +4137,7 @@
               "required": "true",
               "questionOptions": {
                 "calculate": {
-									"calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838':''"
+                  "calculateExpression": "(onTbTreatment=='a899b35c-1350-11df-a1f1-0026b9348838') ? 'a8afcc82-1350-11df-a1f1-0026b9348838':''"
                 },
                 "concept": "02ad9357-b996-4530-b1a4-aff91a105383",
                 "answers": [
@@ -4126,7 +4153,6 @@
                     "concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
                     "label": "On TB treatment"
                   }
-                  
                 ],
                 "rendering": "select"
               },
@@ -4135,7 +4161,6 @@
             }
           ]
         },
-       
         {
           "label": "STI",
           "isExpanded": "true",
@@ -4299,104 +4324,28 @@
                     "concept": "d425aaa0-5fa8-431f-8180-dfa88d63e161",
                     "answers": [
                       {
-                        "label": "Alzheimer's disease and other dementias",
-                        "concept": "6cf6b0ca-d1d8-412c-9ae9-96f542b7e0e0"
+                        "label": "Malaria",
+                        "concept": "a890e4b6-1350-11df-a1f1-0026b9348838"
                       },
                       {
-                        "label": "Arthritis",
-                        "concept": "a890dec6-1350-11df-a1f1-0026b9348838"
-                      },
-                      {
-                        "label": "Asthma",
-                        "concept": "c2f8f263-105c-4232-8359-e42b7fdb638f"
-                      },
-                      {
-                        "label": "Cancer",
-                        "concept": "bdbf5450-fec3-4449-9523-249ce94c5973"
-                      },
-                      {
-                        "label": "Cardiovascular diseases",
-                        "concept": "386e82a9-8b47-4afc-8f4d-fedfb8315e1d"
-                      },
-                      {
-                        "label": "Chronic Hepatitis",
-                        "concept": "4d0b164b-69f8-47cb-b246-1e3444089ee3"
-                      },
-                      {
-                        "label": "Chronic Kidney Disease",
-                        "concept": "5cc6e984-a8c1-421b-93ad-0617251fa112"
-                      },
-                      {
-                        "label": "Chronic Obstructive Pulmonary Disease(COPD)",
-                        "concept": "a89c36a4-1350-11df-a1f1-0026b9348838"
-                      },
-                      {
-                        "label": "Chronic Renal Failure",
-                        "concept": "67dbba3e-2202-40f4-8801-c50500a017c1"
-                      },
-                      {
-                        "label": "Cystic Fibrosis",
-                        "concept": "8823c5de-99ae-45ee-b1f4-75310d604590"
-                      },
-                      {
-                        "label": "Deafness and Hearing impairment",
-                        "concept": "ef7df6d2-e2da-478a-abbe-c6273f211702"
-                      },
-                      {
-                        "label": "Endometriosis",
-                        "concept": "e30b93cc-1846-4a87-9e67-6b88d2d1b77a"
+                        "label": "Epilepsy",
+                        "concept": "a8933270-1350-11df-a1f1-0026b9348838"
                       },
                       {
                         "label": "Diabetes",
                         "concept": "a893436e-1350-11df-a1f1-0026b9348838"
                       },
                       {
-                        "label": "Epilepsy",
-                        "concept": "09239d44-c4ff-4adb-bd9e-da9c965a827e"
-                      },
-                      {
-                        "label": "Glaucoma",
-                        "concept": "bb7bce9f-a939-4bde-a732-0dcbbd677355"
-                      },
-                      {
-                        "label": "Heart Disease",
-                        "concept": "a8b007b0-1350-11df-a1f1-0026b9348838"
-                      },
-                      {
-                        "label": "Hyperlipidaemia",
-                        "concept": "5aa2d82c-d6ec-4f0f-aa83-e499806c8006"
-                      },
-                      {
                         "label": "Hypertension",
                         "concept": "a8986880-1350-11df-a1f1-0026b9348838"
                       },
                       {
-                        "label": "Hypothyroidism",
-                        "concept": "c84efad0-439a-4444-9a12-8fcf88d81409"
+                        "label": "None",
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838"
                       },
                       {
-                        "label": "Mental illness",
-                        "concept": "291e1dc4-203a-4a09-aa0c-2d0a1962a719"
-                      },
-                      {
-                        "label": "Multiple Sclerosis",
-                        "concept": "6328a7ad-7d8b-4466-bb22-64619dd5303d"
-                      },
-                      {
-                        "label": "Obesity ",
-                        "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15"
-                      },
-                      {
-                        "label": "Osteoporosis",
-                        "concept": "a89dca46-1350-11df-a1f1-0026b9348838"
-                      },
-                      {
-                        "label": "Sickle cell anemia",
-                        "concept": "7ccac7e4-f399-48b9-b2c7-944b98ec53b1"
-                      },
-                      {
-                        "label": "Thyroid disease",
-                        "concept": "7838e0b5-dbea-43f8-ab17-95100beb7a25"
+                        "label": "Other",
+                        "concept": "a8986880-1350-11df-a1f1-0026b9348838"
                       }
                     ]
                   },
@@ -4851,7 +4800,7 @@
                 }
               ]
             },
-             {
+            {
               "label": "eGFR:",
               "id": "egfr",
               "questionOptions": {
@@ -4887,14 +4836,13 @@
                 }
               ]
             },
-             {
+            {
               "type": "obs",
               "label": "CRP:",
               "id": "crp_test",
               "questionOptions": {
                 "concept": "9465b8a5-aa52-4abc-9c4b-c0bc1d9d4634",
                 "rendering": "decimal",
-                
                 "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
@@ -5500,7 +5448,7 @@
             }
           ]
         },
-          {
+        {
           "label": "CrAg",
           "questions": [
             {
@@ -5626,7 +5574,6 @@
             }
           ]
         },
-        
         {
           "label": "Urinalysis",
           "questions": [
@@ -6428,73 +6375,64 @@
           "label": "Other Tests",
           "questions": [
             {
-              "label": "Syphilis serology:",
-              "type": "obs",
+              "label": "Syphilis testing:",
+              "id": "syphilisTest",
+              "required": "true",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "a8945678-1350-11df-a1f1-0026b9348838",
+                "concept": "11dc7e01-ecd1-41ab-9bcd-5c8b1cd8b5c6",
                 "answers": [
                   {
-                    "concept": "a89b3b8c-1350-11df-a1f1-0026b9348838",
-                    "label": "Non reactive"
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
                   },
                   {
-                    "concept": "a89b3ab0-1350-11df-a1f1-0026b9348838",
-                    "label": "Reactive"
-                  },
-                  {
-                    "concept": "a89c2268-1350-11df-a1f1-0026b9348838",
-                    "label": "Requested"
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
                   },
                   {
                     "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
-                    "label": "Not tested"
-                  },
-                  {
-                    "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
-                    "label": "Poor sample quality"
+                    "label": "Not Done"
                   }
                 ]
               },
-              "id": "syphillisSerology"
-            },
-             {
-              "label": "Syphilis stage:",
               "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Type of test done:",
+              "id": "syphilisTestType",
+              "required": "true",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "91a6d539-4774-4963-a437-3f73959e739e",
+                "concept": "fbaac773-1853-4bc0-b2ea-10285e487e1a",
                 "answers": [
                   {
-                    "concept": "d3b85253-c25b-4c4c-848a-aaec5594f1df",
-                    "label": "Primary"
+                    "concept": "a8945678-1350-11df-a1f1-0026b9348838",
+                    "label": "VDRL"
                   },
                   {
-                    "concept": "37dfb10a-e479-41a1-b06d-c226ec15df9d",
-                    "label": "Secondary"
+                    "concept": "2cf9b5b8-3fbc-4ddb-8d38-863ddc5bb9e5",
+                    "label": "RPR"
                   },
                   {
-                    "concept": "fe2ebdac-920a-433d-aa19-924520b56596",
-                    "label": "Latent"
-                  },
-                  {
-                    "concept": "eb4e84ce-3c8e-41a5-94db-de8917bce1bd",
-                    "label": "Tertiary"
+                    "concept": "ab996835-26e8-45f6-b51d-fe2110954eac",
+                    "label": "Standard Q"
                   }
-                  
                 ]
               },
-              "id": "syphillisStaging",
+              "type": "obs",
+              "validators": [],
               "hide": {
-                "hideWhenExpression": "syphillisSerology !== 'a89b3ab0-1350-11df-a1f1-0026b9348838'"
+                "hideWhenExpression": "isEmpty(syphilisTest) || !(syphilisTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' || syphilisTest === 'a896d2cc-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
-              "label": "Has the client been treated for syphilis?",
-              "type": "obs",
+              "label": "On treatment for syphilis?",
+              "id": "syphilisOnTreatment",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "f555d446-93e1-49ef-ba85-05962ee5ef48",
+                "concept": "a11755b3-3e5b-4429-a6dc-e3dbeff78a9e",
                 "answers": [
                   {
                     "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
@@ -6506,11 +6444,11 @@
                   }
                 ]
               },
+              "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "syphillisSerology !== 'a89b3ab0-1350-11df-a1f1-0026b9348838'"
-              },
-              "id": "syphTreated"
+                "hideWhenExpression": "syphilisTest !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
             },
             {
               "label": "BS for MPS:",
@@ -6547,7 +6485,7 @@
                     "label": "Negative"
                   }
                 ],
-                "showDate":"true",
+                "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
                     {
@@ -8117,7 +8055,9 @@
                   "type": "obs",
                   "hide": {
                     "field": "q26f",
-                    "value": ["b8aa06ca-93c6-40ea-b144-c74f841926f4"]
+                    "value": [
+                      "b8aa06ca-93c6-40ea-b144-c74f841926f4"
+                    ]
                   },
                   "id": "__yqHnx8oJx"
                 }
@@ -8130,7 +8070,7 @@
           "label": "Advanced HIV Disease Treatment Plan",
           "isExpanded": "true",
           "questions": [
-           {
+            {
               "label": "Fluconazole prophylaxis plan:",
               "required": "true",
               "id": "flucoProphyPlan",
@@ -8169,7 +8109,6 @@
                   "failsWhenExpression": "!isEmpty(flucoProphy) && flucoProphy === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on prophylaxis in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "alert": {
                 "alertWhenExpression": "cragTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
@@ -8225,7 +8164,6 @@
                   "failsWhenExpression": "!isEmpty(cryptPreemptive) && cryptPreemptive === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on pre-emptive therapy in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "alert": {
                 "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896d2cc-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
@@ -8234,7 +8172,6 @@
               "hide": {
                 "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
-              
             },
             {
               "label": "If Start/Change, regimen:",
@@ -8315,7 +8252,6 @@
                   "failsWhenExpression": "!isEmpty(cryptCurrent) && cryptCurrent === 'a8971e12-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && arrayContains(['a89b77aa-1350-11df-a1f1-0026b9348838','a899e0ac-1350-11df-a1f1-0026b9348838'], myValue)",
                   "message": "Patient marked as on crypto in history section. Therefore plan can only be continue regimen and stop."
                 }
-                
               ],
               "id": "cryptoPlan",
               "hide": {
@@ -8325,8 +8261,6 @@
                 "alertWhenExpression": "cragTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && csfTest === 'a896f3a6-1350-11df-a1f1-0026b9348838' && myValue !== 'a89b77aa-1350-11df-a1f1-0026b9348838'",
                 "message": "Blood CrAg and CSF CrAg are positive. Start induction for cryptococcal meningitis treatment."
               }
-
-
             },
             {
               "label": "If start/change, regimen:",
@@ -8511,6 +8445,7 @@
             {
               "label": "ARV prophylaxis for the baby dispensed?",
               "type": "obs",
+              "required": "true",
               "questionOptions": {
                 "rendering": "select",
                 "concept": "a8a060c6-1350-11df-a1f1-0026b9348838",
@@ -8523,7 +8458,6 @@
                     "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
                     "label": "No"
                   }
-                  
                 ]
               },
               "id": "aztDispensed",
@@ -8538,7 +8472,7 @@
                 "rendering": "select",
                 "concept": "a89addfe-1350-11df-a1f1-0026b9348838",
                 "answers": [
-                 {
+                  {
                     "concept": "25dc9ae0-02ad-41f5-a458-c592f5d0f584",
                     "label": "AZT"
                   },
@@ -8554,7 +8488,6 @@
                     "concept": "e4ef489e-0ff1-4876-aab6-0d198cadb6b1",
                     "label": "ABC120mg/3TC60mg"
                   },
-                  
                   {
                     "concept": "ed267d22-f1a0-4bd0-8c28-d466b04d17c0",
                     "label": "ABC60mg/3TC30mg/DTG5mg (pALD)"
@@ -8563,7 +8496,6 @@
                     "concept": "20185c04-9334-11df-8193-000d6014b64c",
                     "label": "3TC30mg/NVP50mg/ZDV60mg"
                   }
-
                 ]
               },
               "id": "drugDispensed",
@@ -8681,7 +8613,6 @@
               "hide": {
                 "hideWhenExpression": "hepB !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
-
             },
             {
               "label": "Supplements",
@@ -8960,7 +8891,7 @@
                         "concept": "a8945678-1350-11df-a1f1-0026b9348838",
                         "label": "VDRL"
                       },
-                       {
+                      {
                         "concept": "a898ff66-1350-11df-a1f1-0026b9348838",
                         "label": "TPHA"
                       },
@@ -9302,7 +9233,6 @@
               "questionOptions": {
                 "rendering": "multiCheckbox",
                 "concept": "a8a4899e-1350-11df-a1f1-0026b9348838",
-                
                 "answers": [
                   {
                     "concept": "a8a485c0-1350-11df-a1f1-0026b9348838",
@@ -9350,6 +9280,7 @@
             },
             {
               "label": "Has the client been issued with a treated insecticide net?",
+              "required": "true",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -9369,7 +9300,6 @@
             }
           ]
         },
-        
         {
           "label": "Referrals",
           "questions": [
@@ -9648,7 +9578,7 @@
                 ]
               },
               "validators": [],
-			  "hide": {
+              "hide": {
                 "hideWhenExpression": "currHivStatus !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && finalResult !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
               }
             }
@@ -9757,7 +9687,17 @@
               "questionOptions": {
                 "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
                 "rendering": "date",
-                "weeksList": [2, 4, 6, 8, 12, 16, 20, 24, 36]
+                "weeksList": [
+                  2,
+                  4,
+                  6,
+                  8,
+                  12,
+                  16,
+                  20,
+                  24,
+                  36
+                ]
               },
               "validators": [
                 {

@@ -861,7 +861,7 @@
             }
           ]
         },
-        {
+         {
           "label": "Anthropometrics",
           "isExpanded": "true",
           "questions": [
@@ -882,6 +882,7 @@
             },
             {
               "label": "Weight(kg):",
+              "required": "true",
               "type": "obs",
               "id": "weightForBMI",
               "questionOptions": {
@@ -896,6 +897,7 @@
             },
             {
               "label": "Height(cm):",
+              "required": "true",
               "type": "obs",
               "id": "height",
               "questionOptions": {
@@ -911,6 +913,7 @@
             },
             {
               "label": "Height(cm):",
+              "required": "true",
               "type": "obs",
               "id": "heightForBMI",
               "questionOptions": {
@@ -938,25 +941,113 @@
                 }
               },
               "hide": {
-                "hideWhenExpression": "(age <= 5 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
+                "hideWhenExpression": "(age <=18 && isEmpty(mobilityAdult)) || mobilityAdult === 'cc96cdb5-c62b-4d29-805d-3f48d5a285cb'"
               }
             },
             {
-              "label": "MUAC:",
+              "label": "MUAC (cm):",
               "type": "obs",
               "id": "muac",
               "questionOptions": {
                 "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
-                "max": "250",
+                "max": "80",
                 "min": "0"
-              },
-              "hide": {
-                "hideWhenExpression": "(age > 5 && sex !== 'F') || (sex === 'F' &&  age > 49)"
               }
             },
             {
-              "label": " Weight for height Z-score:",
+              "label": "Head circumference(cm):",
+              "type": "obs",
+              "id": "headCircumference",
+              "questionOptions": {
+                "concept": "a8a77686-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "60",
+                "min": "25"
+              },
+              "hide": {
+                "hideWhenExpression": "age > 2"
+              }
+            },
+            {
+              "label": "Waist circumference(cm):",
+              "required": "true",
+              "type": "obs",
+              "id": "waistCircumference",
+              "questionOptions": {
+                "concept": "9ed84785-76c5-4520-ad0e-5c6446c9df2c",
+                "rendering": "number",
+                "max": "150",
+                "min": "0"
+              },
+              "hide": {
+                "hideWhenExpression": "age < 18"
+              }
+            },
+            {
+              "label": "Waist circumference interpretation:",
+              "type": "obs",
+              "readOnly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "80f3d898-e9ac-4ecb-b0f0-dcf268972e07",
+                "calculate": {
+                  "calculateExpression": "age < 18 || sex !== 'F' || isEmpty(waistCircumference) ? '' : Number(waistCircumference) < 80 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(waistCircumference) <= 88 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
+                    "label": "Increased risk"
+                  },
+                  {
+                    "concept": "4fae298d-c3c2-4483-ad31-bea9b637ae2b",
+                    "label": "High risk"
+                  }
+                ]
+              },
+              "id": "waistCicumDiagnosisFemale",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 18 || isEmpty(waistCircumference) || sex !== 'F'"
+              }
+            },
+            {
+              "label": "Waist circumference interpretation:",
+              "type": "obs",
+              "readOnly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "80f3d898-e9ac-4ecb-b0f0-dcf268972e07",
+                "calculate": {
+                  "calculateExpression": "age < 18 || sex !== 'M' || isEmpty(waistCircumference) ? '' : Number(waistCircumference) < 90 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(waistCircumference) <= 102 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : '4fae298d-c3c2-4483-ad31-bea9b637ae2b'"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
+                    "label": "Increased risk"
+                  },
+                  {
+                    "concept": "4fae298d-c3c2-4483-ad31-bea9b637ae2b",
+                    "label": "High risk"
+                  }
+                ]
+              },
+              "id": "waistCicumDiagnosisMale",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 18 || isEmpty(waistCircumference) || sex !== 'M'"
+              }
+            },
+            {
+              "label": "Weight for height Z-score:",
               "id": "WeightheightScore",
               "questionOptions": {
                 "rendering": "number",
@@ -964,13 +1055,13 @@
                 "max": "4",
                 "min": "-4",
                 "calculate": {
-                  "calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
+                  "calculateExpression": "calcWeightForHeightZscore(weightForHeightRef, height, weight)"
                 }
               },
               "type": "obs",
               "validators": [],
               "hide": {
-                "hideWhenExpression": "age>5"
+                "hideWhenExpression": "age>=5"
               }
             },
             {
@@ -980,24 +1071,32 @@
                 "rendering": "select",
                 "concept": "9cf8b8c5-a9fb-4662-9585-97dfbfd9d245",
                 "calculate": {
-                  "calculateExpression": " weight && height && parseInt(WeightheightScore) >=0 && parseInt(WeightheightScore) <= 4? 'a899e7b4-1350-11df-a1f1-0026b9348838' :weight && height && parseInt(WeightheightScore) === -1 ? '492da2d3-5137-4261-ba07-f961e8c27efb' :weight && height && parseInt(WeightheightScore) === -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' :weight && height && parseInt(WeightheightScore) === -3 || parseInt(WeightheightScore) === -4 ? '0306539c-f24f-49f5-b059-b646adbec47c' :''"
+                  "calculateExpression": "isEmpty(weight) || isEmpty(height) || Number(weight) <= 0 || Number(height) <= 0 || isEmpty(WeightheightScore) || isNaN(Number(WeightheightScore)) ? '' : Number(WeightheightScore) < -3 ? '0306539c-f24f-49f5-b059-b646adbec47c' : Number(WeightheightScore) < -2 ? 'f0dd06d5-6174-447f-9a9c-f8635b4a6a6d' : Number(WeightheightScore) < -1 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(WeightheightScore) <= 1 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(WeightheightScore) < 2 ? '' : Number(WeightheightScore) < 3 ? '5308B985-7100-4239-8F7D-A2CFB764F203' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15'"
                 },
                 "answers": [
                   {
-                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
-                    "label": "Normal"
-                  },
-                  {
-                    "concept": "492da2d3-5137-4261-ba07-f961e8c27efb",
-                    "label": "Mild acute malnutrition"
+                    "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+                    "label": "Severe acute malnutrition"
                   },
                   {
                     "concept": "f0dd06d5-6174-447f-9a9c-f8635b4a6a6d",
                     "label": "Moderate acute malnutrition"
                   },
                   {
-                    "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
-                    "label": "Severe acute malnutrition"
+                    "concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
+                    "label": "At risk"
+                  },
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
+                    "label": "Overweight"
+                  },
+                  {
+                    "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
+                    "label": "Obese"
                   }
                 ]
               },
@@ -1005,10 +1104,130 @@
               "validators": [],
               "hide": {
                 "hideWhenExpression": "age>5 || isEmpty(WeightheightScore)"
+              },
+              "readOnly": true
+            },
+            {
+              "label": "BMI for Age Z-Score:",
+              "id": "bmiScore",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9061e5d5-8478-4d16-be44-bfec05b6705a",
+                "max": "4",
+                "min": "-4",
+                "calculate": {
+                  "calculateExpression": "age < 5 || age >= 18 ? null : age <= 5 ? (isEmpty(height) || isEmpty(weight) || Number(height) <= 0 || Number(weight) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,height,weight)) : (isEmpty(heightForBMI) || isEmpty(weightForBMI) || Number(heightForBMI) <= 0 || Number(weightForBMI) <= 0 ? null : calcBMIForAgeZscore(bmiForAgeRef,heightForBMI,weightForBMI))"
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 5 || age >= 18"
               }
             },
             {
-              "label": "BMI for age (+18) categorization:",
+              "label": "BMI for age Z score diagnosis:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "837eb9e6-28cd-486c-bb9a-d040d0878b84",
+                "calculate": {
+                  "calculateExpression": "age < 5 || age >= 18 ? '' : !isEmpty(bmiScore) ? (isNaN(Number(bmiScore)) ? '' : Number(bmiScore) < -3 ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : Number(bmiScore) < -2 ? 'a89efdee-1350-11df-a1f1-0026b9348838' : Number(bmiScore) < -1 ? 'a89efccc-1350-11df-a1f1-0026b9348838' : Number(bmiScore) <= 1 ? 'a899e7b4-1350-11df-a1f1-0026b9348838' : Number(bmiScore) <= 2 ? '83b589e1-ea64-4ed5-8c73-de78f674dda2' : Number(bmiScore) <= 3 ? '1505faef-c8aa-422c-b356-da065b88ec9c' : '2a60e784-1314-4454-91ba-7ea4cc2c3b15') : isEmpty(muac) || isNaN(Number(muac)) || Number(muac) <= 0 ? '' : Number(muac) < (age < 10 ? 13.5 : 14.5) ? 'a89eff1a-1350-11df-a1f1-0026b9348838' : Number(muac) < (age < 10 ? 14.5 : 18.5) ? 'a89efdee-1350-11df-a1f1-0026b9348838' : 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "a89efccc-1350-11df-a1f1-0026b9348838",
+                    "label": "Mild acute malnutrition"
+                  },
+                  {
+                    "concept": "a89efdee-1350-11df-a1f1-0026b9348838",
+                    "label": "Moderate acute malnutrition"
+                  },
+                  {
+                    "concept": "a89eff1a-1350-11df-a1f1-0026b9348838",
+                    "label": "Severe acute malnutrition"
+                  },
+                  {
+                    "concept": "83b589e1-ea64-4ed5-8c73-de78f674dda2",
+                    "label": "At risk"
+                  },
+                  {
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
+                    "label": "Overweight"
+                  },
+                  {
+                    "concept": "2a60e784-1314-4454-91ba-7ea4cc2c3b15",
+                    "label": "Obese"
+                  }
+                ]
+              },
+              "id": "bmiZScoreDiagnosis",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age < 5 || age >= 18 || (isEmpty(bmiScore) && isEmpty(muac))"
+              },
+              "readOnly": true
+            },
+            {
+              "label": " Height/length for age Z-score:",
+              "id": "heightLengthScore",
+              "readOnly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "507f48e7-26fc-490b-a521-35d7c5aa8e9f",
+                "max": "4",
+                "min": "-4",
+                "calculate": {
+                  "calculateExpression": "age < 0 || age >= 18 ? null : age <= 5 ? (isEmpty(height) || isNaN(Number(height)) || Number(height) <= 0 ? null : calcHeightForAgeZscore(heightForAgeRef,height,weight)) : (isEmpty(heightForBMI) || isNaN(Number(heightForBMI)) || Number(heightForBMI) <= 0 ? null : calcHeightForAgeZscore(heightForAgeRef,heightForBMI,weightForBMI))"
+                }
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >=18"
+              }
+            },
+            {
+              "label": "Height/Length for age Z score diagnosis:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "21c0a36a-0841-4268-a79b-140b85c6ff53",
+                "calculate": {
+                  "calculateExpression": "age < 0 || age >= 18 || isEmpty(heightLengthScore) || isNaN(Number(heightLengthScore)) ? '' : Number(heightLengthScore) <= -3 ? '46255b12-efe6-458a-b178-0af440fec2e1' : Number(heightLengthScore) <= -2 ? 'f8b800a7-1888-4159-80b1-6c45c223a3d2' : Number(heightLengthScore) <= -1 ? '2fc2c915-9d20-4753-b226-730a8a0ffdb2' : 'a899e7b4-1350-11df-a1f1-0026b9348838'"
+                },
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "2fc2c915-9d20-4753-b226-730a8a0ffdb2",
+                    "label": "Mild stunting"
+                  },
+                  {
+                    "concept": "f8b800a7-1888-4159-80b1-6c45c223a3d2",
+                    "label": "Moderate stunting"
+                  },
+                  {
+                    "concept": "46255b12-efe6-458a-b178-0af440fec2e1",
+                    "label": "Severe stunting"
+                  }
+                ]
+              },
+              "id": "HeightLengthDiagnosis",
+              "readOnly": true,
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "age >= 18 || isEmpty(heightLengthScore)"
+              }
+            },
+            {
+              "label": "BMI (+18) categorization:",
               "type": "obs",
               "questionOptions": {
                 "rendering": "select",
@@ -1034,7 +1253,7 @@
                     "label": "Severe acute malnutrition"
                   },
                   {
-                    "concept": "1505faef-c8aa-422c-b356-da065b88ec9c",
+                    "concept": "5308B985-7100-4239-8F7D-A2CFB764F203",
                     "label": "Overweight"
                   },
                   {
@@ -1093,12 +1312,12 @@
             {
               "label": "Number of doses given:",
               "type": "obs",
-              "id": "doseGivem",
+              "id": "doseGiven",
               "questionOptions": {
                 "concept": "a89ef54c-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
-                "max": "10",
-                "min": "0"
+                "max": "3",
+                "min": "1"
               },
               "hide": {
                 "hideWhenExpression": "clientHpvVaccinated !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
