@@ -1,0 +1,2561 @@
+{
+  "name": "POC TB Treatment Form v1.1",
+  "description": "A form for followup of TB patients.",
+  "version": "1.1",
+  "published": true,
+  "uuid": "",
+  "retired": false,
+  "encounter": "TBASSESSMENT",
+  "processor": "EncounterFormProcessor",
+  "encounterType": "ded4ecf7-8129-4a9e-8aa3-a21a7adb7759",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Patient Details",
+      "sections": [
+        {
+          "label": "Visit details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "id": "encDate",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            },
+            {
+              "id": "visitType",
+              "label": "Visit type:",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "label": "New",
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1"
+                  },
+                  {
+                    "label": "Follow-up",
+                    "concept": "a8a4812e-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Patient Details",
+          "isExpanded": "true",
+          "questions": [
+            
+            {
+              "label": "Date start of treatment:",
+              "type": "obs",
+              "id": "dstartoftreatment",
+              "questionOptions": {
+                "concept": "a899e5f2-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
+                  "message": "Complete this field for a new TB treatment visit."
+                },
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                  "message": "Date cannot be after the encounter date."
+                }
+              ]
+            },
+            
+            {
+              "label": "Patient occupation:",
+              "type": "obs",
+              "id": "patOccupation",
+              "questionOptions": {
+                "concept": "a8a0a00e-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a09d0c-1350-11df-a1f1-0026b9348838",
+                    "label": "Teacher"
+                  },
+                  {
+                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                    "label": "Health care provider"
+                  },
+                  {
+                    "concept": "a8a09b90-1350-11df-a1f1-0026b9348838",
+                    "label": "Casual worker"
+                  },
+                  {
+                    "concept": "a8a09e92-1350-11df-a1f1-0026b9348838",
+                    "label": "Police officer"
+                  },
+                  {
+                    "concept": "05b4c838-a185-4bb0-8c33-71f80ea7c4cf",
+                    "label": "Student"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
+            },
+            {
+              "label": "Other occupation (specify):",
+              "type": "obs",
+              "id": "occupationOther",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (patOccupation !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && patOccupation === 'a8aaf3e2-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "Specify the other occupation."
+                }
+              ]
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+          }
+        },
+        {
+          "label": "Treatment Supporter Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Treatment supporter's name:",
+              "type": "obs",
+              "id": "tSupporterNames",
+              "questionOptions": {
+                "concept": "2b0b8aeb-d023-49cc-84cb-8415e1c4a9cd",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
+            },
+            {
+              "label": "Relation to patient:",
+              "type": "obs",
+              "id": "tSupporterRelation",
+              "questionOptions": {
+                "concept": "80b54a43-2c27-4c95-9f1c-da14581a1c8e",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89ebc80-1350-11df-a1f1-0026b9348838",
+                    "label": "Partner or Spouse"
+                  },
+                  {
+                    "concept": "a898c32a-1350-11df-a1f1-0026b9348838",
+                    "label": "Grandparent"
+                  },
+                  {
+                    "concept": "a898c262-1350-11df-a1f1-0026b9348838",
+                    "label": "Sibling"
+                  },
+                  {
+                    "concept": "a89cd280-1350-11df-a1f1-0026b9348838",
+                    "label": "Guardian"
+                  },
+                  {
+                    "concept": "a89ebec4-1350-11df-a1f1-0026b9348838",
+                    "label": "Parent"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+          }
+        },
+        {
+          "label": "Patient Type",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Patient type:",
+              "type": "obs",
+              "id": "patientClassification",
+              "questionOptions": {
+                "concept": "a8a388d2-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a38382-1350-11df-a1f1-0026b9348838",
+                    "label": "New (N)"
+                  },
+                  {
+                    "concept": "a8a38508-1350-11df-a1f1-0026b9348838",
+                    "label": "Recurrent (smear negative relapse)"
+                  },
+                  {
+                    "concept": "a8a38440-1350-11df-a1f1-0026b9348838",
+                    "label": "Recurrent (smear positive relapse)"
+                  },
+                  {
+                    "concept": "a8a3874c-1350-11df-a1f1-0026b9348838",
+                    "label": "Treatment after lost to follow up (TLF)"
+                  },
+                  {
+                    "concept": "a8a3868e-1350-11df-a1f1-0026b9348838",
+                    "label": "Treatment after Failure (TF)"
+                  },
+                  {
+                    "concept": "6b509e5e-32ce-4b7c-91a2-4cba7a524211",
+                    "label": "Previous treatment history unknown (THU)"
+                  },
+                  {
+                    "concept": "a8a38814-1350-11df-a1f1-0026b9348838",
+                    "label": "Transfer in (TI)"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
+                  "message": "Complete this field for a new TB treatment visit."
+                }
+              ]
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+          }
+        },
+        {
+          "label": "Transfer In Information",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date transferred in:",
+              "type": "obs",
+              "id": "transferindate",
+              "questionOptions": {
+                "concept": "6bf686cb-5b0a-4135-8134-1257978dac26",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && patientClassification === 'a8a38814-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && patientClassification === 'a8a38814-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "Complete the transfer-in date and facility for a transfer-in patient."
+                },
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                  "message": "Date cannot be after the encounter date."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(datefirstenrolled) && (new moment(myValue)).isBefore((new moment(datefirstenrolled)), 'day')",
+                  "message": "Date cannot be before the first TB care enrollment date."
+                }
+              ]
+            },
+            {
+              "label": "Transferred from location:",
+              "type": "obs",
+              "id": "transferredFromLocation",
+              "questionOptions": {
+                "concept": "9aaf186b-41ed-4fbb-b30e-3af72be7ae76",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && patientClassification === 'a8a38814-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && patientClassification === 'a8a38814-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "Complete the transfer-in date and facility for a transfer-in patient."
+                }
+              ]
+            },
+            {
+              "label": "District:",
+              "type": "obs",
+              "id": "newDistrict",
+              "questionOptions": {
+                "concept": "10bca44a-930f-46ae-b686-63ddb36a713f",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && patientClassification === 'a8a38814-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Date first enrolled in TB care:",
+              "type": "obs",
+              "id": "datefirstenrolled",
+              "questionOptions": {
+                "concept": "0c45e27d-5add-458b-ad69-58f3cca5f6a1",
+                "rendering": "date"
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && patientClassification === 'a8a38814-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                  "message": "Date cannot be after the encounter date."
+                }
+              ]
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && patientClassification === 'a8a38814-1350-11df-a1f1-0026b9348838')"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Patient History",
+      "sections": [
+        {
+          "label": "Complaints and History of Presenting Illness",
+          "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          },
+          "questions": [
+            {
+              "label": "Presenting complaints:",
+              "type": "obsGroup",
+              "id": "ComplaintLodgeByClient",
+              "questionOptions": {
+                "concept": "9014962e-3efe-46b0-a393-c8c8bddadaa7",
+                "rendering": "repeating",
+                "min": 1
+              },
+              "validators": [],
+              "questions": [
+                {
+                  "label": "Complaint:",
+                  "type": "obs",
+                  "id": "cOmplaIntField",
+                  "questionOptions": {
+                    "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a8932f00-1350-11df-a1f1-0026b9348838",
+                        "label": "Abdominal pain"
+                      },
+                      {
+                        "concept": "a0bda074-8e57-4ba7-ab9c-c008776f8d48",
+                        "label": "Abnormal uterine bleeding"
+                      },
+                      {
+                        "concept": "a89cec02-1350-11df-a1f1-0026b9348838",
+                        "label": "Anxiety"
+                      },
+                      {
+                        "concept": "a8953d90-1350-11df-a1f1-0026b9348838",
+                        "label": "Back pain"
+                      },
+                      {
+                        "concept": "a8981696-1350-11df-a1f1-0026b9348838",
+                        "label": "Bloody urine"
+                      },
+                      {
+                        "concept": "bb1637fd-dd30-4938-a7a7-30dcef155f38",
+                        "label": "Blood in stool"
+                      },
+                      {
+                        "concept": "c7356bfe-e9a8-422b-9a6a-6e42490d308e",
+                        "label": "Breast pain"
+                      },
+                      {
+                        "concept": "a892e4b4-1350-11df-a1f1-0026b9348838",
+                        "label": "Chest pain"
+                      },
+                      {
+                        "concept": "a898314e-1350-11df-a1f1-0026b9348838",
+                        "label": "Cold and chills"
+                      },
+                      {
+                        "concept": "a8ad3b02-1350-11df-a1f1-0026b9348838",
+                        "label": "Confusion"
+                      },
+                      {
+                        "concept": "a890d73c-1350-11df-a1f1-0026b9348838",
+                        "label": "Cough"
+                      },
+                      {
+                        "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
+                        "label": "Convulsions"
+                      },
+                      {
+                        "concept": "894e909e-881c-4ac3-b669-4c77003831ad",
+                        "label": "Coma"
+                      },
+                      {
+                        "concept": "a890d660-1350-11df-a1f1-0026b9348838",
+                        "label": "Coryza"
+                      },
+                      {
+                        "concept": "96dafdc7-720e-4eac-85d3-ae2a0f5c1d94",
+                        "label": "Crying infant"
+                      },
+                      {
+                        "concept": "a58cfd5c-a237-46fd-b0fc-bb7f2192bb69",
+                        "label": "Delirium"
+                      },
+                      {
+                        "concept": "a8935fde-1350-11df-a1f1-0026b9348838",
+                        "label": "Depression"
+                      },
+                      {
+                        "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                        "label": "Diarrhoea"
+                      },
+                      {
+                        "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
+                        "label": "Difficult in breathing"
+                      },
+                      {
+                        "concept": "a8983cc0-1350-11df-a1f1-0026b9348838",
+                        "label": "Difficulty in swallowing"
+                      },
+                      {
+                        "concept": "abb19bab-e77d-47db-b9b6-18386868e1b3",
+                        "label": "Discharge from penis"
+                      },
+                      {
+                        "concept": "e5c11905-baf7-4747-a01d-0525153e143a",
+                        "label": "Dizziness"
+                      },
+                      {
+                        "concept": "eb12bfd6-dd52-4c41-a35e-a8048c975e7f",
+                        "label": "Ear Pain"
+                      },
+                      {
+                        "concept": "9a9cb2d4-696c-4f2b-9a7b-206333597e3c",
+                        "label": "Epigastric pain"
+                      },
+                      {
+                        "concept": "05354fc6-fd53-4c40-9379-ba2b4457635e",
+                        "label": "Eye pain"
+                      },
+                      {
+                        "concept": "d301ff85-d21c-4a61-a195-ce7948db423c",
+                        "label": "Excessive sweating"
+                      },
+                      {
+                        "concept": "4a3fa87f-0f09-4b70-bfaf-ed9cba1f9aa7",
+                        "label": "Facial pain"
+                      },
+                      {
+                        "concept": "4b92fa43-a876-4fee-886b-ce4fc2e18512",
+                        "label": "Fatigue/weakness"
+                      },
+                      {
+                        "concept": "cebb22fc-5ef8-409e-b606-51fdb7039593",
+                        "label": "Flank pain"
+                      },
+                      {
+                        "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                        "label": "Fever"
+                      },
+                      {
+                        "concept": "8065a17b-fbe4-4558-9ddd-0af641866c21",
+                        "label": " General body malaise"
+                      },
+                      {
+                        "concept": "4eef684c-feff-48bb-9e8e-fe5742bee979",
+                        "label": "Genital ulcer"
+                      },
+                      {
+                        "concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+                        "label": "Headache"
+                      },
+                      {
+                        "concept": "13a3c07c-e870-4cc9-b7d3-d2e5b5e60a3e",
+                        "label": "Hearing loss"
+                      },
+                      {
+                        "concept": "a89d1222-1350-11df-a1f1-0026b9348838",
+                        "label": "Hypotension"
+                      },
+                      {
+                        "concept": "a8983ae0-1350-11df-a1f1-0026b9348838",
+                        "label": "Itchiness/Pruritus"
+                      },
+                      {
+                        "concept": "a890ba5e-1350-11df-a1f1-0026b9348838",
+                        "label": "Joint pain"
+                      },
+                      {
+                        "concept": "be9da369-ba93-4a0c-afdd-616ed4b434e8",
+                        "label": "Leg pain"
+                      },
+                      {
+                        "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                        "label": "Lethargy"
+                      },
+                      {
+                        "concept": "a8982eba-1350-11df-a1f1-0026b9348838",
+                        "label": "Loss of appetite"
+                      },
+                      {
+                        "concept": "a893378e-1350-11df-a1f1-0026b9348838",
+                        "label": "Lymphadenopathy"
+                      },
+                      {
+                        "concept": "5d91ee3c-9ace-462f-97c1-bd0c8fcf8a5e",
+                        "label": "Memory loss"
+                      },
+                      {
+                        "concept": "6fac98a0-6d8a-4441-aeed-c447a3a12494",
+                        "label": "Mouth ulceration"
+                      },
+                      {
+                        "concept": "02dc5deb-44d1-43db-b65e-9eb0d6cedaaf",
+                        "label": "Mouth pain"
+                      },
+                      {
+                        "concept": "1fbf7fd4-ea3e-4ab1-acd9-bf215651e066",
+                        "label": "Muscle cramps"
+                      },
+                      {
+                        "concept": "a8ad5330-1350-11df-a1f1-0026b9348838",
+                        "label": "Muscle pain"
+                      },
+                      {
+                        "concept": "a890e2f4-1350-11df-a1f1-0026b9348838",
+                        "label": "Mylagia"
+                      },
+                      {
+                        "concept": "a8ad21e4-1350-11df-a1f1-0026b9348838",
+                        "label": "Nausea"
+                      },
+                      {
+                        "concept": "a8a6b476-1350-11df-a1f1-0026b9348838",
+                        "label": "Neck stiffness"
+                      },
+                      {
+                        "concept": "bb7fc04f-13d8-4630-b9d8-e364b34b7f2f",
+                        "label": "Neck pain"
+                      },
+                      {
+                        "concept": "a8ad4ed0-1350-11df-a1f1-0026b9348838",
+                        "label": "Night sweats"
+                      },
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
+                      },
+                      {
+                        "concept": "4ef1a2d0-132d-4a02-b0e0-00890b916343",
+                        "label": "Numbness"
+                      },
+                      {
+                        "concept": "a8a498ee-1350-11df-a1f1-0026b9348838",
+                        "label": "Unexplained bleeding"
+                      },
+                      {
+                        "concept": "d4abb20f-fde4-453b-b7e8-ac35debe83c2",
+                        "label": "Pelvic pain"
+                      },
+                      {
+                        "concept": "a8ad09ca-1350-11df-a1f1-0026b9348838",
+                        "label": "Poor vision"
+                      },
+                      {
+                        "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                        "label": "Rash"
+                      },
+                      {
+                        "concept": "0df011cb-3ff1-465e-ae84-718da974aedd",
+                        "label": "Red Eye/ conjuctivitis"
+                      },
+                      {
+                        "concept": "a8ad4476-1350-11df-a1f1-0026b9348838",
+                        "label": "Refusal to feed"
+                      },
+                      {
+                        "concept": "a8983bda-1350-11df-a1f1-0026b9348838",
+                        "label": "Running/Blocked nose"
+                      },
+                      {
+                        "concept": "773bfb25-09c8-4920-89f5-5bdafe5b5b62",
+                        "label": "Scrotal pain"
+                      },
+                      {
+                        "concept": "a8935f0c-1350-11df-a1f1-0026b9348838",
+                        "label": "Seizure"
+                      },
+                      {
+                        "concept": "4fd5f4cf-67cd-444d-8f18-a01afb4d9af0",
+                        "label": "Shoulder pain"
+                      },
+                      {
+                        "concept": "8ccbbecf-58cd-43c2-ae9a-a36a4e578b25",
+                        "label": "Shock"
+                      },
+                      {
+                        "concept": "a8932d66-1350-11df-a1f1-0026b9348838",
+                        "label": "Sore throat"
+                      },
+                      {
+                        "concept": "34c96419-d4a9-4377-8c80-3a31d0f07d13",
+                        "label": "Sleep disturbance"
+                      },
+                      {
+                        "concept": "e01c7959-551c-4c40-bcbf-52ef3087cbff",
+                        "label": "Swollen legs"
+                      },
+                      {
+                        "concept": "ae5f2fc7-3f76-4fc3-96fa-72b354323821",
+                        "label": "Tremors"
+                      },
+                      {
+                        "concept": "0ca4d1dc-34df-4ec0-bf2f-0280005ce6c9",
+                        "label": "Urinary symptoms"
+                      },
+                      {
+                        "concept": "9abe711c-5e02-4aca-8d70-8b2148a17256",
+                        "label": "Watery diarrhoea"
+                      },
+                      {
+                        "concept": "c982b4fe-8403-4c67-9650-91da17aecf5e",
+                        "label": "Weakness of limbs"
+                      },
+                      {
+                        "concept": "a89807f0-1350-11df-a1f1-0026b9348838",
+                        "label": "Weight loss"
+                      },
+                      {
+                        "concept": "a89d145c-1350-11df-a1f1-0026b9348838",
+                        "label": "Vaginal bleeding"
+                      },
+                      {
+                        "concept": "a8ad2eb4-1350-11df-a1f1-0026b9348838",
+                        "label": "Vaginal discharge"
+                      },
+                      {
+                        "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                        "label": "Vomiting"
+                      },
+                      {
+                        "concept": "6d140ca3-118d-48ca-9d91-7b5612987413",
+                        "label": "Vertigo"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && isEmpty(myValue)",
+                      "message": "Select a complaint, or None when there are no current complaints."
+                    }
+                  ]
+                },
+                {
+                  "label": "Specify other complaints:",
+                  "type": "obs",
+                  "id": "OtherSpecificComplaints",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "textarea"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && cOmplaIntField === 'a8aaf3e2-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "Specify the other complaint."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "Duration (Days):",
+                  "type": "obs",
+                  "id": "complaintduration",
+                  "questionOptions": {
+                    "concept": "451e22a7-6d9a-41ac-8cb7-b4f3eba59ac5",
+                    "rendering": "number",
+                    "min": "0"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && !isEmpty(cOmplaIntField) && cOmplaIntField !== 'a899e0ac-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "Record duration and onset for the selected complaint."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && (myValue < 0 || myValue % 1 !== 0)",
+                      "message": "Duration must be a whole number of days, zero or greater."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && !isEmpty(cOmplaIntField) && cOmplaIntField !== 'a899e0ac-1350-11df-a1f1-0026b9348838')"
+                  }
+                },
+                {
+                  "label": "Onset status:",
+                  "type": "obs",
+                  "id": "onsetStatus",
+                  "questionOptions": {
+                    "concept": "7d891556-2af6-4a79-bcc8-f653b74089ce",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a89efdee-1350-11df-a1f1-0026b9348838",
+                        "label": "Gradual"
+                      },
+                      {
+                        "concept": "a8a4751c-1350-11df-a1f1-0026b9348838",
+                        "label": "Sudden"
+                      }
+                    ]
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && !isEmpty(cOmplaIntField) && cOmplaIntField !== 'a899e0ac-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "Record duration and onset for the selected complaint."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && !isEmpty(cOmplaIntField) && cOmplaIntField !== 'a899e0ac-1350-11df-a1f1-0026b9348838')"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "History of presenting illness:",
+              "type": "obs",
+              "id": "ClinICNotes",
+              "questionOptions": {
+                "concept": "9e903280-385f-473d-9dfb-01bdb6b661a5",
+                "rendering": "textarea",
+                "rows": 5
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
+                  "message": "Document the history of presenting illness for a new visit."
+                }
+              ],
+              "questionInfo": "For a new visit, document the presenting illness and assess mental health. At follow-up, document changes in symptoms and new or existing mental health conditions."
+            },
+             {
+          "label": "Past Medical & Surgical history",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Past medical/Surgical history",
+              "type": "obs",
+              "id": "pastSurg",
+              "questionOptions": {
+                "concept": "60be4af0-1aa0-4508-8e15-2eb7bf91d08f",
+                "rendering": "textarea",
+                "rows": 5
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Family Social history",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Family and Social history",
+              "type": "obs",
+              "required": "false",
+              "id": "peopleinprison",
+              "questionOptions": {
+                "rendering": "textarea",
+                "rows": 5,
+                "concept": "0e316db3-2a2c-4762-b011-928c5ce438f5"
+              },
+              "validators": []
+            }
+          ]
+        }
+          ]
+        },
+        
+        
+        {
+          "label": "Patient HIV Status",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "HIV status:",
+              "type": "obs",
+              "id": "hivStatus",
+              "questionOptions": {
+                "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "1cbd578b-e357-441b-b83d-e404ea961fe2",
+                    "label": "Declined"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "2477d1ad-4288-4f84-9065-f63fc05e9347",
+                    "label": "HIV exposed infant (HEI)"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Test date:",
+              "type": "obs",
+              "id": "hivTestDate",
+              "questionOptions": {
+                "concept": "64807fb6-0ca3-4def-a62a-2d5f66c4328a",
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838', 'a896d2cc-1350-11df-a1f1-0026b9348838'], hivStatus)) && isEmpty(myValue)",
+                  "message": "Enter the HIV test date for the documented result."
+                },
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                  "message": "Date cannot be after the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!(arrayContains(['a896f3a6-1350-11df-a1f1-0026b9348838', 'a896d2cc-1350-11df-a1f1-0026b9348838'], hivStatus))"
+              }
+            },
+            {
+              "type": "obs",
+              "label": "Viral load:",
+              "id": "viralLoad_test",
+              "questionOptions": {
+                "concept": "a8982474-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "max": "10000000",
+                "min": "0",
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(viralLoad_test)) && isEmpty(myValue)",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(viralLoad_test))"
+                  }
+                }
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "CD4 count (cells/µL):",
+              "id": "cd4Count",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a896cce6-1350-11df-a1f1-0026b9348838",
+                "rendering": "number",
+                "min": "0",
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(cd4Count)) && isEmpty(myValue)",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(cd4Count))"
+                  }
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "hivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Is the patient on ART?",
+              "required": "true",
+              "id": "onArt",
+              "historicalExpression": "arrayContainsAny(['a89b7c50-1350-11df-a1f1-0026b9348838','a89b7ae8-1350-11df-a1f1-0026b9348838','a8a00220-1350-11df-a1f1-0026b9348838','a898c938-1350-11df-a1f1-0026b9348838','a89b77aa-1350-11df-a1f1-0026b9348838'], HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')) ? 'a899b35c-1350-11df-a1f1-0026b9348838' : HD.getObject('prevEnc').getValue('a89ae254-1350-11df-a1f1-0026b9348838')",
+              "historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('a89ae254-1350-11df-a1f1-0026b9348838'))",
+              "questionOptions": {
+                "concept": "a89ae254-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "hivStatus !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Current ART regimen:",
+              "id": "current_art_regimen_adult",
+              "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')) ? (_.isEmpty(HD.getObject('prevEnc').getValue('a8a08344-1350-11df-a1f1-0026b9348838'))? HD.getObject('prevEnc').getValue('a899cf5e-1350-11df-a1f1-0026b9348838') : HD.getObject('prevEnc').getValue('a899cf5e-1350-11df-a1f1-0026b9348838')) : HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')",
+              "historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838'))",
+              "questionOptions": {
+                "concept": "a899cf5e-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "18e86e1f-92b8-40cd-8266-0df0ab0a4a50",
+                    "label": "DTG50mg/3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a55fcb21-8ca5-4369-9807-2ce212e00377",
+                    "label": "TAF25mg/3TC300mg/DTG50mg"
+                  },
+                  {
+                    "concept": "1c4a75d0-cc91-4752-b0a5-4b833326ff7a",
+                    "label": "TDF300mg/3TC300mg/EFV600mg"
+                  },
+                  {
+                    "concept": "ea501f4e-cbc5-4942-b9c8-0ac415929f08",
+                    "label": "TDF300mg/3TC300mg/EFV400mg"
+                  },
+                  {
+                    "concept": "6a73f32d-1870-4527-af6e-74443251ded2",
+                    "label": "NVP200/ZDV300/3TC150"
+                  },
+                  {
+                    "concept": "e78843da-fdb6-446d-8e99-873c278b3540",
+                    "label": "ABC600mg/3TC300mg"
+                  },
+                  {
+                    "concept": "a89cc876-1350-11df-a1f1-0026b9348838",
+                    "label": "3TC300mg/TDF300mg"
+                  },
+                  {
+                    "concept": "a896758e-1350-11df-a1f1-0026b9348838",
+                    "label": "3TC150mg/ZDV300mg"
+                  },
+                  {
+                    "concept": "a8afcf84-1350-11df-a1f1-0026b9348838",
+                    "label": "Emtri200mg/TDF300(Truvada)"
+                  },
+                  {
+                    "concept": "a897e7c0-1350-11df-a1f1-0026b9348838",
+                    "label": "Aluvia(Kaletra)200mg/LPV50mg"
+                  },
+                  {
+                    "concept": "a8afc066-1350-11df-a1f1-0026b9348838",
+                    "label": "Atazanavir 300mg/Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "dabf36cb-dd9a-4542-a8ef-874c1ee5be4a",
+                    "label": "FTC200mg/RPV25mg/TDF245mg(Eviplera)"
+                  },
+                  {
+                    "concept": "51669635-73b7-41fe-b215-33eefc9105f3",
+                    "label": "Cabotegravir 600mg/Rilpivirine 900mg IM"
+                  },
+                  {
+                    "concept": "fa31b148-7bd4-42da-acc8-2acb802e1ca3",
+                    "label": "Darunavir 400mg/Ritonavir 50mg (DRV/r400mg/50mg)"
+                  },
+                  {
+                    "concept": "98b0baf6-0b73-4429-9264-6233684b0969",
+                    "label": "Dolutegravir 50mg"
+                  },
+                  {
+                    "concept": "8fa45026-3de4-42dc-ad95-689f64c5286b",
+                    "label": "Tenofovir alafenamide 25mg"
+                  },
+                  {
+                    "concept": "a897f8a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Abacavir 300mg"
+                  },
+                  {
+                    "concept": "db3c194b-3e1b-4001-9a1c-a5df1728fc28",
+                    "label": "Efavirenz 200mg"
+                  },
+                  {
+                    "concept": "a89673f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Lamivudine 150mg"
+                  },
+                  {
+                    "concept": "a8afbd64-1350-11df-a1f1-0026b9348838",
+                    "label": "Raltegravir 400mg"
+                  },
+                  {
+                    "concept": "a897ea4a-1350-11df-a1f1-0026b9348838",
+                    "label": "Zidovudine 300mg"
+                  },
+                  {
+                    "concept": "68a0a5dd-1e91-43a2-8dce-c6e84a14de04",
+                    "label": "Darunavir 600mg"
+                  },
+                  {
+                    "concept": "1baf254e-1429-4fd9-8db1-edf6523cea13",
+                    "label": " Ritonavir 100mg"
+                  },
+                  {
+                    "concept": "42ef7c4d-d6fb-49c0-a46e-019c42dea203",
+                    "label": " Ritonavir 80mg"
+                  },
+                  {
+                    "concept": "38fbba9c-4b26-412d-9659-8dd649514d66",
+                    "label": "Etravirine 100mg"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && hivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "Select the current ART regimen."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!(hivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Start date:",
+              "type": "obs",
+              "id": "artStartDate",
+              "questionOptions": {
+                "concept": "9e67bf9f-4242-40c5-806b-9145b8c07e77",
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                  "message": "Date cannot be after the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!(hivStatus === 'a896f3a6-1350-11df-a1f1-0026b9348838' && onArt === 'a899b35c-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Partner HIV status:",
+              "type": "obs",
+              "id": "partnerHivStatus",
+              "questionOptions": {
+                "concept": "a8a46428-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "1cbd578b-e357-441b-b83d-e404ea961fe2",
+                    "label": "Declined"
+                  },
+                  {
+                    "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unknown"
+                  },
+                  {
+                    "concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+                    "label": "No partner"
+                  }
+                ],
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(partnerHivStatus) && !arrayContains([\"1cbd578b-e357-441b-b83d-e404ea961fe2\", \"a899b50a-1350-11df-a1f1-0026b9348838\", \"a89ad3a4-1350-11df-a1f1-0026b9348838\"], partnerHivStatus)) && isEmpty(myValue)",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(partnerHivStatus) && !arrayContains([\"1cbd578b-e357-441b-b83d-e404ea961fe2\", \"a899b50a-1350-11df-a1f1-0026b9348838\", \"a89ad3a4-1350-11df-a1f1-0026b9348838\"], partnerHivStatus))"
+                  }
+                }
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          }
+        },
+        {
+          "label": "Prophylaxis for Opportunistic Infections",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Current prophylaxis for opportunistic infections:",
+              "type": "obs",
+              "id": "oiProphylaxis",
+              "questionOptions": {
+                "concept": "a899e282-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "a8989396-1350-11df-a1f1-0026b9348838",
+                    "label": "Septrin"
+                  },
+                  {
+                    "concept": "a890c9e0-1350-11df-a1f1-0026b9348838",
+                    "label": "Dapsone 100mg"
+                  }
+                ],
+                "rendering": "select",
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(oiProphylaxis) && !arrayContains([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], oiProphylaxis)) && isEmpty(myValue)",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(oiProphylaxis) && !arrayContains([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], oiProphylaxis))"
+                  }
+                }
+              },
+              "questionInfo": "Enter the date prophylaxis started. Select the existing drug and strength that applies."
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Patient Examination",
+      "sections": [
+        {
+          "label": "General and Physical Examination",
+          "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          },
+          "questions": [
+            {
+              "id": "generalExamNotes",
+              "label": "General and physical examination findings:",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && isEmpty(myValue)",
+                  "message": "Document general and physical examination findings."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Type Of TB",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Type of TB:",
+              "type": "obs",
+              "id": "DiSclassification",
+              "questionOptions": {
+                "concept": "a8a37e1e-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a37d60-1350-11df-a1f1-0026b9348838",
+                    "label": "Extra-Pulmonary TB"
+                  },
+                  {
+                    "concept": "a8909cfe-1350-11df-a1f1-0026b9348838",
+                    "label": "Pulmonary TB"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
+                  "message": "Complete this field for a new TB treatment visit."
+                }
+              ]
+            },
+            {
+              "label": "Pulmonary options:",
+              "type": "obs",
+              "id": "pulmonaryoptions",
+              "questionOptions": {
+                "concept": "a3179f85-bc07-449b-ae2f-aef75558f0c7",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "cacf4f50-829c-406c-90d8-65817cb8ffbd",
+                    "label": "Bacteriologically confirmed"
+                  },
+                  {
+                    "concept": "0f54c045-a81c-4e26-8b11-05086470738e",
+                    "label": "Clinically diagnosed"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (DiSclassification !== 'a8909cfe-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "Select the pulmonary TB diagnosis classification."
+                }
+              ]
+            },
+            {
+              "label": "Severity of the disease:",
+              "type": "obs",
+              "id": "severity",
+              "questionOptions": {
+                "concept": "f985471b-ab4e-4e8d-8a94-b6a0b06d14a2",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a89eff1a-1350-11df-a1f1-0026b9348838",
+                    "label": "Severe"
+                  },
+                  {
+                    "concept": "a89efccc-1350-11df-a1f1-0026b9348838",
+                    "label": "Not severe"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (isEmpty(DiSclassification))"
+              },
+              "questionInfo": "For children under 15 years, assess severity using the TB 5 card criteria. Classify lymphadenitis as complicated (severe) or uncomplicated (non-severe). Complications include a leaking sinus, associated abscess, nerve or nearby structure compression, or spread to another organ.",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && age < 15 && !isEmpty(DiSclassification)) && isEmpty(myValue)",
+                  "message": "Specify disease severity for a child under 15 years."
+                }
+              ]
+            },
+            {
+              "label": "Extra-pulmonary TB:",
+              "type": "obs",
+              "id": "extraPulmonaryTb",
+              "questionOptions": {
+                "concept": "afe76b02-874e-41b8-9e86-0abc1d500696",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "e2881147-8e6d-4fe7-bca3-5893e4580670",
+                    "label": "Pleural effusion"
+                  },
+                  {
+                    "concept": "a89cf90e-1350-11df-a1f1-0026b9348838",
+                    "label": "Miliary"
+                  },
+                  {
+                    "concept": "a8a37518-1350-11df-a1f1-0026b9348838",
+                    "label": "Lymph nodes"
+                  },
+                  {
+                    "concept": "77de5b35-1e83-4ad4-8756-dd9db1792012",
+                    "label": "Meningitis"
+                  },
+                  {
+                    "concept": "3f7aecc4-e68a-47bd-8d55-0ebc01d44349",
+                    "label": "Osteoarticular TB"
+                  },
+                  {
+                    "concept": "a89c6700-1350-11df-a1f1-0026b9348838",
+                    "label": "Abdominal"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (DiSclassification !== 'a8a37d60-1350-11df-a1f1-0026b9348838')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && DiSclassification === 'a8a37d60-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "message": "Specify the extra-pulmonary TB site."
+                }
+              ]
+            },
+            {
+              "label": "Other extra-pulmonary TB site (specify):",
+              "type": "obs",
+              "id": "otherReferralReason",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "text"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && DiSclassification === 'a8a37d60-1350-11df-a1f1-0026b9348838' && arrayContains(extraPulmonaryTb, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')) && isEmpty(myValue)",
+                  "message": "Specify the other extra-pulmonary TB site."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (DiSclassification !== 'a8a37d60-1350-11df-a1f1-0026b9348838' || isEmpty(extraPulmonaryTb) || !arrayContains(extraPulmonaryTb, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+          }
+        },
+        {
+          "label": "Investigations and Results",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Lab Order",
+              "id": "labsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Lab order",
+                "workspaceName": "add-lab-order"
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)"
+              }
+            },
+            {
+              "label": "Xpert MTB result:",
+              "type": "obs",
+              "id": "sputumGeneXpert",
+              "questionOptions": {
+                "concept": "741517cf-8bac-4755-b289-8dd2a2df7962",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838",
+                    "label": "Indeterminate"
+                  },
+                  {
+                    "concept": "a89c3d8e-1350-11df-a1f1-0026b9348838",
+                    "label": "Poor sample quality"
+                  }
+                ],
+                "rendering": "select",
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(sputumGeneXpert)) && isEmpty(myValue)",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(sputumGeneXpert))"
+                  }
+                }
+              }
+            },
+            {
+              "label": "TB LAMP results:",
+              "type": "obs",
+              "id": "tbLampResult",
+              "questionOptions": {
+                "concept": "12b4c5d2-6414-4cd4-b57e-7e04e969433c",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ],
+                "rendering": "select",
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(tbLampResult)) && isEmpty(myValue)",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(tbLampResult))"
+                  }
+                }
+              }
+            },
+            {
+              "label": "LF LAM result:",
+              "type": "obs",
+              "id": "tbLamResult",
+              "questionOptions": {
+                "concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ],
+                "rendering": "select",
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(tbLamResult)) && isEmpty(myValue)",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(tbLamResult))"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Sputum microscopy",
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "3c3f18be-6c47-49f6-8334-0d6d798f2936",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Type:",
+                  "type": "obs",
+                  "id": "testType",
+                  "questionOptions": {
+                    "concept": "1ed43665-a725-4a56-aaf2-87cc2b2f549e",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "9d7bbec6-4d1a-4a27-a17c-352512b4eb90",
+                        "label": "Fluorescence Microscopy"
+                      },
+                      {
+                        "concept": "60c071f0-f4dd-41a2-9125-ff234f978060",
+                        "label": "ZN Smear Microscopy"
+                      }
+                    ]
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && (!isEmpty(testType) || !isEmpty(sputumResults) || !isEmpty(serialNumber) || !isEmpty(quantity) || !isEmpty(dateSputumResultsDate))) && isEmpty(myValue)",
+                      "message": "Complete the microscopy method, result and date for this specimen."
+                    }
+                  ]
+                },
+                {
+                  "label": "Result:",
+                  "type": "obs",
+                  "id": "sputumResults",
+                  "questionOptions": {
+                    "concept": "a8945d4e-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "9f28fce5-b618-4c90-877b-ec0869103c98",
+                        "label": "Scanty"
+                      },
+                      {
+                        "concept": "a8a45ab4-1350-11df-a1f1-0026b9348838",
+                        "label": "+"
+                      },
+                      {
+                        "concept": "a8a45bd6-1350-11df-a1f1-0026b9348838",
+                        "label": "++"
+                      },
+                      {
+                        "concept": "a8a45ca8-1350-11df-a1f1-0026b9348838",
+                        "label": "+++"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Negative"
+                      }
+                    ]
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && (!isEmpty(testType) || !isEmpty(sputumResults) || !isEmpty(serialNumber) || !isEmpty(quantity) || !isEmpty(dateSputumResultsDate))) && isEmpty(myValue)",
+                      "message": "Complete the microscopy method, result and date for this specimen."
+                    }
+                  ]
+                },
+                {
+                  "label": "Serial No:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "f37c7bb3-d392-4277-b50c-925ecb22c002"
+                  },
+                  "id": "serialNumber"
+                },
+               
+                {
+                  "label": "Date done:",
+                  "type": "obs",
+                  "id": "dateSputumResultsDate",
+                  "questionOptions": {
+                    "concept": "39a75842-b59a-4f58-b560-8f804911e3bb",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && (!isEmpty(testType) || !isEmpty(sputumResults) || !isEmpty(serialNumber) || !isEmpty(quantity) || !isEmpty(dateSputumResultsDate))) && isEmpty(myValue)",
+                      "message": "Complete the microscopy method, result and date for this specimen."
+                    },
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ]
+                }
+              ],
+              "id": "sputumInvestigations",
+              "questionInfo": "Record dated baseline and follow-up smears at months 2, 3, 5 and 6, as applicable. Add a row for each specimen."
+            },
+            {
+              "label": "Radiology & Imaging Order",
+              "id": "imagingWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add imaging Order",
+                "workspaceName": "order-basket",
+                "additionalProps": {
+                  "orderTypeUuid": "8caa332c-efe4-4025-8b18-3398328e1323"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)"
+              }
+            },
+            {
+              "label": "Chest X-ray findings:",
+              "type": "obs",
+              "id": "xray",
+              "questionOptions": {
+                "concept": "a8908192-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "54c176e0-aa5e-447a-9cc8-2b29ffe986ad",
+                    "label": "Abnormal suggestive TB"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Abnormal others"
+                  },
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not done"
+                  }
+                ],
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(xray) && !arrayContains([\"a899ea48-1350-11df-a1f1-0026b9348838\"], xray)) && isEmpty(myValue)",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(xray) && !arrayContains([\"a899ea48-1350-11df-a1f1-0026b9348838\"], xray))"
+                  }
+                }
+              },
+              "questionInfo": "Record the findings and date at the corresponding encounter."
+            },
+            {
+              "label": "Culture/Sensitivity Results",
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "5bce7bd8-ee60-49b3-8561-c829bb5ebbc3",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Bacterial colonies growth:",
+                  "type": "obs",
+                  "id": "growth_no_growth",
+                  "questionOptions": {
+                    "concept": "206c84c0-1697-420e-840e-a611fdf18d5d",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                        "label": "Growth"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "No growth"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Number of colonies:",
+                  "type": "obs",
+                  "id": "numberOfColonies",
+                  "questionOptions": {
+                    "concept": "5cdaf2e3-2e8b-495b-8af0-8614fb81f15f",
+                    "rendering": "number",
+                    "min": "0"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "growth_no_growth !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && (myValue < 0 || myValue % 1 !== 0)",
+                      "message": "Enter a whole number of colonies, zero or greater."
+                    }
+                  ]
+                },
+                {
+                  "label": "Resistant (R)",
+                  "type": "obs",
+                  "id": "ResR",
+                  "questionOptions": {
+                    "concept": "df685c32-ab65-4e43-837d-b597936afa5d",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
+                        "label": "Rifampicin (R)"
+                      },
+                      {
+                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                        "label": "Isoniazid (H)"
+                      },
+                      {
+                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                        "label": "Pyrazinamide (Z)"
+                      },
+                      {
+                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                        "label": "Ethambutol (E)"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "growth_no_growth !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "growth_no_growth === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !isEmpty(SensiTIVE) && arrayContainsAny(myValue, SensiTIVE)",
+                      "message": "The same drug cannot be recorded as both resistant and sensitive."
+                    }
+                  ]
+                },
+                {
+                  "label": "Sensitive (S)",
+                  "type": "obs",
+                  "id": "SensiTIVE",
+                  "questionOptions": {
+                    "concept": "b090510e-ccb8-40f4-a372-68a4ac2d53c0",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
+                        "label": "Rifampicin (R)"
+                      },
+                      {
+                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                        "label": "Isoniazid (H)"
+                      },
+                      {
+                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                        "label": "Pyrazinamide (Z)"
+                      },
+                      {
+                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                        "label": "Ethambutol (E)"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "growth_no_growth !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "growth_no_growth === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !isEmpty(ResR) && arrayContainsAny(myValue, ResR)",
+                      "message": "The same drug cannot be recorded as both resistant and sensitive."
+                    }
+                  ]
+                },
+                {
+                  "label": "Date done:",
+                  "type": "obs",
+                  "id": "dateCultureResultsDate",
+                  "questionOptions": {
+                    "concept": "39a75842-b59a-4f58-b560-8f804911e3bb",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && !isEmpty(growth_no_growth)) && isEmpty(myValue)",
+                      "message": "Enter the culture result date."
+                    },
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ]
+                }
+              ],
+              "id": "CultureResults"
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Patient Management",
+      "sections": [
+        {
+          "label": "ADR",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Side effects",
+              "id": "sideEff",
+              "questionOptions": {
+                "concept": "a8a072c8-1350-11df-a1f1-0026b9348838",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Any side effects attributable to any drug that the patient is currently taking:",
+                  "required": "true",
+                  "id": "currSideEffect",
+                  "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('30fc0cea-b6c7-48cc-bbfb-4eb53170ce41')) ? undefined : HD.getObject('prevEnc').getValue('30fc0cea-b6c7-48cc-bbfb-4eb53170ce41')",
+                  "questionOptions": {
+                    "concept": "30fc0cea-b6c7-48cc-bbfb-4eb53170ce41",
+                    "answers": [
+                      {
+                        "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                        "label": "No"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "type": "obs",
+                  "validators": []
+                }
+              ]
+            },
+            {
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "a8a072c8-1350-11df-a1f1-0026b9348838",
+                "min": 1
+              },
+              "label": "If yes drugs suspected to be causing side effects",
+              "questions": [
+                {
+                  "label": "Drug:",
+                  "id": "sideEffectDrug",
+                  "questionOptions": {
+                    "concept": "1682a920-c93d-4aad-b9cb-4a2b2c41ff1a",
+                    "rendering": "drug"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(currSideEffect) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                      "message": "Patient  marked as having side effects. Please provide list."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ],
+              "id": "__ovK20spEs",
+              "hide": {
+                "hideWhenExpression": "currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "If yes, tick all that apply:",
+              "id": "sideEffectype",
+              "questionOptions": {
+                "concept": "c2ecd5f7-4b47-47ae-b706-3dc5ed98b4db",
+                "answers": [
+                  {
+                    "concept": "a877c7f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Anaemia"
+                  },
+                  {
+                    "concept": "a8909060-1350-11df-a1f1-0026b9348838",
+                    "label": "Hepatitis"
+                  },
+                  {
+                    "concept": "a89d0c0a-1350-11df-a1f1-0026b9348838",
+                    "label": "IRIS"
+                  },
+                  {
+                    "concept": "a8a01dfa-1350-11df-a1f1-0026b9348838",
+                    "label": "Lactic acidosis"
+                  },
+                  {
+                    "concept": "a89cee50-1350-11df-a1f1-0026b9348838",
+                    "label": "Lipo-dystrophy"
+                  },
+                  {
+                    "concept": "a897fe86-1350-11df-a1f1-0026b9348838",
+                    "label": "Neuropathy"
+                  },
+                  {
+                    "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                    "label": "Persistent vomiting"
+                  },
+                  {
+                    "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                    "label": "Rash"
+                  },
+                  {
+                    "concept": "a8a16d0e-1350-11df-a1f1-0026b9348838",
+                    "label": "Steven-Johnson syndrome"
+                  },
+                  {
+                    "concept": "5d08b98f-5123-4d6d-9972-825b6aa2f4ed",
+                    "label": "Fanconi syndrome"
+                  },
+                  {
+                    "concept": "a8a058ce-1350-11df-a1f1-0026b9348838",
+                    "label": "Renal failure"
+                  },
+                  {
+                    "concept": "a89dca46-1350-11df-a1f1-0026b9348838",
+                    "label": "Osteopenia/Osteoporosis"
+                  },
+                  {
+                    "concept": "a8ad21e4-1350-11df-a1f1-0026b9348838",
+                    "label": "Nausea"
+                  },
+                  {
+                    "concept": "a894b604-1350-11df-a1f1-0026b9348838",
+                    "label": "Burning sensation"
+                  },
+                  {
+                    "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                    "label": "Diarrhea"
+                  },
+                  {
+                    "concept": "a8966d1e-1350-11df-a1f1-0026b9348838",
+                    "label": "Headache"
+                  },
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Fatigue"
+                  },
+                  {
+                    "concept": "a89366a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Jaundice"
+                  },
+                  {
+                    "concept": "a89836ee-1350-11df-a1f1-0026b9348838",
+                    "label": "Dizzy"
+                  },
+                  {
+                    "concept": "a8932f00-1350-11df-a1f1-0026b9348838",
+                    "label": "Abdominal pain"
+                  },
+                  {
+                    "concept": "a89cec02-1350-11df-a1f1-0026b9348838",
+                    "label": "Anxiety"
+                  },
+                  {
+                    "concept": "c80dcaad-ea61-4b88-b1f7-c091d706c7de",
+                    "label": "Nightmare"
+                  },
+                  {
+                    "concept": "a8935fde-1350-11df-a1f1-0026b9348838",
+                    "label": "Depression"
+                  },
+                  {
+                    "concept": "a8ad3b02-1350-11df-a1f1-0026b9348838",
+                    "label": "Confusion/abnormal thinking"
+                  },
+                  {
+                    "concept": "a8982de8-1350-11df-a1f1-0026b9348838",
+                    "label": "Insomnia"
+                  },
+                  {
+                    "concept": "a8ae7ecc-1350-11df-a1f1-0026b9348838",
+                    "label": "Poor concentration/ memory problems"
+                  },
+                  {
+                    "concept": "a8ad392c-1350-11df-a1f1-0026b9348838",
+                    "label": "Paresthesia/painful neuropathy"
+                  },
+                  {
+                    "concept": "f5b8f79a-5460-49a5-983e-78cc203673da",
+                    "label": "Suicide ideation"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "multiCheckbox"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && !isEmpty(currSideEffect) && currSideEffect === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+                  "message": "Patient  marked as having side effects. Please provide list."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "currSideEffect !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          }
+        },
+        {
+          "label": "Adherence and Counselling",
+          "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "!(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+          },
+          "questions": [
+            {
+              "id": "tbTreatmentAdherenceGroup",
+              "label": "TB treatment adherence",
+              "type": "obsGroup",
+              "questionOptions": {
+                "concept": "2a4b87dd-977d-4ce8-a321-1f13df4a31b2",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "id": "tbTreatmentAdherence",
+                  "label": "Adherence to TB treatment:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "479decbd-e964-41c3-9576-98b39089ebd3",
+                    "answers": [
+                      {
+                        "concept": "a8b0f882-1350-11df-a1f1-0026b9348838",
+                        "label": "Good"
+                      },
+                      {
+                        "concept": "a73d20b3-d721-4763-a362-14a0c41a6b5e",
+                        "label": "Fair"
+                      },
+                      {
+                        "concept": "fdaf8b47-ea14-4d28-80fa-e1da58a30e8b",
+                        "label": "Poor"
+                      }
+                    ],
+                    "rendering": "select"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                      "message": "Assess adherence to TB treatment at follow-up."
+                    }
+                  ]
+                },
+                {
+                  "id": "tbAdherenceNotes",
+                  "label": "TB adherence assessment and counselling notes:",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "d9390b4c-11c5-4005-822e-d72dea27ba7f",
+                    "rendering": "textarea",
+                    "rows": 5
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838' && arrayContains(['a73d20b3-d721-4763-a362-14a0c41a6b5e', 'fdaf8b47-ea14-4d28-80fa-e1da58a30e8b'], tbTreatmentAdherence)) && isEmpty(myValue)",
+                      "message": "Document counselling and support for fair or poor adherence."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "TB Treatment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Tuberculosis treatment phase:",
+              "type": "obs",
+              "id": "tbPhase",
+              "questionOptions": {
+                "concept": "a8afdf4c-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8afdd08-1350-11df-a1f1-0026b9348838",
+                    "label": "Continuation phase"
+                  },
+                  {
+                    "concept": "a8afddc6-1350-11df-a1f1-0026b9348838",
+                    "label": "Retreatment phase"
+                  },
+                  {
+                    "concept": "a8afdc4a-1350-11df-a1f1-0026b9348838",
+                    "label": "Induction phase"
+                  },
+                  {
+                    "concept": "a8afde8e-1350-11df-a1f1-0026b9348838",
+                    "label": "Retreated phase"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)"
+              }
+            },
+            {
+              "label": "Current TB regimen:",
+              "type": "obs",
+              "id": "currentTbRegimen",
+              "questionOptions": {
+                "concept": "a899e444-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899f51a-1350-11df-a1f1-0026b9348838",
+                    "label": "RHZE"
+                  },
+                  {
+                    "concept": "a897d1a4-1350-11df-a1f1-0026b9348838",
+                    "label": "RHZ"
+                  },
+                  {
+                    "concept": "a8a382ba-1350-11df-a1f1-0026b9348838",
+                    "label": "RHE"
+                  },
+                  {
+                    "concept": "a89b1ca6-1350-11df-a1f1-0026b9348838",
+                    "label": "RH"
+                  },
+                  {
+                    "concept": "a899e19c-1350-11df-a1f1-0026b9348838",
+                    "label": "EH"
+                  },
+                  {
+                    "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                    "label": "Ethambutol"
+                  },
+                  {
+                    "concept": "a8a3243c-1350-11df-a1f1-0026b9348838",
+                    "label": "MDR drugs"
+                  },
+                  {
+                    "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                    "label": "INH"
+                  },
+                  {
+                    "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                    "label": "Pyrazinamide"
+                  },
+                  {
+                    "concept": "a8952e4a-1350-11df-a1f1-0026b9348838",
+                    "label": "Streptomycin"
+                  },
+                  {
+                    "concept": "b8aa06ca-93c6-40ea-b144-c74f841926f4",
+                    "label": "Rifabutin"
+                  },
+                  {
+                    "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
+                    "label": "Rifampicin"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "questionInfo": "Record the current drug combination at this visit."
+            },
+            {
+              "label": "Prescribe Drug(s):",
+              "id": "drugsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe drugs",
+                "workspaceName": "order-basket"
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          }
+        },
+        {
+          "label": "Assessment and Management",
+          "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          },
+          "questions": [
+            {
+              "id": "managementPlan",
+              "label": "Assessment and management plan:",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 5
+              },
+              "questionInfo": "Document diagnosis/assessment, management, nutrition counselling/support, referrals and drug-resistant TB surveillance for high-risk patients. At follow-up, document any changes to the plan.",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && isEmpty(myValue)",
+                  "message": "Document the assessment and management plan."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Referral",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Referred by:",
+              "id": "rfBy",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "aad34924-d6e7-4138-a841-0fea9ee4b41f",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8a00b4e-1350-11df-a1f1-0026b9348838",
+                    "label": "Community health promoter"
+                  },
+                  {
+                    "concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
+                    "label": "Self"
+                  },
+                  {
+                    "concept": "a8aaf158-1350-11df-a1f1-0026b9348838",
+                    "label": "Health care worker"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other department"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Referred to:",
+              "id": "referralsTo",
+              "questionOptions": {
+                "concept": "6434322f-d050-4764-8c00-741e20c4c9e1",
+                "answers": [
+                  {
+                    "concept": "a89c25d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Health facility"
+                  },
+                  {
+                    "concept": "6b15e4fa-6897-4d69-adcf-5908abade719",
+                    "label": "TB clinic"
+                  }
+                ],
+                "rendering": "select"
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          }
+        },
+        {
+          "label": "Treatment Outcome",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Outcome:",
+              "type": "obs",
+              "id": "txOutcome",
+              "questionOptions": {
+                "concept": "a8afe316-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "a8afe014-1350-11df-a1f1-0026b9348838",
+                    "label": "Cured"
+                  },
+                  {
+                    "concept": "1fa9c243-135a-4b31-935e-8046dbac14bb",
+                    "label": "Treatment completed"
+                  },
+                  {
+                    "concept": "a8a3868e-1350-11df-a1f1-0026b9348838",
+                    "label": "Treatment failure"
+                  },
+                  {
+                    "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
+                    "label": "Death"
+                  },
+                  {
+                    "concept": "a8a6f56c-1350-11df-a1f1-0026b9348838",
+                    "label": "Lost to follow-up"
+                  },
+                  {
+                    "concept": "c76c5c25-a092-4990-abaf-53a0c4155d9a",
+                    "label": "Not evaluated"
+                  },
+                  {
+                    "concept": "a0fe3d1d-abfe-4360-a90c-22f1b8ab7f7e",
+                    "label": "Moved to category 4"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Outcome date:",
+              "type": "obs",
+              "id": "outcomeDate",
+              "questionOptions": {
+                "concept": "a8afe3d4-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && !isEmpty(txOutcome)) && isEmpty(myValue)",
+                  "message": "Enter the date of the treatment outcome."
+                },
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                  "message": "Date cannot be after the encounter date."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(dstartoftreatment) && (new moment(myValue)).isBefore((new moment(dstartoftreatment)), 'day')",
+                  "message": "Date cannot be before the treatment start date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(txOutcome)"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          }
+        },
+        {
+          "label": "RTC",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Return Visit date",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838"
+              },
+              "id": "returnVisitDate",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "txOutcome !== 'a89335d6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !isEmpty(encDate) && !(new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                  "message": "Return visit date must be after the encounter date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "txOutcome === 'a89335d6-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+          }
+        }
+      ]
+    }
+  ]
+}
