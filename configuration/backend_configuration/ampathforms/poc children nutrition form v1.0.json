@@ -76,8 +76,8 @@
                                 "rendering": "number",
                                 "max": "272",
                                 "min": "10"
-                            },
-                            "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')"
+                            }
+                           
                         },
                         {
                             "label": "MUAC (cm):",

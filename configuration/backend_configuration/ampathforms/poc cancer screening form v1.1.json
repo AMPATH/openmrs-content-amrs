@@ -51,6 +51,49 @@
               }
             },
             {
+              "label": "Is this visit a referral?",
+              "type": "obs",
+              "id": "visitReferral",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5a96fc07-cf1b-4704-8174-23380b104b0e",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Referral from:",
+              "type": "obs",
+              "id": "referralSpecification",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "19ae2660-7b63-4b3f-99bc-9da80b00dd51",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
+                    "label": "From other facilities"
+                  },
+                  {
+                    "concept": "1d54b745-0afc-4568-a9ba-17ba3fc1dda0",
+                    "label": "Referred from CHU"
+                  }
+                  
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(visitReferral) || visitReferral !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
               "label": "Visit type:",
               "id": "typeOfVisit",
               "required": "true",
@@ -188,7 +231,6 @@
                     "concept": "a899e890-1350-11df-a1f1-0026b9348838",
                     "label": "Abnormal"
                   }
-                  
                 ]
               },
               "validators": [
@@ -199,51 +241,51 @@
                 }
               ],
               "hide": {
-                    "hideWhenExpression": "isEmpty(breastScreeningMode) || !arrayContains(breastScreeningMode, '0d7a3b97-11bd-4155-829c-2a552808b450')"
-                  }
+                "hideWhenExpression": "isEmpty(breastScreeningMode) || !arrayContains(breastScreeningMode, '0d7a3b97-11bd-4155-829c-2a552808b450')"
+              }
             },
             {
-                  "label": "Breast Ultrasound/Mammography findings:",
-                  "type": "obs",
-                  "id": "ultraSoundFindings",
-                  "questionOptions": {
-                    "concept": "531c0c00-d7cc-411a-a916-7ae491085ade",
-                    "rendering": "select",
-                    "answers": [
-                      {
-                        "concept": "e799649c-6508-4660-9d9d-4df3449df20e",
-                        "label": "BIRADS 0(Incomplete Need additional imaging evaluation)"
-                      },
-                      {
-                        "concept": "935ed682-1f42-405b-9f88-e0c47dcd519e",
-                        "label": "BIRADS 1(Negative)"
-                      },
-                      {
-                        "concept": "8cc5d428-0bfd-41f0-a7fb-a239aadadb0d",
-                        "label": "BIRADS 2(Benign)"
-                      },
-                      {
-                        "concept": "2ab46b88-b87a-4321-839f-b1351410335d",
-                        "label": "BIRADS 3(Probably Benign)"
-                      },
-                      {
-                        "concept": "deec6439-884f-4921-b9d3-cfa77666d6e6",
-                        "label": "BIRADS 4(Suspicious)"
-                      },
-                      {
-                        "concept": "fbfd99cf-2be1-403d-b8c3-15b686d5cc78",
-                        "label": "BIRADS 5(Highly Suggestive of Malignancy)"
-                      },
-                      {
-                        "concept": "89683205-f2c6-45e7-824d-9db0a29ca6c8",
-                        "label": "BIRADS 6(Known Biopsy-Proven Malignancy)"
-                      }
-                    ]
+              "label": "Breast Ultrasound/Mammography findings:",
+              "type": "obs",
+              "id": "ultraSoundFindings",
+              "questionOptions": {
+                "concept": "531c0c00-d7cc-411a-a916-7ae491085ade",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "concept": "e799649c-6508-4660-9d9d-4df3449df20e",
+                    "label": "BIRADS 0(Incomplete Need additional imaging evaluation)"
                   },
-                  "hide": {
-                    "hideWhenExpression": "isEmpty(breastScreeningMode) || !arrayAnyContains(['9e2171e2-e4fa-43b9-bc98-380babcc0635','c254c2d2-81e1-4507-b69b-cf0713942f2d'],breastScreeningMode)"
+                  {
+                    "concept": "935ed682-1f42-405b-9f88-e0c47dcd519e",
+                    "label": "BIRADS 1(Negative)"
+                  },
+                  {
+                    "concept": "8cc5d428-0bfd-41f0-a7fb-a239aadadb0d",
+                    "label": "BIRADS 2(Benign)"
+                  },
+                  {
+                    "concept": "2ab46b88-b87a-4321-839f-b1351410335d",
+                    "label": "BIRADS 3(Probably Benign)"
+                  },
+                  {
+                    "concept": "deec6439-884f-4921-b9d3-cfa77666d6e6",
+                    "label": "BIRADS 4(Suspicious)"
+                  },
+                  {
+                    "concept": "fbfd99cf-2be1-403d-b8c3-15b686d5cc78",
+                    "label": "BIRADS 5(Highly Suggestive of Malignancy)"
+                  },
+                  {
+                    "concept": "89683205-f2c6-45e7-824d-9db0a29ca6c8",
+                    "label": "BIRADS 6(Known Biopsy-Proven Malignancy)"
                   }
-                }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(breastScreeningMode) || !arrayAnyContains(['9e2171e2-e4fa-43b9-bc98-380babcc0635','c254c2d2-81e1-4507-b69b-cf0713942f2d'],breastScreeningMode)"
+              }
+            }
           ]
         }
       ]
@@ -690,6 +732,99 @@
           ]
         },
         {
+          "label": "Colorectal Screening",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Screening method:",
+              "type": "obs",
+              "id": "screeningMethodColo",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "d18e7749-8815-4952-80f6-746d4de4aba1",
+                "answers": [
+                  {
+                    "concept": "a18fc51e-4e91-4239-b6c0-3f5ba8c8fafd",
+                    "label": "FOBT"
+                  },
+                  {
+                    "concept": "995d63db-02d8-47b9-afb7-5d4f5db5e584",
+                    "label": "Colonoscopy"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "FOBT findings:",
+              "type": "obs",
+              "id": "fobtFindings",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "02bfbb8b-ddf5-4916-a974-8d5da0c9dc52",
+                "answers": [
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['a18fc51e-4e91-4239-b6c0-3f5ba8c8fafd'],screeningMethodColo)",
+                  "message": "Please indicate FOBT results"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethodColo) ||  !arrayContains(screeningMethodColo,'a18fc51e-4e91-4239-b6c0-3f5ba8c8fafd')"
+              }
+            },
+            {
+              "label": "Colonoscopy",
+              "type": "obs",
+              "id": "colonoscopyFindings",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0688d713-fc0f-490e-b7ba-4b04a0f1a677",
+                "answers": [
+                  {
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838",
+                    "label": "No abnormality"
+                  },
+                  {
+                    "concept": "48f7aadc-b66d-4d26-927a-aca3a20752fc",
+                    "label": "Polyps"
+                  },
+                  {
+                    "concept": "6832dfc0-1939-4a12-88ca-a54a4897fdea",
+                    "label": "Cancer"
+                  },
+                  {
+                    "concept": "6832dfc0-1939-4a12-88ca-a54a4897fdea",
+                    "label": "Other abnormality"
+                  }
+                ]
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "isEmpty(myValue) && arrayContainsAny (['995d63db-02d8-47b9-afb7-5d4f5db5e584'],screeningMethodColo)",
+                  "message": "Please indicate Colonoscopy results"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(screeningMethodColo) ||  !arrayContains(screeningMethodColo,'995d63db-02d8-47b9-afb7-5d4f5db5e584')"
+              }
+            }
+          ]
+        },
+        {
           "label": "Procedure Done",
           "isExpanded": "true",
           "questions": [
@@ -838,7 +973,7 @@
                   },
                   {
                     "concept": "5b91df2c-079f-4f92-8524-a1d9c80b874f",
-                    "label": "Single Visit Approach"
+                    "label": "Single visit approach"
                   },
                   {
                     "concept": "cf62a186-fbe1-420f-8dbf-350acb0a6dcd",
@@ -990,6 +1125,28 @@
               ]
             }
           ]
+        },
+        {
+          "label": "Referred to:",
+          "type": "obs",
+          "id": "referralTo",
+          "questionOptions": {
+            "concept": "6434322f-d050-4764-8c00-741e20c4c9e1",
+            "rendering": "radio",
+            "answers": [
+              {
+                "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
+                "label": "Other health facility"
+              },
+              {
+                "concept": "1d54b745-0afc-4568-a9ba-17ba3fc1dda0",
+                "label": "Community health unit (CHU)"
+              }
+            ]
+          },
+          "hide": {
+            "hideWhenExpression": "outcomePatient !=='e609e8e7-12e0-45d0-a92b-ed044de21a3d'"
+          }
         },
         {
           "label": "Next Appointment",
