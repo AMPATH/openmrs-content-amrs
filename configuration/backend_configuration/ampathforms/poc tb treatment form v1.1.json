@@ -7,7 +7,7 @@
   "retired": false,
   "encounter": "TBASSESSMENT",
   "processor": "EncounterFormProcessor",
-  "encounterType": "ded4ecf7-8129-4a9e-8aa3-a21a7adb7759",
+  "encounterType": "dcb0b791-d16a-4adf-9435-f471e96ec373",
   "referencedForms": [],
   "pages": [
     {
@@ -837,7 +837,10 @@
                 "rendering": "textarea",
                 "rows": 5
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a38814-1350-11df-a1f1-0026b9348838'], visitType)"
+              }
             }
           ],
           "hide": {
@@ -858,7 +861,10 @@
                 "rows": 5,
                 "concept": "0e316db3-2a2c-4762-b011-928c5ce438f5"
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a38814-1350-11df-a1f1-0026b9348838'], visitType)"
+              }
             }
           ],
           "hide": {
@@ -906,12 +912,22 @@
                       {
                         "concept": "a8983f22-1350-11df-a1f1-0026b9348838",
                         "label": "HIV"
+                      },
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
                       }
                     ],
                     "rendering": "multiCheckbox"
                   },
                   "type": "obs",
-                  "validators": []
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "arrayContains(myValue, 'a899e0ac-1350-11df-a1f1-0026b9348838') && myValue.length > 1",
+                      "message": "None cannot be selected with another comorbid illness. Remove None or deselect the other illnesses."
+                    }
+                  ]
                 }
               ],
               "id": "comorbidDetailed"
@@ -1034,7 +1050,7 @@
               "id": "cd4Count",
               "type": "obs",
               "questionOptions": {
-                "concept": "a896cce6-1350-11df-a1f1-0026b9348838",
+                "concept": "a8a8bb18-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
                 "min": "0",
                 "showDate": "true",
@@ -1273,32 +1289,13 @@
                     "label": "No partner"
                   }
                 ],
-                "showDate": "true",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date",
-                      "allowFutureDates": "false"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(partnerHivStatus) && !arrayContains([\"1cbd578b-e357-441b-b83d-e404ea961fe2\", \"a899b50a-1350-11df-a1f1-0026b9348838\", \"a89ad3a4-1350-11df-a1f1-0026b9348838\"], partnerHivStatus)) && isEmpty(myValue)",
-                      "message": "Enter the date for this result or treatment start."
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
-                      "message": "Date cannot be after the encounter date."
-                    }
-                  ],
-                  "hide": {
-                    "hideWhenExpression": "!(!isEmpty(partnerHivStatus) && !arrayContains([\"1cbd578b-e357-441b-b83d-e404ea961fe2\", \"a899b50a-1350-11df-a1f1-0026b9348838\", \"a89ad3a4-1350-11df-a1f1-0026b9348838\"], partnerHivStatus))"
-                  }
-                },
                 "enablePreviousValue": true
               },
               "historicalExpression": "HD.getObject('prevEnc').getValue('a8a46428-1350-11df-a1f1-0026b9348838')",
-              "historicalPrepopulate": "true"
+              "historicalPrepopulate": "true",
+              "hide": {
+                "hideWhenExpression": "hivStatus === '2477d1ad-4288-4f84-9065-f63fc05e9347'"
+              }
             }
           ],
           "hide": {
@@ -1342,7 +1339,7 @@
                     "label": "Other"
                   }
                 ],
-                "rendering": "select",
+                "rendering": "multiCheckbox",
                 "showDate": "true",
                 "shownDateOptions": {
                   "validators": [
@@ -1352,7 +1349,7 @@
                     },
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(oiProphylaxis) && !arrayContains([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], oiProphylaxis)) && isEmpty(myValue)",
+                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(oiProphylaxis) && !arrayContains(oiProphylaxis, 'a899e0ac-1350-11df-a1f1-0026b9348838')) && isEmpty(myValue)",
                       "message": "Enter the date for this result or treatment start."
                     },
                     {
@@ -1362,14 +1359,21 @@
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "!(!isEmpty(oiProphylaxis) && !arrayContains([\"a899e0ac-1350-11df-a1f1-0026b9348838\"], oiProphylaxis))"
+                    "hideWhenExpression": "!(!isEmpty(oiProphylaxis) && !arrayContains(oiProphylaxis, 'a899e0ac-1350-11df-a1f1-0026b9348838'))"
                   }
                 },
                 "enablePreviousValue": true
               },
               "questionInfo": "Enter the date prophylaxis started. Select the existing drug and strength that applies.",
               "historicalExpression": "HD.getObject('prevEnc').getValue('212fdebe-4745-4f60-aaa0-35f4193abaf8')",
-              "historicalPrepopulate": "true"
+              "historicalPrepopulate": "true",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "arrayContains(myValue, 'a899e0ac-1350-11df-a1f1-0026b9348838') && myValue.length > 1",
+                  "message": "None cannot be selected with another prophylaxis option. Remove None or deselect the other options."
+                }
+              ]
             }
           ],
           "hide": {
@@ -1431,13 +1435,13 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+                "hideWhenExpression": "isEmpty(visitType)"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') && isEmpty(myValue)",
-                  "message": "Complete this field for a new TB treatment visit."
+                  "failsWhenExpression": "!isEmpty(visitType) && isEmpty(myValue)",
+                  "message": "Select the type of TB for this visit."
                 }
               ]
             },
@@ -1460,12 +1464,12 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (DiSclassification !== 'a8909cfe-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838')"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
                   "message": "Select the pulmonary TB diagnosis classification."
                 }
               ]
@@ -1489,13 +1493,13 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && age != null && age !== '' && age < 15)"
+                "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && age != null && age !== '' && age < 15)"
               },
               "questionInfo": "For children under 15 years, assess severity using the TB 5 card criteria. Classify lymphadenitis as complicated (severe) or uncomplicated (non-severe). Complications include a leaking sinus, associated abscess, nerve or nearby structure compression, or spread to another organ.",
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && age != null && age !== '' && age < 15) && isEmpty(myValue)",
+                  "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && age != null && age !== '' && age < 15) && isEmpty(myValue)",
                   "message": "Specify disease severity for a child under 15 years."
                 }
               ]
@@ -1539,12 +1543,12 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (DiSclassification !== 'a8a37d60-1350-11df-a1f1-0026b9348838')"
+                "hideWhenExpression": "!(!isEmpty(visitType)) || (DiSclassification !== 'a8a37d60-1350-11df-a1f1-0026b9348838')"
               },
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && DiSclassification === 'a8a37d60-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
+                  "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8a37d60-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
                   "message": "Specify the extra-pulmonary TB site."
                 }
               ]
@@ -1560,17 +1564,17 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && DiSclassification === 'a8a37d60-1350-11df-a1f1-0026b9348838' && arrayContains(extraPulmonaryTb, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')) && isEmpty(myValue)",
+                  "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8a37d60-1350-11df-a1f1-0026b9348838' && arrayContains(extraPulmonaryTb, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')) && isEmpty(myValue)",
                   "message": "Specify the other extra-pulmonary TB site."
                 }
               ],
               "hide": {
-                "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1') || (DiSclassification !== 'a8a37d60-1350-11df-a1f1-0026b9348838' || isEmpty(extraPulmonaryTb) || !arrayContains(extraPulmonaryTb, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))"
+                "hideWhenExpression": "!(!isEmpty(visitType)) || (DiSclassification !== 'a8a37d60-1350-11df-a1f1-0026b9348838' || isEmpty(extraPulmonaryTb) || !arrayContains(extraPulmonaryTb, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))"
               }
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1')"
+            "hideWhenExpression": "isEmpty(visitType)"
           }
         },
         {
@@ -1630,27 +1634,130 @@
                     },
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(sputumGeneXpert)) && isEmpty(myValue)",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && ((!isEmpty(visitType)) && (!isEmpty(sputumGeneXpert)) && isEmpty(myValue))",
                       "message": "Enter the date for this result or treatment start."
                     },
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && (!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day'))",
                       "message": "Date cannot be after the encounter date."
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "!(!isEmpty(sputumGeneXpert))"
+                    "hideWhenExpression": "!((!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && !isEmpty(sputumGeneXpert))"
                   }
                 }
+              },
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838')"
               }
             },
+            {
+              "label": "TB LAMP:",
+              "type": "obs",
+              "id": "tbLampResult",
+              "questionOptions": {
+                "concept": "12b4c5d2-6414-4cd4-b57e-7e04e969433c",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ],
+                "rendering": "select",
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && ((!isEmpty(visitType)) && (!isEmpty(tbLampResult)) && isEmpty(myValue))",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && (!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day'))",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!((!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && !isEmpty(tbLampResult))"
+                  }
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "LF LAM:",
+              "type": "obs",
+              "id": "tbLamResult",
+              "questionOptions": {
+                "concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
+                "answers": [
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  }
+                ],
+                "rendering": "select",
+                "showDate": "true",
+                "shownDateOptions": {
+                  "validators": [
+                    {
+                      "type": "date",
+                      "allowFutureDates": "false"
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && ((!isEmpty(visitType)) && (!isEmpty(tbLamResult)) && isEmpty(myValue))",
+                      "message": "Enter the date for this result or treatment start."
+                    },
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && (!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day'))",
+                      "message": "Date cannot be after the encounter date."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!((!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && !isEmpty(tbLamResult))"
+                  }
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+              }
+            }
+          ],
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd')"
+          }
+        },
+        {
+          "label": "Line probe assay (LPA 1&2)",
+          "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da')"
+          },
+          "questions": [
             {
               "label": "Line probe assay (LPA 1&2):",
               "type": "obsGroup",
               "questionOptions": {
                 "concept": "2f8d1c0b-5902-4e01-836f-0517f85798bb",
-                "rendering": "repeating"
+                "rendering": "group"
               },
               "questions": [
                 {
@@ -1686,10 +1793,13 @@
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da' && !isEmpty(myValue) && !isEmpty(lpaSensiTIVE) && arrayContainsAny(myValue, lpaSensiTIVE)",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da') && (sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da' && !isEmpty(myValue) && !isEmpty(lpaSensiTIVE) && arrayContainsAny(myValue, lpaSensiTIVE))",
                       "message": "The same drug cannot be recorded as both resistant and sensitive."
                     }
-                  ]
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da')"
+                  }
                 },
                 {
                   "label": "Sensitivity:",
@@ -1721,61 +1831,204 @@
                       }
                     ]
                   },
-                  "validators": []
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da') && !isEmpty(myValue) && !isEmpty(lpaResR) && arrayContainsAny(myValue, lpaResR)",
+                      "message": "The same drug cannot be recorded as both resistant and sensitive."
+                    }
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da')"
+                  }
                 }
               ],
               "id": "lpaResults",
               "hide": {
-                "hideWhenExpression": "!(sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da')"
+                "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && sputumGeneXpert === '3f5843f0-9e0f-4a49-862b-6b9b678d80da')"
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Culture and Sensitivity",
+          "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+          },
+          "questions": [
             {
-              "label": "TB LAMP:",
-              "type": "obs",
-              "id": "tbLampResult",
+              "label": "Culture/Sensitivity",
+              "type": "obsGroup",
               "questionOptions": {
-                "concept": "12b4c5d2-6414-4cd4-b57e-7e04e969433c",
-                "answers": [
-                  {
-                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                    "label": "Positive"
+                "concept": "5bce7bd8-ee60-49b3-8561-c829bb5ebbc3",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Final culture result:",
+                  "type": "obs",
+                  "id": "growth_no_growth",
+                  "questionOptions": {
+                    "concept": "a8a462a2-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "0b4e9aa1-e470-46d1-9d2d-0d8a475561b9",
+                        "label": "Growth"
+                      },
+                      {
+                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                        "label": "No growth"
+                      },
+                      {
+                        "concept": "a01149c4-7f0e-4d27-8f42-dc019e3330ec",
+                        "label": "Contamination"
+                      }
+                    ]
                   },
-                  {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Negative"
-                  }
-                ],
-                "rendering": "select",
-                "showDate": "true",
-                "shownDateOptions": {
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                  },
                   "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && !isEmpty(dateCultureResultsDate) && isEmpty(myValue)",
+                      "message": "Enter the culture result for the supplied date."
+                    }
+                  ]
+                },
+                {
+                  "label": "Resistance:",
+                  "type": "obs",
+                  "id": "ResR",
+                  "questionOptions": {
+                    "concept": "df685c32-ab65-4e43-837d-b597936afa5d",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
+                        "label": "Rifampicin (R)"
+                      },
+                      {
+                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                        "label": "Isoniazid (H)"
+                      },
+                      {
+                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                        "label": "Pyrazinamide (Z)"
+                      },
+                      {
+                        "concept": "a8b031cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Floroquinolone"
+                      },
+                      {
+                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                        "label": "Ethambutol (E)"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838' && growth_no_growth === '0b4e9aa1-e470-46d1-9d2d-0d8a475561b9')"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838' && growth_no_growth === '0b4e9aa1-e470-46d1-9d2d-0d8a475561b9') && (growth_no_growth === '0b4e9aa1-e470-46d1-9d2d-0d8a475561b9' && !isEmpty(myValue) && !isEmpty(SensiTIVE) && arrayContainsAny(myValue, SensiTIVE))",
+                      "message": "The same drug cannot be recorded as both resistant and sensitive."
+                    }
+                  ]
+                },
+                {
+                  "label": "Sensitivity:",
+                  "type": "obs",
+                  "id": "SensiTIVE",
+                  "questionOptions": {
+                    "concept": "b090510e-ccb8-40f4-a372-68a4ac2d53c0",
+                    "rendering": "multiCheckbox",
+                    "answers": [
+                      {
+                        "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
+                        "label": "Rifampicin (R)"
+                      },
+                      {
+                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
+                        "label": "Isoniazid (H)"
+                      },
+                      {
+                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
+                        "label": "Pyrazinamide (Z)"
+                      },
+                      {
+                        "concept": "a8b031cc-1350-11df-a1f1-0026b9348838",
+                        "label": "Floroquinolone"
+                      },
+                      {
+                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
+                        "label": "Ethambutol (E)"
+                      }
+                    ]
+                  },
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838' && growth_no_growth === '0b4e9aa1-e470-46d1-9d2d-0d8a475561b9')"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838' && growth_no_growth === '0b4e9aa1-e470-46d1-9d2d-0d8a475561b9') && (growth_no_growth === '0b4e9aa1-e470-46d1-9d2d-0d8a475561b9' && !isEmpty(myValue) && !isEmpty(ResR) && arrayContainsAny(myValue, ResR))",
+                      "message": "The same drug cannot be recorded as both resistant and sensitive."
+                    }
+                  ]
+                },
+                {
+                  "label": "Date done:",
+                  "type": "obs",
+                  "id": "dateCultureResultsDate",
+                  "questionOptions": {
+                    "concept": "39a75842-b59a-4f58-b560-8f804911e3bb",
+                    "rendering": "date"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && ((!isEmpty(visitType) && !isEmpty(growth_no_growth)) && isEmpty(myValue))",
+                      "message": "Enter the culture result date."
+                    },
                     {
                       "type": "date",
                       "allowFutureDates": "false"
                     },
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(tbLampResult)) && isEmpty(myValue)",
-                      "message": "Enter the date for this result or treatment start."
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && (!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day'))",
                       "message": "Date cannot be after the encounter date."
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "!(!isEmpty(tbLampResult))"
+                    "hideWhenExpression": "!((!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838') && !isEmpty(growth_no_growth))"
                   }
                 }
+              ],
+              "id": "CultureResults",
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd' && visitType !== 'a8a4812e-1350-11df-a1f1-0026b9348838')"
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Smear Microscopy",
+          "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd')"
+          },
+          "questions": [
             {
               "label": "Smear Microscopy",
               "type": "obsGroup",
               "questionOptions": {
                 "concept": "3c3f18be-6c47-49f6-8334-0d6d798f2936",
-                "rendering": "repeating"
+                "rendering": "group"
               },
               "questions": [
                 {
@@ -1811,10 +2064,13 @@
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && (!isEmpty(sputumSequence) || !isEmpty(sputumResults) || !isEmpty(serialNumber) || !isEmpty(dateSputumResultsDate))) && isEmpty(myValue)",
-                      "message": "Complete the microscopy result and date for this specimen."
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd') && ((!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd') && (!isEmpty(sputumSequence) || !isEmpty(sputumResults) || !isEmpty(serialNumber) || !isEmpty(dateSputumResultsDate)) && isEmpty(myValue))",
+                      "message": "Enter the microscopy result and date for this specimen."
                     }
-                  ]
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd')"
+                  }
                 },
                 {
                   "label": "Sequence:",
@@ -1850,7 +2106,10 @@
                       }
                     ]
                   },
-                  "validators": []
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd')"
+                  }
                 },
                 {
                   "label": "Serial No:",
@@ -1859,7 +2118,10 @@
                     "rendering": "number",
                     "concept": "f37c7bb3-d392-4277-b50c-925ecb22c002"
                   },
-                  "id": "serialNumber"
+                  "id": "serialNumber",
+                  "hide": {
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd')"
+                  }
                 },
                 {
                   "label": "Date done:",
@@ -1872,8 +2134,8 @@
                   "validators": [
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && (!isEmpty(sputumSequence) || !isEmpty(sputumResults) || !isEmpty(serialNumber) || !isEmpty(dateSputumResultsDate))) && isEmpty(myValue)",
-                      "message": "Complete the microscopy result and date for this specimen."
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd') && ((!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd') && (!isEmpty(sputumSequence) || !isEmpty(sputumResults) || !isEmpty(serialNumber) || !isEmpty(dateSputumResultsDate)) && isEmpty(myValue))",
+                      "message": "Enter the microscopy result and date for this specimen."
                     },
                     {
                       "type": "date",
@@ -1881,199 +2143,28 @@
                     },
                     {
                       "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
-                      "message": "Date cannot be after the encounter date."
-                    }
-                  ]
-                }
-              ],
-              "id": "sputumInvestigations",
-              "questionInfo": "Record dated baseline and follow-up smears at months 2, 3, 5 and 6, as applicable. Add a row for each specimen."
-            },
-            {
-              "label": "LF LAM:",
-              "type": "obs",
-              "id": "tbLamResult",
-              "questionOptions": {
-                "concept": "a4e85034-2b3e-4b4b-b8ea-4f00f3e99b10",
-                "answers": [
-                  {
-                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
-                    "label": "Positive"
-                  },
-                  {
-                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                    "label": "Negative"
-                  }
-                ],
-                "rendering": "select",
-                "showDate": "true",
-                "shownDateOptions": {
-                  "validators": [
-                    {
-                      "type": "date",
-                      "allowFutureDates": "false"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)) && (!isEmpty(tbLamResult)) && isEmpty(myValue)",
-                      "message": "Enter the date for this result or treatment start."
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
+                      "failsWhenExpression": "(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd') && (!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day'))",
                       "message": "Date cannot be after the encounter date."
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "!(!isEmpty(tbLamResult))"
+                    "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd')"
                   }
-                }
-              }
-            },
-            {
-              "label": "Culture/Sensitivity",
-              "type": "obsGroup",
-              "questionOptions": {
-                "concept": "5bce7bd8-ee60-49b3-8561-c829bb5ebbc3",
-                "rendering": "repeating"
-              },
-              "questions": [
-                {
-                  "label": "Final culture result:",
-                  "type": "obs",
-                  "id": "growth_no_growth",
-                  "questionOptions": {
-                    "concept": "a8a462a2-1350-11df-a1f1-0026b9348838",
-                    "rendering": "select",
-                    "answers": [
-                      {
-                        "concept": "0b4e9aa1-e470-46d1-9d2d-0d8a475561b9",
-                        "label": "Growth"
-                      },
-                      {
-                        "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
-                        "label": "No growth"
-                      },
-                      {
-                        "concept": "a01149c4-7f0e-4d27-8f42-dc019e3330ec",
-                        "label": "Contamination"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "label": "Resistance:",
-                  "type": "obs",
-                  "id": "ResR",
-                  "questionOptions": {
-                    "concept": "df685c32-ab65-4e43-837d-b597936afa5d",
-                    "rendering": "multiCheckbox",
-                    "answers": [
-                      {
-                        "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
-                        "label": "Rifampicin (R)"
-                      },
-                      {
-                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
-                        "label": "Isoniazid (H)"
-                      },
-                      {
-                        "concept": "a8b031cc-1350-11df-a1f1-0026b9348838",
-                        "label": "Floroquinolone"
-                      },
-                      {
-                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
-                        "label": "Ethambutol (E)"
-                      }
-                    ]
-                  },
-                  "hide": {
-                    "hideWhenExpression": "growth_no_growth !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-                  },
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "growth_no_growth === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !isEmpty(SensiTIVE) && arrayContainsAny(myValue, SensiTIVE)",
-                      "message": "The same drug cannot be recorded as both resistant and sensitive."
-                    }
-                  ]
-                },
-                {
-                  "label": "Sensitivity:",
-                  "type": "obs",
-                  "id": "SensiTIVE",
-                  "questionOptions": {
-                    "concept": "b090510e-ccb8-40f4-a372-68a4ac2d53c0",
-                    "rendering": "multiCheckbox",
-                    "answers": [
-                      {
-                        "concept": "a897d0be-1350-11df-a1f1-0026b9348838",
-                        "label": "Rifampicin (R)"
-                      },
-                      {
-                        "concept": "a896cc00-1350-11df-a1f1-0026b9348838",
-                        "label": "Isoniazid (H)"
-                      },
-                      {
-                        "concept": "a8ac5f2a-1350-11df-a1f1-0026b9348838",
-                        "label": "Pyrazinamide (Z)"
-                      },
-                      {
-                        "concept": "a8971c64-1350-11df-a1f1-0026b9348838",
-                        "label": "Ethambutol (E)"
-                      }
-                    ]
-                  },
-                  "hide": {
-                    "hideWhenExpression": "growth_no_growth !== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-                  },
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "growth_no_growth === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue) && !isEmpty(ResR) && arrayContainsAny(myValue, ResR)",
-                      "message": "The same drug cannot be recorded as both resistant and sensitive."
-                    }
-                  ]
-                },
-                {
-                  "label": "Date done:",
-                  "type": "obs",
-                  "id": "dateCultureResultsDate",
-                  "questionOptions": {
-                    "concept": "39a75842-b59a-4f58-b560-8f804911e3bb",
-                    "rendering": "date"
-                  },
-                  "validators": [
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && !isEmpty(growth_no_growth)) && isEmpty(myValue)",
-                      "message": "Enter the culture result date."
-                    },
-                    {
-                      "type": "date",
-                      "allowFutureDates": "false"
-                    },
-                    {
-                      "type": "js_expression",
-                      "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
-                      "message": "Date cannot be after the encounter date."
-                    }
-                  ]
                 }
               ],
-              "id": "CultureResults"
+              "id": "sputumInvestigations",
+              "questionInfo": "Record dated baseline and follow-up smears at months 2, 3, 5 and 6, as applicable.",
+              "hide": {
+                "hideWhenExpression": "!(!isEmpty(visitType) && DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd')"
+              }
             }
-          ],
-          "hide": {
-            "hideWhenExpression": "(!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))) || !(DiSclassification === 'a8909cfe-1350-11df-a1f1-0026b9348838' && pulmonaryoptions === 'cacf4f50-829c-406c-90d8-65817cb8ffbd')"
-          }
+          ]
         },
         {
           "label": "Radiology and X-ray Results",
           "isExpanded": "true",
           "hide": {
-            "hideWhenExpression": "!(!isEmpty(visitType) && arrayContains(['a8909cfe-1350-11df-a1f1-0026b9348838', 'a8a37d60-1350-11df-a1f1-0026b9348838'], DiSclassification))"
+            "hideWhenExpression": "!(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (!(!isEmpty(visitType) && arrayContains(['a8909cfe-1350-11df-a1f1-0026b9348838', 'a8a37d60-1350-11df-a1f1-0026b9348838'], DiSclassification)))"
           },
           "questions": [
             {
@@ -2089,7 +2180,7 @@
                 }
               },
               "hide": {
-                "hideWhenExpression": "!(!isEmpty(visitType) && arrayContains(['a8909cfe-1350-11df-a1f1-0026b9348838', 'a8a37d60-1350-11df-a1f1-0026b9348838'], DiSclassification))"
+                "hideWhenExpression": "!(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (!(!isEmpty(visitType) && arrayContains(['a8909cfe-1350-11df-a1f1-0026b9348838', 'a8a37d60-1350-11df-a1f1-0026b9348838'], DiSclassification)))"
               }
             },
             {
@@ -2136,13 +2227,13 @@
                     }
                   ],
                   "hide": {
-                    "hideWhenExpression": "!(!isEmpty(visitType) && arrayContains(['a8909cfe-1350-11df-a1f1-0026b9348838', 'a8a37d60-1350-11df-a1f1-0026b9348838'], DiSclassification)) || (!(!isEmpty(xray) && !arrayContains([\"a899ea48-1350-11df-a1f1-0026b9348838\"], xray)))"
+                    "hideWhenExpression": "(!(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && !(!isEmpty(visitType) && arrayContains(['a8909cfe-1350-11df-a1f1-0026b9348838', 'a8a37d60-1350-11df-a1f1-0026b9348838'], DiSclassification))) || isEmpty(xray) || arrayContains(['a899ea48-1350-11df-a1f1-0026b9348838'], xray)"
                   }
                 }
               },
               "questionInfo": "Record the findings and date at the corresponding encounter.",
               "hide": {
-                "hideWhenExpression": "!(!isEmpty(visitType) && arrayContains(['a8909cfe-1350-11df-a1f1-0026b9348838', 'a8a37d60-1350-11df-a1f1-0026b9348838'], DiSclassification))"
+                "hideWhenExpression": "!(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && (!(!isEmpty(visitType) && arrayContains(['a8909cfe-1350-11df-a1f1-0026b9348838', 'a8a37d60-1350-11df-a1f1-0026b9348838'], DiSclassification)))"
               }
             }
           ]
@@ -2438,7 +2529,10 @@
                       "failsWhenExpression": "(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838') && isEmpty(myValue)",
                       "message": "Assess adherence to TB treatment at follow-up."
                     }
-                  ]
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                  }
                 },
                 {
                   "id": "tbAdherenceNotes",
@@ -2455,7 +2549,10 @@
                       "failsWhenExpression": "(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838' && arrayContains(['a73d20b3-d721-4763-a362-14a0c41a6b5e', 'fdaf8b47-ea14-4d28-80fa-e1da58a30e8b'], tbTreatmentAdherence)) && isEmpty(myValue)",
                       "message": "Document counselling and support for fair or poor adherence."
                     }
-                  ]
+                  ],
+                  "hide": {
+                    "hideWhenExpression": "!(visitType === 'a8a4812e-1350-11df-a1f1-0026b9348838')"
+                  }
                 }
               ]
             }
@@ -2509,6 +2606,9 @@
                   }
                 ],
                 "rendering": "select"
+              },
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a38814-1350-11df-a1f1-0026b9348838'], visitType)"
               }
             },
             {
@@ -2526,7 +2626,7 @@
             }
           ],
           "hide": {
-            "hideWhenExpression": "!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType))"
+            "hideWhenExpression": "visitType !== 'a8a38814-1350-11df-a1f1-0026b9348838' && (!(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType)))"
           }
         },
         {
@@ -2654,39 +2754,6 @@
                     "label": "Moved to category 4"
                   }
                 ]
-              }
-            },
-            {
-              "label": "Outcome date:",
-              "type": "obs",
-              "id": "outcomeDate",
-              "questionOptions": {
-                "concept": "a8afe3d4-1350-11df-a1f1-0026b9348838",
-                "rendering": "date"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(arrayContains(['ab202fa8-ad2b-487d-83f8-991f8fa109a1', 'a8a4812e-1350-11df-a1f1-0026b9348838'], visitType) && !isEmpty(txOutcome)) && isEmpty(myValue)",
-                  "message": "Enter the date of the treatment outcome."
-                },
-                {
-                  "type": "date",
-                  "allowFutureDates": "false"
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(encDate) && (new moment(myValue)).isAfter((new moment(encDate)), 'day')",
-                  "message": "Date cannot be after the encounter date."
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(dstartoftreatment) && (new moment(myValue)).isBefore((new moment(dstartoftreatment)), 'day')",
-                  "message": "Date cannot be before the treatment start date."
-                }
-              ],
-              "hide": {
-                "hideWhenExpression": "isEmpty(txOutcome)"
               }
             }
           ],
