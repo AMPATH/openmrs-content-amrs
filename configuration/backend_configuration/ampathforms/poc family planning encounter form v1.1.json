@@ -413,7 +413,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(contraceptiveDispensedF) || age < 15 || contraceptiveDispensedF === 'feb48308-a56f-4754-8e8f-8c1698e570cb' || contraceptiveDispensedF === 'a123d949-31f3-4abf-98e3-8504e17ebc00' || contraceptiveDispensedF === 'a8a71330-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedF === '236dba53-1062-46b4-8067-ec8711897dbf' || contraceptiveDispensedF === 'a8a713f8-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedF === 'eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc' || contraceptiveDispensedM === 'eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc'"
+                "hideWhenExpression": "age < 15 || (isEmpty(contraceptiveDispensedF) && isEmpty(contraceptiveDispensedM)) || !((!isEmpty(contraceptiveDispensedF) && (arrayContains(contraceptiveDispensedF, 'a8988b44-1350-11df-a1f1-0026b9348838') || arrayContains(contraceptiveDispensedF, '4a740e33-fee5-4a2b-b679-1904722e3d9e') || arrayContains(contraceptiveDispensedF, 'a8aff1b2-1350-11df-a1f1-0026b9348838') || arrayContains(contraceptiveDispensedF, 'a8afeb54-1350-11df-a1f1-0026b9348838') || arrayContains(contraceptiveDispensedF, 'b75702a6-908d-491b-9399-6495712c81cc') || arrayContains(contraceptiveDispensedF, 'a8a714c0-1350-11df-a1f1-0026b9348838') || arrayContains(contraceptiveDispensedF, 'a8a713f8-1350-11df-a1f1-0026b9348838') || arrayContains(contraceptiveDispensedF, '81aad3d5-0535-416a-a833-9079af068e3f') || arrayContains(contraceptiveDispensedF, '1934d7dd-7a59-43f0-8b6b-29e736498f15') || arrayContains(contraceptiveDispensedF, '99573ebc-b11b-4f5d-866d-94c5feb28924') || arrayContains(contraceptiveDispensedF, '236dba53-1062-46b4-8067-ec8711897dbf') || arrayContains(contraceptiveDispensedF, 'a8a71330-1350-11df-a1f1-0026b9348838') || arrayContains(contraceptiveDispensedF, 'eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc') || arrayContains(contraceptiveDispensedF, 'a8aaf3e2-1350-11df-a1f1-0026b9348838'))) || contraceptiveDispensedM === 'a893516a-1350-11df-a1f1-0026b9348838' || contraceptiveDispensedM === 'eaa5796d-0b1c-478b-8c9d-d23cf4c3bddc' || contraceptiveDispensedM === 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
               }
             },
             {
@@ -449,7 +449,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "isEmpty(contraceptiveDispensedF) || age < 15 || sex !== 'F' || contraceptiveDispensedF !== 'a8a71330-1350-11df-a1f1-0026b9348838' && contraceptiveDispensedF !== '236dba53-1062-46b4-8067-ec8711897dbf' && contraceptiveDispensedF !== 'a123d949-31f3-4abf-98e3-8504e17ebc00' && contraceptiveDispensedF !== 'feb48308-a56f-4754-8e8f-8c1698e570cb'"
+                "hideWhenExpression": "isEmpty(contraceptiveDispensedF) || age < 15 || sex !== 'F' || (!arrayContains(contraceptiveDispensedF, 'a123d949-31f3-4abf-98e3-8504e17ebc00') && !arrayContains(contraceptiveDispensedF, 'feb48308-a56f-4754-8e8f-8c1698e570cb'))"
               }
             },
             {
@@ -860,6 +860,63 @@
               "validators": [],
               "hide": {
                 "hideWhenExpression": "isEmpty(cervicalCancerScreeningDone) || cervicalCancerScreeningDone !== 'a899b35c-1350-11df-a1f1-0026b9348838' || sex !== 'F'"
+              }
+            },
+            {
+              "label": "Breast cancer screening done?",
+              "type": "obs",
+              "required": "true",
+              "id": "breastCancerScreeningDone",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "0d7a3b97-11bd-4155-829c-2a552808b450",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "validators": [],
+              "alert": {
+                "alertWhenExpression": "myValue === 'a899b42e-1350-11df-a1f1-0026b9348838'",
+                "message": "Screen for Breast Cancer"
+              }
+            },
+            {
+              "label": "Breast cancer screening results:",
+              "type": "obs",
+              "required": "true",
+              "id": "breastCancerResults",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3907fa56-d2d0-4143-89f5-bf70d843da23",
+                "answers": [
+                  {
+                    "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+                    "label": "Negative"
+                  },
+                  {
+                    "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+                    "label": "Positive"
+                  },
+                  {
+                    "concept": "260e6d24-1634-4467-a070-e8359f6827f7",
+                    "label": "Suspicious for cancer"
+                  },
+                  {
+                    "concept": "a899ea48-1350-11df-a1f1-0026b9348838",
+                    "label": "Not done"
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "isEmpty(breastCancerScreeningDone) || breastCancerScreeningDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
