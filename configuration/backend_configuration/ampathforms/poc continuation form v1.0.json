@@ -60,8 +60,7 @@
         {
           "label": "Continuation Notes",
           "isExpanded": "true",
-          "questions": [
-            
+          "questions": [ 
             {
               "label": "Add continuation notes:",
               "type": "obs",
