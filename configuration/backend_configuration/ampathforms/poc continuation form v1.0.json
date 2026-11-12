@@ -1,0 +1,82 @@
+{
+  "name": "POC Continuation Form v1.0",
+  "uuid": "xxxx",
+  "version": "1.0",
+  "description": "Continuation information",
+  "published": true,
+  "retired": false,
+  "encounterType": "CONTINUATION",
+  "encounter": "e46ff3c5-0a10-4304-bb04-e1a6ae31053a",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Continuation Notes",
+      "sections": [
+        {
+          "label": "Continuation Notes",
+          "isExpanded": "true",
+          "questions": [
+            
+            {
+              "label": "Add continuation notes:",
+              "type": "obs",
+              "id": "assNote",
+              "required": "false",
+              "default": "",
+              "questionOptions": {
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                "rendering": "textarea",
+                "rows": 10
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
