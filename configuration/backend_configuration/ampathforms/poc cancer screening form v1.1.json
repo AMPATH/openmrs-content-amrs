@@ -1,13 +1,13 @@
 {
   "name": "POC Cancer Screening Form v1.1",
-  "uuid": "",
+  "uuid": "b3348fd5-98a3-351e-ba04-ee2741bf348d",
   "description": "Revised Oncology POC Cancer Screening Form v1.1",
   "version": "1.1",
   "published": true,
   "retired": false,
   "encounter": "ONCOLOGYVIA",
   "processor": "EncounterFormProcessor",
-  "encounterType": "60b489e3-4b73-4950-88d1-41ebfc311442",
+  "encounterType": "238625fc-8a25-44b2-aa5a-8bf48fa0e18d",
   "pages": [
     {
       "label": "Encounter Details",

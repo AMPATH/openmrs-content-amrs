@@ -1,5 +1,5 @@
 {
-  "name": "My back up as Sat Form v1.4",
+  "name": "POC back up Form v1.4",
   "description": "Clinical Encounter",
   "version": "1.4",
   "uuid": "",
@@ -127,7 +127,7 @@
                 "answers": [
                   {
                     "concept": "a8a09ac8-1350-11df-a1f1-0026b9348838",
-                    "label": "OPD consultation"
+                    "label": "General consultation"
                   },
                   {
                     "concept": "27ac429d-8a42-476e-b2f6-65bde0b8c935",
@@ -139,7 +139,7 @@
                   },
                   {
                     "concept": "a89c2cae-1350-11df-a1f1-0026b9348838",
-                    "label": "Laboratory"
+                    "label": "Laboratory/Imaging"
                   },
                   {
                     "concept": "eb111184-414f-40ae-b8f0-8d52116de72a",
@@ -1615,7 +1615,6 @@
               "required": "true",
               "id": "onArt",
               "historicalExpression": "arrayContainsAny([\"a89b77aa-1350-11df-a1f1-0026b9348838\", \"a89b7908-1350-11df-a1f1-0026b9348838\", \"a89b7c50-1350-11df-a1f1-0026b9348838\", \"a8a00220-1350-11df-a1f1-0026b9348838\", \"a89b7d36-1350-11df-a1f1-0026b9348838\", \"a89b7ae8-1350-11df-a1f1-0026b9348838\", \"a898c938-1350-11df-a1f1-0026b9348838\"], [].concat(HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838') || [], (HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838') && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838').uuid) || [], (HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838') && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838').value) || [], (HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838') && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838').value && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838').value.uuid) || [], (HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838') && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')[0] && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')[0].uuid) || [], (HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838') && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')[0] && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')[0].value) || [], (HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838') && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')[0] && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')[0].value && HD.getObject('prevEnc').getValue('a89b75d4-1350-11df-a1f1-0026b9348838')[0].value.uuid) || [])) ? {\"value\": {\"uuid\": \"a899b35c-1350-11df-a1f1-0026b9348838\", \"display\": \"Yes\", \"name\": {\"name\": \"Yes\"}}} : HD.getObject('prevEnc').getValue('a89ae254-1350-11df-a1f1-0026b9348838')",
-             
               "questionOptions": {
                 "concept": "a89ae254-1350-11df-a1f1-0026b9348838",
                 "answers": [
@@ -1635,14 +1634,11 @@
               "hide": {
                 "hideWhenExpression": "(!isEmpty(chronicIllnesses) && chronicIllnesses.indexOf('a8983f22-1350-11df-a1f1-0026b9348838') !== -1 && hivVisitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && pastArtUse === 'a899b42e-1350-11df-a1f1-0026b9348838') || ((typeOfService === 'a89c2cae-1350-11df-a1f1-0026b9348838' || typeOfService === 'eb111184-414f-40ae-b8f0-8d52116de72a') || ((typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935') || (((((((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false)) || ((((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) === 'a896f3a6-1350-11df-a1f1-0026b9348838' && transferInVisit === 'a899b35c-1350-11df-a1f1-0026b9348838')) && !(((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"01b957da-23bb-4862-819d-036364fe3faf\"))))"
               }
-              
             },
             {
               "label": "Line of ART patient is taking:",
               "id": "current_arv_line",
-              
               "historicalExpression": "!_.isEmpty(HD.getObject('prevEnc').getValue('74e3b23f-b94f-49d9-a237-6baaee73f163')) ? HD.getObject('prevEnc').getValue('74e3b23f-b94f-49d9-a237-6baaee73f163') : HD.getObject('prevEnc').getValue('04616f5d-b961-4f41-bbd7-bcc0dd235577')",
-              
               "questionOptions": {
                 "concept": "04616f5d-b961-4f41-bbd7-bcc0dd235577",
                 "answers": [
@@ -1676,7 +1672,6 @@
             {
               "label": "Patient's ART regimen:",
               "id": "current_art_regimen_adult",
-              
               "historicalExpression": "!_.isEmpty(HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838')) ? HD.getObject('prevEnc').getValue('a89b6a62-1350-11df-a1f1-0026b9348838') : HD.getObject('prevEnc').getValue('a899cf5e-1350-11df-a1f1-0026b9348838')",
               "questionOptions": {
                 "concept": "a899cf5e-1350-11df-a1f1-0026b9348838",
@@ -2371,7 +2366,6 @@
               "hide": {
                 "hideWhenExpression": "(typeOfService === 'a89c2cae-1350-11df-a1f1-0026b9348838' || typeOfService === 'eb111184-414f-40ae-b8f0-8d52116de72a') || ((typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935') || (((((((((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'fa5a4dd8-60cd-4085-80b6-4aea76809926' && (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"7f7ec7ad-cdd7-4ed9-bc2e-5c5bd9f065b2\" ? \"a896d2cc-1350-11df-a1f1-0026b9348838\" : ((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? 'a896f3a6-1350-11df-a1f1-0026b9348838' : 'a899b50a-1350-11df-a1f1-0026b9348838')) !== 'a896f3a6-1350-11df-a1f1-0026b9348838') || (false))) && !(((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === \"20838ff5-7a28-4877-889c-300155627a6f\" && refillVisitType === \"20838ff5-7a28-4877-889c-300155627a6f\"))) || refillVisitType === '20838ff5-7a28-4877-889c-300155627a6f' || (((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) ? hivVisitType : '') === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' && transferInVisit === 'a899b42e-1350-11df-a1f1-0026b9348838')))"
               }
-              
             },
             {
               "type": "obsGroup",
@@ -4841,35 +4835,6 @@
               }
             },
             {
-              "type": "obs",
-              "label": "Setting:",
-              "id": "sdp",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "a8a17e48-1350-11df-a1f1-0026b9348838",
-                "answers": [
-                  {
-                    "concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
-                    "label": "Facility"
-                  },
-                  {
-                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
-                    "label": "Community"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "!(eligibleTest === 'a899b35c-1350-11df-a1f1-0026b9348838' && !((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) || ((typeOfService === 'a89c2cae-1350-11df-a1f1-0026b9348838' || typeOfService === 'eb111184-414f-40ae-b8f0-8d52116de72a') || (((typeOfService === '9ce5dbf0-a141-4ad8-8c9d-cd2bf84fe72b' || typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935' || typeOfService === 'a8a19c20-1350-11df-a1f1-0026b9348838')) || ((typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935'))))) && age > 15)"
-              },
-              "validators": [
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "(!(!(eligibleTest === 'a899b35c-1350-11df-a1f1-0026b9348838' && !((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) || ((typeOfService === 'a89c2cae-1350-11df-a1f1-0026b9348838' || typeOfService === 'eb111184-414f-40ae-b8f0-8d52116de72a') || (((typeOfService === '9ce5dbf0-a141-4ad8-8c9d-cd2bf84fe72b' || typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935' || typeOfService === 'a8a19c20-1350-11df-a1f1-0026b9348838')) || ((typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935'))))) && age > 15))) && isEmpty(myValue)",
-                  "message": "Select the setting for a client eligible for HIV testing."
-                }
-              ]
-            },
-            {
               "label": "Key population:",
               "id": "keyPop",
               "questionInfo": "Indicate the key population.",
@@ -4944,6 +4909,35 @@
               "hide": {
                 "hideWhenExpression": "!((typeOfService !== 'a89c2cae-1350-11df-a1f1-0026b9348838' && typeOfService !== 'eb111184-414f-40ae-b8f0-8d52116de72a' && (typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935' || (hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) || (eligibleTest === 'a899b35c-1350-11df-a1f1-0026b9348838' && age > 15 && ['9ce5dbf0-a141-4ad8-8c9d-cd2bf84fe72b', '27ac429d-8a42-476e-b2f6-65bde0b8c935', 'a8a19c20-1350-11df-a1f1-0026b9348838'].indexOf(typeOfService) === -1))) && popType === '729690d4-09dc-497e-a180-bfc2e9d7d21d')"
               }
+            },
+            {
+              "type": "obs",
+              "label": "Setting:",
+              "id": "sdp",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8a17e48-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "744b2cb1-0849-486c-a9cb-1ebe4b03c4bf",
+                    "label": "Facility"
+                  },
+                  {
+                    "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
+                    "label": "Community"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!(eligibleTest === 'a899b35c-1350-11df-a1f1-0026b9348838' && !((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) || ((typeOfService === 'a89c2cae-1350-11df-a1f1-0026b9348838' || typeOfService === 'eb111184-414f-40ae-b8f0-8d52116de72a') || (((typeOfService === '9ce5dbf0-a141-4ad8-8c9d-cd2bf84fe72b' || typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935' || typeOfService === 'a8a19c20-1350-11df-a1f1-0026b9348838')) || ((typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935'))))) && age > 15)"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(!(!(eligibleTest === 'a899b35c-1350-11df-a1f1-0026b9348838' && !((hasChronicIllness === 'a899b35c-1350-11df-a1f1-0026b9348838' && arrayContains(chronicIllnesses, ['a8983f22-1350-11df-a1f1-0026b9348838'])) || ((typeOfService === 'a89c2cae-1350-11df-a1f1-0026b9348838' || typeOfService === 'eb111184-414f-40ae-b8f0-8d52116de72a') || (((typeOfService === '9ce5dbf0-a141-4ad8-8c9d-cd2bf84fe72b' || typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935' || typeOfService === 'a8a19c20-1350-11df-a1f1-0026b9348838')) || ((typeOfService === '27ac429d-8a42-476e-b2f6-65bde0b8c935'))))) && age > 15))) && isEmpty(myValue)",
+                  "message": "Select the setting for a client eligible for HIV testing."
+                }
+              ]
             },
             {
               "label": "In the past three months has anyone punched, slapped, kicked, bite you or caused you any type of physical harm?",
