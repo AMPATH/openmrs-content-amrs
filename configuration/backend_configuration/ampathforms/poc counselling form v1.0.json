@@ -1,0 +1,122 @@
+{
+  "name": "POC Counselling Form v1.0",
+  "uuid": "",
+  "version": "1.0",
+  "description": "Counselling information",
+  "published": true,
+  "retired": false,
+  "encounterType": "ed11de61-7988-4bea-a604-58e5f96569ee",
+  "encounter": "COUNSELLING",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date"
+                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Counselling",
+      "sections": [
+        {
+          "label": "Counselling",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Reason for counselling:",
+              "type": "obs",
+              "required": true,
+              "id": "counselReason",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "a8b0ec2a-1350-11df-a1f1-0026b9348838",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "74a92606-b426-427c-bd4d-4fc7914b1860",
+                    "label": "HIV Testing"
+                  },
+                  {
+                    "concept": "a8a8b352-1350-11df-a1f1-0026b9348838",
+                    "label": "Medication Adherence"
+                  },
+                  {
+                    "concept": "a8a8afd8-1350-11df-a1f1-0026b9348838",
+                    "label": "Nutritional Counselling"
+                  },
+                  {
+                    "concept": "94215ae3-7d96-4a46-90b2-b339ef7a182e",
+                    "label": "Psychological counselling"
+                  },
+                  {
+                    "concept": "5c2ee9a7-8b61-4600-8601-1bab933b40da",
+                    "label": "Health Education"
+                  },
+                  {
+                    "concept": "e03813ad-b234-4473-92f8-b2143e8fbfa5",
+                    "label": "Family Planning "
+                  }
+                ]
+              },
+              "validators": []
+              
+            },
+            
+            {
+              "label": "Outcome:",
+              "type": "obs",
+              "id": "assNote",
+              "required": "false",
+              "default": "",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea",
+                "rows": 10
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -548,6 +548,7 @@
               "type": "obs",
               "required": "true",
               "id": "exMedsCond",
+              "historicalExpression": "HD.getObject('prevEnc').getValue('0ac4af8a-1b8e-4404-b445-c0471d6f7576')",
               "questionOptions": {
                 "concept": "0ac4af8a-1b8e-4404-b445-c0471d6f7576",
                 "rendering": "multiCheckbox",
@@ -609,6 +610,9 @@
                     "label": "No"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "visitScheduled === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -640,6 +644,9 @@
                     "label": "Severe"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "visitScheduled === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
@@ -670,15 +677,20 @@
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "visitScheduled === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
-              "label": "Diagnosis:",
+              "label": "Primary diagnosis:",
               "required": "true",
               "id": "finalDiagnosisId",
               "type": "diagnosis",
               "questionOptions": {
                 "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
                 "rank": 2,
                 "datasource": {
                   "name": "diagnoses",
@@ -687,17 +699,18 @@
                   }
                 }
               }
+              
             },
             {
-              "label": "Patient's SAM/MAM:",
+              "label": "Patient category:",
               "type": "obs",
               "id": "pSAmAM",
               "questionOptions": {
-                "concept": "0306539c-f24f-49f5-b059-b646adbec47c",
+                "concept": "a89eea66-1350-11df-a1f1-0026b9348838",
                 "rendering": "select",
                 "answers": [
                   {
-                    "concept": "76ab49de-c5f4-43dc-a368-0274ee834ad3",
+                    "concept": "5c1e610c-36f4-456c-be9b-11c106591f7f",
                     "label": "1st Time Diagnosis"
                   },
                   {
@@ -709,6 +722,9 @@
                     "label": "Re-admission"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "visitScheduled === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             }
           ]
@@ -722,26 +738,7 @@
           "label": "Nutrition Intervention Details",
           "isExpanded": "true",
           "questions": [
-            {
-              "label": "Did the client consent to receive nutrition intervention?",
-              "type": "obs",
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "9d9ccb6b-73ae-48dd-83f9-12c782ce6685",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              },
-              "id": "consentGiven",
-              "required": "true"
-            },
+            
             {
               "label": "First 0 - 6 months:",
               "type": "obs",
@@ -1097,7 +1094,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Please state the current status of continuing SAM/MAM patients:",
+              "label": "Follow up review:",
               "type": "obs",
               "id": "caRdStatUs",
               "questionOptions": {
@@ -1129,6 +1126,9 @@
                     "label": "Refused Nutrition Support"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "visitScheduled === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1' || pSAmAM === '5c1e610c-36f4-456c-be9b-11c106591f7f'"
               }
             },
             {
@@ -1276,6 +1276,22 @@
                     "label": "Transfer out"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "visitScheduled !== '244b67bf-da2d-4009-9bc9-91a52a92defe' || pSAmAM === '5c1e610c-36f4-456c-be9b-11c106591f7f'"
+              }
+            },
+            {
+              "label": "Nutrition assessment:",
+              "type": "obs",
+              "id": "nutritionAssessmentNotes",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea",
+                "rows": 5
+              },
+              "hide": {
+                "hideWhenExpression": "visitScheduled !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
               }
             },
             {
