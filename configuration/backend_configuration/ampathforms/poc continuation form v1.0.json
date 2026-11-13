@@ -1,13 +1,13 @@
 {
   "name": "POC Continuation Form v1.0",
-  "uuid": "xxxx",
-  "version": "1.0",
   "description": "Continuation information",
+  "version": "1.0",
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
   "published": true,
   "retired": false,
-  "encounterType": "CONTINUATION",
-  "encounter": "e46ff3c5-0a10-4304-bb04-e1a6ae31053a",
-  "processor": "EncounterFormProcessor",
+  "encounterType": "e46ff3c5-0a10-4304-bb04-e1a6ae31053a",
+  "encounter": "CONTINUATION",
   "pages": [
     {
       "label": "Encounter Details",

@@ -10,3 +10,4 @@ a0bc3144-651d-4723-992e-4557ad34f78c,,,MEDICAL WARD,,,,,,A hospital inpatient un
 8054a2a6-09c6-456b-aaf2-eaa5d9f1dc0d,,,JUNIOR SECONDARY EDUCATION,,,JUNIOR SECONDARY ,,,"A level of education in Kenya's Competency-Based Education (CBE) system covering Grades 7, 8, and 9, following completion of primary education.",,,Misc,N/A,,,
 001e64b8-0cda-45a6-af85-28d91f43718d,,,SENIOR SECONDARY EDUCATION,,,SENIOR SECONDARY,,,"A level of education in Kenya's Competency-Based Education (CBE) system covering Grades 10, 11, and 12, following completion of junior secondary education.",,,Misc,N/A,,,
 492965a6-7351-44a4-acb1-62d597f8089c,,,ADMISSION INSTRUCTIONS,,,Admission instructions,,,Free-text instructions for inpatient admission.,,,Question,Text,,,
+76e978d5-da71-434a-b4f9-5dce6aac8ff7,,,WARD BED NUMBER,,,BED NUMBER,,,The unique bed number or identifier assigned to a patient within a hospital ward during admission.,,,Question,Number,,,

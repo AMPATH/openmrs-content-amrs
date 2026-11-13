@@ -1,84 +1,88 @@
 {
-    "name": "POC Inpatient Discharge Form v1.0",
-    "uuid": "xxxx",
-    "version": "1.0",
-    "description": "Form for inpatient discharge",
-    "published": true,
-    "retired": false,
-    "encounterType": "7649d97d-ac9f-444d-877c-7468ef286e7e",
-    "encounter": "GENERALDISCHARGE",
-    "processor": "EncounterFormProcessor",
-    "pages": [
-      {
-        "label": "Encounter Details",
-        "sections": [
-          {
-            "label": "Encounter Details",
-            "isExpanded": "true",
-            "questions": [
-              {
-                "label": "Visit date:",
-                "type": "encounterDatetime",
-                "required": "true",
-                "default": "",
-                "id": "encDate",
-                "questionOptions": {
-                  "rendering": "date"
-                },
-                "validators": [
-                  {
-                    "type": "date"
-                  }
-                ]
+  "name": "POC Inpatient Discharge Form v1.0",
+  "uuid": "xxxx",
+  "version": "1.0",
+  "description": "Form for inpatient discharge",
+  "published": true,
+  "retired": false,
+  "encounterType": "7649d97d-ac9f-444d-877c-7468ef286e7e",
+  "encounter": "GENERALDISCHARGE",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date:",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
               },
-              {
-                "type": "encounterProvider",
-                "label": "Provider:",
-                "id": "provider",
-                "required": "true",
-                "default": "",
-                "questionOptions": {
-                  "rendering": "ui-select-extended"
+              "validators": [
+                {
+                  "type": "date"
                 }
-              },
-              {
-                "type": "encounterLocation",
-                "label": "Facility name (site/satellite clinic required):",
-                "id": "location",
-                "required": "true",
-                "questionOptions": {
-                  "rendering": "ui-select-extended"
-                }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider:",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
               }
-            ]
-          }
-        ]
-      },
-       {
-      "label": "Patient Outcome",
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Discharge Summary",
       "sections": [
         {
           "label": "Discharge Details",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Final diagnosis:",
-              "id": "FinAlDiagnosis",
-              "type": "diagnosis",
+              "label": "Date of admission:",
+              "id": "dateAdmission",
               "questionOptions": {
-                "rendering": "repeating",
-                "dataSource": "diagnoses",
-                "rank": 2,
-                "datasource": {
-                  "name": "diagnoses",
-                  "config": {
-                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
-                  }
+                "concept": "a8a01652-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "type": "obs",
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(dischargeDate) && dayjs(myValue).isAfter(dayjs(dischargeDate), 'day')",
+                  "message": "Admission date must be on or before the discharge date."
                 }
-              }
+              ]
             },
             {
-              "label": "Discharge date:",
+              "label": "Date of discharge:",
               "type": "obs",
               "id": "dischargeDate",
               "questionOptions": {
@@ -92,10 +96,99 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day')",
+                  "failsWhenExpression": "!isEmpty(myValue) && dayjs(encDate).isAfter(dayjs(myValue), 'day')",
                   "message": "Discharge date should not be before the encounter date."
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !isEmpty(dateAdmission) && dayjs(myValue).isBefore(dayjs(dateAdmission), 'day')",
+                  "message": "Discharge date must be on or after the admission date."
                 }
               ]
+            },
+            {
+              "id": "admitToWard",
+              "label": "Ward:",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9edcf4d8-e30e-467d-99c2-b0ae4065ecab",
+                "answers": [
+                  {
+                    "concept": "a8a0b1e4-1350-11df-a1f1-0026b9348838",
+                    "label": "Medical"
+                  },
+                  {
+                    "concept": "a8a0b2c2-1350-11df-a1f1-0026b9348838",
+                    "label": "Maternity"
+                  },
+                  {
+                    "concept": "a8a0b3d4-1350-11df-a1f1-0026b9348838",
+                    "label": "Surgical"
+                  },
+                  {
+                    "concept": "a8b0f634-1350-11df-a1f1-0026b9348838",
+                    "label": "OBST/ GYN"
+                  },
+                  {
+                    "concept": "7e799394-d5aa-406c-a58f-6814da7190c8",
+                    "label": "Eye"
+                  },
+                  {
+                    "concept": "c00d6b35-ed72-4540-9079-9f5ba94e4948",
+                    "label": "Nursery / Newborn"
+                  },
+                  {
+                    "concept": "bd50ac6b-75f3-4faf-8e2c-56db64fe595b",
+                    "label": "Orthopaedic"
+                  },
+                  {
+                    "concept": "3b48afa0-88df-4e18-ae13-60de2035a2a9",
+                    "label": "Isolation"
+                  },
+                  {
+                    "concept": "16b42547-6bc6-4ee5-ba2f-d3212c9074d2",
+                    "label": "Amenity"
+                  },
+                  {
+                    "concept": "db35d3e3-1a81-44c8-b144-53b06c059a4e",
+                    "label": "ICU"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Primary diagnosis:",
+              "required": "true",
+              "id": "FinAlDiagnosis",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "min": "1",
+                "dataSource": "diagnoses",
+                "rank": 2,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Secondary diagnosis:",
+              "id": "secondaryDiagnosisId",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "rank": 3,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
             }
           ]
         },
@@ -104,19 +197,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Discharge instructions/remarks:",
-              "type": "obs",
-              "required": false,
-              "id": "dischargeInstructions",
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
-                "rows": "5"
-              },
-              "validators": []
-            },
-            {
-              "label": "Clinical notes:",
+              "label": "Clinical summary:",
               "type": "obs",
               "id": "clinicalNotes",
               "questionOptions": {
@@ -124,9 +205,42 @@
                 "rendering": "textarea",
                 "rows": "10"
               }
+            }
+          ]
+        },
+        {
+          "label": "Investigations",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Investigation results received:",
+              "type": "obs",
+              "id": "investigationResultsReceived",
+              "historicalExpression": "visit.encounters && visit.encounters.length ? api.getPreviousEncounter(patient.id, '4e346fd8-d326-4399-aa4f-a0c0b489f029').then(addendum => addendum && visit.encounters.some(encounter => encounter.uuid === addendum.uuid) ? addendum.obs.find(obs => !obs.voided && obs.concept.uuid === '7b64016c-ae2d-4ec1-bdc1-e920b0e94b9d') : null) : null",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "7b64016c-ae2d-4ec1-bdc1-e920b0e94b9d"
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Patient Outcome",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Condition at discharge:",
+              "type": "obs",
+              "id": "conditionAtDischarge",
+              "questionOptions": {
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea",
+                "rows": 5
+              }
             },
             {
-              "label": "Discharge status:",
+              "label": "Patient Outcome Status:",
               "type": "obs",
               "required": true,
               "id": "dischargeStatus",
@@ -148,11 +262,11 @@
                   },
                   {
                     "concept": "79928a07-ab17-45c2-93ba-f3c106b257b6",
-                    "label": "Referred to higher level facility"
+                    "label": "Referrals Out of the Facility"
                   },
                   {
                     "concept": "9e5ddce7-ba78-47ef-a72f-007f5aa819b2",
-                    "label": "Referred to a specialist"
+                    "label": "Referred to Specialist"
                   },
                   {
                     "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
@@ -162,7 +276,7 @@
               },
               "validators": []
             },
-           {
+            {
               "label": "Transfer to mortuary/Funeral home:",
               "type": "obs",
               "required": true,
@@ -226,19 +340,6 @@
               }
             },
             {
-              "label": "Follow up appointment",
-              "required": false,
-              "id": "appointmentWorkspaceLauncher",
-              "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Add appointments",
-                "workspaceName": "appointments-form-workspace"
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !=='cc5128d7-826d-4489-86e3-a3a81b69ec36' && dischargeStatus !=='9e5ddce7-ba78-47ef-a72f-007f5aa819b2'"
-              }
-            },
-            {
               "label": "Follow up with (Doctor/Specialist):",
               "type": "obs",
               "required": false,
@@ -296,8 +397,74 @@
               }
             }
           ]
+        },
+        {
+          "label": "Discharge Medications and Follow-up",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Discharge medications:",
+              "id": "drugsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe drugs",
+                "workspaceName": "add-drug-order"
+              },
+              "hide": {
+                "hideWhenExpression": "dischargeStatus === 'a89335d6-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "label": "Follow-up plan:",
+              "type": "obs",
+              "required": false,
+              "id": "dischargeInstructions",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rows": "5"
+              },
+              "validators": []
+            },
+            {
+              "label": "Follow up appointment",
+              "required": false,
+              "id": "appointmentWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add appointments",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(dischargeStatus) || dischargeStatus !=='cc5128d7-826d-4489-86e3-a3a81b69ec36' && dischargeStatus !=='9e5ddce7-ba78-47ef-a72f-007f5aa819b2'"
+              }
+            },
+            {
+              "label": "Return to clinic date:",
+              "type": "obs",
+              "id": "rtc",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && !dayjs(myValue).isAfter(dayjs(isEmpty(dischargeDate) ? encDate : dischargeDate), 'day')",
+                  "message": "Return to clinic date must be after the discharge date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "dischargeStatus === 'a89335d6-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
         }
       ]
     }
-    ]
-  }
+  ]
+}
