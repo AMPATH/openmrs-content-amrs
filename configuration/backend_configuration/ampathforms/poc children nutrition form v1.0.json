@@ -113,7 +113,7 @@
                                 "max": "3",
                                 "min": "-3",
                                 "calculate": {
-                                    "calculateExpression": "isEmpty(weight) || isEmpty(age) || isNaN(Number(weight)) || isNaN(Number(age)) || Number(weight) <= 0 || Number(age) < 0 || Number(age) >= 5 ? null : calcWeightForAgeZscore(weightForAgeRef, age, weight)"
+                                    "calculateExpression": "calcWeightForAgeZscore(weightForAgeRef, age, weight)"
                                 }
                             },
                             "type": "obs",

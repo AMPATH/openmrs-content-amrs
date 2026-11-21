@@ -240,7 +240,7 @@
               }
             },
             {
-              "label": "Patient Outcome Status:",
+              "label": "Patient outcome status:",
               "type": "obs",
               "required": true,
               "id": "dischargeStatus",
@@ -262,11 +262,11 @@
                   },
                   {
                     "concept": "79928a07-ab17-45c2-93ba-f3c106b257b6",
-                    "label": "Referrals Out of the Facility"
+                    "label": "Referrals out of the facility"
                   },
                   {
                     "concept": "9e5ddce7-ba78-47ef-a72f-007f5aa819b2",
-                    "label": "Referred to Specialist"
+                    "label": "Referred to specialist"
                   },
                   {
                     "concept": "a89335d6-1350-11df-a1f1-0026b9348838",
@@ -422,6 +422,18 @@
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rows": "5"
+              },
+              "validators": []
+            },
+            {
+              "label": "Discharged through:",
+              "type": "obs",
+              "required": false,
+              "id": "dischargeThrough",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
                 "rows": "5"
               },
               "validators": []

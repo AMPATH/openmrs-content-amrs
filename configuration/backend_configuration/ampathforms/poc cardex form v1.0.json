@@ -17,7 +17,7 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Visit date",
+              "label": "Encounter date:",
               "type": "encounterDatetime",
               "required": "true",
               "default": "",

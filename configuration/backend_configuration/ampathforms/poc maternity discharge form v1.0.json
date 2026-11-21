@@ -379,7 +379,7 @@
               "id": "healthFacility",
               "type": "obs",
               "questionOptions": {
-                "concept": "a8a00c0e-1350-11df-a1f1-0026b9348838",
+                "concept": "e8876675-76e1-4e15-a7c5-d4046ff97e3a",
                 "rendering": "text"
               },
               "validators": [],
