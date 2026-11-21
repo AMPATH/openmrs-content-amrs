@@ -486,7 +486,7 @@
             },
             {
               "id": "testesDescended",
-              "label": "Testes descended [CONCEPT NEEDED]",
+              "label": "Testes descended [CONCEP NEEDED]",
               "type": "obs",
               "questionOptions": {
                 "concept": "",
