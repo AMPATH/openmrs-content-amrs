@@ -1,0 +1,797 @@
+{
+  "name": "POC Neonate 0-48hrs clinical form v1.0",
+  "description": "POC Neonate 0-48hrs clinical form.",
+  "version": "1.0",
+  "uuid": "34933d9b-1cc9-46ac-a899-de73b0668f3d",
+  "published": true,
+  "retired": false,
+  "encounter": "",
+  "encounterType": "",
+  "processor": "EncounterFormProcessor",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Encounter details",
+      "sections": [
+        {
+          "label": "Encounter details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date of review",
+              "type": "encounterDatetime",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "id": "encDate"
+            },
+            {
+              "label": "Provider:",
+              "type": "encounterProvider",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encProvider"
+            },
+            {
+              "label": "Location:",
+              "type": "encounterLocation",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              },
+              "id": "encLocation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Patient history",
+      "sections": [
+        {
+          "label": "Baby details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "babyName",
+              "label": "Baby’s name [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text"
+              }
+            },
+            {
+              "id": "birthNotificationNumber",
+              "label": "Birth notification number",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "1269a817-9e76-463e-ab99-d69545b87bbb",
+                "rendering": "text"
+              }
+            },
+            {
+              "id": "dateOfBirth",
+              "label": "Date of birth",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "e4e69e0e-d4b5-4ca1-b4b3-87aa77107ec7",
+                "rendering": "date"
+              }
+            },
+            {
+              "label": "Time of birth",
+              "type": "obs",
+              "required": false,
+              "id": "timeOfBirth",
+              "datePickerFormat": "timer",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "52ff51ce-3a95-4e32-b389-966c2a6b2a77",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "161076"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "id": "sexOfBaby",
+              "label": "Sex",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "label": "Female",
+                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Male",
+                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "APGAR",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Apgar Score (1 min):",
+              "type": "obs",
+              "id": "babyApgarScore1Min",
+              "required": false,
+              "questionOptions": {
+                "concept": "4b98ce38-77d9-488b-8b59-251811e244a4",
+                "rendering": "number",
+                "min": "0",
+                "max": "10"
+              }
+            },
+            {
+              "label": "Apgar Score (5 min):",
+              "type": "obs",
+              "id": "babyAScore5Min",
+              "required": false,
+              "questionOptions": {
+                "concept": "a752b53e-bb83-4c76-9237-d2d85919101c",
+                "rendering": "number",
+                "min": "0",
+                "max": "10"
+              }
+            },
+            {
+              "label": "Apgar Score (10 min):",
+              "type": "obs",
+              "id": "babyApgarScore10Min",
+              "required": false,
+              "questionOptions": {
+                "concept": "3349c58b-8938-4162-ae6c-e64b67f392c4",
+                "rendering": "number",
+                "min": "0",
+                "max": "10"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Patient examination",
+      "sections": [
+        {
+          "label": "Newborn examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "newbornExamination",
+              "label": "Newborn examination",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a899eb24-1350-11df-a1f1-0026b9348838",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                    "label": "Lethargic"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Reduced movement [CONCEPT NEEDED]"
+                  },
+                  {
+                    "concept": "",
+                    "label": "Floppiness [CONCEPT NEEDED]"
+                  },
+                  {
+                    "concept": "04f9358a-226d-4fe1-9cd7-d47eabab15db",
+                    "label": "Alert"
+                  },
+                  {
+                    "concept": "a8ad49a8-1350-11df-a1f1-0026b9348838",
+                    "label": "Irritability"
+                  },
+                  {
+                    "concept": "a898d5fe-1350-11df-a1f1-0026b9348838",
+                    "label": "Dehydration"
+                  },
+                  {
+                    "concept": "ed04c0d9-3471-4c3e-802c-f83ea31174ab",
+                    "label": "Drowsiness"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Head and face",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "headSymmetry",
+              "label": "Head and face symmetry [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text"
+              }
+            },
+            {
+              "id": "anteriorFontanelle",
+              "label": "Anterior fontanelle [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text"
+              }
+            },
+            {
+              "id": "headCircumference",
+              "label": "Head circumference (cm)",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a77686-1350-11df-a1f1-0026b9348838",
+                "rendering": "number"
+              }
+            },
+            {
+              "id": "ears",
+              "label": "Ears [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "eyes",
+              "label": "Eyes [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "retinoblastomaScreened",
+              "label": "Screened for retinoblastoma [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "retinoblastomaFindings",
+              "label": "Retinoblastoma screening findings",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "44835131-b363-4b0d-8e86-590fdabb2cfc",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "label": "Normal (negative)",
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Abnormal (positive)",
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mouthAndNose",
+              "label": "Mouth and nose findings (cleft palate, cleft lip, tongue tie or lip tie) [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "neck",
+              "label": "Neck (short or long) [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "a899e7b4-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "a899e890-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Abdomen and back",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "abdominalDistension",
+              "label": "Abdominal distension [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "umbilicus",
+              "label": "Umbilicus",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "c95f075d-34eb-407a-be23-066ed5996cee",
+                "rendering": "select",
+                "answers": [
+                  {
+                    "label": "Clean",
+                    "concept": "25136dd1-625e-458a-9574-c5c82bdf5f62"
+                  },
+                  {
+                    "label": "Bleeding [CONCEPT NEEDED]",
+                    "concept": ""
+                  },
+                  {
+                    "label": "Signs of infection",
+                    "concept": "a8a49830-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "abdomenBackDeformities",
+              "label": "Abdomen or back deformities [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Genitalia and anus",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "imperforateAnus",
+              "label": "Imperforate anus [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "externalGenitalia",
+              "label": "External genitalia [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "label": "Male",
+                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Female",
+                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838"
+                  },
+                  {
+                    "label": "Indeterminate",
+                    "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "testesDescended",
+              "label": "Testes descended [CONCEP NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Limbs",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "abnormalLimbPosition",
+              "label": "Abnormal limb position [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "abnormalLimbMovements",
+              "label": "Abnormal limb movements [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Skin",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "pustules",
+              "label": "Pustules [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "blisters",
+              "label": "Blisters [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "jaundicePresent",
+              "label": "Jaundice present [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Birth injuries",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "skinInjuries",
+              "label": "Injuries to skin [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "muscleTrauma",
+              "label": "Muscle trauma [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fractures",
+              "label": "Fractures [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nerveTrauma",
+              "label": "Nerve trauma [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Urine and stool",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "urineAndStoolPassed",
+              "label": "Urine and stool passed within 24 hours of birth [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Congenital abnormality",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "congenitalAbnormalities",
+              "label": "Congenital abnormalities",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "839a0824-647f-49d0-b137-c35dfe0720af",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "Down syndrome",
+                    "concept": "4b8c4f04-7c12-476c-a6e2-1e0620f11679"
+                  },
+                  {
+                    "label": "Neural tube defect",
+                    "concept": "87755ab8-2aa7-4460-9e1f-7054fa38a9ff"
+                  },
+                  {
+                    "label": "Cleft lip / cleft palate",
+                    "concept": "568a495d-4c0e-40f9-9260-3fdb0e4c0379"
+                  },
+                  {
+                    "label": "Clubfoot / talipes",
+                    "concept": "354011e7-0e7f-41cb-8e09-4c444c712351"
+                  },
+                  {
+                    "label": "Gastroschisis [CONCEPT NEEDED]",
+                    "concept": ""
+                  },
+                  {
+                    "label": "Omphalocele",
+                    "concept": "177f7a93-d580-4fb2-a512-aeacb82487ab"
+                  },
+                  {
+                    "label": "Hypospadias",
+                    "concept": "4092BC44-BAB5-473E-B124-4C9DB43FA5A7"
+                  },
+                  {
+                    "label": "Imperforate anus",
+                    "concept": "b2f54ff4-3456-4065-939f-2f48fe668c1c"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Remarks",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "examinationRemarks",
+              "label": "Examination remarks and details of abnormal findings",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Patient management",
+      "sections": []
+    }
+  ]
+}

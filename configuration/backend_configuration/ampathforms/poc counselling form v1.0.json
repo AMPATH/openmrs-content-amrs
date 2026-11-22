@@ -9,7 +9,6 @@
   "encounter": "COUNSELLING",
   "processor": "EncounterFormProcessor",
   "pages": [
-
     {
       "label": "Encounter Details",
       "sections": [
@@ -99,20 +98,33 @@
                 ]
               },
               "validators": []
-              
             },
-            
             {
-              "label": "Outcome:",
+              "label": "Counselling notes:",
               "type": "obs",
               "id": "assNote",
               "required": "false",
               "default": "",
               "questionOptions": {
-                "concept": "",
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
                 "rendering": "textarea",
                 "rows": 10
               }
+            },
+            {
+              "label": "Return to clinic date:",
+              "type": "obs",
+              "required": "true",
+              "questionOptions": {
+                "concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+                "rendering": "date"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                }
+              ]
             }
           ]
         }

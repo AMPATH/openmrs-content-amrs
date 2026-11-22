@@ -41,8 +41,11 @@
                     "rendering": "remote-select",
                     "concept": "b9cd9e47-da43-4a46-8f3c-e30ec9209cc7",
                     "datasource": {
-                      "name": "location",
+                      "name": "endpoint",
                       "config": {
+                        "endpointUrl": "https://kibana.ampath.or.ke/openmrs/etl/admission-locations",
+                        "labelKey": "display",
+                        "valueKey": "location_uuid",
                         "tag": "Admission Location"
                       }
                     }

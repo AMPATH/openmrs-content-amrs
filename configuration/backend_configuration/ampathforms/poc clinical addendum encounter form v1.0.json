@@ -214,7 +214,6 @@
                 "hideWhenExpression": "diagnosisChanged !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
-           
           ]
         },
         {
@@ -222,13 +221,48 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Repeat investigations:",
-              "type": "obs",
-              "id": "repeatInvestigations",
+              "label": "Lab Order",
+              "id": "labsWorkspaceLauncher",
               "questionOptions": {
-                "rendering": "textarea",
-                "concept": "3ef186b2-caee-4ee1-9d2a-69a13ece9cf4"
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Lab order",
+                "workspaceName": "add-lab-order"
               }
+            },
+            {
+              "label": "Radiology & Imaging Order",
+              "id": "imagingWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add imaging Order",
+                "workspaceName": "order-basket",
+                "additionalProps": {
+                  "orderTypeUuid": "ff4485a4-f071-4423-aeb2-db6efce52b83"
+                }
+              }
+            },
+            {
+              "label": "Prescribe Drugs",
+              "id": "drugsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe Drugs",
+                "workspaceName": "order-basket"
+              }
+              
+            },
+            {
+              "label": "Procedures Order",
+              "id": "proceduresWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order Procedures",
+                "workspaceName": "order-basket",
+                "additionalProps": {
+                  "orderTypeUuid": "2315ab24-9a4e-4b36-b189-8e74d2c77394"
+                }
+              }
+              
             }
           ]
         }

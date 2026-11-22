@@ -1,12 +1,12 @@
 {
-  "name": "POC Treatment Sheet Form v1.0",
-  "description": "Treatment Sheet Form",
-  "version": "1",
-  "published": true,
-  "uuid": "",
-  "retired": false,
-  "encounter": "TREATMENTSHEET",
-  "encounterType": "ca1e6906-6365-416f-a030-b70bfe960322",
+	"name": "POC Treatment Sheet Form v1.0",
+	"description": "Treatment Sheet Form",
+	"version": "1",
+	"published": true,
+	"uuid": "",
+	"retired": false,
+	"encounter": "TREATMENTSHEET",
+	"encounterType": "ca1e6906-6365-416f-a030-b70bfe960322",
 	"pages": [
 		{
 			"label": "Encounter Details",
@@ -46,44 +46,286 @@
 							"questionOptions": {
 								"rendering": "ui-select-extended"
 							}
-						},
+						}
+					]
+				},
+				{
+					"label": "Admission details",
+					"isExpanded": "true",
+					"questions": [
 						{
-							"id": "medicationGiven",
-							"label": "Medication given?",
+							"id": "dateAdmitted",
+							"label": "Date admitted",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "select",
-								"concept": "a89c26b4-1350-11df-a1f1-0026b9348838",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
+								"rendering": "date",
+								"concept": "a8a01652-1350-11df-a1f1-0026b9348838"
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "false"
+								}
+							]
+						},
+						{
+							"id": "roomNumber",
+							"label": "Room number",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "e8d06320-82d0-47f8-9f8a-a3089a6d15a8"
 							}
 						},
 						{
-							"id": "fluidGiven",
-							"label": "Fluid given?",
+							"id": "bedNumber",
+							"label": "Bed number",
 							"type": "obs",
 							"questionOptions": {
-								"rendering": "select",
-								"concept": "114f9886-ddaa-460e-b2c8-64404cba2d02",
-								"answers": [
-									{
-										"label": "Yes",
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "No",
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838"
-									}
-								]
+								"rendering": "number",
+								"concept": "76e978d5-da71-434a-b4f9-5dce6aac8ff7"
 							}
+						},
+						{
+							"id": "attendingPhysician",
+							"label": "Attending physician",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "text",
+								"concept": "29f94c52-6159-4e26-805c-beb915c9fa21"
+							}
+						}
+					]
+				},
+				{
+					"label": "Medication record",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"id": "medicationEntries",
+							"label": "Medication entry",
+							"type": "obsGroup",
+							"questionOptions": {
+								"rendering": "repeating",
+								"concept": "1fa5b6be-1be8-43ae-81bb-7008bdc829ed",
+								"repeatOptions": {
+									"addText": "Add medication"
+								}
+							},
+							"questions": [
+								
+								{
+									"id": "medicationName",
+									"label": "Medication",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "drug",
+										"concept": "a8a060c6-1350-11df-a1f1-0026b9348838"
+									}
+								},
+								{
+									"id": "medicationDose",
+									"label": "Dosage",
+									"type": "obs",
+									"questionOptions": {
+										"concept": "db4a2478-1a3b-4c46-9769-a500c64ae5ba",
+										"rendering": "number"
+									}
+								},
+								{
+									"id": "medicationRoute",
+									"label": "Route",
+									"type": "obs",
+									"questionOptions": {
+										"concept": "90083bee-9859-4364-a81f-4aad6f3634fb",
+										"rendering": "select",
+										"answers": [
+											{
+												"concept": "db0c5937-3874-4eae-9566-9a645ad7ac65",
+												"label": "Oral"
+											},
+											{
+												"concept": "a8aad9c6-9b54-49f7-9cd1-0d165cd12af4",
+												"label": "Intravenous"
+											},
+											{
+												"concept": "61391823-27aa-4d7a-aac3-ef2b808135a9",
+												"label": "Intramuscular"
+											},
+											{
+												"concept": "a8d2a6cb-1652-4d8e-a830-226ded345345",
+												"label": "Subcutaneous"
+											},
+											{
+												"concept": "3fa5c3a8-41e5-493a-9ab7-7177fc6f8c82",
+												"label": "Inhalation"
+											},
+											{
+												"concept": "7ef97361-e7e2-4079-92a3-584b5a5cd0f5",
+												"label": "Intranasal"
+											},
+											{
+												"concept": "7528b136-e218-4102-8559-4b50f92602ba",
+												"label": "Transdermal"
+											},
+											{
+												"concept": "6f87be71-e6d5-4cd2-8912-6c16d5623f47",
+												"label": "Vaginally"
+											},
+											{
+												"concept": "661f066f-7df3-4e23-9477-9a72f0553110",
+												"label": "Rectally"
+											},
+											{
+												"concept": "73342b67-149f-4f5d-9003-f617b18be798",
+												"label": "Intraosseous"
+											}
+										]
+									}
+								},
+								{
+									"id": "medicationFrequency",
+									"label": "Frequency",
+									"type": "obs",
+									"questionOptions": {
+										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+										"rendering": "select",
+										"answers": [
+											{
+												"concept": "b8de464d-db49-4125-9d40-965ddcc8d375",
+												"label": "Once daily in the evening"
+											},
+											{
+												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838",
+												"label": "Thrice daily"
+											},
+											{
+												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838",
+												"label": "Once daily"
+											},
+											{
+												"concept": "21d3d936-5b6c-4b06-a4e9-5d9fc4cf6b30",
+												"label": "Once daily in the morning"
+											},
+											{
+												"concept": "2630d885-cd47-4860-ab20-cf26904bffea",
+												"label": "Once daily at bedtime"
+											},
+											{
+												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838",
+												"label": "Twice daily"
+											},
+											{
+												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838",
+												"label": "Four times daily"
+											}
+										]
+									}
+								},
+								{
+									"id": "medicationScheduledTime",
+									"label": "Time:",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "checkbox",
+										"concept": "a89ea902-1350-11df-a1f1-0026b9348838",
+										
+										"answers": [
+											{
+												"concept": "a89ea538-1350-11df-a1f1-0026b9348838",
+												"label": "AM"
+											},
+											{
+												"concept": "a89eeeda-1350-11df-a1f1-0026b9348838",
+												"label": "PM"
+											},
+											{
+												"concept": "a89ea6b4-1350-11df-a1f1-0026b9348838",
+												"label": "Noon"
+											}
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Treatment record",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"id": "treatmentEntries",
+							"label": "Treatment",
+							"type": "obsGroup",
+							"questionOptions": {
+								"rendering": "repeating",
+								"concept": "a8a0a554-1350-11df-a1f1-0026b9348838",
+								"repeatOptions": {
+									"addText": "Add treatment"
+								}
+							},
+							"questions": [
+								
+								{
+									"id": "treatmentName",
+									"label": "Treatment",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "45198f3c-36a1-4dfe-9977-46bf1f75a1ca"
+									}
+								},
+								{
+									"id": "medicationFrequency",
+									"label": "Frequency",
+									"type": "obs",
+									"questionOptions": {
+										"concept": "a8a06184-1350-11df-a1f1-0026b9348838",
+										"rendering": "select",
+										"answers": [
+											{
+												"concept": "b8de464d-db49-4125-9d40-965ddcc8d375",
+												"label": "Once daily in the evening"
+											},
+											{
+												"concept": "a8a05b9e-1350-11df-a1f1-0026b9348838",
+												"label": "Thrice daily"
+											},
+											{
+												"concept": "a8a05dc4-1350-11df-a1f1-0026b9348838",
+												"label": "Once daily"
+											},
+											{
+												"concept": "21d3d936-5b6c-4b06-a4e9-5d9fc4cf6b30",
+												"label": "Once daily in the morning"
+											},
+											{
+												"concept": "2630d885-cd47-4860-ab20-cf26904bffea",
+												"label": "Once daily at bedtime"
+											},
+											{
+												"concept": "a8a05aea-1350-11df-a1f1-0026b9348838",
+												"label": "Twice daily"
+											},
+											{
+												"concept": "a8a05cfc-1350-11df-a1f1-0026b9348838",
+												"label": "Four times daily"
+											}
+										]
+									}
+								},
+								{
+									"id": "treatmentScheduledTime",
+									"label": "Time",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "time",
+										"concept": "a89ece64-1350-11df-a1f1-0026b9348838"
+									}
+								}
+								
+							]
 						}
 					]
 				},

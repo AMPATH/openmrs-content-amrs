@@ -64,7 +64,6 @@
                 "rendering": "repeating"
               },
               "validators": [],
-
               "questions": [
                 {
                   "label": "Complaint:",
@@ -546,7 +545,6 @@
                     "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
                   }
                 },
-
                 {
                   "label": "Onset status:",
                   "type": "obs",
@@ -568,7 +566,6 @@
                 }
               ]
             }
-
           ]
         },
         {
@@ -861,7 +858,7 @@
             }
           ]
         },
-         {
+        {
           "label": "Anthropometrics",
           "isExpanded": "true",
           "questions": [
@@ -869,7 +866,6 @@
               "label": "Weight(kg):",
               "type": "obs",
               "id": "weight",
-              "required": "true",
               "questionOptions": {
                 "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
                 "rendering": "number",
@@ -882,7 +878,6 @@
             },
             {
               "label": "Weight(kg):",
-              "required": "true",
               "type": "obs",
               "id": "weightForBMI",
               "questionOptions": {
@@ -897,7 +892,6 @@
             },
             {
               "label": "Height(cm):",
-              "required": "true",
               "type": "obs",
               "id": "height",
               "questionOptions": {
@@ -913,7 +907,6 @@
             },
             {
               "label": "Height(cm):",
-              "required": "true",
               "type": "obs",
               "id": "heightForBMI",
               "questionOptions": {
