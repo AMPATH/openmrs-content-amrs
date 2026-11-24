@@ -386,7 +386,7 @@
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
                   {
-                    "concept": "875c3957-c1f4-4538-937c-d4ef2b130af8A",
+                    "concept": "875c3957-c1f4-4538-937c-d4ef2b130af8",
                     "label": "Tooth decay",
                     "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
                   },
@@ -619,10 +619,7 @@
                     "concept": "ab396b67-273c-4c97-9f90-f858d79b13b1",
                     "label": "Other health facility"
                   },
-                  {
-                    "concept": "59312903-dde9-4f7a-b6cf-7b41863b7e81",
-                    "label": "This health facility"
-                  },
+                  
                   {
                     "concept": "9bc09285-7a04-4c81-a313-3a1c67f5c84a",
                     "label": "Community health unit"

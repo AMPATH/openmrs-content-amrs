@@ -63,16 +63,16 @@
           "questions": [
             {
               "id": "babyName",
-              "label": "Baby’s name [CONCEPT NEEDED]",
+              "label": "Baby’s name:",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "f6f82550-1d45-4174-91d2-a42ac9f5fbea",
                 "rendering": "text"
               }
             },
             {
               "id": "birthNotificationNumber",
-              "label": "Birth notification number",
+              "label": "Birth notification number:",
               "type": "obs",
               "questionOptions": {
                 "concept": "1269a817-9e76-463e-ab99-d69545b87bbb",
@@ -81,7 +81,7 @@
             },
             {
               "id": "dateOfBirth",
-              "label": "Date of birth",
+              "label": "Date of birth:",
               "type": "obs",
               "questionOptions": {
                 "concept": "e4e69e0e-d4b5-4ca1-b4b3-87aa77107ec7",
@@ -95,8 +95,8 @@
               "id": "timeOfBirth",
               "datePickerFormat": "timer",
               "questionOptions": {
-                "rendering": "date",
-                "concept": "52ff51ce-3a95-4e32-b389-966c2a6b2a77",
+                "rendering": "time",
+                "concept": "4bf0bdd2-4351-4f6f-bba2-581a087a955f",
                 "conceptMappings": [
                   {
                     "relationship": "SAME-AS",
@@ -196,12 +196,12 @@
                     "label": "Lethargic"
                   },
                   {
-                    "concept": "",
-                    "label": "Reduced movement [CONCEPT NEEDED]"
+                    "concept": "71937ba8-1715-40ec-989c-346a5f3af1d6",
+                    "label": "Reduced movement"
                   },
                   {
-                    "concept": "",
-                    "label": "Floppiness [CONCEPT NEEDED]"
+                    "concept": "488FF518-FCFA-469D-9AA2-8C9A3445E785",
+                    "label": "Floppiness"
                   },
                   {
                     "concept": "04f9358a-226d-4fe1-9cd7-d47eabab15db",
@@ -230,19 +230,19 @@
           "questions": [
             {
               "id": "headSymmetry",
-              "label": "Head and face symmetry [CONCEPT NEEDED]",
+              "label": "Head and face symmetry",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "5e7a9a4f-0f22-45a3-ac1f-bbe005edde1e",
                 "rendering": "text"
               }
             },
             {
               "id": "anteriorFontanelle",
-              "label": "Anterior fontanelle [CONCEPT NEEDED]",
+              "label": "Anterior fontanelle",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "8f68cdc1-63b1-43af-84d8-a5915d3f1a7f",
                 "rendering": "text"
               }
             },
@@ -257,10 +257,10 @@
             },
             {
               "id": "ears",
-              "label": "Ears [CONCEPT NEEDED]",
+              "label": "Ears",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "f313783c-8491-47f6-9c0a-73540d6e4ae7",
                 "rendering": "radio",
                 "answers": [
                   {
@@ -276,10 +276,10 @@
             },
             {
               "id": "eyes",
-              "label": "Eyes [CONCEPT NEEDED]",
+              "label": "Eyes",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "27a6a455-b2d9-4cf0-b513-73d9f76410cc",
                 "rendering": "radio",
                 "answers": [
                   {
@@ -294,38 +294,31 @@
               }
             },
             {
-              "id": "retinoblastomaScreened",
-              "label": "Screened for retinoblastoma [CONCEPT NEEDED]",
+              "id": "eyesAbnormalFindings",
+              "label": "Describe abnormal eye findings",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
+                "concept": "660657cb-d35a-4063-8883-b5609395d5c8",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "eyes !== 'a899e890-1350-11df-a1f1-0026b9348838'"
               }
             },
             {
               "id": "retinoblastomaFindings",
-              "label": "Retinoblastoma screening findings",
+              "label": "Screenfor retinoblastoma:",
               "type": "obs",
               "questionOptions": {
                 "concept": "44835131-b363-4b0d-8e86-590fdabb2cfc",
                 "rendering": "radio",
                 "answers": [
                   {
-                    "label": "Normal (negative)",
+                    "label": "Absent",
                     "concept": "a899e7b4-1350-11df-a1f1-0026b9348838"
                   },
                   {
-                    "label": "Abnormal (positive)",
+                    "label": "Present",
                     "concept": "a899e890-1350-11df-a1f1-0026b9348838"
                   }
                 ]
@@ -333,29 +326,41 @@
             },
             {
               "id": "mouthAndNose",
-              "label": "Mouth and nose findings (cleft palate, cleft lip, tongue tie or lip tie) [CONCEPT NEEDED]",
+              "label": "Mouth and nose examination done:",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "607c76e4-5a04-4f82-868d-01d0a50052d6",
                 "rendering": "radio",
                 "answers": [
                   {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                    "label": "Yes",
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
+                    "label": "No",
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838"
                   }
                 ]
               }
             },
             {
-              "id": "neck",
-              "label": "Neck (short or long) [CONCEPT NEEDED]",
+              "id": "mouthAndNoseFindings",
+              "label": "Describe mouth and nose findings (cleft palate, cleft lip, tongue tie or lip tie)",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "07dd8160-dd0f-42a2-b0ed-be747a6e7905",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "mouthAndNose !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "id": "neck",
+              "label": "Neck (short or long)",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8b0f256-1350-11df-a1f1-0026b9348838",
                 "rendering": "radio",
                 "answers": [
                   {
