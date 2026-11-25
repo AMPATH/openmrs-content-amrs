@@ -5,8 +5,8 @@
   "uuid": "34933d9b-1cc9-46ac-a899-de73b0668f3d",
   "published": true,
   "retired": false,
-  "encounter": "",
-  "encounterType": "",
+  "encounter": "NEONATEEXAMINATION",
+  "encounterType": "dedf08e0-7cd9-4b04-9369-53af53fb8993",
   "processor": "EncounterFormProcessor",
   "referencedForms": [],
   "pages": [
@@ -58,6 +58,133 @@
       "label": "Patient history",
       "sections": [
         {
+          "label": "Complaints and History of complaints",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Presenting complaints:",
+              "type": "obsGroup",
+              "id": "ComplaintLodgeByClient",
+              "questionOptions": {
+                "concept": "9014962e-3efe-46b0-a393-c8c8bddadaa7",
+                "rendering": "repeating",
+                "min": 1
+              },
+              "questions": [
+                {
+                  "label": "Complaint:",
+                  "type": "obs",
+                  "id": "cOmplaIntField",
+                  "questionOptions": {
+                    "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "select",
+                    "answers": [
+                      {
+                        "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                        "label": "None"
+                      },
+                      {
+                        "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                        "label": "Fever"
+                      },
+                      {
+                        "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
+                        "label": "Difficult in breathing"
+                      },
+                      {
+                        "concept": "a890d73c-1350-11df-a1f1-0026b9348838",
+                        "label": "Cough"
+                      },
+                      {
+                        "concept": "a8983bda-1350-11df-a1f1-0026b9348838",
+                        "label": "Running/Blocked nose"
+                      },
+                      {
+                        "concept": "a8ad4476-1350-11df-a1f1-0026b9348838",
+                        "label": "Refusal to feed"
+                      },
+                      {
+                        "concept": "a8ad239c-1350-11df-a1f1-0026b9348838",
+                        "label": "Vomiting"
+                      },
+                      {
+                        "concept": "a890861a-1350-11df-a1f1-0026b9348838",
+                        "label": "Diarrhoea"
+                      },
+                      {
+                        "concept": "bb1637fd-dd30-4938-a7a7-30dcef155f38",
+                        "label": "Blood in stool"
+                      },
+                      {
+                        "concept": "a8981696-1350-11df-a1f1-0026b9348838",
+                        "label": "Bloody urine"
+                      },
+                      {
+                        "concept": "a8ad042a-1350-11df-a1f1-0026b9348838",
+                        "label": "Lethargy"
+                      },
+                      {
+                        "concept": "96dafdc7-720e-4eac-85d3-ae2a0f5c1d94",
+                        "label": "Crying infant"
+                      },
+                      {
+                        "concept": "b9655bbd-a94f-41a6-a5c6-4ea9ed83e840",
+                        "label": "Convulsions"
+                      },
+                      {
+                        "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                        "label": "Rash"
+                      },
+                      {
+                        "concept": "0df011cb-3ff1-465e-ae84-718da974aedd",
+                        "label": "Red Eye/ conjuctivitis"
+                      },
+                      {
+                        "concept": "a8a498ee-1350-11df-a1f1-0026b9348838",
+                        "label": "Unexplained bleeding"
+                      },
+                      {
+                        "concept": "a89366a0-1350-11df-a1f1-0026b9348838",
+                        "label": "Jaundice"
+                      },
+                      {
+                        "concept": "a8ad49a8-1350-11df-a1f1-0026b9348838",
+                        "label": "Irritability"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Specify other complaints:",
+                  "type": "obs",
+                  "id": "OtherSpecificComplaints",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "textarea"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "cOmplaIntField !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "History of presenting illness:",
+              "type": "obs",
+              "id": "ClinICNotes",
+              "questionOptions": {
+                "concept": "9e903280-385f-473d-9dfb-01bdb6b661a5",
+                "rendering": "textarea",
+                "rows": 5
+              }
+            }
+          ]
+        },
+        {
           "label": "Baby details",
           "isExpanded": "true",
           "questions": [
@@ -89,7 +216,7 @@
               }
             },
             {
-              "label": "Time of birth",
+              "label": "Time of birth:",
               "type": "obs",
               "required": false,
               "id": "timeOfBirth",
@@ -109,7 +236,7 @@
             },
             {
               "id": "sexOfBaby",
-              "label": "Sex",
+              "label": "Sex:",
               "type": "obs",
               "questionOptions": {
                 "concept": "a8affd38-1350-11df-a1f1-0026b9348838",
@@ -180,12 +307,224 @@
       "label": "Patient examination",
       "sections": [
         {
+          "label": "General Examination Findings",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "General examination findings:",
+              "id": "genExamFindings",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "a899eb24-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a8965298-1350-11df-a1f1-0026b9348838",
+                    "label": "Cyanosis",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a898d5fe-1350-11df-a1f1-0026b9348838",
+                    "label": "Dehydration",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "b51723db-31c0-4271-989b-d0ba11b456c9",
+                    "label": "Finger Clubbing",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89366a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Jaundice",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a893378e-1350-11df-a1f1-0026b9348838",
+                    "label": "Lymphadenopathy",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8a6f9a4-1350-11df-a1f1-0026b9348838",
+                    "label": "Pallor",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a89540f6-1350-11df-a1f1-0026b9348838",
+                    "label": "Oedema",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  },
+                  {
+                    "concept": "a8980034-1350-11df-a1f1-0026b9348838",
+                    "label": "Wasting",
+                    "disableWhenExpression": "myValue === 'a899e0ac-1350-11df-a1f1-0026b9348838'"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "General examination notes",
+              "type": "obs",
+              "id": "generalExamNotes",
+              "questionOptions": {
+                "concept": "a8a0cc32-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea",
+                "rows": 3
+              }
+            }
+          ]
+        },
+        {
+          "label": "System Examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "System examination:",
+              "type": "obs",
+              "id": "allsystemReview",
+              "questionOptions": {
+                "concept": "a899b6c2-1350-11df-a1f1-0026b9348838",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a899c13a-1350-11df-a1f1-0026b9348838",
+                    "label": "GIT"
+                  },
+                  {
+                    "concept": "a899c4be-1350-11df-a1f1-0026b9348838",
+                    "label": "CNS"
+                  },
+                  {
+                    "concept": "a899ef84-1350-11df-a1f1-0026b9348838",
+                    "label": "CVS"
+                  },
+                  {
+                    "concept": "a899b79e-1350-11df-a1f1-0026b9348838",
+                    "label": "ENT"
+                  },
+                  {
+                    "concept": "a899c2fc-1350-11df-a1f1-0026b9348838",
+                    "label": "Genitourinary"
+                  },
+                  {
+                    "concept": "a899c3d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Musculoskeletal"
+                  },
+                  {
+                    "concept": "a8b0f31e-1350-11df-a1f1-0026b9348838",
+                    "label": "Respiratory"
+                  },
+                  {
+                    "concept": "a899ec00-1350-11df-a1f1-0026b9348838",
+                    "label": "Skin"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CNS findings notes:",
+              "type": "obs",
+              "id": "CnSNotES",
+              "questionOptions": {
+                "concept": "c86932f7-e8a0-4c69-9d04-a56181e11695",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c4be-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "CVS findings notes:",
+              "type": "obs",
+              "id": "cVsNoTes",
+              "questionOptions": {
+                "concept": "208e9633-17a5-48e9-a696-50144fcc1d49",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899ef84-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "ENT findings notes:",
+              "type": "obs",
+              "id": "EntfinDingsNotes",
+              "questionOptions": {
+                "concept": "0ce83cde-cc03-4f4c-bf4e-7e84a5fad26e",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899b79e-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Gastrointestinal findings notes:",
+              "type": "obs",
+              "id": "abdoMenFindNoteS",
+              "questionOptions": {
+                "concept": "90d4640d-5da3-4a5e-913f-8501467250ad",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c13a-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Genitourinary findings notes:",
+              "type": "obs",
+              "id": "GenItouriNaryFinoTeS",
+              "questionOptions": {
+                "concept": "ca6ca060-d00c-4269-90fe-66b357e798b2",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c2fc-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Musculoskeletal findings notes:",
+              "type": "obs",
+              "id": "musculoskeletalFindingNotes",
+              "questionOptions": {
+                "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899c3d8-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Respiratory findings notes:",
+              "type": "obs",
+              "id": "ChestfiNdinGsNotes",
+              "questionOptions": {
+                "concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a8b0f31e-1350-11df-a1f1-0026b9348838')"
+              }
+            },
+            {
+              "label": "Skin finding notes:",
+              "type": "obs",
+              "id": "SkInNotes",
+              "questionOptions": {
+                "concept": "7325eb90-7806-48e7-b94f-8524fa7d1bf8",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(allsystemReview) || !arrayContains(allsystemReview, 'a899ec00-1350-11df-a1f1-0026b9348838')"
+              }
+            }
+          ]
+        },
+        {
           "label": "Newborn examination",
           "isExpanded": "true",
           "questions": [
             {
               "id": "newbornExamination",
-              "label": "Newborn examination",
+              "label": "Newborn examination:",
               "type": "obs",
               "questionOptions": {
                 "concept": "a899eb24-1350-11df-a1f1-0026b9348838",
@@ -230,7 +569,7 @@
           "questions": [
             {
               "id": "headSymmetry",
-              "label": "Head and face symmetry",
+              "label": "Head and face symmetry:",
               "type": "obs",
               "questionOptions": {
                 "concept": "5e7a9a4f-0f22-45a3-ac1f-bbe005edde1e",
@@ -239,7 +578,7 @@
             },
             {
               "id": "anteriorFontanelle",
-              "label": "Anterior fontanelle",
+              "label": "Anterior fontanelle:",
               "type": "obs",
               "questionOptions": {
                 "concept": "8f68cdc1-63b1-43af-84d8-a5915d3f1a7f",
@@ -248,7 +587,7 @@
             },
             {
               "id": "headCircumference",
-              "label": "Head circumference (cm)",
+              "label": "Head circumference (cm):",
               "type": "obs",
               "questionOptions": {
                 "concept": "a8a77686-1350-11df-a1f1-0026b9348838",
@@ -257,7 +596,7 @@
             },
             {
               "id": "ears",
-              "label": "Ears",
+              "label": "Ears:",
               "type": "obs",
               "questionOptions": {
                 "concept": "f313783c-8491-47f6-9c0a-73540d6e4ae7",
@@ -276,7 +615,7 @@
             },
             {
               "id": "eyes",
-              "label": "Eyes",
+              "label": "Eyes:",
               "type": "obs",
               "questionOptions": {
                 "concept": "27a6a455-b2d9-4cf0-b513-73d9f76410cc",
@@ -295,7 +634,7 @@
             },
             {
               "id": "eyesAbnormalFindings",
-              "label": "Describe abnormal eye findings",
+              "label": "Describe abnormal eye findings:",
               "type": "obs",
               "questionOptions": {
                 "concept": "660657cb-d35a-4063-8883-b5609395d5c8",
@@ -307,7 +646,7 @@
             },
             {
               "id": "retinoblastomaFindings",
-              "label": "Screenfor retinoblastoma:",
+              "label": "Screen for retinoblastoma:",
               "type": "obs",
               "questionOptions": {
                 "concept": "44835131-b363-4b0d-8e86-590fdabb2cfc",
@@ -357,7 +696,7 @@
             },
             {
               "id": "neck",
-              "label": "Neck (short or long)",
+              "label": "Neck (short or long):",
               "type": "obs",
               "questionOptions": {
                 "concept": "a8b0f256-1350-11df-a1f1-0026b9348838",
@@ -382,10 +721,10 @@
           "questions": [
             {
               "id": "abdominalDistension",
-              "label": "Abdominal distension [CONCEPT NEEDED]",
+              "label": "Abdominal distension:",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "25cf67bc-40d4-4b07-bb2c-fdcb76229c21",
                 "rendering": "radio",
                 "answers": [
                   {
@@ -401,7 +740,7 @@
             },
             {
               "id": "umbilicus",
-              "label": "Umbilicus",
+              "label": "Umbilicus:",
               "type": "obs",
               "questionOptions": {
                 "concept": "c95f075d-34eb-407a-be23-066ed5996cee",
@@ -412,8 +751,8 @@
                     "concept": "25136dd1-625e-458a-9574-c5c82bdf5f62"
                   },
                   {
-                    "label": "Bleeding [CONCEPT NEEDED]",
-                    "concept": ""
+                    "label": "Bleeding",
+                    "concept": "a8a498ee-1350-11df-a1f1-0026b9348838"
                   },
                   {
                     "label": "Signs of infection",
@@ -424,10 +763,10 @@
             },
             {
               "id": "abdomenBackDeformities",
-              "label": "Abdomen or back deformities [CONCEPT NEEDED]",
+              "label": "Abdominal or back deformities present?",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "36f35398-5beb-4d62-86bf-07ec2bf000d7",
                 "rendering": "radio",
                 "answers": [
                   {
@@ -439,6 +778,18 @@
                     "label": "No"
                   }
                 ]
+              }
+            },
+            {
+              "id": "abdomenBackDeformitiesDetails",
+              "label": "Describe the deformities:",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "ea77019f-b5d5-4bce-80f0-5942a74b4de9",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "abdomenBackDeformities !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
@@ -449,63 +800,34 @@
           "questions": [
             {
               "id": "imperforateAnus",
-              "label": "Imperforate anus [CONCEPT NEEDED]",
+              "label": "Genitalia and anus examination:",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
+                "concept": "918546ce-51e1-4fbc-a7d2-ccb1c39dd94b",
+                "rendering": "checkbox",
                 "answers": [
                   {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                    "concept": "3fa2a7ec-5eeb-47b7-8d8c-0e6e526ddf81",
+                    "label": "External genitalia"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
+                    "concept": "AC4AF56F-4EDD-4AFB-85BF-8BC15B60D085",
+                    "label": "Testes descended"
+                  },
+                  {
+                    "concept": "b2f54ff4-3456-4065-939f-2f48fe668c1c",
+                    "label": "Imperforate anus"
                   }
                 ]
               }
             },
             {
-              "id": "externalGenitalia",
-              "label": "External genitalia [CONCEPT NEEDED]",
+              "id": "genitaliaFindings",
+              "label": "Genitalia findings:",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "label": "Male",
-                    "concept": "a8affaea-1350-11df-a1f1-0026b9348838"
-                  },
-                  {
-                    "label": "Female",
-                    "concept": "a8affc16-1350-11df-a1f1-0026b9348838"
-                  },
-                  {
-                    "label": "Indeterminate",
-                    "concept": "a89a7ae4-1350-11df-a1f1-0026b9348838"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "testesDescended",
-              "label": "Testes descended [CONCEP NEEDED]",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
+                "concept": "b1bd0334-3699-4ea3-8ca9-a4458ff452a2",
+                "rendering": "text"
               }
             }
           ]
@@ -516,10 +838,10 @@
           "questions": [
             {
               "id": "abnormalLimbPosition",
-              "label": "Abnormal limb position [CONCEPT NEEDED]",
+              "label": "Abnormal limb position",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "5a846d12-c61b-4683-bfaf-c2632de9c9a6",
                 "rendering": "radio",
                 "answers": [
                   {
@@ -535,10 +857,10 @@
             },
             {
               "id": "abnormalLimbMovements",
-              "label": "Abnormal limb movements [CONCEPT NEEDED]",
+              "label": "Abnormal limb movements:",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "17945299-8c6f-4610-bc8b-04bdff46f93f",
                 "rendering": "radio",
                 "answers": [
                   {
@@ -550,6 +872,18 @@
                     "label": "No"
                   }
                 ]
+              }
+            },
+            {
+              "id": "limbAbnormalityDetails",
+              "label": "Describe limb abnormalities:",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "73b4c140-6ef2-4723-bb15-d7eef405dea7",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "abnormalLimbPosition !== 'a899b35c-1350-11df-a1f1-0026b9348838' && abnormalLimbMovements !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
               }
             }
           ]
@@ -559,60 +893,37 @@
           "isExpanded": "true",
           "questions": [
             {
-              "id": "pustules",
-              "label": "Pustules [CONCEPT NEEDED]",
+              "id": "skinExamination",
+              "label": "Skin examination:",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
+                "concept": "a899ec00-1350-11df-a1f1-0026b9348838",
+                "rendering": "checkbox",
                 "answers": [
                   {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                    "concept": "a89cf224-1350-11df-a1f1-0026b9348838",
+                    "label": "Pustules"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
+                    "concept": "47710a12-d5e9-4715-b30a-c8bbe2be4971",
+                    "label": "Blisters"
+                  },
+                  {
+                    "concept": "a89366a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Jaundice"
                   }
                 ]
               }
             },
+           
             {
-              "id": "blisters",
-              "label": "Blisters [CONCEPT NEEDED]",
+              "id": "skinFindings",
+              "label": "Skin examination findings:",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "jaundicePresent",
-              "label": "Jaundice present [CONCEPT NEEDED]",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
+                "concept": "7325eb90-7806-48e7-b94f-8524fa7d1bf8",
+                "rendering": "text"
+                
               }
             }
           ]
@@ -622,77 +933,28 @@
           "isExpanded": "true",
           "questions": [
             {
-              "id": "skinInjuries",
-              "label": "Injuries to skin [CONCEPT NEEDED]",
+              "id": "birthInjuries",
+              "label": "Birth injuries",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
+                "concept": "c4dff9ff-49b0-432f-9c24-188afa9e01ec",
+                "rendering": "checkbox",
                 "answers": [
                   {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                    "concept": "ABF7A29B-C0FD-4A5A-B01E-85A29F767310",
+                    "label": "Injuries to skin"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "muscleTrauma",
-              "label": "Muscle trauma [CONCEPT NEEDED]",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                    "concept": "9751D93D-366D-4147-83C9-96639D6A65CB",
+                    "label": "Muscle trauma"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "fractures",
-              "label": "Fractures [CONCEPT NEEDED]",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
+                    "concept": "a893465c-1350-11df-a1f1-0026b9348838",
+                    "label": "Fractures"
                   },
                   {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "nerveTrauma",
-              "label": "Nerve trauma [CONCEPT NEEDED]",
-              "type": "obs",
-              "questionOptions": {
-                "concept": "",
-                "rendering": "radio",
-                "answers": [
-                  {
-                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-                    "label": "Yes"
-                  },
-                  {
-                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-                    "label": "No"
+                    "concept": "a8965b30-1350-11df-a1f1-0026b9348838",
+                    "label": "Nerve trauma"
                   }
                 ]
               }
@@ -705,10 +967,10 @@
           "questions": [
             {
               "id": "urineAndStoolPassed",
-              "label": "Urine and stool passed within 24 hours of birth [CONCEPT NEEDED]",
+              "label": "Urine and stool passed within 24 hours of birth",
               "type": "obs",
               "questionOptions": {
-                "concept": "",
+                "concept": "c47739ec-9837-41cd-acb3-768e1c3d3eec",
                 "rendering": "radio",
                 "answers": [
                   {
@@ -753,8 +1015,8 @@
                     "concept": "354011e7-0e7f-41cb-8e09-4c444c712351"
                   },
                   {
-                    "label": "Gastroschisis [CONCEPT NEEDED]",
-                    "concept": ""
+                    "label": "Gastroschisis",
+                    "concept": "d8fd6d31-9e3b-43b6-b9d3-386690cb4730"
                   },
                   {
                     "label": "Omphalocele",
@@ -778,6 +1040,79 @@
           ]
         },
         {
+          "label": "Danger signs",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "neonateDangerSignsPresent",
+              "label": "Any danger signs present? [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "neonateDangerSigns",
+              "label": "Select all danger signs present",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a45730-1350-11df-a1f1-0026b9348838",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a8ad0038-1350-11df-a1f1-0026b9348838",
+                    "label": "Fever"
+                  },
+                  {
+                    "concept": "a8a454d8-1350-11df-a1f1-0026b9348838",
+                    "label": "Difficulty breathing"
+                  },
+                  {
+                    "concept": "a897eda6-1350-11df-a1f1-0026b9348838",
+                    "label": "Fast breathing"
+                  },
+                  {
+                    "concept": "a8ad49a8-1350-11df-a1f1-0026b9348838",
+                    "label": "Irritability"
+                  },
+                  {
+                    "concept": "a8a4528a-1350-11df-a1f1-0026b9348838",
+                    "label": "Unable to drink or breastfeed"
+                  },
+                  {
+                    "concept": "a89366a0-1350-11df-a1f1-0026b9348838",
+                    "label": "Jaundice"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "neonateDangerSignsPresent !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              },
+              "validators": [
+                {
+                  "type": "conditionalRequired",
+                  "message": "Select at least one danger sign.",
+                  "referenceQuestionId": "neonateDangerSignsPresent",
+                  "referenceQuestionAnswers": [
+                    "a899b35c-1350-11df-a1f1-0026b9348838"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
           "label": "Remarks",
           "isExpanded": "true",
           "questions": [
@@ -796,7 +1131,503 @@
     },
     {
       "label": "Patient management",
-      "sections": []
+      "sections": [
+        {
+          "label": "Routine drug administration",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "vitaminKAdministered",
+              "label": "Vitamin K administered?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "8b66aefb-23c5-4c46-8ef0-65a59fc0217a",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "chlorhexidineGelAdministered",
+              "label": "Chlorhexidine digluconate 7.1% gel administered?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "385f1782-6198-4592-9ad3-1bdf3d0e3134",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "tetracyclineOintmentAdministered",
+              "label": "Tetracycline ointment administered?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "c58a7f0b-1397-4533-abc1-d9a53de95805",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Immunization administered",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "immunizationsAdministered",
+              "label": "Immunizations administered",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a89b20ca-1350-11df-a1f1-0026b9348838",
+                "rendering": "multiCheckbox",
+                "answers": [
+                  {
+                    "concept": "a89840bc-1350-11df-a1f1-0026b9348838",
+                    "label": "BCG"
+                  },
+                  {
+                    "concept": "a897de60-1350-11df-a1f1-0026b9348838",
+                    "label": "OPV 0"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other vaccines"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "otherVaccinesAdministered",
+              "label": "Specify other vaccines administered [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(immunizationsAdministered) || !arrayContains(immunizationsAdministered, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "HIV-exposed infant",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "infantHivExposed",
+              "label": "Is the infant HIV exposed?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8a76cae-1350-11df-a1f1-0026b9348838",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "infantHivExposureRisk",
+              "label": "Infant HIV exposure risk category",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "03019f05-7e81-4bbe-a24c-bf6e8188e566",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "4fae298d-c3c2-4483-ad31-bea9b637ae2b",
+                    "label": "High Risk"
+                  },
+                  {
+                    "concept": "d9a3eac7-7f3f-4a00-b7ed-76400bae1cdb",
+                    "label": "Low Risk"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infantHivExposed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "id": "infantHivBirthTestingDone",
+              "label": "Infant birth HIV DNA PCR test performed?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "481827a4-6ba5-4e60-a6c3-d238baa0d6b6",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infantHivExposed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "id": "infantHivBirthTestingReason",
+              "label": "If no, give reason(s):",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "cec78ed4-f7b3-4e1c-84fe-692589c8e6c8",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "infantHivExposed !== 'a899b35c-1350-11df-a1f1-0026b9348838' || infantHivBirthTestingDone !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+              },
+              "validators": [
+                {
+                  "type": "conditionalRequired",
+                  "message": "Enter the reason infant birth HIV DNA PCR testing was not done.",
+                  "referenceQuestionId": "infantHivBirthTestingDone",
+                  "referenceQuestionAnswers": [
+                    "a899b42e-1350-11df-a1f1-0026b9348838"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Hepatitis B-exposed infant",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "infantHepatitisBExposed",
+              "label": "Is the infant exposed to hepatitis B?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "18939d10-74f7-4881-9d5c-974d200527f1",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hepatitisBBirthDoseAdministered",
+              "label": "Hepatitis B vaccine birth dose administered?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "4bfa03d0-4d36-4f29-9fba-45f5fddf9c95",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infantHepatitisBExposed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "id": "hepatitisBImmunoglobulinAdministered",
+              "label": "Hepatitis B immunoglobulin administered within 24 hours of birth?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "099fc1a5-8e91-4a69-86bc-9365ac0f356a",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infantHepatitisBExposed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            },
+            {
+              "id": "hepatitisBProphylaxisReason",
+              "label": "Explain if the hepatitis B birth dose or immunoglobulin was not given [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "infantHepatitisBExposed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Syphilis-exposed infant",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "infantSyphilisExposed",
+              "label": "Is the infant exposed to syphilis? [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "infantCongenitalSyphilisScenario",
+              "label": "Document the congenital syphilis scenario and treatment [CONCEPT NEEDED]",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "textarea"
+              },
+              "hide": {
+                "hideWhenExpression": "infantSyphilisExposed !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Infant feeding",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "infantBreastfeeding",
+              "label": "Is the infant breastfeeding?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "a8aafc70-1350-11df-a1f1-0026b9348838",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "infantNotBreastfeedingReason",
+              "label": "Reason the infant is not breastfeeding",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "16b4c2f3-4518-4489-a9da-78184d9cc048",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "infantBreastfeeding !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+              },
+              "validators": [
+                {
+                  "type": "conditionalRequired",
+                  "message": "Enter the reason the infant is not breastfeeding.",
+                  "referenceQuestionId": "infantBreastfeeding",
+                  "referenceQuestionAnswers": [
+                    "a899b42e-1350-11df-a1f1-0026b9348838"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "infantBreastMilkSubstitute",
+              "label": "Is the infant receiving a breast milk substitute?",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "56cad188-4fcb-4330-a954-e374ac51ac32",
+                "rendering": "radio",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "infantBreastMilkSubstituteType",
+              "label": "Specify the type of breast milk substitute",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "301c1918-c6d8-4ec9-8d7c-8d3c61cb638a",
+                "rendering": "text"
+              },
+              "hide": {
+                "hideWhenExpression": "infantBreastMilkSubstitute !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+              },
+              "validators": [
+                {
+                  "type": "conditionalRequired",
+                  "message": "Enter the type of breast milk substitute.",
+                  "referenceQuestionId": "infantBreastMilkSubstitute",
+                  "referenceQuestionAnswers": [
+                    "a899b35c-1350-11df-a1f1-0026b9348838"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        
+        {
+          "label": "Investigations",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Lab Order",
+              "id": "labsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Lab order",
+                "workspaceName": "add-lab-order"
+              }
+            },
+            {
+              "label": "Radiology & Imaging Order",
+              "id": "imagingWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add imaging Order",
+                "workspaceName": "order-basket",
+                "additionalProps": {
+                  "orderTypeUuid": "8caa332c-efe4-4025-8b18-3398328e1323"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "Diagnosis",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Diagnosis",
+              "id": "neonateDiagnosis",
+              "type": "diagnosis",
+              "questionOptions": {
+                "rendering": "repeating",
+                "dataSource": "diagnoses",
+                "rank": 1,
+                "datasource": {
+                  "name": "diagnoses",
+                  "config": {
+                    "conceptSourceUuid": "43aaca5f-d623-43fd-993b-673b5d927cdd"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "Treatment orders",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Prescribe Drug(s):",
+              "id": "drugsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Prescribe drugs",
+                "workspaceName": "add-drug-order"
+              }
+            },
+            {
+              "label": "Procedures Order",
+              "id": "proceduresWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order Procedures",
+                "workspaceName": "order-basket",
+                "additionalProps": {
+                  "orderTypeUuid": "2315ab24-9a4e-4b36-b189-8e74d2c77394"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "Clinical notes and follow-up",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "postnatalClinicalNotes",
+              "label": "Clinical notes",
+              "type": "obs",
+              "questionOptions": {
+                "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                "rendering": "textarea"
+              }
+            }
+            
+            
+          ]
+        }
+      ]
     }
   ]
 }
