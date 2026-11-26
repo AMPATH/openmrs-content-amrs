@@ -1,0 +1,9 @@
+<config>
+    <globalProperties>
+        <globalProperty>
+            <property>orderexpansion.orderTypeRules</property>
+            <value>{"58ea528c-8f62-45f0-86a2-f7d1327b8c56": {"dispensable": true}, "a965e782-4aec-4d2a-bd29-4051dc132725": {"dispensable": true}}</value>
+            <description>Order types that can be dispensed through commodity_dispense: Medical Supply and Nutrition Order</description>
+        </globalProperty>
+    </globalProperties>
+</config>
