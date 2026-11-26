@@ -6,4 +6,4 @@ a6a1b98c-ceaf-4481-ae61-67251e43a128,,Consultation SHA order,SHA order Type,org.
 7d1442cc-4fa2-4407-9100-40f0c1c247c8,,SHA Intervention Switch,Intervention order type,org.openmrs.Order,,4d923f53-b950-4282-804b-0afd67afbcd8,
 58ea528c-8f62-45f0-86a2-f7d1327b8c56,,Medical Supply,Medical supply,org.openmrs.Order,,0dcf23d4-3008-4d8e-b12c-4ec95d1cfd97,
 f4afecf5-479e-4199-ab95-49cf2243bbf6,,Emergency SHA Order,Emergency Order type,org.openmrs.Order,,5174ec19-16aa-4603-a48e-aab5ccd27463,
-a965e782-4aec-4d2a-bd29-4051dc132725,,Nutrition Order,Nutrition order type,org.openmrs.Order,,8350a4cc-3deb-4686-a592-3a6db1df64ff,
+a965e782-4aec-4d2a-bd29-4051dc132725,,Nutrition Order,Nutrition order type,org.openmrs.module.orderexpansion.commodity.CommodityOrder,,8350a4cc-3deb-4686-a592-3a6db1df64ff,
